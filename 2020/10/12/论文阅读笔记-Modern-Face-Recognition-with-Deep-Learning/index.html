@@ -7,19 +7,21 @@
   
   <title>Modern Face Recognition with Deep Learning | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人脸识别pipeline  其实整篇论文Adam Geitgey写的文章一直，中文链接如下：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;24567586 第一步：找出所有的面孔  我们将使用 2005 年发明的一种称为方向梯度直方图（Histogram of Oriented Gradients）的方法，简称 HOG。要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并不需要颜">
+  <meta name="description" content="人脸识别pipeline  其实整篇论文Adam Geitgey写的文章一直，中文链接如下：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;24567586 流程图 第一步：找出所有的面孔  我们将使用 2005 年发明的一种称为方向梯度直方图（Histogram of Oriented Gradients）的方法，简称 HOG。要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Modern Face Recognition with Deep Learning">
 <meta property="og:url" content="http://example.com/2020/10/12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-Modern-Face-Recognition-with-Deep-Learning/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="人脸识别pipeline  其实整篇论文Adam Geitgey写的文章一直，中文链接如下：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;24567586 第一步：找出所有的面孔  我们将使用 2005 年发明的一种称为方向梯度直方图（Histogram of Oriented Gradients）的方法，简称 HOG。要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并不需要颜">
+<meta property="og:description" content="人脸识别pipeline  其实整篇论文Adam Geitgey写的文章一直，中文链接如下：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;24567586 流程图 第一步：找出所有的面孔  我们将使用 2005 年发明的一种称为方向梯度直方图（Histogram of Oriented Gradients）的方法，简称 HOG。要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="d:/class_datas/MyBlog/MyBlog/source_posts/image-20201012100000270.png">
+<meta property="og:image" content="d:/class_datas/MyBlog/MyBlog/source_posts/论文阅读笔记-Modern-Face-Recognition-with-Deep-Learning/image-0.png">
+<meta property="og:image" content="d:/class_datas/MyBlog/MyBlog/source_posts/论文阅读笔记-Modern-Face-Recognition-with-Deep-Learning/image-1.png">
+<meta property="og:image" content="d:/class_datas/MyBlog/MyBlog/source_posts/论文阅读笔记-Modern-Face-Recognition-with-Deep-Learning/image-20201012212241700.png">
 <meta property="article:published_time" content="2020-10-12T01:05:05.000Z">
-<meta property="article:modified_time" content="2020-10-12T02:02:59.487Z">
+<meta property="article:modified_time" content="2020-10-12T13:27:52.292Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/class_datas/MyBlog/MyBlog/source_posts/image-20201012100000270.png">
+<meta name="twitter:image" content="d:/class_datas/MyBlog/MyBlog/source_posts/论文阅读笔记-Modern-Face-Recognition-with-Deep-Learning/image-0.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -90,7 +92,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="人脸识别pipeline"><a href="#人脸识别pipeline" class="headerlink" title="人脸识别pipeline"></a>人脸识别pipeline</h2><p>  其实整篇论文<a href="https://link.zhihu.com/?target=https://medium.com/@ageitgey?source=post_header_lockup">Adam Geitgey</a>写的文章一直，中文链接如下：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24567586">https://zhuanlan.zhihu.com/p/24567586</a></p>
+        <h1 id="人脸识别pipeline"><a href="#人脸识别pipeline" class="headerlink" title="人脸识别pipeline"></a>人脸识别pipeline</h1><p>  其实整篇论文<a href="https://link.zhihu.com/?target=https://medium.com/@ageitgey?source=post_header_lockup">Adam Geitgey</a>写的文章一直，中文链接如下：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24567586">https://zhuanlan.zhihu.com/p/24567586</a></p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="D:\class_datas\MyBlog\MyBlog\source_posts\论文阅读笔记-Modern-Face-Recognition-with-Deep-Learning\image-0.png" alt="image-0"></p>
 <h2 id="第一步：找出所有的面孔"><a href="#第一步：找出所有的面孔" class="headerlink" title="第一步：找出所有的面孔"></a>第一步：找出所有的面孔</h2><p>  我们将使用 2005 年发明的一种称为方向梯度直方图（Histogram of Oriented Gradients）的方法，简称 HOG。要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并不需要颜色数据来找到脸：</p>
 <p>然后，我们将查看图片中的每一个像素。 对于单个像素，我们也要查看它周围的其他像素</p>
 <p>我们的目标是找出并比较当前像素与直接围绕它的像素的深度。 然后我们要画一个箭头来代表图像变暗的方向：</p>
@@ -104,7 +107,39 @@
 <h2 id="第二步：脸部的不同姿势"><a href="#第二步：脸部的不同姿势" class="headerlink" title="第二步：脸部的不同姿势"></a>第二步：脸部的不同姿势</h2><p>将试图扭曲每个图片，使得眼睛和嘴唇总是在图像中的样本位置（sample place）</p>
 <p>face landmark estimation:68 landmarks</p>
 <p>旋转、缩放和错切(shear mapping)</p>
-<p><img src="D:\class_datas\MyBlog\MyBlog\source_posts\image-20201012100000270.png" alt="image-20201012100000270"></p>
+<p><img src="D:\class_datas\MyBlog\MyBlog\source_posts\论文阅读笔记-Modern-Face-Recognition-with-Deep-Learning\image-1.png" alt="image-20201012102301982"></p>
+<p>水平错切：</p>
+<p>Affine transformation：仿射变换，简单来说就是：一个能保持线和平行但是不保持距离和角度的几何变换(维基百科：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Affine_transformation">https://en.wikipedia.org/wiki/Affine_transformation</a>)</p>
+<p>代码注意：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#_init_(*args, **kwargs)  *args:*args 用来将参数打包成tuple给函数体调用    **kwargs: **kwargs 打包关键字参数成dict给函数体调用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span>(<span class="params">arg,*args,**kwargs</span>):</span></span><br><span class="line">    print(arg,*args,**kwargs)</span><br><span class="line">   </span><br><span class="line">function(<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>)</span><br><span class="line"><span class="comment">#dlib.shape_predictor(predictor_model)   Loads a shape_predictor from a file that contains the output of the train_shape_predictor() routine.</span></span><br><span class="line"><span class="comment">#pose_predictor(image, face_rect)   #__call__(self: dlib.shape_predictor, image: array, box: dlib.rectangle) → dlib.full_object_detection</span></span><br><span class="line"><span class="comment">#dlib.full_object_detection:This object represents the location of an object in an image along with the positions of each of its constituent parts  </span></span><br><span class="line">  <span class="comment">#__init__(self: dlib.full_object_detection, rect: dlib.rectangle, parts: object) → None </span></span><br><span class="line">        <span class="comment">#rect: dlib rectangle</span></span><br><span class="line">        <span class="comment">#parts: list of dlib.point, or a dlib.points object</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：给脸部编码"><a href="#第三步：给脸部编码" class="headerlink" title="第三步：给脸部编码"></a>第三步：给脸部编码</h2><p>未知图片和已知图片循环比对，最简单但是数据量过大时太慢，不现实</p>
+<p>解决方案是训练一个深度卷积神经网络。但是，并不是让它去识别图片中的物体，这一次我们的训练是要让它为脸部生成 128 个测量值</p>
+<blockquote>
+<p>每次训练要观察三个不同的人脸部图像：</p>
+<p>1：加载一张已知的人面部训练图像</p>
+<p>2：加载同一个人的另一张照片</p>
+<p>3：加载另外一个人的照片</p>
+<p>目的是使同一个人的相近，而不同的人相远</p>
+</blockquote>
+<h2 id="第四步：从编码中找出人的名字"><a href="#第四步：从编码中找出人的名字" class="headerlink" title="第四步：从编码中找出人的名字"></a>第四步：从编码中找出人的名字</h2><p>找到数据库中，与我们测试图像的测量值最接近的，不需要太复杂的分类模型，SVM即可</p>
+<h1 id="相关库学习："><a href="#相关库学习：" class="headerlink" title="相关库学习："></a>相关库学习：</h1><blockquote>
+<p>gender&amp;face classification：<a target="_blank" rel="noopener" href="https://github.com/wondonghyeon/face-classification">https://github.com/wondonghyeon/face-classification</a></p>
+<p>face_recognition：<a target="_blank" rel="noopener" href="https://github.com/ageitgey/face_recognition/">https://github.com/ageitgey/face_recognition/</a></p>
+<p>dlib ：<a target="_blank" rel="noopener" href="http://dlib.net/python/index.html">http://dlib.net/python/index.html</a> Python Api</p>
+</blockquote>
+<h2 id="face-recognition库"><a href="#face-recognition库" class="headerlink" title="face_recognition库"></a>face_recognition库</h2><ul>
+<li>face_recognition api:<a target="_blank" rel="noopener" href="https://github.com/ageitgey/face_recognition/blob/55b5c136292dcd4a1f5953f3eb3181235086efab/face_recognition/api.py#L92">https://github.com/ageitgey/face_recognition/blob/55b5c136292dcd4a1f5953f3eb3181235086efab/face_recognition/api.py#L92</a></li>
+<li>基本就是对dlib库进行了再封装，用的方法也就是以上人脸识别pipeline的过程</li>
+<li>compute_face_descriptor(self: dlib.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),uint8], face: dlib.full_object_detection, num_jitters: int=0L, padding: float=0.25) -&gt; dlib.vector</li>
+<li>Takes an image and a full_object_detection that references a face in that image and converts it into a 128D face descriptor. If num_jitters&gt;1 then each face will be randomly jittered slightly num_jitters times, each run through the 128D projection, and the average used as the face descriptor. Optionally allows to override default padding of 0.25 around the face.</li>
+</ul>
+<h2 id="gender-amp-face-classification"><a href="#gender-amp-face-classification" class="headerlink" title="gender&amp;face classification"></a>gender&amp;face classification</h2><ul>
+<li>代码基本就是调的face_recognition库，face_recognition库又是封装的dlib库</li>
+<li>最关键的是使用的数据集LFWA+，73分类</li>
+<li><img src="D:\class_datas\MyBlog\MyBlog\source_posts\论文阅读笔记-Modern-Face-Recognition-with-Deep-Learning\image-20201012212241700.png" alt="image-20201012212241700"></li>
+<li>最关键的还是128维特征值，使用的模型是dlib_face_recognition_resnet_model_v1.dat <a target="_blank" rel="noopener" href="https://github.com/ageitgey/face_recognition_models/tree/master/face_recognition_models/models">https://github.com/ageitgey/face_recognition_models/tree/master/face_recognition_models/models</a> ，该模型是dlib使用resnet训练生成的</li>
+</ul>
 
       
     </div>
@@ -117,6 +152,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/10/12/Mendeley%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2020/10/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
@@ -156,6 +200,18 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/10/12/Typora%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/12/%E9%A2%9C%E8%89%B2%E6%81%92%E5%B8%B8%E6%80%A7%E4%B9%8BCCC%E3%80%81FCCC%E3%80%81Bayes/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/12/Mendeley%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2020/10/12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-Modern-Face-Recognition-with-Deep-Learning/">Modern Face Recognition with Deep Learning</a>
