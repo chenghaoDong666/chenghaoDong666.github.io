@@ -2,6 +2,15 @@
 <html lang="zh-CN">
 
 
+    <script type="text/javascript">
+    //只在桌面版网页启用特效
+    var windowWidth = $(window).width();
+    if (windowWidth > 768) {
+        document.write('<script type="text/javascript" src="/js/sakura.js"></script>');
+    }
+    </script>
+
+
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="标签, 亦爱Zxy">
@@ -508,7 +517,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.2k</span>&nbsp;字
+                class="white-color">2.3k</span>&nbsp;字
             
             
             

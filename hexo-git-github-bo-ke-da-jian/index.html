@@ -2,6 +2,15 @@
 <html lang="zh-CN">
 
 
+    <script type="text/javascript">
+    //只在桌面版网页启用特效
+    var windowWidth = $(window).width();
+    if (windowWidth > 768) {
+        document.write('<script type="text/javascript" src="/js/sakura.js"></script>');
+    }
+    </script>
+
+
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo-git-github博客搭建, 亦爱Zxy">
@@ -456,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    603
+                    679
                 </div>
                 
 
@@ -478,8 +487,12 @@
 <p>仔细查看错误信息，我们不难发现是ejs出现了问题。我们可以先执行以下代码后再继续后续操作。</p>
 <pre><code>npm install ejs@2.7.4 --ignore-scripts</code></pre>
 <p><strong><em>注意：之后所有的Bash命令都在最后一个MyBlog文件夹下操作，也就是你之前安装hexo那个文件夹！</em></strong></p>
-<h2 id="什么是github-io？"><a href="#什么是github-io？" class="headerlink" title="什么是github.io？"></a>什么是github.io？</h2><p>官网的一句话来形容 Websites for you and your projects</p>
-<h2 id="购买个人域名之后打开失败？"><a href="#购买个人域名之后打开失败？" class="headerlink" title="购买个人域名之后打开失败？"></a>购买个人域名之后打开失败？</h2><p>极有可能是你未设置域名解析！</p>
+<h2 id="什么是github-io？"><a href="#什么是github-io？" class="headerlink" title="什么是github.io？"></a>什么是github.io？</h2><blockquote>
+<p>官网的一句话来形容 Websites for you and your projects</p>
+</blockquote>
+<h2 id="购买个人域名之后打开失败？"><a href="#购买个人域名之后打开失败？" class="headerlink" title="购买个人域名之后打开失败？"></a>购买个人域名之后打开失败？</h2><blockquote>
+<p>极有可能是你未设置域名解析！</p>
+</blockquote>
 <h2 id="写文章发布文章不生成文件夹及图片无法显示？"><a href="#写文章发布文章不生成文件夹及图片无法显示？" class="headerlink" title="写文章发布文章不生成文件夹及图片无法显示？"></a>写文章发布文章不生成文件夹及图片无法显示？</h2><h3 id="不生成文件夹？"><a href="#不生成文件夹？" class="headerlink" title="不生成文件夹？"></a>不生成文件夹？</h3><p>首先，新建博客一定要用hexo new post命令，不然很多信息识别不出来</p>
 <p>然后将_config.yml文件中的post asset folder设置为true，之后会出现文件夹</p>
 <p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224940500.png" alt="设置为true"></p>
@@ -491,14 +504,37 @@
 <p>然后图片编写时，使用相对路径，例如：</p>
 <p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012225527582.png" alt="例子"></p>
 <p><strong><em>另外注意：千万不要错误使用转义符’\‘!!!!</em></strong></p>
-<h2 id="数学公式块无法正常显示？"><a href="#数学公式块无法正常显示？" class="headerlink" title="数学公式块无法正常显示？"></a>数学公式块无法正常显示？</h2><p>后面配置了主题就可以了！</p>
+<h2 id="数学公式块无法正常显示？"><a href="#数学公式块无法正常显示？" class="headerlink" title="数学公式块无法正常显示？"></a>数学公式块无法正常显示？</h2><blockquote>
+<p>后面配置了主题就可以了！</p>
 <p>但是注意：<strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p>
-<h2 id="菜单导航配置在哪？"><a href="#菜单导航配置在哪？" class="headerlink" title="菜单导航配置在哪？"></a>菜单导航配置在哪？</h2><p>菜单导航配置在themes/hexo-theme-matert/__config.yml</p>
-<h2 id="什么是RSS订阅？"><a href="#什么是RSS订阅？" class="headerlink" title="什么是RSS订阅？"></a>什么是RSS订阅？</h2><p>​        RSS也称为RSS订阅或RSS提要，博客和新闻网站的一个常见做法是联合其内容。Web联合是指来自网站的内容可供其他站点或远程应用程序使用。Web联合的最常用方法是使用称为<strong>ReallySimpleSyndication</strong>的协议。RSS是一种协议，允许网站将其内容或其部分内容提供给其他网站或应用程序。</p>
-<h2 id="DaoVoice"><a href="#DaoVoice" class="headerlink" title="DaoVoice?"></a>DaoVoice?</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144940429.png" alt="image-20201013144940429"></p>
-<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144951426.png" alt="image-20201013144951426"></p>
-<h2 id="修改页脚"><a href="#修改页脚" class="headerlink" title="修改页脚?"></a>修改页脚?</h2><h2 id="修改社交链接？"><a href="#修改社交链接？" class="headerlink" title="修改社交链接？"></a>修改社交链接？</h2><h2 id="不蒜子？"><a href="#不蒜子？" class="headerlink" title="不蒜子？"></a>不蒜子？</h2><p>是一个极简网页计数器</p>
-<h2 id="添加动漫人物"><a href="#添加动漫人物" class="headerlink" title="添加动漫人物?"></a>添加动漫人物?</h2><p>由于一直要安包，不敢继续弄了</p>
+</blockquote>
+<h2 id="菜单导航配置在哪？"><a href="#菜单导航配置在哪？" class="headerlink" title="菜单导航配置在哪？"></a>菜单导航配置在哪？</h2><blockquote>
+<p>菜单导航配置在themes/hexo-theme-matert/__config.yml</p>
+</blockquote>
+<h2 id="什么是RSS订阅？"><a href="#什么是RSS订阅？" class="headerlink" title="什么是RSS订阅？"></a>什么是RSS订阅？</h2><blockquote>
+<p>​        RSS也称为RSS订阅或RSS提要，博客和新闻网站的一个常见做法是联合其内容。Web联合是指来自网站的内容可供其他站点或远程应用程序使用。Web联合的最常用方法是使用称为<strong>ReallySimpleSyndication</strong>的协议。RSS是一种协议，允许网站将其内容或其部分内容提供给其他网站或应用程序。</p>
+</blockquote>
+<h2 id="DaoVoice"><a href="#DaoVoice" class="headerlink" title="DaoVoice?"></a>DaoVoice?</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144940429.png" alt="设置"></p>
+<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144951426.png" alt="设置"></p>
+<h2 id="修改页脚"><a href="#修改页脚" class="headerlink" title="修改页脚?"></a>修改页脚?</h2><h2 id="修改社交链接？"><a href="#修改社交链接？" class="headerlink" title="修改社交链接？"></a>修改社交链接？</h2><h2 id="不蒜子？"><a href="#不蒜子？" class="headerlink" title="不蒜子？"></a>不蒜子？</h2><blockquote>
+<p>是一个极简网页计数器</p>
+</blockquote>
+<h2 id="添加动漫人物"><a href="#添加动漫人物" class="headerlink" title="添加动漫人物?"></a>添加动漫人物?</h2><blockquote>
+<p>由于一直要安包，不敢继续弄了</p>
+</blockquote>
+<h2 id="gitalk-error-not-found？"><a href="#gitalk-error-not-found？" class="headerlink" title="gitalk error not found？"></a>gitalk error not found？</h2><blockquote>
+<p>既有可能是yml的设置错误！</p>
+<p><strong>owner和admin都填写github用户名</strong>，<strong>repo填我们的博客github仓库名</strong></p>
+</blockquote>
+<h2 id="yml、yaml格式不正确？"><a href="#yml、yaml格式不正确？" class="headerlink" title="yml、yaml格式不正确？"></a>yml、yaml格式不正确？</h2><blockquote>
+<p>使用这个在线校验器校验：<a target="_blank" rel="noopener" href="http://www.bejson.com/validators/yaml_editor/">http://www.bejson.com/validators/yaml_editor/</a></p>
+</blockquote>
+<h2 id="gitalk未找到相关issues？"><a href="#gitalk未找到相关issues？" class="headerlink" title="gitalk未找到相关issues？"></a>gitalk未找到相关issues？</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013183732541.png" alt="URL"></p>
+<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013183843079.png" alt="回调函数"></p>
+<blockquote>
+<p>一定要<strong>使用https而不是http</strong></p>
+<p>还是不行？？？</p>
+</blockquote>
 
             </div>
             <hr/>
@@ -725,11 +761,11 @@
 <script src="/libs/gitalk/gitalk.min.js"></script>
 <script>
     let gitalk = new Gitalk({
-        clientID: '0f60d93b293f5b743ee9',
-        clientSecret: 'd0bdbb330cf62f7bac10957894b5d6507935b257',
+        clientID: '61eaa355cfc0b192eaf4',
+        clientSecret: 'cd1ff8beccd451909ae7d4aacdbd1150110a43f4',
         repo: 'chenghaoDong666.github.io',
-        owner: 'dchlovestudy',
-        admin: ["dchlovestudy"],
+        owner: 'chenghaoDong666',
+        admin: ["chenghaoDong666"],
         id: '2020-10-12T22-37-35',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -1325,7 +1361,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.2k</span>&nbsp;字
+                class="white-color">2.3k</span>&nbsp;字
             
             
             
