@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>董成豪爱学习</title>
+  
+  <subtitle>也爱张晓雅</subtitle>
+  <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
+  
+  <link href="http://dchlovestudy.xyz/"/>
+  <updated>2020-10-13T02:04:54.759Z</updated>
+  <id>http://dchlovestudy.xyz/</id>
+  
+  <author>
+    <name>董成豪</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mendeley使用问题</title>
+    <link href="http://dchlovestudy.xyz/mendeley-shi-yong-wen-ti/"/>
+    <id>http://dchlovestudy.xyz/mendeley-shi-yong-wen-ti/</id>
+    <published>2020-10-13T01:46:23.000Z</published>
+    <updated>2020-10-13T02:04:54.759Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;文献引用信息有误&quot;&gt;&lt;a href=&quot;#文献引用信息有误&quot; class=&quot;headerlink&quot; title=&quot;文献引用信息有误&quot;&gt;&lt;/a&gt;文献引用信息有误&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;进入Mendeley网站，搜索出错的文献，然后“+Add to</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Typora使用问题</title>
+    <link href="http://dchlovestudy.xyz/typora-shi-yong-wen-ti/"/>
+    <id>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</id>
+    <published>2020-10-13T01:45:52.000Z</published>
+    <updated>2020-10-13T07:45:48.215Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;无序列表如何退出？&quot;&gt;&lt;a href=&quot;#无序列表如何退出？&quot; class=&quot;headerlink&quot; title=&quot;无序列表如何退出？&quot;&gt;&lt;/a&gt;无序列表如何退出？&lt;/h2&gt;&lt;p&gt;左上角的选项很迷，可以使用源代码模式退出&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>颜色恒常性之CCC、FCCC、Bayes</title>
+    <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/"/>
+    <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/</id>
+    <published>2020-10-13T01:43:11.000Z</published>
+    <updated>2020-10-13T08:11:23.029Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Bayes&quot;&gt;&lt;a href=&quot;#Bayes&quot; class=&quot;headerlink&quot; title=&quot;Bayes&quot;&gt;&lt;/a&gt;Bayes&lt;/h2&gt;&lt;h3 id=&quot;Figure&quot;&gt;&lt;a href=&quot;#Figure&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CC" scheme="http://dchlovestudy.xyz/tags/CC/"/>
+    
+    <category term="AWB" scheme="http://dchlovestudy.xyz/tags/AWB/"/>
+    
+    <category term="CCC" scheme="http://dchlovestudy.xyz/tags/CCC/"/>
+    
+    <category term="FCCC" scheme="http://dchlovestudy.xyz/tags/FCCC/"/>
+    
+    <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人脸识别与肤色分类及dlib库</title>
+    <link href="http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/"/>
+    <id>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</id>
+    <published>2020-10-13T01:31:00.000Z</published>
+    <updated>2020-10-13T01:42:23.642Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;人脸识别pipeline&quot;&gt;&lt;a href=&quot;#人脸识别pipeline&quot; class=&quot;headerlink&quot; title=&quot;人脸识别pipeline&quot;&gt;&lt;/a&gt;人脸识别pipeline&lt;/h1&gt;&lt;p&gt;论文参考《Modern Face Recognition</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-git-github博客搭建</title>
+    <link href="http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/"/>
+    <id>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</id>
+    <published>2020-10-12T14:37:35.000Z</published>
+    <updated>2020-10-13T08:23:49.318Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考：洪卫的博客教程&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://dchlovestudy.xyz/hello-world/"/>
+    <id>http://dchlovestudy.xyz/hello-world/</id>
+    <published>2020-10-11T14:09:48.267Z</published>
+    <updated>2020-10-11T14:09:48.268Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
