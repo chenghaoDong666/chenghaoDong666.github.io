@@ -433,9 +433,21 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/face-recognition/">
+                                <span class="chip bg-color">face_recognition</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/">
+                                <span class="chip bg-color">肤色分类</span>
+                            </a>
+                        
+                            <a href="/tags/tkinter/">
+                                <span class="chip bg-color">tkinter</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -456,7 +468,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.5k
                 </div>
                 
 
@@ -468,30 +480,46 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="人脸识别pipeline"><a href="#人脸识别pipeline" class="headerlink" title="人脸识别pipeline"></a>人脸识别pipeline</h1><p>论文参考《Modern Face Recognition with Deep Learning》，其实整篇论文与<a href="https://link.zhihu.com/?target=https://medium.com/@ageitgey?source=post_header_lockup">Adam Geitgey</a>写的文章一致，中文链接如下：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24567586">https://zhuanlan.zhihu.com/p/24567586</a></p>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-0.png" alt="人脸识别流程图" style="zoom:67%;">
+                <h2 id="人脸识别pipeline"><a href="#人脸识别pipeline" class="headerlink" title="人脸识别pipeline"></a>人脸识别pipeline</h2><p>论文参考《Modern Face Recognition with Deep Learning》，其实整篇论文与<a href="https://link.zhihu.com/?target=https://medium.com/@ageitgey?source=post_header_lockup">Adam Geitgey</a>写的文章一致，中文链接如下：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24567586">https://zhuanlan.zhihu.com/p/24567586</a></p>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-0.png" alt="人脸识别流程图" style="zoom:67%;">
 
-<h2 id="第一步：找出所有的面孔"><a href="#第一步：找出所有的面孔" class="headerlink" title="第一步：找出所有的面孔"></a>第一步：找出所有的面孔</h2><p>  我们将使用 2005 年发明的一种称为方向梯度直方图（Histogram of Oriented Gradients）的方法，简称 HOG。要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并不需要颜色数据来找到脸：</p>
-<p>然后，我们将查看图片中的每一个像素。 对于单个像素，我们也要查看它周围的其他像素</p>
-<p>我们的目标是找出并比较当前像素与直接围绕它的像素的深度。 然后我们要画一个箭头来代表图像变暗的方向：</p>
-<p>如果你对图片中的每一个像素重复这个过程，最终每个像素会被一个箭头取代。这些箭头被称为梯度（gradients），它们能显示出图像上从明亮到黑暗的流动过程：</p>
-<p>如果我们直接分析像素，同一个人明暗不同的两张照片将具有完全不同的像素值。但是如果只考虑亮度变化方向（direction）的话，明暗图像将会有同样的结果。</p>
-<p>若保存每个像素的梯度方向直方图，那太细节化了，很有可能一叶障目不见泰山，所以需要更泛化一点的特征，将图像分隔成16x16的小方块，统计每个主方向上有多少个梯度，最后用梯度最多的主方向代替原来小方块</p>
-<p>HOG主要优点就是减轻了图像明暗度的影响，获得的是像素之间的相对特征</p>
-<p>代码注意：</p>
+<h3 id="Step-1-arrow-heading-down-：人脸检测-Face-Detection"><a href="#Step-1-arrow-heading-down-：人脸检测-Face-Detection" class="headerlink" title="Step 1:arrow_heading_down:：人脸检测-Face Detection"></a>Step 1<span class="github-emoji"><span>⤵</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2935.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>：人脸检测-Face Detection</h3><blockquote>
+<p>​    我们使用方向梯度直方图(HOG)来标定人脸位置。</p>
+<p>​    要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并不需要颜色数据来找到脸。</p>
+<p>​    然后，我们将查看图片中的每一个像素。 对于单个像素，我们也要查看它周围的其他像素。我们的目标是找出并比较当前像素与直接围绕它的像素的深度。 然后我们要画一个箭头来代表图像变暗的方向，对图片中的每一个像素重复这个过程，最终每个像素会被一个箭头取代。这些箭头被称为梯度（gradients），它们能显示出图像上从明亮到黑暗的流动过程。</p>
+<p>​    为了获取更泛化的特征，将图像分隔成16x16的小方块，统计每个主方向上有多少个梯度，最后用梯度最多的主方向代替原来小方块。<br>HOG主要优点就是减轻了图像明暗度的影响，获得的是像素之间的相对特征。</p>
+</blockquote>
+<p><strong>代码注意：</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#dlib  get_frontal_face_detector():生成HOG面部检测器 detector(image,1)1表示采样次数，越大识别出来的脸越多，小脸也能识别到，上采样也就是图像放大倍数</span>
 <span class="token comment" spellcheck="true">#dlib.image_window：a gui window that can show image  win.set_image(image) </span>
 <span class="token comment" spellcheck="true">#win.add_overlay(dlib.dlib.rectangle)：Add a list of rectangles to the image_window. They will be displayed as red boxes by default, but the color can be passed.</span>
 <span class="token comment" spellcheck="true">#from skimage import io   io.imread()存储的图片是&lt;class 'ndarray'></span>
 <span class="token comment" spellcheck="true">#'{}'.format 注意使用</span>
 <span class="token comment" spellcheck="true">#enumrate    for i,data in enumerate():</span></code></pre>
-<h2 id="第二步：脸部的不同姿势"><a href="#第二步：脸部的不同姿势" class="headerlink" title="第二步：脸部的不同姿势"></a>第二步：脸部的不同姿势</h2><p>将试图扭曲每个图片，使得眼睛和嘴唇总是在图像中的样本位置（sample place）</p>
+<p><strong>图片示例：</strong></p>
+<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014155202049.png" alt="Figure 1：一张人脸示例"></p>
+<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014155225990.png" alt="Figure 2：HOG标定人脸位置示例"></p>
+<h3 id="Step-II-arrow-heading-down-：人脸对齐-Face-Alignment"><a href="#Step-II-arrow-heading-down-：人脸对齐-Face-Alignment" class="headerlink" title="Step II:arrow_heading_down:：人脸对齐-Face Alignment"></a>Step II<span class="github-emoji"><span>⤵</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2935.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>：人脸对齐-Face Alignment</h3><blockquote>
+<pre><code>  把图片中的脸部分离出来之后，我们将试图扭曲每个图片，使得眼睛和嘴唇总是在图像中的样本位置（sample place）。 这将使我们在接下来的步骤中，更容易比较脸部之间的不同。这被称为人脸对齐任务。
+
+  我们使用一种称为面部特征点估计(face landmark estimation)的算法(使用由 瓦希德·卡奇米Vahid Kazemi和约瑟菲娜·沙利文Josephine Sullivan在2014 年发明的方法)。
+
+  这一算法的基本思路是找到 68 个人脸上普遍存在的特定点（称为特征点， landmarks）——包括下巴的顶部、每只眼睛的外部轮廓、每条眉毛的内部轮廓等。
+
+  获得眼睛和嘴巴的位置后，我们使用仿射变换使得眼睛和嘴巴向中间挪动到大致相同的位置，这将使我们的下一步更加准确。</code></pre>
+</blockquote>
+<p><strong>tips：</strong></p>
+<blockquote>
+<p>将试图扭曲每个图片，使得眼睛和嘴唇总是在图像中的样本位置（sample place）</p>
 <p>face landmark estimation:68 landmarks</p>
 <p>旋转、缩放和错切(shear mapping)</p>
-<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-1.png" alt="image-1"></p>
+</blockquote>
+<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-1.png" alt="shear mapping"></p>
+<blockquote>
 <p>水平错切：</p>
 <p>Affine transformation：仿射变换，简单来说就是：一个能保持线和平行但是不保持距离和角度的几何变换(维基百科：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Affine_transformation">https://en.wikipedia.org/wiki/Affine_transformation</a>)</p>
-<p>代码注意：</p>
+</blockquote>
+<p><strong>代码注意：</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#_init_(*args, **kwargs)  *args:*args 用来将参数打包成tuple给函数体调用    **kwargs: **kwargs 打包关键字参数成dict给函数体调用</span>
 <span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span>arg<span class="token punctuation">,</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>arg<span class="token punctuation">,</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
@@ -503,33 +531,51 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
   <span class="token comment" spellcheck="true">#__init__(self: dlib.full_object_detection, rect: dlib.rectangle, parts: object) → None </span>
         <span class="token comment" spellcheck="true">#rect: dlib rectangle</span>
         <span class="token comment" spellcheck="true">#parts: list of dlib.point, or a dlib.points object</span></code></pre>
-<h2 id="第三步：给脸部编码"><a href="#第三步：给脸部编码" class="headerlink" title="第三步：给脸部编码"></a>第三步：给脸部编码</h2><p>未知图片和已知图片循环比对，最简单但是数据量过大时太慢，不现实</p>
-<p>解决方案是训练一个深度卷积神经网络。但是，并不是让它去识别图片中的物体，这一次我们的训练是要让它为脸部生成 128 个测量值</p>
-<blockquote>
-<p>每次训练要观察三个不同的人脸部图像：</p>
-<p>1：加载一张已知的人面部训练图像</p>
-<p>2：加载同一个人的另一张照片</p>
-<p>3：加载另外一个人的照片</p>
-<p>目的是使同一个人的相近，而不同的人相远</p>
+<p><strong>图片示例:</strong></p>
+<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014160336556.png" alt="Figure 3：68个特征点位置"></p>
+<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014160355457.png" alt="Figure 4：对齐示例"></p>
+<h3 id="Step-3-arrow-heading-down-面部编码-Face-Encoding"><a href="#Step-3-arrow-heading-down-面部编码-Face-Encoding" class="headerlink" title="Step 3:arrow_heading_down::面部编码-Face Encoding"></a>Step 3<span class="github-emoji"><span>⤵</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2935.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>:面部编码-Face Encoding</h3><blockquote>
+<p>我们利用resnet网络对大量人脸图片进行训练，每次训练要观察三个不同的脸部图像：1. 加载一张已知的人的面部训练图像;2. 加载同一个人的另一张照片;3. 加载另外一个人的照片。该网络最终可获得对人脸的128维特征值。</p>
 </blockquote>
-<h2 id="第四步：从编码中找出人的名字"><a href="#第四步：从编码中找出人的名字" class="headerlink" title="第四步：从编码中找出人的名字"></a>第四步：从编码中找出人的名字</h2><p>找到数据库中，与我们测试图像的测量值最接近的，不需要太复杂的分类模型，SVM即可</p>
-<h1 id="相关库学习："><a href="#相关库学习：" class="headerlink" title="相关库学习："></a>相关库学习：</h1><blockquote>
+<p><strong>tips:</strong></p>
+<blockquote>
+<p>未知图片和已知图片循环比对，最简单但是数据量过大时太慢，不现实</p>
+</blockquote>
+<p><strong>图片示例</strong>:</p>
+<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014161438279.png" alt="训练示例"></p>
+<h3 id="Step-4-arrow-heading-down-肤色分类-Race-Classification"><a href="#Step-4-arrow-heading-down-肤色分类-Race-Classification" class="headerlink" title="Step 4:arrow_heading_down::肤色分类-Race Classification"></a>Step 4<span class="github-emoji"><span>⤵</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2935.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>:肤色分类-Race Classification</h3><blockquote>
+<p>​    利用前面获得resnet网络模型，对LFWA+数据集的所有图片进行编码，利用简单的MLP(多层感知器),对所有编码进行训练，然后可以根据MLP对不同图片进行肤色分类，肤色分为三个等级，分别为Asian、White、Black。</p>
+</blockquote>
+<h2 id="相关库学习："><a href="#相关库学习：" class="headerlink" title="相关库学习："></a>相关库学习：</h2><p><strong>库地址：</strong></p>
+<blockquote>
 <p>gender&amp;face classification：<a target="_blank" rel="noopener" href="https://github.com/wondonghyeon/face-classification">https://github.com/wondonghyeon/face-classification</a></p>
 <p>face_recognition：<a target="_blank" rel="noopener" href="https://github.com/ageitgey/face_recognition/">https://github.com/ageitgey/face_recognition/</a></p>
 <p>dlib ：<a target="_blank" rel="noopener" href="http://dlib.net/python/index.html">http://dlib.net/python/index.html</a> Python Api</p>
 </blockquote>
-<h2 id="face-recognition库"><a href="#face-recognition库" class="headerlink" title="face_recognition库"></a>face_recognition库</h2><ul>
-<li>face_recognition api:<a target="_blank" rel="noopener" href="https://github.com/ageitgey/face_recognition/blob/55b5c136292dcd4a1f5953f3eb3181235086efab/face_recognition/api.py#L92">https://github.com/ageitgey/face_recognition/blob/55b5c136292dcd4a1f5953f3eb3181235086efab/face_recognition/api.py#L92</a></li>
-<li>基本就是对dlib库进行了再封装，用的方法也就是以上人脸识别pipeline的过程</li>
-<li>compute_face_descriptor(self: dlib.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),uint8], face: dlib.full_object_detection, num_jitters: int=0L, padding: float=0.25) -&gt; dlib.vector</li>
-<li>Takes an image and a full_object_detection that references a face in that image and converts it into a 128D face descriptor. If num_jitters&gt;1 then each face will be randomly jittered slightly num_jitters times, each run through the 128D projection, and the average used as the face descriptor. Optionally allows to override default padding of 0.25 around the face.</li>
-</ul>
-<h2 id="gender-amp-face-classification"><a href="#gender-amp-face-classification" class="headerlink" title="gender&amp;face classification"></a>gender&amp;face classification</h2><ul>
-<li>代码基本就是调的face_recognition库，face_recognition库又是封装的dlib库</li>
-<li>最关键的是使用的数据集LFWA+，73分类</li>
-<li><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201012212241700.png" alt="image-20201012212241700"></li>
-<li>最关键的还是128维特征值，使用的模型是dlib_face_recognition_resnet_model_v1.dat <a target="_blank" rel="noopener" href="https://github.com/ageitgey/face_recognition_models/tree/master/face_recognition_models/models">https://github.com/ageitgey/face_recognition_models/tree/master/face_recognition_models/models</a> ，该模型是dlib使用resnet训练生成的</li>
-</ul>
+<h3 id="face-recognition库"><a href="#face-recognition库" class="headerlink" title="face_recognition库"></a>face_recognition库</h3><p><strong>代码注意：</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#face_recognition api:https://github.com/ageitgey/face_recognition/blob/55b5c136292dcd4a1f5953f3eb3181235086efab/face_recognition/api.py#L92</span>
+
+<span class="token comment" spellcheck="true">#基本就是对dlib库进行了再封装，用的方法也就是以上人脸识别pipeline的过程</span>
+
+<span class="token comment" spellcheck="true">#compute_face_descriptor(self: dlib.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),uint8], face: dlib.full_object_detection, num_jitters: int=0L, padding: float=0.25) -> dlib.vector</span>
+
+<span class="token comment" spellcheck="true">#Takes an image and a full_object_detection that references a face in that image and converts it into a 128D face descriptor. If num_jitters>1 then each face will be randomly jittered slightly num_jitters times, each run through the 128D projection, and the average used as the face descriptor. Optionally allows to override default padding of 0.25 around the face.</span></code></pre>
+<h3 id="gender-amp-face-classification"><a href="#gender-amp-face-classification" class="headerlink" title="gender&amp;face classification"></a>gender&amp;face classification</h3><p><strong>tips:</strong></p>
+<blockquote>
+<p>代码基本就是调的face_recognition库，face_recognition库又是封装的dlib库</p>
+<p>最关键的是使用的数据集LFWA+，73分类</p>
+<p>128维特征值，使用的模型是dlib_face_recognition_resnet_model_v1.dat <a target="_blank" rel="noopener" href="https://github.com/ageitgey/face_recognition_models/tree/master/face_recognition_models/models">https://github.com/ageitgey/face_recognition_models/tree/master/face_recognition_models/models</a> ，该模型是dlib使用resnet训练生成的</p>
+</blockquote>
+<p><strong>图片示例:</strong></p>
+<p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201012212241700.png" alt="image-20201012212241700"></p>
+<h2 id="GUI编写"><a href="#GUI编写" class="headerlink" title="GUI编写"></a>GUI编写</h2><h3 id="tkinter"><a href="#tkinter" class="headerlink" title="tkinter"></a>tkinter</h3><blockquote>
+<p>大神博客：<a target="_blank" rel="noopener" href="https://sunhwee.com/posts/80fa3a85.html#toc-heading-15">https://sunhwee.com/posts/80fa3a85.html#toc-heading-15</a></p>
+<p>API(推荐)：<a target="_blank" rel="noopener" href="https://web.archive.org/web/20190524140835/https://infohost.nmt.edu/tcc/help/pubs/tkinter/web/index.html">https://web.archive.org/web/20190524140835/https://infohost.nmt.edu/tcc/help/pubs/tkinter/web/index.html</a></p>
+<p>还可以使用ttk，各种基本组件会变得更好看一点，上面api也有，</p>
+</blockquote>
+<h3 id="关于tkinter界面下点击按钮未响应的解决办法？"><a href="#关于tkinter界面下点击按钮未响应的解决办法？" class="headerlink" title="关于tkinter界面下点击按钮未响应的解决办法？"></a>关于tkinter界面下点击按钮未响应的解决办法？</h3><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/aheress/article/details/105059955?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param">https://blog.csdn.net/aheress/article/details/105059955?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param</a></p>
+</blockquote>
 
             </div>
             <hr/>
@@ -592,7 +638,19 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/face-recognition/">
+                                    <span class="chip bg-color">face_recognition</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/">
+                                    <span class="chip bg-color">肤色分类</span>
+                                </a>
+                            
+                                <a href="/tags/tkinter/">
+                                    <span class="chip bg-color">tkinter</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1082,14 +1140,6 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CC/">
-                        <span class="chip bg-color">CC</span>
-                    </a>
-                    
-                    <a href="/tags/AWB/">
-                        <span class="chip bg-color">AWB</span>
-                    </a>
-                    
                     <a href="/tags/CCC/">
                         <span class="chip bg-color">CCC</span>
                     </a>
@@ -1100,6 +1150,10 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
                     
                     <a href="/tags/Bayes/">
                         <span class="chip bg-color">Bayes</span>
+                    </a>
+                    
+                    <a href="/tags/CC-AWB/">
+                        <span class="chip bg-color">CC/AWB</span>
                     </a>
                     
                 </div>
@@ -1380,7 +1434,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.3k</span>&nbsp;字
+                class="white-color">2.7k</span>&nbsp;字
             
             
             

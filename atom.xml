@@ -65,29 +65,28 @@
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/</id>
     <published>2020-10-13T01:43:11.000Z</published>
-    <updated>2020-10-13T08:11:23.029Z</updated>
+    <updated>2020-10-14T04:14:48.104Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Bayes&quot;&gt;&lt;a href=&quot;#Bayes&quot; class=&quot;headerlink&quot; title=&quot;Bayes&quot;&gt;&lt;/a&gt;Bayes&lt;/h2&gt;&lt;h3 id=&quot;Figure&quot;&gt;&lt;a href=&quot;#Figure&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;Bayes&quot;&gt;&lt;a href=&quot;#Bayes&quot; class=&quot;headerlink&quot; title=&quot;Bayes&quot;&gt;&lt;/a&gt;Bayes&lt;/h2&gt;&lt;p&gt;论文：A Multi-Hypothesis Approach to Color Constancy&lt;/p&gt;
+&lt;h3</summary>
         
       
     
     
     
-    
-    <category term="CC" scheme="http://dchlovestudy.xyz/tags/CC/"/>
-    
-    <category term="AWB" scheme="http://dchlovestudy.xyz/tags/AWB/"/>
     
     <category term="CCC" scheme="http://dchlovestudy.xyz/tags/CCC/"/>
     
     <category term="FCCC" scheme="http://dchlovestudy.xyz/tags/FCCC/"/>
     
     <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
+    
+    <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
     
   </entry>
   
@@ -96,19 +95,25 @@
     <link href="http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/"/>
     <id>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</id>
     <published>2020-10-13T01:31:00.000Z</published>
-    <updated>2020-10-13T01:42:23.642Z</updated>
+    <updated>2020-10-14T08:44:55.466Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;人脸识别pipeline&quot;&gt;&lt;a href=&quot;#人脸识别pipeline&quot; class=&quot;headerlink&quot; title=&quot;人脸识别pipeline&quot;&gt;&lt;/a&gt;人脸识别pipeline&lt;/h1&gt;&lt;p&gt;论文参考《Modern Face Recognition</summary>
+    <summary type="html">&lt;h2 id=&quot;人脸识别pipeline&quot;&gt;&lt;a href=&quot;#人脸识别pipeline&quot; class=&quot;headerlink&quot; title=&quot;人脸识别pipeline&quot;&gt;&lt;/a&gt;人脸识别pipeline&lt;/h2&gt;&lt;p&gt;论文参考《Modern Face Recognition</summary>
         
       
     
     
     
+    
+    <category term="face_recognition" scheme="http://dchlovestudy.xyz/tags/face-recognition/"/>
+    
+    <category term="肤色分类" scheme="http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/"/>
+    
+    <category term="tkinter" scheme="http://dchlovestudy.xyz/tags/tkinter/"/>
     
   </entry>
   
@@ -117,7 +122,7 @@
     <link href="http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/"/>
     <id>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</id>
     <published>2020-10-12T14:37:35.000Z</published>
-    <updated>2020-10-13T12:00:59.509Z</updated>
+    <updated>2020-10-14T08:02:57.484Z</updated>
     
     
       

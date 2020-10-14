@@ -435,14 +435,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CC/">
-                                <span class="chip bg-color">CC</span>
-                            </a>
-                        
-                            <a href="/tags/AWB/">
-                                <span class="chip bg-color">AWB</span>
-                            </a>
-                        
                             <a href="/tags/CCC/">
                                 <span class="chip bg-color">CCC</span>
                             </a>
@@ -453,6 +445,10 @@
                         
                             <a href="/tags/Bayes/">
                                 <span class="chip bg-color">Bayes</span>
+                            </a>
+                        
+                            <a href="/tags/CC-AWB/">
+                                <span class="chip bg-color">CC/AWB</span>
                             </a>
                         
                     </div>
@@ -476,7 +472,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    127
+                    204
                 </div>
                 
 
@@ -488,13 +484,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Bayes"><a href="#Bayes" class="headerlink" title="Bayes"></a>Bayes</h2><h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p>1 use an illuminant candidate set per camera</p>
-<p>2 </p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>假设：</p>
-<p>Under the prevalent assumption that the scene is illuminated by a single or dominant light source, the observed pixels of an image are typically modelled using the physical model of Lambertian image formation captured under a trichromatic photosensor<br>$$<br>\rho_{k}(X)=\int_{\Omega}E(\lambda)S(\lambda,X)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
+                <h2 id="Bayes"><a href="#Bayes" class="headerlink" title="Bayes"></a>Bayes</h2><p>论文：A Multi-Hypothesis Approach to Color Constancy</p>
+<h3 id="Title-amp-Abstract-amp-Conclusion"><a href="#Title-amp-Abstract-amp-Conclusion" class="headerlink" title="Title&amp;Abstract&amp;Conclusion"></a>Title&amp;Abstract&amp;Conclusion</h3><p>Multi-Hypothesis:</p>
+<blockquote>
+<p>假设1：</p>
+<p>Under the prevalent assumption that the scene is illuminated by a single or dominant light source, the observed pixels of an image are typically modelled using the physical model of Lambertian image formation captured under a trichromatic photosensor</p>
+</blockquote>
+<p>Our likelihood estimator learns to answer <strong>a camera-agnostic question</strong> and thus enables <strong>effective multi-camera training</strong> by disentangling illuminant estimation from the supervised learning task.</p>
+<p>learning from image samples that were <strong>captured by multiple cameras</strong></p>
+<p>c.f.：与…相比较</p>
+<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p>1 use an illuminant candidate set per camera</p>
+<p>2 Each camera is <strong>encoded with a different color</strong> in (d) to highlight camera-specific illuminants.</p>
+<p>3 [r/g,b/g]color space</p>
+<p><img src="/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/image-20201013224250809.png" alt="(d)"></p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>$$<br>\rho_{k}(X)=\int_{\Omega}E(\lambda)S(\lambda,X)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
 <p>积分是因为比如绿色，打个比方是755~760这个频段的波长共同作用生成的<br>$$<br>\rho_{k}^E=\int_{\Omega}E(\lambda)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"adfadsf"</span><span class="token punctuation">)</span>
-<span class="token keyword">import</span> cv2</code></pre>
 
             </div>
             <hr/>
@@ -558,14 +562,6 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CC/">
-                                    <span class="chip bg-color">CC</span>
-                                </a>
-                            
-                                <a href="/tags/AWB/">
-                                    <span class="chip bg-color">AWB</span>
-                                </a>
-                            
                                 <a href="/tags/CCC/">
                                     <span class="chip bg-color">CCC</span>
                                 </a>
@@ -576,6 +572,10 @@
                             
                                 <a href="/tags/Bayes/">
                                     <span class="chip bg-color">Bayes</span>
+                                </a>
+                            
+                                <a href="/tags/CC-AWB/">
+                                    <span class="chip bg-color">CC/AWB</span>
                                 </a>
                             
                         </div>
@@ -1102,6 +1102,22 @@
                     </div>
                 </div>
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/face-recognition/">
+                        <span class="chip bg-color">face_recognition</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/">
+                        <span class="chip bg-color">肤色分类</span>
+                    </a>
+                    
+                    <a href="/tags/tkinter/">
+                        <span class="chip bg-color">tkinter</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
@@ -1348,7 +1364,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.3k</span>&nbsp;字
+                class="white-color">2.7k</span>&nbsp;字
             
             
             
