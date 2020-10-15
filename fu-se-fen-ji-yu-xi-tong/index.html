@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo-git-github博客搭建, 亦爱Zxy">
+    <meta name="keywords" content="肤色分级与系统, 亦爱Zxy">
     <meta name="description" content="Computer Vision&amp;Image Processing-Papers and Codes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo-git-github博客搭建 | 亦爱Zxy</title>
+    <title>肤色分级与系统 | 亦爱Zxy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo-git-github博客搭建</h1>
+                    <h1 class="description center-align post-title">肤色分级与系统</h1>
                 </div>
             </div>
         </div>
@@ -433,9 +433,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
+                                <span class="chip bg-color">肤色分级</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -447,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-12
+                    2020-10-14
                 </div>
                 
 
@@ -456,7 +460,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    740
+                    2.5k
                 </div>
                 
 
@@ -468,73 +472,74 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>参考：洪卫的博客教程<a target="_blank" rel="noopener" href="https://sunhwee.com/posts/6e8839eb.html">https://sunhwee.com/posts/6e8839eb.html</a></p>
-<p>参考：hexo-theme-matery主题<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md#%E9%85%8D%E7%BD%AE%E5%9F%BA%E6%9C%AC%E8%8F%9C%E5%8D%95%E5%AF%BC%E8%88%AA%E7%9A%84%E5%90%8D%E7%A7%B0%E8%B7%AF%E5%BE%84url%E5%92%8C%E5%9B%BE%E6%A0%87icon">https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md#%E9%85%8D%E7%BD%AE%E5%9F%BA%E6%9C%AC%E8%8F%9C%E5%8D%95%E5%AF%BC%E8%88%AA%E7%9A%84%E5%90%8D%E7%A7%B0%E8%B7%AF%E5%BE%84url%E5%92%8C%E5%9B%BE%E6%A0%87icon</a></p>
-</blockquote>
-<h2 id="搭建hexo博客时，到了最后一步，hexo-s后只出现代码，而不是首页？"><a href="#搭建hexo博客时，到了最后一步，hexo-s后只出现代码，而不是首页？" class="headerlink" title="搭建hexo博客时，到了最后一步，hexo s后只出现代码，而不是首页？"></a>搭建hexo博客时，到了最后一步，hexo s后只出现代码，而不是首页？</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224004113.png" alt="错误代码"></p>
-<p><strong>在npm install安装依赖时出现了错误</strong></p>
-<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224051241.png" alt="错误为第10行"></p>
-<p>仔细查看错误信息，我们不难发现是ejs出现了问题。我们可以先执行以下代码后再继续后续操作。</p>
-<pre><code>npm install ejs@2.7.4 --ignore-scripts</code></pre>
-<p><strong><em>注意：之后所有的Bash命令都在最后一个MyBlog文件夹下操作，也就是你之前安装hexo那个文件夹！</em></strong></p>
-<h2 id="什么是github-io？"><a href="#什么是github-io？" class="headerlink" title="什么是github.io？"></a>什么是github.io？</h2><blockquote>
-<p>官网的一句话来形容 Websites for you and your projects</p>
-</blockquote>
-<h2 id="购买个人域名之后打开失败？"><a href="#购买个人域名之后打开失败？" class="headerlink" title="购买个人域名之后打开失败？"></a>购买个人域名之后打开失败？</h2><blockquote>
-<p>极有可能是你未设置域名解析！</p>
-</blockquote>
-<h2 id="写文章发布文章不生成文件夹及图片无法显示？"><a href="#写文章发布文章不生成文件夹及图片无法显示？" class="headerlink" title="写文章发布文章不生成文件夹及图片无法显示？"></a>写文章发布文章不生成文件夹及图片无法显示？</h2><h3 id="不生成文件夹？"><a href="#不生成文件夹？" class="headerlink" title="不生成文件夹？"></a>不生成文件夹？</h3><p>首先，新建博客一定要用hexo new post命令，不然很多信息识别不出来</p>
-<p>然后将_config.yml文件中的post asset folder设置为true，之后会出现文件夹</p>
-<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224940500.png" alt="设置为true"></p>
-<h3 id="图片不显示？"><a href="#图片不显示？" class="headerlink" title="图片不显示？"></a>图片不显示？</h3><p>首先下载依赖</p>
-<pre><code>npm install hexo-asset-image --save</code></pre>
-<p>然后对于typora编辑，偏好设置为：</p>
-<img src="/hexo-git-github-bo-ke-da-jian/image-20201012225346785.png" alt="image-20201012225346785" style="zoom: 80%;">
+                <h2 id="论文阅读-lt-lt-Brief-overview-of-PANTONE-SkinTone-Guide-chart-in-CIEL-a-b-color-space-gt-gt"><a href="#论文阅读-lt-lt-Brief-overview-of-PANTONE-SkinTone-Guide-chart-in-CIEL-a-b-color-space-gt-gt" class="headerlink" title="论文阅读-<<Brief overview of PANTONE SkinTone Guide chart in CIEL*a*b* color space>>"></a>论文阅读-&lt;&lt;Brief overview of PANTONE SkinTone Guide chart in CIEL*a*b* color space&gt;&gt;</h2><h3 id="Title-amp-Keywords-amp-Abstract-amp-Conclusion"><a href="#Title-amp-Keywords-amp-Abstract-amp-Conclusion" class="headerlink" title="Title&amp;Keywords&amp;Abstract&amp;Conclusion"></a>Title&amp;Keywords&amp;Abstract&amp;Conclusion</h3><h4 id="CIEL-a-b-color-space"><a href="#CIEL-a-b-color-space" class="headerlink" title="CIEL*a*b* color space?"></a>CIEL*a*b* color space?</h4><blockquote>
+<p><strong>颜色开发培训讲义</strong>：<a target="_blank" rel="noopener" href="https://www.zhihu.com/column/cxqingzong-color**%E8%BF%99%E7%AF%87%E4%B8%8D%E8%83%BD%E6%9B%B4%E8%B5%9E">https://www.zhihu.com/column/cxqingzong-color**这篇不能更赞</a>**</p>
+<p><strong>可见光谱:</strong></p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201014213348777.png" alt="可见光谱"></p>
+<p>我们所说的颜色主要分两种：</p>
+<p><strong>光源色（light source color）</strong>：来自发光体的颜色。如太阳，灯泡，led灯，等等。</p>
+<p><strong>表面色（surface color</strong>）：不是来自发光体的物体色。物体本身不发光，但能看到物体的颜色，是因为这些物体能对来自于其他发光体的光的选择性的吸收和反射。</p>
+<p>颜色也可以简单分为两大类：</p>
+<p><strong>非彩色</strong>：黑白灰</p>
+<p><strong>彩色</strong>：红黄蓝绿等</p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201014210822647.png" alt="彩色与非彩色"></p>
+<p><strong>颜色感知的三要素，光源，物体和观察者，缺一不可，缺少一个要素，我们看不到颜色，或者其中一个要素发生改变，我们看到的颜色都会不一样。</strong></p>
+<p>不同光源性质是不一样的，有些光源会亮一点白一点，如太阳，或者就是太阳光，一天内不同时间段的太阳光也会有很大差异，导致在这些不同的光源下看相同一个颜色都会有很大差异.</p>
+<p>所以我们在颜色开发或者颜色沟通交流的时候，会指定一个标准光源，这样能确保我们双方看颜色条件的一致性。我们比对颜色使用的光源都是有标准规定的光源。通常在下图所示的对色灯箱里看颜色。灯箱里面装有不同的常用光源。</p>
+<img src="/fu-se-fen-ji-yu-xi-tong/image-20201014215437189.png" alt="对色灯塔及常见光源" style="zoom: 67%;">
 
-<p>然后图片编写时，使用相对路径，例如：</p>
-<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012225527582.png" alt="例子"></p>
-<p><strong><em>另外注意：千万不要错误使用转义符’\‘!!!!</em></strong></p>
-<h2 id="数学公式块无法正常显示？"><a href="#数学公式块无法正常显示？" class="headerlink" title="数学公式块无法正常显示？"></a>数学公式块无法正常显示？</h2><blockquote>
-<p>后面配置了主题就可以了！</p>
-<p>但是注意：<strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p>
-</blockquote>
-<h2 id="菜单导航配置在哪？"><a href="#菜单导航配置在哪？" class="headerlink" title="菜单导航配置在哪？"></a>菜单导航配置在哪？</h2><blockquote>
-<p>菜单导航配置在themes/hexo-theme-matert/__config.yml</p>
-</blockquote>
-<h2 id="什么是RSS订阅？"><a href="#什么是RSS订阅？" class="headerlink" title="什么是RSS订阅？"></a>什么是RSS订阅？</h2><blockquote>
-<p>​        RSS也称为RSS订阅或RSS提要，博客和新闻网站的一个常见做法是联合其内容。Web联合是指来自网站的内容可供其他站点或远程应用程序使用。Web联合的最常用方法是使用称为<strong>ReallySimpleSyndication</strong>的协议。RSS是一种协议，允许网站将其内容或其部分内容提供给其他网站或应用程序。</p>
-</blockquote>
-<h2 id="DaoVoice"><a href="#DaoVoice" class="headerlink" title="DaoVoice?"></a>DaoVoice?</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144940429.png" alt="设置"></p>
-<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144951426.png" alt="设置"></p>
-<h2 id="新建文章模板修改失败？"><a href="#新建文章模板修改失败？" class="headerlink" title="新建文章模板修改失败？"></a>新建文章模板修改失败？</h2><blockquote>
-<p>莫名其妙post.md上下都变成了两个—，奇怪</p>
-</blockquote>
-<h2 id="修改页脚"><a href="#修改页脚" class="headerlink" title="修改页脚?"></a>修改页脚?</h2><h2 id="修改社交链接？"><a href="#修改社交链接？" class="headerlink" title="修改社交链接？"></a>修改社交链接？</h2><h2 id="不蒜子？不蒜子访问量和人数无法区分问题？"><a href="#不蒜子？不蒜子访问量和人数无法区分问题？" class="headerlink" title="不蒜子？不蒜子访问量和人数无法区分问题？"></a>不蒜子？不蒜子访问量和人数无法区分问题？</h2><blockquote>
-<p>是一个极简网页计数器</p>
-</blockquote>
-<h2 id="添加动漫人物"><a href="#添加动漫人物" class="headerlink" title="添加动漫人物?"></a>添加动漫人物?</h2><blockquote>
-<p>由于一直要安包，不敢继续弄了</p>
-</blockquote>
-<h2 id="gitalk-error-not-found？"><a href="#gitalk-error-not-found？" class="headerlink" title="gitalk error not found？"></a>gitalk error not found？</h2><blockquote>
-<p>既有可能是yml的设置错误！</p>
-<p><strong>owner和admin都填写github用户名</strong>，<strong>repo填我们的博客github仓库名</strong></p>
-</blockquote>
-<h2 id="yml、yaml格式不正确？"><a href="#yml、yaml格式不正确？" class="headerlink" title="yml、yaml格式不正确？"></a>yml、yaml格式不正确？</h2><blockquote>
-<p>使用这个在线校验器校验：<a target="_blank" rel="noopener" href="http://www.bejson.com/validators/yaml_editor/">http://www.bejson.com/validators/yaml_editor/</a></p>
-</blockquote>
-<h2 id="gitalk未找到相关issues？"><a href="#gitalk未找到相关issues？" class="headerlink" title="gitalk未找到相关issues？"></a>gitalk未找到相关issues？</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013183732541.png" alt="URL"></p>
-<p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013183843079.png" alt="回调函数"></p>
-<blockquote>
-<p>一定要<strong>使用https而不是http</strong></p>
-<p>还是不行？？？</p>
-<p>失败！</p>
-</blockquote>
-<h2 id="樱花飘落？"><a href="#樱花飘落？" class="headerlink" title="樱花飘落？"></a>樱花飘落？</h2><blockquote>
-<p>暂时配置失败！</p>
-</blockquote>
-<h2 id="网站根目录在哪里？"><a href="#网站根目录在哪里？" class="headerlink" title="网站根目录在哪里？"></a>网站根目录在哪里？</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013200031772.png" alt="网站根目录"></p>
+<p><strong>Light sources：发光体（照明体）</strong>。泛指能发出光（可见光）的物体，如太阳，蜡烛，灯泡等。但是有些发光体发出的光是变化的不稳定的。例如太阳光，就算在同一天光照辐射都是不一样的，是变化的，更何况在不同的天气，不同的季节。所以很难用这些不稳定的光源来进行对颜色的描述和交流。</p>
+<p><strong>lluminants：光源</strong>。是一个可以定量描述的发光体。是国际照明委员会 CIE（Commission Internationale de L’Eclairage）为了对颜色的评估和计算而定义了不同类型的，能用数学表（相对能量和波长)表示的标准光源。</p>
+<p><strong>色温Color temperature是照明光学中用于定义光源颜色的一个物理量。光源的色温是以光源发光时所显现的颜色与一个绝对黑体被高温燃烧时所显现的颜色相一致时的燃烧温度来定义的，它的单位是绝对温度Kelvin开尔文【K】。</strong></p>
+<p>开尔文与摄氏度的转换关系如下：</p>
+<p><strong>K(开尔文）=273.15+T(摄氏度）</strong></p>
+<p>K值越高，显现的颜色就愈趋向于白蓝色；K值越低，显现的颜色就愈趋向于黄红色。</p>
+<p>开尔文认为，假定纯黑体，能够将落在其上的所有热量吸收，而没有损失，同时又能够将热量生成的能量全部以“光”的形式释放出来的话，它产生辐射最大强度的波长随温度变化而变化。</p>
+<p><strong>显色指数color rendering index (CRI)</strong> :与标准的参考光源相比较，一个光源对物体颜色外貌所产生的效果。换句话说，是一个光源与标准光源（例如日光）相比较下在颜色辨认方面的一种测量方式。CRI是一种得到普遍认可的度量标准，也是目前评价与报告光源显色性的惟一途径。</p>
+<p><strong>Ra</strong> <strong>=</strong> <strong>物体在某一光源照射下所显现的颜色 ÷ 物体本身所具有的颜色</strong>。</p>
+<p>Ra表示某光源的显色指数。Ra愈接近100%，表明在该光源照射下，物体所显现的颜色与物体本身所具有的颜色的差异就愈小。</p>
+<p><strong>标准光源</strong>的光谱要求如下：</p>
+<p>（1）光源的<strong>色温必须是5000K-6500K</strong>，在这种光源色温下观察颜色的效果基本类似于中国大部分地区上午8点至10点，下午3点至5点的自然光下的观察效果。</p>
+<p>（2）光源的<strong>显色指数Ra&gt;90</strong></p>
+<p>光源的性质，可以通过<strong>光谱功率分布曲线（SPD）</strong>来描述。不同的光源有着不同的光谱功率分布曲线。光谱功率分布（SPD）的意思就是光源发出可见光的不同光谱波长（400nm~700nm）的功率是不同的。功率可以理解成强度的大小。</p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015094547985.png" alt="常用光源的光谱功率分布曲线"></p>
+<p>物体关于颜色的性质是对不同波长的电磁波的选择性吸收，所以我们用<strong>光谱反射率曲线</strong>来表达物体的这种性质。红色绿色蓝色的光谱反射率曲线的最大特征是，它有明显的波峰。波峰所在的位置的电磁波波长代表着这个物体的颜色。</p>
+<p>但是黑白灰就不一样。物体之所以能够呈现出<strong>白色</strong>，是因为这个物体对<strong>不同波长的电磁波几乎都不吸收</strong>，所以都被反射出来。<strong>黑色</strong>跟白色刚好相反，黑色物体<strong>几乎完全吸收所有波长的电磁波</strong>，所以从黑色的光谱反射率曲线来看，所有波长的光谱的反射率都很低很低。</p>
+<p>观察者人眼：</p>
+<img src="/fu-se-fen-ji-yu-xi-tong/image-20201015095247048.png" alt="人眼观察黄光" style="zoom:67%;">
 
+<p>类似人眼三种视锥细胞对不同波长的光的响应，研究人员也得到一个标准观察者的三刺激值（x，y，z），作为测色仪辨别颜色的视锥细胞。通过这三个参数xyz，来描述一个颜色，也就是后面将要介绍的<strong>CIE-XYZ颜色空间</strong>。</p>
+<p>我们将<strong>光源</strong>、<strong>物体</strong>和<strong>观察者</strong>这三要素的性质相乘，也就是光源的光谱功率分布曲线乘以物体的光谱反射率曲线乘以标准观察者，得到三个参数<strong>X，Y，Z</strong>（都是大写字母），不同的颜色，有着不同XYZ值。</p>
+<img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100147722.png" alt="CIEXYZ" style="zoom:80%;">
+
+<p>按照下图里的公式算出<strong>x</strong>（小写X），<strong>y</strong>（小写Y）。xyz值（小写）代表着XYZ（大写）的占比，这样三个参数缩减到两个参数，两个参数形成一个平面的二维颜色空间，也就是CIE-XYZ颜色空间。</p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100255681.png" alt="CIE-XYZ颜色空间"></p>
+<p>不容易对颜色差异的大小进行判定，无法非常直观的判定这个颜色就是我需要的颜色，不知道这个颜色跟我需要的颜色的差异的大小。</p>
+<p>CIE-L<em>a</em>b*颜色空间，跟之前介绍的孟塞尔颜色体系的颜色空间是一样，是三维空间中立体的球形。空间中有三个维度，形成三个互相垂直的轴，分别是：</p>
+<ul>
+<li>L*轴：从上到下；<strong>表示明度</strong>，范围由0到100，表示颜色从深（黑）到浅（白）。</li>
+<li>a*轴：从左到右；<strong>表示红绿</strong>，数值变化由正到负，表示颜色从红（正）到绿（负）。a值越大颜色越红，a值越小颜色越绿。</li>
+<li>b*轴：从里到外。<strong>表示黄蓝</strong>，数值变化由正到负，表示颜色从黄（正）到蓝（负）。b值越大颜色越黄，b值越小颜色越蓝。</li>
+<li><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100941807.png" alt="CIE-L*a*b*"></li>
+</ul>
+<p>两个颜色之间的差异大小。引入一个概念——色差<strong>△E</strong>。两个颜色的差异大小，就是这两个颜色的在颜色空间上两个点的距离。色差的计算公式如下：</p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100802146.png" alt="色差的计算公式"></p>
+<p>常见颜色空间介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/JiangHui1211/article/details/84592774?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/JiangHui1211/article/details/84592774?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
+<p>在RGB颜色空间，任意色光F都可以用RGB三种颜色不同分量的相加混合而成：F=r[R]+g[G]+b[B]。</p>
+<p>色度学规则：<br>　　(1)通过R,G,B这三种颜色能产生任何颜色，并且这三种颜色混合后产生的颜色是唯一的。<br>　　(2)如果两个颜色相等，这三个颜色分量再乘以或者除以相同的数，得到的颜色仍然相等。<br>　　(3)混合色的亮度等于每种颜色亮度的和。</p>
+<p>RGB颜色空间的均匀性非常差，且两种颜色之间的知觉差异色差不能表示为该颜色空间中两点间的距离，但是利用线性或非线性变换，则可以从RGB颜色空间推导出其他的颜色特征空间。</p>
+<p>CMYK模式俗称四色打印模式，是最佳的打印模式。</p>
+</blockquote>
+<h4 id="Hue-Angle色相角"><a href="#Hue-Angle色相角" class="headerlink" title="Hue Angle色相角?"></a>Hue Angle色相角?</h4><blockquote>
+<p>孟塞尔颜色体系：</p>
+<img src="/fu-se-fen-ji-yu-xi-tong/image-20201014214736980.png" alt="image-20201014214736980" style="zoom:50%;">
+
+<p><strong>1）色相/色调/Hue</strong>，对于色相我们比较熟悉的是这个色环，色环上不同位置代表不同色相。色相的排列顺序是按照可见光波长从低到高，逆时针分布。这是色相环的概念。</p>
+<p><strong>2）明度/Value/Lightness</strong>，很容易理解，就是一个颜色中含有白和黑的比例：白越多黑越少，这个颜色的明度就越高。</p>
+<p><strong>3）饱和度/纯度chroma</strong>。是一个颜色里面含有这个色相的浓度。<strong>很多人容易把饱和度和明度的概念混淆。是因为他们不理解饱和度和明度在色彩空间中的位置。明度在色彩空间中的位置是从顶部到底部，明度从高到低。而饱和度在色彩空间中的位置是从里到外，饱和度从低到高。</strong></p>
+</blockquote>
+<h4 id="色度"><a href="#色度" class="headerlink" title="色度?"></a>色度?</h4><p>研究颜色测量的学科叫做<strong>色度学</strong>，色度学的任务就是用数量化来表征色觉特性。色度”中的“度”是度量的意思。 类似于长度，高度等等概念。度量长度或高度使用的工具是尺子，而度量颜色的工具就是<strong>颜色感知三要素</strong>。</p>
+<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3>
             </div>
             <hr/>
 
@@ -559,7 +564,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/">http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</a>
+                    <a href="http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/">http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -596,7 +601,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
+                                    <span class="chip bg-color">肤色分级</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -765,7 +774,7 @@
         repo: 'chenghaoDong666.github.io',
         owner: 'chenghaoDong666',
         admin: ["chenghaoDong666"],
-        id: '2020-10-12T22-37-35',
+        id: '2020-10-14T19-39-07',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1052,17 +1061,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/">
+                <a href="/fu-se-fen-ji-yu-xi-tong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="人脸识别与肤色分类及dlib库">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="肤色分级与系统">
                         
-                        <span class="card-title">人脸识别与肤色分类及dlib库</span>
+                        <span class="card-title">肤色分级与系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1072,9 +1082,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1083,19 +1093,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/face-recognition/">
-                        <span class="chip bg-color">face_recognition</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/">
-                        <span class="chip bg-color">肤色分类</span>
-                    </a>
-                    
-                    <a href="/tags/tkinter/">
-                        <span class="chip bg-color">tkinter</span>
+                    <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
+                        <span class="chip bg-color">肤色分级</span>
                     </a>
                     
                 </div>
@@ -1109,13 +1112,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/mendeley-shi-yong-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Mendeley使用问题">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Mendeley使用问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1126,7 +1129,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
                             </span>
                         <span class="publish-author">
                             
