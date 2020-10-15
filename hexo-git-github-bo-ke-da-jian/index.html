@@ -433,9 +433,21 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/hexo/">
+                                <span class="chip bg-color">hexo</span>
+                            </a>
+                        
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
+                            </a>
+                        
+                            <a href="/tags/ejs/">
+                                <span class="chip bg-color">ejs</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -456,7 +468,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    740
+                    992
                 </div>
                 
 
@@ -472,22 +484,22 @@
 <p>参考：洪卫的博客教程<a target="_blank" rel="noopener" href="https://sunhwee.com/posts/6e8839eb.html">https://sunhwee.com/posts/6e8839eb.html</a></p>
 <p>参考：hexo-theme-matery主题<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md#%E9%85%8D%E7%BD%AE%E5%9F%BA%E6%9C%AC%E8%8F%9C%E5%8D%95%E5%AF%BC%E8%88%AA%E7%9A%84%E5%90%8D%E7%A7%B0%E8%B7%AF%E5%BE%84url%E5%92%8C%E5%9B%BE%E6%A0%87icon">https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md#%E9%85%8D%E7%BD%AE%E5%9F%BA%E6%9C%AC%E8%8F%9C%E5%8D%95%E5%AF%BC%E8%88%AA%E7%9A%84%E5%90%8D%E7%A7%B0%E8%B7%AF%E5%BE%84url%E5%92%8C%E5%9B%BE%E6%A0%87icon</a></p>
 </blockquote>
-<h2 id="搭建hexo博客时，到了最后一步，hexo-s后只出现代码，而不是首页？"><a href="#搭建hexo博客时，到了最后一步，hexo-s后只出现代码，而不是首页？" class="headerlink" title="搭建hexo博客时，到了最后一步，hexo s后只出现代码，而不是首页？"></a>搭建hexo博客时，到了最后一步，hexo s后只出现代码，而不是首页？</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224004113.png" alt="错误代码"></p>
+<h2 id="按流程搭建遇到的问题："><a href="#按流程搭建遇到的问题：" class="headerlink" title="按流程搭建遇到的问题："></a>按流程搭建遇到的问题：</h2><h3 id="搭建hexo博客时，到了最后一步，hexo-s后只出现代码，而不是首页？"><a href="#搭建hexo博客时，到了最后一步，hexo-s后只出现代码，而不是首页？" class="headerlink" title="搭建hexo博客时，到了最后一步，hexo s后只出现代码，而不是首页？"></a>搭建hexo博客时，到了最后一步，hexo s后只出现代码，而不是首页？</h3><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224004113.png" alt="错误代码"></p>
 <p><strong>在npm install安装依赖时出现了错误</strong></p>
 <p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224051241.png" alt="错误为第10行"></p>
 <p>仔细查看错误信息，我们不难发现是ejs出现了问题。我们可以先执行以下代码后再继续后续操作。</p>
 <pre><code>npm install ejs@2.7.4 --ignore-scripts</code></pre>
 <p><strong><em>注意：之后所有的Bash命令都在最后一个MyBlog文件夹下操作，也就是你之前安装hexo那个文件夹！</em></strong></p>
-<h2 id="什么是github-io？"><a href="#什么是github-io？" class="headerlink" title="什么是github.io？"></a>什么是github.io？</h2><blockquote>
+<h3 id="什么是github-io？"><a href="#什么是github-io？" class="headerlink" title="什么是github.io？"></a>什么是github.io？</h3><blockquote>
 <p>官网的一句话来形容 Websites for you and your projects</p>
 </blockquote>
-<h2 id="购买个人域名之后打开失败？"><a href="#购买个人域名之后打开失败？" class="headerlink" title="购买个人域名之后打开失败？"></a>购买个人域名之后打开失败？</h2><blockquote>
+<h3 id="购买个人域名之后打开失败？"><a href="#购买个人域名之后打开失败？" class="headerlink" title="购买个人域名之后打开失败？"></a>购买个人域名之后打开失败？</h3><blockquote>
 <p>极有可能是你未设置域名解析！</p>
 </blockquote>
-<h2 id="写文章发布文章不生成文件夹及图片无法显示？"><a href="#写文章发布文章不生成文件夹及图片无法显示？" class="headerlink" title="写文章发布文章不生成文件夹及图片无法显示？"></a>写文章发布文章不生成文件夹及图片无法显示？</h2><h3 id="不生成文件夹？"><a href="#不生成文件夹？" class="headerlink" title="不生成文件夹？"></a>不生成文件夹？</h3><p>首先，新建博客一定要用hexo new post命令，不然很多信息识别不出来</p>
+<h3 id="写文章发布文章不生成文件夹及图片无法显示？"><a href="#写文章发布文章不生成文件夹及图片无法显示？" class="headerlink" title="写文章发布文章不生成文件夹及图片无法显示？"></a>写文章发布文章不生成文件夹及图片无法显示？</h3><h4 id="不生成文件夹？"><a href="#不生成文件夹？" class="headerlink" title="不生成文件夹？"></a>不生成文件夹？</h4><p>首先，新建博客一定要用hexo new post命令，不然很多信息识别不出来</p>
 <p>然后将_config.yml文件中的post asset folder设置为true，之后会出现文件夹</p>
 <p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012224940500.png" alt="设置为true"></p>
-<h3 id="图片不显示？"><a href="#图片不显示？" class="headerlink" title="图片不显示？"></a>图片不显示？</h3><p>首先下载依赖</p>
+<h4 id="图片不显示？"><a href="#图片不显示？" class="headerlink" title="图片不显示？"></a>图片不显示？</h4><p>首先下载依赖</p>
 <pre><code>npm install hexo-asset-image --save</code></pre>
 <p>然后对于typora编辑，偏好设置为：</p>
 <img src="/hexo-git-github-bo-ke-da-jian/image-20201012225346785.png" alt="image-20201012225346785" style="zoom: 80%;">
@@ -495,46 +507,57 @@
 <p>然后图片编写时，使用相对路径，例如：</p>
 <p><img src="/hexo-git-github-bo-ke-da-jian/image-20201012225527582.png" alt="例子"></p>
 <p><strong><em>另外注意：千万不要错误使用转义符’\‘!!!!</em></strong></p>
-<h2 id="数学公式块无法正常显示？"><a href="#数学公式块无法正常显示？" class="headerlink" title="数学公式块无法正常显示？"></a>数学公式块无法正常显示？</h2><blockquote>
+<h3 id="数学公式块无法正常显示？"><a href="#数学公式块无法正常显示？" class="headerlink" title="数学公式块无法正常显示？"></a>数学公式块无法正常显示？</h3><blockquote>
 <p>后面配置了主题就可以了！</p>
 <p>但是注意：<strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p>
 </blockquote>
-<h2 id="菜单导航配置在哪？"><a href="#菜单导航配置在哪？" class="headerlink" title="菜单导航配置在哪？"></a>菜单导航配置在哪？</h2><blockquote>
+<h3 id="菜单导航配置在哪？"><a href="#菜单导航配置在哪？" class="headerlink" title="菜单导航配置在哪？"></a>菜单导航配置在哪？</h3><blockquote>
 <p>菜单导航配置在themes/hexo-theme-matert/__config.yml</p>
 </blockquote>
-<h2 id="什么是RSS订阅？"><a href="#什么是RSS订阅？" class="headerlink" title="什么是RSS订阅？"></a>什么是RSS订阅？</h2><blockquote>
+<h3 id="什么是RSS订阅？"><a href="#什么是RSS订阅？" class="headerlink" title="什么是RSS订阅？"></a>什么是RSS订阅？</h3><blockquote>
 <p>​        RSS也称为RSS订阅或RSS提要，博客和新闻网站的一个常见做法是联合其内容。Web联合是指来自网站的内容可供其他站点或远程应用程序使用。Web联合的最常用方法是使用称为<strong>ReallySimpleSyndication</strong>的协议。RSS是一种协议，允许网站将其内容或其部分内容提供给其他网站或应用程序。</p>
 </blockquote>
-<h2 id="DaoVoice"><a href="#DaoVoice" class="headerlink" title="DaoVoice?"></a>DaoVoice?</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144940429.png" alt="设置"></p>
+<h3 id="DaoVoice"><a href="#DaoVoice" class="headerlink" title="DaoVoice?"></a>DaoVoice?</h3><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144940429.png" alt="设置"></p>
 <p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013144951426.png" alt="设置"></p>
-<h2 id="新建文章模板修改失败？"><a href="#新建文章模板修改失败？" class="headerlink" title="新建文章模板修改失败？"></a>新建文章模板修改失败？</h2><blockquote>
+<h3 id="新建文章模板修改失败？"><a href="#新建文章模板修改失败？" class="headerlink" title="新建文章模板修改失败？"></a>新建文章模板修改失败？</h3><blockquote>
 <p>莫名其妙post.md上下都变成了两个—，奇怪</p>
 </blockquote>
-<h2 id="修改页脚"><a href="#修改页脚" class="headerlink" title="修改页脚?"></a>修改页脚?</h2><h2 id="修改社交链接？"><a href="#修改社交链接？" class="headerlink" title="修改社交链接？"></a>修改社交链接？</h2><h2 id="不蒜子？不蒜子访问量和人数无法区分问题？"><a href="#不蒜子？不蒜子访问量和人数无法区分问题？" class="headerlink" title="不蒜子？不蒜子访问量和人数无法区分问题？"></a>不蒜子？不蒜子访问量和人数无法区分问题？</h2><blockquote>
+<h3 id="修改页脚"><a href="#修改页脚" class="headerlink" title="修改页脚?"></a>修改页脚?</h3><h3 id="修改社交链接？"><a href="#修改社交链接？" class="headerlink" title="修改社交链接？"></a>修改社交链接？</h3><h3 id="不蒜子？不蒜子访问量和人数无法区分问题？"><a href="#不蒜子？不蒜子访问量和人数无法区分问题？" class="headerlink" title="不蒜子？不蒜子访问量和人数无法区分问题？"></a>不蒜子？不蒜子访问量和人数无法区分问题？</h3><blockquote>
 <p>是一个极简网页计数器</p>
 </blockquote>
-<h2 id="添加动漫人物"><a href="#添加动漫人物" class="headerlink" title="添加动漫人物?"></a>添加动漫人物?</h2><blockquote>
+<h3 id="添加动漫人物"><a href="#添加动漫人物" class="headerlink" title="添加动漫人物?"></a>添加动漫人物?</h3><blockquote>
 <p>由于一直要安包，不敢继续弄了</p>
 </blockquote>
-<h2 id="gitalk-error-not-found？"><a href="#gitalk-error-not-found？" class="headerlink" title="gitalk error not found？"></a>gitalk error not found？</h2><blockquote>
+<h3 id="gitalk-error-not-found？"><a href="#gitalk-error-not-found？" class="headerlink" title="gitalk error not found？"></a>gitalk error not found？</h3><blockquote>
 <p>既有可能是yml的设置错误！</p>
 <p><strong>owner和admin都填写github用户名</strong>，<strong>repo填我们的博客github仓库名</strong></p>
 </blockquote>
-<h2 id="yml、yaml格式不正确？"><a href="#yml、yaml格式不正确？" class="headerlink" title="yml、yaml格式不正确？"></a>yml、yaml格式不正确？</h2><blockquote>
+<h3 id="yml、yaml格式不正确？"><a href="#yml、yaml格式不正确？" class="headerlink" title="yml、yaml格式不正确？"></a>yml、yaml格式不正确？</h3><blockquote>
 <p>使用这个在线校验器校验：<a target="_blank" rel="noopener" href="http://www.bejson.com/validators/yaml_editor/">http://www.bejson.com/validators/yaml_editor/</a></p>
 </blockquote>
-<h2 id="gitalk未找到相关issues？"><a href="#gitalk未找到相关issues？" class="headerlink" title="gitalk未找到相关issues？"></a>gitalk未找到相关issues？</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013183732541.png" alt="URL"></p>
+<h3 id="gitalk未找到相关issues？"><a href="#gitalk未找到相关issues？" class="headerlink" title="gitalk未找到相关issues？"></a>gitalk未找到相关issues？</h3><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013183732541.png" alt="URL"></p>
 <p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013183843079.png" alt="回调函数"></p>
 <blockquote>
 <p>一定要<strong>使用https而不是http</strong></p>
 <p>还是不行？？？</p>
 <p>失败！</p>
 </blockquote>
-<h2 id="樱花飘落？"><a href="#樱花飘落？" class="headerlink" title="樱花飘落？"></a>樱花飘落？</h2><blockquote>
+<h3 id="樱花飘落？"><a href="#樱花飘落？" class="headerlink" title="樱花飘落？"></a>樱花飘落？</h3><blockquote>
 <p>暂时配置失败！</p>
 </blockquote>
-<h2 id="网站根目录在哪里？"><a href="#网站根目录在哪里？" class="headerlink" title="网站根目录在哪里？"></a>网站根目录在哪里？</h2><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013200031772.png" alt="网站根目录"></p>
-
+<h3 id="网站根目录在哪里？"><a href="#网站根目录在哪里？" class="headerlink" title="网站根目录在哪里？"></a>网站根目录在哪里？</h3><p><img src="/hexo-git-github-bo-ke-da-jian/image-20201013200031772.png" alt="网站根目录"></p>
+<h2 id="git学习"><a href="#git学习" class="headerlink" title="git学习:"></a>git学习:</h2><blockquote>
+<p>廖雪峰git教程 <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
+</blockquote>
+<ul>
+<li>git-世界上目前最先进的分布式版本控制系统，结束了手动管理多个“版本”的史前时代，进入到版本控制的20世纪</li>
+<li>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！</li>
+<li>集中式和分布式版本控制系统：</li>
+<li>集中式版本控制系统，版本库是集中存放在中央服务器的</li>
+<li>分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。</li>
+<li>windows 使用git bash来敲命令行</li>
+</ul>
+<h2 id="ejs学习："><a href="#ejs学习：" class="headerlink" title="ejs学习："></a>ejs学习：</h2>
             </div>
             <hr/>
 
@@ -596,7 +619,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/hexo/">
+                                    <span class="chip bg-color">hexo</span>
+                                </a>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
+                                </a>
+                            
+                                <a href="/tags/ejs/">
+                                    <span class="chip bg-color">ejs</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1376,7 +1411,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.2k</span>&nbsp;字
+                class="white-color">6.2k</span>&nbsp;字
             
             
             

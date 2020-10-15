@@ -439,6 +439,14 @@
                                 <span class="chip bg-color">肤色分级</span>
                             </a>
                         
+                            <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
+                                <span class="chip bg-color">颜色空间</span>
+                            </a>
+                        
+                            <a href="/tags/MATLAB/">
+                                <span class="chip bg-color">MATLAB</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -460,7 +468,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    3k
                 </div>
                 
 
@@ -473,7 +481,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="论文阅读-lt-lt-Brief-overview-of-PANTONE-SkinTone-Guide-chart-in-CIEL-a-b-color-space-gt-gt"><a href="#论文阅读-lt-lt-Brief-overview-of-PANTONE-SkinTone-Guide-chart-in-CIEL-a-b-color-space-gt-gt" class="headerlink" title="论文阅读-<<Brief overview of PANTONE SkinTone Guide chart in CIEL*a*b* color space>>"></a>论文阅读-&lt;&lt;Brief overview of PANTONE SkinTone Guide chart in CIEL*a*b* color space&gt;&gt;</h2><h3 id="Title-amp-Keywords-amp-Abstract-amp-Conclusion"><a href="#Title-amp-Keywords-amp-Abstract-amp-Conclusion" class="headerlink" title="Title&amp;Keywords&amp;Abstract&amp;Conclusion"></a>Title&amp;Keywords&amp;Abstract&amp;Conclusion</h3><h4 id="CIEL-a-b-color-space"><a href="#CIEL-a-b-color-space" class="headerlink" title="CIEL*a*b* color space?"></a>CIEL*a*b* color space?</h4><blockquote>
-<p><strong>颜色开发培训讲义</strong>：<a target="_blank" rel="noopener" href="https://www.zhihu.com/column/cxqingzong-color**%E8%BF%99%E7%AF%87%E4%B8%8D%E8%83%BD%E6%9B%B4%E8%B5%9E">https://www.zhihu.com/column/cxqingzong-color**这篇不能更赞</a>**</p>
+<p><strong>颜色开发培训讲义</strong>：<a target="_blank" rel="noopener" href="https://www.zhihu.com/column/cxqingzong-color">https://www.zhihu.com/column/cxqingzong-color</a>     <strong>这篇不能更赞</strong></p>
 <p><strong>可见光谱:</strong></p>
 <p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201014213348777.png" alt="可见光谱"></p>
 <p>我们所说的颜色主要分两种：</p>
@@ -512,9 +520,11 @@
 <p>我们将<strong>光源</strong>、<strong>物体</strong>和<strong>观察者</strong>这三要素的性质相乘，也就是光源的光谱功率分布曲线乘以物体的光谱反射率曲线乘以标准观察者，得到三个参数<strong>X，Y，Z</strong>（都是大写字母），不同的颜色，有着不同XYZ值。</p>
 <img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100147722.png" alt="CIEXYZ" style="zoom:80%;">
 
-<p>按照下图里的公式算出<strong>x</strong>（小写X），<strong>y</strong>（小写Y）。xyz值（小写）代表着XYZ（大写）的占比，这样三个参数缩减到两个参数，两个参数形成一个平面的二维颜色空间，也就是CIE-XYZ颜色空间。</p>
+<p>按照下图里的公式算出<strong>x</strong>（小写X），<strong>y</strong>（小写Y）。xyz值（小写）代表着XYZ（大写）的占比，这样三个参数缩减到两个参数，两个参数形成一个平面的二维颜色空间，也就是CIE-XYZ颜色空间。CIE XYZ颜色空间具有不均匀性。</p>
 <p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100255681.png" alt="CIE-XYZ颜色空间"></p>
 <p>不容易对颜色差异的大小进行判定，无法非常直观的判定这个颜色就是我需要的颜色，不知道这个颜色跟我需要的颜色的差异的大小。</p>
+<p>我们把人眼感觉不出的色彩差别量（变化范围）叫做颜色的宽容量。颜色的宽容量反映在CIE xy色度图上即为两个色度点之间的距离。因为，每种颜色在色度图上是一个点，但对人的视感觉来说，当这种颜色的色度坐标位置变化很小时，人眼仍认为它是原来的颜色，感觉不出它的变化。所以，对视感觉效果来说，在这个变化的距离（或范围）以内的色彩差别量，在视觉效果上是等效的。对色彩复制和其它颜色工业部门来说这种位于人眼宽容量范围之内的色彩差别量是允许存在的。</p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015220402922.png" alt="不同标准色度点的颜色宽容量"></p>
 <p>CIE-L<em>a</em>b*颜色空间，跟之前介绍的孟塞尔颜色体系的颜色空间是一样，是三维空间中立体的球形。空间中有三个维度，形成三个互相垂直的轴，分别是：</p>
 <ul>
 <li>L*轴：从上到下；<strong>表示明度</strong>，范围由0到100，表示颜色从深（黑）到浅（白）。</li>
@@ -525,21 +535,31 @@
 <p>两个颜色之间的差异大小。引入一个概念——色差<strong>△E</strong>。两个颜色的差异大小，就是这两个颜色的在颜色空间上两个点的距离。色差的计算公式如下：</p>
 <p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100802146.png" alt="色差的计算公式"></p>
 <p>常见颜色空间介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/JiangHui1211/article/details/84592774?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/JiangHui1211/article/details/84592774?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
-<p>在RGB颜色空间，任意色光F都可以用RGB三种颜色不同分量的相加混合而成：F=r[R]+g[G]+b[B]。</p>
+<p>在<strong>RGB颜色空间</strong>，任意色光F都可以用RGB三种颜色不同分量的相加混合而成：F=r[R]+g[G]+b[B]。</p>
+<p><strong>一般我们读取图片获得的三维矩阵是RGB空间</strong></p>
 <p>色度学规则：<br>　　(1)通过R,G,B这三种颜色能产生任何颜色，并且这三种颜色混合后产生的颜色是唯一的。<br>　　(2)如果两个颜色相等，这三个颜色分量再乘以或者除以相同的数，得到的颜色仍然相等。<br>　　(3)混合色的亮度等于每种颜色亮度的和。</p>
 <p>RGB颜色空间的均匀性非常差，且两种颜色之间的知觉差异色差不能表示为该颜色空间中两点间的距离，但是利用线性或非线性变换，则可以从RGB颜色空间推导出其他的颜色特征空间。</p>
-<p>CMYK模式俗称四色打印模式，是最佳的打印模式。</p>
+<p><strong>CMYK模式</strong>俗称四色打印模式，是最佳的打印模式。</p>
+<p><strong>HSV颜色空间</strong>：感觉和孟塞尔颜色体系很像。HSV即色相(Hue)、饱和度(Saturation)、明度(Value)，又称HSB(B即Brightness)。</p>
+<p>RGB和CMYK<strong>面向硬件</strong>，可用于<strong>图片编码</strong>；HSV面向用户，可用于<strong>图片编辑软件</strong>。</p>
+<p><strong>sRGB色彩空间</strong>（standard Red Green Blue，标准红绿蓝色彩空间）是惠普与微软于1996年一起开发的用于显示器、打印机以及因特网的一种标准RGB色彩空间。这种标准得到了W3C、Exif、英特尔、Pantone、Corel以及其它许多业界厂商的支持。</p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015222536629.png" alt="sRGB色域"></p>
 </blockquote>
 <h4 id="Hue-Angle色相角"><a href="#Hue-Angle色相角" class="headerlink" title="Hue Angle色相角?"></a>Hue Angle色相角?</h4><blockquote>
 <p>孟塞尔颜色体系：</p>
 <img src="/fu-se-fen-ji-yu-xi-tong/image-20201014214736980.png" alt="image-20201014214736980" style="zoom:50%;">
 
-<p><strong>1）色相/色调/Hue</strong>，对于色相我们比较熟悉的是这个色环，色环上不同位置代表不同色相。色相的排列顺序是按照可见光波长从低到高，逆时针分布。这是色相环的概念。</p>
+<p><strong>1）色相/色调/Hue</strong>，对于色相我们比较熟悉的是这个色环，色环上不同位置代表不同色相。色相的排列顺序是按照可见光波长从低到高，逆时针分布。这是色相环的概念。把一周均分成五5种主色互相调和成五种中间色，相邻的两个位置之间再均分10份，共100份</p>
+<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015221249004.png" alt="色相带"></p>
 <p><strong>2）明度/Value/Lightness</strong>，很容易理解，就是一个颜色中含有白和黑的比例：白越多黑越少，这个颜色的明度就越高。</p>
-<p><strong>3）饱和度/纯度chroma</strong>。是一个颜色里面含有这个色相的浓度。<strong>很多人容易把饱和度和明度的概念混淆。是因为他们不理解饱和度和明度在色彩空间中的位置。明度在色彩空间中的位置是从顶部到底部，明度从高到低。而饱和度在色彩空间中的位置是从里到外，饱和度从低到高。</strong></p>
+<p><strong>3）色度chroma</strong>。是一个颜色里面含有这个色相的浓度。<strong>很多人容易把饱和度和明度的概念混淆。是因为他们不理解饱和度和明度在色彩空间中的位置。明度在色彩空间中的位置是从顶部到底部，明度从高到低。而饱和度在色彩空间中的位置是从里到外，饱和度从低到高。</strong></p>
 </blockquote>
-<h4 id="色度"><a href="#色度" class="headerlink" title="色度?"></a>色度?</h4><p>研究颜色测量的学科叫做<strong>色度学</strong>，色度学的任务就是用数量化来表征色觉特性。色度”中的“度”是度量的意思。 类似于长度，高度等等概念。度量长度或高度使用的工具是尺子，而度量颜色的工具就是<strong>颜色感知三要素</strong>。</p>
-<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3>
+<h4 id="色度-色域？"><a href="#色度-色域？" class="headerlink" title="色度?色域？"></a>色度?色域？</h4><p>研究颜色测量的学科叫做<strong>色度学</strong>，色度学的任务就是用数量化来表征色觉特性。色度”中的“度”是度量的意思。 类似于长度，高度等等概念。度量长度或高度使用的工具是尺子，而度量颜色的工具就是<strong>颜色感知三要素</strong>。</p>
+<p><strong>色域</strong>是对一种颜色进行编码的方法，也指一个技术系统能够产生的颜色的总合。在计算机图形处理中，色域是<strong>颜色的某个完全的子集</strong>。颜色子集最常见的应用是用来精确地代表一种给定的情况。例如一个给定的色彩空间或是某个输出装置的呈色范围。</p>
+<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><h2 id="小实验"><a href="#小实验" class="headerlink" title="小实验"></a>小实验</h2><blockquote>
+<p>MATLAB Api：<a target="_blank" rel="noopener" href="https://www.mathworks.com/help/">https://www.mathworks.com/help/</a></p>
+</blockquote>
+
             </div>
             <hr/>
 
@@ -604,6 +624,14 @@
                             
                                 <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
                                     <span class="chip bg-color">肤色分级</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
+                                    <span class="chip bg-color">颜色空间</span>
+                                </a>
+                            
+                                <a href="/tags/MATLAB/">
+                                    <span class="chip bg-color">MATLAB</span>
                                 </a>
                             
                         </div>
@@ -1101,6 +1129,14 @@
                         <span class="chip bg-color">肤色分级</span>
                     </a>
                     
+                    <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
+                        <span class="chip bg-color">颜色空间</span>
+                    </a>
+                    
+                    <a href="/tags/MATLAB/">
+                        <span class="chip bg-color">MATLAB</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1379,7 +1415,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.2k</span>&nbsp;字
+                class="white-color">6.2k</span>&nbsp;字
             
             
             
