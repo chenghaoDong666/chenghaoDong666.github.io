@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -493,20 +493,17 @@
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#dlib  get_frontal_face_detector():生成HOG面部检测器 detector(image,1)1表示采样次数，越大识别出来的脸越多，小脸也能识别到，上采样也就是图像放大倍数</span>
 <span class="token comment" spellcheck="true">#dlib.image_window：a gui window that can show image  win.set_image(image) </span>
 <span class="token comment" spellcheck="true">#win.add_overlay(dlib.dlib.rectangle)：Add a list of rectangles to the image_window. They will be displayed as red boxes by default, but the color can be passed.</span>
-<span class="token comment" spellcheck="true">#from skimage import io   io.imread()存储的图片是&lt;class 'ndarray'></span>
-<span class="token comment" spellcheck="true">#'{}'.format 注意使用</span>
+<span class="token comment" spellcheck="true">#from skimage import io   io.imread()存储的图片是&lt;class 'ndarray'&gt;</span>
+<span class="token comment" spellcheck="true">#'&amp;#123;&amp;#125;'.format 注意使用</span>
 <span class="token comment" spellcheck="true">#enumrate    for i,data in enumerate():</span></code></pre>
 <p><strong>图片示例：</strong></p>
 <p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014155202049.png" alt="Figure 1：一张人脸示例"></p>
 <p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014155225990.png" alt="Figure 2：HOG标定人脸位置示例"></p>
 <h3 id="Step-II-arrow-heading-down-：人脸对齐-Face-Alignment"><a href="#Step-II-arrow-heading-down-：人脸对齐-Face-Alignment" class="headerlink" title="Step II:arrow_heading_down:：人脸对齐-Face Alignment"></a>Step II<span class="github-emoji"><span>⤵</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2935.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>：人脸对齐-Face Alignment</h3><blockquote>
-<pre><code>  把图片中的脸部分离出来之后，我们将试图扭曲每个图片，使得眼睛和嘴唇总是在图像中的样本位置（sample place）。 这将使我们在接下来的步骤中，更容易比较脸部之间的不同。这被称为人脸对齐任务。
-
-  我们使用一种称为面部特征点估计(face landmark estimation)的算法(使用由 瓦希德·卡奇米Vahid Kazemi和约瑟菲娜·沙利文Josephine Sullivan在2014 年发明的方法)。
-
-  这一算法的基本思路是找到 68 个人脸上普遍存在的特定点（称为特征点， landmarks）——包括下巴的顶部、每只眼睛的外部轮廓、每条眉毛的内部轮廓等。
-
-  获得眼睛和嘴巴的位置后，我们使用仿射变换使得眼睛和嘴巴向中间挪动到大致相同的位置，这将使我们的下一步更加准确。</code></pre>
+<p>把图片中的脸部分离出来之后，我们将试图扭曲每个图片，使得眼睛和嘴唇总是在图像中的样本位置（sample place）。 这将使我们在接下来的步骤中，更容易比较脸部之间的不同。这被称为人脸对齐任务。</p>
+<p>我们使用一种称为面部特征点估计(face landmark estimation)的算法(使用由 瓦希德·卡奇米Vahid Kazemi和约瑟菲娜·沙利文Josephine Sullivan在2014 年发明的方法)。</p>
+<p>这一算法的基本思路是找到 68 个人脸上普遍存在的特定点（称为特征点， landmarks）——包括下巴的顶部、每只眼睛的外部轮廓、每条眉毛的内部轮廓等。</p>
+<p>获得眼睛和嘴巴的位置后，我们使用仿射变换使得眼睛和嘴巴向中间挪动到大致相同的位置，这将使我们的下一步更加准确。</p>
 </blockquote>
 <p><strong>tips：</strong></p>
 <blockquote>
@@ -557,9 +554,9 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
 
 <span class="token comment" spellcheck="true">#基本就是对dlib库进行了再封装，用的方法也就是以上人脸识别pipeline的过程</span>
 
-<span class="token comment" spellcheck="true">#compute_face_descriptor(self: dlib.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),uint8], face: dlib.full_object_detection, num_jitters: int=0L, padding: float=0.25) -> dlib.vector</span>
+<span class="token comment" spellcheck="true">#compute_face_descriptor(self: dlib.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),uint8], face: dlib.full_object_detection, num_jitters: int=0L, padding: float=0.25) -&gt; dlib.vector</span>
 
-<span class="token comment" spellcheck="true">#Takes an image and a full_object_detection that references a face in that image and converts it into a 128D face descriptor. If num_jitters>1 then each face will be randomly jittered slightly num_jitters times, each run through the 128D projection, and the average used as the face descriptor. Optionally allows to override default padding of 0.25 around the face.</span></code></pre>
+<span class="token comment" spellcheck="true">#Takes an image and a full_object_detection that references a face in that image and converts it into a 128D face descriptor. If num_jitters&gt;1 then each face will be randomly jittered slightly num_jitters times, each run through the 128D projection, and the average used as the face descriptor. Optionally allows to override default padding of 0.25 around the face.</span></code></pre>
 <h3 id="gender-amp-face-classification"><a href="#gender-amp-face-classification" class="headerlink" title="gender&amp;face classification"></a>gender&amp;face classification</h3><p><strong>tips:</strong></p>
 <blockquote>
 <p>代码基本就是调的face_recognition库，face_recognition库又是封装的dlib库</p>
