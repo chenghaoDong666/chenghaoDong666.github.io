@@ -4,7 +4,14 @@
   <url>
     <loc>http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/</loc>
     
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/</loc>
+    
+    <lastmod>2020-10-16</lastmod>
     
   </url>
   
@@ -85,109 +92,102 @@
     
   </url>
   
-  <url>
-    <loc>http://dchlovestudy.xyz/hello-world/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>http://dchlovestudy.xyz/</loc>
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/CCC/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/FCCC/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/Bayes/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/face-recognition/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/tkinter/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/CC-AWB/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/</loc>
-    <lastmod>2020-10-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://dchlovestudy.xyz/tags/hexo/</loc>
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/git/</loc>
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/ejs/</loc>
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/face-recognition/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/tkinter/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/</loc>
+    <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</loc>
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/MATLAB/</loc>
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/CC-AWB/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/CCC/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/FCCC/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/Bayes/</loc>
+    <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-10-15T14:33:20.347Z</updated>
+  <updated>2020-10-16T08:32:45.870Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>奇奇怪怪不成体系问题合集</title>
+    <link href="http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/"/>
+    <id>http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/</id>
+    <published>2020-10-16T08:20:18.000Z</published>
+    <updated>2020-10-16T08:32:45.870Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;HP打印机状态需要注意、打印显示用户干预如何处理？&quot;&gt;&lt;a href=&quot;#HP打印机状态需要注意、打印显示用户干预如何处理？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>肤色分级与系统</title>
     <link href="http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/"/>
     <id>http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/</id>
     <published>2020-10-14T11:39:07.000Z</published>
-    <updated>2020-10-15T14:33:20.347Z</updated>
+    <updated>2020-10-16T09:31:11.784Z</updated>
     
     
       
@@ -106,13 +127,13 @@
     
     
     
+    <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
+    
     <category term="CCC" scheme="http://dchlovestudy.xyz/tags/CCC/"/>
     
     <category term="FCCC" scheme="http://dchlovestudy.xyz/tags/FCCC/"/>
     
     <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
-    
-    <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
     
   </entry>
   
@@ -168,27 +189,6 @@
     <category term="git" scheme="http://dchlovestudy.xyz/tags/git/"/>
     
     <category term="ejs" scheme="http://dchlovestudy.xyz/tags/ejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://dchlovestudy.xyz/hello-world/"/>
-    <id>http://dchlovestudy.xyz/hello-world/</id>
-    <published>2020-10-11T14:09:48.267Z</published>
-    <updated>2020-10-11T14:09:48.268Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   

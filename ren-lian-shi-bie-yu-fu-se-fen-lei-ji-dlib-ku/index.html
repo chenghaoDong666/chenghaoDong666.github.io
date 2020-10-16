@@ -493,8 +493,8 @@
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#dlib  get_frontal_face_detector():生成HOG面部检测器 detector(image,1)1表示采样次数，越大识别出来的脸越多，小脸也能识别到，上采样也就是图像放大倍数</span>
 <span class="token comment" spellcheck="true">#dlib.image_window：a gui window that can show image  win.set_image(image) </span>
 <span class="token comment" spellcheck="true">#win.add_overlay(dlib.dlib.rectangle)：Add a list of rectangles to the image_window. They will be displayed as red boxes by default, but the color can be passed.</span>
-<span class="token comment" spellcheck="true">#from skimage import io   io.imread()存储的图片是&lt;class 'ndarray'&gt;</span>
-<span class="token comment" spellcheck="true">#'&amp;#123;&amp;#125;'.format 注意使用</span>
+<span class="token comment" spellcheck="true">#from skimage import io   io.imread()存储的图片是&lt;class 'ndarray'></span>
+<span class="token comment" spellcheck="true">#'{}'.format 注意使用</span>
 <span class="token comment" spellcheck="true">#enumrate    for i,data in enumerate():</span></code></pre>
 <p><strong>图片示例：</strong></p>
 <p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201014155202049.png" alt="Figure 1：一张人脸示例"></p>
@@ -554,9 +554,9 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
 
 <span class="token comment" spellcheck="true">#基本就是对dlib库进行了再封装，用的方法也就是以上人脸识别pipeline的过程</span>
 
-<span class="token comment" spellcheck="true">#compute_face_descriptor(self: dlib.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),uint8], face: dlib.full_object_detection, num_jitters: int=0L, padding: float=0.25) -&gt; dlib.vector</span>
+<span class="token comment" spellcheck="true">#compute_face_descriptor(self: dlib.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),uint8], face: dlib.full_object_detection, num_jitters: int=0L, padding: float=0.25) -> dlib.vector</span>
 
-<span class="token comment" spellcheck="true">#Takes an image and a full_object_detection that references a face in that image and converts it into a 128D face descriptor. If num_jitters&gt;1 then each face will be randomly jittered slightly num_jitters times, each run through the 128D projection, and the average used as the face descriptor. Optionally allows to override default padding of 0.25 around the face.</span></code></pre>
+<span class="token comment" spellcheck="true">#Takes an image and a full_object_detection that references a face in that image and converts it into a 128D face descriptor. If num_jitters>1 then each face will be randomly jittered slightly num_jitters times, each run through the 128D projection, and the average used as the face descriptor. Optionally allows to override default padding of 0.25 around the face.</span></code></pre>
 <h3 id="gender-amp-face-classification"><a href="#gender-amp-face-classification" class="headerlink" title="gender&amp;face classification"></a>gender&amp;face classification</h3><p><strong>tips:</strong></p>
 <blockquote>
 <p>代码基本就是调的face_recognition库，face_recognition库又是封装的dlib库</p>
@@ -1137,6 +1137,10 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/CC-AWB/">
+                        <span class="chip bg-color">CC/AWB</span>
+                    </a>
+                    
                     <a href="/tags/CCC/">
                         <span class="chip bg-color">CCC</span>
                     </a>
@@ -1147,10 +1151,6 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
                     
                     <a href="/tags/Bayes/">
                         <span class="chip bg-color">Bayes</span>
-                    </a>
-                    
-                    <a href="/tags/CC-AWB/">
-                        <span class="chip bg-color">CC/AWB</span>
                     </a>
                     
                 </div>
@@ -1447,7 +1447,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.2k</span>&nbsp;字
+                class="white-color">6.5k</span>&nbsp;字
             
             
             
