@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="肤色分级与系统, 亦爱Zxy">
+    <meta name="keywords" content="个人随想, 亦爱Zxy">
     <meta name="description" content="Computer Vision&amp;Image Processing-Papers and Codes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>肤色分级与系统 | 亦爱Zxy</title>
+    <title>个人随想 | 亦爱Zxy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">肤色分级与系统</h1>
+                    <h1 class="description center-align post-title">个人随想</h1>
                 </div>
             </div>
         </div>
@@ -433,21 +433,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
-                                <span class="chip bg-color">肤色分级</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
-                                <span class="chip bg-color">颜色空间</span>
-                            </a>
-                        
-                            <a href="/tags/MATLAB/">
-                                <span class="chip bg-color">MATLAB</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -459,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-14
+                    2020-10-18
                 </div>
                 
 
@@ -468,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    91
                 </div>
                 
 
@@ -480,103 +468,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="论文阅读-lt-lt-Brief-overview-of-PANTONE-SkinTone-Guide-chart-in-CIEL-a-b-color-space-gt-gt"><a href="#论文阅读-lt-lt-Brief-overview-of-PANTONE-SkinTone-Guide-chart-in-CIEL-a-b-color-space-gt-gt" class="headerlink" title="论文阅读-<<Brief overview of PANTONE SkinTone Guide chart in CIEL*a*b* color space>>"></a>论文阅读-&lt;&lt;Brief overview of PANTONE SkinTone Guide chart in CIEL*a*b* color space&gt;&gt;</h2><h3 id="Title-amp-Keywords-amp-Abstract-amp-Conclusion"><a href="#Title-amp-Keywords-amp-Abstract-amp-Conclusion" class="headerlink" title="Title&amp;Keywords&amp;Abstract&amp;Conclusion"></a>Title&amp;Keywords&amp;Abstract&amp;Conclusion</h3><h4 id="CIEL-a-b-color-space"><a href="#CIEL-a-b-color-space" class="headerlink" title="CIEL*a*b* color space?"></a>CIEL*a*b* color space?</h4><blockquote>
-<p><strong>颜色开发培训讲义</strong>：<a target="_blank" rel="noopener" href="https://www.zhihu.com/column/cxqingzong-color">https://www.zhihu.com/column/cxqingzong-color</a>     <strong>这篇不能更赞</strong></p>
-<p><strong>可见光谱:</strong></p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201014213348777.png" alt="可见光谱"></p>
-<p>我们所说的颜色主要分两种：</p>
-<p><strong>光源色（light source color）</strong>：来自发光体的颜色。如太阳，灯泡，led灯，等等。</p>
-<p><strong>表面色（surface color</strong>）：不是来自发光体的物体色。物体本身不发光，但能看到物体的颜色，是因为这些物体能对来自于其他发光体的光的选择性的吸收和反射。</p>
-<p>颜色也可以简单分为两大类：</p>
-<p><strong>非彩色</strong>：黑白灰</p>
-<p><strong>彩色</strong>：红黄蓝绿等</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201014210822647.png" alt="彩色与非彩色"></p>
-<p><strong>颜色感知的三要素，光源，物体和观察者，缺一不可，缺少一个要素，我们看不到颜色，或者其中一个要素发生改变，我们看到的颜色都会不一样。</strong></p>
-<p>不同光源性质是不一样的，有些光源会亮一点白一点，如太阳，或者就是太阳光，一天内不同时间段的太阳光也会有很大差异，导致在这些不同的光源下看相同一个颜色都会有很大差异.</p>
-<p>所以我们在颜色开发或者颜色沟通交流的时候，会指定一个标准光源，这样能确保我们双方看颜色条件的一致性。我们比对颜色使用的光源都是有标准规定的光源。通常在下图所示的对色灯箱里看颜色。灯箱里面装有不同的常用光源。</p>
-<img src="/fu-se-fen-ji-yu-xi-tong/image-20201014215437189.png" alt="对色灯塔及常见光源" style="zoom: 67%;">
-
-<p><strong>Light sources：发光体（照明体）</strong>。泛指能发出光（可见光）的物体，如太阳，蜡烛，灯泡等。但是有些发光体发出的光是变化的不稳定的。例如太阳光，就算在同一天光照辐射都是不一样的，是变化的，更何况在不同的天气，不同的季节。所以很难用这些不稳定的光源来进行对颜色的描述和交流。</p>
-<p><strong>lluminants：光源</strong>。是一个可以定量描述的发光体。是国际照明委员会 CIE（Commission Internationale de L’Eclairage）为了对颜色的评估和计算而定义了不同类型的，能用数学表（相对能量和波长)表示的标准光源。</p>
-<p><strong>色温Color temperature是照明光学中用于定义光源颜色的一个物理量。光源的色温是以光源发光时所显现的颜色与一个绝对黑体被高温燃烧时所显现的颜色相一致时的燃烧温度来定义的，它的单位是绝对温度Kelvin开尔文【K】。</strong></p>
-<p>开尔文与摄氏度的转换关系如下：</p>
-<p><strong>K(开尔文）=273.15+T(摄氏度）</strong></p>
-<p>K值越高，显现的颜色就愈趋向于白蓝色；K值越低，显现的颜色就愈趋向于黄红色。</p>
-<p>开尔文认为，假定纯黑体，能够将落在其上的所有热量吸收，而没有损失，同时又能够将热量生成的能量全部以“光”的形式释放出来的话，它产生辐射最大强度的波长随温度变化而变化。</p>
-<p><strong>显色指数color rendering index (CRI)</strong> :与标准的参考光源相比较，一个光源对物体颜色外貌所产生的效果。换句话说，是一个光源与标准光源（例如日光）相比较下在颜色辨认方面的一种测量方式。CRI是一种得到普遍认可的度量标准，也是目前评价与报告光源显色性的惟一途径。</p>
-<p><strong>Ra</strong> <strong>=</strong> <strong>物体在某一光源照射下所显现的颜色 ÷ 物体本身所具有的颜色</strong>。</p>
-<p>Ra表示某光源的显色指数。Ra愈接近100%，表明在该光源照射下，物体所显现的颜色与物体本身所具有的颜色的差异就愈小。</p>
-<p><strong>标准光源</strong>的光谱要求如下：</p>
-<p>（1）光源的<strong>色温必须是5000K-6500K</strong>，在这种光源色温下观察颜色的效果基本类似于中国大部分地区上午8点至10点，下午3点至5点的自然光下的观察效果。</p>
-<p>（2）光源的<strong>显色指数Ra&gt;90</strong></p>
-<p>光源的性质，可以通过<strong>光谱功率分布曲线（SPD）</strong>来描述。不同的光源有着不同的光谱功率分布曲线。光谱功率分布（SPD）的意思就是光源发出可见光的不同光谱波长（400nm~700nm）的功率是不同的。功率可以理解成强度的大小。</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015094547985.png" alt="常用光源的光谱功率分布曲线"></p>
-<p>物体关于颜色的性质是对不同波长的电磁波的选择性吸收，所以我们用<strong>光谱反射率曲线</strong>来表达物体的这种性质。红色绿色蓝色的光谱反射率曲线的最大特征是，它有明显的波峰。波峰所在的位置的电磁波波长代表着这个物体的颜色。</p>
-<p>但是黑白灰就不一样。物体之所以能够呈现出<strong>白色</strong>，是因为这个物体对<strong>不同波长的电磁波几乎都不吸收</strong>，所以都被反射出来。<strong>黑色</strong>跟白色刚好相反，黑色物体<strong>几乎完全吸收所有波长的电磁波</strong>，所以从黑色的光谱反射率曲线来看，所有波长的光谱的反射率都很低很低。</p>
-<p><strong>观察者人眼：</strong></p>
-<img src="/fu-se-fen-ji-yu-xi-tong/image-20201015095247048.png" alt="人眼观察黄光" style="zoom:67%;">
-
-<p>类似人眼三种视锥细胞对不同波长的光的响应，研究人员也得到一个标准观察者的三刺激值（x，y，z），作为测色仪辨别颜色的视锥细胞。通过这三个参数xyz，来描述一个颜色，也就是后面将要介绍的<strong>CIE-XYZ颜色空间</strong>。</p>
-<p><strong>CIE-XYZ颜色空间</strong></p>
-<p>我们将<strong>光源</strong>、<strong>物体</strong>和<strong>观察者</strong>这三要素的性质相乘，也就是光源的光谱功率分布曲线乘以物体的光谱反射率曲线乘以标准观察者，得到三个参数<strong>X，Y，Z</strong>（都是大写字母），不同的颜色，有着不同XYZ值。</p>
-<img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100147722.png" alt="CIEXYZ" style="zoom:80%;">
-
-<p>按照下图里的公式算出<strong>x</strong>（小写X），<strong>y</strong>（小写Y）。xyz值（小写）代表着XYZ（大写）的占比，这样三个参数缩减到两个参数，两个参数形成一个平面的二维颜色空间，也就是CIE-XYZ颜色空间。CIE XYZ颜色空间具有不均匀性。</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100255681.png" alt="CIE-XYZ颜色空间"></p>
-<p><strong>缺点：</strong>不容易对颜色差异的大小进行判定，无法非常直观的判定这个颜色就是我需要的颜色，不知道这个颜色跟我需要的颜色的差异的大小。</p>
-<p>我们把<strong>人眼感觉不出的色彩差别量（变化范围）叫做颜色的宽容量</strong>。颜色的宽容量反映在<strong>CIExy色度图上即为两个色度点之间的距离</strong>。因为，每种颜色在色度图上是一个点，但<strong>对人的视感觉来说，当这种颜色的色度坐标位置变化很小时，人眼仍认为它是原来的颜色，感觉不出它的变化。</strong>所以，对视感觉效果来说，<strong>在这个变化的距离（或范围）以内的色彩差别量，在视觉效果上是等效的。</strong>对色彩复制和其它颜色工业部门来说这种位于人眼宽容量范围之内的色彩差别量是允许存在的。</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015220402922.png" alt="不同标准色度点的颜色宽容量"></p>
-<p>*<em>CIE-L</em>a<em>b</em>颜色空间**</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201016174528078.png" alt="介绍"></p>
-<p>跟之前介绍的孟塞尔颜色体系的颜色空间是一样，是三维空间中立体的球形。空间中有三个维度，形成三个互相垂直的轴，分别是：</p>
-<ul>
-<li>L*轴：从上到下；<strong>表示明度</strong>，范围由0到100，表示颜色从深（黑）到浅（白）。</li>
-<li>a*轴：从左到右；<strong>表示红绿</strong>，数值变化由正到负，表示颜色从红（正）到绿（负）。a值越大颜色越红，a值越小颜色越绿。</li>
-<li>b*轴：从里到外。<strong>表示黄蓝</strong>，数值变化由正到负，表示颜色从黄（正）到蓝（负）。b值越大颜色越黄，b值越小颜色越蓝。</li>
-<li><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100941807.png" alt="CIE-L*a*b*"></li>
-</ul>
-<p>两个颜色之间的差异大小。引入一个概念——色差<strong>△E</strong>。两个颜色的差异大小，就是这两个颜色的在颜色空间上两个点的距离。色差的计算公式如下：</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015100802146.png" alt="色差的计算公式"></p>
-<p>常见颜色空间介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/JiangHui1211/article/details/84592774?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/JiangHui1211/article/details/84592774?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
-<p>在<strong>RGB颜色空间</strong>，任意色光F都可以用RGB三种颜色不同分量的相加混合而成：F=r[R]+g[G]+b[B]。</p>
-<p><strong>一般我们读取图片获得的三维矩阵是RGB空间</strong></p>
-<p>色度学规则：<br>　　(1)通过R,G,B这三种颜色能产生任何颜色，并且这三种颜色混合后产生的颜色是唯一的。<br>　　(2)如果两个颜色相等，这三个颜色分量再乘以或者除以相同的数，得到的颜色仍然相等。<br>　　(3)混合色的亮度等于每种颜色亮度的和。</p>
-<p>RGB颜色空间的均匀性非常差，且两种颜色之间的知觉差异色差不能表示为该颜色空间中两点间的距离，但是利用线性或非线性变换，则可以从RGB颜色空间推导出其他的颜色特征空间。</p>
-<p><strong>CMYK模式</strong>俗称四色打印模式，是最佳的打印模式。</p>
-<p><strong>HSV颜色空间</strong>：感觉和孟塞尔颜色体系很像。HSV即色相(Hue)、饱和度(Saturation)、明度(Value)，又称HSB(B即Brightness)。</p>
-<p>RGB和CMYK<strong>面向硬件</strong>，可用于<strong>图片编码</strong>；HSV面向用户，可用于<strong>图片编辑软件</strong>。</p>
-<p><strong>sRGB色彩空间</strong>（standard Red Green Blue，标准红绿蓝色彩空间）是惠普与微软于1996年一起开发的用于显示器、打印机以及因特网的一种标准RGB色彩空间。这种标准得到了W3C、Exif、英特尔、Pantone、Corel以及其它许多业界厂商的支持。</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015222536629.png" alt="sRGB色域"></p>
-<p>维基百科：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lab%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4">https://zh.wikipedia.org/wiki/Lab%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4</a></p>
-<p>在<strong>RGB</strong>或<strong>CMYK</strong>值与<strong>L*a*b*</strong> 之间没有转换的简单公式，因为<strong>RGB和CMYK色彩空间是设备依赖的</strong>。RGB或CMYK值<strong>首先必须被变换到特定绝对色彩空间中，比如sRGB或Adobe RGB</strong>。这种调整将是设备依赖的，但是<strong>变换的结果数据是设备无关的</strong>，允许把数据变换成<strong>CIE 1931色彩空间</strong>并接着变换成<strong>L*a*b*</strong>。</p>
-</blockquote>
-<h4 id="Hue-Angle色相角"><a href="#Hue-Angle色相角" class="headerlink" title="Hue Angle色相角?"></a>Hue Angle色相角?</h4><blockquote>
-<p>孟塞尔颜色体系：</p>
-<img src="/fu-se-fen-ji-yu-xi-tong/image-20201014214736980.png" alt="image-20201014214736980" style="zoom:50%;">
-
-<p><strong>1）色相/色调/Hue</strong>，对于色相我们比较熟悉的是这个色环，色环上不同位置代表不同色相。色相的排列顺序是按照可见光波长从低到高，逆时针分布。这是色相环的概念。把一周均分成五5种主色互相调和成五种中间色，相邻的两个位置之间再均分10份，共100份</p>
-<p><img src="/fu-se-fen-ji-yu-xi-tong/image-20201015221249004.png" alt="色相带"></p>
-<p><strong>2）明度/Value/Lightness</strong>，很容易理解，就是一个颜色中含有白和黑的比例：白越多黑越少，这个颜色的明度就越高。</p>
-<p><strong>3）色度chroma</strong>。是一个颜色里面含有这个色相的浓度。<strong>很多人容易把饱和度和明度的概念混淆。是因为他们不理解饱和度和明度在色彩空间中的位置。明度在色彩空间中的位置是从顶部到底部，明度从高到低。而饱和度在色彩空间中的位置是从里到外，饱和度从低到高。</strong></p>
-</blockquote>
-<h4 id="色度-色域？"><a href="#色度-色域？" class="headerlink" title="色度?色域？"></a>色度?色域？</h4><p>研究颜色测量的学科叫做<strong>色度学</strong>，色度学的任务就是用数量化来表征色觉特性。色度”中的“度”是度量的意思。 类似于长度，高度等等概念。度量长度或高度使用的工具是尺子，而度量颜色的工具就是<strong>颜色感知三要素</strong>。</p>
-<p><strong>色域</strong>是对一种颜色进行编码的方法，也指一个技术系统能够产生的颜色的总合。在计算机图形处理中，色域是<strong>颜色的某个完全的子集</strong>。颜色子集最常见的应用是用来精确地代表一种给定的情况。例如一个给定的色彩空间或是某个输出装置的呈色范围。</p>
-<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p>lightness and chroma:亮度和色度</p>
-<p>yellow and red categories:就是Hue色相嘛</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Applications:</p>
-<ol>
-<li>diagnosis and treatments of cutaneous disorders </li>
-<li>matching our body color to get maxillofacial soft tissue prostheses</li>
-<li>face detection and recognition</li>
-<li>cosmetics</li>
+                <ol>
+<li>早晨和下午的大块时间要利用好，攻坚论文或代码，晚上可以适当娱乐或者做一些其他的小事情，做事情不是给别人看的，而是你真的做出了成绩</li>
+<li>适当的休息，不然眼睛太累了。</li>
+<li>有时候商场打折的衣服比网上的还便宜还好！</li>
 </ol>
-<p>CIEL*a*b*设备无关</p>
-<h3 id="Results-amp-Discussion"><a href="#Results-amp-Discussion" class="headerlink" title="Results&amp;Discussion"></a>Results&amp;Discussion</h3><h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><p>主要就是研究了PANTONE SkinTone Guide chart做了一个肤色的统计规律。</p>
-<p>命名方式:110 colors numbered from 1Y01 SP to 4R15 SP</p>
-<p>第一个数字是色度chroma,Y和R代表黄、红两个色相Hue，后两个数字代表亮度Lightness。</p>
-<h2 id="小实验"><a href="#小实验" class="headerlink" title="小实验"></a>小实验</h2><blockquote>
-<p>MATLAB Api：<a target="_blank" rel="noopener" href="https://www.mathworks.com/help/">https://www.mathworks.com/help/</a></p>
-</blockquote>
 
             </div>
             <hr/>
@@ -602,7 +498,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/">http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/</a>
+                    <a href="http://dchlovestudy.xyz/ge-ren-sui-xiang/">http://dchlovestudy.xyz/ge-ren-sui-xiang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -639,19 +535,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
-                                    <span class="chip bg-color">肤色分级</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
-                                    <span class="chip bg-color">颜色空间</span>
-                                </a>
-                            
-                                <a href="/tags/MATLAB/">
-                                    <span class="chip bg-color">MATLAB</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -820,7 +704,7 @@
         repo: 'chenghaoDong666.github.io',
         owner: 'chenghaoDong666',
         admin: ["chenghaoDong666"],
-        id: '2020-10-14T19-39-07',
+        id: '2020-10-18T09-50-01',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1107,9 +991,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/ge-ren-sui-xiang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="个人随想">
+                        
+                        <span class="card-title">个人随想</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Dch
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/">
                     <div class="card-image">
@@ -1127,54 +1050,13 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
                             Dch
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/mendeley-shi-yong-wen-ti/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Mendeley使用问题">
-                        
-                        <span class="card-title">Mendeley使用问题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    软件使用
-                                </a>
-                            
                             
                         </span>
                     </div>
