@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-10-18T01:53:40.731Z</updated>
+  <updated>2020-10-18T14:06:03.151Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>conda使用</title>
+    <link href="http://dchlovestudy.xyz/conda-shi-yong/"/>
+    <id>http://dchlovestudy.xyz/conda-shi-yong/</id>
+    <published>2020-10-18T14:05:41.000Z</published>
+    <updated>2020-10-18T14:06:03.151Z</updated>
+    
+    
+    
+    
+    <category term="软件使用" scheme="http://dchlovestudy.xyz/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>个人随想</title>
@@ -138,19 +153,18 @@
   </entry>
   
   <entry>
-    <title>颜色恒常性之CCC、FCCC、Bayes</title>
+    <title>颜色恒常性之&lt;&lt;A Multi-Hypothesis Approach to Color Constancy&gt;&gt;</title>
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/</id>
     <published>2020-10-13T01:43:11.000Z</published>
-    <updated>2020-10-18T13:31:45.063Z</updated>
+    <updated>2020-10-18T14:26:02.841Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Bayes&quot;&gt;&lt;a href=&quot;#Bayes&quot; class=&quot;headerlink&quot; title=&quot;Bayes&quot;&gt;&lt;/a&gt;Bayes&lt;/h2&gt;&lt;p&gt;论文：A Multi-Hypothesis Approach to Color Constancy&lt;/p&gt;
-&lt;h3</summary>
+    <summary type="html">&lt;h2 id=&quot;Bayes&quot;&gt;&lt;a href=&quot;#Bayes&quot; class=&quot;headerlink&quot; title=&quot;Bayes&quot;&gt;&lt;/a&gt;Bayes&lt;/h2&gt;&lt;p&gt;论文：&amp;lt;&amp;lt;A Multi-Hypothesis Approach to Color</summary>
         
       
     
@@ -203,7 +217,7 @@
     <link href="http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/"/>
     <id>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</id>
     <published>2020-10-12T14:37:35.000Z</published>
-    <updated>2020-10-16T14:09:07.763Z</updated>
+    <updated>2020-10-18T13:58:04.228Z</updated>
     
     
       
