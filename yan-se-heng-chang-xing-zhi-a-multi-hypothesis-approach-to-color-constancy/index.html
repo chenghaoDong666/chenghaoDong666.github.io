@@ -481,7 +481,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.7k
                 </div>
                 
 
@@ -494,65 +494,96 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Bayes"><a href="#Bayes" class="headerlink" title="Bayes"></a>Bayes</h2><p>论文：&lt;&lt;A Multi-Hypothesis Approach to Color Constancy&gt;&gt;</p>
-<h3 id="Title-amp-Abstract-amp-Conclusion"><a href="#Title-amp-Abstract-amp-Conclusion" class="headerlink" title="Title&amp;Abstract&amp;Conclusion"></a>Title&amp;Abstract&amp;Conclusion</h3><p>Multi-Hypothesis:</p>
-<blockquote>
+<h3 id="Title-amp-Abstract-amp-Conclusion"><a href="#Title-amp-Abstract-amp-Conclusion" class="headerlink" title="Title&amp;Abstract&amp;Conclusion"></a>Title&amp;Abstract&amp;Conclusion</h3><blockquote>
+<p>Multi-Hypothesis:</p>
 <p>假设1：</p>
 <p>Under the prevalent assumption that the <strong>scene is illuminated by a single or dominant light source</strong>, the observed pixels of an image are typically modelled <strong>using the physical model of Lambertian image formation</strong> captured <strong>under a trichromatic photosensor</strong></p>
-<p>假设2：</p>
-<p>They model the prior of the illuminant and the surface reflectance as a truncated multivariate normal distribution on the weights of a linear model</p>
-<p>Bayesian works [44, 23], <strong>discretise the illuminant space</strong> and model the surface reflectance priors by learning real world histogram frequencies</p>
 </blockquote>
+<blockquote>
 <p><strong>Our likelihood estimator</strong> learns to answer <strong>a camera-agnostic question</strong> and thus enables <strong>effective multi-camera training</strong> by disentangling illuminant estimation from the supervised learning task.</p>
 <p>learning from image samples that were <strong>captured by multiple cameras</strong></p>
-<p>c.f.：与…相比较</p>
-<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p>Figue1</p>
-<p>1 use an illuminant candidate set per camera</p>
-<p>2 Each camera is <strong>encoded with a different color</strong> in (d) to highlight camera-specific illuminants.</p>
-<p>3 [r/g,b/g]color space</p>
-<p><img src="/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/image-20201013224250809.png" alt="(d)"></p>
-<p>Figure2</p>
-<p><img src="/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/image-20201018164327078.png" alt="pipeline"></p>
-<p>以后对于每一张测试图片，都要生成n个候选光源吗？怎么生成？</p>
+</blockquote>
+<p>相机无关和多相机图片训练到底是如何实现的？</p>
+<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p><strong>Figure1</strong></p>
+<p>![Figure1](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201019104708991.png)</p>
+<blockquote>
+<p><strong><u>（d）use an illuminant candidate set per camera</u></strong>. <strong><u>[ r/g ,b/g ]</u></strong> color space plots show training set illuminant distributions. Each camera is encoded with a different color in (d) to highlight camera-specific illuminants</p>
+</blockquote>
+<p>每个摄像机获得一个候选集吗？最后是如何训练的？对于每个摄像机的候选集，是如何选取划分的？</p>
+<p>[r/g,b/g]这个图，图上一个点应该是代表一个光源，为了将三维降成二维</p>
+<p><strong>Figure2</strong></p>
+<p>![pipeline](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201018164327078.png)</p>
+<p><strong>如果现在有一张待还原的照片，如何还原，都要生成n个候选光源吗？怎么生成？</strong></p>
+<p>n个候选光源已经生成好了，现在训练网络是需要不同光源的权重配比不同！</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>$$<br>\rho_{k}(X)=\int_{\Omega}E(\lambda)S(\lambda,X)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
-<p>积分是因为比如绿色，打个比方是755~760这个频段的波长共同作用生成的<br>$$<br>\rho_{k}^E=\int_{\Omega}E(\lambda)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
+<p>积分是因为比如绿色，打个比方是755~760这个频段的波长共同作用生成的，所以需要进行积分。<br>$$<br>\rho_{k}^E=\int_{\Omega}E(\lambda)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
 <p><strong>物体客观不变</strong>，我们要解决的就是<strong>不同光源</strong>和<strong>不同观察者</strong>带来的变化</p>
-<p>The goal of computational CC then becomes estimation of the <strong>global illumination color</strong>$\rho_k^E$</p>
-<p>在unity中，Global Illumination (GI) is a system that models how light is bounced off of surfaces onto other surfaces (indirect light) rather than being limited to just the light that hits a surface directly from a light source (direct light). 可以理解成我们要建模的是直接光源照射出的光被反射后被观察者接受的光。</p>
-<p>这是一个ill-posed problem，存在许多不同的<strong>光源和反射率组合</strong>生成对每个像素X的完全相同的观察。</p>
+<blockquote>
+<p>The goal of computational CC then becomes estimation of the <u><strong>global illumination color</strong></u>$\rho_k^E$</p>
 <p>比较流行的<strong>learning-based color constancy</strong>，视为regression task，提供一个<strong>point estimate</strong>，没有提供任何可能的<strong>alternative solutions</strong>。</p>
-<p>due to the ill-posed nature of the problem, <strong>multiple illuminant solutions are often possible with varying probability</strong>.因为是不适定的问题，所以经常有多个光源是可能的，带有不同的概率。</p>
-<p>Data-driven approaches that learn to <strong>directly estimate the illuminant</strong> result in learning tasks <strong>that are inherently camera-specific</strong> due to the <strong>camera sensitivity function c.f. Eq.2</strong>。网络直接学习必然是camera-specific，<u><strong>类似判别式模型？</strong></u></p>
+<p>due to the ill-posed nature of the problem, <strong>multiple illuminant solutions are often possible with varying probability</strong>.</p>
+</blockquote>
+<p>在unity中，Global Illumination (GI) is a system that models how light is bounced off of surfaces onto other surfaces (indirect light) rather than being limited to just the light that hits a surface directly from a light source (direct light). </p>
+<blockquote>
+<p>Data-driven approaches that learn to <strong>directly estimate the illuminant</strong> result in learning tasks <u><strong>that are inherently camera-specific</strong> due to the <strong>camera sensitivity function c.f. Eq.2</strong></u>。</p>
 <p><strong><u>discretise the illuminant space</u></strong>   gather <strong>a discrete set of plausible solutions</strong> in the <strong>illuminant space</strong>. </p>
-<p>illuminated achromatically：消色照明的</p>
 <p>We <strong>correct an image with all candidates independently</strong> and <strong>evaluate the likelihood of each solution</strong>。</p>
 <p>estimate <strong>the likelihood of white balance correctness</strong> for a given image.</p>
 <p>we <strong>disentangle camera-specific illuminant estimation from the learning task</strong> thus allowing to train a <strong>single, device agnostic</strong>, AWB model that can effectively leverage multi-device data.</p>
-<p>avoid <strong>distribution shift</strong> and <u><strong>resulting domain gap problems</strong></u> [1, 41, 22], associated with camera specific training, and propose a well-founded strategy to leverage multiple data.</p>
+<p>avoid <u><strong>distribution shift</strong></u> and <u><strong>resulting domain gap problems</strong></u> [1, 41, 22], associated with camera specific training, and propose a well-founded strategy to leverage multiple data.</p>
 <p>Principled combination of datasets is of high value for learning based color constancy given the typically small nature of individual color constancy datasets (on the order of only hundreds of images).</p>
 <p>We provide <strong><u>a training-free model adaptation strategy for new cameras</u></strong>.</p>
-<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><h4 id="Classical-color-constancy"><a href="#Classical-color-constancy" class="headerlink" title="Classical color constancy"></a>Classical color constancy</h4><p><strong>gray-world assumption</strong>:<strong>the average reflectance in a scene under a neutral light source is achromatic.</strong></p>
+</blockquote>
+<p>网络直接学习必然是camera-specific，类似判别式模型？</p>
+<p>如何离散化光源空间？</p>
+<p><strong>distribution shift</strong>: <a target="_blank" rel="noopener" href="https://zh.d2l.ai/">https://zh.d2l.ai/</a> </p>
+<p>In one classic setup, we assume that our training data were sampled from some distribution $P_S(X,y)$but that our test data will consist of unlabeled examples drawn from some different distribution $P_T(X,y)$. Already, we must confront a sobering reality. Absent any assumptions on how $P_S(X,y)$ and $P_T(X,y)$ relate to each other, learning a robust classifier is impossible.</p>
+<p>**domain gap problem:**<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/195704051">https://zhuanlan.zhihu.com/p/195704051</a></p>
+<p>domain shift—a shift in the relationship between data collected across different domains (e.g., computer generated vs. captured by real cameras). Models trained on data collected in one domain generally have poor accuracy on other domains. 不同摄像机获得的照片应该就算不同的领域。</p>
+<p>加入一个新的摄像机，如何改进模型？</p>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><h4 id="Classical-color-constancy"><a href="#Classical-color-constancy" class="headerlink" title="Classical color constancy"></a>Classical color constancy</h4><blockquote>
+<p><strong>gray-world assumption</strong>:<strong>the average reflectance in a scene under a neutral light source is achromatic.</strong></p>
 <p><strong>Gray-World [12] and its extensions</strong> are <strong>based on</strong>:assumptions that <strong>tie scene reflectance statistics (e.g. mean, max reflectance) to the achromaticity of scene color.</strong></p>
 <p>Related assumptions <strong>define perfect reflectance</strong> [32, 20] and result in <strong>White-Patch methods</strong></p>
-<p><strong>pros:</strong></p>
-<p><strong>fast</strong> and typically c<strong>ontain few free parameters</strong></p>
-<p><strong>cons:</strong></p>
-<p><strong>dependent on strong scene content assumptions</strong> and these methods <strong>falter in cases where these assumptions fail to hold</strong></p>
-<h4 id="Bayesian-framework"><a href="#Bayesian-framework" class="headerlink" title="Bayesian framework"></a>Bayesian framework</h4><p><strong>Early Bayesian framework</strong> [19] :used Bayes’ rule to <strong>compute the posterior distribution</strong> for the <strong>illuminants and scene surfaces.</strong> They <strong>model the prior of the illuminant and the surface reflectance as a truncated multivariate normal distribution on the weights of a linear model</strong></p>
-<p>Bayesian works [44, 23], <strong>discretise the illuminant space</strong> and <strong>model the surface reflectance priors</strong> by <strong>learning real world histogram frequencies</strong>;in [44] the prior is modelled as a uniform distribution over a subset of illuminants while [23] uses the empirical distribution of the training illuminants.</p>
-<p> Our work uses the Bayesian formulation proposed in previous works [44, 19, 23].We estimate the likelihood probability distribution with a CNN which also explicitly learns to model the prior distribution for each illuminant</p>
-<p>in [44] the prior is modelled as a uniform distribution over a subset of illuminants while [23] uses the empirical distribution of the training illuminants</p>
-<h4 id="Fully-supervised-methods"><a href="#Fully-supervised-methods" class="headerlink" title="Fully supervised methods"></a>Fully supervised methods</h4><p>Early learning-based：relying on hand-crafted image features</p>
-<p>Recent：Both local patch-based [9, 48, 10] and full image input   investigating different model architectures  use of semantic information</p>
+<p><strong>pros: fast</strong> and typically c<strong>ontain few free parameters</strong></p>
+<p><strong>cons:dependent on strong scene content assumptions</strong> and these methods <strong>falter in cases where these assumptions fail to hold</strong></p>
+</blockquote>
+<h4 id="Bayesian-framework"><a href="#Bayesian-framework" class="headerlink" title="Bayesian framework"></a>Bayesian framework</h4><blockquote>
+<p><strong>Early Bayesian framework</strong> [19] :used Bayes’ rule to <strong>compute the posterior distribution</strong> for the <strong>illuminants and scene surfaces.</strong> They <strong>model the prior of the illuminant and the surface reflectance as a <u>truncated multivariate normal distribution</u> on the weights of a linear model</strong></p>
+<p>Bayesian works [44, 23], <strong>discretise the illuminant space</strong> and <strong>model the surface reflectance priors</strong> by <u><strong>learning real world histogram frequencies</strong></u>;in [44] the prior is modelled as a <strong><u>uniform distribution over a subset of illuminants</u></strong> while [23] uses the <strong><u>empirical distribution of the training illuminants</u></strong>.</p>
+<p> Our work uses the <u><strong>Bayesian formulation</strong></u> proposed in previous works [44, 19, 23].We estimate the likelihood probability distribution with a CNN which <u><strong>also explicitly learns to model the prior distribution for each illuminant.</strong></u></p>
+</blockquote>
+<p>截断正态分布：指限制变量x取值范围(scope)的一种分布。例如，限制x取值在0到50之间，即{0&lt;x&lt;50}。</p>
+<p>通过学习真实世界的直方图频率，来离散化光源空间和对表面反射率进行先验建模。<strong>可以查看它如何学习真实世界的直方图频率应用到肤色定级。</strong></p>
+<p>[44]和[23]分别建模成均匀分布和经验分布。</p>
+<p>本文使用了提到的贝叶斯公式，并且CNN同时获得了似然和光源的先验。</p>
+<h4 id="Fully-supervised-methods"><a href="#Fully-supervised-methods" class="headerlink" title="Fully supervised methods"></a>Fully supervised methods</h4><blockquote>
+<p>Early learning-based：relying on <strong>hand-crafted image features</strong></p>
+<p>Recent：</p>
+<ul>
+<li>Both <strong>local patch-based</strong> [9, 48, 10] and <strong>full image input</strong>   </li>
+<li>investigating <strong>different model architectures</strong>  </li>
+<li>use of <strong>semantic information</strong></li>
+</ul>
+</blockquote>
+<blockquote>
 <p>frame color constancy as a classification problem：CCC and FCCC using a color space that identifies image re-illumination with a histogram shift. </p>
 <p>our：explicitly select the candidate illuminants allowing for multi- camera training while FFCC [7] is constrained to use all histogram bins as candidates and single-camera training</p>
+</blockquote>
+<blockquote>
 <p>The method of [38] uses K-means [33] to cluster illuminants of the dataset and then applies a CNN to frame the problem as a classification task; network input is a single (pre-white balanced) image and output results in K class probabilities, representing the prospect of each illuminant (each class) explaining the correct image illumination.</p>
-<p> Our method first chooses candidate illuminants similarly, how-ever, the key difference is that our model learns to infer whether an image is well white balanced or not. We ask this question K times by correcting the image, independently, with each illuminant candidate. This affords an indepen- dent estimation of the likelihood for each illuminant and thus enables multi-device training to improve results</p>
-<h4 id="Multi-device-training"><a href="#Multi-device-training" class="headerlink" title="Multi-device training"></a>Multi-device training</h4><p>The method of  [1] introduces a two CNN approach; </p>
-<p>the first network learns a ‘sensor inde- pendent’ linear transformation (3×3 matrix), the RGB im-age is transformed to this ‘canonical’ color space and then, a second network provides the predicted illuminant. </p>
-<p> [37] affords fast adaptation to previouslyunseen cameras, and robustness to changes in capture device by leveraging annotated samples across different cameras and datasets in a meta-learning framework</p>
+<p> Our method first chooses candidate illuminants similarly, however, the key difference is that our model learns to infer whether an image is well white balanced or not. We ask this question K times by correcting the image, independently, with each illuminant candidate. This affords an indepen- dent estimation of the likelihood for each illuminant and thus enables multi-device training to improve results</p>
+</blockquote>
+<h4 id="Multi-device-training"><a href="#Multi-device-training" class="headerlink" title="Multi-device training"></a>Multi-device training</h4><blockquote>
+<p>The method of  [1] introduces a <strong>two CNN approach</strong>; </p>
+<p><strong>the first network</strong> learns a <strong>‘sensor independent’ linear transformation</strong> (3×3 matrix), the RGB image is <strong>transformed to this ‘canonical’ color space</strong> and then, <strong>a second network</strong> provides the <strong>predicted illuminant</strong>. </p>
+</blockquote>
+<blockquote>
+<p> [37] affords <strong>fast adaptation to previouslyunseen cameras</strong>, and robustness to changes in capture device by leveraging annotated samples across different cameras and datasets in a meta-learning framework</p>
+</blockquote>
 <p>recent approach [8], makes an assumption that sRGB images collected from the web are well white balanced,</p>
 <p>they apply a simple de-gamma correction to approximate an inverse tone mapping and then find achro- matic pixels with a CNN to predict the illuminant. These web images were captured with unknown cameras, were processed by different ISP pipelines and might have been modified with image editing software. Despite additional assumptions, the method achieves promising results, how- ever, not comparable with the supervised state-of-the-art.</p>
-<p>This property, of account-ing for camera-dependent illuminants, affords fast model<br>adaption; accurate inference is achievable for images cap-tured by cameras not seen during training, if camera illumi-nant candidates are available (removing the need for model<br>re-training or fine-tuning).</p>
+<p>This property, of account-ing for camera-dependent illuminants, affords fast model<br>adaption; accurate inference is achievable for images cap-tured by cameras not seen during training, if camera illumi-nant candidates are available (removing the need for model re-training or fine-tuning).</p>
 <h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>Adam optimiser：对SGD的扩展，可以代替经典的随机梯度下降法来更有效地更新网络权重。</p>
 <p>log transform of the input before the first convolu-tion.</p>
 <p>Efficient inference is feasible by concatenating each candidate corrected image into the batch dimension</p>
@@ -582,7 +613,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/">http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/</a>
+                    <a href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-a-multi-hypothesis-approach-to-color-constancy/">http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-a-multi-hypothesis-approach-to-color-constancy/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1430,7 +1461,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8k</span>&nbsp;字
+                class="white-color">8.3k</span>&nbsp;字
             
             
             

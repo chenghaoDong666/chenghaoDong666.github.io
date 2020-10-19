@@ -493,7 +493,7 @@
 <h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-0.png" alt="人脸识别流程图" style="zoom:67%;">
 
 <h3 id="Step-1-arrow-heading-down-：人脸检测-Face-Detection"><a href="#Step-1-arrow-heading-down-：人脸检测-Face-Detection" class="headerlink" title="Step 1:arrow_heading_down:：人脸检测-Face Detection"></a>Step 1<span class="github-emoji"><span>⤵</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2935.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>：人脸检测-Face Detection</h3><blockquote>
-<p>​    我们使用方向梯度直方图(HOG)来标定人脸位置。</p>
+<p>​    我们使用**方向梯度直方图(HOG)**来标定人脸位置。</p>
 <p>​    要在一张图片中找到脸，我们首先将图像转换为黑白，因为我们并不需要颜色数据来找到脸。</p>
 <p>​    然后，我们将查看图片中的每一个像素。 对于单个像素，我们也要查看它周围的其他像素。我们的目标是找出并比较当前像素与直接围绕它的像素的深度。 然后我们要画一个箭头来代表图像变暗的方向，对图片中的每一个像素重复这个过程，最终每个像素会被一个箭头取代。这些箭头被称为梯度（gradients），它们能显示出图像上从明亮到黑暗的流动过程。</p>
 <p>​    为了获取更泛化的特征，将图像分隔成16x16的小方块，统计每个主方向上有多少个梯度，最后用梯度最多的主方向代替原来小方块。<br>HOG主要优点就是减轻了图像明暗度的影响，获得的是像素之间的相对特征。</p>
@@ -582,7 +582,8 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
 <h3 id="关于tkinter界面下点击按钮未响应的解决办法？"><a href="#关于tkinter界面下点击按钮未响应的解决办法？" class="headerlink" title="关于tkinter界面下点击按钮未响应的解决办法？"></a>关于tkinter界面下点击按钮未响应的解决办法？</h3><blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/aheress/article/details/105059955?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param">https://blog.csdn.net/aheress/article/details/105059955?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-3.channel_param</a></p>
 </blockquote>
-
+<h3 id="展示："><a href="#展示：" class="headerlink" title="展示："></a>展示：</h3><p><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201019151603976.png" alt="检测前" style="zoom:50%;"><img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201019151714317.png" alt="image-20201019151714317"></p>
+<img src="/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/image-20201019151714317.png" alt="检测后" style="zoom:50%;">
             </div>
             <hr/>
 
@@ -1116,7 +1117,7 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/yan-se-heng-chang-xing-zhi-ccc-fccc-bayes/">
+                <a href="/yan-se-heng-chang-xing-zhi-a-multi-hypothesis-approach-to-color-constancy/">
                     <div class="card-image">
                         
                         
@@ -1198,8 +1199,12 @@ function<span class="token punctuation">(</span><span class="token number">6</sp
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Dch
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
+                                    博客搭建
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1460,7 +1465,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8k</span>&nbsp;字
+                class="white-color">8.3k</span>&nbsp;字
             
             
             
