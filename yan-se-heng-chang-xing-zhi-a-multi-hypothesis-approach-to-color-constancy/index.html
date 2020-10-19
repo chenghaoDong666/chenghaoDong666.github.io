@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -516,14 +516,16 @@
 <p><strong>Our likelihood estimator</strong> learns to answer <strong>a camera-agnostic question</strong> and thus enables <strong>effective multi-camera training</strong> by disentangling illuminant estimation from the supervised learning task.</p>
 <p>learning from image samples that were <strong>captured by multiple cameras</strong></p>
 </blockquote>
-<p>相机无关和多相机图片训练到底是如何实现的？</p>
+<p><strong>相机无关和多相机图片训练到底是如何实现的？</strong></p>
+<p>只是这个likelihood estimator相机无关，多个相机获得多个数据集，对每个数据集利用KMeans找出候选光源，然后都喂入网络</p>
 <h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p><strong>Figure1</strong></p>
 <p>![Figure1](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201019104708991.png)</p>
 <blockquote>
 <p><strong><u>（d）use an illuminant candidate set per camera</u></strong>. <strong><u>[ r/g ,b/g ]</u></strong> color space plots show training set illuminant distributions. Each camera is encoded with a different color in (d) to highlight camera-specific illuminants</p>
 </blockquote>
-<p>每个摄像机获得一个候选集吗？最后是如何训练的？对于每个摄像机的候选集，是如何选取划分的？</p>
-<p>[r/g,b/g]这个图，图上一个点应该是代表一个光源，为了将三维降成二维</p>
+<p><strong>每个摄像机获得一个候选集吗？最后是如何训练的？对于每个摄像机的候选集，是如何选取划分的？</strong></p>
+<p><strong>[r/g,b/g]这个图如何读?</strong></p>
+<p>图上一个点应该是代表一个光源，为了将三维降成二维</p>
 <p><strong>Figure2</strong></p>
 <p>![pipeline](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201018164327078.png)</p>
 <p><strong>如果现在有一张待还原的照片，如何还原，都要生成n个候选光源吗？怎么生成？</strong></p>
@@ -1474,7 +1476,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.3k</span>&nbsp;字
+                class="white-color">9k</span>&nbsp;字
             
             
             
