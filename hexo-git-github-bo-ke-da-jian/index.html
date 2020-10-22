@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -577,30 +577,19 @@
 <h2 id="git学习"><a href="#git学习" class="headerlink" title="git学习:"></a>git学习:</h2><blockquote>
 <p>廖雪峰git教程 <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
 </blockquote>
-<ul>
-<li><p>git-世界上目前最先进的分布式版本控制系统，结束了手动管理多个“版本”的史前时代，进入到版本控制的20世纪</p>
-</li>
-<li><p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！</p>
-</li>
-<li><p>集中式和分布式版本控制系统：</p>
-</li>
-<li><p>集中式版本控制系统，版本库是集中存放在中央服务器的</p>
-</li>
-<li><p>分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。</p>
-</li>
-<li><p>windows 使用git bash来敲命令行，千万不要使用Windows自带的<strong>记事本</strong>编辑任何文本文件。</p>
-</li>
-<li><p>初始化一个Git仓库，使用<code>git init</code>命令。</p>
-<p>添加文件到Git仓库，分两步：</p>
+<p>git add先将文件放到车里，git commit把一车的东西运往其他城市。</p>
+<p>Git的<code>commit id</code>不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示。为什么<code>commit id</code>需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。</p>
+<h2 id="js、ejs学习："><a href="#js、ejs学习：" class="headerlink" title="js、ejs学习："></a>js、ejs学习：</h2><blockquote>
+<p>js:<a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-tutorial.html">https://www.runoob.com/js/js-tutorial.html</a></p>
+</blockquote>
+<p>JavaScript 是<strong>脚本语言，浏览器会在读取代码时，逐行地执行脚本代码</strong>。而对于传统编程来说，会在执行前对所有代码进行编译。</p>
+<p>对象最好使用**.**来调用，防止方法调用失败！</p>
+<h2 id="博客编写规范"><a href="#博客编写规范" class="headerlink" title="博客编写规范"></a>博客编写规范</h2><p><strong>不做内容的搬运工！</strong>而是</p>
 <ol>
-<li>使用命令<code>git add &lt;file&gt;</code>，注意，可反复多次使用，添加多个文件；</li>
-<li>使用命令<code>git commit -m &lt;message&gt;</code>，完成。</li>
+<li><strong>记录遇到的问题，只针对问题进行解答</strong></li>
+<li><strong>对于组会汇报内容进行详细编写</strong></li>
 </ol>
-</li>
-<li></li>
-</ul>
-<h2 id="js、ejs学习："><a href="#js、ejs学习：" class="headerlink" title="js、ejs学习："></a>js、ejs学习：</h2><p>js:<a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-tutorial.html">https://www.runoob.com/js/js-tutorial.html</a></p>
-<h3 id="footer-ejs："><a href="#footer-ejs：" class="headerlink" title="footer.ejs："></a>footer.ejs：</h3>
+
             </div>
             <hr/>
 
@@ -1479,7 +1468,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">9k</span>&nbsp;字
+                class="white-color">9.3k</span>&nbsp;字
             
             
             

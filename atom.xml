@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-10-18T14:06:03.151Z</updated>
+  <updated>2020-10-21T02:39:26.944Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>组会总结</title>
+    <link href="http://dchlovestudy.xyz/zu-hui-zong-jie/"/>
+    <id>http://dchlovestudy.xyz/zu-hui-zong-jie/</id>
+    <published>2020-10-20T12:30:52.000Z</published>
+    <updated>2020-10-21T02:39:26.944Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;10-20&quot;&gt;&lt;a href=&quot;#10-20&quot; class=&quot;headerlink&quot; title=&quot;10.20&quot;&gt;&lt;/a&gt;10.20&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;ACCV</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>conda使用</title>
@@ -108,11 +130,11 @@
   </entry>
   
   <entry>
-    <title>Mendeley使用问题</title>
-    <link href="http://dchlovestudy.xyz/mendeley-shi-yong-wen-ti/"/>
-    <id>http://dchlovestudy.xyz/mendeley-shi-yong-wen-ti/</id>
+    <title>文献图书资源搜索与使用管理</title>
+    <link href="http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/"/>
+    <id>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</id>
     <published>2020-10-13T01:46:23.000Z</published>
-    <updated>2020-10-18T13:32:03.637Z</updated>
+    <updated>2020-10-22T04:10:52.356Z</updated>
     
     
       
@@ -159,7 +181,7 @@
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-a-multi-hypothesis-approach-to-color-constancy/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-a-multi-hypothesis-approach-to-color-constancy/</id>
     <published>2020-10-13T01:43:11.000Z</published>
-    <updated>2020-10-19T10:08:37.259Z</updated>
+    <updated>2020-10-20T08:39:15.383Z</updated>
     
     
       
@@ -190,7 +212,7 @@
     <link href="http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/"/>
     <id>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</id>
     <published>2020-10-13T01:31:00.000Z</published>
-    <updated>2020-10-19T07:19:11.034Z</updated>
+    <updated>2020-10-21T02:10:10.584Z</updated>
     
     
       
@@ -219,7 +241,7 @@
     <link href="http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/"/>
     <id>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</id>
     <published>2020-10-12T14:37:35.000Z</published>
-    <updated>2020-10-19T09:13:04.570Z</updated>
+    <updated>2020-10-21T12:31:01.168Z</updated>
     
     
       
