@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -516,6 +516,11 @@
 <p>Multi-Hypothesis？</p>
 </blockquote>
 <p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>多假设都有什么假设？</p>
+<ol>
+<li>Under the prevalent assumption that the scene is illuminated by a single or dominant light source, the observed<br>pixels of an image are typically modelled using the physical model of Lambertian image formation captured under a<br>trichromatic photosensor:</li>
+<li>we assume that the color of the light and the surface reflectance are independent.</li>
+<li></li>
+</ol>
 <blockquote>
 <p><strong>Our likelihood estimator</strong> learns to answer <strong>a camera-agnostic question</strong> and thus enables <strong>effective multi-camera training</strong> by disentangling illuminant estimation from the supervised learning task.</p>
 <p>learning from image samples that were <strong>captured by multiple cameras</strong></p>
@@ -558,6 +563,7 @@
 <p>We provide <strong><u>a training-free model adaptation strategy for new cameras</u></strong>.</p>
 </blockquote>
 <p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>加入一个新的摄像机，如何改进模型？</p>
+<p>新加入一个摄像机，只要这个摄像机的候选光源已知了，就可以直接拿这个网络训练了，所以不需要再重新训练或微调。</p>
 <h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><h4 id="Bayesian-framework"><a href="#Bayesian-framework" class="headerlink" title="Bayesian framework"></a>Bayesian framework</h4><blockquote>
 <p> They <strong>model the prior of the illuminant and the surface reflectance as a <u>truncated multivariate normal distribution</u> on the weights of a linear model</strong></p>
 </blockquote>
@@ -571,25 +577,34 @@
 <p>in [44] the prior is modelled as a <strong><u>uniform distribution over a subset of illuminants</u></strong> while [23] uses the <strong><u>empirical distribution of the training illuminants</u></strong>.</p>
 </blockquote>
 <p><span class="github-emoji"><span>🉑</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f251.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>对于光源概率44和23有两种想法：直接建模成均匀分布和利用训练光源的经验分布。</p>
+<p>经验分布函数：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0#:~:text=%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%EF%BC%88%E8%8B%B1%E8%AA%9E%EF%BC%9Aempirical,%E6%A0%B7%E6%9C%AC%E6%89%80%E5%8D%A0%E7%9A%84%E6%AF%94%E4%BE%8B%E3%80%82">https://zh.wikipedia.org/zh-hans/%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0#:~:text=%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%EF%BC%88%E8%8B%B1%E8%AA%9E%EF%BC%9Aempirical,%E6%A0%B7%E6%9C%AC%E6%89%80%E5%8D%A0%E7%9A%84%E6%AF%94%E4%BE%8B%E3%80%82</a></p>
 <h4 id="Fully-supervised-methods"><a href="#Fully-supervised-methods" class="headerlink" title="Fully supervised methods"></a>Fully supervised methods</h4><blockquote>
 <p>frame color constancy as a classification problem：CCC and FCCC using a color space that identifies image re-illumination with a histogram shift. </p>
-<p>our：explicitly select the candidate illuminants allowing for multi- camera training while FFCC [7] is constrained to use all histogram bins as candidates and single-camera training</p>
 </blockquote>
-<blockquote>
-<p>The method of [38] uses K-means [33] to cluster illuminants of the dataset and then applies a CNN to frame the problem as a classification task; network input is a single (pre-white balanced) image and output results in K class probabilities, representing the prospect of each illuminant (each class) explaining the correct image illumination.</p>
-<p> Our method first chooses candidate illuminants similarly, however, the key difference is that our model learns to infer whether an image is well white balanced or not. We ask this question K times by correcting the image, independently, with each illuminant candidate. This affords an indepen- dent estimation of the likelihood for each illuminant and thus enables multi-device training to improve results</p>
-</blockquote>
+<p>CCC和FCCC待看</p>
 <h4 id="Multi-device-training"><a href="#Multi-device-training" class="headerlink" title="Multi-device training"></a>Multi-device training</h4><blockquote>
-<p> [37] affords <strong>fast adaptation to previously unseen cameras</strong>, and robustness to changes in capture device by leveraging annotated samples across different cameras and datasets in a meta-learning framework</p>
+<p> [37] affords <strong>fast adaptation to previously unseen cameras</strong>, and robustness to changes in capture device by leveraging annotated samples across different cameras and datasets in a <strong><u>meta-learning</u></strong> framework</p>
 </blockquote>
-<p>recent approach [8], makes an assumption that sRGB images collected from the web are well white balanced,</p>
-<p>they apply a simple de-gamma correction to approximate an inverse tone mapping and then find achro- matic pixels with a CNN to predict the illuminant. These web images were captured with unknown cameras, were processed by different ISP pipelines and might have been modified with image editing software. Despite additional assumptions, the method achieves promising results, how- ever, not comparable with the supervised state-of-the-art.</p>
-<p>This property, of account-ing for camera-dependent illuminants, affords fast model<br>adaption; accurate inference is achievable for images cap-tured by cameras not seen during training, if camera illumi-nant candidates are available (removing the need for model re-training or fine-tuning).</p>
-<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><h4 id="Multi-device-training-1"><a href="#Multi-device-training-1" class="headerlink" title="Multi-device training"></a>Multi-device training</h4><h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>Adam optimiser：对SGD的扩展，可以代替经典的随机梯度下降法来更有效地更新网络权重。</p>
-<p>log transform of the input before the first convolu-tion.</p>
-<p>Efficient inference is feasible by concatenating each candidate corrected image into the batch dimension</p>
-<p>black level</p>
-
+<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>meta-learning?</p>
+<blockquote>
+<p>A recent approach [8], makes an assumption that sRGB images collected from the web are well white balanced, therefore, they apply <strong><u>a simple de-gamma correction</u></strong> to approximate an <strong><u>inverse tone mapping</u></strong> and then find achromatic pixels with a CNN to predict the illuminant. </p>
+</blockquote>
+<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>de-gamma correction？inverse tone mapping？</p>
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><blockquote>
+<p>Let y = (yr, yg, yb) be a pixel from an input image Y in <strong><u>linear RGB space</u></strong>. </p>
+</blockquote>
+<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>线性RGB空间？</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanzz/p/7416821.html">https://www.cnblogs.com/guanzz/p/7416821.html</a></p>
+<blockquote>
+<p>We model the global illumination, Eq. (2), with the <strong><u>standard linear model</u></strong> [51] such that each pixel y is the product of the surface reflectance r = (rr, rg, rb) and a global illuminant ? = (?r, ?g, ?b) shared by all pixels such that</p>
+</blockquote>
+<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>标准线性模型？</p>
+<p>可能就是三个函数相乘得到一个线性模型？</p>
+<blockquote>
+<p>we propose to frame the CC problem with a <strong><u>probabilistic generative model</u></strong> with unknown surface re- flectances and illuminant</p>
+</blockquote>
+<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>概率生成模型？</p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h3>
             </div>
             <hr/>
 
