@@ -494,7 +494,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.5k
                 </div>
                 
 
@@ -515,59 +515,57 @@
 <h3 id="Title-amp-Abstract-amp-Conclusion"><a href="#Title-amp-Abstract-amp-Conclusion" class="headerlink" title="Title&amp;Abstract&amp;Conclusion"></a>Title&amp;Abstract&amp;Conclusion</h3><blockquote>
 <p>Multi-Hypothesis？</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>多假设都有什么假设？</p>
+<p>多假设都有什么假设？</p>
 <ol>
 <li>Under the prevalent assumption that the scene is illuminated by a single or dominant light source, the observed<br>pixels of an image are typically modelled using the physical model of Lambertian image formation captured under a<br>trichromatic photosensor:</li>
 <li>we assume that the color of the light and the surface reflectance are independent.</li>
-<li></li>
+<li>the function modelling the prior also depends on factors such as the environment (indoor / outdoor), the time of day, ISO etc. However, the size of currently available datasets prevent us from modelling more complex proxies.</li>
 </ol>
 <blockquote>
 <p><strong>Our likelihood estimator</strong> learns to answer <strong>a camera-agnostic question</strong> and thus enables <strong>effective multi-camera training</strong> by disentangling illuminant estimation from the supervised learning task.</p>
 <p>learning from image samples that were <strong>captured by multiple cameras</strong></p>
 </blockquote>
-<p><strong><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>相机无关和多相机图片训练到底是如何实现的？</strong></p>
+<p><strong>相机无关和多相机图片训练到底是如何实现的？</strong></p>
 <p>只是这个似然估计器与相机无关，多个相机获得多个数据集，对每个数据集利用KMeans找出候选光源，然后都喂入网络，实现了多相机图片训练</p>
-<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p><strong>Figure1</strong></p>
-<p>![Figure1](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201019104708991.png)</p>
+<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p>![Figure1](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201019104708991.png)</p>
 <blockquote>
 <p><strong><u>（d）use an illuminant candidate set per camera</u></strong>. <strong><u>[ r/g ,b/g ]</u></strong></p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><strong>每个摄像机获得一个候选集吗？最后是如何训练的？对于每个摄像机的候选集，是如何选取划分的？</strong></p>
+<p><strong>每个摄像机获得一个候选集吗？最后是如何训练的？对于每个摄像机的候选集，是如何选取划分的？</strong></p>
 <p>每个摄像机有自己的一个照片集，对这里的图片进行分类，每个摄像机获得一个候选集。训练应该就是将这些候选集都喂入。</p>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><strong>[r/g,b/g]这个图如何读?</strong></p>
+<p><strong>[r/g,b/g]这个图如何读?</strong></p>
 <p>图上一个点应该是代表一个光源，<strong>为了将三维降成二维？</strong>，显示了光源的分布</p>
-<p><strong>Figure2</strong></p>
 <p>![pipeline](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201018164327078.png)</p>
 <p><strong><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>如果现在有一张待还原的照片，如何还原，都要生成n个候选光源吗？怎么生成？</strong></p>
 <p>n个候选光源已经生成好了，现在训练网络是需要不同光源的权重配比不同！所以到时候对于待还原照片，还是相同的过程，用每个候选光源修正图片，然后放入网络，得到权重。</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>$$<br>\rho_{k}(X)=\int_{\Omega}E(\lambda)S(\lambda,X)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><strong>为什么要积分？</strong></p>
+<p><strong>为什么要积分？</strong></p>
 <p>积分是因为比如绿色，打个比方是755~760这个频段的波长共同作用生成的，所以需要进行积分。<br>$$<br>\rho_{k}^E=\int_{\Omega}E(\lambda)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
 <p>The goal of computational CC then becomes estimation of the <u><strong>global illumination color</strong></u>$\rho_k^E$？</p>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>为什么变成了这个形式？</p>
+<p>为什么变成了这个形式？</p>
 <blockquote>
 <p>due to the <strong>ill-posed</strong> nature of the problem, <strong>multiple illuminant solutions are often possible with varying probability</strong>.</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>什么是<strong>ill-posed</strong> ？</p>
+<p>什么是<strong>ill-posed</strong> ？</p>
 <blockquote>
 <p>avoid <u><strong>distribution shift</strong></u> and <u><strong>resulting domain gap problems</strong></u> [1, 41, 22], associated with camera specific training, and propose a well-founded strategy to leverage multiple data.</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>什么是<strong>distributin shift&amp;domain gap</strong>？</p>
+<p>什么是<strong>distributin shift&amp;domain gap</strong>？</p>
 <p><strong>distribution shift</strong>: <a target="_blank" rel="noopener" href="https://zh.d2l.ai/">https://zh.d2l.ai/</a> </p>
 <p>**domain gap problem:**<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/195704051">https://zhuanlan.zhihu.com/p/195704051</a></p>
 <blockquote>
 <p>Principled combination of datasets is of high value for learning based color constancy given the typically small nature of individual color constancy datasets (on the order of only hundreds of images).</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>这句话在说啥？</p>
+<p>这句话在说啥？</p>
 <blockquote>
 <p>We provide <strong><u>a training-free model adaptation strategy for new cameras</u></strong>.</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>加入一个新的摄像机，如何改进模型？</p>
+<p>加入一个新的摄像机，如何改进模型？</p>
 <p>新加入一个摄像机，只要这个摄像机的候选光源已知了，就可以直接拿这个网络训练了，所以不需要再重新训练或微调。</p>
 <h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><h4 id="Bayesian-framework"><a href="#Bayesian-framework" class="headerlink" title="Bayesian framework"></a>Bayesian framework</h4><blockquote>
 <p> They <strong>model the prior of the illuminant and the surface reflectance as a <u>truncated multivariate normal distribution</u> on the weights of a linear model</strong></p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>什么是truncated multivariate normal distribution on the weights of a linear model?</p>
+<p>什么是truncated multivariate normal distribution on the weights of a linear model?</p>
 <p>截断正态分布：指限制变量x取值范围(scope)的一种分布。例如，限制x取值在0到50之间，即{0&lt;x&lt;50}。</p>
 <blockquote>
 <p>Bayesian works [44, 23], <strong>discretise the illuminant space</strong> and <strong>model the surface reflectance priors</strong> by <u><strong>learning real world histogram frequencies</strong></u>;</p>
@@ -585,25 +583,28 @@
 <h4 id="Multi-device-training"><a href="#Multi-device-training" class="headerlink" title="Multi-device training"></a>Multi-device training</h4><blockquote>
 <p> [37] affords <strong>fast adaptation to previously unseen cameras</strong>, and robustness to changes in capture device by leveraging annotated samples across different cameras and datasets in a <strong><u>meta-learning</u></strong> framework</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>meta-learning?</p>
+<p>meta-learning?</p>
 <blockquote>
 <p>A recent approach [8], makes an assumption that sRGB images collected from the web are well white balanced, therefore, they apply <strong><u>a simple de-gamma correction</u></strong> to approximate an <strong><u>inverse tone mapping</u></strong> and then find achromatic pixels with a CNN to predict the illuminant. </p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>de-gamma correction？inverse tone mapping？</p>
+<p>de-gamma correction？inverse tone mapping？</p>
 <h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><blockquote>
 <p>Let y = (yr, yg, yb) be a pixel from an input image Y in <strong><u>linear RGB space</u></strong>. </p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>线性RGB空间？</p>
+<p>线性RGB空间？</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanzz/p/7416821.html">https://www.cnblogs.com/guanzz/p/7416821.html</a></p>
 <blockquote>
 <p>We model the global illumination, Eq. (2), with the <strong><u>standard linear model</u></strong> [51] such that each pixel y is the product of the surface reflectance r = (rr, rg, rb) and a global illuminant ? = (?r, ?g, ?b) shared by all pixels such that</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>标准线性模型？</p>
+<p>标准线性模型？</p>
 <p>可能就是三个函数相乘得到一个线性模型？</p>
 <blockquote>
 <p>we propose to frame the CC problem with a <strong><u>probabilistic generative model</u></strong> with unknown surface re- flectances and illuminant</p>
 </blockquote>
-<p><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>概率生成模型？</p>
+<p>概率生成模型？</p>
+<p>$$<br>P(l|Y)=\frac{P(Y|l)P(l)}{P(Y)}<br>$$</p>
+<p>$$<br>P(Y|l)=\int_rP(Y|l,R=r)P(R=r)dr<br>$$</p>
+<p>公式(4)利用了全概率公式<br>$$<br>\int_rP(Y|l,R=r)P(R=r)dr=P(R=diag(l)^{-1}Y)<br>$$<br>公式(5),由于$y_k=r_k\cdot l_k\quad\quad k\in R,G,B$ 所以当且仅当$R=diag(l)^{-1}$时，才能生成Y,所以此时$P(Y|l,R=diag(l)^{-1})=1$,$P(Y|l,R=else)=0$,所以只剩下一项$P(R=diag(l)^{-1}Y)$</p>
 <h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h3>
             </div>
             <hr/>
@@ -1477,7 +1478,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.8k</span>&nbsp;字
+                class="white-color">8.9k</span>&nbsp;字
             
             
             
