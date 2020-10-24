@@ -494,7 +494,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.4k
                 </div>
                 
 
@@ -527,7 +527,7 @@
 </blockquote>
 <p><strong>相机无关和多相机图片训练到底是如何实现的？</strong></p>
 <p>只是这个似然估计器与相机无关，多个相机获得多个数据集，对每个数据集利用KMeans找出候选光源，然后都喂入网络，实现了多相机图片训练</p>
-<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p>![Figure1](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201019104708991.png)</p>
+<h3 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h3><p><img src="/yan-se-heng-chang-xing-zhi-mhcc/image-20201019104708991.png" alt="Figure1"></p>
 <blockquote>
 <p><strong><u>（d）use an illuminant candidate set per camera</u></strong>. <strong><u>[ r/g ,b/g ]</u></strong></p>
 </blockquote>
@@ -535,7 +535,7 @@
 <p>每个摄像机有自己的一个照片集，对这里的图片进行分类，每个摄像机获得一个候选集。训练应该就是将这些候选集都喂入。</p>
 <p><strong>[r/g,b/g]这个图如何读?</strong></p>
 <p>图上一个点应该是代表一个光源，<strong>为了将三维降成二维？</strong>，显示了光源的分布</p>
-<p>![pipeline](颜色恒常性之A Multi-Hypothesis Approach to Color Constancy/image-20201018164327078.png)</p>
+<p><img src="/yan-se-heng-chang-xing-zhi-mhcc/image-20201018164327078.png" alt="pipeline"></p>
 <p><strong><span class="github-emoji"><span>❔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2754.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>如果现在有一张待还原的照片，如何还原，都要生成n个候选光源吗？怎么生成？</strong></p>
 <p>n个候选光源已经生成好了，现在训练网络是需要不同光源的权重配比不同！所以到时候对于待还原照片，还是相同的过程，用每个候选光源修正图片，然后放入网络，得到权重。</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>$$<br>\rho_{k}(X)=\int_{\Omega}E(\lambda)S(\lambda,X)C_{k}(\lambda)d\lambda\quad\quad\quad k\in{R,G,B}<br>$$</p>
@@ -630,7 +630,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-a-multi-hypothesis-approach-to-color-constancy/">http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-a-multi-hypothesis-approach-to-color-constancy/</a>
+                    <a href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/">http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/</a>
                 </span>
             </div>
             <div class="reprint__notice">
