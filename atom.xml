@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-10-22T14:03:32.456Z</updated>
+  <updated>2020-10-28T03:23:32.838Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>颜色恒常性之BayesianDecisionTheory</title>
+    <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/"/>
+    <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/</id>
+    <published>2020-10-28T02:21:19.000Z</published>
+    <updated>2020-10-28T03:23:32.838Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;论文思路&quot;&gt;&lt;a href=&quot;#论文思路&quot; class=&quot;headerlink&quot; title=&quot;论文思路&quot;&gt;&lt;/a&gt;论文思路&lt;/h2&gt;&lt;h3 id=&quot;Title-amp-Abstract-amp-Conclusion&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Color Constancy" scheme="http://dchlovestudy.xyz/categories/Color-Constancy/"/>
+    
+    
+    <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
+    
+    <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
+    
+  </entry>
+  
+  <entry>
     <title>codeforces-1</title>
     <link href="http://dchlovestudy.xyz/codeforces-1/"/>
     <id>http://dchlovestudy.xyz/codeforces-1/</id>
     <published>2020-10-22T12:57:39.000Z</published>
-    <updated>2020-10-22T14:03:32.456Z</updated>
+    <updated>2020-10-26T14:59:24.637Z</updated>
     
     
       
@@ -181,7 +208,7 @@
     <link href="http://dchlovestudy.xyz/typora-shi-yong-wen-ti/"/>
     <id>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</id>
     <published>2020-10-13T01:45:52.000Z</published>
-    <updated>2020-10-18T13:32:09.340Z</updated>
+    <updated>2020-10-29T01:41:30.591Z</updated>
     
     
       
@@ -204,14 +231,14 @@
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/</id>
     <published>2020-10-13T01:43:11.000Z</published>
-    <updated>2020-10-24T15:19:36.737Z</updated>
+    <updated>2020-10-29T03:35:01.815Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Bayes&quot;&gt;&lt;a href=&quot;#Bayes&quot; class=&quot;headerlink&quot; title=&quot;Bayes&quot;&gt;&lt;/a&gt;Bayes&lt;/h2&gt;&lt;h2 id=&quot;论文思路&quot;&gt;&lt;a href=&quot;#论文思路&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;论文思路&quot;&gt;&lt;a href=&quot;#论文思路&quot; class=&quot;headerlink&quot; title=&quot;论文思路&quot;&gt;&lt;/a&gt;论文思路&lt;/h2&gt;&lt;p&gt;论文：&amp;lt;&amp;lt;A Multi-Hypothesis Approach to Color</summary>
         
       
     
@@ -221,10 +248,6 @@
     
     
     <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
-    
-    <category term="CCC" scheme="http://dchlovestudy.xyz/tags/CCC/"/>
-    
-    <category term="FCCC" scheme="http://dchlovestudy.xyz/tags/FCCC/"/>
     
     <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
     
