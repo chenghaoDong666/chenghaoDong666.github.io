@@ -486,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    3.4k
                 </div>
                 
 
@@ -637,9 +637,9 @@
 </ol>
 <h3 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h3><p><img src="/yan-se-heng-chang-xing-zhi-mhcc/image-20201029093444705.png" alt="朗伯特模型"></p>
 <p>对此公式可以进行简化，原式$=S(X)\int_\Omega E(\lambda)C_k(\lambda)d\lambda\quad k\in {R,G,B}$</p>
-<p><strong>公式简化的两种解释(近似)</strong></p>
-<p>1：相机R、G、B光谱敏感函数是**狄拉克δ函数(不可信)**，就是说，每个相机的光敏R、G、B三通道每个只能感应波长的一个值</p>
-<p>2：RGB的能感知的光谱构成可见光的一个划分,sup(Rc)(支撑集)表示Rc能感知的光谱。对于每个支撑集，<strong>假设反射率函数与波长无关</strong>(视觉模型感光高度重叠)</p>
+<p><strong>公式简化的两种解释</strong></p>
+<p>1：相机R、G、B光谱敏感函数是<strong>狄拉克δ函数</strong>，就是说，每个相机的光敏R、G、B三通道每个只能感应波长的一个值</p>
+<p>2：RGB的能感知的光谱构成可见光的一个划分,$Sup(Rc)$支撑集表示Rc能感知的光谱。对于每个支撑集，<strong>假设反射率函数与波长无关</strong></p>
 <p>我们对该公式用如下形式表示：$y_k=r_k\cdot l_k \quad k\in{R,G,B}$ </p>
 <p>已知一个参数$y_k$,即<strong>我们已经知道的照片</strong>，求两个参数$r_k,l_k$,分别为<strong>物体对成像的影响</strong>和<strong>光照对成像的影响</strong>。</p>
 <p>已知一个参数，求两个参数，约束过少。</p>
@@ -655,7 +655,7 @@
 <p><strong>第二步变换</strong>由于$y_k=r_k\cdot l_k\quad\quad k\in R,G,B$ 所以当且仅当$R=diag(l)^{-1}$时，才能生成Y,所以此时$P(Y|l,R=diag(l)^{-1})=1$,$P(Y|l,R=else)=0$,所以只剩下一项$P(R=diag(l)^{-1}Y)$</p>
 <p>所以我们这个<strong>CNN网络</strong>为$f^W$,则$log(P(Y|l))=log(P(R=diag(l)^{-1}Y))=f^W(diag(l)^{-1}Y)$，即每个候选光源是场景光源的概率。</p>
 <p>另外，在实际场景中，<strong>不同候选光源出现的概率</strong>是不同的，即$P(l)$不同,基于此我们添加了两个参数$G_l、B_l$，分别为增益系数和$log(P(l))$<br>$$<br>log(P(l|Y))=Gl\cdot log(P(Y|l))+B_l<br>$$<br>而引入这两个参数会带来问题！</p>
-<p>本来我们的网络是<strong>摄像机无关</strong>的(即没有$log(P(l))$  )，为什么说摄像机无关呢？</p>
+<p>本来我们的网络是<strong>摄像机无关</strong>的(即没有$log(P(l))$ )，为什么说摄像机无关呢？</p>
 <p>多个相机获得多个数据集，对每个数据集利用KMeans找出候选光源，然后都喂入网络，实现了多相机图片训练。假设我们现在引入了 一个新的摄像机，并获得一个该摄像机的数据集，我们要做的就是对该摄像机进行K-Means，然后测试时，对于一张图片 ，我们现在修正图片需要做的是之前的加上新的候选光源一起修正分别得到概率就行，不需要重新训练或微调。</p>
 <p>而引入$log(P(l))$,之前我们的公式表明，<strong>全局光源由光源功率和接收函数决定</strong>，这个时候就必然引入了摄像机关联。</p>
 <p>所以如果要多设备训练的话，就不引入这两个参数，这样虽<strong>然降低了灵活性，少了两个学习参数，但是现在可用的数据集变多了，大数据集弥补了</strong>。</p>
@@ -663,7 +663,7 @@
 <p>首先<strong>简单的MAP是不行的</strong>，因为反向传播我们是需要求导的，而如果用极大后验估计求$l^*$，似然是用网络得到的，是没有办法求导的；</p>
 <p>所以我<strong>们需要采取一个办法他不需要对网络那一块求导就能得到</strong>$l^*$，该论文就是利用简单的线性组合获得$l^*$，使MSE最小，当$l^*$是期望时MSE最小，如果你忘了为啥了可以列个二次函数求导！<br>$$<br>l^*=\sum_{i=1}^n l_i\cdot softmax(log(P(l_i|Y)))\<br>=\frac{1}{\sum e^{log(P(l_i|Y))}}\sum_{i=1}^nl_i\cdot e^{log(P(l_i|Y))}\<br>=\frac{1}{\sum P(l_i|Y)}\sum_{i=1}^nl_i\cdot P(l_i|Y)<br>$$<br>上式<strong>使用softmax是使概率归一。</strong></p>
 <p><strong>CNN结构：</strong></p>
-<p><img src="/yan-se-heng-chang-xing-zhi-mhcc/image-20201029112002665.png" alt="AArchitecture"></p>
+<p><img src="/yan-se-heng-chang-xing-zhi-mhcc/image-20201029112002665.png" alt="Architecture"></p>
 <h3 id="失败案例"><a href="#失败案例" class="headerlink" title="失败案例"></a>失败案例</h3><p><strong>1 GT在光源分布外</strong></p>
 <img src="/yan-se-heng-chang-xing-zhi-mhcc/image-20201029112126449.png" alt="failure-1" style="zoom:50%;">
 
