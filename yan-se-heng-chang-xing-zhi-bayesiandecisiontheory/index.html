@@ -486,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    257
+                    848
                 </div>
                 
 
@@ -524,11 +524,57 @@
 <p><strong>什么是wavelength-by-wavelength product?</strong></p>
 <p>二者直接相乘</p>
 <p><strong>Figure2</strong></p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="A-Why-Color-Constancy-is-Difficult"><a href="#A-Why-Color-Constancy-is-Difficult" class="headerlink" title="A. Why Color Constancy is Difficult"></a>A. Why Color Constancy is Difficult</h4><blockquote>
+<p>Fig2（a）:</p>
+<p>对于简单的乘积例子，给定高斯噪声时，后验分布的图像，最优解在岭处</p>
+<p>Fig2（b）：</p>
+<p>横截面表明，即使在岭处都有最大的固定值，一些局部区域也会含有不同的概率质量</p>
+<hr>
+<p><strong>什么是parametre vector？参数是什么意思？</strong></p>
+<p>参数，也叫参变量，是一个变量。我们在研究当前问题的时候，关心某几个变量的变化以及它们之间的相互关系，其中有一个或一些叫自变量，另一个或另一些叫因变量。如果我们引入一个或一些另外的变量来描述自变量与因变量的变化，引入的变量本来并不是当前问题必须研究的变量，我们把这样的变量叫做参变量或参数。英文名：Parameter。</p>
+<p>这里的参数应该是指分类x，data是数据指y</p>
+<p><strong>什么是rendering equation？</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52497510">https://zhuanlan.zhihu.com/p/52497510</a></p>
+<p><strong>什么是Gaussian observation noise？高斯噪声？</strong></p>
+<p>高斯噪声百度百科：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0/8587563?fr=aladdin">https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%99%AA%E5%A3%B0/8587563?fr=aladdin</a></p>
+<p>为什么深度学习去噪都采用高斯白噪声？<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/67938028">https://www.zhihu.com/question/67938028</a></p>
+<p>高斯白噪声解释：<a target="_blank" rel="noopener" href="https://blog.csdn.net/szlcw1/article/details/41758711">https://blog.csdn.net/szlcw1/article/details/41758711</a></p>
+<p><strong>Figure3</strong></p>
+<hr>
+<p><strong>delta loss function损失函数？</strong></p>
+<p>常见损失函数：<a target="_blank" rel="noopener" href="https://blog.csdn.net/perfect1t/article/details/88199179">https://blog.csdn.net/perfect1t/article/details/88199179</a></p>
+<p>应该就是指单峰函数，0-1函数$\delta(\widetilde{x}-x)=0\quad if(\widetilde{x}=x)$ 相同的是预判正确的，所以是没有损失的</p>
+<p><strong>期望损失？</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hx14301009/article/details/79870851">https://blog.csdn.net/hx14301009/article/details/79870851</a></p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="A-Why-Color-Constancy-is-Difficult"><a href="#A-Why-Color-Constancy-is-Difficult" class="headerlink" title="A. Why Color Constancy is Difficult"></a>A. Why Color Constancy is Difficult</h4><p>1.Problem Statement</p>
+<blockquote>
 <p>The entries of sj specify the fraction of incident light reflected in Nl evenly spaced wavelength bands throughout the visible spectrum</p>
 </blockquote>
 <p><strong>是不是错了，应该是reflected in</strong> $N_j$<strong>?这句话怎么理解?</strong></p>
 <p>应该意思是$N_l$个均匀排列波长带</p>
+<p>2.Why It Is Difficult</p>
+<blockquote>
+<p>It is underdetermined and it is nonlinear.</p>
+</blockquote>
+<p><strong>什么是欠定的？</strong></p>
+<p><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_531bb7630100xx6c.html">http://blog.sina.com.cn/s/blog_531bb7630100xx6c.html</a></p>
+<blockquote>
+<p>If we have data from N image locations (say, 10) and assume one illuminant, then we have NNr measurements (e.g., 10 x 3 = 30) available to estimate Nl(N + 1) scene parameters [e.g., 31 x (10 + 1) = 341].</p>
+</blockquote>
+<p><strong>这句话怎么理解？</strong></p>
+<blockquote>
+<p>To address the underdeterminancy of color constancy, previous investigators have described spectral functions by using low-dimensional linear models</p>
+</blockquote>
+<p>什么是低维线性模型？</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1604305021&amp;ver=2681&amp;signature=FecbuKdwyqukrDBQO*pJ3q2jZFxLcCWxabeUx7eeSsOp9MNNUxijWNnlaNGRWguX2sl69suc3xXZInrRwvy-CsE1AVD*Vr3NvyjihI-8QmMzO04JeBJpKBXi75iy89*z&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1604305021&amp;ver=2681&amp;signature=FecbuKdwyqukrDBQO<em>pJ3q2jZFxLcCWxabeUx7eeSsOp9MNNUxijWNnlaNGRWguX2sl69suc3xXZInrRwvy-CsE1AVD</em>Vr3NvyjihI-8QmMzO04JeBJpKBXi75iy89*z&amp;new=1</a></p>
+<blockquote>
+<p>The columns of $B_e$ are the basis functions of the linear model, since the matrix product $B_ew_e$ expresses a weighted sum of these columns.</p>
+</blockquote>
+<p><strong>什么是基函数？</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5cc427f0df33">https://www.jianshu.com/p/5cc427f0df33</a></p>
+<blockquote>
+<p>If we assume that a population of spectra lie within an $N_m$-dimensional linear model, then we can parameterize the spectra by specifying the model weights.</p>
+</blockquote>
+<p><strong>这句话如何理解？</strong></p>
 
             </div>
             <hr/>
@@ -1055,18 +1101,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/">
+                <a href="/tuo-fu-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="颜色恒常性之Bayesiancolorconstancy">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="托福笔记">
                         
-                        <span class="card-title">颜色恒常性之Bayesiancolorconstancy</span>
+                        <span class="card-title">托福笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1076,31 +1121,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Color-Constancy/" class="post-category">
-                                    Color Constancy
+                            <a href="/categories/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CC-AWB/">
-                        <span class="chip bg-color">CC/AWB</span>
-                    </a>
-                    
-                    <a href="/tags/Bayes/">
-                        <span class="chip bg-color">Bayes</span>
+                    <a href="/tags/Tofel/">
+                        <span class="chip bg-color">Tofel</span>
                     </a>
                     
                 </div>
@@ -1392,7 +1432,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.3k</span>&nbsp;字
+                class="white-color">14.2k</span>&nbsp;字
             
             
             

@@ -478,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    128
+                    300
                 </div>
                 
 
@@ -502,10 +502,10 @@
 <p>向上取整<strong>ceil()</strong>,向下取整<strong>floor()</strong>,四舍五入到最近整数<strong>round()</strong>,注意返回值是<strong>浮点数</strong>！</p>
 <p>c++API：<a target="_blank" rel="noopener" href="https://devdocs.io/cpp/">https://devdocs.io/cpp/</a></p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
 int main(){
     long long int n,m,a;
-    scanf("%lld %lld %lld",&n,&m,&a);
+    scanf("%lld %lld %lld",&amp;n,&amp;m,&amp;a);
     long long int rows,cols;
     if((n%a)==0)
         rows=n/a;
@@ -516,10 +516,101 @@ int main(){
     else 
         cols=m/a+1;    
     printf("%lld",rows*cols);
-} </code></pre>
+} </bits></code></pre>
 <h2 id="71A-Way-Too-Long-Words-strings"><a href="#71A-Way-Too-Long-Words-strings" class="headerlink" title="71A Way Too Long Words-strings"></a>71A Way Too Long Words-strings</h2><blockquote>
+<p><strong>c++: string  建议是在程序中能使用C++字符串就使用，除非万不得已不选用c_string。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/c1299401227/p/5370685.html">https://www.cnblogs.com/c1299401227/p/5370685.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42659468/article/details/90381985">https://blog.csdn.net/qq_42659468/article/details/90381985</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liitdar/article/details/80498634">https://blog.csdn.net/liitdar/article/details/80498634</a></p>
+<p><strong>重定向：</strong></p>
+<p>//freopen(“in.txt”,”r”,stdin);</p>
+<p><strong>输入输出：</strong></p>
+<p><img src="/codeforces-1/image-20201030223138234.png" alt="题型"></p>
+<p>对于这种类型的题，可以输入一个输出一个，用如下方式：</p>
+<p>while(n–){ }</p>
+<p><strong>c语言字符串:</strong></p>
+<p>char word[nmax];  scanf(“%s”,word); strlen()</p>
+<p>必须要指明nmax，你就算是定义数字数组也要指明nmax呀，否则就得动态分配。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tongye/p/10688941.html">https://www.cnblogs.com/tongye/p/10688941.html</a></p>
 </blockquote>
-
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+using namespace std;
+int main(){
+    int n;
+    cin&gt;&gt;n;
+    string s;
+    for(int i=0;i<n;i++)&#123; cin="">&gt;s;
+        if(s.size()&gt;10)
+            cout&lt;<s[0]<<s.size()-2<<s[s.size()-1]<<endl; 注意换行="" else="" cout<<s<<endl;="" &#125;="" return="" 0;="" &#125;<="" code=""></s[0]<<s.size()-2<<s[s.size()-1]<<endl;></n;i++)&#123;></bits></code></pre><code class="language-c++">
+<h2 id="118-AStringTask"><a href="#118-AStringTask" class="headerlink" title="118 AStringTask"></a>118 AStringTask</h2><blockquote>
+<p>字符串大小写转换：没有直接的转换函数，可以直接利用ascii码字符加减</p>
+<p>对字符串变换，可以新设一个字符串，也可逐字符输出，是个黑盒子，它不管你怎么操作的，结果对了就行</p>
+</blockquote>
+<pre class=" language-c++"><code class="language-c++">if (str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='y')
+{
+  str[i]=-1; //这里做一个假删除
+}
+if (str[i]!=-1)
+{
+  printf(".");
+  printf("%c",str[i]);
+}</code></pre>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+using namespace std;
+int main(){
+    string s;
+    cin&gt;&gt;s;
+    string ans="";
+    for(int i=0;i<s.size();i++)&#123; if(s[i]="">='A'&amp;&amp;s[i]&lt;='Z')
+            s[i]=s[i]-'A'+'a';
+        if(s[i]!='a'&amp;&amp;s[i]!='o'&amp;&amp;s[i]!='y'&amp;&amp;s[i]!='e'&amp;&amp;s[i]!='u'&amp;&amp;s[i]!='i'){
+            ans=ans+'.'+s[i]; 
+        }
+    }
+    cout&lt;<ans; return="" 0;="" &#125;<="" code=""></ans;></s.size();i++)&#123;></bits></code></pre><code class="language-c++">
+<h2 id="78A-Football"><a href="#78A-Football" class="headerlink" title="78A Football"></a>78A Football</h2><blockquote>
+<p>连续子串等连续问题，可以设一个变量或数组，每一次修改都在前一位的基础上修改</p>
+</blockquote>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+using namespace std;
+int main(){
+    string s;
+    cin&gt;&gt;s;
+    int a=0,b=0,flag=0;
+    for(int i=0;i<s.size();i++)&#123; if(s[i]="='0'){" a++;="" b="0;" &#125;="" else&#123;="" a="0;" b++;="" if(a="=7||b==7){" flag="1;" cout<<"yes";="" break;="" if(flag="=0)" cout<<"no";="" return="" 0;="" &#125;<="" code=""></s.size();i++)&#123;></bits></code></pre><code class="language-c++">
+<h2 id="230ADragons"><a href="#230ADragons" class="headerlink" title="230ADragons"></a>230ADragons</h2><blockquote>
+<p>c++中sort函数使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/junbaobei/p/10776066.html">https://www.cnblogs.com/junbaobei/p/10776066.html</a></p>
+<p>迭代器：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34777600/article/details/80427463">https://blog.csdn.net/qq_34777600/article/details/80427463</a></p>
+<p>sort小总结：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yulijuanxmu/article/details/80148417">https://blog.csdn.net/yulijuanxmu/article/details/80148417</a></p>
+</blockquote>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+using namespace std;
+//typedef struct node{//这种使用typedef 也可以不用 不一定非要用链表 
+//    int x;
+//    int y;
+//}Dragon; 
+struct Dragon{
+    int x;
+    int y;
+};//注意句号 
+bool cmp(Dragon a,Dragon b){
+    return a.x<b.x; 前面的小于后面的，排序也一致="" &#125;="" int="" main()&#123;="" s,n;="" cin="">&gt;s&gt;&gt;n;
+    Dragon dragons[n];
+    for(int i=0;i<n;i++)&#123; cin="">&gt;dragons[i].x&gt;&gt;dragons[i].y;
+    }
+    sort(dragons,dragons+n,cmp);
+    for(int i=0;i<n;i++)&#123; if(s="">dragons[i].x)
+            s+=dragons[i].y;
+        else{
+            cout&lt;&lt;"NO";//得到了想要的可以直接return 
+            return 0;    
+        }
+    }
+    cout&lt;&lt;"YES";
+    return 0;
+}
+</n;i++)&#123;></n;i++)&#123;></b.x;></bits></code></pre>
+</code></code></code>
             </div>
             <hr/>
 
@@ -1361,7 +1452,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.3k</span>&nbsp;字
+                class="white-color">14.2k</span>&nbsp;字
             
             
             

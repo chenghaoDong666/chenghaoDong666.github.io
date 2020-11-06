@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-10-29T14:35:45.163Z</updated>
+  <updated>2020-11-05T12:44:07.001Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,11 +17,116 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>python学习</title>
+    <link href="http://dchlovestudy.xyz/python-xue-xi/"/>
+    <id>http://dchlovestudy.xyz/python-xue-xi/</id>
+    <published>2020-11-03T12:15:05.000Z</published>
+    <updated>2020-11-05T12:44:07.001Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;格式化输出，文字和数字等混合输出时使用！&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Skipping</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>pytorch学习</title>
+    <link href="http://dchlovestudy.xyz/pytorch-xue-xi/"/>
+    <id>http://dchlovestudy.xyz/pytorch-xue-xi/</id>
+    <published>2020-11-02T14:20:29.000Z</published>
+    <updated>2020-11-02T14:21:33.072Z</updated>
+    
+    
+    
+    
+    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    
+    
+    <category term="pytorch" scheme="http://dchlovestudy.xyz/tags/pytorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>numpy、pandas、matplotlib学习</title>
+    <link href="http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/"/>
+    <id>http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/</id>
+    <published>2020-11-02T09:46:35.000Z</published>
+    <updated>2020-11-06T03:05:30.978Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;jupyter notebook使用：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    
+    
+    <category term="numpy" scheme="http://dchlovestudy.xyz/tags/numpy/"/>
+    
+    <category term="pandas" scheme="http://dchlovestudy.xyz/tags/pandas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode-tree</title>
+    <link href="http://dchlovestudy.xyz/leetcode-tree/"/>
+    <id>http://dchlovestudy.xyz/leetcode-tree/</id>
+    <published>2020-11-01T14:28:05.000Z</published>
+    <updated>2020-11-01T14:28:05.481Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>托福笔记</title>
+    <link href="http://dchlovestudy.xyz/tuo-fu-bi-ji/"/>
+    <id>http://dchlovestudy.xyz/tuo-fu-bi-ji/</id>
+    <published>2020-10-31T08:28:26.000Z</published>
+    <updated>2020-11-03T03:02:04.555Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;曲根词汇&quot;&gt;&lt;a href=&quot;#曲根词汇&quot; class=&quot;headerlink&quot; title=&quot;曲根词汇&quot;&gt;&lt;/a&gt;曲根词汇&lt;/h2&gt;&lt;h4 id=&quot;阅读记忆&quot;&gt;&lt;a href=&quot;#阅读记忆&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="英语" scheme="http://dchlovestudy.xyz/categories/%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+    <category term="Tofel" scheme="http://dchlovestudy.xyz/tags/Tofel/"/>
+    
+  </entry>
+  
+  <entry>
     <title>颜色恒常性之Bayesiancolorconstancy</title>
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/</id>
     <published>2020-10-28T02:21:19.000Z</published>
-    <updated>2020-10-29T14:35:45.163Z</updated>
+    <updated>2020-11-03T14:29:51.588Z</updated>
     
     
       
@@ -49,7 +154,7 @@
     <link href="http://dchlovestudy.xyz/codeforces-1/"/>
     <id>http://dchlovestudy.xyz/codeforces-1/</id>
     <published>2020-10-22T12:57:39.000Z</published>
-    <updated>2020-10-26T14:59:24.637Z</updated>
+    <updated>2020-11-04T02:35:46.665Z</updated>
     
     
       
@@ -72,7 +177,7 @@
     <link href="http://dchlovestudy.xyz/zu-hui-zong-jie/"/>
     <id>http://dchlovestudy.xyz/zu-hui-zong-jie/</id>
     <published>2020-10-20T12:30:52.000Z</published>
-    <updated>2020-10-21T02:39:26.944Z</updated>
+    <updated>2020-10-30T08:40:57.988Z</updated>
     
     
       
@@ -109,7 +214,7 @@
     <link href="http://dchlovestudy.xyz/ge-ren-sui-xiang/"/>
     <id>http://dchlovestudy.xyz/ge-ren-sui-xiang/</id>
     <published>2020-10-18T01:50:01.000Z</published>
-    <updated>2020-10-18T01:53:40.731Z</updated>
+    <updated>2020-11-06T02:36:54.228Z</updated>
     
     
       
@@ -120,8 +225,7 @@
 &lt;li&gt;早晨和下午的大块时间要利用好，攻坚论文或代码，晚上可以适当娱乐或者做一些其他的小事情，做事情不是给别人看的，而是你真的做出了成绩&lt;/li&gt;
 &lt;li&gt;适当的休息，不然眼睛太累了。&lt;/li&gt;
 &lt;li&gt;有时候商场打折的衣服比网上的还便宜还好！&lt;/li&gt;
-&lt;/ol&gt;
-</summary>
+&lt;li&gt;能打的</summary>
         
       
     
@@ -135,7 +239,7 @@
     <link href="http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/"/>
     <id>http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/</id>
     <published>2020-10-16T08:20:18.000Z</published>
-    <updated>2020-10-16T08:32:45.870Z</updated>
+    <updated>2020-11-06T11:32:54.030Z</updated>
     
     
       
@@ -156,7 +260,7 @@
     <link href="http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/"/>
     <id>http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/</id>
     <published>2020-10-14T11:39:07.000Z</published>
-    <updated>2020-10-19T14:45:33.568Z</updated>
+    <updated>2020-11-06T11:52:27.595Z</updated>
     
     
       
@@ -185,7 +289,7 @@
     <link href="http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/"/>
     <id>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</id>
     <published>2020-10-13T01:46:23.000Z</published>
-    <updated>2020-10-22T05:10:33.378Z</updated>
+    <updated>2020-11-03T02:16:26.377Z</updated>
     
     
       
@@ -209,7 +313,7 @@
     <link href="http://dchlovestudy.xyz/typora-shi-yong-wen-ti/"/>
     <id>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</id>
     <published>2020-10-13T01:45:52.000Z</published>
-    <updated>2020-10-29T01:41:30.591Z</updated>
+    <updated>2020-11-03T14:19:44.760Z</updated>
     
     
       
@@ -232,7 +336,7 @@
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/</id>
     <published>2020-10-13T01:43:11.000Z</published>
-    <updated>2020-10-30T07:38:12.172Z</updated>
+    <updated>2020-10-30T07:53:15.972Z</updated>
     
     
       

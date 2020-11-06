@@ -611,7 +611,7 @@
 <p><strong>为什么是这个公式？</strong></p>
 <p>我们现在获得了n个光源$l_0、l_1\cdots l_n$和n个概率$p_0、p_1\cdots p_n$,我们如何确定最优光源$l^*$?该论文就是简单使MSE最小，当$l^*$是期望时MSE最小，如果你忘了为啥了可以列个二次函数求导！</p>
 <blockquote>
-<p>We require <strong>a differentiable method</strong> in order to train our model end-to-end, and therefore the use of <strong>a simple Maximum a Posteriori (MAP) inference strategy is not possible</strong>. Therefore to estimate the illuminant l*, we use the minimum mean square error Bayesian estimator, which is minimised by the posterior mean of l (c.f. Eq. (6))”</p>
+<p>We require <strong>a differentiable method</strong> in order to train our model end-to-end, and therefore the use of <strong>a simple Maximum a Posteriori （MAP）inference strategy is not possible</strong>. Therefore to estimate the illuminant l*, we use the minimum mean square error Bayesian estimator, which is minimised by the posterior mean of l (c.f. Eq. (6))”</p>
 </blockquote>
 <p><strong>为什么MAP不行？</strong></p>
 <p>因为反向传播我们是需要求导的，而如果用极大后验估计求$l^*$，似然是用网络得到的，是没有办法求导的；所以我们需要采取一个办法他不需要对网络那一块求导就能得到$l^*$，所以使用最简单的方法-使MSE最小，$l^*$就是各个候选光源的期望。<br>$$<br>l^*=\sum_{i=1}^n l_i\cdot softmax(log(P(l_i|Y)))\<br>=\frac{1}{\sum e^{log(P(l_i|Y))}}\sum_{i=1}^nl_i\cdot e^{log(P(l_i|Y))}\<br>=\frac{1}{\sum P(l_i|Y)}\sum_{i=1}^nl_i\cdot P(l_i|Y)<br>$$</p>
@@ -622,10 +622,10 @@
 <p><a target="_blank" rel="noopener" href="https://blog.cweihang.io/ml/trick/l2_normalize">https://blog.cweihang.io/ml/trick/l2_normalize</a></p>
 <p>？？？</p>
 <h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h3><p><strong>1x1 Conv?</strong></p>
-<p>也叫Network in Network,添加了一个非线性运算，可用于压缩信道(或增加信道)</p>
+<p>也叫Network in Network,添加了一个非线性运算，可用于压缩信道或增加信道</p>
 <p><img src="/yan-se-heng-chang-xing-zhi-mhcc/image-20201027160655612.png" alt="吴恩达课程"></p>
 <blockquote>
-<p>Towards reproducibility, and fair comparison, our suppplementary material provides the cross validation (CV) splits, used in the main paper, for multi-device training</p>
+<p>Towards reproducibility, and fair comparison, our suppplementary material provides the cross validation splits, used in the main paper, for multi-device training</p>
 </blockquote>
 <p><strong>Cross validation？</strong></p>
 <p>交叉验证：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E4%BA%A4%E5%8F%89%E9%A9%97%E8%AD%89">https://zh.wikipedia.org/zh-hans/%E4%BA%A4%E5%8F%89%E9%A9%97%E8%AD%89</a></p>
@@ -1547,7 +1547,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.3k</span>&nbsp;字
+                class="white-color">14.2k</span>&nbsp;字
             
             
             
