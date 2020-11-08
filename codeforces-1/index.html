@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -315,8 +315,8 @@
     (function() {
         let pwd = '';
         if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
+            if (pwd !== CryptoJS.SHA256(prompt('密码提示：帅不帅？')).toString(CryptoJS.enc.Hex)) {
+                alert('你不够帅，将返回主页！');
                 location.href = '/';
             }
         }
@@ -326,7 +326,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -446,9 +446,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/codeforces/">
+                                <span class="chip bg-color">codeforces</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -456,8 +460,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/codeforces/" class="post-category">
-                                codeforces
+                            <a href="/categories/oj/" class="post-category">
+                                oj
                             </a>
                         
                     </div>
@@ -478,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    300
+                    292
                 </div>
                 
 
@@ -502,10 +506,10 @@
 <p>向上取整<strong>ceil()</strong>,向下取整<strong>floor()</strong>,四舍五入到最近整数<strong>round()</strong>,注意返回值是<strong>浮点数</strong>！</p>
 <p>c++API：<a target="_blank" rel="noopener" href="https://devdocs.io/cpp/">https://devdocs.io/cpp/</a></p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
 int main(){
     long long int n,m,a;
-    scanf("%lld %lld %lld",&amp;n,&amp;m,&amp;a);
+    scanf("%lld %lld %lld",&n,&m,&a);
     long long int rows,cols;
     if((n%a)==0)
         rows=n/a;
@@ -516,7 +520,7 @@ int main(){
     else 
         cols=m/a+1;    
     printf("%lld",rows*cols);
-} </bits></code></pre>
+} </code></pre>
 <h2 id="71A-Way-Too-Long-Words-strings"><a href="#71A-Way-Too-Long-Words-strings" class="headerlink" title="71A Way Too Long Words-strings"></a>71A Way Too Long Words-strings</h2><blockquote>
 <p><strong>c++: string  建议是在程序中能使用C++字符串就使用，除非万不得已不选用c_string。</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/c1299401227/p/5370685.html">https://www.cnblogs.com/c1299401227/p/5370685.html</a></p>
@@ -533,15 +537,21 @@ int main(){
 <p>必须要指明nmax，你就算是定义数字数组也要指明nmax呀，否则就得动态分配。</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tongye/p/10688941.html">https://www.cnblogs.com/tongye/p/10688941.html</a></p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
 using namespace std;
 int main(){
     int n;
-    cin&gt;&gt;n;
+    cin>>n;
     string s;
-    for(int i=0;i<n;i++)&#123; cin="">&gt;s;
-        if(s.size()&gt;10)
-            cout&lt;<s[0]<<s.size()-2<<s[s.size()-1]<<endl; 注意换行="" else="" cout<<s<<endl;="" &#125;="" return="" 0;="" &#125;<="" code=""></s[0]<<s.size()-2<<s[s.size()-1]<<endl;></n;i++)&#123;></bits></code></pre><code class="language-c++">
+    for(int i=0;i<n;i++){
+        cin>>s;
+        if(s.size()>10)
+            cout<<s[0]<<s.size()-2<<s[s.size()-1]<<endl;//注意换行
+        else
+            cout<<s<<endl;
+    }
+    return 0;
+}</code></pre>
 <h2 id="118-AStringTask"><a href="#118-AStringTask" class="headerlink" title="118 AStringTask"></a>118 AStringTask</h2><blockquote>
 <p>字符串大小写转换：没有直接的转换函数，可以直接利用ascii码字符加减</p>
 <p>对字符串变换，可以新设一个字符串，也可逐字符输出，是个黑盒子，它不管你怎么操作的，结果对了就行</p>
@@ -555,35 +565,56 @@ if (str[i]!=-1)
   printf(".");
   printf("%c",str[i]);
 }</code></pre>
-<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
 using namespace std;
 int main(){
     string s;
-    cin&gt;&gt;s;
+    cin>>s;
     string ans="";
-    for(int i=0;i<s.size();i++)&#123; if(s[i]="">='A'&amp;&amp;s[i]&lt;='Z')
+    for(int i=0;i<s.size();i++){
+        if(s[i]>='A'&&s[i]<='Z')
             s[i]=s[i]-'A'+'a';
-        if(s[i]!='a'&amp;&amp;s[i]!='o'&amp;&amp;s[i]!='y'&amp;&amp;s[i]!='e'&amp;&amp;s[i]!='u'&amp;&amp;s[i]!='i'){
+        if(s[i]!='a'&&s[i]!='o'&&s[i]!='y'&&s[i]!='e'&&s[i]!='u'&&s[i]!='i'){
             ans=ans+'.'+s[i]; 
         }
     }
-    cout&lt;<ans; return="" 0;="" &#125;<="" code=""></ans;></s.size();i++)&#123;></bits></code></pre><code class="language-c++">
+    cout<<ans;
+    return 0;
+}</code></pre>
 <h2 id="78A-Football"><a href="#78A-Football" class="headerlink" title="78A Football"></a>78A Football</h2><blockquote>
 <p>连续子串等连续问题，可以设一个变量或数组，每一次修改都在前一位的基础上修改</p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
 using namespace std;
 int main(){
     string s;
-    cin&gt;&gt;s;
+    cin>>s;
     int a=0,b=0,flag=0;
-    for(int i=0;i<s.size();i++)&#123; if(s[i]="='0'){" a++;="" b="0;" &#125;="" else&#123;="" a="0;" b++;="" if(a="=7||b==7){" flag="1;" cout<<"yes";="" break;="" if(flag="=0)" cout<<"no";="" return="" 0;="" &#125;<="" code=""></s.size();i++)&#123;></bits></code></pre><code class="language-c++">
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='0'){
+            a++;
+            b=0;
+        }
+        else{
+            a=0;
+            b++;
+        }
+        if(a==7||b==7){
+            flag=1;
+            cout<<"YES";
+            break; 
+        }
+    }
+    if(flag==0)
+        cout<<"NO";
+    return 0;
+}</code></pre>
 <h2 id="230ADragons"><a href="#230ADragons" class="headerlink" title="230ADragons"></a>230ADragons</h2><blockquote>
 <p>c++中sort函数使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/junbaobei/p/10776066.html">https://www.cnblogs.com/junbaobei/p/10776066.html</a></p>
 <p>迭代器：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34777600/article/details/80427463">https://blog.csdn.net/qq_34777600/article/details/80427463</a></p>
 <p>sort小总结：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yulijuanxmu/article/details/80148417">https://blog.csdn.net/yulijuanxmu/article/details/80148417</a></p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
+<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
 using namespace std;
 //typedef struct node{//这种使用typedef 也可以不用 不一定非要用链表 
 //    int x;
@@ -594,23 +625,32 @@ struct Dragon{
     int y;
 };//注意句号 
 bool cmp(Dragon a,Dragon b){
-    return a.x<b.x; 前面的小于后面的，排序也一致="" &#125;="" int="" main()&#123;="" s,n;="" cin="">&gt;s&gt;&gt;n;
+    return a.x<b.x;//前面的小于后面的，排序也一致 
+}
+int main(){
+    int s,n;
+    cin>>s>>n;
     Dragon dragons[n];
-    for(int i=0;i<n;i++)&#123; cin="">&gt;dragons[i].x&gt;&gt;dragons[i].y;
+    for(int i=0;i<n;i++){
+        cin>>dragons[i].x>>dragons[i].y;
     }
     sort(dragons,dragons+n,cmp);
-    for(int i=0;i<n;i++)&#123; if(s="">dragons[i].x)
+    for(int i=0;i<n;i++){
+        if(s>dragons[i].x)
             s+=dragons[i].y;
         else{
-            cout&lt;&lt;"NO";//得到了想要的可以直接return 
+            cout<<"NO";//得到了想要的可以直接return 
             return 0;    
         }
     }
-    cout&lt;&lt;"YES";
+    cout<<"YES";
     return 0;
 }
-</n;i++)&#123;></n;i++)&#123;></b.x;></bits></code></pre>
-</code></code></code>
+</code></pre>
+<h2 id="455A-Boredom"><a href="#455A-Boredom" class="headerlink" title="455A Boredom"></a>455A Boredom</h2><p>**动态规划：从新手到专家:**<a target="_blank" rel="noopener" href="http://hawstein.com/2013/03/26/dp-novice-to-advanced/">http://hawstein.com/2013/03/26/dp-novice-to-advanced/</a></p>
+<p><strong>子串:串中任意个连续的字符组成的子序列称为该串的子串.</strong></p>
+<p><strong>子序列:子数列，又称子序列，在数学中，某个序列的子序列是从最初序列通过,去除某些元素但不破坏余下元素的相对位置（在前或在后）而形成的新序列。</strong></p>
+
             </div>
             <hr/>
 
@@ -672,7 +712,11 @@ bool cmp(Dragon a,Dragon b){
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/codeforces/">
+                                    <span class="chip bg-color">codeforces</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1136,7 +1180,7 @@ bool cmp(Dragon a,Dragon b){
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="颜色恒常性之Bayesiancolorconstancy">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="颜色恒常性之Bayesiancolorconstancy">
                         
                         <span class="card-title">颜色恒常性之Bayesiancolorconstancy</span>
                     </div>
@@ -1144,7 +1188,7 @@ bool cmp(Dragon a,Dragon b){
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            论文 Bayesian color constancy
                         
                     </div>
                     <div class="publish-info">
@@ -1189,7 +1233,7 @@ bool cmp(Dragon a,Dragon b){
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="组会总结">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="组会总结">
                         
                         <span class="card-title">组会总结</span>
                     </div>
@@ -1452,7 +1496,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.2k</span>&nbsp;字
+                class="white-color">14.4k</span>&nbsp;字
             
             
             
@@ -1598,7 +1642,10 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
+	<!--动态线条背景-->
+	<script type="text/javascript"
+	color="122 103 238" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+	</script>
     <!-- Baidu Analytics -->
 
     <!-- Baidu Push -->
@@ -1651,6 +1698,8 @@ $(function () {
 
     
 
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
 
     
