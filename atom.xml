@@ -47,7 +47,7 @@
     <link href="http://dchlovestudy.xyz/pytorch-xue-xi/"/>
     <id>http://dchlovestudy.xyz/pytorch-xue-xi/</id>
     <published>2020-11-02T14:20:29.000Z</published>
-    <updated>2020-11-08T02:49:19.026Z</updated>
+    <updated>2020-11-08T07:48:54.339Z</updated>
     
     
       
@@ -322,6 +322,34 @@
   </entry>
   
   <entry>
+    <title>人脸识别与肤色分类</title>
+    <link href="http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/"/>
+    <id>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</id>
+    <published>2020-10-13T12:15:05.000Z</published>
+    <updated>2020-11-08T07:59:47.970Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;格式化输出，文字和数字等混合输出时使用！&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Skipping</summary>
+        
+      
+    
+    
+    
+    <category term="face_recognition" scheme="http://dchlovestudy.xyz/categories/face-recognition/"/>
+    
+    
+    <category term="face_recognition" scheme="http://dchlovestudy.xyz/tags/face-recognition/"/>
+    
+    <category term="tkinter" scheme="http://dchlovestudy.xyz/tags/tkinter/"/>
+    
+  </entry>
+  
+  <entry>
     <title>文献图书资源搜索与使用管理</title>
     <link href="http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/"/>
     <id>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</id>
@@ -396,35 +424,6 @@
     <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
     
     <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人脸识别与肤色分类及dlib库</title>
-    <link href="http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/"/>
-    <id>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</id>
-    <published>2020-10-13T01:31:00.000Z</published>
-    <updated>2020-11-08T06:31:25.158Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;人脸识别pipeline&quot;&gt;&lt;a href=&quot;#人脸识别pipeline&quot; class=&quot;headerlink&quot; title=&quot;人脸识别pipeline&quot;&gt;&lt;/a&gt;人脸识别pipeline&lt;/h2&gt;&lt;p&gt;论文参考《Modern Face Recognition</summary>
-        
-      
-    
-    
-    
-    <category term="人脸识别" scheme="http://dchlovestudy.xyz/categories/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/"/>
-    
-    
-    <category term="face_recognition" scheme="http://dchlovestudy.xyz/tags/face-recognition/"/>
-    
-    <category term="肤色分类" scheme="http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%B1%BB/"/>
-    
-    <category term="tkinter" scheme="http://dchlovestudy.xyz/tags/tkinter/"/>
     
   </entry>
   
