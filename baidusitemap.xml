@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://dchlovestudy.xyz/conda-shi-yong/</loc>
+    <loc>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</loc>
+    <lastmod>2020-11-08</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</loc>
     <lastmod>2020-11-08</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</loc>
+    <lastmod>2020-11-08</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/leetcode-tree/</loc>
+    <lastmod>2020-11-08</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/zu-hui-zong-jie/</loc>
+    <lastmod>2020-11-08</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/conda-shi-yong/</loc>
+    <lastmod>2020-11-08</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
     <lastmod>2020-11-08</lastmod>
   </url>
   <url>
@@ -17,15 +37,7 @@
     <lastmod>2020-11-08</lastmod>
   </url>
   <url>
-    <loc>http://dchlovestudy.xyz/leetcode-tree/</loc>
-    <lastmod>2020-11-08</lastmod>
-  </url>
-  <url>
     <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
-    <lastmod>2020-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</loc>
     <lastmod>2020-11-08</lastmod>
   </url>
   <url>
@@ -38,10 +50,6 @@
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/tuo-fu-bi-ji/</loc>
-    <lastmod>2020-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</loc>
     <lastmod>2020-11-08</lastmod>
   </url>
   <url>
@@ -59,13 +67,5 @@
   <url>
     <loc>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</loc>
     <lastmod>2020-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
-    <lastmod>2020-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/zu-hui-zong-jie/</loc>
-    <lastmod>2020-10-30</lastmod>
   </url>
 </urlset> 

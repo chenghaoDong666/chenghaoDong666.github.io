@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    135
+                    209
                 </div>
                 
 
@@ -507,6 +507,11 @@
 <p>torch运用就和np一样</p>
 <p><strong>torch.tensor</strong></p>
 <p>不是基本数据类型如int，float，string等，而是引用数据类型(JAVA中的概念：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/maskwolf/p/9972982.html)%EF%BC%8C%E6%98%AF%E5%9C%A8%E7%B1%BB%E4%B8%AD%E5%B0%81%E8%A3%85%E5%A5%BD%E7%9A%84%E3%80%82%E6%89%80%E4%BB%A5%E8%82%AF%E5%AE%9A%E7%9B%B8%E5%BA%94%E6%93%8D%E4%BD%9C%E6%AF%94%E5%A6%82%E8%BF%90%E7%AE%97%E7%AC%A6%E7%AD%89%E4%BA%BA%E5%AE%B6%E5%B7%B2%E7%BB%8F%E7%BB%99%E4%BD%A0%E9%87%8D%E8%BD%BD%E4%BA%86%EF%BC%8C%E6%89%80%E4%BB%A5%E4%B8%8D%E7%94%A8%E6%83%B3%E7%9A%84%E5%A4%AA%E5%A4%9A">https://www.cnblogs.com/maskwolf/p/9972982.html)，是在类中封装好的。所以肯定相应操作比如运算符等人家已经给你重载了，所以不用想的太多</a></p>
+<p>两个tensor<strong>相加如果是同维度</strong>的话，就直接对应元素相加</p>
+<p><strong>“_”结尾的操作</strong></p>
+<p>会用结果替换原变量，例如y.add_(x)!</p>
+<p><strong>x.view(-1,8)</strong>:这个-1是指从其他维度推断！</p>
+<p>**torch.Tensor.tolist():**果然有向基本类型转化的函数</p>
 
             </div>
             <hr/>
@@ -1365,7 +1370,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.4k</span>&nbsp;字
+                class="white-color">14.5k</span>&nbsp;字
             
             
             
