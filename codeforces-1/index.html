@@ -498,7 +498,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    292
+                    300
                 </div>
                 
 
@@ -678,10 +678,10 @@
 <p>向上取整<strong>ceil()</strong>,向下取整<strong>floor()</strong>,四舍五入到最近整数<strong>round()</strong>,注意返回值是<strong>浮点数</strong>！</p>
 <p>c++API：<a target="_blank" rel="noopener" href="https://devdocs.io/cpp/">https://devdocs.io/cpp/</a></p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
 int main(){
     long long int n,m,a;
-    scanf("%lld %lld %lld",&n,&m,&a);
+    scanf("%lld %lld %lld",&amp;n,&amp;m,&amp;a);
     long long int rows,cols;
     if((n%a)==0)
         rows=n/a;
@@ -692,7 +692,7 @@ int main(){
     else 
         cols=m/a+1;    
     printf("%lld",rows*cols);
-} </code></pre>
+} </bits></code></pre>
 <h2 id="71A-Way-Too-Long-Words-strings"><a href="#71A-Way-Too-Long-Words-strings" class="headerlink" title="71A Way Too Long Words-strings"></a>71A Way Too Long Words-strings</h2><blockquote>
 <p><strong>c++: string  建议是在程序中能使用C++字符串就使用，除非万不得已不选用c_string。</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/c1299401227/p/5370685.html">https://www.cnblogs.com/c1299401227/p/5370685.html</a></p>
@@ -709,21 +709,15 @@ int main(){
 <p>必须要指明nmax，你就算是定义数字数组也要指明nmax呀，否则就得动态分配。</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tongye/p/10688941.html">https://www.cnblogs.com/tongye/p/10688941.html</a></p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
 using namespace std;
 int main(){
     int n;
-    cin>>n;
+    cin&gt;&gt;n;
     string s;
-    for(int i=0;i<n;i++){
-        cin>>s;
-        if(s.size()>10)
-            cout<<s[0]<<s.size()-2<<s[s.size()-1]<<endl;//注意换行
-        else
-            cout<<s<<endl;
-    }
-    return 0;
-}</code></pre>
+    for(int i=0;i<n;i++)&#123; cin="">&gt;s;
+        if(s.size()&gt;10)
+            cout&lt;<s[0]<<s.size()-2<<s[s.size()-1]<<endl; 注意换行="" else="" cout<<s<<endl;="" &#125;="" return="" 0;="" &#125;<="" code=""></s[0]<<s.size()-2<<s[s.size()-1]<<endl;></n;i++)&#123;></bits></code></pre><code class="language-c++">
 <h2 id="118-AStringTask"><a href="#118-AStringTask" class="headerlink" title="118 AStringTask"></a>118 AStringTask</h2><blockquote>
 <p>字符串大小写转换：没有直接的转换函数，可以直接利用ascii码字符加减</p>
 <p>对字符串变换，可以新设一个字符串，也可逐字符输出，是个黑盒子，它不管你怎么操作的，结果对了就行</p>
@@ -737,56 +731,35 @@ if (str[i]!=-1)
   printf(".");
   printf("%c",str[i]);
 }</code></pre>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
 using namespace std;
 int main(){
     string s;
-    cin>>s;
+    cin&gt;&gt;s;
     string ans="";
-    for(int i=0;i<s.size();i++){
-        if(s[i]>='A'&&s[i]<='Z')
+    for(int i=0;i<s.size();i++)&#123; if(s[i]="">='A'&amp;&amp;s[i]&lt;='Z')
             s[i]=s[i]-'A'+'a';
-        if(s[i]!='a'&&s[i]!='o'&&s[i]!='y'&&s[i]!='e'&&s[i]!='u'&&s[i]!='i'){
+        if(s[i]!='a'&amp;&amp;s[i]!='o'&amp;&amp;s[i]!='y'&amp;&amp;s[i]!='e'&amp;&amp;s[i]!='u'&amp;&amp;s[i]!='i'){
             ans=ans+'.'+s[i]; 
         }
     }
-    cout<<ans;
-    return 0;
-}</code></pre>
+    cout&lt;<ans; return="" 0;="" &#125;<="" code=""></ans;></s.size();i++)&#123;></bits></code></pre><code class="language-c++">
 <h2 id="78A-Football"><a href="#78A-Football" class="headerlink" title="78A Football"></a>78A Football</h2><blockquote>
 <p>连续子串等连续问题，可以设一个变量或数组，每一次修改都在前一位的基础上修改</p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
 using namespace std;
 int main(){
     string s;
-    cin>>s;
+    cin&gt;&gt;s;
     int a=0,b=0,flag=0;
-    for(int i=0;i<s.size();i++){
-        if(s[i]=='0'){
-            a++;
-            b=0;
-        }
-        else{
-            a=0;
-            b++;
-        }
-        if(a==7||b==7){
-            flag=1;
-            cout<<"YES";
-            break; 
-        }
-    }
-    if(flag==0)
-        cout<<"NO";
-    return 0;
-}</code></pre>
+    for(int i=0;i<s.size();i++)&#123; if(s[i]="='0'){" a++;="" b="0;" &#125;="" else&#123;="" a="0;" b++;="" if(a="=7||b==7){" flag="1;" cout<<"yes";="" break;="" if(flag="=0)" cout<<"no";="" return="" 0;="" &#125;<="" code=""></s.size();i++)&#123;></bits></code></pre><code class="language-c++">
 <h2 id="230ADragons"><a href="#230ADragons" class="headerlink" title="230ADragons"></a>230ADragons</h2><blockquote>
 <p>c++中sort函数使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/junbaobei/p/10776066.html">https://www.cnblogs.com/junbaobei/p/10776066.html</a></p>
 <p>迭代器：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34777600/article/details/80427463">https://blog.csdn.net/qq_34777600/article/details/80427463</a></p>
 <p>sort小总结：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yulijuanxmu/article/details/80148417">https://blog.csdn.net/yulijuanxmu/article/details/80148417</a></p>
 </blockquote>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre class=" language-c++"><code class="language-c++">#include<bits stdc++.h="">
 using namespace std;
 //typedef struct node{//这种使用typedef 也可以不用 不一定非要用链表 
 //    int x;
@@ -797,32 +770,26 @@ struct Dragon{
     int y;
 };//注意句号 
 bool cmp(Dragon a,Dragon b){
-    return a.x<b.x;//前面的小于后面的，排序也一致 
-}
-int main(){
-    int s,n;
-    cin>>s>>n;
+    return a.x<b.x; 前面的小于后面的，排序也一致="" &#125;="" int="" main()&#123;="" s,n;="" cin="">&gt;s&gt;&gt;n;
     Dragon dragons[n];
-    for(int i=0;i<n;i++){
-        cin>>dragons[i].x>>dragons[i].y;
+    for(int i=0;i<n;i++)&#123; cin="">&gt;dragons[i].x&gt;&gt;dragons[i].y;
     }
     sort(dragons,dragons+n,cmp);
-    for(int i=0;i<n;i++){
-        if(s>dragons[i].x)
+    for(int i=0;i<n;i++)&#123; if(s="">dragons[i].x)
             s+=dragons[i].y;
         else{
-            cout<<"NO";//得到了想要的可以直接return 
+            cout&lt;&lt;"NO";//得到了想要的可以直接return 
             return 0;    
         }
     }
-    cout<<"YES";
+    cout&lt;&lt;"YES";
     return 0;
 }
-</code></pre>
+</n;i++)&#123;></n;i++)&#123;></b.x;></bits></code></pre>
 <h2 id="455A-Boredom"><a href="#455A-Boredom" class="headerlink" title="455A Boredom"></a>455A Boredom</h2><p>**动态规划：从新手到专家:**<a target="_blank" rel="noopener" href="http://hawstein.com/2013/03/26/dp-novice-to-advanced/">http://hawstein.com/2013/03/26/dp-novice-to-advanced/</a></p>
 <p><strong>子串:串中任意个连续的字符组成的子序列称为该串的子串.</strong></p>
 <p><strong>子序列:子数列，又称子序列，在数学中，某个序列的子序列是从最初序列通过,去除某些元素但不破坏余下元素的相对位置（在前或在后）而形成的新序列。</strong></p>
-
+</code></code></code>
             </div>
             <hr/>
 
@@ -1352,7 +1319,7 @@ int main(){
                     <div class="card-image">
                         
                         
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/featureimages/18.jpg" class="responsive-img" alt="颜色恒常性之Bayesiancolorconstancy">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/featureimages/12.jpg" class="responsive-img" alt="颜色恒常性之Bayesiancolorconstancy">
                         
                         <span class="card-title">颜色恒常性之Bayesiancolorconstancy</span>
                     </div>
@@ -1405,7 +1372,7 @@ int main(){
                     <div class="card-image">
                         
                         
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="组会总结">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/medias/featureimages/5.jpg" class="responsive-img" alt="组会总结">
                         
                         <span class="card-title">组会总结</span>
                     </div>
@@ -1600,6 +1567,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1668,7 +1642,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.2k</span>&nbsp;字
+                class="white-color">13.6k</span>&nbsp;字
             
             
             

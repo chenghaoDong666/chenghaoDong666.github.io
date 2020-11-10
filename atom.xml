@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-11-08T12:19:10.228Z</updated>
+  <updated>2020-11-09T14:25:30.974Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,11 +17,59 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>服务器使用</title>
+    <link href="http://dchlovestudy.xyz/fu-wu-qi-shi-yong/"/>
+    <id>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</id>
+    <published>2020-11-09T02:13:20.000Z</published>
+    <updated>2020-11-09T14:25:30.974Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;linux教程：&lt;a href=&quot;http://c.biancheng.net/view/4017.html&quot;&gt;http://c.biancheng.net/view/4017.html&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;linux服务器安装conda？&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Matlab</title>
+    <link href="http://dchlovestudy.xyz/matlab/"/>
+    <id>http://dchlovestudy.xyz/matlab/</id>
+    <published>2020-11-09T01:15:34.000Z</published>
+    <updated>2020-11-09T14:15:27.513Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;教程：&lt;a href=&quot;https://www.w3cschool.cn/matlab/&quot;&gt;https://www.w3cschool.cn/matlab/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MATLAB Api：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Matlab" scheme="http://dchlovestudy.xyz/categories/Matlab/"/>
+    
+    
+    <category term="Matlab" scheme="http://dchlovestudy.xyz/tags/Matlab/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python学习</title>
     <link href="http://dchlovestudy.xyz/python-xue-xi/"/>
     <id>http://dchlovestudy.xyz/python-xue-xi/</id>
     <published>2020-11-03T12:15:05.000Z</published>
-    <updated>2020-11-08T12:19:10.228Z</updated>
+    <updated>2020-11-10T01:51:08.959Z</updated>
     
     
       
@@ -46,7 +94,7 @@
     <link href="http://dchlovestudy.xyz/pytorch-xue-xi/"/>
     <id>http://dchlovestudy.xyz/pytorch-xue-xi/</id>
     <published>2020-11-02T14:20:29.000Z</published>
-    <updated>2020-11-08T13:53:07.324Z</updated>
+    <updated>2020-11-10T02:20:10.935Z</updated>
     
     
       
@@ -99,7 +147,7 @@
     <link href="http://dchlovestudy.xyz/leetcode-tree/"/>
     <id>http://dchlovestudy.xyz/leetcode-tree/</id>
     <published>2020-11-01T14:28:05.000Z</published>
-    <updated>2020-11-08T02:52:05.612Z</updated>
+    <updated>2020-11-09T01:16:53.629Z</updated>
     
     
     
@@ -169,7 +217,7 @@
     <link href="http://dchlovestudy.xyz/codeforces-1/"/>
     <id>http://dchlovestudy.xyz/codeforces-1/</id>
     <published>2020-10-22T12:57:39.000Z</published>
-    <updated>2020-11-08T02:30:05.845Z</updated>
+    <updated>2020-11-09T01:16:43.628Z</updated>
     
     
       
@@ -296,15 +344,14 @@
     <link href="http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/"/>
     <id>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</id>
     <published>2020-10-13T12:15:05.000Z</published>
-    <updated>2020-11-08T07:59:47.970Z</updated>
+    <updated>2020-11-09T01:32:30.130Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;格式化输出，文字和数字等混合输出时使用！&lt;/p&gt;
-&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Skipping</summary>
+    <summary type="html">&lt;h2 id=&quot;莫名其妙被另一个文件覆盖了？？？文件丢失？？为什么呀我吐了！&quot;&gt;&lt;a href=&quot;#莫名其妙被另一个文件覆盖了？？？文件丢失？？为什么呀我吐了！&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -350,7 +397,7 @@
     <link href="http://dchlovestudy.xyz/typora-shi-yong-wen-ti/"/>
     <id>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</id>
     <published>2020-10-13T01:45:52.000Z</published>
-    <updated>2020-11-08T02:58:13.130Z</updated>
+    <updated>2020-11-09T03:07:23.597Z</updated>
     
     
       
@@ -402,7 +449,7 @@
     <link href="http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/"/>
     <id>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</id>
     <published>2020-10-12T14:37:35.000Z</published>
-    <updated>2020-11-08T11:08:43.843Z</updated>
+    <updated>2020-11-10T01:55:16.579Z</updated>
     
     
       
