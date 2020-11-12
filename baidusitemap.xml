@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
+    <lastmod>2020-11-12</lastmod>
+  </url>
+  <url>
     <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
-    <lastmod>2020-11-11</lastmod>
+    <lastmod>2020-11-12</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
+    <lastmod>2020-11-12</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/codeforces-1/</loc>
     <lastmod>2020-11-11</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/zu-hui-zong-jie/</loc>
-    <lastmod>2020-11-10</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
     <lastmod>2020-11-10</lastmod>
   </url>
   <url>
@@ -35,14 +43,6 @@
   <url>
     <loc>http://dchlovestudy.xyz/leetcode-tree/</loc>
     <lastmod>2020-11-09</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/codeforces-1/</loc>
-    <lastmod>2020-11-09</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</loc>
-    <lastmod>2020-11-08</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/conda-shi-yong/</loc>
