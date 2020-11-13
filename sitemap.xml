@@ -214,6 +214,13 @@
   </url>
   
   <url>
+    <loc>http://dchlovestudy.xyz/tags/conda/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://dchlovestudy.xyz/tags/typora/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
@@ -222,13 +229,6 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/codeforces/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/conda/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -263,6 +263,13 @@
   </url>
   
   <url>
+    <loc>http://dchlovestudy.xyz/tags/%E5%A5%87%E6%80%AA/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://dchlovestudy.xyz/tags/pytorch/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
@@ -284,13 +291,6 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/%E5%A5%87%E6%80%AA/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://dchlovestudy.xyz/tags/Tofel/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
@@ -298,14 +298,14 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/linux/</loc>
+    <loc>http://dchlovestudy.xyz/tags/Mendeley/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/Mendeley/</loc>
+    <loc>http://dchlovestudy.xyz/tags/linux/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -384,14 +384,14 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/categories/face-recognition/</loc>
+    <loc>http://dchlovestudy.xyz/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/</loc>
+    <loc>http://dchlovestudy.xyz/categories/face-recognition/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
