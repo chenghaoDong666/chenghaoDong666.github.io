@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</loc>
+    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
+    
+    <lastmod>2020-11-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
     
     <lastmod>2020-11-13</lastmod>
     
@@ -16,16 +23,9 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
+    <loc>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</loc>
     
-    <lastmod>2020-11-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
-    
-    <lastmod>2020-11-12</lastmod>
+    <lastmod>2020-11-13</lastmod>
     
   </url>
   
@@ -228,14 +228,14 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/leetcode/</loc>
+    <loc>http://dchlovestudy.xyz/tags/conda/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/conda/</loc>
+    <loc>http://dchlovestudy.xyz/tags/leetcode/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -298,14 +298,14 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/Mendeley/</loc>
+    <loc>http://dchlovestudy.xyz/tags/linux/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/linux/</loc>
+    <loc>http://dchlovestudy.xyz/tags/Mendeley/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

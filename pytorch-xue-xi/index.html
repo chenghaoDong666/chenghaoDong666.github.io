@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.4k
                 </div>
                 
 
@@ -699,7 +699,7 @@
 <p>torch.nn 只支持小批量输入。整个 torch.nn 包都只支持小批量样本，而不支持单个样本。 例如，nn.Conv2d 接受一个4维的张量， 每一维分别是sSamples * nChannels * Height * Width（样本数<em>通道数</em>高*宽）。 如果你有单个样本，<strong>只需使用 input.unsqueeze(0) 来添加其它的维数</strong></p>
 <p>接受$(N,C_{in},H,W)$,输出$(N,C_{out},H_{out},W_{out}$)</p>
 <h4 id="CNN的反向传播"><a href="#CNN的反向传播" class="headerlink" title="CNN的反向传播"></a>CNN的反向传播</h4><p>教程:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61898234">https://zhuanlan.zhihu.com/p/61898234</a></p>
-<h4 id="torch-rand"><a href="#torch-rand" class="headerlink" title="torch.rand()"></a>torch.rand()</h4><p>rand从(0,1)的均匀分布中随机抽样，randn从标准正态分布随机抽样，torch.normal(mean,std)  正太分布随机抽样  torch.linspace()线性间距向量</p>
+<h4 id="torch-rand"><a href="#torch-rand" class="headerlink" title="torch.rand()"></a>torch.rand()</h4><p>rand从(0,1)的均匀分布中随机抽样，randn从标准正态分布随机抽样，torch.normal(mean,std)  正太分布随机抽样  torch.linspace()线性间距向量  ones初始化为1   zeros初始化为0  eye初始化为单位矩阵</p>
 <p>一个简单的网络最基本的步骤就是前向，损失，反向，更新</p>
 <h4 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h4><p>熵：<a target="_blank" rel="noopener" href="https://blog.csdn.net/rtygbwwwerr/article/details/50778098">https://blog.csdn.net/rtygbwwwerr/article/details/50778098</a> </p>
 <p>熵是不确定性的度量，是信息量的期望</p>
@@ -745,6 +745,26 @@
 <p>如果指定维度的话，那只对该维度去1</p>
 <p><strong>注意</strong>：返回的张量与输入张量共享存储空间，因此改变一个张量的内容将改变另一个张量的内容。</p>
 <p>另外如果对批次batch为1也去掉的话，可能会引发错误。</p>
+<h4 id="张量相关知识"><a href="#张量相关知识" class="headerlink" title="张量相关知识"></a>张量相关知识</h4><p>即可以用size()也可以用numpy的shape</p>
+<p><img src="./themes/hexo-theme-matery/source/loading.gif" data-original="/pytorch-xue-xi/image-20201113101903090.png" alt="标量、向量和矩阵"></p>
+<p>torch.tensor(3.14)这是标量   torch.tensor([3.14])这是向量，判断是几维张量主要是看有几个中括号</p>
+<p>tensor转numpy    numpy_a = a.numpy()   numpy转tensor  torch_a=torch.from_numpy(numpy_a)</p>
+<p><strong>Tensor和numpy对象共享内存，转换很快，但这也意味着，如果其中一个变了，另一个也会变</strong></p>
+<h4 id="求导和网络相关知识"><a href="#求导和网络相关知识" class="headerlink" title="求导和网络相关知识"></a>求导和网络相关知识</h4><p>grad属性保存梯度值，grad_fn保存梯度函数</p>
+<p>nn.functional函数的特点是不具有可学习的参数，$net.parameters()$返回网络可学习的参数</p>
+<pre><code>for name,parameters in net.named_parameters():#可同时返回名字和参数
+    print(name,':',parameters.size())
+
+#conv1.weight : torch.Size([6, 1, 3, 3])
+#conv1.bias : torch.Size([6])
+#fc1.weight : torch.Size([10, 1350])
+#fc1.bias : torch.Size([10])</code></pre>
+<p>forward函数的输入和输出都是Tensor ,在反向传播前，先要将所有参数的梯度清零,如果不清0，计算得到的梯度值会进行累加</p>
+<p><strong>torch.nn只支持mini-batches，不支持一次只输入一个样本，即一次必须是一个batch。</strong></p>
+<h4 id="数据加载相关知识"><a href="#数据加载相关知识" class="headerlink" title="数据加载相关知识"></a>数据加载相关知识</h4><p>Dataset是一个抽象类，为了能够方便的读取，需要将要使用的数据包装为Dataset类。</p>
+<p>torchvision.datasets 下载已经有的数据集</p>
+<p>torchvision.models 获得训练好的模型</p>
+<p>torchvision.transforms 提供了一般的图像转换操作类</p>
 
             </div>
             <hr/>
@@ -1610,7 +1630,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.9k</span>&nbsp;字
+                class="white-color">15.3k</span>&nbsp;字
             
             
             
@@ -1822,6 +1842,6 @@ $(function () {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight+240||document.documentElement.clientHeight+240)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 
 </html>
