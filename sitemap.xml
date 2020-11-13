@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</loc>
+    
+    <lastmod>2020-11-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
     
     <lastmod>2020-11-13</lastmod>
@@ -38,13 +45,6 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/zu-hui-zong-jie/</loc>
-    
-    <lastmod>2020-11-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</loc>
     
     <lastmod>2020-11-10</lastmod>
     
@@ -207,6 +207,13 @@
   </url>
   
   <url>
+    <loc>http://dchlovestudy.xyz/tags/Matlab/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://dchlovestudy.xyz/tags/typora/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
@@ -214,7 +221,7 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/conda/</loc>
+    <loc>http://dchlovestudy.xyz/tags/codeforces/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -222,6 +229,13 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/leetcode/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/conda/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -236,13 +250,6 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/pandas/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/codeforces/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -284,7 +291,21 @@
   </url>
   
   <url>
+    <loc>http://dchlovestudy.xyz/tags/Tofel/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://dchlovestudy.xyz/tags/Mendeley/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/linux/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -299,13 +320,6 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/Bayes/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/Tofel/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -332,24 +346,17 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/Matlab/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/linux/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
     <loc>http://dchlovestudy.xyz/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/categories/Matlab/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -391,13 +398,6 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/categories/Color-Constancy/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://dchlovestudy.xyz/categories/%E8%8B%B1%E8%AF%AD/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
@@ -405,21 +405,21 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/categories/Matlab/</loc>
-    <lastmod>2020-11-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://dchlovestudy.xyz/categories/linux/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/categories/Color-Constancy/</loc>
+    <lastmod>2020-11-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/</loc>
     <lastmod>2020-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
