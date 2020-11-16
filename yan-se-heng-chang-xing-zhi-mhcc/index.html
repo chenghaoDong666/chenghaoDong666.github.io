@@ -498,7 +498,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/30.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    3.6k
                 </div>
                 
 
@@ -793,14 +793,21 @@
 <p><strong>l2-normalised？</strong></p>
 <p><a target="_blank" rel="noopener" href="https://blog.cweihang.io/ml/trick/l2_normalize">https://blog.cweihang.io/ml/trick/l2_normalize</a></p>
 <p>？？？</p>
-<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h3><p><strong>1x1 Conv?</strong></p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>Gehler-Shi dataset存在非一致真实值的情况 2个摄像机，分别为Canon 1D和Canon 5D 室内室外组合</p>
+<p>NUS 8个摄像机</p>
+<p>Cube+  Canon550D 主要室外</p>
+<p>NUS Shi均为3折 用之前工作提供的划分 Cube+没提供，所以用所有的图像训练，用比赛数据集测试，还跟人家的比赛结果比了比</p>
+<p>NUS加了个多摄像机模式 自己弄了个划分</p>
+<p><strong>Trimean？</strong></p>
+<p>三均值<br>$$<br>TM=\frac{Q_1+2Q_2+Q_3}{4}<br>$$<br>Q1,Q3为数据的两个四分位点，Q2为中位数</p>
+<h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h3><p><strong>1x1 Conv?</strong></p>
 <p>也叫Network in Network,添加了一个非线性运算，可用于压缩信道或增加信道</p>
 <p><img src="./medias/loading.gif" data-original="/yan-se-heng-chang-xing-zhi-mhcc/image-20201027160655612.png" alt="吴恩达课程"></p>
 <blockquote>
 <p>Towards reproducibility, and fair comparison, our suppplementary material provides the cross validation splits, used in the main paper, for multi-device training</p>
 </blockquote>
 <p><strong>Cross validation？</strong></p>
-<p>交叉验证：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E4%BA%A4%E5%8F%89%E9%A9%97%E8%AD%89">https://zh.wikipedia.org/zh-hans/%E4%BA%A4%E5%8F%89%E9%A9%97%E8%AD%89</a></p>
+<p>交叉验证：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24825503">https://zhuanlan.zhihu.com/p/24825503</a></p>
 <h2 id="个人思路"><a href="#个人思路" class="headerlink" title="个人思路"></a>个人思路</h2><h3 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a><strong>创新点</strong></h3><ol>
 <li><p>提供了最佳光源的多个可能性</p>
 </li>
@@ -1388,7 +1395,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/13.jpg" class="responsive-img" alt="Typora使用问题">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/28.jpg" class="responsive-img" alt="Typora使用问题">
                         
                         <span class="card-title">Typora使用问题</span>
                     </div>
@@ -1437,7 +1444,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="Hexo-git-github博客搭建">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="Hexo-git-github博客搭建">
                         
                         <span class="card-title">Hexo-git-github博客搭建</span>
                     </div>
@@ -1727,7 +1734,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.3k</span>&nbsp;字
+                class="white-color">15.9k</span>&nbsp;字
             
             
             

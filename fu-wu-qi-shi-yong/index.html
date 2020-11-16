@@ -498,7 +498,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    457
+                    494
                 </div>
                 
 
@@ -679,6 +679,7 @@
 <p>建议安装下面这个版本的pytorch,不然咱们实验室的cuda用不了</p>
 <p><a target="_blank" rel="noopener" href="https://discuss.pytorch.org/t/rtx-3000-support/98158">https://discuss.pytorch.org/t/rtx-3000-support/98158</a></p>
 <h4 id="python版本更改？"><a href="#python版本更改？" class="headerlink" title="python版本更改？"></a>python版本更改？</h4><p>还是有大佬的！<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenhuabin/p/10718471.html">https://www.cnblogs.com/chenhuabin/p/10718471.html</a></p>
+<p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20201113190611958.png" alt="这一步是重点"></p>
 <h4 id="Xshell复制粘贴设置"><a href="#Xshell复制粘贴设置" class="headerlink" title="Xshell复制粘贴设置"></a>Xshell复制粘贴设置</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sxdcgaq8080/p/10025759.html">https://www.cnblogs.com/sxdcgaq8080/p/10025759.html</a></p>
 <h4 id="jupyter配置？"><a href="#jupyter配置？" class="headerlink" title="jupyter配置？"></a>jupyter配置？</h4><p>首先，安装jupyter</p>
 <pre><code>pip install jupyter  </code></pre>
@@ -689,14 +690,15 @@
 In [1]:  from notebook.auth import passwd
 In [2]: passwd()</code></pre>
 <p>会让输入两次密码，输入完成后 复制生成的 秘钥，后面会用到，秘钥带上sha1</p>
-<p>修改配置文件</p>
+<p>修改配置文件：vi中查找 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/actively/p/13023292.html">https://www.cnblogs.com/actively/p/13023292.html</a></p>
 <pre><code>vi  /username/.jupyter/jupyter_notebook_config.py
     #改几个地方：
+c.NotebookApp.ip = 'localhost'  #一定要把注释的#号去掉
 c.NotebookApp.port = 10001                    即对外提供访问的端口
 c.NotebookApp.open_browser = False            False即启动不打开浏览器
 c.NotebookApp.password = u'sha1:XXXXX'   这个就是上面生成的秘钥
 c.NotebookApp.notebook_dir = u'workplace' 即设置jupyter启动后默认的根目录，这个文件夹要自己创建</code></pre>
-<p>然后打开xshell，文件-&gt;当前会话属性-&gt;隧道-&gt;添加</p>
+<p>然后打开xshell，文件-&gt;当前会话属性-&gt;隧道-&gt;添加 #端口号可以自己设置别的</p>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20201113093744564.png" alt="隧道属性"></p>
 <p>然后打开jupyter</p>
 <pre><code>jupyter notebook</code></pre>
@@ -1239,7 +1241,7 @@ export CUDA_HOME=/usr/local/cuda</code></pre>
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="服务器使用">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/15.jpg" class="responsive-img" alt="服务器使用">
                         
                         <span class="card-title">服务器使用</span>
                     </div>
@@ -1564,7 +1566,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.3k</span>&nbsp;字
+                class="white-color">15.9k</span>&nbsp;字
             
             
             
