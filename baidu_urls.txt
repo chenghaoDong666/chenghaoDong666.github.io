@@ -1,3 +1,4 @@
+http://dchlovestudy.xyz/codeforces-1/
 http://dchlovestudy.xyz/fu-wu-qi-shi-yong/
 http://dchlovestudy.xyz/matlab/
 http://dchlovestudy.xyz/python-xue-xi/
@@ -6,7 +7,6 @@ http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/
 http://dchlovestudy.xyz/leetcode-tree/
 http://dchlovestudy.xyz/tuo-fu-bi-ji/
 http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/
-http://dchlovestudy.xyz/codeforces-1/
 http://dchlovestudy.xyz/zu-hui-zong-jie/
 http://dchlovestudy.xyz/conda-shi-yong/
 http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/

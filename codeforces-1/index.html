@@ -645,7 +645,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-22
+                    2020-11-16
                 </div>
                 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    292
+                    303
                 </div>
                 
 
@@ -671,13 +671,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1A-Theatre-Square-math"><a href="#1A-Theatre-Square-math" class="headerlink" title="1A Theatre Square-math"></a>1A Theatre Square-math</h2><blockquote>
-<p>#include&lt;bits/stdc++.h&gt;</p>
+                <h2 id="1A-Theatre-Square-math"><a href="#1A-Theatre-Square-math" class="headerlink" title="1A Theatre Square-math"></a>1A Theatre Square-math</h2><p>#include&lt;bits/stdc++.h&gt;</p>
 <p>using namespace std</p>
-<p>注意查看$1\leq n,m,a\leq 10^9$,所以可能数超大，使用<strong>long long</strong>定义</p>
-<p>向上取整<strong>ceil()</strong>,向下取整<strong>floor()</strong>,四舍五入到最近整数<strong>round()</strong>,注意返回值是<strong>浮点数</strong>！</p>
+<p>注意查看变量取值范围,可能数超大，本题就得使用long long定义</p>
+<p>向上取整$ceil()$,向下取整$floor()$,四舍五入到最近整数$round()$,注意返回值是浮点数！</p>
 <p>c++API：<a target="_blank" rel="noopener" href="https://devdocs.io/cpp/">https://devdocs.io/cpp/</a></p>
-</blockquote>
 <pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
 int main(){
     long long int n,m,a;
@@ -693,22 +691,19 @@ int main(){
         cols=m/a+1;    
     printf("%lld",rows*cols);
 } </code></pre>
-<h2 id="71A-Way-Too-Long-Words-strings"><a href="#71A-Way-Too-Long-Words-strings" class="headerlink" title="71A Way Too Long Words-strings"></a>71A Way Too Long Words-strings</h2><blockquote>
-<p><strong>c++: string  建议是在程序中能使用C++字符串就使用，除非万不得已不选用c_string。</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/c1299401227/p/5370685.html">https://www.cnblogs.com/c1299401227/p/5370685.html</a></p>
+<h2 id="71A-Way-Too-Long-Words-strings"><a href="#71A-Way-Too-Long-Words-strings" class="headerlink" title="71A Way Too Long Words-strings"></a>71A Way Too Long Words-strings</h2><p>c++: string 建议是在程序中<strong>能使用C++字符串就使用</strong>，除非万不得已<strong>不选用c_string</strong>。</p>
+<p>c++string教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/c1299401227/p/5370685.html">https://www.cnblogs.com/c1299401227/p/5370685.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42659468/article/details/90381985">https://blog.csdn.net/qq_42659468/article/details/90381985</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liitdar/article/details/80498634">https://blog.csdn.net/liitdar/article/details/80498634</a></p>
-<p><strong>重定向：</strong></p>
+<p><strong>重定向</strong>：</p>
 <p>//freopen(“in.txt”,”r”,stdin);</p>
-<p><strong>输入输出：</strong></p>
-<p><img src="./medias/loading.gif" data-original="/codeforces-1/image-20201030223138234.png" alt="题型"></p>
+<p>输入输出：</p>
+<p><img src="./medias/loading.gif" data-original="/codeforces-1/image-20201116202224462.png" alt="输入输出"></p>
 <p>对于这种类型的题，可以输入一个输出一个，用如下方式：</p>
 <p>while(n–){ }</p>
-<p><strong>c语言字符串:</strong></p>
-<p>char word[nmax];  scanf(“%s”,word); strlen()</p>
+<p>c语言字符串:  char word[nmax]; scanf(“%s”,word); strlen()</p>
 <p>必须要指明nmax，你就算是定义数字数组也要指明nmax呀，否则就得动态分配。</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tongye/p/10688941.html">https://www.cnblogs.com/tongye/p/10688941.html</a></p>
-</blockquote>
+<p>c语言字符串教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tongye/p/10688941.html">https://www.cnblogs.com/tongye/p/10688941.html</a></p>
 <pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
 using namespace std;
 int main(){
@@ -718,12 +713,104 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>s;
         if(s.size()>10)
-            cout<<s[0]<<s.size()-2<<s[s.size()-1]<<endl;//注意换行
+            cout<<s[0]<<s.size()-2<<s[s.size()-1]<<endl;
         else
-            cout<<s<<endl;
+            cout<<s<<endl;//注意换行
     }
     return 0;
 }</code></pre>
+<h2 id="118-A-String-Task-string"><a href="#118-A-String-Task-string" class="headerlink" title="118 A String Task-string"></a>118 A String Task-string</h2><p>字符串<strong>大小写转换</strong>：没有直接的转换函数，可以<strong>直接利用ascii码字符加减</strong></p>
+<p>对字符串变换，<strong>可以新设一个字符串，也可逐字符输出，是个黑盒子，它不管你怎么操作的，结果对了就行</strong></p>
+<pre class=" language-c++"><code class="language-c++"> if (str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='y')
+ {
+   str[i]=-1; //这里做一个假删除
+ }
+ if (str[i]!=-1)
+ {
+   printf(".");//这一步很重要
+   printf("%c",str[i]);
+ }
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    string ans="";
+    for(int i=0;i<s.size();i++){
+        if(s[i]>='A'&&s[i]<='Z')
+            s[i]=s[i]-'A'+'a';
+        if(s[i]!='a'&&s[i]!='o'&&s[i]!='y'&&s[i]!='e'&&s[i]!='u'&&s[i]!='i'){
+            ans=ans+'.'+s[i]; 
+        }
+    }
+    cout<<ans;
+    return 0;
+}</code></pre>
+<h2 id="78A-Football"><a href="#78A-Football" class="headerlink" title="78A Football"></a>78A Football</h2><p>连续子串等连续问题，可以设一个变量或数组，每一次修改都在前一位的基础上修改</p>
+<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int a=0,b=0,flag=0;
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='0'){
+            a++;
+            b=0;
+        }
+        else{
+            a=0;
+            b++;
+        }
+        if(a==7||b==7){
+            flag=1;
+            cout<<"YES";
+            break; 
+        }
+    }
+    if(flag==0)
+        cout<<"NO";
+    return 0;
+}</code></pre>
+<h2 id="230A-Dragons"><a href="#230A-Dragons" class="headerlink" title="230A Dragons-"></a>230A Dragons-</h2><p>c++中sort函数使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/junbaobei/p/10776066.html">https://www.cnblogs.com/junbaobei/p/10776066.html</a></p>
+<p>迭代器：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34777600/article/details/80427463">https://blog.csdn.net/qq_34777600/article/details/80427463</a></p>
+<p>sort小总结：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yulijuanxmu/article/details/80148417">https://blog.csdn.net/yulijuanxmu/article/details/80148417</a></p>
+<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+using namespace std;
+//typedef struct node{//这种使用typedef 也可以不用 不一定非要用链表 
+//    int x;
+//    int y;
+//}Dragon; 
+struct Dragon{
+    int x;
+    int y;
+};//注意分号 
+bool cmp(Dragon a,Dragon b){
+    return a.x<b.x;//前面的小于后面的，排序也一致 
+}
+int main(){
+    int s,n;
+    cin>>s>>n;
+    Dragon dragons[n];
+    for(int i=0;i<n;i++){
+        cin>>dragons[i].x>>dragons[i].y;
+    }
+    sort(dragons,dragons+n,cmp);
+    for(int i=0;i<n;i++){
+        if(s>dragons[i].x)
+            s+=dragons[i].y;
+        else{
+            cout<<"NO";//得到了想要的可以直接return 
+            return 0;    
+        }
+    }
+    cout<<"YES";
+    return 0;
+}</code></pre>
+<h2 id="455A-Boredom-dp"><a href="#455A-Boredom-dp" class="headerlink" title="455A Boredom-dp"></a>455A Boredom-dp</h2><p>动态规划：从新手到专家:<a target="_blank" rel="noopener" href="http://hawstein.com/2013/03/26/dp-novice-to-advanced/">http://hawstein.com/2013/03/26/dp-novice-to-advanced/</a></p>
+<p><strong>子串</strong>:串中任意个连续的字符组成的子序列称为该串的子串. </p>
+<p><strong>子序列</strong>:子数列，又称子序列，在数学中，某个序列的子序列是从最初序列通过,去除某些元素但不破坏余下元素的相对位置（在前或在后）而形成的新序列。</p>
 
             </div>
             <hr/>
@@ -959,7 +1046,7 @@ int main(){
         repo: 'chenghaoDong666.github.io',
         owner: 'chenghaoDong666',
         admin: ["chenghaoDong666"],
-        id: '2020-10-22T20-57-39',
+        id: '2020-11-16T20-15-16',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1246,50 +1333,48 @@ int main(){
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/">
+                <a href="/codeforces-1/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/7.jpg" class="responsive-img" alt="颜色恒常性之Bayesiancolorconstancy">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/13.jpg" class="responsive-img" alt="codeforces-1">
                         
-                        <span class="card-title">颜色恒常性之Bayesiancolorconstancy</span>
+                        <span class="card-title">codeforces-1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            论文 Bayesian color constancy
+                            菜鸡刷题系列
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Color-Constancy/" class="post-category">
-                                    Color Constancy
+                            <a href="/categories/oj/" class="post-category">
+                                    oj
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CC-AWB/">
-                        <span class="chip bg-color">CC/AWB</span>
-                    </a>
-                    
-                    <a href="/tags/Bayes/">
-                        <span class="chip bg-color">Bayes</span>
+                    <a href="/tags/codeforces/">
+                        <span class="chip bg-color">codeforces</span>
                     </a>
                     
                 </div>
@@ -1303,31 +1388,31 @@ int main(){
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/zu-hui-zong-jie/">
+                <a href="/fu-wu-qi-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/20.jpg" class="responsive-img" alt="组会总结">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/15.jpg" class="responsive-img" alt="服务器使用">
                         
-                        <span class="card-title">组会总结</span>
+                        <span class="card-title">服务器使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            胡乱总结
+                            简单记录实验室服务器使用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" class="post-category">
-                                    奇奇怪怪
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
                                 </a>
                             
                             
@@ -1337,8 +1422,8 @@ int main(){
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%A5%87%E6%80%AA/">
-                        <span class="chip bg-color">奇怪</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>

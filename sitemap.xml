@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dchlovestudy.xyz/codeforces-1/</loc>
+    
+    <lastmod>2020-11-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
+    
+    <lastmod>2020-11-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/</loc>
     
     <lastmod>2020-11-16</lastmod>
@@ -10,13 +24,6 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</loc>
-    
-    <lastmod>2020-11-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/codeforces-1/</loc>
     
     <lastmod>2020-11-16</lastmod>
     
@@ -52,13 +59,6 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/</loc>
-    
-    <lastmod>2020-11-13</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
     
     <lastmod>2020-11-13</lastmod>
     
@@ -207,7 +207,7 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/Matlab/</loc>
+    <loc>http://dchlovestudy.xyz/tags/codeforces/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -221,7 +221,7 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/codeforces/</loc>
+    <loc>http://dchlovestudy.xyz/tags/Matlab/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -229,13 +229,6 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/conda/</loc>
-    <lastmod>2020-11-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://dchlovestudy.xyz/tags/leetcode/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -256,7 +249,7 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/tags/pytorch/</loc>
+    <loc>http://dchlovestudy.xyz/tags/leetcode/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -264,6 +257,13 @@
   
   <url>
     <loc>http://dchlovestudy.xyz/tags/python/</loc>
+    <lastmod>2020-11-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dchlovestudy.xyz/tags/pytorch/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -356,7 +356,7 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/categories/Matlab/</loc>
+    <loc>http://dchlovestudy.xyz/categories/oj/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -370,7 +370,7 @@
   </url>
   
   <url>
-    <loc>http://dchlovestudy.xyz/categories/oj/</loc>
+    <loc>http://dchlovestudy.xyz/categories/Matlab/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

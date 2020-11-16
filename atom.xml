@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-11-13T11:24:37.619Z</updated>
+  <updated>2020-11-16T12:30:58.657Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>codeforces-1</title>
+    <link href="http://dchlovestudy.xyz/codeforces-1/"/>
+    <id>http://dchlovestudy.xyz/codeforces-1/</id>
+    <published>2020-11-16T12:15:16.000Z</published>
+    <updated>2020-11-16T12:30:58.657Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1A-Theatre-Square-math&quot;&gt;&lt;a href=&quot;#1A-Theatre-Square-math&quot; class=&quot;headerlink&quot; title=&quot;1A Theatre Square-math&quot;&gt;&lt;/a&gt;1A Theatre</summary>
+        
+      
+    
+    
+    
+    <category term="oj" scheme="http://dchlovestudy.xyz/categories/oj/"/>
+    
+    
+    <category term="codeforces" scheme="http://dchlovestudy.xyz/tags/codeforces/"/>
+    
+  </entry>
+  
+  <entry>
     <title>服务器使用</title>
     <link href="http://dchlovestudy.xyz/fu-wu-qi-shi-yong/"/>
     <id>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</id>
     <published>2020-11-09T02:13:20.000Z</published>
-    <updated>2020-11-13T11:24:37.619Z</updated>
+    <updated>2020-11-16T12:10:10.988Z</updated>
     
     
       
@@ -29,7 +54,7 @@
         
         
     <summary type="html">&lt;p&gt;linux教程：&lt;a href=&quot;http://c.biancheng.net/view/4017.html&quot;&gt;http://c.biancheng.net/view/4017.html&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;linux服务器安装conda？&quot;&gt;&lt;a</summary>
+&lt;p&gt;unzip -d des src</summary>
         
       
     
@@ -213,31 +238,6 @@
     <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
     
     <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>codeforces-1</title>
-    <link href="http://dchlovestudy.xyz/codeforces-1/"/>
-    <id>http://dchlovestudy.xyz/codeforces-1/</id>
-    <published>2020-10-22T12:57:39.000Z</published>
-    <updated>2020-11-16T11:38:26.887Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1A-Theatre-Square-math&quot;&gt;&lt;a href=&quot;#1A-Theatre-Square-math&quot; class=&quot;headerlink&quot; title=&quot;1A Theatre Square-math&quot;&gt;&lt;/a&gt;1A Theatre</summary>
-        
-      
-    
-    
-    
-    <category term="oj" scheme="http://dchlovestudy.xyz/categories/oj/"/>
-    
-    
-    <category term="codeforces" scheme="http://dchlovestudy.xyz/tags/codeforces/"/>
     
   </entry>
   
