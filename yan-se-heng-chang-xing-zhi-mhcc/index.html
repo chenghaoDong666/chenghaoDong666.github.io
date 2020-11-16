@@ -718,7 +718,7 @@
 </blockquote>
 <p><strong>什么是distributin shift&amp;domain gap？</strong></p>
 <p><strong>distribution shift</strong>: <a target="_blank" rel="noopener" href="https://zh.d2l.ai/">https://zh.d2l.ai/</a> </p>
-<p>**domain gap problem:**<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/195704051">https://zhuanlan.zhihu.com/p/195704051</a></p>
+<p><strong>domain gap problem</strong>:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/195704051">https://zhuanlan.zhihu.com/p/195704051</a></p>
 <blockquote>
 <p>Principled combination of datasets is of high value for learning based color constancy given the typically small nature of individual color constancy datasets (on the order of only hundreds of images).</p>
 </blockquote>
@@ -841,7 +841,7 @@
 <p><strong>第二步变换</strong>由于$y_k=r_k\cdot l_k\quad\quad k\in R,G,B$ 所以当且仅当$R=diag(l)^{-1}$时，才能生成Y,所以此时$P(Y|l,R=diag(l)^{-1})=1$,$P(Y|l,R=else)=0$,所以只剩下一项$P(R=diag(l)^{-1}Y)$</p>
 <p>所以我们这个<strong>CNN网络</strong>为$f^W$,则$log(P(Y|l))=log(P(R=diag(l)^{-1}Y))=f^W(diag(l)^{-1}Y)$，即每个候选光源是场景光源的概率。</p>
 <p>另外，在实际场景中，<strong>不同候选光源出现的概率</strong>是不同的，即$P(l)$不同,基于此我们添加了两个参数$G_l、B_l$，分别为增益系数和$log(P(l))$<br>$$<br>log(P(l|Y))=Gl\cdot log(P(Y|l))+B_l<br>$$<br>而引入这两个参数会带来问题！</p>
-<p>本来我们的网络是<strong>摄像机无关</strong>的(即没有$log(P(l))$ )，为什么说摄像机无关呢？</p>
+<p>本来我们的网络是<strong>摄像机无关</strong>的,因为没有$log(P(l))$ ,为什么说摄像机无关呢？</p>
 <p>多个相机获得多个数据集，对每个数据集利用KMeans找出候选光源，然后都喂入网络，实现了多相机图片训练。假设我们现在引入了 一个新的摄像机，并获得一个该摄像机的数据集，我们要做的就是对该摄像机进行K-Means，然后测试时，对于一张图片 ，我们现在修正图片需要做的是之前的加上新的候选光源一起修正分别得到概率就行，不需要重新训练或微调。</p>
 <p>而引入$log(P(l))$,之前我们的公式表明，<strong>全局光源由光源功率和接收函数决定</strong>，这个时候就必然引入了摄像机关联。</p>
 <p>所以如果要多设备训练的话，就不引入这两个参数，这样虽<strong>然降低了灵活性，少了两个学习参数，但是现在可用的数据集变多了，大数据集弥补了</strong>。</p>
