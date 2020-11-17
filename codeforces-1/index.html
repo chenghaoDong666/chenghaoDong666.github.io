@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    303
+                    967
                 </div>
                 
 
@@ -676,10 +676,10 @@
 <p>注意查看变量取值范围,可能数超大，本题就得使用long long定义</p>
 <p>向上取整$ceil()$,向下取整$floor()$,四舍五入到最近整数$round()$,注意返回值是浮点数！</p>
 <p>c++API：<a target="_blank" rel="noopener" href="https://devdocs.io/cpp/">https://devdocs.io/cpp/</a></p>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
 int main(){
     long long int n,m,a;
-    scanf("%lld %lld %lld",&n,&m,&a);
+    scanf("%lld %lld %lld",&amp;n,&amp;m,&amp;a);
     long long int rows,cols;
     if((n%a)==0)
         rows=n/a;
@@ -704,24 +704,24 @@ int main(){
 <p>c语言字符串:  char word[nmax]; scanf(“%s”,word); strlen()</p>
 <p>必须要指明nmax，你就算是定义数字数组也要指明nmax呀，否则就得动态分配。</p>
 <p>c语言字符串教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tongye/p/10688941.html">https://www.cnblogs.com/tongye/p/10688941.html</a></p>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int main(){
     int n;
-    cin>>n;
+    cin&gt;&gt;n;
     string s;
-    for(int i=0;i<n;i++){
-        cin>>s;
-        if(s.size()>10)
-            cout<<s[0]<<s.size()-2<<s[s.size()-1]<<endl;
+    for(int i=0;i&lt;n;i++){
+        cin&gt;&gt;s;
+        if(s.size()&gt;10)
+            cout&lt;&lt;s[0]&lt;&lt;s.size()-2&lt;&lt;s[s.size()-1]&lt;&lt;endl;
         else
-            cout<<s<<endl;//注意换行
+            cout&lt;&lt;s&lt;&lt;endl;//注意换行
     }
     return 0;
 }</code></pre>
 <h2 id="118-A-String-Task-string"><a href="#118-A-String-Task-string" class="headerlink" title="118 A String Task-string"></a>118 A String Task-string</h2><p>字符串<strong>大小写转换</strong>：没有直接的转换函数，可以<strong>直接利用ascii码字符加减</strong></p>
 <p>对字符串变换，<strong>可以新设一个字符串，也可逐字符输出，是个黑盒子，它不管你怎么操作的，结果对了就行</strong></p>
-<pre class=" language-c++"><code class="language-c++"> if (str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='y')
+<pre><code class="c++"> if (str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='y')
  {
    str[i]=-1; //这里做一个假删除
  }
@@ -731,30 +731,30 @@ int main(){
    printf("%c",str[i]);
  }
 
-#include<bits/stdc++.h>
+#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int main(){
     string s;
-    cin>>s;
+    cin&gt;&gt;s;
     string ans="";
-    for(int i=0;i<s.size();i++){
-        if(s[i]>='A'&&s[i]<='Z')
+    for(int i=0;i&lt;s.size();i++){
+        if(s[i]&gt;='A'&amp;&amp;s[i]&lt;='Z')
             s[i]=s[i]-'A'+'a';
-        if(s[i]!='a'&&s[i]!='o'&&s[i]!='y'&&s[i]!='e'&&s[i]!='u'&&s[i]!='i'){
+        if(s[i]!='a'&amp;&amp;s[i]!='o'&amp;&amp;s[i]!='y'&amp;&amp;s[i]!='e'&amp;&amp;s[i]!='u'&amp;&amp;s[i]!='i'){
             ans=ans+'.'+s[i]; 
         }
     }
-    cout<<ans;
+    cout&lt;&lt;ans;
     return 0;
 }</code></pre>
 <h2 id="78A-Football"><a href="#78A-Football" class="headerlink" title="78A Football"></a>78A Football</h2><p>连续子串等连续问题，可以设一个变量或数组，每一次修改都在前一位的基础上修改</p>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int main(){
     string s;
-    cin>>s;
+    cin&gt;&gt;s;
     int a=0,b=0,flag=0;
-    for(int i=0;i<s.size();i++){
+    for(int i=0;i&lt;s.size();i++){
         if(s[i]=='0'){
             a++;
             b=0;
@@ -765,18 +765,18 @@ int main(){
         }
         if(a==7||b==7){
             flag=1;
-            cout<<"YES";
+            cout&lt;&lt;"YES";
             break; 
         }
     }
     if(flag==0)
-        cout<<"NO";
+        cout&lt;&lt;"NO";
     return 0;
 }</code></pre>
 <h2 id="230A-Dragons"><a href="#230A-Dragons" class="headerlink" title="230A Dragons-"></a>230A Dragons-</h2><p>c++中sort函数使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/junbaobei/p/10776066.html">https://www.cnblogs.com/junbaobei/p/10776066.html</a></p>
 <p>迭代器：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34777600/article/details/80427463">https://blog.csdn.net/qq_34777600/article/details/80427463</a></p>
 <p>sort小总结：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yulijuanxmu/article/details/80148417">https://blog.csdn.net/yulijuanxmu/article/details/80148417</a></p>
-<pre class=" language-c++"><code class="language-c++">#include<bits/stdc++.h>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 //typedef struct node{//这种使用typedef 也可以不用 不一定非要用链表 
 //    int x;
@@ -787,25 +787,25 @@ struct Dragon{
     int y;
 };//注意分号 
 bool cmp(Dragon a,Dragon b){
-    return a.x<b.x;//前面的小于后面的，排序也一致 
+    return a.x&lt;b.x;//前面的小于后面的，排序也一致 
 }
 int main(){
     int s,n;
-    cin>>s>>n;
+    cin&gt;&gt;s&gt;&gt;n;
     Dragon dragons[n];
-    for(int i=0;i<n;i++){
-        cin>>dragons[i].x>>dragons[i].y;
+    for(int i=0;i&lt;n;i++){
+        cin&gt;&gt;dragons[i].x&gt;&gt;dragons[i].y;
     }
     sort(dragons,dragons+n,cmp);
-    for(int i=0;i<n;i++){
-        if(s>dragons[i].x)
+    for(int i=0;i&lt;n;i++){
+        if(s&gt;dragons[i].x)
             s+=dragons[i].y;
         else{
-            cout<<"NO";//得到了想要的可以直接return 
+            cout&lt;&lt;"NO";//得到了想要的可以直接return 
             return 0;    
         }
     }
-    cout<<"YES";
+    cout&lt;&lt;"YES";
     return 0;
 }</code></pre>
 <h2 id="455A-Boredom-dp"><a href="#455A-Boredom-dp" class="headerlink" title="455A Boredom-dp"></a>455A Boredom-dp</h2><p>动态规划：从新手到专家:<a target="_blank" rel="noopener" href="http://hawstein.com/2013/03/26/dp-novice-to-advanced/">http://hawstein.com/2013/03/26/dp-novice-to-advanced/</a></p>
@@ -1674,7 +1674,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.9k</span>&nbsp;字
+                class="white-color">16.7k</span>&nbsp;字
             
             
             
