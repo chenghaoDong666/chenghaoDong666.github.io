@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    266
+                    254
                 </div>
                 
 
@@ -681,12 +681,12 @@
 <h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/numpy/numpy-ndarray-object.html">https://www.runoob.com/numpy/numpy-ndarray-object.html</a></p>
 <p>np.std()求标准差</p>
 <p>Python<code>list</code>只能与整数相乘，在这种情况下，将<code>list</code>重复的元素：</p>
-<pre><code class="python">&gt;&gt;&gt; [1,2,3] * 3
-[1, 2, 3, 1, 2, 3, 1, 2, 3]</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">3</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
 <p>如果要进行矢量运算，请<code>numpy.ndarray</code>改用：</p>
-<pre><code class="py">&gt;&gt;&gt; import numpy as np
-&gt;&gt;&gt; ar = np.array([1,2,3])
-&gt;&gt;&gt; ar * 3
+<pre class=" language-py"><code class="language-py">>>> import numpy as np
+>>> ar = np.array([1,2,3])
+>>> ar * 3
 array([3, 6, 9])</code></pre>
 <p>numpy广播机制：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60365398">https://zhuanlan.zhihu.com/p/60365398</a></p>
 <p>np.linspace()和np.arrange()一个是样本数量，一个步长</p>
@@ -696,8 +696,8 @@ array([3, 6, 9])</code></pre>
 <p>将dataframe一行转化为int，astype</p>
 <pre><code>top, right, bottom, left = row[0:].astype(int)</code></pre>
 <p>获取dataframe的行数和列数</p>
-<pre><code class="python">df.shape[0]//行数
-df.shape[1]//列数</code></pre>
+<pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">//</span>行数
+df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">//</span>列数</code></pre>
 <h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>易百教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/matplotlib">https://www.yiibai.com/matplotlib</a></p>
 <p>API：<a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.2/api/index.html">https://matplotlib.org/3.3.2/api/index.html</a></p>
 <p>假如目前只有一个figure1，你再绘图是在它上面不断覆盖的</p>

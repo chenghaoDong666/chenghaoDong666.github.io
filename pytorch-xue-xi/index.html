@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -719,28 +719,28 @@
 <p>下面是一个介绍，其中TensorDataset是将tensor包装成Dataset类</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zw__chen/article/details/82806900?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/zw__chen/article/details/82806900?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
 <p>下面这篇讲得很好：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27825451/article/details/96130126">https://blog.csdn.net/qq_27825451/article/details/96130126</a></p>
-<pre><code class="python">#Dataset的抽象父类
-class Dataset(object):
-    def __getitem__(self, index):#必须重写
-        raise NotImplementedError
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#Dataset的抽象父类</span>
+<span class="token keyword">class</span> <span class="token class-name">Dataset</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true">#必须重写</span>
+        <span class="token keyword">raise</span> NotImplementedError
 
-    def __len__(self):#必须重写
-        raise NotImplementedError
+    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true">#必须重写</span>
+        <span class="token keyword">raise</span> NotImplementedError
 
-    def __add__(self, other):
-        return ConcatDataset([self, other])
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> ConcatDataset<span class="token punctuation">(</span><span class="token punctuation">[</span>self<span class="token punctuation">,</span> other<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-class RandomDataset(Dataset):
+<span class="token keyword">class</span> <span class="token class-name">RandomDataset</span><span class="token punctuation">(</span>Dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-    def __init__(self, size, length):
-        self.len = length
-        self.data = torch.randn(length, size)#这个length就是batch的个数
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> size<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>len <span class="token operator">=</span> length
+        self<span class="token punctuation">.</span>data <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>length<span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#这个length就是batch的个数</span>
 
-    def __getitem__(self, index):
-        return self.data[index]
+    <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>data<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
 
-    def __len__(self):
-        return self.len</code></pre>
+    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>len</code></pre>
 <h4 id="torch-squeeze"><a href="#torch-squeeze" class="headerlink" title="torch.squeeze()"></a>torch.squeeze()</h4><p>For example, if input is of shape:$(A\cdot 1\cdot B \cdot 1\cdot C\cdot 1\cdot D)$ then the out tensor will be of shape:$(A\cdot  B \cdot  C\cdot  D)$ </p>
 <p>如果指定维度的话，那只对该维度去1</p>
 <p><strong>注意</strong>：返回的张量与输入张量共享存储空间，因此改变一个张量的内容将改变另一个张量的内容。</p>

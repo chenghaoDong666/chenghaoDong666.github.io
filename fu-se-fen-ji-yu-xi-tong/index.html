@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -830,71 +830,71 @@
 <h2 id="小实验"><a href="#小实验" class="headerlink" title="小实验"></a>小实验</h2><blockquote>
 <p>MATLAB Api：<a target="_blank" rel="noopener" href="https://www.mathworks.com/help/">https://www.mathworks.com/help/</a></p>
 </blockquote>
-<pre><code class="matlab">% shows example of illuminant estimation based on Grey-World, Shades of
-% Gray, max-RGB, and Grey-Edge algorithm
+<pre class=" language-matlab"><code class="language-matlab"><span class="token comment" spellcheck="true">% shows example of illuminant estimation based on Grey-World, Shades of</span>
+<span class="token comment" spellcheck="true">% Gray, max-RGB, and Grey-Edge algorithm</span>
 
-%example images
-input_im=double(imread('test_3.jpg'));
-figure(1);
-imshow(uint8(input_im));
-title('input image');
+<span class="token comment" spellcheck="true">%example images</span>
+input_im<span class="token operator">=</span><span class="token function">double</span><span class="token punctuation">(</span><span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">'test_3.jpg'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">figure</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">imshow</span><span class="token punctuation">(</span><span class="token function">uint8</span><span class="token punctuation">(</span>input_im<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'input image'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-% %Grey-World
-% [wR,wG,wB,out]=general_cc(input_im,0,1,0);
-% figure(2);
-% imshow(uint8(out));
-% title('Grey-World');
+<span class="token comment" spellcheck="true">% %Grey-World</span>
+<span class="token comment" spellcheck="true">% [wR,wG,wB,out]=general_cc(input_im,0,1,0);</span>
+<span class="token comment" spellcheck="true">% figure(2);</span>
+<span class="token comment" spellcheck="true">% imshow(uint8(out));</span>
+<span class="token comment" spellcheck="true">% title(</span><span class="token string">'Grey-World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-%max-RGB
-% [wR,wG,wB,out]=general_cc(input_im,0,-1,0);
-% figure(3);imshow(uint8(out));
-% title('max-RGB');
+<span class="token comment" spellcheck="true">%max-RGB</span>
+<span class="token comment" spellcheck="true">% [wR,wG,wB,out]=general_cc(input_im,0,-1,0);</span>
+<span class="token comment" spellcheck="true">% figure(3);imshow(uint8(out));</span>
+<span class="token comment" spellcheck="true">% title(</span><span class="token string">'max-RGB'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-% Shades of Grey
-mink_norm=5;    % any number between 1 and infinity
-[wR,wG,wB,out]=general_cc(input_im,0,mink_norm,0);
-figure(4);imshow(uint8(out));
-title('Shades of Grey');
+<span class="token comment" spellcheck="true">% Shades of Grey</span>
+mink_norm<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">% any number between 1 and infinity</span>
+<span class="token punctuation">[</span>wR<span class="token punctuation">,</span>wG<span class="token punctuation">,</span>wB<span class="token punctuation">,</span>out<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">general_cc</span><span class="token punctuation">(</span>input_im<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>mink_norm<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">figure</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">imshow</span><span class="token punctuation">(</span><span class="token function">uint8</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'Shades of Grey'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-% Grey-Edge
-% mink_norm=5;    % any number between 1 and infinity
-% sigma=2;        % sigma 
-% diff_order=1;   % differentiation order (1 or 2)
-% [wR,wG,wB,out]=general_cc(input_im,diff_order,mink_norm,sigma);
-% figure(5);imshow(uint8(out));
-% title('Grey-Edge');
+<span class="token comment" spellcheck="true">% Grey-Edge</span>
+<span class="token comment" spellcheck="true">% mink_norm=5;    % any number between 1 and infinity</span>
+<span class="token comment" spellcheck="true">% sigma=2;        % sigma </span>
+<span class="token comment" spellcheck="true">% diff_order=1;   % differentiation order (1 or 2)</span>
+<span class="token comment" spellcheck="true">% [wR,wG,wB,out]=general_cc(input_im,diff_order,mink_norm,sigma);</span>
+<span class="token comment" spellcheck="true">% figure(5);imshow(uint8(out));</span>
+<span class="token comment" spellcheck="true">% title(</span><span class="token string">'Grey-Edge'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-% 截取皮肤区域
-% out=out(375:480,185:290,:);
-% out=out(360:420,360:420,:);
-out=out(165:240,230:320,:);
-% 展示截取皮肤区域
-figure(3);
-imshow(uint8(out));
+<span class="token comment" spellcheck="true">% 截取皮肤区域</span>
+<span class="token comment" spellcheck="true">% out=out(375:480,185:290,:);</span>
+<span class="token comment" spellcheck="true">% out=out(360:420,360:420,:);</span>
+out<span class="token operator">=</span><span class="token function">out</span><span class="token punctuation">(</span><span class="token number">165</span><span class="token operator">:</span><span class="token number">240</span><span class="token punctuation">,</span><span class="token number">230</span><span class="token operator">:</span><span class="token number">320</span><span class="token punctuation">,</span><span class="token operator">:</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">% 展示截取皮肤区域</span>
+<span class="token function">figure</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">imshow</span><span class="token punctuation">(</span><span class="token function">uint8</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-% convert to lab
-labI = rgb2lab(uint8(out));
+<span class="token comment" spellcheck="true">% convert to lab</span>
+labI <span class="token operator">=</span> <span class="token function">rgb2lab</span><span class="token punctuation">(</span><span class="token function">uint8</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-%seperate l,a,b
-%matlab的下标从1开始
-l = labI(:,:,1);
-a = labI(:,:,2);
-b = labI(:,:,3);
+<span class="token comment" spellcheck="true">%seperate l,a,b</span>
+<span class="token comment" spellcheck="true">%matlab的下标从1开始</span>
+l <span class="token operator">=</span> <span class="token function">labI</span><span class="token punctuation">(</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+a <span class="token operator">=</span> <span class="token function">labI</span><span class="token punctuation">(</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+b <span class="token operator">=</span> <span class="token function">labI</span><span class="token punctuation">(</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-% % 显示各维度直方图
-% figure(4);
-% hist(l);
-% figure(5);
-% hist(a);
-% figure(6);
-% hist(b);
+<span class="token comment" spellcheck="true">% % 显示各维度直方图</span>
+<span class="token comment" spellcheck="true">% figure(4);</span>
+<span class="token comment" spellcheck="true">% hist(l);</span>
+<span class="token comment" spellcheck="true">% figure(5);</span>
+<span class="token comment" spellcheck="true">% hist(a);</span>
+<span class="token comment" spellcheck="true">% figure(6);</span>
+<span class="token comment" spellcheck="true">% hist(b);</span>
 
-%网格曲面图
-figure(7);
-subplot(2,1,1);
-meshc(a,b,l);
-subplot(2,1,2);
-meshz(a,b,l);</code></pre>
+<span class="token comment" spellcheck="true">%网格曲面图</span>
+<span class="token function">figure</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">subplot</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">meshc</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">subplot</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">meshz</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <img src="./medias/loading.gif" data-original="/fu-se-fen-ji-yu-xi-tong/result_0.png" alt="result_0" style="zoom: 50%;">
 
 <img src="./medias/loading.gif" data-original="/fu-se-fen-ji-yu-xi-tong/result_1.png" alt="result_1" style="zoom: 50%;">
