@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Typora使用问题, python,cv,codeforces,leetcode,image processing,软件使用">
+    <meta name="keywords" content="人像肤色区域检测, python,cv,codeforces,leetcode,image processing,软件使用">
     <meta name="description" content="计算机视觉与图像处理，以及其他相关的技术博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Typora使用问题 | 亦爱Zxy</title>
+    <title>人像肤色区域检测 | 亦爱Zxy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -498,12 +498,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Typora使用问题</h1>
+                    <h1 class="description center-align post-title">人像肤色区域检测</h1>
                 </div>
             </div>
         </div>
@@ -620,8 +620,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/typora/">
-                                <span class="chip bg-color">typora</span>
+                            <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
+                                <span class="chip bg-color">肤色分级</span>
                             </a>
                         
                     </div>
@@ -632,8 +632,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="post-category">
-                                软件使用
+                            <a href="/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/" class="post-category">
+                                肤色分级
                             </a>
                         
                     </div>
@@ -645,7 +645,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-13
+                    2020-11-17
                 </div>
                 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    204
+                    213
                 </div>
                 
 
@@ -671,17 +671,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="无序列表如何退出？"><a href="#无序列表如何退出？" class="headerlink" title="无序列表如何退出？"></a>无序列表如何退出？</h2><p>左上角的选项很迷，可以使用源代码模式退出，还可以按一下退格两下enter退出</p>
-<h2 id="公式块编辑常见命令？"><a href="#公式块编辑常见命令？" class="headerlink" title="公式块编辑常见命令？"></a>公式块编辑常见命令？</h2><blockquote>
-<p>版权声明：本文为博主原创文章，遵循<a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p>
-<p>本文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/mingzhuo_126/article/details/82722455">https://blog.csdn.net/mingzhuo_126/article/details/82722455</a> </p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013914471/article/details/82973812">https://blog.csdn.net/u013914471/article/details/82973812</a></p>
-<p>\in 属于 \notin 不属于 \换行  \{ \} 打大括号 \sim打波浪线</p>
-<h2 id="emoji表情md编写？"><a href="#emoji表情md编写？" class="headerlink" title="emoji表情md编写？"></a>emoji表情md编写？</h2><p>参考大神博客：<a target="_blank" rel="noopener" href="https://sunhwee.com/posts/a927e90e.html">https://sunhwee.com/posts/a927e90e.html</a></p>
-<h3 id="Markdown设置？"><a href="#Markdown设置？" class="headerlink" title="Markdown设置？"></a>Markdown设置？</h3><p>可以在偏好设置的Markdown处设置内联公示、代码行号、公式序号</p>
-<h2 id="括号问题"><a href="#括号问题" class="headerlink" title="括号问题"></a>括号问题</h2><p>只有中文括号可以显示在博客中</p>
-<h2 id="莫名其妙的文件被另一个文件覆盖了？"><a href="#莫名其妙的文件被另一个文件覆盖了？" class="headerlink" title="莫名其妙的文件被另一个文件覆盖了？"></a>莫名其妙的文件被另一个文件覆盖了？</h2>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在进行之前先把学姐的汇报弄明白</p>
+<p>首先是raw图像格式：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158088019">https://zhuanlan.zhihu.com/p/158088019</a></p>
+<p>ISP:<a target="_blank" rel="noopener" href="https://ridiqulous.com/process-raw-data-using-matlab-and-dcraw/#brightnesscorrection">https://ridiqulous.com/process-raw-data-using-matlab-and-dcraw/#brightnesscorrection</a></p>
+<p>ISP pipeline：</p>
+<p>线性处理-&gt;处理黑电平和饱和像素-&gt;白平衡-&gt;Demosaicking去马赛克/色彩插值-&gt;色彩空间转换 传感器光谱空间到CIEXYZ到sRGB-&gt;亮度矫正和伽马矫正</p>
+<p>思路：</p>
+<p>肤色区域检测是肤色定级的前提，只有正确的将图像中人体的肤色区域检测出来，才能探究人体皮肤的肤色感光差异以及分布规律，从而选择更合适的颜色空间并做出更好的划分。</p>
+<p>本次汇报主要调研了现有的人体肤色区域检测的一些工作。</p>
+<h2 id="Human-Skin-Detection-Using-RGB-HSV-and-YCbCr-Color-Models"><a href="#Human-Skin-Detection-Using-RGB-HSV-and-YCbCr-Color-Models" class="headerlink" title="Human Skin Detection Using RGB, HSV and YCbCr Color Models"></a>Human Skin Detection Using RGB, HSV and YCbCr Color Models</h2>
             </div>
             <hr/>
 
@@ -706,7 +704,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dchlovestudy.xyz/typora-shi-yong-wen-ti/">http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</a>
+                    <a href="http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/">http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -744,8 +742,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/typora/">
-                                    <span class="chip bg-color">typora</span>
+                                <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
+                                    <span class="chip bg-color">肤色分级</span>
                                 </a>
                             
                         </div>
@@ -916,7 +914,7 @@
         repo: 'chenghaoDong666.github.io',
         owner: 'chenghaoDong666',
         admin: ["chenghaoDong666"],
-        id: '2020-10-13T09-45-52',
+        id: '2020-11-17T19-38-07',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1203,46 +1201,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/">
+                <a href="/ren-xiang-fu-se-jian-ce/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="文献图书资源搜索与使用管理">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/17.jpg" class="responsive-img" alt="人像肤色区域检测">
                         
-                        <span class="card-title">文献图书资源搜索与使用管理</span>
+                        <span class="card-title">人像肤色区域检测</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            文献管理
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    软件使用
+                            <a href="/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/" class="post-category">
+                                    肤色分级
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Mendeley/">
-                        <span class="chip bg-color">Mendeley</span>
+                    <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
+                        <span class="chip bg-color">肤色分级</span>
                     </a>
                     
                 </div>
@@ -1256,31 +1256,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/yan-se-heng-chang-xing-zhi-mhcc/">
+                <a href="/codeforces-1/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/30.jpg" class="responsive-img" alt="颜色恒常性之&lt;&lt;A Multi-Hypothesis Approach to Color Constancy&gt;&gt;">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/27.jpg" class="responsive-img" alt="oj-1">
                         
-                        <span class="card-title">颜色恒常性之&lt;&lt;A Multi-Hypothesis Approach to Color Constancy&gt;&gt;</span>
+                        <span class="card-title">oj-1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            华为2020CVPR
+                            菜鸡刷题系列
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Color-Constancy/" class="post-category">
-                                    Color Constancy
+                            <a href="/categories/oj/" class="post-category">
+                                    oj
                                 </a>
                             
                             
@@ -1290,12 +1290,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CC-AWB/">
-                        <span class="chip bg-color">CC/AWB</span>
-                    </a>
-                    
-                    <a href="/tags/Bayes/">
-                        <span class="chip bg-color">Bayes</span>
+                    <a href="/tags/codeforces/">
+                        <span class="chip bg-color">codeforces</span>
                     </a>
                     
                 </div>

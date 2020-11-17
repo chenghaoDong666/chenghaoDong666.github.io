@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.7k
                 </div>
                 
 
@@ -793,7 +793,7 @@
 <p><strong>l2-normalised？</strong></p>
 <p><a target="_blank" rel="noopener" href="https://blog.cweihang.io/ml/trick/l2_normalize">https://blog.cweihang.io/ml/trick/l2_normalize</a></p>
 <p>？？？</p>
-<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>Gehler-Shi dataset存在非一致真实值的情况 2个摄像机，分别为Canon 1D和Canon 5D 室内室外组合</p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p><strong>Gehler-Shi</strong> dataset存在非一致真实值的情况 2个摄像机，分别为Canon 1D和Canon 5D 室内室外组合 佳能RAW格式保存，并提供了tiff格式，还提供了颜色检查板的坐标 因为自带程序包含非线性处理，所以使用Dcraw转换为tiff格式，并且只对RGGB的两个G取了平均，没有进行去马赛克，12位</p>
 <p>NUS 8个摄像机</p>
 <p>Cube+  Canon550D 主要室外</p>
 <p>NUS Shi均为3折 用之前工作提供的划分 Cube+没提供，所以用所有的图像训练，用比赛数据集测试，还跟人家的比赛结果比了比</p>
@@ -833,6 +833,7 @@
 <p>  1：<strong>固定相机拍摄的固定场景物体颜色的改变只能由改变光照实现</strong></p>
 <p>  2：<strong>固有物体反射率图像可以通过过滤光照颜色来实现</strong></p>
 <p>过滤光照颜色即除$l_k$,即$r_k=\frac{y_k}{l_k}$,只要获得$r_k$再乘以标准光照，就能获得白平衡图像。所以我们需要做的就是<strong>估计光照</strong>$l_k$</p>
+<p>曾经困扰过我的是$l_k=E\cdot C_k$，<strong>可以变换乘法的位置吗？</strong>后来明白，<strong>我们实际进行颜色还原时，是对每一个像素点进行处理，那么每一个E和C都是一个标量！所以自然可以变换位置</strong></p>
 <p>之前的<strong>回归方法</strong>，是利用网络直接学习$l_k$,这样提供一个点估计，但是<strong>颜色还原问题本身具有不适定性</strong>，可能有多个$l_k$符合条件,每个$l_k$的概率不同。</p>
 <p>所以作者想的是对于图像数据集利用K_means对光源进行聚类，获得的聚类中心点就是候选的光源，也就是多个可能性，解决了上面回归方法的单个点估计的考量。具体做法见下图:</p>
 <p><img src="./medias/loading.gif" data-original="/yan-se-heng-chang-xing-zhi-mhcc/image-20201029101605001.png" alt="网络架构"><br>$$<br>P(l|Y)=\frac{P(Y|l)P(l)}{P(Y)}<br>$$</p>
@@ -1734,7 +1735,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">16.7k</span>&nbsp;字
+                class="white-color">17.3k</span>&nbsp;字
             
             
             
