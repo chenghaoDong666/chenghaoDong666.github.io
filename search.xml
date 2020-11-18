@@ -181,11 +181,11 @@
     
     
     <entry>
-      <title>oj-tree</title>
-      <link href="leetcode-tree/"/>
-      <url>leetcode-tree/</url>
+      <title>dp专题</title>
+      <link href="dp-zhuan-ti/"/>
+      <url>dp-zhuan-ti/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="九章教程dp"><a href="#九章教程dp" class="headerlink" title="九章教程dp"></a>九章教程dp</h2><p><a href="https://www.bilibili.com/video/BV1xb411e7ww">https://www.bilibili.com/video/BV1xb411e7ww</a></p><p>可以解决三种类型的问题：1计数 2最值 3存在性</p><p>解动态规划需要开一个数组，一维、二维、三维，它代表什么</p><p>两个意识：<strong>最后一步</strong>  <strong>子问题</strong></p><p><img src="/dp-zhuan-ti/image-20201118000510306.png" alt="状态"></p><p><img src="/dp-zhuan-ti/image-20201118000813791.png" alt="转移"></p><h3 id="与递归的区别？"><a href="#与递归的区别？" class="headerlink" title="与递归的区别？"></a>与递归的区别？</h3>]]></content>
       
       
       <categories>
@@ -197,7 +197,7 @@
       
         <tags>
             
-            <tag> tree </tag>
+            <tag> dp </tag>
             
         </tags>
       
