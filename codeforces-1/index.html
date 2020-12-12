@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.7k
                 </div>
                 
 
@@ -845,6 +845,42 @@ bool <span class="token function">cmp</span><span class="token punctuation">(</s
         <span class="token punctuation">}</span>
         cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>     
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="1440B-Sum-of-Medians-greedy"><a href="#1440B-Sum-of-Medians-greedy" class="headerlink" title="1440B Sum of Medians-greedy"></a>1440B Sum of Medians-greedy</h2><p>贪心算法，又名贪婪法，是寻找最优解问题的常用方法，这种方法模式一般将求解过程分成若干个步骤，但每个步骤都应用贪心原则，<strong>选取当前状态下最好/最优的选择（局部最有利的选择）</strong>，并以此希望最后堆叠出的结果也是最好/最优的解。{看着这个名字，贪心，贪婪这两字的内在含义最为关键。这就好像一个贪婪的人，他<strong>事事都想要眼前看到最好的那个，看不到长远的东西，也不为最终的结果和将来着想，贪图眼前局部的利益最大化，有点走一步看一步的感觉</strong>。</p>
+<p>对于本题，认真读还是人家的教程讲得好！</p>
+<p><img src="./medias/loading.gif" data-original="/codeforces-1/image-20201119000826288.png" alt="教程"></p>
+<p><strong>主要是怎么证明他就是最值，我们想象有k个选定的中值，只要每个数前面还有$ceil(n/2)-1$个元素多于他们，那么他们就可以一直往前移动，只要他们往前移动，那么就是非减的。</strong></p>
+<p>本题注意<strong>ans要用long long int存储</strong>，因为正常的int只有$-2^{31}\sim 2^{31}-1$,所以每个数最大是$10^9$,最多有$2\cdot 10^5$个数，显然是超了，必须用long long int，int为<strong>4字节</strong>，<strong>long long int为8字节</strong></p>
+<p><strong>原码反码补码</strong>：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013760665/article/details/98520702">https://blog.csdn.net/u013760665/article/details/98520702</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/afsvsv/article/details/94553228">https://blog.csdn.net/afsvsv/article/details/94553228</a></p>
+<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+using namespace std<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> maxn<span class="token operator">=</span><span class="token number">200005</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//数组稍微开大一点就崩溃了，不知道咋回事</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//freopen("1.txt","r",stdin);</span>
+    <span class="token keyword">int</span> t<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>t<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span>k<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cin<span class="token operator">>></span>n<span class="token operator">>></span>k<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> a<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token operator">*</span>k<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//可以设立一个更大的数组，然后数组从1开始</span>
+            cin<span class="token operator">>></span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//从1开始对于本题思维逻辑更清晰 </span>
+        <span class="token punctuation">}</span> 
+        <span class="token keyword">int</span> median<span class="token operator">=</span><span class="token function">ceil</span><span class="token punctuation">(</span>n<span class="token operator">/</span><span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//ceil对于浮点数</span>
+        <span class="token keyword">int</span> l1<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//两个指针不一定就是真的指针，只是两个int值用来标定位置</span>
+        <span class="token keyword">int</span> l2<span class="token operator">=</span>n<span class="token operator">*</span>k<span class="token punctuation">;</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token keyword">int</span> ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>l1<span class="token operator">&lt;=</span>l2<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//两个指针碰头说明找完了</span>
+            l2<span class="token operator">-</span><span class="token operator">=</span>n<span class="token operator">-</span>median<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//擦去不是说真的把数组删除了，我们之后不看他他对于我们来看就跟删去一样！</span>
+            ans<span class="token operator">+</span><span class="token operator">=</span>a<span class="token punctuation">[</span>l2<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            l2<span class="token operator">-</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+            l1<span class="token operator">+</span><span class="token operator">=</span>median<span class="token number">-1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 
@@ -1708,7 +1744,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.4k</span>&nbsp;字
+                class="white-color">28.3k</span>&nbsp;字
             
             
             

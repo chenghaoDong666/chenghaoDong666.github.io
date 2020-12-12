@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    555
+                    678
                 </div>
                 
 
@@ -716,6 +716,15 @@ export CUDA_HOME=/usr/local/cuda</code></pre>
 <p>ps -aux | grep jupyter 查找jupyter命令</p>
 <p>教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/donaldsy/article/details/96350061">https://blog.csdn.net/donaldsy/article/details/96350061</a></p>
 <h4 id="opencv安装"><a href="#opencv安装" class="headerlink" title="opencv安装"></a>opencv安装</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/thewaytotheway/p/12847260.html">https://www.cnblogs.com/thewaytotheway/p/12847260.html</a></p>
+<h4 id="tensorflow安装"><a href="#tensorflow安装" class="headerlink" title="tensorflow安装"></a>tensorflow安装</h4><p>pip install tensorflow安装的是CPU版本</p>
+<p>pip install tensorflow-gpu 安装的是gpu版本</p>
+<p><a href="%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E5%A4%A7%E4%BD%ACtql">https://blog.csdn.net/china_xin1/article/details/109824882</a> 显卡3090只支持CUDA11</p>
+<p>所以要 pip install tf-nightly-gpu   尝新版</p>
+<h4 id="查看服务器使用情况"><a href="#查看服务器使用情况" class="headerlink" title="查看服务器使用情况"></a>查看服务器使用情况</h4><p>查看GPU使用情况   watch -n 5 nvidia-smi </p>
+<p>nvcc -V查看当前cuda版本</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AlbenXie/article/details/72885951">查看CPU使用情况</a>       top -bn 1 -i -c</p>
+<h4 id="bashrc"><a href="#bashrc" class="headerlink" title=".bashrc"></a>.bashrc</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/midworld/p/11006967.html">https://www.cnblogs.com/midworld/p/11006967.html</a>  保存个性化设置，环境变量等    </p>
+<h4 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h4><p><a target="_blank" rel="noopener" href="https://www.linuxprobe.com/linux-jar.html">https://www.linuxprobe.com/linux-jar.html</a>   find -name 文件</p>
 
             </div>
             <hr/>
@@ -1570,7 +1579,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.4k</span>&nbsp;字
+                class="white-color">28.3k</span>&nbsp;字
             
             
             

@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    100
+                    673
                 </div>
                 
 
@@ -673,9 +673,57 @@
             <div id="articleContent">
                 <p>教程：<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/matlab/">https://www.w3cschool.cn/matlab/</a></p>
 <p>MATLAB Api：<a target="_blank" rel="noopener" href="https://www.mathworks.com/help/">https://www.mathworks.com/help/</a></p>
-<h4 id="双百分号："><a href="#双百分号：" class="headerlink" title="双百分号："></a>双百分号：</h4><p>%%在matlab代码中的作用是将代码分块，上下两个%%之间的部分作为一块，在运行代码的时候可以分块运行，查看每一块代码的运行情况。常用于调试程序。</p>
+<h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p><strong>matlab数组下标从1开始</strong></p>
+<pre class=" language-matlab"><code class="language-matlab"><span class="token function">class</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">%显示数据类型</span>
+<span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">%查看各矩阵维度</span>
+<span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">%返回最大数组维度的长度</span>
+X <span class="token operator">=</span> <span class="token function">zeros</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+L <span class="token operator">=</span> <span class="token function">length</span><span class="token punctuation">(</span>X<span class="token punctuation">)</span><span class="token comment" spellcheck="true">%输出9</span>
+<span class="token comment" spellcheck="true">%异常检测</span>
+<span class="token keyword">try</span>
+    <span class="token punctuation">[</span>C<span class="token punctuation">,</span>scores<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">semanticseg</span><span class="token punctuation">(</span>I<span class="token punctuation">,</span>net<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">catch</span>
+    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true">%循环</span>
+<span class="token keyword">for</span> k <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">:</span><span class="token function">length</span><span class="token punctuation">(</span>imagepath<span class="token punctuation">)</span>
+    imagepath<span class="token punctuation">{</span>k<span class="token punctuation">}</span><span class="token operator">=</span><span class="token punctuation">[</span>imagepath<span class="token punctuation">{</span>k<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">'.jpg'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">end</span></code></pre>
+<p>single 单精度数值数据  double 双精度数值数据 </p>
+<p><strong>Cell Array 元胞数组</strong></p>
+<pre class=" language-matlab"><code class="language-matlab">C <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">,</span> <span class="token string">'three'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">%创建元胞数组</span>
+     <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+emptyCell<span class="token operator">=</span><span class="token function">cell</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">%cell函数创建元胞数组</span>
+upperLeft<span class="token operator">=</span><span class="token function">C</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">%圆括号索引</span>
+imagepath<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token operator">=</span><span class="token string">'45'</span><span class="token comment" spellcheck="true">%这个只能大括号，圆括号就是类型赋值有问题</span>
+</code></pre>
+<p><strong>categorical 字符数组</strong></p>
+<p>从字符矢量创建分类数组</p>
+<pre class=" language-matlab"><code class="language-matlab">A <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'r'</span> <span class="token string">'b'</span> <span class="token string">'g'</span><span class="token punctuation">;</span> <span class="token string">'g'</span> <span class="token string">'r'</span> <span class="token string">'b'</span><span class="token punctuation">;</span> <span class="token string">'b'</span> <span class="token string">'r'</span> <span class="token string">'g'</span><span class="token punctuation">}</span>
+B <span class="token operator">=</span> <span class="token function">categorical</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token comment" spellcheck="true">%创建分类数组</span>
+<span class="token function">categories</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span><span class="token comment" spellcheck="true">%显示B的类别</span>
+<span class="token function">class</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span><span class="token comment" spellcheck="true">%显示B的数据类型   就是‘categorical’</span></code></pre>
+<h4 id="文件和文件夹"><a href="#文件和文件夹" class="headerlink" title="文件和文件夹"></a>文件和文件夹</h4><p><code>fullfile(filepart1,...,filepartN)</code>从各个部分构建完整文件名 有点类似os.path.join 还会根据平台改变文件分隔符，创建多个文件路径的话会返回元胞数组</p>
+<pre class=" language-matlab"><code class="language-matlab">f <span class="token operator">=</span> <span class="token function">fullfile</span><span class="token punctuation">(</span><span class="token string">'c:\'</span><span class="token punctuation">,</span><span class="token string">'myfiles'</span><span class="token punctuation">,</span><span class="token string">'matlab'</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">'myfile1.m'</span><span class="token punctuation">;</span><span class="token string">'myfile2.m'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span>
+  <span class="token number">2</span>×<span class="token number">1</span> cell array
+    <span class="token string">'c:\myfiles\matlab\myfile1.m'</span>
+    <span class="token string">'c:\myfiles\matlab\myfile2.m'</span></code></pre>
+<p><code>textread</code></p>
+<h4 id="百分号"><a href="#百分号" class="headerlink" title="百分号"></a>百分号</h4><p>双百分号%%在matlab代码中的作用是将代码分块，上下两个%%之间的部分作为一块，在运行代码的时候可以分块运行，查看每一块代码的运行情况。常用于调试程序。</p>
+<p>单百分号%是注释   %{   }%是多行注释 注释快捷键CTRL+R 取消CTRL+T</p>
+<h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><p><code>imread()</code>读取图像</p>
+<p>figure创建一个画板 <code>imshow()</code>展示图像</p>
+<p><strong>imageDatastore</strong> </p>
+<p>如果一个图像文件集合中的每个图像可以单独放入内存，但整个集合不一定能放入内存，则可以使用 <code>ImageDatastore</code> 对象来管理。您可以使用 <code>imageDatastore</code> 函数创建 <code>ImageDatastore</code> 对象，指定其属性，然后使用对象函数导入和处理数据。</p>
+<p><code>imds = imageDatastore(location)</code>根据 <code>location</code> 指定的图像数据集合创建一个数据存储 </p>
 <h4 id="深度学习入门之旅："><a href="#深度学习入门之旅：" class="headerlink" title="深度学习入门之旅："></a>深度学习入门之旅：</h4><p><a target="_blank" rel="noopener" href="https://www.pianshen.com/article/71481644395/">https://www.pianshen.com/article/71481644395/</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43687366/article/details/102557729">https://blog.csdn.net/weixin_43687366/article/details/102557729</a></p>
+<h4 id="SeriesNetwork"><a href="#SeriesNetwork" class="headerlink" title="SeriesNetwork"></a>SeriesNetwork</h4><p>串联网络是一种用于深度学习的神经网络，层次化排列。它有一个单一的输入层和一个单一的输出层</p>
+<h4 id="DAGNetwork"><a href="#DAGNetwork" class="headerlink" title="DAGNetwork"></a>DAGNetwork</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43687366/article/details/102557729">DAG入门之旅</a></p>
+<p>DAG网络是用于深度学习的神经网络，其中的层为有向无环图。各层有来自多个层的输入和到多个层的输出。DAGNetwork对象具有单个输入层和单个输出层。</p>
+<p>lgraph.Connections 展示层的连接</p>
+<p>lgraph.Layers 展示层</p>
+<p>figure  plot(lgraph)把网络图形画出来</p>
 
             </div>
             <hr/>
@@ -1530,7 +1578,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.4k</span>&nbsp;字
+                class="white-color">28.3k</span>&nbsp;字
             
             
             

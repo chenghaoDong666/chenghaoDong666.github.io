@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    213
+                    4.5k
                 </div>
                 
 
@@ -671,15 +671,217 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在进行之前先把学姐的汇报弄明白</p>
-<p>首先是raw图像格式：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158088019">https://zhuanlan.zhihu.com/p/158088019</a></p>
-<p>ISP:<a target="_blank" rel="noopener" href="https://ridiqulous.com/process-raw-data-using-matlab-and-dcraw/#brightnesscorrection">https://ridiqulous.com/process-raw-data-using-matlab-and-dcraw/#brightnesscorrection</a></p>
-<p>ISP pipeline：</p>
-<p>线性处理-&gt;处理黑电平和饱和像素-&gt;白平衡-&gt;Demosaicking去马赛克/色彩插值-&gt;色彩空间转换 传感器光谱空间到CIEXYZ到sRGB-&gt;亮度矫正和伽马矫正</p>
-<p>思路：</p>
-<p>肤色区域检测是肤色定级的前提，只有正确的将图像中人体的肤色区域检测出来，才能探究人体皮肤的肤色感光差异以及分布规律，从而选择更合适的颜色空间并做出更好的划分。</p>
-<p>本次汇报主要调研了现有的人体肤色区域检测的一些工作。</p>
-<h2 id="Human-Skin-Detection-Using-RGB-HSV-and-YCbCr-Color-Models"><a href="#Human-Skin-Detection-Using-RGB-HSV-and-YCbCr-Color-Models" class="headerlink" title="Human Skin Detection Using RGB, HSV and YCbCr Color Models"></a>Human Skin Detection Using RGB, HSV and YCbCr Color Models</h2>
+                <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>肤色区域检测是肤色定级的前提，只有正确的将图像中人体的肤色区域检测出来，才能探究人体皮肤的肤色感光差异以及分布规律，从而选择更合适的颜色空间并做出更好的划分。</p>
+<p>皮肤检测任务方法类别？</p>
+<p>指标较高的方法和模型？</p>
+<p>肤色定级的不同颜色空间为啥如此定义研究的更深一点？–之后</p>
+<p>学习阶段：现有的算法有哪些可以不全面 ？   可以分为几大类？    看综述怎样分类的？ 指标结果贴出来 </p>
+<p>自己试验：一两个几个重要的算法复现了  前沿的？都没有的话复现最先进  拿数据集跑跑   </p>
+<h3 id="Human-Skin-Detection-Using-RGB-HSV-and-YCbCr-Color-Models"><a href="#Human-Skin-Detection-Using-RGB-HSV-and-YCbCr-Color-Models" class="headerlink" title="Human Skin Detection Using RGB, HSV and YCbCr Color Models"></a>Human Skin Detection Using RGB, HSV and YCbCr Color Models</h3><h4 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h4><p>2017年 引用次数102 会议：ICCASP 怎么感觉查不到这个会议？</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>皮肤颜色具有对方向和大小不变性和处理速度快等特点，常用于人体皮肤检测中。提出了一种新的人体皮肤检测算法。识别皮肤像素的三个主要参数是RGB(红、绿、蓝)、HSV(色调、饱和度、值)和YCbCr(亮度、色度)颜色模型。不仅考虑了三种颜色参数的单独范围，而且考虑了交流计数的组合范围，从而提高了识别给定图像皮肤区域的精度。</p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>基于阈值的算法，能够处理不同光照条件下的图像，未来应用可能在脸部、手势识别、皮肤病检测等</p>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>作为预处理步骤，识别关键是皮肤颜色。其他因素如光照条件也会影响结果，所以常常与纹理、边缘特征等线索相结合。</p>
+<p>检测方式是判断单个像素是否位于我们设定的颜色范围，本文是结合RGB、HSV和YCbCr三个颜色空间设定阈值。</p>
+<h4 id="Literature-Review"><a href="#Literature-Review" class="headerlink" title="Literature Review"></a>Literature Review</h4><p>皮肤检测技术可以大致分为<strong>基于像素的技术</strong>和<strong>基于区域的技术</strong>。<strong>pixel-based</strong> <strong>region-based</strong></p>
+<p>在基于像素的皮肤检测中，每个像素根据一定的条件分别被分为皮肤像素和非皮肤像素。基于颜色值的皮肤检测是基于像素的。</p>
+<p>基于区域的皮肤检测技术考虑<strong>像素点的空间关系</strong>.初始皮肤区域不断判断周围皮肤的属性来增大。</p>
+<h4 id="Color-Spaces"><a href="#Color-Spaces" class="headerlink" title="Color Spaces"></a>Color Spaces</h4><p><strong>基于RGB</strong>：RGB,normalized RGB</p>
+<p>规范化RGB就是一个normalized过程$e.g. r=\frac{R}{R+G+B}$</p>
+<p><strong>基于色调Hue-based</strong>：HSI,HSV,HSL</p>
+<p><strong>基于亮度Luminance-based</strong>:YCbCr,YIQ,YUV</p>
+<p>亮度信息存储为单个分量(Y)，而色度信息存储为两个色差分量(Cb和Cr)。Cb表示蓝色分量与参考值之差。Cr表示红色分量与参考值的差值。</p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201119112418920.png" alt="RGB->YCbCr"></p>
+<h4 id="Proposed-Skin-Detection-Algorithm"><a href="#Proposed-Skin-Detection-Algorithm" class="headerlink" title="Proposed Skin Detection Algorithm"></a>Proposed Skin Detection Algorithm</h4><p>ARGB color model:<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/RGBA_color_model">https://en.wikipedia.org/wiki/RGBA_color_model</a></p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201119145342738.png" alt="ARGB32位"></p>
+<p>利用右移操作和与0xff按位与，得到每个通道值，然后根据下图的阈值判断：</p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201119145454111.png" alt="阈值"></p>
+<p>这个阈值如何获得的？</p>
+<h4 id="Experiments-Resuts"><a href="#Experiments-Resuts" class="headerlink" title="Experiments Resuts"></a>Experiments Resuts</h4><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201119145605005.png" alt="实验结果" style="zoom:80%;">
+
+<img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201119145623528.png" alt="精确率和准确率" style="zoom:80%;">
+
+<p>还有一点就不贴图了，即这三个颜色空间所获得的结果是差不多的。</p>
+<h3 id="Combining-Convolutional-and-Recurrent-Neural-Networks-for-Human-Skin-Detection"><a href="#Combining-Convolutional-and-Recurrent-Neural-Networks-for-Human-Skin-Detection" class="headerlink" title="Combining Convolutional and Recurrent Neural Networks for Human Skin Detection"></a>Combining Convolutional and Recurrent Neural Networks for Human Skin Detection</h3><h4 id="Info-1"><a href="#Info-1" class="headerlink" title="Info"></a>Info</h4><p>年份：2017  </p>
+<p>引用次数：72</p>
+<p>期刊：IEEE SIGNAL PROCESSING LETTERS  JCR分区Q2</p>
+<h4 id="Abstract-1"><a href="#Abstract-1" class="headerlink" title="Abstract"></a>Abstract</h4><p>高效的传统手工设计的肤色检测算法需要领域专家的广泛工作</p>
+<p>CNN在像素级标记任务中取得了巨大的成功。CNN的架构不足以建模像素与其邻居之间的关系。引进RNN。FCN层捕获一般的局部特征，RNN层建模图像中的语义上下文依赖。在COMPAO和ECU皮肤数据集上验证了方法的有效性，其中RNN层增强了复杂背景下皮肤检测的识别能力。</p>
+<h4 id="Conclusion-1"><a href="#Conclusion-1" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>利用RNN层对图像像素间的语义空间依赖进行建模。</p>
+<h4 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h4><p>在许多常用的颜色空间中，皮肤像素和非皮肤像素之间有明显的重叠。例如，背景中的许多物体，如墙壁、木材和布料，可能与不同类型的人类皮肤有着相似的颜色。在不考虑相邻像素的情况下，很难确定单个像素是皮肤还是非皮肤。此外，皮肤检测的性能还受到多种其他因素的影响(光照不均匀、相机特性、受试者种族、年龄、性别等)。<br>最近的研究集中在：</p>
+<p>不同的颜色空间(如RGB [9], YCbCr [10], CIE-XYZ [11], HSV[12],和SKN[13])</p>
+<p>特征提取(如颜色[14],纹理[15],和空间分布[16])</p>
+<p>分类方法(贝叶斯分类器[9],高斯混合模型[17],支持向量机[18],神经网络[19],随机森林[20]等等)。</p>
+<p>基于cnn的架构不擅长建模像素和它们的邻居之间的关系。最近，Zheng等人[27]在CNN的最后一层引入了<strong>条件随机场</strong>来细化粗略的预测。</p>
+<h4 id="Problem-Statement-amp-Method"><a href="#Problem-Statement-amp-Method" class="headerlink" title="Problem Statement &amp; Method"></a>Problem Statement &amp; Method</h4><h4 id="Experiments-and-Analysis"><a href="#Experiments-and-Analysis" class="headerlink" title="Experiments and Analysis"></a>Experiments and Analysis</h4><p>Matlab环境  什么颜色空间仍然是开放问题，但是有人证明性能在某种程度上是独立于颜色空间的</p>
+<p><strong>双线性插值？</strong></p>
+<p>应用：</p>
+<ol>
+<li>对数据中的缺失进行合理补偿 </li>
+<li>对数据进行放大或缩小</li>
+<li>其他</li>
+</ol>
+<p>通俗易懂啊！<a target="_blank" rel="noopener" href="https://www.cnblogs.com/linkr/p/3630902.html">https://www.cnblogs.com/linkr/p/3630902.html</a></p>
+<p>图像插值的举例说明：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yssongest/p/5303151.html">https://www.cnblogs.com/yssongest/p/5303151.html</a></p>
+<p>单线性插值：单变量只有一个x，对y进行插值，线性插值原理是两个点可以确定一条直线，又可以根据x确定y<br>$$<br>\frac{y-y_0}{x-x_0}=\frac{y_1-y_0}{x_1-x_0}\<br>y=\frac{x_1-x}{x_1-x_0}y_0+\frac{x-x_0}{x_1-x_0}y_1\<br>y=k\cdot y0+(1-k)\cdot y_1 \quad \quad<br>$$</p>
+<p>双线性插值：有两个变量x、y，分别在x、y两个方向进行插值</p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201120155633758.png" alt="很棒！"></p>
+<p>对于一个目的像素，设置坐标通过反向变换得到的浮点坐标为$(i+u,j+v)$(其中$i、j$均为浮点坐标的整数部分，$u、v$为浮点坐标的小数部分，是取值[0,1)区间的浮点数)，则这个像素得值$f(i+u,j+v)$可由原图像中坐标为$(i,j)(i+1,j)(i,j+1)(i+1,j+1)$所对应的周围四个像素的值决定，即:$f(i+u,j+v) = (1-u)(1-v)f(i,j) + (1-u)vf(i,j+1) + u(1-v)f(i+1,j) + uvf(i+1,j+1)$</p>
+<p>现在假如目标图的象素坐标为$(1,1)$，那么反推得到的对应于源图的坐标是$(0.75,0.75)$, 这其实只是一个概念上的虚拟象素,实际在源图中并不存在这样一个象素,那么目标图的象素$（1,1）$的取值不能够由这个虚拟象素来决定，而只能由源图的这四个象素共同决定：$(0,0)(0,1)(1，0)(1,1)$，而由于$(0.75,0.75)$离$(1,1)$要更近一些，那么$(1,1)$所起的决定作用更大一些，这从公式1中的系数$uv=0.75×0.75$就可以体现出来，而$(1,1)$离$(0.75,0.75)$最远，所以$(0,0)$所起的决定作用就要小一些，公式中系数为$(1-u)(1-v)=0.25×0.25$也体现出了这一特点。</p>
+<p><strong>实验设置</strong></p>
+<ul>
+<li>FCN初始权值：预训练的FCN-8s </li>
+<li>RNN初始权值：正态分布随机数</li>
+<li>最优化方法：带动量SGD，动量0.9</li>
+<li>学习速率：10^-7固定学习速率，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_17464457/article/details/101846874?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.not_use_machine_learn_pai&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.not_use_machine_learn_pai">bias加倍的学习速率</a></li>
+<li>20个epoch per image 55ms</li>
+</ul>
+<p><strong>数据集</strong></p>
+<ul>
+<li>COMPAQ 只使用了4670皮肤图像 &amp; ECU 1000测试 3000训练</li>
+<li>提供了GT skin masks 和 versatile attributes</li>
+<li>COMPAQ结果相对ECU较差，因为数据集质量较差，包含大量低质量图像和半自动的GT</li>
+</ul>
+<p><strong>实验结果</strong></p>
+<ul>
+<li>混淆矩阵</li>
+<li>the receiver operating characteristics <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2ca96fce7e81">ROC</a> TPR和FPR 两个指标相互有点制衡 ROC相比P-R曲线更稳定，样本数量改变后不会振荡 ROC曲线的<strong>绘制</strong>：调整不同阈值设置，每个阈值在ROC空间上产生一个不同点  ‘*‘表示最佳工作点，由斜率Slope得到</li>
+<li>respective area under curve AUC ROC曲线下的面积 物理意义：</li>
+<li>equal error rate 1-EER</li>
+<li>FCN8s+RNN的最终输出层为2通道的softmax，做二分类，设置阈值，超过阈值为皮肤，否则为非皮肤。</li>
+<li>注意，对现有的alogrithm进行比较是困难的，因为它们要么使用不同的评估指标，要么使用非公共数据集，要么使用任意的操作点(或阈值)。</li>
+</ul>
+<img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201120174744122.png" alt="Compaq" style="zoom:50%;">
+
+<img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201120174807952.png" alt="ECU" style="zoom:50%;">
+
+<h3 id="Semi-supervised-Skin-Detection-by-Network-with-Mutual-Guidance"><a href="#Semi-supervised-Skin-Detection-by-Network-with-Mutual-Guidance" class="headerlink" title="Semi-supervised Skin Detection by Network with Mutual Guidance"></a>Semi-supervised Skin Detection by Network with Mutual Guidance</h3><h4 id="Info-2"><a href="#Info-2" class="headerlink" title="Info"></a>Info</h4><p>年份：2019</p>
+<p>会议：ICCV</p>
+<p>Megvii Technology 旷视研究院</p>
+<h4 id="Abstract-2"><a href="#Abstract-2" class="headerlink" title="Abstract"></a>Abstract</h4><p>a single human portrait image-&gt;结合人体作为弱语义指导， 考虑到获取大规模的人体标记皮肤数据通常是昂贵和费时的-&gt;半监督学习策略进行皮肤和身体联合检测的dual-task network-&gt;一个共享编码器，分别用于皮肤和身体的两个解码器，两个解码器可以互相引导</p>
+<h4 id="Conclusion-2"><a href="#Conclusion-2" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>半监督训练，即不需要一个训练样本存在两种GT</p>
+<h4 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h4><p>之前的方法</p>
+<p>Combining haar feature and skin color based classifiers for face detection 2011 ICASSP</p>
+<p>Adaptive learning of an accurate skin-color model 2004 ICAFGR</p>
+<p>尝试在不同的颜色空间中建模皮肤颜色，并在这些空间中训练皮肤分类器</p>
+<p>缺点：严重依赖于肤色的分布，并且没有涉及到语义信息，因此性能有限。</p>
+<p>基于其他检测任务的DNN的改进受限于皮肤数据</p>
+<p>引入人体检测的两个优势：</p>
+<ul>
+<li>为皮肤位置提供先验信息</li>
+<li>检测到皮肤后，可以过滤掉False positive</li>
+</ul>
+<p>皮肤检测也为人体检测提供了信息</p>
+<p><strong>两个检测器的共享编码器会考虑到两个任务的相似性和网络的紧凑性，从输入图像中提取共同的特征图。这种结构使我们在训练皮肤检测网络时不需要增加带注释的训练数据，而只需要增加一个人体面罩数据集，这更容易获得。由于这两个数据集分别包含两种ground truth类型，即一个数据样本中要么有一个目标skin mask，要么有一个body mask，因此我们采用新设计的loss和自定义的训练策略对网络进行半监督的训练。</strong></p>
+<h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><p><strong>Skin detection and segmentation</strong></p>
+<p>现有的方法可以分为三类:</p>
+<ol>
+<li>在颜色空间上明确定义边界模型/阈值-划分区域定皮肤像素-皮肤和非皮肤像素存在明显重叠</li>
+<li>,应用传统机器学习技术学习种肤色模型-生成/判别模型预测，可能考虑到纹理等局部特征-学习能力有限，精度较低</li>
+<li>利用深度神经网络学习皮肤分割的端到端模型–MLP-&gt;FCN,需要大规模监督-&gt;18CVPR Normalized cut loss for weakly-supervised cnn segmentation 引入条件随机场，使弱监督成为可能-&gt;本文引用额外数据集提高性能</li>
+</ol>
+<p><strong>Multi-task joint learning</strong></p>
+<p>它通常通过在所有任务之间共享隐藏层来应用，同时保留几个特定于任务的输出层作为分支。</p>
+<p>一些多任务网络通常通过共享编码器来学习共同的特征图，从而潜在地同时提高所有任务的性能。</p>
+<h4 id="Experimental-Results"><a href="#Experimental-Results" class="headerlink" title="Experimental Results"></a>Experimental Results</h4><p>**Dataset and Implementation Details **</p>
+<ul>
+<li>10711 RGB images 5000 skin masks 5711 body masks 网络收集 512x512分辨率 </li>
+<li>随机选择470S和475B，作验证集  随即翻转/调整/裁剪-训练数据增强</li>
+<li>Tensorflow NVIDIA GeForce GTX 1080Ti GPU 训练了12个小时</li>
+</ul>
+<p><strong>Comparison with Existing Methods</strong></p>
+<ul>
+<li>2种传统算法 六种NN算法</li>
+<li>Human skin color clustering for face detection  2003 IEEE RGB和HSV空间定阈值</li>
+<li>Statistical color models with application to skin detection 2002 IJCV 学习GMM预测</li>
+<li>缺陷：缺乏高级特征，对复杂环境和光照变化鲁棒性差</li>
+<li>A skin detector based on neural network 2002 ICCCSWSE</li>
+<li>Combining convolutional and recurrent neural networks for human skin detection 2017 SPL</li>
+<li>U- net: Convolutional networks for biomedical image segmentation 2015</li>
+<li>Deep residual learning for image recognition 2016CVPR</li>
+<li>Encoder-decoder with atrous separable convolution for semantic image segmentation 2018ECCV</li>
+</ul>
+<p>We trained the six networks to convergence收敛 with multiple trials实验 with dataset DS, and selected their best results</p>
+<p>For recall, our method ranks only below the GMM method, which has more false alarms so as to suffer from a poor precision. </p>
+<p>定量比较-Table1 Figure6 平衡和不平衡 此文数据集与Pratheepan IoU IoU Top-1 Precision Recall </p>
+<p>几个典型预测结果-Figure5 Figure1 这几个典型带有各种挑战性 传统方法完全失败 其他CNN不稳定 我们的有效且可靠</p>
+<p><strong>Ablation Studies</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/60170398">ablation study</a></p>
+<p>去掉某些特征 模型 算法 对结果会有什么影响，就是控制变量，为了研究你提出的方法是不是有效 </p>
+<p>根据奥卡姆剃刀法则，简单和复杂的方法能达到一样的效果，那么简单的方法更可靠。</p>
+<p><strong>1-Mutual guidance</strong></p>
+<p>Figure4 显示有无互指导的效果 即使没有互指导 也比单任务最好的好 因为共享编码器从身体数据学到了信息</p>
+<p><strong>2-Weakly supervised losses</strong></p>
+<p>Table2Top虽不显著 确实起到了作用</p>
+<p>Figure3 显示了一个例子 不同的弱监督损失的作用</p>
+<p><strong>3-Unbalanced dataset</strong></p>
+<p>Figure1 若使用 不平衡数据集   IoU下降约%6 但仍比其他的高</p>
+<p><strong>4-Backbone networks</strong></p>
+<p>Table2Bottom Mobile-Net 替换UNet IoU相对较低 但互指导起到的作用更大</p>
+<p><strong>5-Training strategy</strong></p>
+<ul>
+<li>Gradient stopping Figure7 </li>
+<li>Initial guidance  给个先验会好一点</li>
+<li>Finetune Figure4 Top <strong>train-from-scratch</strong> and <strong>finetune versions</strong>  有没有预训练</li>
+</ul>
+<h4 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h4><p>双任务FCN 输入一个RGB图像I 输出 skin Os 和 body Ob的概率图 两个解码器Ds Db 编码器E输出I的特征图Ei Os和Ei送到Db 反之亦然  网络结构 Figure2a</p>
+<p><strong>1-Network with Mutual Guidance</strong></p>
+<p>Figue2b 将原始网络解耦为没有循环的两个阶段 X表示Stage1 X‘ Stage2 Xk包括Xs和Xb</p>
+<p>I E Dk 相同 Gk和Gk’不同 第一阶段信息很少而第二阶段有Ok作为指引</p>
+<p>Table1 Figure4共享编码器考虑：</p>
+<ol>
+<li>虽然两个任务GT不同，但具有相似的统计信息</li>
+<li>特征图具有共性，如区分人的前景和非人的背景的鲁棒性</li>
+</ol>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201122214758315.png" alt="网络结构"></p>
+<p>es eb 第一阶段的指导 一般设为0 应该是一直为0，不会变     E和Dk的结构采用了标准UNet，包括E中的4个下采样 Dk中的4个上采样 </p>
+<p>输入512x512x3  E-&gt;Dk 的特征映射Ei 32x32x1024  另外应用了一个和E相同结构但是通道数只有一半的编码器给Gk，然后将输出与Ei相连，再喂给Dk</p>
+<p>每个FCN层 kernel size 3x3 后面是一个BatchNorm和一个ReLu层</p>
+<p><strong>2-Learning Algorithm</strong></p>
+<p>对于人体检测，由于广泛研究，数据易得 所以对每个数据对，只提供Ms或Mb 很少提供（I，Ms，Mb）所以是一个半监督任务</p>
+<p>这主要有半监督损失和具体训练细节实现</p>
+<p><strong>2.1Semi-supervised loss</strong></p>
+<p>半监督损失由三部分组成，包括：strongly-supervised and weakly-supervised ones</p>
+<p>再有GT的一侧算Cross-entropy loss 另一侧算CRF loss 两个输出集合起来算WCE loss，</p>
+<p><strong>Cross-entropy loss</strong></p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201123092722193.png" alt="Cross-entropy loss"></p>
+<p>where $L_{ce}(x,y)=x\cdot log(y)+(1-x)\cdot log(1-y)$       $l_k$表示一委托个数据样例是否含有GT$M_k$</p>
+<p><strong>CRF loss</strong></p>
+<p>从 On regularized losses for weakly-supervised cnn segmentation 2018ECCV 引入CRFLoss CRF可以使I中颜色相同且相邻的像素在</p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201123093447500.png" alt="CRF loss"></p>
+<p>where  $L_{crf}=S^TWS$  W是I的Affinity Matrix S是平坦化的Ok的列向量   具体看论文</p>
+<p><strong>WCE loss</strong></p>
+<p>输出之间也有限制，皮肤概率高的话，那么身体概率也应该高，也就是两个分布一致，皮肤概率低的话，就没有限制了，所以用皮肤概率做权重，限定WCE loss 对总体的影响</p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201123100039914.png" alt="WCE Loss"></p>
+<p>$L_{wce}(x,y)=x\cdot L_{ce}(x,y)$</p>
+<p><strong>semi-supervised loss</strong></p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201123100808245.png" alt="semi-supervised loss"></p>
+<p>$\lambda_1=0.0001 \quad \lambda_2=0.001 $</p>
+<p><strong>2.2Training details</strong><br><strong>Dual-task joint learning</strong></p>
+<p>奇数次和偶数次分别喂MB和MS，用Lk来指导算loss</p>
+<p><strong>Finetune</strong></p>
+<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201124205344966.png" alt="Stage2 Guidance"></p>
+<p>有GT的就直接用真实的指导就行</p>
+<p>两个阶段的指导变化很大，但是他们使用相同的解码器权重,不然G’反向传播，防止Decoder参数对G‘过拟合，对G欠拟合</p>
+<h3 id="SKINNY-A-LIGHTWEIGHT-U-NET-FOR-SKIN-DETECTION-AND-SEGMENTATION"><a href="#SKINNY-A-LIGHTWEIGHT-U-NET-FOR-SKIN-DETECTION-AND-SEGMENTATION" class="headerlink" title="SKINNY: A LIGHTWEIGHT U-NET FOR SKIN DETECTION AND SEGMENTATION"></a>SKINNY: A LIGHTWEIGHT U-NET FOR SKIN DETECTION AND SEGMENTATION</h3><h4 id="Info-3"><a href="#Info-3" class="headerlink" title="Info"></a>Info</h4><p>2020ICIP</p>
+<h4 id="Abstract-3"><a href="#Abstract-3" class="headerlink" title="Abstract"></a>Abstract</h4><p>lightweight轻量的</p>
+<p>全卷积UNet对图像分割很有效</p>
+<p> 空间上下文对皮肤分隔很重要，对UNet很狭窄是什么意思</p>
+<p>扩展了多尺度分析的范围</p>
+<p>在ECU和HGR测试</p>
+<h4 id="Conclusion-3"><a href="#Conclusion-3" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Skinny受益与几个架构组件,包括inception和dense blocks，从而更好利用上下文 </p>
+<p>inception和dense很关键，并且不影响速度</p>
+<p>未来：增强上下文像素分析思想，使用扩张卷积，保持参数低数量，减少FP</p>
+<h4 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h4><p>由于皮肤外观的低特异性和高方差，该问题仍具有挑战性</p>
+<h4 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h4><p>图一 UNet没有足够上下文，分类错了，Skinny考虑到更广泛背景，分类正确了</p>
+<p>图二 网络结构和两种变体</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/587c3a45df67">上采样</a>      <a target="_blank" rel="noopener" href="https://blog.csdn.net/LoseInVain/article/details/81098502">转置卷积</a></p>
+<p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/75142664">DenseNet</a>      </p>
+<p>注意语义分割和实例分割的区别，语义分割是人都归为一类，实例分割是不同的人标成不同的类 </p>
+<p> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/83496100">全景分割</a>将语义分割和实例分割结合在一起，既能分割背景，也能分割实例   </p>
+<p><a target="_blank" rel="noopener" href="https://www.sohu.com/a/284185732_129720">全景分割</a>图像中的内容可以按照是否有固定形状分为 things 类别和 stuff 类别，其中，人，车等有固定形状的物体属于 things 类别（可数名词通常属于 things）；天空，草地等没有固定形状的物体属于 stuff 类别（不可数名词属于 stuff）</p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p><a target="_blank" rel="noopener" href="https://www.aiuai.cn/aifarm1159.html">dice-loss</a>  对于二分类问题，GT 分割图是只有 0, 1 两个值的，因此 |X⋂Y| 可以有效的将在 Pred 分割图中未在 GT 分割图中激活的所有像素清零. 对于激活的像素，主要是惩罚低置信度的预测，较高值会得到更好的 Dice 系数.   </p>
+<p>意思就是说主要注重皮肤点预测的怎么样，非皮肤点的预测就不管了</p>
+
             </div>
             <hr/>
 
@@ -1201,48 +1403,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/ren-xiang-fu-se-jian-ce/">
+                <a href="/wang-luo-jie-gou-jie-mi/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/17.jpg" class="responsive-img" alt="人像肤色区域检测">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/16.jpg" class="responsive-img" alt="网络结构解密">
                         
-                        <span class="card-title">人像肤色区域检测</span>
+                        <span class="card-title">网络结构解密</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一个皮肤区域检测的笔记
+                            一些网络结构作用的总结
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/" class="post-category">
-                                    肤色分级
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
-                        <span class="chip bg-color">肤色分级</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">网络结构</span>
                     </a>
                     
                 </div>
@@ -1467,6 +1667,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1535,7 +1742,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.4k</span>&nbsp;字
+                class="white-color">28.3k</span>&nbsp;字
             
             
             

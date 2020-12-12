@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2020-11-18T01:12:47.621Z</updated>
+  <updated>2020-12-05T15:52:34.244Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,19 +17,69 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>tensorflow学习</title>
+    <link href="http://dchlovestudy.xyz/tensorflow-xue-xi/"/>
+    <id>http://dchlovestudy.xyz/tensorflow-xue-xi/</id>
+    <published>2020-11-27T16:44:34.000Z</published>
+    <updated>2020-12-05T15:52:34.244Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://tensorflow.google.cn/api_docs/python/tf?hl=zh_cn&quot;&gt;tensorflowAPI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    
+    
+    <category term="tensorflow" scheme="http://dchlovestudy.xyz/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络结构解密</title>
+    <link href="http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/"/>
+    <id>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</id>
+    <published>2020-11-23T11:43:22.000Z</published>
+    <updated>2020-12-09T14:15:39.834Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;统计学习知识&quot;&gt;&lt;a href=&quot;#统计学习知识&quot; class=&quot;headerlink&quot; title=&quot;统计学习知识&quot;&gt;&lt;/a&gt;统计学习知识&lt;/h2&gt;&lt;h4 id=&quot;正则项&quot;&gt;&lt;a href=&quot;#正则项&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="深度学习" scheme="http://dchlovestudy.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="网络结构" scheme="http://dchlovestudy.xyz/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>人像肤色区域检测</title>
     <link href="http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/"/>
     <id>http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/</id>
     <published>2020-11-17T11:38:07.000Z</published>
-    <updated>2020-11-18T01:12:47.621Z</updated>
+    <updated>2020-12-07T13:51:32.055Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在进行之前先把学姐的汇报弄明白&lt;/p&gt;
-&lt;p&gt;首先是raw图像格式：&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -47,7 +97,7 @@
     <link href="http://dchlovestudy.xyz/codeforces-1/"/>
     <id>http://dchlovestudy.xyz/codeforces-1/</id>
     <published>2020-11-16T12:15:16.000Z</published>
-    <updated>2020-11-17T12:30:43.887Z</updated>
+    <updated>2020-11-18T16:20:28.634Z</updated>
     
     
       
@@ -72,7 +122,7 @@
     <link href="http://dchlovestudy.xyz/fu-wu-qi-shi-yong/"/>
     <id>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</id>
     <published>2020-11-09T02:13:20.000Z</published>
-    <updated>2020-11-16T13:41:34.997Z</updated>
+    <updated>2020-12-05T09:23:13.455Z</updated>
     
     
       
@@ -98,7 +148,7 @@
     <link href="http://dchlovestudy.xyz/matlab/"/>
     <id>http://dchlovestudy.xyz/matlab/</id>
     <published>2020-11-09T01:15:34.000Z</published>
-    <updated>2020-11-09T14:15:27.513Z</updated>
+    <updated>2020-12-10T14:17:45.810Z</updated>
     
     
       
@@ -124,7 +174,7 @@
     <link href="http://dchlovestudy.xyz/python-xue-xi/"/>
     <id>http://dchlovestudy.xyz/python-xue-xi/</id>
     <published>2020-11-03T12:15:05.000Z</published>
-    <updated>2020-11-16T15:02:10.600Z</updated>
+    <updated>2020-12-07T12:50:58.248Z</updated>
     
     
       
@@ -149,7 +199,7 @@
     <link href="http://dchlovestudy.xyz/pytorch-xue-xi/"/>
     <id>http://dchlovestudy.xyz/pytorch-xue-xi/</id>
     <published>2020-11-02T14:20:29.000Z</published>
-    <updated>2020-11-13T13:18:40.917Z</updated>
+    <updated>2020-12-09T13:52:11.487Z</updated>
     
     
       
@@ -174,15 +224,14 @@
     <link href="http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/"/>
     <id>http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/</id>
     <published>2020-11-02T09:46:35.000Z</published>
-    <updated>2020-11-13T12:15:49.617Z</updated>
+    <updated>2020-12-12T08:44:28.038Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;jupyter notebook使用：&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;Numpy&quot;&gt;&lt;a href=&quot;#Numpy&quot; class=&quot;headerlink&quot; title=&quot;Numpy&quot;&gt;&lt;/a&gt;Numpy&lt;/h2&gt;&lt;p&gt;菜鸟教程：&lt;a</summary>
         
       
     
@@ -252,7 +301,7 @@
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/</id>
     <published>2020-10-28T02:21:19.000Z</published>
-    <updated>2020-11-08T02:28:24.309Z</updated>
+    <updated>2020-11-25T07:28:06.997Z</updated>
     
     
       
@@ -280,7 +329,7 @@
     <link href="http://dchlovestudy.xyz/zu-hui-zong-jie/"/>
     <id>http://dchlovestudy.xyz/zu-hui-zong-jie/</id>
     <published>2020-10-20T12:30:52.000Z</published>
-    <updated>2020-11-10T13:05:59.596Z</updated>
+    <updated>2020-11-19T12:26:02.897Z</updated>
     
     
       
@@ -413,7 +462,7 @@
     <link href="http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/"/>
     <id>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</id>
     <published>2020-10-13T01:46:23.000Z</published>
-    <updated>2020-11-16T11:44:01.230Z</updated>
+    <updated>2020-12-01T01:05:35.689Z</updated>
     
     
       
@@ -439,7 +488,7 @@
     <link href="http://dchlovestudy.xyz/typora-shi-yong-wen-ti/"/>
     <id>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</id>
     <published>2020-10-13T01:45:52.000Z</published>
-    <updated>2020-11-09T03:07:23.597Z</updated>
+    <updated>2020-11-27T15:33:18.707Z</updated>
     
     
       
@@ -464,7 +513,7 @@
     <link href="http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/"/>
     <id>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/</id>
     <published>2020-10-13T01:43:11.000Z</published>
-    <updated>2020-11-17T14:05:57.211Z</updated>
+    <updated>2020-11-19T01:53:23.045Z</updated>
     
     
       
@@ -483,36 +532,6 @@
     <category term="CC/AWB" scheme="http://dchlovestudy.xyz/tags/CC-AWB/"/>
     
     <category term="Bayes" scheme="http://dchlovestudy.xyz/tags/Bayes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-git-github博客搭建</title>
-    <link href="http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/"/>
-    <id>http://dchlovestudy.xyz/hexo-git-github-bo-ke-da-jian/</id>
-    <published>2020-10-12T14:37:35.000Z</published>
-    <updated>2020-11-17T02:58:01.048Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考：洪卫的博客教程&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="博客搭建" scheme="http://dchlovestudy.xyz/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
-    
-    <category term="hexo" scheme="http://dchlovestudy.xyz/tags/hexo/"/>
-    
-    <category term="git" scheme="http://dchlovestudy.xyz/tags/git/"/>
-    
-    <category term="ejs" scheme="http://dchlovestudy.xyz/tags/ejs/"/>
     
   </entry>
   

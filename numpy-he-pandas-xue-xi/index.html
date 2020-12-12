@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    254
+                    656
                 </div>
                 
 
@@ -675,22 +675,34 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>jupyter notebook使用：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32320214">https://zhuanlan.zhihu.com/p/32320214</a></p>
-</blockquote>
-<h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/numpy/numpy-ndarray-object.html">https://www.runoob.com/numpy/numpy-ndarray-object.html</a></p>
-<p>np.std()求标准差</p>
+                <h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/numpy/numpy-ndarray-object.html">https://www.runoob.com/numpy/numpy-ndarray-object.html</a></p>
+<p>API:<a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/numpy-1.9.0/genindex.html">https://docs.scipy.org/doc/numpy-1.9.0/genindex.html</a></p>
+<p><code>np.array(list)</code>将列表转化为数组</p>
+<p><code>np.std()</code>求标准差</p>
 <p>Python<code>list</code>只能与整数相乘，在这种情况下，将<code>list</code>重复的元素：</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">3</span>
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
 <p>如果要进行矢量运算，请<code>numpy.ndarray</code>改用：</p>
-<pre class=" language-py"><code class="language-py">>>> import numpy as np
->>> ar = np.array([1,2,3])
->>> ar * 3
-array([3, 6, 9])</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token operator">>></span><span class="token operator">></span> ar <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> ar <span class="token operator">*</span> <span class="token number">3</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#numpy数组索引</span>
+pre<span class="token operator">=</span>pre<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#不用三个中括号，只用一个，里面只用一个逗号</span></code></pre>
 <p>numpy广播机制：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60365398">https://zhuanlan.zhihu.com/p/60365398</a></p>
 <p>np.linspace()和np.arrange()一个是样本数量，一个步长</p>
-<p>dtype是numpy 的一个属性，astype()方法可以改变   主要是改变int32 int64等</p>
+<p>在jupyter notebook中，可直接调用<code>arr.dtype</code> <code>arr.shape</code>显示相应的属性</p>
+<pre class=" language-python"><code class="language-python">np<span class="token punctuation">.</span>where<span class="token punctuation">(</span>condition<span class="token punctuation">[</span><span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#返回根据条件从x或y中选择的元素。条件为真，返回x，否则返回y。</span>
+<span class="token comment" spellcheck="true">#&lt;&lt;&lt;a</span>
+<span class="token comment" spellcheck="true">#array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
+<span class="token comment" spellcheck="true">#&lt;&lt;&lt;np.where(a &lt; 5, a, 10*a)</span>
+<span class="token comment" spellcheck="true">#array([ 0,  1,  2,  3,  4, 50, 60, 70, 80, 90])</span>
+np<span class="token punctuation">.</span>unique<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#显示np数组中的unique值，还有返回index值等功能</span>
+np<span class="token punctuation">.</span>ceil<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#向上取整 </span>
+np<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#向下取整</span>
+np<span class="token punctuation">.</span>round<span class="token punctuation">(</span>a<span class="token punctuation">,</span>decimals<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>out<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#将数组四舍五入到指定的小数上</span></code></pre>
 <h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><p>教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/pandas/python_pandas_environment_setup.html">https://www.yiibai.com/pandas/python_pandas_environment_setup.html</a></p>
 <p>API:<a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/index.html">https://pandas.pydata.org/pandas-docs/stable/reference/index.html</a></p>
 <p>将dataframe一行转化为int，astype</p>
@@ -702,6 +714,29 @@ df<span class="token punctuation">.</span>shape<span class="token punctuation">[
 <p>API：<a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.2/api/index.html">https://matplotlib.org/3.3.2/api/index.html</a></p>
 <p>假如目前只有一个figure1，你再绘图是在它上面不断覆盖的</p>
 <p>分为plt绘图与axes绘图两种方式</p>
+<h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><p><a target="_blank" rel="noopener" href="https://www.fontke.com/tool/rgb/800000/">根据RGB  CMYK  HSL  HSV  XYZ 值来查询颜色</a></p>
+<p><code>plt.figure(1)</code>建立一个新的展示图像的画板</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>image <span class="token keyword">as</span> imgplt
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+x <span class="token operator">=</span> imgplt<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token string">'label.png'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token number">300</span><span class="token punctuation">:</span><span class="token number">350</span><span class="token punctuation">,</span><span class="token number">150</span><span class="token punctuation">:</span><span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#matplotlib显示图像，注意x只用一个[]，不同维度用逗号分割！</span>
+<span class="token comment" spellcheck="true">#imread的返回值是图片数据data，数据类型是class:`numpy.array`。这个图片数据data的维度如下：</span>
+<span class="token comment" spellcheck="true">#- (M, N) 对于灰度级图片</span>
+<span class="token comment" spellcheck="true">#- (M, N, 3) 对于RGB彩色图片.</span>
+<span class="token comment" spellcheck="true">#- (M, N, 4) 对于RGBA彩色图片</span></code></pre>
+<p><code>plt.imsave(文件名,X,format='png')</code>图片的保存</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+
+img <span class="token operator">=</span> Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span><span class="token string">'label.png'</span><span class="token punctuation">)</span>
+img2 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>img<span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>unique<span class="token punctuation">(</span>img2<span class="token punctuation">)</span></code></pre>
+<p>PIL读取的图片不能输出，用np.array()转化会变成单通道的灰度图</p>
+<p>三通道RGBnumpy读取显示是0-1，而不是0-255，这个是归一化的RGB！！正好和概率二分类对应！</p>
+<p><strong>Snipaste竟然可以实时获取颜色值！！！如下：</strong></p>
+<p><img src="./medias/loading.gif" data-original="/numpy-he-pandas-xue-xi/image-20201207093513840.png" alt="采集颜色值"></p>
 
             </div>
             <hr/>
@@ -1560,7 +1595,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.4k</span>&nbsp;字
+                class="white-color">28.3k</span>&nbsp;字
             
             
             

@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    899
+                    1.7k
                 </div>
                 
 
@@ -680,7 +680,7 @@
 <span class="token comment" spellcheck="true">#第二种</span>
  <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'[%d, %5d] loss: %.3f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>epoch <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> running_loss <span class="token operator">/</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#%5d %5s输出站5个字符宽度，不足补足   %.3f表示保留三位小数</span></code></pre>
-<h4 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ymjyqsx/p/6554817.html">https://www.cnblogs.com/ymjyqsx/p/6554817.html</a></p>
+<h4 id="文件读取输出"><a href="#文件读取输出" class="headerlink" title="文件读取输出"></a>文件读取输出</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ymjyqsx/p/6554817.html">https://www.cnblogs.com/ymjyqsx/p/6554817.html</a></p>
 <p>with open as f 为了保证无论是否出错都能正确地关闭文件</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"locs.txt"</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
     <span class="token comment" spellcheck="true">#f.write(fname+"\n")</span>
@@ -690,6 +690,12 @@
 <p>str –分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等。</p>
 <p>num – 分割次数。默认为 -1, 即分隔所有。</p>
 <p>返回分割后的字符串列表。</p>
+<p><code>files = file.read().splitlines()</code></p>
+<p>file.read 默认读取全部</p>
+<p>splitlines() 按照行界符(‘\r’, ‘\r\n’, \n’等)分隔，返回一个包含各行作为元素的列表，默认不包含行界符。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'mytest.txt'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span><span class="token comment" spellcheck="true">#w是覆盖，a是追加</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">'\n'</span><span class="token punctuation">)</span>   </code></pre>
 <h4 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> tqdm <span class="token keyword">import</span> tqdm
 <span class="token keyword">for</span> fname <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span>os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>input_dir<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></code></pre>
 <h4 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/databatman/article/details/49453953">https://blog.csdn.net/databatman/article/details/49453953</a></p>
@@ -736,13 +742,98 @@ str <span class="token operator">=</span> <span class="token string">'123@163.co
 a=os.path.join("datasets", "lifesat", "")
 print(a)
 #datasets\lifesat\</code></pre>
-<p>os.makedirs（）:递归的创建文件目录,exist_ok为false，文件目录已存在报错，为true则报错</p>
+<p>os.makedirs（）:递归的创建文件目录</p>
+<p>exist_ok:是否在目录存在时触发异常。如果exist_ok为<strong>False</strong>（默认值），则在目标目录已存在的情况下<strong>触发</strong>FileExistsError异常；如果exist_ok为<strong>True</strong>，则在目标目录已存在的情况下<strong>不会触发</strong>FileExistsError异常。</p>
+<p><code>os.listdir(文件夹名字)</code>列出文件夹下所有的文件名</p>
 <h4 id="shutil"><a href="#shutil" class="headerlink" title="shutil"></a>shutil</h4><p><a target="_blank" rel="noopener" href="https://liujiangblog.com/course/python/61">https://liujiangblog.com/course/python/61</a></p>
 <p><strong>shutil模块是对os模块的补充，主要针对文件的拷贝、删除、移动、压缩和解压操作。</strong></p>
 <h4 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h4><p><a target="_blank" rel="noopener" href="https://www.liujiangblog.com/course/python/54">https://www.liujiangblog.com/course/python/54</a></p>
 <p><strong>sys模块主要是针对与Python解释器相关的变量和方法，不是主机操作系统。</strong></p>
-<p>list（）函数返回一个新的列表，b=list（a），b和a不共享</p>
+<h4 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h4><p><code>def add_to_graph(self, dataset) -&gt; tf.data.Dataset: 箭头的作用是给函数添加注解，用来返回值的数据类型</code></p>
+<p><code>def get_filters_count(level: int, initial_filters: int) -&gt; int:</code>冒号的作用是说参数的数据类型</p>
+<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><p><code>list（）函数返回一个新的列表，b=list（a），b和a不共享</code> </p>
+<p><code>list.append()</code> 向列表添加元素</p>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>pop   删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。</p>
+<h4 id="py文件运行"><a href="#py文件运行" class="headerlink" title="py文件运行"></a>py文件运行</h4><p>在jupyter notebook中，运行 %run name.py</p>
+<h4 id="return-self"><a href="#return-self" class="headerlink" title="return self"></a>return self</h4><p>其实就是返回自身实例，用于链式调用  <a target="_blank" rel="noopener" href="https://blog.csdn.net/jclian91/article/details/81238782">看这篇教程</a></p>
+<h4 id="可变长度参数"><a href="#可变长度参数" class="headerlink" title="可变长度参数"></a>可变长度参数</h4><p>*args将参数打包成tuple给函数体调用</p>
+<p>**kwargs打包关键字参数成dict给函数体调用</p>
+<p>注意点：参数arg、<em>args、**kwargs三个参数的位置必须是一定的。必须是(arg,<em>args,</em></em>kwargs)这个顺序，否则程序会报错。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span>arg<span class="token punctuation">,</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>arg<span class="token punctuation">,</span>args<span class="token punctuation">,</span>kwargs<span class="token punctuation">)</span>
 
+function<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span>a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> c<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#6 (7,8,9) {'c':3,'a':1,'b':2}</span></code></pre>
+<h4 id="装饰器和-符号"><a href="#装饰器和-符号" class="headerlink" title="装饰器和@符号"></a>装饰器和@符号</h4><p>python中的函数可以像普通变量一样当做参数传递给另外一个函数</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">bar</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+bar<span class="token punctuation">(</span>foo<span class="token punctuation">)</span></code></pre>
+<p>具体看这一篇：<a target="_blank" rel="noopener" href="https://gohom.win/2015/10/25/pyDecorator/">https://gohom.win/2015/10/25/pyDecorator/</a></p>
+<p>这一篇讲的更清楚<a target="_blank" rel="noopener" href="https://foofish.net/python-decorator.html">https://foofish.net/python-decorator.html</a></p>
+<p>简单来说就是复合函数，概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能</p>
+<p>内置的@property和@*.setter，其实认真看完实例就明白了，就相当于python的get和set方法，关于这两个内置装饰器可以看这个：<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/897692888725344/923030547069856">https://www.liaoxuefeng.com/wiki/897692888725344/923030547069856</a></p>
+<p>看这段代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">class</span> <span class="token class-name">D</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dataset_dir<span class="token punctuation">:</span> str<span class="token punctuation">,</span> batch_size<span class="token punctuation">:</span> int<span class="token punctuation">,</span>train_dataset<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>dataset_dir <span class="token operator">=</span> dataset_dir
+        self<span class="token punctuation">.</span>batch_size <span class="token operator">=</span> batch_size
+        self<span class="token punctuation">.</span>val_dataset <span class="token operator">=</span> None
+        self<span class="token punctuation">.</span>train_dataset <span class="token operator">=</span> train_dataset<span class="token comment" spellcheck="true">#这里调用的set方法</span>
+        self<span class="token punctuation">.</span>test_dataset <span class="token operator">=</span> None
+
+    <span class="token comment" spellcheck="true">#train_dataset get set 方法</span>
+    @property
+    <span class="token keyword">def</span> <span class="token function">train_dataset</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token keyword">print</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>__train_dataset<span class="token punctuation">)</span>
+
+    @train_dataset<span class="token punctuation">.</span>setter
+    <span class="token keyword">def</span> <span class="token function">train_dataset</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>__train_dataset <span class="token operator">=</span> dataset <span class="token comment" spellcheck="true">#这里新定义了一个属性</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"!!!!"</span><span class="token punctuation">)</span>
+
+d<span class="token operator">=</span>D<span class="token punctuation">(</span><span class="token string">"asdf"</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+d<span class="token punctuation">.</span>train_dataset
+<span class="token comment" spellcheck="true">#！！！！</span>
+<span class="token comment" spellcheck="true">#2</span></code></pre>
+<h4 id="name"><a href="#name" class="headerlink" title="__name__"></a>__name__</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_fun_name</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> func<span class="token punctuation">.</span>__name__<span class="token comment" spellcheck="true">#返回的就是函数的名字</span>
+
+
+<span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 看起来没有用处呀</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>get_fun_name<span class="token punctuation">(</span>say_hello<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 那么看下面</span>
+    haha <span class="token operator">=</span> say_hello
+    hahaha <span class="token operator">=</span> haha
+    <span class="token comment" spellcheck="true"># 请问 hahaha 到底是啥？</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>get_fun_name<span class="token punctuation">(</span>hahaha<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 我的认为 __name__ 可以忽略外表，直达本质。</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token operator">/</span>home<span class="token operator">/</span>coder<span class="token operator">/</span>anaconda3<span class="token operator">/</span>envs<span class="token operator">/</span>py37<span class="token operator">/</span>bin<span class="token operator">/</span>python <span class="token operator">/</span>home<span class="token operator">/</span>coder<span class="token operator">/</span>PycharmProjects<span class="token operator">/</span>Base<span class="token operator">/</span>demo<span class="token punctuation">.</span>py
+say_hello
+say_hello
+
+Process finished <span class="token keyword">with</span> exit code <span class="token number">0</span></code></pre>
+<h4 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h4><p>Python assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。</p>
+<h4 id="python字符串前加u-r-b-f"><a href="#python字符串前加u-r-b-f" class="headerlink" title="python字符串前加u,r,b,f"></a>python字符串前加u,r,b,f</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/walo/p/10608436.html">https://www.cnblogs.com/walo/p/10608436.html</a></p>
+<h4 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jeffery0207/article/details/93734942">https://blog.csdn.net/jeffery0207/article/details/93734942</a></p>
+<h4 id="多个返回值"><a href="#多个返回值" class="headerlink" title="多个返回值"></a>多个返回值</h4><p>返回的是一个tuple</p>
+<h4 id="skimage"><a href="#skimage" class="headerlink" title="skimage"></a>skimage</h4>
             </div>
             <hr/>
 
@@ -1596,7 +1687,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.4k</span>&nbsp;字
+                class="white-color">28.3k</span>&nbsp;字
             
             
             

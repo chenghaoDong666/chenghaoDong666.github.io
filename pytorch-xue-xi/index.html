@@ -675,7 +675,7 @@
 <p>pytorch API:<a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/index.html">https://pytorch.org/docs/stable/index.html</a></p>
 <p>类似例程：<a target="_blank" rel="noopener" href="https://github.com/yunjey/pytorch-tutorial">https://github.com/yunjey/pytorch-tutorial</a></p>
 <p>Docs：<a target="_blank" rel="noopener" href="https://github.com/fendouai/PyTorchDocs">https://github.com/fendouai/PyTorchDocs</a></p>
-<p>torch运用就和np一样</p>
+<h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p>torch运用就和np一样</p>
 <p><strong>torch.tensor</strong></p>
 <p>不是基本数据类型如int，float，string等，而是引用数据类型</p>
 <p>JAVA中的概念：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/maskwolf/p/9972982.html">https://www.cnblogs.com/maskwolf/p/9972982.html</a>   </p>
@@ -686,8 +686,13 @@
 <p><strong>x.view（-1,8）</strong>:这个-1是指从其他维度推断！</p>
 <p><strong>torch.Tensor.item</strong>：获取单个值，否则就用tolist()</p>
 <p><strong>torch.Tensor.tolist()</strong>:果然有向基本类型转化的函数</p>
-<p><strong>CUDA是什么？</strong></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/77340765">https://blog.csdn.net/u014380165/article/details/77340765</a></p>
+<p><strong>pytorch的通道顺序是：NCHW</strong></p>
+<p>即可以用size()也可以用numpy的shape</p>
+<p><img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20201113101903090.png" alt="标量、向量和矩阵"></p>
+<p>torch.tensor(3.14)这是标量   torch.tensor([3.14])这是向量，判断是几维张量主要是<strong>看有几个中括号</strong></p>
+<p>tensor转numpy    <code>numpy_a = a.numpy()</code>   numpy转tensor  <code>torch_a=torch.from_numpy(numpy_a)</code></p>
+<p><strong>Tensor和numpy对象共享内存，转换很快，但这也意味着，如果其中一个变了，另一个也会变</strong></p>
+<p>一个简单的网络最基本的步骤就是<strong>前向，损失，反向，更新</strong></p>
 <p><strong>parameters？</strong></p>
 <p>输出的是一个w，一个b！别忘了b！</p>
 <h4 id="Conv2D（）"><a href="#Conv2D（）" class="headerlink" title="Conv2D（）:"></a>Conv2D（）:</h4><p>教程：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/45a26d278473">https://www.jianshu.com/p/45a26d278473</a></p>
@@ -700,13 +705,7 @@
 <p>接受$(N,C_{in},H,W)$,输出$(N,C_{out},H_{out},W_{out}$)</p>
 <h4 id="CNN的反向传播"><a href="#CNN的反向传播" class="headerlink" title="CNN的反向传播"></a>CNN的反向传播</h4><p>教程:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61898234">https://zhuanlan.zhihu.com/p/61898234</a></p>
 <h4 id="torch-rand"><a href="#torch-rand" class="headerlink" title="torch.rand()"></a>torch.rand()</h4><p>rand从(0,1)的均匀分布中随机抽样，randn从标准正态分布随机抽样，torch.normal(mean,std)  正太分布随机抽样  torch.linspace()线性间距向量  ones初始化为1   zeros初始化为0  eye初始化为单位矩阵</p>
-<p>一个简单的网络最基本的步骤就是前向，损失，反向，更新</p>
-<h4 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h4><p>熵：<a target="_blank" rel="noopener" href="https://blog.csdn.net/rtygbwwwerr/article/details/50778098">https://blog.csdn.net/rtygbwwwerr/article/details/50778098</a> </p>
-<p>熵是不确定性的度量，是信息量的期望</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35709485">https://zhuanlan.zhihu.com/p/35709485</a></p>
-<p><a target="_blank" rel="noopener" href="https://rohanvarma.me/Loss-Functions/">https://rohanvarma.me/Loss-Functions/</a></p>
-<p>期望和方差性质：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147214759?from_voters_page=true">https://zhuanlan.zhihu.com/p/147214759?from_voters_page=true</a></p>
-<h4 id="带动量的随机梯度下降"><a href="#带动量的随机梯度下降" class="headerlink" title="带动量的随机梯度下降"></a>带动量的随机梯度下降</h4><h4 id="transforms的22个方法"><a href="#transforms的22个方法" class="headerlink" title="transforms的22个方法"></a>transforms的22个方法</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38410428/article/details/94719553">https://blog.csdn.net/qq_38410428/article/details/94719553</a></p>
+<h4 id="transforms的22个方法"><a href="#transforms的22个方法" class="headerlink" title="transforms的22个方法"></a>transforms的22个方法</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38410428/article/details/94719553">https://blog.csdn.net/qq_38410428/article/details/94719553</a></p>
 <p>Normalize参数解惑<a target="_blank" rel="noopener" href="https://blog.csdn.net/xys430381_1/article/details/85724668">https://blog.csdn.net/xys430381_1/article/details/85724668</a></p>
 <h4 id="torchvision-utils-make-grid"><a href="#torchvision-utils-make-grid" class="headerlink" title="torchvision.utils.make_grid()"></a>torchvision.utils.make_grid()</h4><p>把若干图像拼成一副图像来显示<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012343179/article/details/83007296">https://blog.csdn.net/u012343179/article/details/83007296</a></p>
 <h4 id="torch-max"><a href="#torch-max" class="headerlink" title="torch.max()"></a>torch.max()</h4><p>_, predicted = torch.max(outputs, 1)</p>
@@ -745,11 +744,6 @@
 <p>如果指定维度的话，那只对该维度去1</p>
 <p><strong>注意</strong>：返回的张量与输入张量共享存储空间，因此改变一个张量的内容将改变另一个张量的内容。</p>
 <p>另外如果对批次batch为1也去掉的话，可能会引发错误。</p>
-<h4 id="张量相关知识"><a href="#张量相关知识" class="headerlink" title="张量相关知识"></a>张量相关知识</h4><p>即可以用size()也可以用numpy的shape</p>
-<p><img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20201113101903090.png" alt="标量、向量和矩阵"></p>
-<p>torch.tensor(3.14)这是标量   torch.tensor([3.14])这是向量，判断是几维张量主要是看有几个中括号</p>
-<p>tensor转numpy    numpy_a = a.numpy()   numpy转tensor  torch_a=torch.from_numpy(numpy_a)</p>
-<p><strong>Tensor和numpy对象共享内存，转换很快，但这也意味着，如果其中一个变了，另一个也会变</strong></p>
 <h4 id="求导和网络相关知识"><a href="#求导和网络相关知识" class="headerlink" title="求导和网络相关知识"></a>求导和网络相关知识</h4><p>grad属性保存梯度值，grad_fn保存梯度函数</p>
 <p>nn.functional函数的特点是不具有可学习的参数，$net.parameters()$返回网络可学习的参数</p>
 <pre><code>for name,parameters in net.named_parameters():#可同时返回名字和参数
@@ -771,6 +765,16 @@
 <p>nn.MSELoss:均方误差</p>
 <p>nn.CrossEntropyLoss:交叉熵损失函数</p>
 <p>torch.manual_seed() :<a target="_blank" rel="noopener" href="https://blog.csdn.net/X_singing/article/details/104447052?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/X_singing/article/details/104447052?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
+<p>为了保证能够复现，初始随机梯度是固定的</p>
+<h4 id="使用GPU"><a href="#使用GPU" class="headerlink" title="使用GPU"></a>使用GPU</h4><p><strong>CUDA是什么？</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/77340765">https://blog.csdn.net/u014380165/article/details/77340765</a></p>
+<pre class=" language-python"><code class="language-python">device <span class="token operator">=</span> torch<span class="token punctuation">.</span>device<span class="token punctuation">(</span><span class="token string">"cuda:0"</span> <span class="token keyword">if</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token string">"cpu"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#这一步是设置我们使用的GPU</span>
+<span class="token comment" spellcheck="true"># 确认我们的电脑支持CUDA，然后显示CUDA信息：</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#然后这些方法将递归遍历所有模块并将模块的参数和缓冲区 转换成CUDA张量：</span>
+net<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#记住：inputs, targets 和 images 也要转换。</span>
+inputs<span class="token punctuation">,</span> labels <span class="token operator">=</span> inputs<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span><span class="token punctuation">,</span> labels<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -1636,7 +1640,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.4k</span>&nbsp;字
+                class="white-color">28.3k</span>&nbsp;字
             
             
             
