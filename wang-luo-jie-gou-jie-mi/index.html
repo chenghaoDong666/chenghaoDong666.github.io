@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    6.6k
                 </div>
                 
 
@@ -671,7 +671,43 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="统计学习知识"><a href="#统计学习知识" class="headerlink" title="统计学习知识"></a>统计学习知识</h2><h4 id="正则项"><a href="#正则项" class="headerlink" title="正则项"></a>正则项</h4><p><a target="_blank" rel="noopener" href="https://maristie.com/2018/02/Normalization-Standardization-and-Regularization">Differences between Normalization, Standardization and Regularization</a></p>
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="深度学习基础"><a href="#深度学习基础" class="headerlink" title="深度学习基础"></a>深度学习基础</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31561570">深度学习基础</a></p>
+<p>representation learning 表示学习</p>
+<h4 id="activation-function"><a href="#activation-function" class="headerlink" title="activation function"></a>activation function</h4><p>激活函数应满足三个性质：</p>
+<ol>
+<li>不会饱和</li>
+<li>零均值</li>
+<li>容易计算</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70821070">谁才是合格的激活函数 </a></p>
+<p><strong>sigmoid的非零均值问题</strong><br>$$<br>\frac{\partial L}{\partial w_1}=\frac{\partial L}{\partial y} \cdot \frac{\partial y}{\partial w_1}=\frac{\partial L}{\partial y} \cdot a_1 \<br>\frac{\partial L}{\partial w_2}=\frac{\partial L}{\partial y} \cdot a_2<br>$$<br><strong>sigmoid求导:</strong><br>$$<br>\sigma(x)=\frac{1}{1+e^{-x}}\<br>\sigma’(x)=\sigma(x)[1-\sigma(x)]<br>$$</p>
+<p>a1、a2&gt;0,所以同步变化</p>
+<p>所有的权重只能一起变大或变小，这样模型收敛就需要消耗很多的时间</p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201217191234682.png" alt="这时的收敛是这样的"></p>
+<p><strong>Tanh</strong></p>
+<p>Tanh函数是 0 均值的，因此实际应用中 Tanh 会比 sigmoid 更好。但是仍然存在<strong>梯度饱和</strong>与<strong>exp计算</strong>的问题。<br>$$<br>f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}\<br>f(x)’=1-[f(x)]^2<br>$$</p>
+<p><strong>ReLU的Dead ReLU问题</strong></p>
+<p>如果某一次权重更新用力过猛，啪的一下，大部分权重都是负的了，下一次前向输出很容易是负的，一激活，就是0，之后就不更新了，就完蛋了</p>
+<p>两个原因：<strong>1初始化太糟糕 2learning rate设太高导致用力过猛</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71882757">不同激活函数的优缺点总结</a></p>
+<p>了解<strong>ELU</strong>和<strong>Maxout</strong>，之前的问题解决了，但计算量和参数量会有损失</p>
+<p><strong>transfer learning 迁移学习</strong> 一般都用ImageNet <strong>1提取高层特征 2微调</strong></p>
+<p><strong>multi-task learning 多任务学习</strong> 低层特征共享，产生分支完成各自的任务</p>
+<p> <strong>end-to-end learning 端到端学习</strong> 一步到位，就是一种表示学习</p>
+<h3 id="计算机视觉四大基本任务"><a href="#计算机视觉四大基本任务" class="headerlink" title="计算机视觉四大基本任务"></a>计算机视觉四大基本任务</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31727402">计算机视觉四大基本任务</a></p>
+<h3 id="计算机视觉其他应用"><a href="#计算机视觉其他应用" class="headerlink" title="计算机视觉其他应用"></a>计算机视觉其他应用</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31727405">计算机视觉其他应用</a></p>
+<h2 id="统计学习知识和网络细节"><a href="#统计学习知识和网络细节" class="headerlink" title="统计学习知识和网络细节"></a>统计学习知识和网络细节</h2><h3 id="归一-标准-正则"><a href="#归一-标准-正则" class="headerlink" title="归一/标准/正则"></a>归一/标准/正则</h3><p><a target="_blank" rel="noopener" href="https://maristie.com/2018/02/Normalization-Standardization-and-Regularization">Differences between Normalization, Standardization and Regularization</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20455227/answer/370658612">归一化和标准化的作用于区别</a></p>
+<h4 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210317213036238.png" alt="归一化的作用" style="zoom: 67%;">
+
+<h4 id="Standardization"><a href="#Standardization" class="headerlink" title="Standardization"></a>Standardization</h4><p>特征缩放，在许多学习算法中，标准化是一种<strong>广泛使用的预处理步骤，其目的是将特征缩放到零均值和单位方差:</strong><br>$$<br>x^{’}=\frac{x-u}{\sigma}<br>$$<br>也是特征缩放,但是更<strong>加动态和具有弹性,与整体样本的分布有关,加速收敛</strong></p>
+<p><strong>当整体较为集中时,方差更小,标准化后就会更宽松;如果较为宽松,方差更大,标准化后就会变紧。</strong></p>
+<p>用这些大数据集的均值和方差,代替真实的均值和方差</p>
+<p><strong>coco数据集的均值和方差（三分量顺序是RGB）</strong></p>
+<p><code>mean = [0.471, 0.448, 0.408]</code><br><code>std = [0.234, 0.239, 0.242]</code></p>
+<p><strong>ImageNet数据集的均值和方差（三分量顺序是RGB）</strong></p>
+<p><code>mean = [0.485, 0.456, 0.406]</code><br><code>std = [0.229, 0.224, 0.225]</code></p>
+<h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h4><p>正则化,减少过拟合，损失函数后加正则项</p>
 <p>翻译成中文是归一化，标准化，正则化，前两个是特征缩放，最后一个是减少过拟合</p>
 <p><strong>贝叶斯学派观点来看，正则项是在模型训练过程中引入了某种模型参数</strong>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%88%E9%AA%8C">先验</a>分布[后验由数据得出，先验就是理性推断，不拘束于数据]。</p>
 <p><strong>范数</strong>$L_P-norm$</p>
@@ -689,7 +725,7 @@
 <p><strong>提前停止</strong></p>
 <p>提前停止可看做是<strong>时间维度上的正则化</strong>。直觉上，随着迭代次数的增加，如梯度下降这样的训练算法倾向于学习愈加复杂的模型。在实践维度上进行正则化有助于控制模型复杂度，提升泛化能力。在实践中，<strong>提前停止一般是在训练集上进行训练，而后在统计上独立的验证集上进行评估；当模型在验证集上的性能不在提升时，就提前停止训练</strong>。最后，可在测试集上对模型性能做最后测试。</p>
 <p><a target="_blank" rel="noopener" href="https://alisure.github.io/2018/04/14/ML/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%98%93%E6%B7%B7%E6%A6%82%E5%BF%B5%E4%B9%8B%E7%BB%93%E6%9E%84%E9%A3%8E%E9%99%A9%E4%B8%8E%E7%BB%8F%E9%AA%8C%E9%A3%8E%E9%99%A9/#:~:text=%E7%BB%93%E6%9E%84%E9%A3%8E%E9%99%A9(Structural%20Risk)%EF%BC%9A,%EF%BC%88%E4%BE%8B%E5%A6%82%E6%AD%A3%E5%88%99%E5%8C%96%E9%97%AE%E9%A2%98%EF%BC%89%E3%80%82">期望风险、经验风险、结构风险 简洁</a></p>
-<h4 id="偏差-方差分解"><a href="#偏差-方差分解" class="headerlink" title="偏差-方差分解"></a>偏差-方差分解</h4><p><a target="_blank" rel="noopener" href="https://liam.page/2017/03/25/bias-variance-tradeoff/">详解</a></p>
+<h3 id="偏差-方差分解"><a href="#偏差-方差分解" class="headerlink" title="偏差-方差分解"></a>偏差-方差分解</h3><p><a target="_blank" rel="noopener" href="https://liam.page/2017/03/25/bias-variance-tradeoff/">详解</a></p>
 <p>误差来源有三种：随机误差、偏差和方差</p>
 <p>随机误差是高斯白噪声</p>
 <p>偏差bias描述的是通过学习拟合出来的结果之期望，与真实规律之间的差距，记作$Bias(X)=E[\hat{f}(X)]-f(X)$</p>
@@ -697,19 +733,10 @@
 <p>均方误差可以分解为:$Bias^2+Variance+Random Error$</p>
 <img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201125210219206.png" alt="直观图示" style="zoom:67%;">
 
-<h4 id="VC维"><a href="#VC维" class="headerlink" title="VC维"></a>VC维</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/903e35e1c95a">期望风险、经验风险、结构风险2深入</a></p>
+<h3 id="VC维"><a href="#VC维" class="headerlink" title="VC维"></a>VC维</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/903e35e1c95a">期望风险、经验风险、结构风险2深入</a></p>
 <p>损失函数：度量模型一次预测的好坏</p>
 <p>风险函数：度量平均意义下的模型预测好坏</p>
-<h4 id="对数损失函数"><a href="#对数损失函数" class="headerlink" title="对数损失函数"></a>对数损失函数</h4><p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201125152106078.png" alt="对数损失函数"></p>
-<p>确实是一致的，只要理解了交叉熵损失中的预测概率q(i)=p(y^i|x)</p>
-<p><strong>结构风险本质</strong></p>
-<p>结构风险是对经验风险模型复杂度的惩罚</p>
-<p><strong>结构化风险（正则项）其实是加入了模型参数分布的先验知识</strong>，也就是贝叶斯学派为了将模型往人们期望的地方去发展，继而加入了先验分布，由于是人为的先验，因此也就是一个规则项（这也就是正则项名称的由来）。这样一来，风险函数将进一步考虑了被估计量的先验概率分布</p>
-<p><strong>统计学习方法=模型+策略+算法</strong></p>
-<p>由决策函数表示的模型为非概率模型，由条件概率表示的模型为概率模型。</p>
-<p><strong>当模型是条件概率分布、损失函数是对数损失函数、模型复杂度由模型的先验概率表示时，结构风险最小化就等价于最大后验概率估计。</strong></p>
-<p><strong>当模型是条件概率分布，损失函数是对数损失函数时，经验风险最小化就等价于极大似然估计</strong></p>
-<h2 id="网络细节"><a href="#网络细节" class="headerlink" title="网络细节"></a>网络细节</h2><h3 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/b1055077005/article/details/100152102">Cross entropy</a></p>
+<h3 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/b1055077005/article/details/100152102">Cross entropy</a></p>
 <p><strong>信息奠基人香农（Shannon）认为“信息是用来消除随机不确定性的东西”。也就是说衡量信息量大小就看这个信息消除不确定性的程度。</strong></p>
 <p>一件事情概率越大，现在发生的不确定性就越小；概率越小，现在要发生的不确定性就越大，发生后消除的不确定性就越多，信息量就越大。一件事情发生后概率就是1，正常的概率是$P(x)$，消除的不确定性是$1-P(x)$</p>
 <p><strong>所以信息量的大小与信息发生的概率成反比。</strong></p>
@@ -718,15 +745,211 @@
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/43318a3dc715">相对熵</a>    <strong>KL散度衡量两个概率分布之间的差异,其实就是两个分布的熵的差值，也就是到底损失了多少信息</strong><br>$$<br>D_{KL}(p||q)=\sum_{i=1}^Np(x_{i})\cdot (logp(x_i)-logq(x_i))\<br>=E[logp(x)-logq(x)]\<br>=\sum_{i=1}^Np(x_{i})\cdot log\frac{p(x_i)}{q(x_i)}\<br>\quad \quad \quad \quad \quad=\sum_{i=1}^Np(x_{i})logp(x_i)-\sum_{i=1}^Np(x_i)logq(x_i))\<br>=-H(x)+cross_entropy<br>$$<br>p是真实分布，q是预测分布,第一行为啥是$p(x_i)$？<strong>后面的是他们的信息量，用它们的概率分布，但实际算期望的时候还是要看真实的概率。</strong>信息量和概率还是要分开看，对每一个条目，算他们信息量的不同，但实际的概率每个x出现的概率还是真实概率</p>
 <p>实际KL散度算的是<strong>预测分布减去真实分布的熵</strong></p>
 <p><strong>交叉熵,第四行和第五行显示了交叉熵，因为实际训练的时候标签确定，所以H(x)是固定的，交叉熵可以替代KL散度</strong></p>
-<h3 id="带动量的随机梯度下降"><a href="#带动量的随机梯度下降" class="headerlink" title="带动量的随机梯度下降"></a>带动量的随机梯度下降</h3><h3 id="卷积核"><a href="#卷积核" class="headerlink" title="卷积核"></a>卷积核</h3><p>$$<br>\frac{n+2p-f}{s}+1 \<br>D2=K(filters num)<br>$$</p>
-<p>一般p=0,s=1的话，就是n-f+1，对于池化，一般默认f=s</p>
-<h4 id="转置卷积"><a href="#转置卷积" class="headerlink" title="转置卷积"></a>转置卷积</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dugudaibo/article/details/83109814">参考的本篇文章</a></p>
-<p>也叫反卷积/分数步长卷积</p>
-<p>虽然在一些文章中将反卷积与转置卷积认为是等价的，但是 <strong>[1] 中的作者表示他们反对使用反卷积来表示转置卷积</strong>，他们的依据是在<strong>数学中反卷积被定义为卷积的逆</strong>，这<strong>实际上与转置卷积是不相同的。所以在下面的内容，我都是用转置卷积这个名词</strong>。</p>
+<h4 id="二元交叉熵解决sigmoid梯度饱和"><a href="#二元交叉熵解决sigmoid梯度饱和" class="headerlink" title="二元交叉熵解决sigmoid梯度饱和"></a>二元交叉熵解决sigmoid梯度饱和</h4><p>以MSELoss为例,分别对w、b链式求导时，结果是包含$\sigma’$,这就会导致梯度饱和，而二元交叉熵只包含$\sigma$,不包含$\sigma’$,所以</p>
+<h4 id="对数损失函数-负对数似然"><a href="#对数损失函数-负对数似然" class="headerlink" title="对数损失函数/负对数似然"></a>对数损失函数/负对数似然</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/silver1225/article/details/88914652">负对数似然函数</a></p>
+<p><strong>概率</strong>用于在已知参数的情况下，预测接下来的观测结果；<strong>似然性</strong>用于根据一些观测结果，估计给定模型的参数可能值。数值上相等，意义上不同</p>
+<p>$L(\theta|x)=f_\theta(x)=P_\theta(X=x)=P(X=x|\theta)=P(X=x;\theta)$</p>
+<p>负对数似然:$L(y)=-log(y)$ 负对数似然常和softmax结合使用,$0&lt;=P&lt;=1$</p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201223183034910.png" alt="log"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201223183214140.png" alt="a>1,p"></p>
+<p>我们希望得到的概率越大越好，因此概率越接近于1，则函数整体值越接近于0，即使得损失函数取到最小值。</p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201125152106078.png" alt="对数损失函数"></p>
+<p>确实是一致的，只要理解了交叉熵损失中的预测概率q(i)=p(y^i|x)</p>
+<p><strong>结构风险本质</strong></p>
+<p>结构风险是对经验风险模型复杂度的惩罚</p>
+<p><strong>结构化风险（正则项）其实是加入了模型参数分布的先验知识</strong>，也就是贝叶斯学派为了将模型往人们期望的地方去发展，继而加入了先验分布，由于是人为的先验，因此也就是一个规则项（这也就是正则项名称的由来）。这样一来，风险函数将进一步考虑了被估计量的先验概率分布</p>
+<p><strong>统计学习方法=模型+策略+算法</strong></p>
+<p>由决策函数表示的模型为非概率模型，由条件概率表示的模型为概率模型。</p>
+<p><strong>当模型是条件概率分布、损失函数是对数损失函数、模型复杂度由模型的先验概率表示时，结构风险最小化就等价于最大后验概率估计。</strong></p>
+<p><strong>当模型是条件概率分布，损失函数是对数损失函数时，经验风险最小化就等价于极大似然估计</strong></p>
+<h3 id="log-sum-exp"><a href="#log-sum-exp" class="headerlink" title="log-sum-exp"></a>log-sum-exp</h3><h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><h3 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29895933">指数加权平均</a></p>
+<p>$v_t=\beta v_{t-1} + (1-\beta)\theta_t $</p>
+<p><strong>指数式递减加权   优势</strong>:我们可以看到指数加权平均的求解过程实际上是一个递推的过程，那么这样就会有一个非常大的好处，每当我要求从0到某一时刻（n）的平均值的时候，我并不需要像普通求解平均值的作为，保留所有的时刻值，类和然后除以n。</p>
+<p>而是只需要保留0-(n-1)时刻的平均值和n时刻的温度值即可。也就是每次只需要保留常数值，然后进行运算即可，这对于深度学习中的海量数据来说，是一个很好的<strong>减少内存和空间的做法</strong>。</p>
+<h3 id="带动量的随机梯度下降"><a href="#带动量的随机梯度下降" class="headerlink" title="带动量的随机梯度下降"></a>带动量的随机梯度下降</h3><h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/12069176.html">这篇太优质了 ！！！！</a></p>
+<p><strong>感受野是个相对概念，某层feature map上的元素看到前面不同层上的区域范围是不同的，通常在不特殊指定的情况下，感受野指的是看到输入图像上的区域。</strong></p>
+<h4 id="感受野大小"><a href="#感受野大小" class="headerlink" title="感受野大小"></a>感受野大小</h4><p>$$<br>r_l=r_{l-1}+(k_l-1)\cdot j_{l-1}\<br> =r_{l-1}+(k_l-1)\cdot \prod_{i=1}^{l-1} s_i<br>$$</p>
+<p><strong>Layer l 一个元素的感受野rl等价于Layer l−1 上k×k 个感受野的叠加；</strong></p>
+<p><strong>Layer l−1 上连续k 个元素的感受野可以看成是，第1个元素看到的感受野加上剩余k−1步扫过的范围</strong></p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210312012129435.png" alt="感受野计算示例" style="zoom:67%;">
+
+<p>如上图,Conv1的感受野是3,Conv2的感受野是5</p>
+<h3 id="所有的卷积"><a href="#所有的卷积" class="headerlink" title="所有的卷积"></a>所有的卷积</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tsyccnh/article/details/87357447">一篇非常好的教程关于卷积和转置卷积</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50573160">腾讯云教程卷积和转置卷积关系</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ywheunji/p/11887906.html">卷积核的参数量和计算量</a></p>
+<h4 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h4><p><strong>卷积核</strong></p>
+<ol>
+<li><strong>卷积核默认第三维与输入图片的第三维（通道数）一样，并进行多层卷积，产生一个二维结果</strong></li>
+<li><strong>1个卷积核产生一个二维结果，n个卷积核产生第三维为n的三维结果</strong></li>
+<li><strong>卷积核n的个数就是输出的通道数</strong></li>
+</ol>
+<p>为什么out_channel要大于in_channel?</p>
+<p>Out_channels要能反映图片的多种特征,<strong>每个kernel对不同的特征有不同的敏感度</strong></p>
+<p><strong>大的卷积核尺寸意味着更大的感受野</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vdumoulin/conv_arithmetic">结合github的图演示看</a></p>
+<p><strong>1 通用公式</strong><br>$$<br>o=\frac{i+2p-k}{s}+1 \<br>D2=K(filters_num)<br>$$</p>
+<p><strong>2 没有填充,单位步长</strong><br>$$<br>s=1,p=0,o=i-k+1<br>$$</p>
+<p><strong>3有零填充,单位步长</strong></p>
+<p><strong>3.1same padding</strong></p>
+<p>$$<br>p=0,s=1\<br>o=i-k+1<br>$$<br><strong>3 Half/same padding</strong>         $p=\lfloor \frac{k}{2}\rfloor$<br>$$<br>k=2n+1,n\in N \<br>s=1,p=\lfloor \frac{k}{2}\rfloor=n\<br>o=i<br>$$</p>
+<p><strong>3.2 Full padding</strong>            $p=k-1$<br>$$<br>p=k-1,s=1\<br>o=i+k-1<br>$$<br><strong>4 没有零填充,非单位步长</strong><br>$$<br>p=0,o=\lfloor\frac{i-k}{s}\rfloor+1<br>$$</p>
+<p><strong>5 零填充,非单位步长</strong>     $odd$<br>$$<br>o=\lfloor \frac{i+2p-k}{s}\rfloor+1<br>$$<br><strong>填充方式</strong>有三种：full same  valid,一般为<strong>零填充</strong></p>
 <p>我们平时<strong>所接触的卷积其实是滤波</strong>，不是<strong>真正的数学定义上的卷积</strong>。</p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201209205446747.png" alt="步长为2的卷积"></p>
 <p>步长为2的卷积可以<strong>看做步长为1的卷积结果的S=2的采样</strong>，因此可以认为是<strong>下采样</strong>的一种。</p>
-<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guoyaohua/p/8724433.html">一篇比较好的文章</a></p>
+<p>普通卷积的计算看起来是挪动，其实不是挪动，效率太低。<strong>计算机会将卷积核转换成等效的矩阵，将输入转换为向量。通过输入向量和卷积核矩阵的相乘获得输出向量。输出的向量经过整形便可得到我们的二维输出特征。</strong></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214743847.png" alt="卷积示例"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214800536.png" alt="四个位置补0"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214820691.png" alt="拉长，然后就可以矩阵相乘"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214911375.png" alt="卷积核所展开的全连接层的权重矩阵"></p>
+<p>在CNN提出之前，我们所提到的<strong>人工神经网络应该多数情况下都是前馈神经网络</strong>，两者区别主要在于<strong>CNN使用了卷积层，而前馈神经网络用的都是全连接层</strong>，而这<strong>两个layer的区别又在于全连接层认为上一层的所有节点下一层都是需要的，通过与权重矩阵相乘层层传递，而卷积层则认为上一层的有些节点下一层其实是不需要的，所以提出了卷积核矩阵的概念</strong>。</p>
+<p>如果卷积核的大小是nxm，那么意味着该卷积核认为上一层节点每次映射到下一层节点都只有nxm个节点是有意义的。到这里，有些初学者会认为<strong>全连接层也可以做到，只要让权重矩阵某些权重赋值为0就可以实现了</strong>，例如假设在计算当前层第2个节点时认为上一层的第1个节点我不需要，那么设置w01=0就可以了。其实没错，<strong>卷积层是可以看做全连接层的一种特例,卷积核矩阵是可以展开为一个稀疏的包含很多0的全连接层的权重矩阵</strong>。</p>
+<p>卷积的两个优势：</p>
+<ol>
+<li>极大的减少参数的个数，如上图，一个4x16,一个3x3</li>
+<li>卷积核关注的是某几个相邻的节点之间的关系，<strong>学习了图片的局部特征，可以说是带有目的性的学习</strong>。这与<strong>全连接层无区别的对待所有节点进行学习有极大的差别</strong>。</li>
+</ol>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220222854186.png" alt="卷积有利于解决平移不变性" style="zoom:80%;">
+
+<h4 id="转置卷积"><a href="#转置卷积" class="headerlink" title="转置卷积"></a>转置卷积</h4><p><a target="_blank" rel="noopener" href="https://github.com/vdumoulin/conv_arithmetic">结合github的图演示看</a></p>
+<p><strong>1 p=0,s=1</strong><br>$$<br>p=0,s=1\<br>k’=k,s’=s,p’=k-1\<br>o’=i’+(k-1)<br>$$<br><strong>2 s=1</strong><br>$$<br>s=1\<br>p’=k-p-1\<br>o’=i’+(k-1)-2p<br>$$<br><strong>3 Half/same padding</strong><br>$$<br>k=2n+1,n\in N,s=1,p=\lfloor\frac{k}{2}\rfloor=n\<br>k’=k,s’=s,p’=p\<br>o’=i’<br>$$<br><strong>4 Full padding</strong><br>$$<br>s=1,p=k-1\<br>k’=k,s’=s,p’=0\<br>o’=i’-(k-1)<br>$$<br><strong>5 p=0 ,non-unit strides</strong><br>$$<br>p=0,(i-k)%s=0\<br>k’=k,s’=1,p’=k-1\<br>o’=s(\widetilde{i}’-1)+k\<br>\widetilde{i}’ :adding,s-1,zeros,between,each,input,unit<br>$$<br><strong>6 zero-padding,non-unit strides</strong><br>$$<br>(i+2p-k)%s=0\<br>k’=k,s’=1,p’=k-p-1\<br>o’=s(i’-1)+k-2p<br>$$<br><strong>7 zero-padding,non-unit strides odd</strong><br>$$<br>k’=k,s’=1,p’=k-p-1\<br>a=(i+2p-k)%s\<br>o’=s(i’-1)+a+k-2p<br>$$<br>也叫反卷积/分数步长卷积</p>
+<p>先说一下为什么人们很喜欢叫转置卷积为反卷积或逆卷积。首先举一个例子，将一个4x4的输入通过3x3的卷积核在进行普通卷积（无padding, stride=1），将得到一个2x2的输出。而转置卷积将一个2x2的输入通过同样3x3大小的卷积核将得到一个4x4的输出，看起来似乎是普通卷积的逆过程。就好像是加法的逆过程是减法，乘法的逆过程是除法一样，人们自然而然的认为这两个操作<strong>似乎是一个可逆的过程。但事实上两者并没有什么关系，操作的过程也不是可逆的。</strong></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201221160433547.png" alt="转置乘过来"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201221160511466.png" alt="列向量再转化成卷积核"></p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201221160546890.png" alt="所有的" style="zoom:67%;">
+
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201221160601788.png" alt="看起来就像大的在小的上滑动" style="zoom:67%;">
+
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201221160626802.png" alt="如图"></p>
+<p><strong>转置卷积公式</strong></p>
+<h4 id="空洞-扩张卷积"><a href="#空洞-扩张卷积" class="headerlink" title="空洞/扩张卷积"></a>空洞/扩张卷积</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37644085/article/details/89480326">空洞卷积总结</a></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/dilation.gif" alt="dilation"></p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210311181332266.png" alt="空洞卷积增加感受野" style="zoom:67%;">
+
+<p>扩张卷积增加了感受野，而不增加核的大小,<strong>因为中间插入的是空格，需要训练的卷积核参数量是不变的</strong>。</p>
+<p>卷积核大小为k,dilation_rate=d,扩张后的卷积大小如下:<br>$$<br>\hat{k} = k + (k − 1)(d − 1)<br>$$<br>则<br>$$<br>o = \lfloor\frac{i+2p-\hat{k}}{s}\rfloor+1<br>$$<br><strong>空洞卷积的作用</strong></p>
+<ul>
+<li><strong>扩大感受野</strong>：在deep net中为了增加感受野且降低计算量，总要进行降采样(pooling或s2/conv)，这样虽然可以增加感受野，但空间分辨率降低了。为了能不丢失分辨率，且仍然扩大感受野，可以使用空洞卷积。这在检测，分割任务中十分有用。一方面感受野大了可以检测分割大目标，另一方面分辨率高了可以精确定位目标。</li>
+<li><strong>捕获多尺度上下文信息：</strong>空洞卷积有一个参数可以设置dilation rate，具体含义就是在卷积核中填充dilation rate-1个0，因此，当设置不同dilation rate时，感受野就会不一样，也即获取了多尺度信息。<strong>多尺度信息在视觉任务中相当重要啊。</strong></li>
+<li>ps: 空洞卷积虽然有这么多优点，但在实际中不好优化，速度会大大折扣。</li>
+</ul>
+<p><strong>空洞卷积gridding问题</strong></p>
+<ul>
+<li><strong>局部信息丢失</strong>：由于空洞卷积的计算方式类似于棋盘格式，某一层得到的卷积结果，来自上一层的独立的集合，没有相互依赖，因此该层的卷积结果之间没有相关性，即局部信息丢失。</li>
+<li><strong>远距离获取的信息没有相关性</strong>：由于空洞卷积稀疏的采样输入信号，使得远距离卷积得到的信息之间没有相关性，影响分类结果。</li>
+</ul>
+<h4 id="1x1卷积-Network-in-Network"><a href="#1x1卷积-Network-in-Network" class="headerlink" title="1x1卷积/Network in Network"></a>1x1卷积/Network in Network</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35814486">这篇写的好啊，是我太笨了，不带例子就老觉得读不透彻</a></p>
+<p><strong>feature map是卷积核卷出来的，一个卷积核卷出来一个feature，所有feature构成featuremap，feature map数量就是channels</strong></p>
+<p><strong>作用：</strong></p>
+<ol>
+<li><strong>进行卷积核通道数的降维和升维</strong></li>
+<li><strong>实现跨通道的交互和信息整合</strong></li>
+<li><strong>增加非线性特性</strong></li>
+</ol>
+<p><strong>Inception中：</strong></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201222151157720.png" alt="加入1x1"></p>
+<p>原图feature map:28x28x192  1x1 channel:64 3x3 channel:128 5x5 channel:32</p>
+<p>左:$192 × (1×1×64) +192 × (3×3×128) + 192 × (5×5×32) = 387072$ </p>
+<p>右:$192 × (1×1×64) +（192×1×1×96+ 96 × 3×3×128）+（192×1×1×16+16×5×5×32）= 157184$</p>
+<p>对于右边的池化层，原始的不能降channel，然后就会越来越多，这样也可以用1x1降channel</p>
+<p><strong>ResNet：</strong></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201222154809733.png" alt="ResNet"></p>
+<p>假设输入输出都是256 channel,参数真的差太多了！</p>
+<p>左:$3 × 3 ×256×256×2=1179648$</p>
+<p>右:$ 1×1×256×64 + 3×3×64×64 + 1×1×64×256 = 69632$</p>
+<p><strong>全连接层角度：</strong></p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201222155618108.png" alt="全连接层角度" style="zoom:67%;">
+
+<p>原channel 6,之后channel 5,只需要一个1x1x5的卷积核就行，参数很少，FC至少$w_0\cdot h_0 \cdot 6\cdot w_1\cdot h_1\cdot 5$</p>
+<blockquote>
+<p><em>In Convolutional Nets, there is no such thing as “fully-connected layers”. There are only convolution layers with 1x1 convolution kernels and a full connection table-Yann LeCun</em></p>
+</blockquote>
+<h4 id="卷积的反向传播"><a href="#卷积的反向传播" class="headerlink" title="卷积的反向传播"></a>卷积的反向传播</h4><h3 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h3><p>池化一般不涉及零填充<br>$$<br>o=\lfloor\frac{i-k}{s}\rfloor+1<br>$$</p>
+<p><strong>图像中的相邻像素倾向于具有相似的值，因此通常卷积层相邻的输出像素也具有相似的值</strong>。这意味着，卷积层输出中包含的大部分信息都是<strong>冗余</strong>的。</p>
+<p>如果我们使用边缘检测滤波器并在某个位置找到强边缘，那么我们也可能会在距离这个像素1个偏移的位置找到相对较强的边缘。但是它们都一样是边缘，我们并没有找到任何新东西。</p>
+<p>池化层解决了这个问题。这个网络层所做的就是通过<strong>减小输入的大小降低输出值的数量</strong>。</p>
+<p>池化一般通过<strong>简单的最大值、最小值或平均值操作完成</strong>。</p>
+<p><strong>最大池化可以提取特征纹理</strong></p>
+<p><strong>平均池化可以保留背景信息。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://firstai.blog.csdn.net/article/details/105299448">综述:最大池化，平均池化，全局最大池化和全局平均池化？区别原来是这样</a></p>
+<h4 id="池化的反向传播"><a href="#池化的反向传播" class="headerlink" title="池化的反向传播"></a>池化的反向传播</h4><p>池化层一般对应在卷积层的后面，属于一对一的关系（它只影响当前深度的一个节点），不与其它卷积核做连接，所以没有权重参数需要学习。所以反向传播的时候，只需对输入参数求导，不需要进行权值更新。</p>
+<p>对于最大池化和平均池化，也有不同:<a target="_blank" rel="noopener" href="https://blog.csdn.net/kieven2008/article/details/81603994">教程</a></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210303003004886.png" alt="最大池化"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210303003024968.png" alt="平均池化"></p>
+<h3 id="上采样"><a href="#上采样" class="headerlink" title="上采样"></a>上采样</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34919792/article/details/102697817">上采样方法总结</a></p>
+<p>三种方法：</p>
+<ol>
+<li>基于<strong>线性插值</strong>的上采样</li>
+<li>基于<strong>深度学习</strong>的上采样(转置卷积)</li>
+<li><strong>Unpooling</strong>的方法 简单的补0或扩充</li>
+</ol>
+<h4 id="线性插值"><a href="#线性插值" class="headerlink" title="线性插值"></a>线性插值</h4><p><strong>双线性插值？</strong></p>
+<p>应用：</p>
+<ol>
+<li>对数据中的缺失进行合理补偿 </li>
+<li>对数据进行放大或缩小</li>
+<li>其他</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linkr/p/3630902.html">通俗易懂啊</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yssongest/p/5303151.html">图像插值的举例说明</a></p>
+<p>根据下式计算目标像素在源图像中的位置：<br>$$<br>srcX=dstX\cdot \frac{srcWidth}{dstWidth}\<br>srcY=dstY\cdot \frac{srcHeight}{dstHeight}<br>$$<br>单线性插值：单变量只有一个x，对y进行插值，线性插值原理是两个点可以确定一条直线，又可以根据x确定y<br>$$<br>\frac{y-y_0}{x-x_0}=\frac{y_1-y_0}{x_1-x_0}\<br>y=\frac{x_1-x}{x_1-x_0}y_0+\frac{x-x_0}{x_1-x_0}y_1\<br>y=k\cdot y0+(1-k)\cdot y_1 \quad \quad<br>$$</p>
+<p>双线性插值：有两个变量x、y，分别在x、y两个方向进行插值</p>
+<p>对于一个目的像素，设置坐标通过反向变换得到的浮点坐标为$(i+u,j+v)$(其中$i、j$均为浮点坐标的整数部分，$u、v$为浮点坐标的小数部分，是取值[0,1)区间的浮点数)，则这个像素得值$f(i+u,j+v)$可由原图像中坐标为$(i,j)(i+1,j)(i,j+1)(i+1,j+1)$所对应的周围四个像素的值决定，即:$f(i+u,j+v) = (1-u)(1-v)f(i,j) + (1-u)vf(i,j+1) + u(1-v)f(i+1,j) + uvf(i+1,j+1)$,<strong>在哪个方向离得近，比如距离是0.3，权重大，是0.7</strong></p>
+<p>现在假如目标图的象素坐标为$(1,1)$，那么反推得到的对应于源图的坐标是$(0.75,0.75)$, 这其实只是一个概念上的虚拟象素,实际在源图中并不存在这样一个象素,那么目标图的象素$（1,1）$的取值不能够由这个虚拟象素来决定，而只能由源图的这四个象素共同决定：$(0,0)(0,1)(1，0)(1,1)$，而由于$(0.75,0.75)$离$(1,1)$要更近一些，那么$(1,1)$所起的决定作用更大一些，这从公式1中的系数$uv=0.75×0.75$就可以体现出来，而$(1,1)$离$(0.75,0.75)$最远，所以$(0,0)$所起的决定作用就要小一些，公式中系数为$(1-u)(1-v)=0.25×0.25$也体现出了这一特点。</p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201120155633758.png" alt="很棒！"></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np<span class="token comment" spellcheck="true">#矩阵运算最简单，所以最重要的是坐标如何对应！</span>
+a<span class="token operator">=</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0.75</span><span class="token punctuation">,</span><span class="token number">0.25</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+b<span class="token operator">=</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#注意2和3位置反过来了</span>
+            <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+c<span class="token operator">=</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0.25</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span><span class="token number">0.75</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+d<span class="token operator">=</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+e<span class="token operator">=</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>d<span class="token punctuation">,</span>c<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+<span class="token operator">>></span><span class="token operator">></span> input <span class="token operator">=</span> torch<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> input
+tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'nearest'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'bilinear'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># align_corners=False</span>
+<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1.0000</span><span class="token punctuation">,</span>  <span class="token number">1.2500</span><span class="token punctuation">,</span>  <span class="token number">1.7500</span><span class="token punctuation">,</span>  <span class="token number">2.0000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">1.5000</span><span class="token punctuation">,</span>  <span class="token number">1.7500</span><span class="token punctuation">,</span>  <span class="token number">2.2500</span><span class="token punctuation">,</span>  <span class="token number">2.5000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">2.5000</span><span class="token punctuation">,</span>  <span class="token number">2.7500</span><span class="token punctuation">,</span>  <span class="token number">3.2500</span><span class="token punctuation">,</span>  <span class="token number">3.5000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">3.0000</span><span class="token punctuation">,</span>  <span class="token number">3.2500</span><span class="token punctuation">,</span>  <span class="token number">3.7500</span><span class="token punctuation">,</span>  <span class="token number">4.0000</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'bilinear'</span><span class="token punctuation">,</span> align_corners<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1.0000</span><span class="token punctuation">,</span>  <span class="token number">1.3333</span><span class="token punctuation">,</span>  <span class="token number">1.6667</span><span class="token punctuation">,</span>  <span class="token number">2.0000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">1.6667</span><span class="token punctuation">,</span>  <span class="token number">2.0000</span><span class="token punctuation">,</span>  <span class="token number">2.3333</span><span class="token punctuation">,</span>  <span class="token number">2.6667</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">2.3333</span><span class="token punctuation">,</span>  <span class="token number">2.6667</span><span class="token punctuation">,</span>  <span class="token number">3.0000</span><span class="token punctuation">,</span>  <span class="token number">3.3333</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span> <span class="token number">3.0000</span><span class="token punctuation">,</span>  <span class="token number">3.3333</span><span class="token punctuation">,</span>  <span class="token number">3.6667</span><span class="token punctuation">,</span>  <span class="token number">4.0000</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201222100731710.png" alt="两种方式"></p>
+<p>第一种，四个角对齐，均匀插值,公式：<br>$$<br>scale = (input_size-1)/(output_size-1)\<br>srcIndex=scale\cdot dstIndex<br>$$<br>第二种，不均匀，出界的只和有原坐标的算，公式：<br>$$<br>scale=input_size/output_size\<br>srcIndex=scale\cdot (dstIndex+0.5)-0.5<br>$$</p>
+<h4 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h4><p><strong>PixelShuffle</strong></p>
+<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guoyaohua/p/8724433.html">BN教程</a></p>
+<p>激活之前进行BN，增加了两个学习参数scale和shift，再从线性变到非线性</p>
+<p>有轻微的正则化作用，因为使用mint-batch，不同的mini-bath不同，所以会有一些噪音，所以有轻微的正则化效果</p>
+<p>测试时逐样本处理，batch norm从之前训练时的$\mu$和$\sigma$做指数加权平均，方式很多，反正是从训练集得到的</p>
+<h3 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35005794">吴育昕 何恺明的GN教程</a></p>
+<ol>
+<li>BN依赖于batch size，batch size较小时，BN效果不好，有些任务往往batch size只有1-2</li>
+<li>训练，验证，测试这三个阶段存在inconsistency。</li>
+</ol>
+<p>Layer Norm和Instance Norm就是Group Norm的特例，归一化避开了batch</p>
+<p>为什么工作？个人理解，每一层有很多的卷积核，这些核学习到的特征并不完全是独立的，某些特征具有相同的分布，因此可以被group。</p>
+<h3 id="CNN的反向传播"><a href="#CNN的反向传播" class="headerlink" title="CNN的反向传播"></a>CNN的反向传播</h3><p>教程:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61898234">https://zhuanlan.zhihu.com/p/61898234</a></p>
+<h2 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h2><p><a target="_blank" rel="noopener" href="http://kakuguo.ink/2020-03-18-Summary-of-Computer-Vision-Attention/">计算机视觉中的注意力机制</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54491016">自然语言处理中的注意力机制</a></p>
 <h2 id="CRF-Loss"><a href="#CRF-Loss" class="headerlink" title="CRF Loss"></a>CRF Loss</h2><h3 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h3><p>On Regularized Losses for Weakly-supervised CNN Segmentation Meng</p>
 <p>18ECCV</p>
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>keywords:<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E6%AD%A3%E5%88%99%E5%8C%96_(%E6%95%B0%E5%AD%A6)#:~:text=%E5%9C%A8%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6,%E5%8A%A0%E5%9C%A8%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%BD%93%E4%B8%AD%E3%80%82">Regularization</a>  Semi-supervised Learning CNN Segmentation</p>
@@ -1594,7 +1817,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">33.8k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
             
             
             

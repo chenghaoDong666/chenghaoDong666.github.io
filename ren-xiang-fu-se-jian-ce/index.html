@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    4k
                 </div>
                 
 
@@ -713,20 +713,6 @@
 <p>分类方法(贝叶斯分类器[9],高斯混合模型[17],支持向量机[18],神经网络[19],随机森林[20]等等)。</p>
 <p>基于cnn的架构不擅长建模像素和它们的邻居之间的关系。最近，Zheng等人[27]在CNN的最后一层引入了<strong>条件随机场</strong>来细化粗略的预测。</p>
 <h4 id="Problem-Statement-amp-Method"><a href="#Problem-Statement-amp-Method" class="headerlink" title="Problem Statement &amp; Method"></a>Problem Statement &amp; Method</h4><h4 id="Experiments-and-Analysis"><a href="#Experiments-and-Analysis" class="headerlink" title="Experiments and Analysis"></a>Experiments and Analysis</h4><p>Matlab环境  什么颜色空间仍然是开放问题，但是有人证明性能在某种程度上是独立于颜色空间的</p>
-<p><strong>双线性插值？</strong></p>
-<p>应用：</p>
-<ol>
-<li>对数据中的缺失进行合理补偿 </li>
-<li>对数据进行放大或缩小</li>
-<li>其他</li>
-</ol>
-<p>通俗易懂啊！<a target="_blank" rel="noopener" href="https://www.cnblogs.com/linkr/p/3630902.html">https://www.cnblogs.com/linkr/p/3630902.html</a></p>
-<p>图像插值的举例说明：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yssongest/p/5303151.html">https://www.cnblogs.com/yssongest/p/5303151.html</a></p>
-<p>单线性插值：单变量只有一个x，对y进行插值，线性插值原理是两个点可以确定一条直线，又可以根据x确定y<br>$$<br>\frac{y-y_0}{x-x_0}=\frac{y_1-y_0}{x_1-x_0}\<br>y=\frac{x_1-x}{x_1-x_0}y_0+\frac{x-x_0}{x_1-x_0}y_1\<br>y=k\cdot y0+(1-k)\cdot y_1 \quad \quad<br>$$</p>
-<p>双线性插值：有两个变量x、y，分别在x、y两个方向进行插值</p>
-<p><img src="./medias/loading.gif" data-original="/ren-xiang-fu-se-jian-ce/image-20201120155633758.png" alt="很棒！"></p>
-<p>对于一个目的像素，设置坐标通过反向变换得到的浮点坐标为$(i+u,j+v)$(其中$i、j$均为浮点坐标的整数部分，$u、v$为浮点坐标的小数部分，是取值[0,1)区间的浮点数)，则这个像素得值$f(i+u,j+v)$可由原图像中坐标为$(i,j)(i+1,j)(i,j+1)(i+1,j+1)$所对应的周围四个像素的值决定，即:$f(i+u,j+v) = (1-u)(1-v)f(i,j) + (1-u)vf(i,j+1) + u(1-v)f(i+1,j) + uvf(i+1,j+1)$</p>
-<p>现在假如目标图的象素坐标为$(1,1)$，那么反推得到的对应于源图的坐标是$(0.75,0.75)$, 这其实只是一个概念上的虚拟象素,实际在源图中并不存在这样一个象素,那么目标图的象素$（1,1）$的取值不能够由这个虚拟象素来决定，而只能由源图的这四个象素共同决定：$(0,0)(0,1)(1，0)(1,1)$，而由于$(0.75,0.75)$离$(1,1)$要更近一些，那么$(1,1)$所起的决定作用更大一些，这从公式1中的系数$uv=0.75×0.75$就可以体现出来，而$(1,1)$离$(0.75,0.75)$最远，所以$(0,0)$所起的决定作用就要小一些，公式中系数为$(1-u)(1-v)=0.25×0.25$也体现出了这一特点。</p>
 <p><strong>实验设置</strong></p>
 <ul>
 <li>FCN初始权值：预训练的FCN-8s </li>
@@ -874,7 +860,6 @@
 <h4 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h4><p>由于皮肤外观的低特异性和高方差，该问题仍具有挑战性</p>
 <h4 id="Figure"><a href="#Figure" class="headerlink" title="Figure"></a>Figure</h4><p>图一 UNet没有足够上下文，分类错了，Skinny考虑到更广泛背景，分类正确了</p>
 <p>图二 网络结构和两种变体</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/587c3a45df67">上采样</a>      <a target="_blank" rel="noopener" href="https://blog.csdn.net/LoseInVain/article/details/81098502">转置卷积</a></p>
 <p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/75142664">DenseNet</a>      </p>
 <p>注意语义分割和实例分割的区别，语义分割是人都归为一类，实例分割是不同的人标成不同的类 </p>
 <p> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/83496100">全景分割</a>将语义分割和实例分割结合在一起，既能分割背景，也能分割实例   </p>
@@ -1746,7 +1731,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">33.8k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
             
             
             

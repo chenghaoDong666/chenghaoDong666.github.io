@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    870
+                    879
                 </div>
                 
 
@@ -683,6 +683,7 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wz_TXWY/article/details/100860862">scala方法调用方式</a> 其中注意无括号调用法，如果没有参数，可以省略括号</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010256841/article/details/53467905">scala中为什么不建议使用return</a>  简而言之就是更符合函数式编程，且不影响类型推断等</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xianpanjia4616/article/details/81143146">scala中的:: , +:, :+, :::, +++, 等操作的含义</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6eeaa4511068">讲解了很多scala集合操作，可以来这查找</a></p>
 <p><code>collect()</code>返回一个包含此RDD中所有元素的数组。</p>
 <p><img src="./medias/loading.gif" data-original="/spark-xue-xi/image-20201212132112158.png" alt="collect函数"></p>
 <pre class=" language-scala"><code class="language-scala"><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>spark<span class="token punctuation">.</span><span class="token punctuation">{</span>SparkConf<span class="token punctuation">,</span> SparkContext<span class="token punctuation">}</span>
@@ -751,7 +752,6 @@
     <span class="token keyword">val</span> frequency <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1
     <span class="token keyword">val</span> support <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2
     <span class="token keyword">var</span> result <span class="token operator">=</span> List<span class="token punctuation">(</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token punctuation">(</span>List<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>frequency<span class="token punctuation">,</span> support<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true">//((key,("",())))</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span>size <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         result
     <span class="token punctuation">}</span> 
@@ -764,8 +764,8 @@
         result
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cache
-<span class="token comment" spellcheck="true">//diff(listX):计算此不可变序列和另一个序列之间的多集差异</span>
-
+<span class="token comment" spellcheck="true">//diff(listX):A-A∩B</span>
+<span class="token comment" spellcheck="true">//所以listY就是那个被去除掉的</span>
 
 
 <span class="token keyword">val</span> rules <span class="token operator">=</span> subitemsets<span class="token punctuation">.</span>groupByKey<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1318,52 +1318,46 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/spark-xue-xi/">
+                <a href="/vqa/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="spark学习">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/33.jpg" class="responsive-img" alt="VQA">
                         
-                        <span class="card-title">spark学习</span>
+                        <span class="card-title">VQA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            关于spark学习的一些笔记
+                            帮朋友写期末报告于是才有这篇博客
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/spark/" class="post-category">
-                                    spark
+                            <a href="/categories/VQA/" class="post-category">
+                                    VQA
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/spark/">
-                        <span class="chip bg-color">spark</span>
-                    </a>
-                    
-                    <a href="/tags/scala/">
-                        <span class="chip bg-color">scala</span>
+                    <a href="/tags/VQA/">
+                        <span class="chip bg-color">VQA</span>
                     </a>
                     
                 </div>
@@ -1656,7 +1650,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">33.8k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
             
             
             

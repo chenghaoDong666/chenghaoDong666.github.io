@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    678
+                    1.1k
                 </div>
                 
 
@@ -672,28 +672,30 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>linux教程：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4017.html">http://c.biancheng.net/view/4017.html</a></p>
-<p>unzip -d des src 解压到指定目录</p>
-<p>df -h 查看磁盘空间大小</p>
-<h4 id="linux服务器安装conda？"><a href="#linux服务器安装conda？" class="headerlink" title="linux服务器安装conda？"></a>linux服务器安装conda？</h4><p>CSDN：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40258579/article/details/85001218?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/weixin_40258579/article/details/85001218?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
-<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.anaconda.com/anaconda/install/linux/">https://docs.anaconda.com/anaconda/install/linux/</a></p>
-<p>source ~/.bashrc启用conda</p>
-<h4 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch?"></a>安装pytorch?</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xzy5210123/article/details/107237037?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/xzy5210123/article/details/107237037?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
+<p><code>unzip -d des src</code>解压到指定目录</p>
+<p><code>df -h</code>查看磁盘空间大小</p>
+<h3 id="linux服务器安装conda？"><a href="#linux服务器安装conda？" class="headerlink" title="linux服务器安装conda？"></a>linux服务器安装conda？</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40258579/article/details/85001218?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">CSDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.anaconda.com/anaconda/install/linux/">官方文档</a></p>
+<p><code>source ~/.bashrc</code>环境变量生效</p>
+<h3 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch?"></a>安装pytorch?</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xzy5210123/article/details/107237037?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">换源解决速度慢教程</a></p>
 <p>建议安装下面这个版本的pytorch,不然咱们实验室的cuda用不了</p>
+<p><code>pip install --pre torch torchvision -f https://download.pytorch.org/whl/nightly/cu110/torch_nightly.html</code></p>
 <p><a target="_blank" rel="noopener" href="https://discuss.pytorch.org/t/rtx-3000-support/98158">https://discuss.pytorch.org/t/rtx-3000-support/98158</a></p>
-<h4 id="python版本更改？"><a href="#python版本更改？" class="headerlink" title="python版本更改？"></a>python版本更改？</h4><p>还是有大佬的！<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenhuabin/p/10718471.html">https://www.cnblogs.com/chenhuabin/p/10718471.html</a></p>
+<h3 id="python版本更改？"><a href="#python版本更改？" class="headerlink" title="python版本更改？"></a>python版本更改？</h3><p>还是有大佬的！<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenhuabin/p/10718471.html">https://www.cnblogs.com/chenhuabin/p/10718471.html</a></p>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20201113190611958.png" alt="这一步是重点"></p>
-<h4 id="Xshell复制粘贴设置"><a href="#Xshell复制粘贴设置" class="headerlink" title="Xshell复制粘贴设置"></a>Xshell复制粘贴设置</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sxdcgaq8080/p/10025759.html">https://www.cnblogs.com/sxdcgaq8080/p/10025759.html</a></p>
+<h3 id="Xshell设置"><a href="#Xshell设置" class="headerlink" title="Xshell设置"></a>Xshell设置</h3><p>复制粘贴</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sxdcgaq8080/p/10025759.html">https://www.cnblogs.com/sxdcgaq8080/p/10025759.html</a></p>
 <h4 id="jupyter配置？"><a href="#jupyter配置？" class="headerlink" title="jupyter配置？"></a>jupyter配置？</h4><p>首先，安装jupyter</p>
-<pre><code>pip install jupyter  </code></pre>
+<pre class=" language-shell"><code class="language-shell">pip install jupyter  </code></pre>
 <p>生成jupyter配置文件</p>
-<pre><code>jupyter notebook --generate-config</code></pre>
+<pre class=" language-shell"><code class="language-shell">jupyter notebook --generate-config</code></pre>
 <p>打开ipython，生成密码：</p>
-<pre><code># ipython
+<pre class=" language-shell"><code class="language-shell"># ipython
 In [1]:  from notebook.auth import passwd
 In [2]: passwd()</code></pre>
 <p>会让输入两次密码，输入完成后 复制生成的 秘钥，后面会用到，秘钥带上sha1</p>
 <p>修改配置文件：vi中查找 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/actively/p/13023292.html">https://www.cnblogs.com/actively/p/13023292.html</a></p>
-<pre><code>vi  /username/.jupyter/jupyter_notebook_config.py
+<pre class=" language-shell"><code class="language-shell">vi  /username/.jupyter/jupyter_notebook_config.py
     #改几个地方：
 c.NotebookApp.ip = 'localhost'  #一定要把注释的#号去掉
 c.NotebookApp.port = 10001                    即对外提供访问的端口
@@ -703,28 +705,53 @@ c.NotebookApp.notebook_dir = u'workplace' 即设置jupyter启动后默认的根�
 <p>然后打开xshell，文件-&gt;当前会话属性-&gt;隧道-&gt;添加 #端口号可以自己设置别的</p>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20201113093744564.png" alt="隧道属性"></p>
 <p>然后打开jupyter</p>
-<pre><code>jupyter notebook</code></pre>
+<pre class=" language-shell"><code class="language-shell">jupyter notebook</code></pre>
 <p>然后在windows上打开localhost:10001,就能在windows上使用linux的jupyter notebook</p>
-<h4 id="导入Cuda："><a href="#导入Cuda：" class="headerlink" title="导入Cuda："></a>导入Cuda：</h4><p>对于我们实验室，需要在bashrc中导入</p>
-<pre><code>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+<h3 id="导入Cuda："><a href="#导入Cuda：" class="headerlink" title="导入Cuda："></a>导入Cuda：</h3><p>对于我们实验室，需要在bashrc中导入</p>
+<pre class=" language-shell"><code class="language-shell">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64#
 export PATH=$PATH:/usr/local/cuda/bin
 export CUDA_HOME=/usr/local/cuda</code></pre>
-<p>然后source .bashrc，然后可以运行nvcc -V查看版本来检查是否正确</p>
-<p>bashrc介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16403141/article/details/77987935?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">https://blog.csdn.net/qq_16403141/article/details/77987935?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param</a></p>
-<p>history查看历史命令</p>
-<h4 id="后台使用jupyter"><a href="#后台使用jupyter" class="headerlink" title="后台使用jupyter"></a>后台使用jupyter</h4><p>nohup一定要删进程 </p>
-<p>ps -aux | grep jupyter 查找jupyter命令</p>
-<p>教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/donaldsy/article/details/96350061">https://blog.csdn.net/donaldsy/article/details/96350061</a></p>
-<h4 id="opencv安装"><a href="#opencv安装" class="headerlink" title="opencv安装"></a>opencv安装</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/thewaytotheway/p/12847260.html">https://www.cnblogs.com/thewaytotheway/p/12847260.html</a></p>
-<h4 id="tensorflow安装"><a href="#tensorflow安装" class="headerlink" title="tensorflow安装"></a>tensorflow安装</h4><p>pip install tensorflow安装的是CPU版本</p>
+<p>然后<code>source .bashrc</code>，然后可以运行<code>nvcc -V</code>查看版本来检查是否正确</p>
+<h3 id="后台使用jupyter"><a href="#后台使用jupyter" class="headerlink" title="后台使用jupyter"></a>后台使用jupyter</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/donaldsy/article/details/96350061">后台运行jupyter教程</a></p>
+<pre class=" language-shell"><code class="language-shell">jupyter notebook & #后台运行，你关掉终端会停止运行
+nohup jupyter notebook & #后台运行，你关掉终端也会继续运行
+ps -aux | grep jupyter #查找jupyter命令
+jobs -l#查看当前有多少在后台运行的命令，加上-l参数可以显示后台运行的pid
+fg %jobnumber#将后台中的命令调至前台继续运行。%jobnumber是jobs查到的序号，不是pid
+bg %jobnumber#将一个在后台暂停的命令，变成继续执行。</code></pre>
+<h3 id="opencv安装"><a href="#opencv安装" class="headerlink" title="opencv安装"></a>opencv安装</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/thewaytotheway/p/12847260.html">https://www.cnblogs.com/thewaytotheway/p/12847260.html</a></p>
+<h3 id="tensorflow安装"><a href="#tensorflow安装" class="headerlink" title="tensorflow安装"></a>tensorflow安装</h3><p>pip install tensorflow安装的是CPU版本</p>
 <p>pip install tensorflow-gpu 安装的是gpu版本</p>
 <p><a href="%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E5%A4%A7%E4%BD%ACtql">https://blog.csdn.net/china_xin1/article/details/109824882</a> 显卡3090只支持CUDA11</p>
-<p>所以要 pip install tf-nightly-gpu   尝新版</p>
-<h4 id="查看服务器使用情况"><a href="#查看服务器使用情况" class="headerlink" title="查看服务器使用情况"></a>查看服务器使用情况</h4><p>查看GPU使用情况   watch -n 5 nvidia-smi </p>
-<p>nvcc -V查看当前cuda版本</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AlbenXie/article/details/72885951">查看CPU使用情况</a>       top -bn 1 -i -c</p>
-<h4 id="bashrc"><a href="#bashrc" class="headerlink" title=".bashrc"></a>.bashrc</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/midworld/p/11006967.html">https://www.cnblogs.com/midworld/p/11006967.html</a>  保存个性化设置，环境变量等    </p>
-<h4 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h4><p><a target="_blank" rel="noopener" href="https://www.linuxprobe.com/linux-jar.html">https://www.linuxprobe.com/linux-jar.html</a>   find -name 文件</p>
+<p>所以要<code>pip install tf-nightly-gpu</code>  尝新版</p>
+<h3 id="查看服务器使用情况"><a href="#查看服务器使用情况" class="headerlink" title="查看服务器使用情况"></a>查看服务器使用情况</h3><p><code>watch -n 5 nvidia-smi </code></p>
+<p>查看GPU使用情况 ,-n 5 指每5s刷新一次</p>
+<p><code>nvcc -V</code></p>
+<p>查看当前cuda版本</p>
+<p><code>top -bn 1 -i -c</code></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AlbenXie/article/details/72885951">查看CPU使用情况</a>     </p>
+<p><code>ps aux |grep dch</code></p>
+<pre class=" language-shell"><code class="language-shell">1）ps a 显示现行终端机下的所有程序，包括其他用户的程序。
+2）ps -A 显示所有程序。
+3）ps c 列出程序时，显示每个程序真正的指令名称，而不包含路径，参数或常驻服务的标示。
+4）ps -e 此参数的效果和指定"A"参数相同。
+5）ps e 列出程序时，显示每个程序所使用的环境变量。
+6）ps f 用ASCII字符显示树状结构，表达程序间的相互关系。
+7）ps -H 显示树状结构，表示程序间的相互关系。
+8）ps -N 显示所有的程序，除了执行ps指令终端机下的程序之外。
+9）ps s 采用程序信号的格式显示程序状况。
+10）ps S 列出程序时，包括已中断的子程序资料。
+11）ps -t <终端机编号> 　指定终端机编号，并列出属于该终端机的程序的状况。
+12）ps u 　 以用户为主的格式来显示程序状况。
+13）ps x 　 显示所有程序，不以终端机来区分。
+14）ps -l 較長,較詳細的顯示該PID的信息</code></pre>
+<p><code>history</code></p>
+<p>查看历史命令</p>
+<h3 id="bashrc"><a href="#bashrc" class="headerlink" title=".bashrc"></a>.bashrc</h3><p><code>cd </code>和<code>cd ~</code>都会返回到用户主目录<code>/home/dch</code> </p>
+<p><code>/home/dch/.bashrc</code> 配置文件，保存个人的一些个性化设置，如命令别名、路径、环境变量等</p>
+<p><code>source .bashrc</code>立刻加载修改后的设置，使之生效。</p>
+<p><code>export</code></p>
+<h3 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h3><p><a target="_blank" rel="noopener" href="https://www.linuxprobe.com/linux-jar.html">https://www.linuxprobe.com/linux-jar.html</a>   find -name 文件</p>
 
             </div>
             <hr/>
@@ -1579,7 +1606,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">33.8k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
             
             
             

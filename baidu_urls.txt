@@ -1,3 +1,10 @@
+http://dchlovestudy.xyz/onnx/
+http://dchlovestudy.xyz/semantic-segmentation-2/
+http://dchlovestudy.xyz/bian-shuai-mi-ji/
+http://dchlovestudy.xyz/cnn-tricks/
+http://dchlovestudy.xyz/backbone/
+http://dchlovestudy.xyz/java-he-xin-ji-chu/
+http://dchlovestudy.xyz/vqa/
 http://dchlovestudy.xyz/spark-xue-xi/
 http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/
 http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/
@@ -16,7 +23,7 @@ http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/
 http://dchlovestudy.xyz/dp-zhuan-ti/
 http://dchlovestudy.xyz/tuo-fu-bi-ji/
 http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/
-http://dchlovestudy.xyz/zu-hui-zong-jie/
+http://dchlovestudy.xyz/sui-xiang-yu-gan-wu/
 http://dchlovestudy.xyz/conda-shi-yong/
 http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/
 http://dchlovestudy.xyz/fu-se-fen-ji-yu-xi-tong/

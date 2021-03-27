@@ -1,16 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/</loc>
-    <lastmod>2020-12-12</lastmod>
+    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
+    <lastmod>2021-03-26</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/semantic-segmentation-2/</loc>
+    <lastmod>2021-03-26</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/onnx/</loc>
+    <lastmod>2021-03-26</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
+    <lastmod>2021-03-25</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/semantic-segmentation/</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/backbone/</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/bian-shuai-mi-ji/</loc>
+    <lastmod>2021-03-22</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/cnn-tricks/</loc>
+    <lastmod>2021-03-20</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</loc>
+    <lastmod>2021-03-20</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</loc>
+    <lastmod>2021-03-19</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/sui-xiang-yu-gan-wu/</loc>
+    <lastmod>2021-03-12</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/</loc>
+    <lastmod>2021-03-04</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/matlab/</loc>
+    <lastmod>2021-02-22</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/ren-xiang-pi-fu-jian-ce-2/</loc>
-    <lastmod>2020-12-12</lastmod>
+    <lastmod>2021-01-27</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/</loc>
-    <lastmod>2020-12-12</lastmod>
+    <lastmod>2021-01-23</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/</loc>
+    <lastmod>2021-01-20</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/</loc>
+    <lastmod>2020-12-25</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
+    <lastmod>2020-12-23</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</loc>
+    <lastmod>2020-12-20</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/</loc>
+    <lastmod>2020-12-20</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/java-he-xin-ji-chu/</loc>
+    <lastmod>2020-12-17</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/vqa/</loc>
+    <lastmod>2020-12-16</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/spark-xue-xi/</loc>
+    <lastmod>2020-12-13</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/</loc>
@@ -21,56 +101,12 @@
     <lastmod>2020-12-12</lastmod>
   </url>
   <url>
-    <loc>http://dchlovestudy.xyz/semantic-segmentation/</loc>
-    <lastmod>2020-12-12</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/spark-xue-xi/</loc>
-    <lastmod>2020-12-12</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/</loc>
-    <lastmod>2020-12-12</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/matlab/</loc>
-    <lastmod>2020-12-10</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</loc>
-    <lastmod>2020-12-09</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
-    <lastmod>2020-12-09</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/</loc>
-    <lastmod>2020-12-07</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
-    <lastmod>2020-12-07</lastmod>
-  </url>
-  <url>
     <loc>http://dchlovestudy.xyz/tensorflow-xue-xi/</loc>
-    <lastmod>2020-12-05</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
     <lastmod>2020-12-05</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/</loc>
     <lastmod>2020-12-01</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/typora-shi-yong-wen-ti/</loc>
-    <lastmod>2020-11-27</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/zu-hui-zong-jie/</loc>
-    <lastmod>2020-11-19</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/yan-se-heng-chang-xing-zhi-mhcc/</loc>
@@ -93,15 +129,7 @@
     <lastmod>2020-11-13</lastmod>
   </url>
   <url>
-    <loc>http://dchlovestudy.xyz/ren-lian-shi-bie-yu-fu-se-fen-lei-ji-dlib-ku/</loc>
-    <lastmod>2020-11-09</lastmod>
-  </url>
-  <url>
     <loc>http://dchlovestudy.xyz/tuo-fu-bi-ji/</loc>
-    <lastmod>2020-11-08</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/</loc>
     <lastmod>2020-11-08</lastmod>
   </url>
   <url>

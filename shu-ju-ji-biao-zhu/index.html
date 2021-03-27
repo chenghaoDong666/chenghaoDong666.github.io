@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.1k
                 </div>
                 
 
@@ -671,13 +671,28 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="数据集标注"><a href="#数据集标注" class="headerlink" title="数据集标注"></a>数据集标注</h4><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/reference/735928/e1c09zpIxso79ckYFsufW97lGFgDuI-Mkxj7Qi6HYi-OVg50jiLd_3hXeWnola-o_uuaI6DtXtCZNK-NMJpSJxM">开放数据标注工具浅析</a></p>
+                <h3 id="数据集标注"><a href="#数据集标注" class="headerlink" title="数据集标注"></a>数据集标注</h3><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/reference/735928/e1c09zpIxso79ckYFsufW97lGFgDuI-Mkxj7Qi6HYi-OVg50jiLd_3hXeWnola-o_uuaI6DtXtCZNK-NMJpSJxM">开放数据标注工具浅析</a></p>
 <p>包括：labelme labelImg VIA 精灵标注  LabelHub</p>
 <p>ps：ps标注可以选择使用磁性套索或者其他工具，标注完之后就涂色就可以了，自己设计一种颜色，比如urban street scene现在多此采用cityscapes的涂色方案。然后在使用的时候，把不同的rgb映射到类别空间，也就是灰度空间就可以了。一般，rgb是为了更好的结果类别的展示，训练的时候使用的是灰度图像。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/wkentaro/labelme">Labelme</a>     <a target="_blank" rel="noopener" href="https://blog.csdn.net/u014061630/article/details/88756644">Labelme教程1</a>      <a target="_blank" rel="noopener" href="https://blog.csdn.net/fengxin1995/article/details/80511227">Labelme教程2</a></p>
-<p>start labelme_json_to_dataset 1.json</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/lzx1413/LabelImgTool">LabelImgTool</a></p>
-<h4 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28418387/article/details/95662415">F1、IoU等计算方式理解与代码实现</a></p>
+<h3 id="labelme标注详解"><a href="#labelme标注详解" class="headerlink" title="labelme标注详解"></a>labelme标注详解</h3><p><a target="_blank" rel="noopener" href="https://github.com/wkentaro/labelme">Labelme的github地址</a>     <a target="_blank" rel="noopener" href="https://blog.csdn.net/u014061630/article/details/88756644">Labelme教程1</a>      <a target="_blank" rel="noopener" href="https://blog.csdn.net/fengxin1995/article/details/80511227">Labelme教程2</a></p>
+<h4 id="1下载安装labelme"><a href="#1下载安装labelme" class="headerlink" title="1下载安装labelme"></a>1下载安装labelme</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">##################</span>
+<span class="token comment" spellcheck="true">## for Python 3 ##</span>
+<span class="token comment" spellcheck="true">##################</span>
+<span class="token comment" spellcheck="true">#使用Anaconda创建虚拟环境</span>
+conda create <span class="token operator">-</span><span class="token operator">-</span>name<span class="token operator">=</span>labelme python<span class="token operator">=</span><span class="token number">3.6</span>
+source activate labelme
+pip install pyqt5  <span class="token comment" spellcheck="true"># pyqt5 can be installed via pip on python3</span>
+pip install labelme</code></pre>
+<h4 id="2打开labelme"><a href="#2打开labelme" class="headerlink" title="2打开labelme"></a>2打开labelme</h4><p>打开anaconda Prompt</p>
+<img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210116145819793.png" alt="image-20210116145819793" style="zoom:80%;">
+
+<h4 id="3标注"><a href="#3标注" class="headerlink" title="3标注"></a>3标注</h4><p>使用open或opendir打开一张图片或一个文件夹</p>
+<p>使用create polygons创建多边形标注即可</p>
+<h4 id="4转换"><a href="#4转换" class="headerlink" title="4转换"></a>4转换</h4><p><code>start labelme_json_to_dataset 1.json</code></p>
+<p>py文件在路径:envs\labelme\Lib\site-packages\labelme\cli</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39397024/article/details/93487845">labelme打不开，不显示主界面</a>,之前使用扩展屏幕的原因，憨憨的</p>
+<p>labelme_json_to_dataset.exe转换json生成的文件夹为空，原因是json内存储的文件路径的原因！！！！</p>
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28418387/article/details/95662415">F1、IoU等计算方式理解与代码实现</a></p>
 <p>上面这篇文章写得太好了，代码可以拿来直接用</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Trevo/p/11795503.html">评价指标总结和代码实现</a></p>
 <p>最常用的PA和IoU<br>$$<br>PA=\frac{TP+TN}{TP+TN+FP+FN}<br>$$</p>
@@ -1558,7 +1573,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">33.8k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
             
             
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="组会总结, python,cv,codeforces,leetcode,image processing,软件使用">
+    <meta name="keywords" content="CNN_tricks, python,cv,codeforces,leetcode,image processing,软件使用">
     <meta name="description" content="计算机视觉与图像处理，以及其他相关的技术博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>组会总结 | 亦爱Zxy</title>
+    <title>CNN_tricks | 亦爱Zxy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -485,7 +485,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'f4923fee457a65d820a6875b3173eee5197646343a25a91b7df9cdb2f098dcb5';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('密码提示：帅不帅？')).toString(CryptoJS.enc.Hex)) {
                 alert('你不够帅，将返回主页！');
@@ -498,12 +498,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">组会总结</h1>
+                    <h1 class="description center-align post-title">CNN_tricks</h1>
                 </div>
             </div>
         </div>
@@ -620,8 +620,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%A5%87%E6%80%AA/">
-                                <span class="chip bg-color">奇怪</span>
+                            <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">网络结构</span>
                             </a>
                         
                     </div>
@@ -632,8 +632,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/" class="post-category">
-                                奇奇怪怪
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
                             </a>
                         
                     </div>
@@ -645,7 +645,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-20
+                    2021-03-18
                 </div>
                 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    175
+                    2.1k
                 </div>
                 
 
@@ -671,22 +671,47 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="10-20"><a href="#10-20" class="headerlink" title="10.20"></a>10.20</h2><ol>
-<li>ACCV 大概在六七月份</li>
-<li>为什么定这几级，理论依据是什么？现有的分级标准，为什么这么分？理论依据？出于什么考量？</li>
-<li>写论文博客时，要分两个过程，自己读主要写每个细节，按照论文的流程走下来；和别人讲、真正理解是要按自己的思路把整个流程理一遍</li>
-<li><img src="./medias/loading.gif" data-original="/zu-hui-zong-jie/image-20201021103706939.png" alt="IJCAI"></li>
-<li><img src="./medias/loading.gif" data-original="/zu-hui-zong-jie/image-20201021103921695.png" alt="ICCV"></li>
-</ol>
-<h2 id="10-30"><a href="#10-30" class="headerlink" title="10.30"></a>10.30</h2><ol>
-<li>DCT、GAN、自监督</li>
-<li>学习宇翔学长如何讲</li>
-<li>时间和效率都要保证 太堕落了</li>
-<li>下次组会前要把三篇贝叶斯看完加代码整完</li>
-</ol>
-<h2 id="11-19"><a href="#11-19" class="headerlink" title="11.19"></a>11.19</h2><ol>
-<li>还是要做ppt，相当于再捋一次思路，锻炼提炼总结能力。</li>
-</ol>
+                <h2 id="Bag-of-Tricks"><a href="#Bag-of-Tricks" class="headerlink" title="Bag of Tricks"></a>Bag of Tricks</h2><h3 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h3><p>19CVPR</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>图像分类研究的最新进展主要归功于<strong>训练过程的改进，如数据增强和优化方法的改变。</strong>然而这些改进大部分作为实验细节提一嘴，要么只在源代码中可见。本文通过消融研究来检验这些改进的影响。通过这些trick集合，能够<strong>显著改进各种CNN模型</strong>，同时<strong>对对象检测和语义分割带来更好的迁移学习性能。</strong></p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>改进包括模型架构、损失函数、数据预处理、优化方法，这些改进提高模型精度，但几乎不改变计算复杂度。</p>
+<h3 id="Training-Procedures-基线"><a href="#Training-Procedures-基线" class="headerlink" title="Training Procedures/基线"></a>Training Procedures/基线</h3><h4 id="2-1Baseline-Training-Procedure"><a href="#2-1Baseline-Training-Procedure" class="headerlink" title="2.1Baseline Training Procedure"></a>2.1Baseline Training Procedure</h4><p>采用Resnet作为基线</p>
+<p>训练过程执行而验证过程不执行随机增强。</p>
+<p>卷积层和全连接层的<strong>权值均采用Xavier算法进行初始化</strong>。</p>
+<h3 id="Efficient-Training-训练速度"><a href="#Efficient-Training-训练速度" class="headerlink" title="Efficient Training/训练速度"></a>Efficient Training/训练速度</h3><p>在本节中，我们将回顾在不牺牲模型精度的情况下实现低精度和大批量训练的各种技术。有些技术甚至可以提高准确性和训练速度。</p>
+<h4 id="3-1Large-batch-training"><a href="#3-1Large-batch-training" class="headerlink" title="3.1Large-batch training"></a>3.1Large-batch training</h4><ul>
+<li>batch数太小，而类别又比较多的时候，真的可能会导致loss函数震荡而不收敛，尤其是在你的网络比较复杂的时候。</li>
+<li>随着batchsize增大，处理相同的数据量的速度越快，跑完一个epoch所需迭代次数变少</li>
+<li>一定范围内，batchsize越大，其确定的下降方向就越准，不容易被noise影响，引起训练振荡就越小</li>
+<li>而batchsize越大的话，显存又可能受不住，模型收敛速度可能变慢，因为每次迭代用时更长了，学习率不变的话，需要更多次迭代</li>
+<li>具体的batch size的选取和训练集的样本数目相关。</li>
+<li>所以实际工程最常用的就是mini-batch，GPU对2的幂次的batch可以发挥更佳的性能，因此设置成16,32,64…往往比整10、整100更优</li>
+</ul>
+<p><strong>Linear scaling learning rate</strong></p>
+<p>大批量的批处理减少了梯度中的噪声，所以我们可以增加学习速率，使梯度方向相反的方向取得更大的进步。<strong>增大batch size，单batch数据中噪声的影响会更小，此时就可以使用大的学习率步长</strong>。比如ResNet-50网络，官方采用的batch size为256，初始学习率为0.1，那么当使用更大的batch size，符号表示为b时，那么可以设置初始学习率为$0.1\cdot \frac{b}{256}$。</p>
+<p><strong>Learning rate warmup</strong></p>
+<p>在训练开始时，所有参数通常都是随机值，因此远离最终解。使用过大的学习率可能会导致数值不稳定。<strong>学习率热启动策略具体操作为，将实验中用的学习率参数从0逐渐增大到初始学习率大小，然后再采用常规的学习率衰减方案，逐渐增大学习率的过程被称作warmup阶段</strong>。</p>
+<p>假设使用前m个batch来预热，初始学习率为l，那么对于第i个批次,$1\le i\le m$,学习率为$l\cdot \frac{i}{m}$</p>
+<p><strong>这种策略的好处：防止训练过程中出现的instablility</strong>。</p>
+<p><strong>Zero</strong> $\gamma$</p>
+<p>Resnet网络结构中包含了多个residual blocks，记某个block的输入为x，那么经过残差求和后的结果为$x+block(x)$,而block的最后一层为batch norm层，batch norm层先将该层的输入数据标准化，记作$\hat{x}$ ,那么batch norm层的输出为$ \gamma \hat{x}+\beta$ ，其中，$\gamma$和$\beta$为可训练参数，因此也需要在模型训练之前做初始化，<strong>通常的做法是将它们分别初始化为</strong>1和0。Zero $\gamma$ 的做法是将它们均初始化为0。</p>
+<p><strong>这种策略的好处：将所有residual blocks中的最后一个batch norm层的$\gamma$和$\beta$参数设置为0，也即residual block的输出和输入相等，可以使模型在初始阶段更容易训练。</strong><br><strong>No bias decay</strong></p>
+<p>权值衰减通常适用于所有可学习参数，包括权值和偏差。这相当于对所有参数应用L2正则化，使它们的值趋近于0。但是为了避免过拟合，建议对权重应用正则化。bias,和BN层中的$\gamma$和$\beta$都不正则化。</p>
+<h4 id="3-2-Low-precision-training"><a href="#3-2-Low-precision-training" class="headerlink" title="3.2 Low-precision training"></a>3.2 Low-precision training</h4><p>通常，计算机使用32-bit浮点精度（FP32）做训练，也就是说，所有的数字都以FP32格式存储，算术运算的输入和输出也是FP32数字。英伟达的部分显卡针对FP16做了定制化优化，能够达到更快的计算速度，比如最新的显卡V100。另外，关于低精度训练相关的算法理论，可以参见笔者之前写的一篇文章。</p>
+<p>建议在FP16中存储所有参数和激活，并使用FP16来计算梯度。同时，所有参数都有一个用于参数更新的FP32的副本。此外，用一个标量与损失相乘以更好地将梯度范围对齐到FP16也是一种实用的解决方案。</p>
+<h4 id="3-3Experiment-Results"><a href="#3-3Experiment-Results" class="headerlink" title="3.3Experiment Results"></a>3.3Experiment Results</h4><p>技巧确实有用</p>
+<h3 id="Model-Tweaks-网络结构"><a href="#Model-Tweaks-网络结构" class="headerlink" title="Model Tweaks/网络结构"></a>Model Tweaks/网络结构</h3><p>A model tweak is a minor adjustment to the network architecture。这样的调整通常几乎不会改变计算复杂度，但可能对模型精度有不可忽视的影响。</p>
+<p>剩余内容见backbone中的Resnet部分。</p>
+<h3 id="Training-Refinement-过程优化"><a href="#Training-Refinement-过程优化" class="headerlink" title="Training Refinement/过程优化"></a>Training Refinement/过程优化</h3><h4 id="5-1-Cosine-Learning-Rate-Decay"><a href="#5-1-Cosine-Learning-Rate-Decay" class="headerlink" title="5.1 Cosine Learning Rate Decay"></a>5.1 Cosine Learning Rate Decay</h4><p>广泛使用的策略是指数衰减的学习速率。何的ResNet每30个周期以0.1降低速率，我们称之为“阶跃衰减step decay”。</p>
+<p>$η_t=\frac{1}{2}(1+cos(\frac{t\pi}{T}))η$</p>
+<p>T为batch总数(不包括预热),t为当前批次，η为初始速率。与步长衰减相比，余弦衰减从一开始就开始衰减学习，但一直很大，直到步长衰减使lr降低了10倍，从而潜在地提高了训练进度。</p>
+<h4 id="5-2-Label-Smoothing"><a href="#5-2-Label-Smoothing" class="headerlink" title="5.2 Label Smoothing"></a>5.2 Label Smoothing</h4><p>$z_i$表示对class i的预测分数，则$q=softmax(z)$,即:<br>$$<br>q_i=\frac{exp(z_i)}{\sum_{j=1}^Kexp(z_j)}<br>$$<br>假设真实label为y,则可以构造真实概率分布，$p_i=1\quad if\quad i=y$,否则为0，交叉熵为:<br>$$<br>l(p,q)=-\sum_{i=1}^Kp_ilogq_i\<br>=-logp_y\<br>=-z_y+log(\sum_{i=1}^Kexp(z_i))<br>$$<br>最优解是$z_y = inf$同时保持其他值足够小。换句话说，它鼓励输出分数显著不同，这可能导致过拟合。</p>
+<p>标签平滑改变了真实概率的构造:<br>$$<br>q_i=c(u)=\begin{cases}1-\varepsilon \quad  if \quad i=y,\\varepsilon/(K-1) \quad otherwise \end{cases}<br>$$<br>$\varepsilon$是一个小常数</p>
+<h4 id="5-3-Knowledge-Distillation"><a href="#5-3-Knowledge-Distillation" class="headerlink" title="5.3 Knowledge Distillation"></a>5.3 Knowledge Distillation</h4><p>Knowledge Distillation，可以翻译成知识蒸馏，最早由Hinton在2015年提出，它包含了一个”教师网络”和一个”学生网络“。其中，“教师网络”通常采用预训练好的模型，而“学生网路”中包含了待学习的参数。记标签的真实概率分布为p ，“学生网络”的预测概率分布为z ，“教师网络”的预测概率分布为r，优化的目标是，让“学生网络”在学习标签的真实概率分布的同时，还要学习“教师网络”的先验知识，公式表示如下:<br>$$<br>l(p,softmax(z))+T^2l(softmax(\frac{r}{T}),softmax(\frac{z}{T}))<br>$$<br>其中，前者表示学习标签的真实概率分布，后者表示学习“教师网络”的先验知识，T为超参数。</p>
+<p>为什么学习的目标是这样子呢？</p>
+<p><strong>标签的真实概率分布提供了hard label，准确率高但是信息熵很低，而“教师网络”提供了soft label，准确率相对较低但是信息熵高。这里的信息熵怎么理解呢，比如一副马的图片，可以想象的到它看上去也有点像牛，而hard label给的标签是[1, 0]，soft label给的标签是[0.7, 0.3]，显然，soft label提供了类别之间的关联，提供的信息量更大，有助于模型在学习时增强类间区分度，hard label和soft label结合等价于在学习真实标签的同时，补充类间信息。</strong></p>
+<h4 id="5-4-Mixup-Training"><a href="#5-4-Mixup-Training" class="headerlink" title="5.4 Mixup Training"></a>5.4 Mixup Training</h4><p>mixup的数据增强方法。每次随机抽取两个样本$(x_i,y_i)$和$x_j,y_j$,然后由这两个样本生成新样本:</p>
+<p>$\hat{x}=\lambda x_i+(1-\lambda)x_j$ $\hat{y}=\lambda y_i+(1-\lambda)y_j$    $\lambda \in [0,1] from\quad Beta(\alpha,\alpha) $</p>
+<p>在mixup training,只使用$(\hat{x},\hat{y})$</p>
 
             </div>
             <hr/>
@@ -712,7 +737,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dchlovestudy.xyz/zu-hui-zong-jie/">http://dchlovestudy.xyz/zu-hui-zong-jie/</a>
+                    <a href="http://dchlovestudy.xyz/cnn-tricks/">http://dchlovestudy.xyz/cnn-tricks/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -750,8 +775,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%A5%87%E6%80%AA/">
-                                    <span class="chip bg-color">奇怪</span>
+                                <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">网络结构</span>
                                 </a>
                             
                         </div>
@@ -922,7 +947,7 @@
         repo: 'chenghaoDong666.github.io',
         owner: 'chenghaoDong666',
         admin: ["chenghaoDong666"],
-        id: '2020-10-20T20-30-52',
+        id: '2021-03-18T21-47-55',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1213,31 +1238,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/yan-se-heng-chang-xing-zhi-bayesiandecisiontheory/">
+                <a href="/bian-shuai-mi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/7.jpg" class="responsive-img" alt="颜色恒常性之Bayesiancolorconstancy">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/32.jpg" class="responsive-img" alt="变帅秘籍">
                         
-                        <span class="card-title">颜色恒常性之Bayesiancolorconstancy</span>
+                        <span class="card-title">变帅秘籍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            论文Bayesian color constancy
+                            变帅永无止境
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Color-Constancy/" class="post-category">
-                                    Color Constancy
+                            <a href="/categories/%E5%8F%98%E5%B8%85/" class="post-category">
+                                    变帅
                                 </a>
                             
                             
@@ -1247,12 +1272,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CC-AWB/">
-                        <span class="chip bg-color">CC/AWB</span>
-                    </a>
-                    
-                    <a href="/tags/Bayes/">
-                        <span class="chip bg-color">Bayes</span>
+                    <a href="/tags/%E5%8F%98%E5%B8%85/">
+                        <span class="chip bg-color">变帅</span>
                     </a>
                     
                 </div>
@@ -1266,31 +1287,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/conda-shi-yong/">
+                <a href="/backbone/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/30.jpg" class="responsive-img" alt="conda使用">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/34.jpg" class="responsive-img" alt="backbone">
                         
-                        <span class="card-title">conda使用</span>
+                        <span class="card-title">backbone</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            andconda包管理太难了
+                            一些backbone的总结
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    软件使用
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
@@ -1300,8 +1321,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/conda/">
-                        <span class="chip bg-color">conda</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">网络结构</span>
                     </a>
                     
                 </div>
@@ -1545,7 +1566,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">33.8k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
             
             
             

@@ -30,9 +30,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    726
+                    6k
                 </div>
                 
 
@@ -671,25 +671,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h4><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1589733">https://cloud.tencent.com/developer/article/1589733</a></p>
+                <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1589733">https://cloud.tencent.com/developer/article/1589733</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ShuqiaoS/article/details/87360693">https://blog.csdn.net/ShuqiaoS/article/details/87360693</a></p>
-<h3 id="Fully-Convolutional-Networks-for-Semantic-Segmentation"><a href="#Fully-Convolutional-Networks-for-Semantic-Segmentation" class="headerlink" title="Fully Convolutional Networks for Semantic Segmentation"></a>Fully Convolutional Networks for Semantic Segmentation</h3><p>CSDN教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36269513/article/details/80420363">https://blog.csdn.net/qq_36269513/article/details/80420363</a></p>
-<h4 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h4><p>15 CVPR 17TPAMI</p>
-<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ol>
-<li>构建全卷积网络，接受任意大小输入</li>
-<li>将现代分类网络AlexNet、VGGNet、GoogLeNet改造为FCN，并微调</li>
-<li>一个skip结构，结合不同深度层结果</li>
+<h2 id="FCN"><a href="#FCN" class="headerlink" title="FCN"></a>FCN</h2><p>知乎教程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/22976342?utm_source=tuicool&amp;utm_medium=referral">https://zhuanlan.zhihu.com/p/22976342?utm_source=tuicool&amp;utm_medium=referral</a></p>
+<h3 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h3><p>15 CVPR 17TPAMI</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ol>
+<li>不含全连接层(fc)的全卷积(fully conv)网络。可适应任意尺寸输入。将现代分类网络<strong>AlexNet、VGGNet、GoogLeNet</strong>改造为FCN，并微调</li>
 <li>增大数据尺寸的反卷积deconv层。能够输出精细的结果</li>
+<li>结合不同深度层结果的跳级(skip)结构。同时确保鲁棒性和精准性</li>
 </ol>
-<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><ul>
-<li>FCN可解决许多像素级任务  </li>
-<li>代码在Caffe中开源 在Caffe Model Zoo中可获取</li>
-<li>转移预训练分类器权重+fusing不同层表达+整个图端到端-&gt;极大提高准确率</li>
-</ul>
-<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>卷积网不仅全图式的分类上有所提高 ,也在结构化输出的局部任务上取得了进步。包括在目标检测边界框  、部分和关键点预测和局部通信 的进步。从粗推理到精推理的下一步自然是对每个像素进行预测。</p>
-<p>没有复杂的预处理和后处理，包括超像素等</p>
-<h3 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/PythonLearner/p/14041874.html">UNet详解</a>  最常用….最简单…  一种<strong>U型的网络结构来获取上下文的信息和位置信息</strong></p>
-<p>Crop操作是如何进行的？</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>语义分割面临语义和位置之间固有的紧张关系:全局信息解决what问题，而局部信息解决where问题。</strong><br>深度特征层次将位置和语义编码在一个非线性的local-to-global的金字塔中。在4.2节中，定义了一个skip架构来利用这个结合了深层、粗糙的语义信息和浅层、精细的外观信息的特征。</p>
+<h3 id="FCN-1"><a href="#FCN-1" class="headerlink" title="FCN"></a>FCN</h3><p>卷积网络是建立在平移不变性的基础上的。它们的基本成分(卷积、池化和激活函数)作用于局部输入区域，仅依赖于相对的空间坐标。</p>
+<h4 id="3-1-Adapting-classifiers"><a href="#3-1-Adapting-classifiers" class="headerlink" title="3.1. Adapting classifiers"></a>3.1. Adapting classifiers</h4><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210324164018584.png" alt="转变" style="zoom:80%;">
+
+<p>直接生成heatmap,再加损失</p>
+<h2 id="UNet"><a href="#UNet" class="headerlink" title="UNet"></a>UNet</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/PythonLearner/p/14041874.html">UNet详解</a>  最常用….最简单…  一种<strong>U型的网络结构来获取上下文的信息和位置信息</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/46251798?edition=yidianzixun&amp;utm_source=yidianzixun&amp;yidian_docid=0KDRTjYB">知乎这篇讲的非常好</a></p>
 <p><strong>前半部分</strong>是<strong>特征提取</strong>部分，<strong>后半部分</strong>是<strong>上采样</strong>,有些文献也把这种结构叫做<strong>编码器-解码器</strong>结构。</p>
 <p>copy and crop：在论文中叫拼接，在UNet有四个拼接操作。如上图所示：有人也叫Skip connect,这一操作的目的是为了<strong>融合特征信息，使深层和浅层的信息融合起来</strong>，在拼接的时候要注意，<strong>不仅图片大小要一致（故要crop,是为了使图片大小一致）</strong>而且<strong>特征的维度（channels）也要一样</strong>，才可以拼接。</p>
 <p><strong>Unet的好处我感觉是：网络层越深得到的特征图，有着更大的视野域，浅层卷积关注纹理特征，深层网络关注本质的那种特征，所以深层浅层特征都是有格子的意义的；另外一点是通过反卷积得到的更大的尺寸的特征图的边缘，是缺少信息的，毕竟每一次下采样提炼特征的同时，也必然会损失一些边缘特征，而失去的特征并不能从上采样中找回，因此通过特征的拼接，来实现边缘特征的一个找回。</strong></p>
@@ -698,7 +695,150 @@
 <li>医学影像数据较少，大网络容易过拟合</li>
 <li><strong>医学影像任务中，往往需要自己设计网络去提取不同的模态特征，因此轻量结构简单的Unet可以有更大的操作空间</strong></li>
 </ol>
-<h3 id="Deeplab"><a href="#Deeplab" class="headerlink" title="Deeplab"></a>Deeplab</h3>
+<h3 id="Abstract-1"><a href="#Abstract-1" class="headerlink" title="Abstract"></a>Abstract</h3><p>卷积网络的典型用途是分类任务，<strong>其中图像的输出是单个类别标签。</strong> 然而，在许多视觉任务中，<strong>尤其是在生物医学图像处理中，期望的输出应该包括定位，即，应该将类标签分配给每个像素。（也就是分割）</strong></p>
+<p><strong>在U-Net结构中，包括一个捕获上下文信息的收缩路径和一个允许精确定位的对称拓展路径</strong></p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><h3 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h3><p>首先要<strong>像素级预测</strong>，其次<strong>训练图像没那么多</strong>，然后<strong>运行要快</strong>，最后<strong>上下文信息和局部位置信息的权衡</strong>。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv8291595">Overlap-tile 重叠-切片</a></p>
+<p>UNet并不是一个完全对称的结构，因为使用的是<strong>不带padding的3x3卷积</strong></p>
+<p><strong>如果想保持尺寸一致该如何做？</strong></p>
+<ol>
+<li>使用插值，插值是不可学习的，会带来一定的误差</li>
+<li>使用转置卷积，会增加参数量，并且模型也不一定能学的很好</li>
+<li>same卷积，即使用padding，但是padding会引入误差，而且模型越深层得到的feature map抽象程度越高，收到padding的影响会呈累积效应 因为填充是0</li>
+<li>Overlap-tile  对称的肯定比0要好 通常需要将图像进行分块的时候才使用</li>
+</ol>
+<p>图像的主要成分是<strong>低频信息</strong>，它形成了<strong>图像的基本灰度等级</strong>，对图像结构的决定作用较小；<strong>中频信息决定了图像的基本结构</strong>，形成了图像的<strong>主要边缘结构</strong>；<strong>高频信息形成了图像的边缘和细节</strong>，是在中频信息上对图像内容的进一步强化。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38208741/article/details/79823681">图像的高频信息和低频信息</a>简单来说就是，高频就是变化多的细节，低频就是背景板。</p>
+<p>UNet使用<strong>弹性变形</strong>来进行<strong>数据扩充</strong>,这可以使得网络学习到这种<strong>不变性invariance</strong>。</p>
+<p>使用<strong>加权损失</strong>，迫使网络学习<strong>边界像素</strong>。</p>
+<h3 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h3><p>由于<strong>没有填充的卷积，输出图像要比输入图像小一个恒定的边界宽度</strong>。</p>
+<p>为了最小化开销并最大限度地利用GPU内存，偏爱大的输入块而不是大的批处理大小，因此将批处理减少到单个图像。</p>
+<p>因此，使用一个高动量(0.99)，以便在当前优化步骤中使用大量之前看到的训练样本来确定更新。</p>
+<h3 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h3><p>对于显微镜图像，首先需要<strong>平移和旋转不变性</strong>，以及对<strong>变形和灰度值变化的鲁棒性</strong>。特别是训练样本的<strong>随机变形</strong>似乎是训练带有少量标注图像的分割网络的关键概念。我们在3×3网格上使用<strong>随机位移矢量</strong>生成平滑变形。位移从一个<strong>10像素标准差的高斯分布中采样</strong>。然后使用<strong>双三次插值计算像素位移</strong>。缩路径的最后加入了<strong>Dropout</strong>，隐式的加强了数据增强。</p>
+<h2 id="DeeplabV1"><a href="#DeeplabV1" class="headerlink" title="DeeplabV1"></a>DeeplabV1</h2><h3 id="Abstract-2"><a href="#Abstract-2" class="headerlink" title="Abstract"></a>Abstract</h3><h2 id="DeeplabV3"><a href="#DeeplabV3" class="headerlink" title="DeeplabV3+"></a>DeeplabV3+</h2><h3 id="Abstract-3"><a href="#Abstract-3" class="headerlink" title="Abstract"></a>Abstract</h3><h2 id="HDNet"><a href="#HDNet" class="headerlink" title="HDNet"></a>HDNet</h2><h3 id="Abstract-4"><a href="#Abstract-4" class="headerlink" title="Abstract"></a>Abstract</h3><p>目前方法分离了<strong>特征图中点之间的关系</strong>，导致分割结果不连续</p>
+<p>本论文提出混合距离网络，从两个方面来度量距离–位置距离和高维特征距离</p>
+<p>在此基础上，提出了一种位置感知注意力模块，利用位置距离对上下文进行有效采样，生成稀疏混合距离关系。<br>它综合每个点的不同上下文，并生成position-wise的注意值，以紧凑的对象级表示。<br>在训练步骤中，高维特征距离损失也作为在特征空间中压缩类别级表示的辅助损失。</p>
+<p>SOTA in Pascal Context, ADE20K, and COCO Stuff 10K</p>
+<h3 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h3><p>ACNet[6] ICCV 2019 证明卷积核主要集中在中心点上，所以滑动窗口过程会产生每个点的隔离。这种隔离会干扰特征学习，导致分割结果的不连续，称为“<strong>隔离问题</strong>”。同时语义分割网络采用逐像素的交叉熵作为损失函数，对于相邻的像素点的监督是独立的，因此该损失函数无法有效地惩罚不连续的分割结果，这 加剧了分割结果中的孤立问题。</p>
+<p>为了解决像素的孤立问题，许多研究在神经网络结构中加入上下文模块，通过在空间维度捕获像素点的上下文信息，增大像素的感受野，缓解像素孤立的问题。</p>
+<ul>
+<li>DeeplabV1  空洞卷积扩大感受野  <strong>但仍将点与全局场景上下文分隔开</strong></li>
+<li>PSPNet、deeplabv2中进一步提多尺度的金字塔模型获得更大范围、更丰富的上下文信息。                                                                                                      <strong>PSPNet    金字塔池化模块PPM      两个点位于同一个池化窗口，产生相同但不准确的上下文信息  两个点相邻位于不同池化窗口，获得完全不同的上下文信息。</strong></li>
+</ul>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210228030113655.png" alt="PSPNet" style="zoom:80%;">
+
+<p>使用不同窗口大小的pooling操作，得到不同尺寸的输出，然后缩放到相同的尺寸，再进行特征融合。</p>
+<p>具体来说，包含4个pooling层次，对于原始特征图，分别通过pooling得到大小为 <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=1%5Ctimes1" alt="[公式]"> ， <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=2%5Ctimes2" alt="[公式]"> ， <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=3%5Ctimes3" alt="[公式]"> 和 <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=6%5Ctimes6" alt="[公式]"> 。然后分别使用1×1卷积调整通道数至 <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7BN%7D" alt="[公式]"> （ <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=N" alt="[公式]"> 即为pooling层次数，此时 <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=N=4" alt="[公式]"> ）。然后将这些特征图全部上采样，通过双线性插值完成。再将这些pooling特征图输出，以及原始的特征图（跳跃连接），全部concat起来，作为特征输出，可以由此产生分割的预测结果。</p>
+<p>实现过程中，这些pooling层通过AdaptivePooling层完成，根据输入输出大小计算pooling的窗口大小。其中输出大小为 <img src="./medias/loading.gif" data-original="https://www.zhihu.com/equation?tex=1%5Ctimes1" alt="[公式]"> 时，其实就是Global Average Pooling。</p>
+<ul>
+<li>Non-Local   local operations就是基于局部区域进行操作，长距离依赖则是图像中非相邻像素点之间的关系。该论文中的<strong>非局部操作是将所有位置对一个位置的特征加权和作为该位置的响应值。使用相同策略，远程和短程背景起相同作用，这种关系表示忽略了一对像素点点之间的位置距离的影响，也失去了对象的整体概念 该方法不能解决对象内部的隔离问题，且导致大量的冗余计算</strong> 。</li>
+</ul>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210228004156931.png" alt="Non Local公式"></p>
+<p>上述方法在捕捉上下文信息时丢弃了空间信息，这削弱了它们的分割精度。<strong>HDR 结合位置距离和高维特征距离  位置距离表示特征图上一对点之间的相对位置，而高维特征距离表示两个特征向量之间的相似性</strong>。HDR建模在一定范围内的一个点和它的上下文区域之间的关系，位置距离隐含在区域的范围内。</p>
+<p>其次，提出<strong>位置感知注意模块LAA</strong>，对HDR的不同位置距离进行采样，从而捕获点与其不同上下文之间的关系。</p>
+<p>然后由这些HDRs生成一个基于位置的注意值，以融合不同的关系，补充原有的特征图。</p>
+<p>LAA模块引入<strong>稀疏关系连接来关注高维空间中特征的位置距离</strong>，而不是使用以前的方法[12DANet ,13 CCNet]中<strong>每对特征之间的密集连接，这样消耗的计算量较少</strong>。该算法能够<strong>感知物体在中心位置周围的空间关系，提高了分割结果的连续性，降低了计算复杂度</strong>。利用这一特点，我们的方法在中心对象上的特征分布明显比基于非局部的方法更紧凑</p>
+<p>DANet：基于空洞卷积的FCN添加了两种注意力模块：position attention module和channel attention module</p>
+<p>CCNet:Criss-Cross Attention 以十字形交叉的   对Non Local的一种改进，减少计算量</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210228023222192.png" alt="CCNet" style="zoom:67%;">
+
+<img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210228023250154.png" alt="网络结构图image-20210228023250154" style="zoom:67%;">
+
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><p>近年来出现许多用于捕获上下文信息的模块</p>
+<h4 id="Spatial-Aggregation-Module空间聚集模块"><a href="#Spatial-Aggregation-Module空间聚集模块" class="headerlink" title="Spatial Aggregation Module空间聚集模块"></a>Spatial Aggregation Module空间聚集模块</h4><p>Deeplab V1:空洞卷积</p>
+<p>Deeplab V2:<strong>atrous spatial pyramid pooling (ASPP)</strong> 空洞空间金字塔池化 与<strong>SPPNet空间金字塔池化网络</strong>中的SPP模块类似，<strong>在给定的输入上以不同采样率的空洞卷积并行采样，相当于以多个比例捕捉图像的上下文</strong></p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210228025059270.png" alt="空间金字塔池化层" style="zoom:50%;">
+
+<img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210228025421137.png" alt="ASPP" style="zoom:50%;">
+
+<h4 id="Relation-Module-关系模块"><a href="#Relation-Module-关系模块" class="headerlink" title="Relation Module 关系模块"></a>Relation Module 关系模块</h4><p>CCNet:简化Non Local计算</p>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><p>三部分 1 HDR Hybrid distance relation  2 LAA   Location Aware Attention 3 HFD loss</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210303013337764.png" alt="overview"></p>
+<h4 id="1-HDR-Hybrid-Distance-Relation"><a href="#1-HDR-Hybrid-Distance-Relation" class="headerlink" title="1 HDR: Hybrid Distance Relation"></a>1 HDR: Hybrid Distance Relation</h4><p>目前的方法只考虑上下文信息的捕获，而不考虑特征的连续性，不能很好的解决隔离问题。</p>
+<p>HDR的目的:1 产生连续结果 2 避免冗余计算</p>
+<p>$R_k(i,j)=F(x_{i,j},A_k(x_{i,j}))$</p>
+<p>$x_{i,j}$表示i,j处点的特征向量，$A_k(x_{i,j})$表示range为k的上下文计算得出的特征向量，$F(.,.)$计算两个特征向量之间的高维特征距离</p>
+<p><strong>HDR的本质是两个特征向量之间的特征距离</strong>，每个HDR通过聚合函数$Ak(·)$使用采样后的特征图，使点感知周围区域。</p>
+<p><strong>位置距离是指周围区域的范围。</strong></p>
+<p>所以位置距离通过聚合函数$Ak(·)$嵌入到了HDR中，从而使所提出的HDR既考虑了高维特征距离，又考虑了位置距离。</p>
+<p>随着range k的不同，如下:</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210302222214915.png" alt="改变k的范围"></p>
+<p>换句话说，<strong>中心点可以感知到在二维平面上由于不同的距离k到物体边界的空间距离。</strong></p>
+<p>此外，HDR在捕捉不同k范围的中心点与其上下文区域之间的关系时，可可视化为稀疏连接；Non Local则是使用孤立的一对点之间的密集连接关系(图5a)。并且k为n和k为n-1时的差值代表kn和kn-1间的上下文，这种带孔的HDR增强了上下文的多样性。</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210302223254591.png" alt="HDR的稀疏连接和带孔的HDR"></p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210302223538080.png" alt="F距离函数"></p>
+<p>F可以简单实现为余弦距离，只关注了点的分布，忽略了点的特征值的大小，[-1,1]方便后续操作</p>
+<p>为了简化聚合过程的计算，使用<strong>池化操作</strong>作为聚合函数$A_k(.)$,将k专门化为<strong>池化窗口的大小</strong>。因此，特定区域内的距离为<strong>正方形</strong>。</p>
+<p>$Ak(·)$采用<strong>平均池化操作</strong>，考虑k范围内的所有点，对于大对象，无论窗口大小，响应一致。此外，我们还采用了<strong>最大池化操作</strong>，可以<strong>捕捉到显著特征</strong>。为了使每个点获得自己的聚合结果，将聚合函数设为位置级函数，步幅设为1。</p>
+<p>由于k值不同，一串$A_k(.)$函数可以视为局部位置级金字塔。</p>
+<p>和PPM的区别:</p>
+<p>PPM是一个全局金字塔，通过这种下行采样策略，相邻的点可能会得到相同或不同的上下文信息，如下图:</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210302225644534.png" alt="PPM模块"></p>
+<p>这种全局的方式丢弃了特定位置，产生不精确的上下文信息。</p>
+<p>本论文的HDR是每个点的局部金字塔，所以特征图大小为HxW，就有HxW个金字塔，每个点都有它自己的上下文。</p>
+<p>ASPP[14]是另一个捕捉上下文信息的位置金字塔，因此可以将其表述为与HDRs中提出的聚合相同。但它继承了扩张卷积的缺点，即只对一个感受野中的几个点进行采样，而忽略了整个感受野。而池操作可以考虑整个字段，不会导致这种不连续的效果。</p>
+<h4 id="2-LLA-Location-Aware-Attention"><a href="#2-LLA-Location-Aware-Attention" class="headerlink" title="2 LLA: Location Aware Attention"></a>2 LLA: Location Aware Attention</h4><p>LAA模块利用提出的HDR，获取不同范围的上下文信息，增强对对象大小的感知，增强对象级的连续性。<br>LAA有4个子模块:输入/输出变换、多范围HDRs、HDRs结果的交互、对原始feature map的激励</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210302234656307.png" alt="LLA模块"></p>
+<p><strong>变换子模块：</strong>$\theta$为1x1卷积，减少了信道数量。$\phi$也是1x1卷积，但是前后信道数目不变。</p>
+<p>**交互子模块:**在每一点融合不同的关系，可以表示为:</p>
+<p>$u_{i,j }= ω([R_{k_1}(i, j), R_{k_2}(i, j), · · · , R_{k_n} (i, j)]),$</p>
+<p>不同的k表示不同的范围 ，ω(·)是一种不同关系的位置非线性融合。</p>
+<p>**激励子模块: **      $v_{i,j }= u_{i,j} × x_{i,j}$</p>
+<p><strong>最终结果:</strong>$y_{i,j} = x_{i,j} + ϕ(v_{i,j})$,可表述为位置方面的增强</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210303001931862.png" alt="反向传播"></p>
+<p>Channel Attention用的就是DANet中的。</p>
+<p>基于稀疏连接和位置注意，我们的注意模块计算复杂度明显低于Non Local。其次，交互模块和激励模块补充了每个点的特征，增强了位置感知。</p>
+<h4 id="3-HFD-High-dimension-Feature-Distance-Loss"><a href="#3-HFD-High-dimension-Feature-Distance-Loss" class="headerlink" title="3 HFD: High-dimension Feature Distance Loss"></a>3 HFD: High-dimension Feature Distance Loss</h4><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210303005022704.png" alt="HFD loss" style="zoom: 80%;">
+
+<p>目前的网络[12DANet,13CCNet,18EMANet]使用头部结构来减少特征图的通道来对每个点进行分类，这是一种从高维特征到预测语义类别的有效概述，而潜在特征的监督仅依赖于梯度通过。<br>为了预测类别内的连续结果和类别间的分化结果，高维特征应保持相同的一致性和差异性。</p>
+<p>HFD Loss:减少类别内点的特征距离的方差，增加类别间的方差</p>
+<p>负对数似然(不就是交叉熵函数吗):</p>
+<p>$L_{H,p} = −E_x[log\widetilde{D}p(x)]$</p>
+<p>x为某一点特征，$\widetilde{D}p(x)$为某一点特征与第q类特征中心的归一化距离。与无监督聚类方法类似，HFD loss方法探索了每个类别的特征中心，并迫使每个点靠近相应的中心。为了得到点与类别中心的精确对应，使用ground truth对结果进行监督，这是与聚类方法的主要区别。</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210303010956280.png" alt="归一化"></p>
+<p>T维度为CxN，C为特征个数，就是每个点有多少个k，N为类别个数，整体是softmax归一化。</p>
+<p><strong>look-up table：</strong></p>
+<p>查找表T是根据生成的特征图对每个类别进行高维表示。因此，在训练过程中，随着特征图的变化，它会不断更新。</p>
+<p>在更新过程中，采用与批处理归一化层相同的指数移动平均策略，通过小批量逼近实数表示。所以更新不需要梯度，而是依赖于输入，如图8中的黑色虚线，公式为:</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210303012402882.png" alt="查找表T公式"></p>
+<p>初始中心就是加起来求平均，之后采用移动平均策略。</p>
+<p>提出的HFD Loss使得每个点的高维特征更接近ground truth所表示的特征中心Tp，直接促进了高维特征空间中类别的识别。本文提出的HFD Loss作为辅助Loss监督<strong>头部结构</strong>之前的高维特征图。而传统的交叉熵损失也通过最终的分割结果来监督HDNet。</p>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>数据集:PASCAL Context ADE20K COCO Stuff 10K</p>
+<h4 id="1-Implements-Details"><a href="#1-Implements-Details" class="headerlink" title="1 Implements Details"></a>1 Implements Details</h4><p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210303021340412.png" alt="全部损失"></p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210303022652697.png" alt="LAA"></p>
+<h2 id="多尺度空洞卷积"><a href="#多尺度空洞卷积" class="headerlink" title="多尺度空洞卷积"></a>多尺度空洞卷积</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zxfhahaha/article/details/102478092">其他人的论文阅读笔记,很赞</a></p>
+<h3 id="Abstract-5"><a href="#Abstract-5" class="headerlink" title="Abstract"></a>Abstract</h3><p>开发了一个新的卷积网络模块，专门用于密集预测。该模块<strong>使用空洞卷积来系统地聚合多尺度上下文信息而不丢失分辨率</strong>。<br>该架构基于<strong>空洞卷积支持感受野的指数扩展，而不会丧失分辨率或覆盖范围</strong>的事实。我们表明，所提出的上下文模块提高了最先进的语义分割系统的准确性。</p>
+<h3 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h3><p>语义分割具有挑战性，因为它需要结合像素级精度和多尺度上下文推理。</p>
+<p>FCN表明<strong>原本用于图像分类的卷积网络架构可以成功地用于密集预测</strong>。这些重新设计的网络在挑战语义分割基准上的表现大大超过了先前的技术水平。由于图像分类和密集预测的结构差异，这引发了新的问题。重新使用的网络的哪些方面是真正必要的，哪些方面在密集操作时降低了准确性?专为密集预测设计的专用模块能否进一步提高准确性?</p>
+<p>现代图像分类网络通过连续的池化和子采样层集成多尺度上下文信息，从而降低分辨率，直到获得全局预测。相反，密集预测需要多尺度上下文推理与全分辨率输出相结合。</p>
+<p>近年来研究了两种方法来解决<strong>多尺度推理和全分辨率密集预测</strong>的矛盾需求。</p>
+<p>一种方法是反复进行上卷积，目的是恢复丢失的分辨率，同时从下采样层进行全局视角。这就留下了一个问题，即是否真的有必要进行严重的中间下采样。</p>
+<p>例如15年ICCV的&lt;&lt;Learning deconvolution network for semantic segmentation&gt;&gt;</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210310235530599.png" alt="DeConvNet"></p>
+<p>Encoder-Decoder结构 采用了VGG16</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6c09ecda592b">通俗教程1</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/u010772289/article/details/69526178">详细教程2</a></p>
+<p>产生足够多的候选区域，然后在每个候选区域用网络获得语义分割图(semantic segmentation maps),然后将所有区域的输入组合起来</p>
+<p>另一种方法包括提供多个重新缩放版本的图像作为网络输入，并结合这些多个输入的预测。同样，目前还不清楚是否真的需要对重新缩放后的输入图像进行单独分析</p>
+<p>在这项工作中，我们开发了一个卷积网络模块，在不丢失分辨率或分析重新缩放图像的情况下聚合多尺度上下文信息。该模块可以插入到任何分辨率的现有体系结构中。与从图像分类中继承过来的金字塔形架构不同，提出的上下文模块是专门为密集预测而设计的。该模块基于空洞卷积，支持感受野的指数扩展，而不会丢失分辨率或覆盖范围</p>
+<h3 id="DILATED-CONVOLUTIONS"><a href="#DILATED-CONVOLUTIONS" class="headerlink" title="DILATED CONVOLUTIONS"></a>DILATED CONVOLUTIONS</h3><p>FCN虽然分析了filter dilation但是没有使用它，deeplabV1使用filter dilation简化了FCN的网络结构</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210312013030003.png" alt="Figure1" style="zoom:67%;">
+
+<p>$F_{i+1}=F_i\cdot_{2^i}k_i,i=0,1,2\cdots$，则获得$(2^{i+2}-1)\cdot (2^{i+2}-1)$的感受野</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210312014137893.png" alt="解析" style="zoom: 80%;">
+
+<ul>
+<li>a图对应3x3的空洞率为1的卷积，和普通的卷积操作一样，计算量是9个点。对于(a)这个feature map F1而言，F1是由1-dilated convolution 卷积F0得来的，如果不考虑之前层的感受野，那这个卷积核的感受野大小是3x3，也就是F1的每个元素的感受野都是3x3。</li>
+<li>b图对应3x3的空洞率为2的卷积，实际的计算量还是9个点。对于(b)这个feature map而言，(b)是对(a)空洞卷积而来的，卷积核覆盖的区域大小为5x5（图中蓝框），但是这个时候感受野大小并不是5x5，因为a中的元素的感受野就已经为3x3了，覆盖的5x5区域要往外多加（3-1）/2=1个像素，如(b)中红框所示。即1-dilated和2-dilated堆叠起来就能达到7x7的感受野，而普通卷积需要三层3x3的卷积层堆叠才能达到7x7的感受野。</li>
+<li>c图对应3x3的空洞率为4的卷积，实际的计算量还是9个点。同理，对于©而言，卷积核覆盖的(b)区域大小为9x9（图中蓝框），但是由于(b)中的元素的感受野大小为7x7，因此，在这个9x9的区域大小之外还要扩张出（7-1）/2=3个像素，如©中红框所示。即1-dilated、2-dilated、4-dilated堆叠起来就能达到15x15的感受野。</li>
+<li>注意,这个的stride是1</li>
+</ul>
+<h3 id="MULTI-SCALE-CONTEXT-AGGREGATION"><a href="#MULTI-SCALE-CONTEXT-AGGREGATION" class="headerlink" title="MULTI-SCALE CONTEXT AGGREGATION"></a>MULTI-SCALE CONTEXT AGGREGATION</h3><h4 id="network-architecture"><a href="#network-architecture" class="headerlink" title="network architecture"></a>network architecture</h4><p>上下文模块旨在通过聚合多尺度上下文信息来提高密集预测体系结构的性能。该模块接受C特征映射作为输入，并生成C特征映射作为输出。输入和输出具有相同的形式，因此该模块可以插入现有的密集预测体系结构中</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210312025120461.png" alt="模块"></p>
+<p>从小的局部特征,到大的特征</p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>卷积网络通常使用随机分布的样本进行初始化。然而，我们发现随机初始化方案对上下文模块并不有效。我们发现一个具有清晰语义的替代初始化更有效:</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation/image-20210312031632482.png" alt="初始化公式"></p>
+<p>这种identity初始化设置所有滤波器的值，这样每一层都能将前一层的信息直接传递到下一层。直觉上感到不利于反向传播信息的传递。但实验证明这种担心是多余的。<br>basic 的context module只有64C^2个参数，参数的数量非常少，但实验结果已经表现的非常好了</p>
+<h3 id="Front-End"><a href="#Front-End" class="headerlink" title="Front-End"></a>Front-End</h3>
             </div>
             <hr/>
 
@@ -1563,7 +1703,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">33.8k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
             
             
             
