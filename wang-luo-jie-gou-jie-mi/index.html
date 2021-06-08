@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.6k
+                    12.6k
                 </div>
                 
 
@@ -695,6 +695,7 @@
 <p><strong>multi-task learning 多任务学习</strong> 低层特征共享，产生分支完成各自的任务</p>
 <p> <strong>end-to-end learning 端到端学习</strong> 一步到位，就是一种表示学习</p>
 <h3 id="计算机视觉四大基本任务"><a href="#计算机视觉四大基本任务" class="headerlink" title="计算机视觉四大基本任务"></a>计算机视觉四大基本任务</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31727402">计算机视觉四大基本任务</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34142321">目标检测入门</a></p>
 <h3 id="计算机视觉其他应用"><a href="#计算机视觉其他应用" class="headerlink" title="计算机视觉其他应用"></a>计算机视觉其他应用</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31727405">计算机视觉其他应用</a></p>
 <h2 id="统计学习知识和网络细节"><a href="#统计学习知识和网络细节" class="headerlink" title="统计学习知识和网络细节"></a>统计学习知识和网络细节</h2><h3 id="归一-标准-正则"><a href="#归一-标准-正则" class="headerlink" title="归一/标准/正则"></a>归一/标准/正则</h3><p><a target="_blank" rel="noopener" href="https://maristie.com/2018/02/Normalization-Standardization-and-Regularization">Differences between Normalization, Standardization and Regularization</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20455227/answer/370658612">归一化和标准化的作用于区别</a></p>
@@ -718,7 +719,7 @@
 <p>在这里，我们需要关注的最主要是范数的「非负性」。我们刚才讲，损失函数通常是一个有下确界的函数。而这个性质保证了我们可以对损失函数做最优化求解。如果我们要保证目标函数依然可以做最优化求解，那么我们就必须让正则项也有一个下界。非负性无疑提供了这样的下界，而且它是一个下确界——由齐次性保证[当 c=0 时]</p>
 <p>因此，我们说，范数的性质使得它天然地适合作为机器学习的正则项。而范数需要的向量，则是<strong>机器学习的学习目标——参数向量</strong>。</p>
 <p>L0范数表示向量中非零元素的个数 </p>
-<p>我们考虑这样一种普遍的情况，即：预测目标背后的真是规律，可能只和某几个维度的特征有关；而其它维度的特征，要不然作用非常小，要不然纯粹是噪声。在这种情况下，除了这几个维度的特征对应的参数之外，其它维度的参数应该为零。若不然，则当其它维度的特征存在噪音时，模型的行为会发生预期之外的变化，导致过拟合。引入L0范数</p>
+<p><strong>我们考虑这样一种普遍的情况，即：预测目标背后的真是规律，可能只和某几个维度的特征有关；而其它维度的特征，要不然作用非常小，要不然纯粹是噪声。在这种情况下，除了这几个维度的特征对应的参数之外，其它维度的参数应该为零。若不然，则当其它维度的特征存在噪音时，模型的行为会发生预期之外的变化，导致过拟合。</strong>引入L0范数</p>
 <p>L0范数不好，又引入L1范数，L1范数也可以在梯度更新时使得参数趋于0.</p>
 <p>L1使得参数稀疏化，L2使得参数稠密的趋近于0</p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201125205147790.png" alt="稀疏和稠密的原因"></p>
@@ -736,6 +737,21 @@
 <h3 id="VC维"><a href="#VC维" class="headerlink" title="VC维"></a>VC维</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/903e35e1c95a">期望风险、经验风险、结构风险2深入</a></p>
 <p>损失函数：度量模型一次预测的好坏</p>
 <p>风险函数：度量平均意义下的模型预测好坏</p>
+<h3 id="概率与似然"><a href="#概率与似然" class="headerlink" title="概率与似然"></a>概率与似然</h3><p>概率大家都比较了解,主要是似然的了解。</p>
+<p>在数理统计学中,<strong>似然函数(likelihood function)**是一种关于统计模型中的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%AF%8D%E6%95%B8">参数</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%87%BD%E6%95%B0">函数</a>，表示模型参数中的</strong>似然性**（英语：likelihood）。似然函数在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B5%B1%E8%A8%88%E6%8E%A8%E8%AB%96">统计推断</a>中有重大作用，如在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">最大似然估计</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%9B%AA%E4%BF%A1%E6%81%AF">费雪信息</a>之中的应用等等。文字意义上，“似然性”与“或然性”或“<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%A6%82%E7%8E%87">概率</a>”意思相近，都是指某种事件发生的可能性，但是在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E8%AE%A1%E5%AD%A6">统计学</a>中，“似然性”和“概率”（或然性）有明确的区分：==概率，用于在已知一些参数的情况下，预测接下来在观测上所得到的结果；似然性，则是用于在已知某些观测所得到的结果时，对有关事物之性质的参数进行估值，也就是说已观察到某事件后，对相关参数进行猜测。==</p>
+<p>在这种意义上，似然函数可以理解为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87">条件概率</a>的逆反。在已知某个参数<strong>B</strong>时，事件<strong>A</strong>会发生的概率写作：<br>$$<br>P(A|B)=\frac{P(A,B)}{P(B)}<br>$$<br>利用贝叶斯定理,<br>$$<br>P(B|A)=\frac{P(A|B)P(B)}{P(A)}<br>$$<br>因此，我们可以反过来构造表示似然性的方法：已知有事件<strong>A</strong>发生，运用似然函数$L(B|A)$，我们估计或猜测参数<strong>B</strong>的不同值的可能性。<strong>形式上，似然函数也是一种条件概率函数，但我们关注的变量改变了</strong>：<br>$$<br>b\to P(A|B=b<br>$$<br>在英语语境里，likelihood 和 probability 的日常使用是可以互换的，都表示对机会 (chance) 的同义替代。但在数学中，probability 这一指代是有严格的定义的，即符合柯尔莫果洛夫公理 (Kolmogorov axioms) 的一种<strong>数学对象</strong>（换句话说，<strong>不是</strong>所有的可以用0到1之间的数所表示的对象都能称为概率），而 likelihood (function) 这一概念是由Fisher提出，他采用这个词，也是为了凸显他所要表述的<strong>数学对象</strong>既和 probability 有千丝万缕的联系，但又不完全一样的这一感觉。中文把它们一个翻译为<strong>概率</strong>一个翻译为<strong>似然</strong>也是独具匠心。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/54082000/answer/470252492">HiTao知乎回答</a></p>
+<p>概率和似然类似$2^b$和$a^2$,而p(x|θ)也是一个有着两个变量的函数。<strong>如果，你将θ设为常量，则你会得到一个概率函数（关于x的函数）；如果，你将x设为常量你将得到似然函数（关于θ的函数）。</strong></p>
+<p>有一个硬币，它有θ的概率会正面向上，有1-θ的概率反面向上。θ是存在的，但是你不知道它是多少。为了获得θ的值，你做了一个实验：将硬币抛10次，得到了一个正反序列：x=HHTTHTHHHH。</p>
+<p>无论θ的值是多少，这个序列的概率值为 θ⋅θ⋅(1-θ)⋅(1-θ)⋅θ⋅(1-θ)⋅θ⋅θ⋅θ⋅θ = θ⁷ (1-θ)³</p>
+<p>比如，如果θ值为0，则得到这个序列的概率值为0。如果θ值为1/2，概率值为1/1024。</p>
+<p>但是，我们应该得到一个更大的概率值，所以我们尝试了所有θ可取的值，画出了下图：</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210601213407084.png" alt="image-20210601213407084" style="zoom:50%;">
+
+<p>这个曲线就是θ的似然函数，<strong>通过了解在某一假设下，已知数据发生的可能性，来评价哪一个假设更接近θ的真实值。</strong></p>
+<p>==因为这么多种情况偏偏这种情况发生了,肯定是这种情况发生的概率尽可能大,此时的$\theta$就更可能是真实的$\theta$==</p>
+<p>如图所示，最有可能的假设是在θ=0.7的时候取到。但是，你无须得出最终的结论θ=0.7。事实上，根据贝叶斯法则，0.7是一个不太可能的取值（如果你知道几乎所有的硬币都是均质的，那么这个实验并没有提供足够的证据来说服你，它是均质的）。但是，0.7却是最大似然估计的取值。</p>
+<p>因为这里仅仅试验了一次，得到的样本太少，所以最终求出的最大似然值偏差较大，如果经过多次试验，扩充样本空间，则最终求得的最大似然估计将接近真实值0.5。在<a href="https://link.zhihu.com/?target=http://blog.sina.com.cn/s/blog_e8ef033d0101oa4k.html">这篇博客</a>中有详细的过程，就不再赘述。</p>
 <h3 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/b1055077005/article/details/100152102">Cross entropy</a></p>
 <p><strong>信息奠基人香农（Shannon）认为“信息是用来消除随机不确定性的东西”。也就是说衡量信息量大小就看这个信息消除不确定性的程度。</strong></p>
 <p>一件事情概率越大，现在发生的不确定性就越小；概率越小，现在要发生的不确定性就越大，发生后消除的不确定性就越多，信息量就越大。一件事情发生后概率就是1，正常的概率是$P(x)$，消除的不确定性是$1-P(x)$</p>
@@ -754,7 +770,7 @@
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201223183214140.png" alt="a>1,p"></p>
 <p>我们希望得到的概率越大越好，因此概率越接近于1，则函数整体值越接近于0，即使得损失函数取到最小值。</p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201125152106078.png" alt="对数损失函数"></p>
-<p>确实是一致的，只要理解了交叉熵损失中的预测概率q(i)=p(y^i|x)</p>
+<p>==这里的$P(y_i|x_i)$就是图片为$x_i$,预测出来正好就是正确的对应类别$y_i$的概率。只把这个预测正确的概率加起来。交叉熵损失除了$c_{ii}$为1，别的都为0，就只剩下了$-loga_{ii}$。综上两个都是只把类别预测正确的那个概率加起来了。所以是一致的。==</p>
 <p><strong>结构风险本质</strong></p>
 <p>结构风险是对经验风险模型复杂度的惩罚</p>
 <p><strong>结构化风险（正则项）其实是加入了模型参数分布的先验知识</strong>，也就是贝叶斯学派为了将模型往人们期望的地方去发展，继而加入了先验分布，由于是人为的先验，因此也就是一个规则项（这也就是正则项名称的由来）。这样一来，风险函数将进一步考虑了被估计量的先验概率分布</p>
@@ -762,11 +778,34 @@
 <p>由决策函数表示的模型为非概率模型，由条件概率表示的模型为概率模型。</p>
 <p><strong>当模型是条件概率分布、损失函数是对数损失函数、模型复杂度由模型的先验概率表示时，结构风险最小化就等价于最大后验概率估计。</strong></p>
 <p><strong>当模型是条件概率分布，损失函数是对数损失函数时，经验风险最小化就等价于极大似然估计</strong></p>
-<h3 id="log-sum-exp"><a href="#log-sum-exp" class="headerlink" title="log-sum-exp"></a>log-sum-exp</h3><h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><h3 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29895933">指数加权平均</a></p>
+<h3 id="logsoftmax"><a href="#logsoftmax" class="headerlink" title="logsoftmax"></a>logsoftmax</h3><p>首先是softmax公式:<br>$$<br>softmax(x)=\frac{e^{x_i}}{\sum_je^{x_i}}<br>$$<br>求导如下:</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210601202104509.png" alt="image-20210601202104509" style="zoom:50%;">
+
+<p>logsoftmax()就是在softmax()之后对结果再多一次log操作:<br>$$<br>softmax(x)=log\frac{e^{x_i}}{\sum_je^{x_i}}<br>$$<br>求导:</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210601202516351.png" alt="image-20210601202516351" style="zoom:50%;">
+
+<p>为什么要加一次log呢?</p>
+<p>log_softmax能够解决函数上溢出和下溢出的问题,加快运算速度,提高数据稳定性。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210601204136195.png" alt="image-20210601204136195" style="zoom:67%;">
+
+<p>由于是指数操作,所以当输入比较大的时候,可能导致上溢出,为啥下溢出？</p>
+<p>尽管在数学表示式上是对softmax取对数，但在实操中是通过:</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210601204816037.png" alt="image-20210601204816037" style="zoom:67%;">
+
+<p>来实现，其中$M=max(x_i),i=1,2,3,…,n$,即$M$为所有$x_i$中最大的值。在加快运算速度的同时，可以保持数值的稳定性。</p>
+<h3 id="机器学习问答"><a href="#机器学习问答" class="headerlink" title="机器学习问答"></a>机器学习问答</h3><h4 id="梯度下降or-求导-0"><a href="#梯度下降or-求导-0" class="headerlink" title="梯度下降or 求导=0"></a>梯度下降or 求导=0</h4><p>$$<br>\theta=(X^TX)^{-1}X^TY<br>$$</p>
+<p><strong>使用梯度下降进行线性回归的主要原因是计算复杂性：在某些情况下，使用梯度下降找到解决方案的计算成本较低（较快）。</strong></p>
+<p>$(X^TX)^{-1}X^T$是X 的伪逆</p>
+<p>数据量很大的情况下求$X^TX$的逆是非常<strong>消耗内存以及时间</strong>的。</p>
+<h4 id="梯度下降为什么不用二阶求导？"><a href="#梯度下降为什么不用二阶求导？" class="headerlink" title="梯度下降为什么不用二阶求导？"></a>梯度下降为什么不用二阶求导？</h4><p>a. 牛顿法使用的是目标函数的二阶导数，在高维情况下<strong>这个矩阵非常大，计算和存储都是问题。</strong></p>
+<p>b. 在小批量的情况下，牛顿法对于<strong>二阶导数的估计噪声太大。</strong></p>
+<p>c**.目标函数非凸的时候，牛顿法容易受到鞍点或者最大值点的吸引。**</p>
+<p>最大的问题就是*<em>计算复杂度。二阶一次迭代更新的复杂度是n</em>n，这在高维的时候是不可行的**<br><strong>稳定性。越简单的东西往往越robust，对于优化算法也是这样。</strong><br><strong>二阶求导不易</strong><br>二阶方法能够更快地求得更高精度的解，<strong>但是在神经网络这类深层模型中，不高的精度对模型还有益处，能够提高模型的泛化能力。</strong></p>
+<h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><h3 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29895933">指数加权平均</a></p>
 <p>$v_t=\beta v_{t-1} + (1-\beta)\theta_t $</p>
 <p><strong>指数式递减加权   优势</strong>:我们可以看到指数加权平均的求解过程实际上是一个递推的过程，那么这样就会有一个非常大的好处，每当我要求从0到某一时刻（n）的平均值的时候，我并不需要像普通求解平均值的作为，保留所有的时刻值，类和然后除以n。</p>
 <p>而是只需要保留0-(n-1)时刻的平均值和n时刻的温度值即可。也就是每次只需要保留常数值，然后进行运算即可，这对于深度学习中的海量数据来说，是一个很好的<strong>减少内存和空间的做法</strong>。</p>
-<h3 id="带动量的随机梯度下降"><a href="#带动量的随机梯度下降" class="headerlink" title="带动量的随机梯度下降"></a>带动量的随机梯度下降</h3><h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/12069176.html">这篇太优质了 ！！！！</a></p>
+<h3 id="动量momentum"><a href="#动量momentum" class="headerlink" title="动量momentum"></a>动量momentum</h3><h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/12069176.html">这篇太优质了 ！！！！</a></p>
 <p><strong>感受野是个相对概念，某层feature map上的元素看到前面不同层上的区域范围是不同的，通常在不特殊指定的情况下，感受野指的是看到输入图像上的区域。</strong></p>
 <h4 id="感受野大小"><a href="#感受野大小" class="headerlink" title="感受野大小"></a>感受野大小</h4><p>$$<br>r_l=r_{l-1}+(k_l-1)\cdot j_{l-1}\<br> =r_{l-1}+(k_l-1)\cdot \prod_{i=1}^{l-1} s_i<br>$$</p>
 <p><strong>Layer l 一个元素的感受野rl等价于Layer l−1 上k×k 个感受野的叠加；</strong></p>
@@ -797,20 +836,48 @@
 <p>我们平时<strong>所接触的卷积其实是滤波</strong>，不是<strong>真正的数学定义上的卷积</strong>。</p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201209205446747.png" alt="步长为2的卷积"></p>
 <p>步长为2的卷积可以<strong>看做步长为1的卷积结果的S=2的采样</strong>，因此可以认为是<strong>下采样</strong>的一种。</p>
-<p>普通卷积的计算看起来是挪动，其实不是挪动，效率太低。<strong>计算机会将卷积核转换成等效的矩阵，将输入转换为向量。通过输入向量和卷积核矩阵的相乘获得输出向量。输出的向量经过整形便可得到我们的二维输出特征。</strong></p>
+<h4 id="卷积的性质"><a href="#卷积的性质" class="headerlink" title="卷积的性质"></a>卷积的性质</h4><p>普通卷积的计算看起来是挪动，其实不是挪动，效率太低。<strong>计算机会将卷积核转换成等效的矩阵，将输入转换为向量。通过输入向量和卷积核矩阵的相乘获得输出向量。输出的向量经过整形便可得到我们的二维输出特征。</strong></p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214743847.png" alt="卷积示例"></p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214800536.png" alt="四个位置补0"></p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214820691.png" alt="拉长，然后就可以矩阵相乘"></p>
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220214911375.png" alt="卷积核所展开的全连接层的权重矩阵"></p>
 <p>在CNN提出之前，我们所提到的<strong>人工神经网络应该多数情况下都是前馈神经网络</strong>，两者区别主要在于<strong>CNN使用了卷积层，而前馈神经网络用的都是全连接层</strong>，而这<strong>两个layer的区别又在于全连接层认为上一层的所有节点下一层都是需要的，通过与权重矩阵相乘层层传递，而卷积层则认为上一层的有些节点下一层其实是不需要的，所以提出了卷积核矩阵的概念</strong>。</p>
 <p>如果卷积核的大小是nxm，那么意味着该卷积核认为上一层节点每次映射到下一层节点都只有nxm个节点是有意义的。到这里，有些初学者会认为<strong>全连接层也可以做到，只要让权重矩阵某些权重赋值为0就可以实现了</strong>，例如假设在计算当前层第2个节点时认为上一层的第1个节点我不需要，那么设置w01=0就可以了。其实没错，<strong>卷积层是可以看做全连接层的一种特例,卷积核矩阵是可以展开为一个稀疏的包含很多0的全连接层的权重矩阵</strong>。</p>
-<p>卷积的两个优势：</p>
-<ol>
-<li>极大的减少参数的个数，如上图，一个4x16,一个3x3</li>
-<li>卷积核关注的是某几个相邻的节点之间的关系，<strong>学习了图片的局部特征，可以说是带有目的性的学习</strong>。这与<strong>全连接层无区别的对待所有节点进行学习有极大的差别</strong>。</li>
-</ol>
-<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201220222854186.png" alt="卷积有利于解决平移不变性" style="zoom:80%;">
+<p><strong>卷积的key ideas:</strong></p>
+<p><strong>局部连接</strong></p>
+<p>卷积神经网络有两种神器可以降低参数数目，局部感知野和权值共享。先来说说局部感知也，一般认为人对外界的认知是从局部到全局的，而图像的空间联系也是局部的像素联系较为紧密，而距离较远的像素相关性则较弱。因而，每个神经元其实没有必要对全局图像进行感知，只需要对局部进行感知，然后在更高层将局部的信息综合起来就得到了全局的信息。即，局部感受野指卷积层的神经元只和上一层map的局部相联系。</p>
+<p><strong>权值共享</strong></p>
+<p>==隐含的原理是：图像中的一部分的统计特性与其他部分是一样的。==</p>
+<p><strong>平移不变形Translation Invariance</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zhangting2020.github.io/2018/05/30/Transform-Invariance/">参考1</a> </p>
+<p>不变形意味着即使目标的外观发生了某种变化,但是你依然可以把它识别出来。这对==图像分类来说是一种很好的特性，==因为我们希望图像中目标无论是被平移，被旋转，还是被缩放，甚至是不同的光照条件、视角，都可以被成功地识别出来。</p>
+<p>还有各种不变形,如旋转/视角不变形 Ration/Viewpoint Invariance 尺度不变性Size Invariance 光照不变性illumination Invariance</p>
+<p>==而对于其它问题，比如物体检测(detection)、物体分割(segmentation)来说，这个性质则不应该有，原因是当输入发生平移时，输出也应该相应地进行平移。这种性质又称为平移等价性(translation equivalence)。这两个概念是比较混淆的，但确实是两个不同的东西(敲黑板)。==</p>
+<p><strong>图像在平移后再特征图上的表示也是同样平移的，这就使图像拥有了一定的平移不变性。</strong></p>
+<p>但有人也提出了反驳:</p>
+<blockquote>
+<p>Why do deep convolutional networks generalize so poorly to small image transformations?</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1661000">看这篇讲解的最全面了</a></p>
+<p>【<strong>平移不变性</strong>对应的有一个概念是<strong>平移同变性（translation equivariance）</strong>，这个是用在图像的目标检测中的，如果输入图像中的目标进行了平移，那么最终检测出来的候选框应该也相应的移动，这就是同时改变。】</p>
+<p>==卷积到底有没有平移不变性？有的说有，有的说没有，我的观点是没有，但两个观点我都会讲明白==</p>
+<p><strong>对于卷积，参数共享的特殊形式使得神经网络层具有==平移等变性(equivariance)==。例如，当处理时间序列数据时，这意味着通过卷积可以得到一个由输入中出现不同特征的时刻所组成的时间轴。如果我们把输入中的一个事件向后延时，在输出中仍然会有完全相同的表示，只是时间延后了。也就是说，卷积对输入数据的时刻是敏感的，在输出中有对应的表示。</strong></p>
+<p>关于池化，无论采用<strong>何种池化函数</strong>，当<strong>输入作出少量平移</strong>时，池化能<strong>帮助输入的表示近似不变(invariant)**。对于平移的不变性是指当我们对输入进行少量平移时，经过</strong>池化函数后的大多数输出并不会发生改变**。这意味着==池化对特征位置不敏感，只有当我们不关心特征具体出现的位置时，池化才是合理的，这正是胶囊网络的动机之一。==</p>
+<p>==总结来说，CNN 中的卷积操作具有平移等变性，但池化操作具有局部平移不变性。两者矛盾地统一于 CNN 中。胶囊网络完全去掉了池化操作，达到了对平移等变性的追求。==</p>
+<p><strong>为什么说近似不变？</strong></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/gs3zt2oucw.gif" alt="微小平移"></p>
+<p>平移小鸟位置的时候,预测结果是有很大的波动</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210419212506628.png" alt="shift:0" style="zoom: 67%;">
 
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210419212547579.png" alt="shift:1" style="zoom:67%;">
+
+<p>差距很大</p>
+<p><strong>平移不变性的公式</strong><br>$$<br>U(D(X))=U(D(X_{shift}))<br>$$<br><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210419212739432.png" alt="shift:0" style="zoom:50%;"></p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210419213109362.png" alt="shifit:1" style="zoom:50%;">
+
+<p>回不去了</p>
+<p><strong>如何实现平移不变性:</strong></p>
+<p>==全局平均池化,消除了位置的影响==</p>
 <h4 id="转置卷积"><a href="#转置卷积" class="headerlink" title="转置卷积"></a>转置卷积</h4><p><a target="_blank" rel="noopener" href="https://github.com/vdumoulin/conv_arithmetic">结合github的图演示看</a></p>
 <p><strong>1 p=0,s=1</strong><br>$$<br>p=0,s=1\<br>k’=k,s’=s,p’=k-1\<br>o’=i’+(k-1)<br>$$<br><strong>2 s=1</strong><br>$$<br>s=1\<br>p’=k-p-1\<br>o’=i’+(k-1)-2p<br>$$<br><strong>3 Half/same padding</strong><br>$$<br>k=2n+1,n\in N,s=1,p=\lfloor\frac{k}{2}\rfloor=n\<br>k’=k,s’=s,p’=p\<br>o’=i’<br>$$<br><strong>4 Full padding</strong><br>$$<br>s=1,p=k-1\<br>k’=k,s’=s,p’=0\<br>o’=i’-(k-1)<br>$$<br><strong>5 p=0 ,non-unit strides</strong><br>$$<br>p=0,(i-k)%s=0\<br>k’=k,s’=1,p’=k-1\<br>o’=s(\widetilde{i}’-1)+k\<br>\widetilde{i}’ :adding,s-1,zeros,between,each,input,unit<br>$$<br><strong>6 zero-padding,non-unit strides</strong><br>$$<br>(i+2p-k)%s=0\<br>k’=k,s’=1,p’=k-p-1\<br>o’=s(i’-1)+k-2p<br>$$<br><strong>7 zero-padding,non-unit strides odd</strong><br>$$<br>k’=k,s’=1,p’=k-p-1\<br>a=(i+2p-k)%s\<br>o’=s(i’-1)+a+k-2p<br>$$<br>也叫反卷积/分数步长卷积</p>
 <p>先说一下为什么人们很喜欢叫转置卷积为反卷积或逆卷积。首先举一个例子，将一个4x4的输入通过3x3的卷积核在进行普通卷积（无padding, stride=1），将得到一个2x2的输出。而转置卷积将一个2x2的输入通过同样3x3大小的卷积核将得到一个4x4的输出，看起来似乎是普通卷积的逆过程。就好像是加法的逆过程是减法，乘法的逆过程是除法一样，人们自然而然的认为这两个操作<strong>似乎是一个可逆的过程。但事实上两者并没有什么关系，操作的过程也不是可逆的。</strong></p>
@@ -829,8 +896,8 @@
 <p>扩张卷积增加了感受野，而不增加核的大小,<strong>因为中间插入的是空格，需要训练的卷积核参数量是不变的</strong>。</p>
 <p>卷积核大小为k,dilation_rate=d,扩张后的卷积大小如下:<br>$$<br>\hat{k} = k + (k − 1)(d − 1)<br>$$<br>则<br>$$<br>o = \lfloor\frac{i+2p-\hat{k}}{s}\rfloor+1<br>$$<br><strong>空洞卷积的作用</strong></p>
 <ul>
-<li><strong>扩大感受野</strong>：在deep net中为了增加感受野且降低计算量，总要进行降采样(pooling或s2/conv)，这样虽然可以增加感受野，但空间分辨率降低了。为了能不丢失分辨率，且仍然扩大感受野，可以使用空洞卷积。这在检测，分割任务中十分有用。一方面感受野大了可以检测分割大目标，另一方面分辨率高了可以精确定位目标。</li>
-<li><strong>捕获多尺度上下文信息：</strong>空洞卷积有一个参数可以设置dilation rate，具体含义就是在卷积核中填充dilation rate-1个0，因此，当设置不同dilation rate时，感受野就会不一样，也即获取了多尺度信息。<strong>多尺度信息在视觉任务中相当重要啊。</strong></li>
+<li><strong>不丢失分辨率的情况下扩大感受野</strong>：在deep net中为了增加感受野且降低计算量，总要进行降采样(pooling或s2/conv)，这样虽然可以增加感受野，但空间分辨率降低了。为了能不丢失分辨率，且仍然扩大感受野，可以使用空洞卷积。这在检测，分割任务中十分有用。一方面感受野大了可以检测分割大目标，另一方面分辨率高了可以精确定位目标。</li>
+<li><strong>调整扩张率获得多尺度上下文信息：</strong>空洞卷积有一个参数可以设置dilation rate，具体含义就是在卷积核中填充dilation rate-1个0，因此，当设置不同dilation rate时，感受野就会不一样，也即获取了多尺度信息。<strong>多尺度信息在视觉任务中相当重要啊。</strong></li>
 <li>ps: 空洞卷积虽然有这么多优点，但在实际中不好优化，速度会大大折扣。</li>
 </ul>
 <p><strong>空洞卷积gridding问题</strong></p>
@@ -864,7 +931,7 @@
 <blockquote>
 <p><em>In Convolutional Nets, there is no such thing as “fully-connected layers”. There are only convolution layers with 1x1 convolution kernels and a full connection table-Yann LeCun</em></p>
 </blockquote>
-<h4 id="卷积的反向传播"><a href="#卷积的反向传播" class="headerlink" title="卷积的反向传播"></a>卷积的反向传播</h4><h3 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h3><p>池化一般不涉及零填充<br>$$<br>o=\lfloor\frac{i-k}{s}\rfloor+1<br>$$</p>
+<h3 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h3><p>池化一般不涉及零填充<br>$$<br>o=\lfloor\frac{i-k}{s}\rfloor+1<br>$$</p>
 <p><strong>图像中的相邻像素倾向于具有相似的值，因此通常卷积层相邻的输出像素也具有相似的值</strong>。这意味着，卷积层输出中包含的大部分信息都是<strong>冗余</strong>的。</p>
 <p>如果我们使用边缘检测滤波器并在某个位置找到强边缘，那么我们也可能会在距离这个像素1个偏移的位置找到相对较强的边缘。但是它们都一样是边缘，我们并没有找到任何新东西。</p>
 <p>池化层解决了这个问题。这个网络层所做的就是通过<strong>减小输入的大小降低输出值的数量</strong>。</p>
@@ -908,27 +975,27 @@ e<span class="token operator">=</span>np<span class="token punctuation">.</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
 <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
-<span class="token operator">>></span><span class="token operator">></span> input <span class="token operator">=</span> torch<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> input
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> input <span class="token operator">=</span> torch<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> input
 tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token operator">>></span><span class="token operator">></span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'nearest'</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'nearest'</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
 tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token operator">>></span><span class="token operator">></span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'bilinear'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># align_corners=False</span>
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'bilinear'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># align_corners=False</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
 tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1.0000</span><span class="token punctuation">,</span>  <span class="token number">1.2500</span><span class="token punctuation">,</span>  <span class="token number">1.7500</span><span class="token punctuation">,</span>  <span class="token number">2.0000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">1.5000</span><span class="token punctuation">,</span>  <span class="token number">1.7500</span><span class="token punctuation">,</span>  <span class="token number">2.2500</span><span class="token punctuation">,</span>  <span class="token number">2.5000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">2.5000</span><span class="token punctuation">,</span>  <span class="token number">2.7500</span><span class="token punctuation">,</span>  <span class="token number">3.2500</span><span class="token punctuation">,</span>  <span class="token number">3.5000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">3.0000</span><span class="token punctuation">,</span>  <span class="token number">3.2500</span><span class="token punctuation">,</span>  <span class="token number">3.7500</span><span class="token punctuation">,</span>  <span class="token number">4.0000</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token operator">>></span><span class="token operator">></span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'bilinear'</span><span class="token punctuation">,</span> align_corners<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>scale_factor<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'bilinear'</span><span class="token punctuation">,</span> align_corners<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
 tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">1.0000</span><span class="token punctuation">,</span>  <span class="token number">1.3333</span><span class="token punctuation">,</span>  <span class="token number">1.6667</span><span class="token punctuation">,</span>  <span class="token number">2.0000</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">1.6667</span><span class="token punctuation">,</span>  <span class="token number">2.0000</span><span class="token punctuation">,</span>  <span class="token number">2.3333</span><span class="token punctuation">,</span>  <span class="token number">2.6667</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">[</span> <span class="token number">2.3333</span><span class="token punctuation">,</span>  <span class="token number">2.6667</span><span class="token punctuation">,</span>  <span class="token number">3.0000</span><span class="token punctuation">,</span>  <span class="token number">3.3333</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -936,10 +1003,41 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20201222100731710.png" alt="两种方式"></p>
 <p>第一种，四个角对齐，均匀插值,公式：<br>$$<br>scale = (input_size-1)/(output_size-1)\<br>srcIndex=scale\cdot dstIndex<br>$$<br>第二种，不均匀，出界的只和有原坐标的算，公式：<br>$$<br>scale=input_size/output_size\<br>srcIndex=scale\cdot (dstIndex+0.5)-0.5<br>$$</p>
 <h4 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h4><p><strong>PixelShuffle</strong></p>
-<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guoyaohua/p/8724433.html">BN教程</a></p>
+<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25737169/article/details/79048516">BN教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/11989612.html">BN教程2</a></p>
+<p>直译过来就是批归一化。</p>
 <p>激活之前进行BN，增加了两个学习参数scale和shift，再从线性变到非线性</p>
 <p>有轻微的正则化作用，因为使用mint-batch，不同的mini-bath不同，所以会有一些噪音，所以有轻微的正则化效果</p>
 <p>测试时逐样本处理，batch norm从之前训练时的$\mu$和$\sigma$做指数加权平均，方式很多，反正是从训练集得到的</p>
+<h4 id="第一节：Batchnorm主要解决的问题"><a href="#第一节：Batchnorm主要解决的问题" class="headerlink" title="第一节：Batchnorm主要解决的问题"></a>第一节：Batchnorm主要解决的问题</h4><p>深度神经网络主要就是为了学习训练数据的分布，并在测试集上达到很好的泛化效果。但是：</p>
+<ol>
+<li>如果我们<strong>每一个batch输入的数据都具有不同的分布</strong>，显然会给网络的训练带来困难</li>
+<li><strong>数据经过一层层网络计算后，其数据分布也在发生着变化</strong>，此现象称为Internal Covariate Shift.</li>
+</ol>
+<p><strong>1.1 Internal Covariate Shift</strong></p>
+<p>首先<strong>Internal Covariate Shift</strong>是指训练深度网络的时候经常发生训练困难的问题，因为，<strong>每一次参数迭代更新后，上一层网络的输出数据经过这一层网络计算后，数据的分布会发生变化，为下一层网络的学习带来困难（神经网络本来就是要学习数据的分布，要是分布一直在变，学习就很难了）</strong></p>
+<p><strong>1.2 Covariate Shift</strong></p>
+<p><strong>Internal Covariate Shift和Covariate Shift</strong>是不同的，差就差在这个Internal,<strong>一个发生在神经网络内部，一个发生在输入数据上</strong><br>==BatchNorm是归一化的一种手段，减小图像之间的绝对差异，突出相对差异==</p>
+<p>举个例子，如下图所示：</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210510212843757.png" alt="image-20210510212843757" style="zoom:50%;">
+
+<p>假定当前输入$x1$和$x2$的分布如图中圆点所示，本次更新的方向是将直线$H_1$更新成$H_2$，本以为切分得不错，但是当前面层的权重更新完毕，当前层输入的分布换成了另外一番样子，直线相对输入分布的位置可能变成了$H_3$，下一次更新又要根据新的分布重新调整。<strong>直线调整了位置，输入分布又在发生变化，直线再调整位置，</strong>==就像是直线和分布之间的“追逐游戏”。==<strong>对于浅层模型，比如SVM，输入特征的分布是固定的，即使拆分成不同的batch，每个batch的统计特性也是相近的，因此只需调整直线位置来适应输入分布，显然要容易得多。而深层模型，每层输入的分布和权重在同时变化，训练相对困难。</strong></p>
+<h4 id="第二节：Batchnorm-原理解读"><a href="#第二节：Batchnorm-原理解读" class="headerlink" title="第二节：Batchnorm 原理解读"></a>第二节：Batchnorm 原理解读</h4><p>为了减小Internal Covariate Shift，对神经网络的每一层做归一化不就可以了，假设将每一层输出后的数据都归一化到0均值，1方差，满足正态分布，但是，此时有一个问题，<strong>每一层的数据分布都是标准正态分布，导致其完全学习不到输入数据的特征，</strong>因为，<strong>费劲心思学习到的特征分布被归一化</strong>了，因此，直接对每一层做归一化显然是不合理的。但如果加上可学习的参数就好多了。</p>
+<p>如果batch size为$m$，则在前向传播过程中，网络中每个节点都有$m$个输出，所谓的Batch Normalization，就是对该层每个节点的这$m$个输出进行归一化再输出，具体计算方式如下：</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210510213910551.png" alt="image-20210510213910551" style="zoom:50%;">
+
+<p><strong>$\gamma$和$\beta$为待学习的scale和shift参数，用于控制$y_i$的方差和均值。</strong>==这样的话就是具有不同均值和方差的正态分布了，有利于权重和分布的相互协调==</p>
+<h4 id="第三节：BatchNorm实现"><a href="#第三节：BatchNorm实现" class="headerlink" title="第三节：BatchNorm实现"></a>第三节：BatchNorm实现</h4><h4 id="第四节：Batchnorm的优点"><a href="#第四节：Batchnorm的优点" class="headerlink" title="第四节：Batchnorm的优点"></a>第四节：Batchnorm的优点</h4><ul>
+<li><strong>可以使用更大的学习率</strong>，训练过程更加稳定，极大提高了训练速度。</li>
+<li><strong>可以将bias置为0</strong>，因为Batch Normalization的Standardization过程会移除直流分量，所以不再需要bias。</li>
+<li><strong>权重初始化不再敏感</strong>，通常权重采样自0均值某方差的高斯分布，以往对高斯分布的方差设置十分重要，有了Batch Normalization后，对与同一个输出节点相连的权重进行放缩，其标准差σ也会放缩同样的倍数，相除抵消。</li>
+<li><strong>对权重的尺度不再敏感</strong>，理由同上，尺度统一由γ参数控制，在训练中决定。</li>
+<li><strong>深层网络可以使用sigmoid和tanh了</strong>，理由同上，BN抑制了梯度消失。</li>
+<li><strong>Batch Normalization具有某种正则作用，不需要太依赖dropout，减少过拟合</strong>。</li>
+</ul>
+<h4 id="什么时候不能用BN？"><a href="#什么时候不能用BN？" class="headerlink" title="什么时候不能用BN？"></a>什么时候不能用BN？</h4><p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210510215346460.png" alt="image-20210510215346460"></p>
+<p>==BN是保留Channel，在N,H,W上做操作==</p>
+<p>肯定是batch size越大，使用BN的效果越好。为什么BN不做channel只做NHW，可能是因为每个channel都对应之前一个卷积核，逐channel代表逐卷积核的输出做归一化。</p>
 <h3 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35005794">吴育昕 何恺明的GN教程</a></p>
 <ol>
 <li>BN依赖于batch size，batch size较小时，BN效果不好，有些任务往往batch size只有1-2</li>
@@ -947,16 +1045,97 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 </ol>
 <p>Layer Norm和Instance Norm就是Group Norm的特例，归一化避开了batch</p>
 <p>为什么工作？个人理解，每一层有很多的卷积核，这些核学习到的特征并不完全是独立的，某些特征具有相同的分布，因此可以被group。</p>
+<h3 id="网络权重初始化"><a href="#网络权重初始化" class="headerlink" title="网络权重初始化"></a>网络权重初始化</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/11908610.html">权重初始化方法总结</a></p>
+<h3 id="特征融合"><a href="#特征融合" class="headerlink" title="特征融合"></a>特征融合</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141685352">知乎教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xys430381_1/article/details/88370733">CSDN类似的教程</a></p>
+<p>很多工作通过融合多层来提升检测和分割的性能，按照融合与预测的先后顺序，分类为<strong>早融合(Early fusion)和晚融合(Late fusion)。</strong></p>
+<h4 id="Early-fusion"><a href="#Early-fusion" class="headerlink" title="Early fusion"></a>Early fusion</h4><p>先融合多层的特征，然后在融合后的特征上训练预测器(<strong>只在完全融合之后，才统一进行检测</strong>)。这类方法也被称为<strong>skip connection，即采用concat、add操作</strong>。这一思路的代表是Inside-Outside Net(ION)和HyperNet。</p>
+<ol>
+<li>concat</li>
+<li>add</li>
+</ol>
+<h4 id="Late-fusion"><a href="#Late-fusion" class="headerlink" title="Late fusion"></a>Late fusion</h4><p>同过<strong>结合不同层的检测结果</strong>改进检测性能(<strong>尚未完成最终的融合之前，在部分融合的层上就开始进行检测，会有多层的检测，最终将多个检测结果进行融合</strong>)。</p>
+<p>代表思路有两种:</p>
+<ol>
+<li><strong>feature不融合，多尺度的feture分别进行预测，然后对预测结果进行综合，</strong>如Single Shot MultiBox Detector (SSD) , Multi-scale CNN(MS-CNN)</li>
+<li><strong>feature进行金字塔融合，融合后进行预测</strong>，如Feature Pyramid Network(<strong>FPN</strong>)等。</li>
+</ol>
+<p>接下来主要归纳晚融合方法</p>
+<h4 id="FPN"><a href="#FPN" class="headerlink" title="FPN"></a>FPN</h4><h3 id="多尺度设计"><a href="#多尺度设计" class="headerlink" title="多尺度设计"></a>多尺度设计</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/57cfa4fdd423?from=timeline">AI不惑境教程</a></p>
+<h3 id="判断函数是否收敛？"><a href="#判断函数是否收敛？" class="headerlink" title="判断函数是否收敛？"></a>判断函数是否收敛？</h3><p>两个算法,batch_size为4,epoch为30和batch_size为8,epoch为60,不同的算法是否有对应的大小关系呢?</p>
+<p>主要是看两个，第一个epoch多少是否有影响，<strong>要看函数是否收敛？</strong></p>
+<p>第二个batch_size不同,要看<strong>是否能收敛到最小点</strong>,batch_size小<strong>容易收敛到鞍点</strong>,大的话容易收敛到最小点。</p>
 <h3 id="CNN的反向传播"><a href="#CNN的反向传播" class="headerlink" title="CNN的反向传播"></a>CNN的反向传播</h3><p>教程:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61898234">https://zhuanlan.zhihu.com/p/61898234</a></p>
-<h2 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h2><p><a target="_blank" rel="noopener" href="http://kakuguo.ink/2020-03-18-Summary-of-Computer-Vision-Attention/">计算机视觉中的注意力机制</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54491016">自然语言处理中的注意力机制</a></p>
-<h2 id="CRF-Loss"><a href="#CRF-Loss" class="headerlink" title="CRF Loss"></a>CRF Loss</h2><h3 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h3><p>On Regularized Losses for Weakly-supervised CNN Segmentation Meng</p>
-<p>18ECCV</p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>keywords:<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E6%AD%A3%E5%88%99%E5%8C%96_(%E6%95%B0%E5%AD%A6)#:~:text=%E5%9C%A8%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6,%E5%8A%A0%E5%9C%A8%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%BD%93%E4%B8%AD%E3%80%82">Regularization</a>  Semi-supervised Learning CNN Segmentation</p>
-<h2 id="DenseNet"><a href="#DenseNet" class="headerlink" title="DenseNet"></a>DenseNet</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/75142664">https://blog.csdn.net/u014380165/article/details/75142664</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43057737">https://zhuanlan.zhihu.com/p/43057737</a></p>
-<h2 id="Inception"><a href="#Inception" class="headerlink" title="Inception"></a>Inception</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36878362">https://zhuanlan.zhihu.com/p/36878362</a></p>
+<h3 id="Self-attention与Transformer"><a href="#Self-attention与Transformer" class="headerlink" title="Self attention与Transformer"></a>Self attention与Transformer</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47282410">知乎教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p>
+<p>直接看上面这篇文章</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yujianmin1990/article/details/85221271">The Illustrated Transformer的翻译参考</a></p>
+<h4 id="A-High-level-Lokok"><a href="#A-High-level-Lokok" class="headerlink" title="A High-level Lokok"></a>A High-level Lokok</h4><p>Transformer中的编码器是完全结构相同的,但是并不共享参数，每一个编码器都可以拆解成以下两个子部分:</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426100431432.png" alt="Encoder" style="zoom:80%;">
 
+<p>解码器同样也有这些子层，但是在两个子层间增加了attention层，该层有助于解码器能够关注到输入句子的相关部分，与 <a target="_blank" rel="noopener" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">seq2seq model</a> 的Attention作用相似。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426100534638.png" alt="image-20210426100534638" style="zoom:80%;">
+
+<h4 id="Bringing-The-Tensors-Into-the-Picture"><a href="#Bringing-The-Tensors-Into-the-Picture" class="headerlink" title="Bringing The Tensors Into the Picture"></a>Bringing The Tensors Into the Picture</h4><p>正如NLP应用的常见例子，先将输入单词使用<a target="_blank" rel="noopener" href="https://medium.com/deeper-learning/glossary-of-deep-learning-word-embedding-f90c3cec34ca">embedding algorithm</a>转成向量。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426100735512.png" alt="image-20210426100735512" style="zoom:80%;">
+
+<p>词的向量化仅仅发生在最底层的编码器的输入时，<strong>这样每个编码器的都会接收到一个list（每个元素都是512维的词向量）</strong>，只不过其他编码器的输入是前个编码器的输出。list的尺寸是可以设置的超参，==通常是训练集的最长句子的长度==。</p>
+<p>在对输入序列做词的向量化之后，它们流经编码器的如下两个子层:</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426100904390.png" alt="image-20210426100904390" style="zoom:80%;">
+
+<p>这里能看到Transformer的一个关键特性，==每个位置的词仅仅流过它自己的编码器路径。在self-attention层中，这些路径两两之间是相互依赖的。前向网络层则没有这些依赖性，但这些路径在流经前向网络时可以并行执行。==</p>
+<h4 id="Now-We’re-Encoding"><a href="#Now-We’re-Encoding" class="headerlink" title="Now We’re Encoding !"></a>Now We’re Encoding !</h4><p>正如之前所提，编码器接收向量的list作输入。然后将其送入self-attention处理，再之后送入前向网络，最后将输入传入下一个编码器。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426101726843.png" alt="image-20210426101726843" style="zoom:80%;">
+
+<p>每个位置的词向量被送入self-attention模块，然后是前向网络(对每个向量都是完全相同的网络结构)。</p>
+<h4 id="Self-Attention-at-a-High-Level"><a href="#Self-Attention-at-a-High-Level" class="headerlink" title="Self-Attention at a High Level"></a>Self-Attention at a High Level</h4><p>不要被self-attention这个词迷惑了，看起来好像每个人对它都很熟悉，但是在我读到Attention is All You Need这篇文章之前，我个人都没弄懂这个概念。下面我们逐步分解下它是如何工作的。</p>
+<p>以下面这句话为例，作为我们想要翻译的输入语句“The animal didn’t cross the street because it was too tired”。句子中”it”指的是什么呢？“it”指的是”street” 还是“animal”？对人来说很简单的问题，但是对算法而言并不简单。</p>
+<p>当模型处理单词“it”时，self-attention允许将“it”和“animal”联系起来。==当模型处理每个位置的词时，self-attention允许模型看到句子的其他位置信息作辅助线索来更好地编码当前词。==如果你对RNN熟悉，就能想到RNN的隐状态是如何允许之前的词向量来解释合成当前词的解释向量。Transformer使用self-attention来将相关词的理解编码到当前词中。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210420102549063.png" alt="Scaled Dot-Product Attention" style="zoom:67%;">
+
+<h4 id="Self-Attention-in-Detail"><a href="#Self-Attention-in-Detail" class="headerlink" title="Self-Attention in Detail"></a>Self-Attention in Detail</h4><p>我们先看下如何计算self-attention的向量，再看下如何以矩阵方式计算。<br><strong>第一步</strong>，==根据编码器的输入向量，生成三个向量==，比如，对每个词向量，生成$query$, $key$, $value$三个vector</p>
+<p>生成方法为分别乘以三个矩阵，这些<strong>矩阵在训练过程中需要学习</strong>。【注意：==不是每个词向量独享3个matrix，而是所有输入共享3个转换矩阵；==<strong>权重矩阵是基于输入位置的转换矩阵</strong>；有个可以尝试的点，如果每个词独享一个转换矩阵，会不会效果更厉害呢？】<br>注意到这些新向量的维度比输入词向量的维度要小（512–&gt;64），并不是必须要小的，是为了让多头attention的计算更稳定。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426104949349.png" alt="image-20210426104949349" style="zoom: 67%;">
+
+<p><strong>第二步</strong>，计算attention就是计算一个分值。对“Thinking Matchines”这句话，对“Thinking”（pos#1）计算attention 分值。我们需要计算每个词与“Thinking”的评估分，这个分决定着编码“Thinking”时（某个固定位置时），每个输入词需要集中多少关注度。<br>==这个分，通过“Thing”对应query-vector与所有词的key-vec依次做点积得到。==所以当我们处理位置#1时，第一个分值是q1和k1的点积，第二个分值是q1和k2的点积。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426105236082.png" alt="image-20210426105236082" style="zoom:67%;">
+
+<p><strong>每个是一个Vector,可以用矩阵加速计算</strong></p>
+<p><strong>第三步和第四步</strong>，除以8($d_k$,为query和key向量的维度)，这样梯度会更稳定。然后加上softmax操作，<strong>归一化分值使得全为正数且加和为1。</strong></p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426145803111.png" alt="image-20210426145803111" style="zoom: 67%;">
+
+<p>softmax分值决定着在这个位置,每个词的表达程度(关注度)。<strong>很明显,这个位置的词应该有最高的归一化分数,但大部分时候总是有助于关注该词的相关的词。</strong></p>
+<p><strong>第五步</strong>，将softmax分值与value-vec按位相乘。==保留关注词的value值，削弱非相关词的value值。==</p>
+<p><strong>第六步</strong>，将所有加权向量加和，产生该位置的self-attention的输出结果。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426145954742.png" alt="image-20210426145954742" style="zoom:67%;">
+
+<p>上述就是self-attention的计算过程，生成的向量流入前向网络。在实际应用中，上述计算是以速度更快的矩阵形式进行的。下面我们看下在单词级别的矩阵计算。</p>
+<h4 id="Matrix-Calculation-of-Self-Attention"><a href="#Matrix-Calculation-of-Self-Attention" class="headerlink" title="Matrix Calculation of Self-Attention"></a>Matrix Calculation of Self-Attention</h4><p>第一步是计算Query,Key和Value矩阵。 为此，我们将embeddings堆叠成矩阵X，然后将其乘以我们训练过的权重矩阵（WQ，WK，WV）。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426151301289.png" alt="image-20210426151301289" style="zoom:67%;">
+
+<p><strong>X矩阵中的每一行对应于输入句子中的一个单词。</strong></p>
+<p>最后，由于我们要处理矩阵，因此我们可以将步骤2到6压缩成一个公式，以计算self attention layer的输出。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426151533778.png" alt="image-20210426151533778" style="zoom:67%;">
+
+<h4 id="The-Beast-With-Many-Heads"><a href="#The-Beast-With-Many-Heads" class="headerlink" title="The Beast With Many Heads"></a>The Beast With Many Heads</h4><p>本文通过添加一种称为“多头”注意力的机制，进一步完善了self attention layer。 这样可以通过两种方式提高attention layer的性能：</p>
+<ol>
+<li>它==扩展了模型专注于不同位置的能力==。在上面的例子中，==z1只包含了其他所有encoding的一点点，但是它很可能由实际该单词本身主导==。如果我们要翻译这样的句子: “The animal didn’t cross the street because it was too tired”,那么我们会想知道”it”指什么,多头注意力很有用。</li>
+<li>它为关注层提供了多个“表示子空间”。正如我们接下来要看到的，在multi-headed attention下有多组Query/Key/Value的权重matrix,而非仅仅一组（论文中使用8-heads）。每一组都是随机初始化，==然后，在训练之后，将每组用于将input embeddings(或 vectors from lower encoders/decoders)投影到不同的表示子空间representation subspace中。==</li>
+</ol>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426153133207.png" alt="image-20210426153133207" style="zoom:67%;">
+
+<p>为每个头维护单独的$W_Q$,$W_K$和$W_V$,与$X$乘完之后获得$Q$,$K$,$V$</p>
+<p>如果我们执行与上面的概述相同的self attention计算，我们最终将得到八个不同的$Z$矩阵</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426153614905.png" alt="image-20210426153614905" style="zoom:67%;">
+
+<p>这给我们带来了一些挑战。==前馈层不希望有8个矩阵,它只要一个矩阵(a vector for each word)==。因此,我们需要一种将这8个矩阵压缩为1个矩阵的方法。</p>
+<p>==我们该怎么做?concat 然后乘以额外的权重矩阵==$W_O$</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426153909094.png" alt="image-20210426153909094" style="zoom:67%;">
+
+<p>这就是multi-headed self attention的全部。 我知道，矩阵很多。 让我尝试将它们全都放在一个视觉中，以便我们可以在一处查看它们。</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426161648133.png" alt="image-20210426161648133" style="zoom:80%;">
+
+<h4 id="Representing-The-Order-of-The-Sequence-Using-Positional-Encoding"><a href="#Representing-The-Order-of-The-Sequence-Using-Positional-Encoding" class="headerlink" title="Representing The Order of The Sequence Using Positional Encoding"></a>Representing The Order of The Sequence Using Positional Encoding</h4>
             </div>
             <hr/>
 
@@ -1817,7 +1996,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             

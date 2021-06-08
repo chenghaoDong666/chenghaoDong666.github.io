@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2k
                 </div>
                 
 
@@ -680,7 +680,7 @@
 <p>Res2Net：基于ResNet引入多尺度；</p>
 <p>SENet：基于通道矫正，强化重要特征，抑制非重要特征，重点是轻便可以随意嵌入；</p>
 <p>SKNet：引入特征图注意力，使卷积核的感受野能够自适应</p>
-<p>DCNet：引入可变性卷积，提高了泛化能力；</p>
+<p>DCNet：引入可变形卷积，提高了泛化能力；</p>
 <p>SqueezeNet、ShuffleNet、MobileNet：轻量级网络；</p>
 <p>CSPNet：利用跨阶段特征融合策略和截断梯度流来增强不同层次特征的可变性解决冗余梯度信息，提高推理速度；</p>
 <p>EfficientNet：E0-E7的进化之路号称无人能敌，配合谷歌刚出的Lite，实现精度、延迟两不误的移动端新SOTA；</p>
@@ -700,6 +700,7 @@
 
 </li>
 </ol>
+<p>Group convolution 分组卷积，最早在AlexNet中出现，由于当时的硬件资源有限，训练AlexNet时卷积操作不能全部放在同一个GPU处理，因此作者把feature maps分给多个GPU分别进行处理，最后把多个GPU的结果进行融合。</p>
 <h2 id="VGG-16"><a href="#VGG-16" class="headerlink" title="VGG-16"></a>VGG-16</h2><p><img src="./medias/loading.gif" data-original="/backbone/image-20210226194943546.png" alt="VGG6种结构配置"></p>
 <ul>
 <li>16个权重层，也是VGG16名称的来源</li>
@@ -736,7 +737,16 @@
 <h4 id="ResNet-B"><a href="#ResNet-B" class="headerlink" title="ResNet-B"></a>ResNet-B</h4><p>修改了下采样顺序。<strong>将下采样操作放到非1 × 1卷积层。1 × 1卷积层等价于对输入feature maps沿着channel维度做加权求和，因此设置stride为2会导致丢失3/4的特征信息。对于3 × 3的卷积层，设置stride为2不会丢失特征信息</strong></p>
 <h4 id="ResNet-C"><a href="#ResNet-C" class="headerlink" title="ResNet-C"></a>ResNet-C</h4><p>1个7x7的卷积核参数量是1个3x3卷积核的5.4倍。所以用三个3x3卷积核替代一个7x7卷积核显然更好。</p>
 <h4 id="ResNet-D"><a href="#ResNet-D" class="headerlink" title="ResNet-D"></a>ResNet-D</h4><p>受ResNet-B的启发，我们注意到下采样块路径B中的1 × 1卷积也忽略了3/4的输入特征映射。从经验上看，我们发现在卷积前添加一个stride=2的2×2平均池化层，将1x1卷积stride改为1，在实际应用中效果很好，对计算成本的影响很小。</p>
-<h2 id="InceptionV3"><a href="#InceptionV3" class="headerlink" title="InceptionV3"></a>InceptionV3</h2><h2 id="MobileNet"><a href="#MobileNet" class="headerlink" title="MobileNet"></a>MobileNet</h2>
+<h2 id="GoogleNet-InceptionV3"><a href="#GoogleNet-InceptionV3" class="headerlink" title="GoogleNet/InceptionV3"></a>GoogleNet/InceptionV3</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36878362">https://zhuanlan.zhihu.com/p/36878362</a></p>
+<p>在Inception网络中，作者提出利用2个3×3卷积核的组合比1个5×5卷积核的效果更佳，同时参数量（3×3×2+1 VS 5×5×1+1）被降低，因此后来3×3卷积核被广泛应用在各种模型中。</p>
+<p><strong>怎样才能减少卷积层参数量？– Bottleneck 1x1卷积核</strong></p>
+<p><strong>每层卷积只能用一种尺寸的卷积核？– Inception结构</strong></p>
+<h2 id="Xception"><a href="#Xception" class="headerlink" title="Xception"></a>Xception</h2><p><strong>卷积操作时所有通道都只能用同一个过滤器吗？– DepthWise操作</strong></p>
+<h2 id="DenseNet"><a href="#DenseNet" class="headerlink" title="DenseNet"></a>DenseNet</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/75142664">https://blog.csdn.net/u014380165/article/details/75142664</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43057737">https://zhuanlan.zhihu.com/p/43057737</a></p>
+<h2 id="DCNet"><a href="#DCNet" class="headerlink" title="DCNet"></a>DCNet</h2><p><strong>卷积核形状一定是矩形吗？– Deformable convolution 可变形卷积核</strong></p>
+<h2 id="SqueezeNet"><a href="#SqueezeNet" class="headerlink" title="SqueezeNet"></a>SqueezeNet</h2><p><strong>通道间的特征都是平等的吗？ – SEnet</strong></p>
+<h2 id="MobileNet"><a href="#MobileNet" class="headerlink" title="MobileNet"></a>MobileNet</h2><h2 id="MobileNeXt"><a href="#MobileNeXt" class="headerlink" title="MobileNeXt"></a>MobileNeXt</h2>
             </div>
             <hr/>
 
@@ -1522,6 +1532,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1590,7 +1607,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             

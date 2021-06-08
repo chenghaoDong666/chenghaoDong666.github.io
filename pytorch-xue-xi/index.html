@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.9k
+                    17.4k
                 </div>
                 
 
@@ -682,7 +682,23 @@
 <p>不是基本数据类型如int，float，string等，而是<strong>引用数据类型</strong></p>
 <p>是在类中封装好的。所以肯定相应操作比如运算符等人家已经给你重载了，所以不用想的太多</p>
 <p>两个tensor<strong>相加如果是同维度</strong>的话，就直接<strong>对应元素相加</strong></p>
-<h4 id="pytorch通道顺序"><a href="#pytorch通道顺序" class="headerlink" title="pytorch通道顺序"></a>pytorch通道顺序</h4><p><strong>NCHW</strong></p>
+<h4 id="pytorch通道顺序及索引"><a href="#pytorch通道顺序及索引" class="headerlink" title="pytorch通道顺序及索引"></a>pytorch通道顺序及索引</h4><p><strong>NCHW</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Jason66661010/p/13592020.html">很棒的索引教程</a></p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">28</span><span class="token punctuation">,</span><span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#基本索引</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#torch.Size([3,28,28])</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#torch.Size([28,28])</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#tensor(0.8082)</span>
+<span class="token comment" spellcheck="true">#连续选取</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape
+<span class="token comment" spellcheck="true">#torch.Size([2,3,28,28])</span>
+<span class="token comment" spellcheck="true">#由于是两张图片，所以第一维变为2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#torch.Size(2,1,28,28)</span></code></pre>
 <h4 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h4><pre class=" language-python"><code class="language-python">x<span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#返回一个新的与原张量数据相同但形状不同的张量,-1是指从其他维度推断！</span>
 y<span class="token punctuation">.</span>add_<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
@@ -701,8 +717,6 @@ x<span class="token punctuation">.</span>type<span class="token punctuation">(</
 <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 <span class="token comment" spellcheck="true">#禁止梯度计算的上下文管理器，当您确定不会调用张量.backward()时，禁用梯度计算对于推断是很有用的。</span>
 <span class="token comment" spellcheck="true">#它将减少计算的内存消耗，否则需要require_grad =True。</span>
-torch<span class="token punctuation">.</span>manual_seed<span class="token punctuation">(</span>seed<span class="token punctuation">)</span> → torch<span class="token punctuation">.</span>_C<span class="token punctuation">.</span>Generator
-<span class="token comment" spellcheck="true">#Sets the seed for generating random numbers. Returns a torch.Generator object.</span>
 torch<span class="token punctuation">.</span>squeeze<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#eg:输入shape为(A·1·B·1·C·1·D),输入张量的shape就是(A·B·C·D)</span>
 <span class="token comment" spellcheck="true">#如果指定维度的话，那只对该维度去1。注意：返回的张量与输入张量共享存储空间，因此改变一个张量的内容将改变另一个张量的内容。</span>
@@ -713,7 +727,7 @@ troch<span class="token punctuation">.</span>max<span class="token punctuation">
 <span class="token comment" spellcheck="true">#_, predicted = torch.max(outputs, 1)</span>
 <span class="token comment" spellcheck="true">#outputs是数据Tensor，1表示求第一维度上的最大值</span>
 <span class="token comment" spellcheck="true">#_是不要了  torch.max（）的返回值分两部分，分别是values和indices</span>
-torch<span class="token punctuation">.</span>max<span class="token punctuation">(</span>input<span class="token punctuation">,</span> dim<span class="token punctuation">,</span> keepdim<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">(</span>Tensor<span class="token punctuation">,</span> LongTensor<span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>max<span class="token punctuation">(</span>input<span class="token punctuation">,</span> dim<span class="token punctuation">,</span> keepdim<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>Tensor<span class="token punctuation">,</span> LongTensor<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 返回一个命名元组(values, indices)，其中values是给定维度dim中输入张量的每一行的最大值。indices是找到的每个最大值(argmax)的索引位置。</span>
 <span class="token comment" spellcheck="true"># 返回一个命名元组(values,indices)</span>
 <span class="token comment" spellcheck="true"># 其中values是给定维度dim中输入张量的每一行的最大值</span>
@@ -728,12 +742,12 @@ torch<span class="token punctuation">.</span>rand<span class="token punctuation"
 <span class="token comment" spellcheck="true">#torch.ones()初始化为1   torch.zeros()初始化为0  torch.eye()初始化为单位矩阵</span>
 torch<span class="token punctuation">.</span>complex<span class="token punctuation">(</span>real<span class="token punctuation">,</span> imag<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span> → Tensor
 <span class="token comment" spellcheck="true">#real为实部，imag为虚部，real和imag必须位数相同，如果real和imag同为float32那么生成的complex就为complex64。</span>
-<span class="token operator">>></span><span class="token operator">></span> real <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> imag <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> z <span class="token operator">=</span> torch<span class="token punctuation">.</span>complex<span class="token punctuation">(</span>real<span class="token punctuation">,</span> imag<span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> z
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> real <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> imag <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> z <span class="token operator">=</span> torch<span class="token punctuation">.</span>complex<span class="token punctuation">(</span>real<span class="token punctuation">,</span> imag<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> z
 tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token operator">+</span><span class="token number">3.j</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">.</span><span class="token operator">+</span><span class="token number">4.j</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> z<span class="token punctuation">.</span>dtype
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> z<span class="token punctuation">.</span>dtype
 torch<span class="token punctuation">.</span>complex64
 torch<span class="token punctuation">.</span>__version__
 <span class="token comment" spellcheck="true">#查看torch版本</span>
@@ -741,23 +755,89 @@ torch<span class="token punctuation">.</span>randint<span class="token punctuati
               high<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#最大 </span>
               size<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#维度 </span>
               <span class="token operator">*</span><span class="token punctuation">,</span> generator<span class="token operator">=</span>None<span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">,</span> dtype<span class="token operator">=</span>None<span class="token punctuation">,</span> layout<span class="token operator">=</span>torch<span class="token punctuation">.</span>strided<span class="token punctuation">,</span> device<span class="token operator">=</span>None<span class="token punctuation">,</span> requires_grad<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> → Tensor <span class="token comment" spellcheck="true">#均匀分布取样</span>
+torch<span class="token punctuation">.</span>mm<span class="token punctuation">(</span>input<span class="token punctuation">,</span> mat2<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span> Tensor
+<span class="token comment" spellcheck="true">#矩阵乘</span>
 torch<span class="token punctuation">.</span>bmm<span class="token punctuation">(</span>input<span class="token punctuation">,</span> mat2<span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span> → Tensor
 <span class="token comment" spellcheck="true"># 对一个batch的矩阵进行矩阵乘积,(bxnxm)x(bxmxp)=(bxnxp)</span>
-torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">.</span>permut<span class="token punctuation">(</span><span class="token operator">*</span>dims<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Tensor
+torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">.</span>permut<span class="token punctuation">(</span><span class="token operator">*</span>dims<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Tensor
 <span class="token comment" spellcheck="true"># 返回维度交换后的原始张量的视图。</span>
-torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">.</span>expand_as<span class="token punctuation">(</span>other<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Tensor
+torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">.</span>expand_as<span class="token punctuation">(</span>other<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Tensor
 <span class="token comment" spellcheck="true"># 和其它张量具有相同的维度。就从现有的值复制扩充。</span>
 torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span>tensors<span class="token punctuation">,</span>dim<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">,</span>out<span class="token operator">=</span>None<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 将一个序列里的张量拼接在一起，按维数拼接</span>
 torch<span class="token punctuation">.</span>clone<span class="token punctuation">(</span>input<span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">,</span> memory_format<span class="token operator">=</span>torch<span class="token punctuation">.</span>preserve_format<span class="token punctuation">)</span> → Tensor
 <span class="token comment" spellcheck="true"># return a copy of input</span>
-torch<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>input<span class="token punctuation">,</span> dim<span class="token punctuation">,</span> keepdim<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span> → Tensor</code></pre>
+torch<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>input<span class="token punctuation">,</span> dim<span class="token punctuation">,</span> keepdim<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span> → Tensor
+loss<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#这是一个列表,和tensor不通用</span>
+b <span class="token operator">=</span> list<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#a维度是(4,4,4)  b维度是(4,)</span>
+b <span class="token operator">=</span> <span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#a维度是(4,4,4)  b维度是(1 ,) #上面的会把batch信息保留</span>
+torch<span class="token punctuation">.</span>numel<span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>int
+<span class="token comment" spellcheck="true"># 返回input tensor中元素的总数,eg:</span>
+a <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>numel<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 120</span>
+torhch<span class="token punctuation">.</span>Tensor<span class="token punctuation">.</span>nelement<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>int
+<span class="token comment" spellcheck="true"># numel()的别名</span>
+torch<span class="token punctuation">.</span>split<span class="token punctuation">(</span>tensor<span class="token punctuation">,</span> <span class="token punctuation">[</span>split<span class="token punctuation">,</span> split<span class="token punctuation">]</span><span class="token punctuation">,</span> dim<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#</span>
+torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">.</span>sigmoid<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>torch.manual_seed() :<a target="_blank" rel="noopener" href="https://blog.csdn.net/X_singing/article/details/104447052?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">https://blog.csdn.net/X_singing/article/details/104447052?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
 <p>为了保证能够复现，初始随机梯度是固定的</p>
 <h4 id="求导和网络相关知识"><a href="#求导和网络相关知识" class="headerlink" title="求导和网络相关知识"></a>求导和网络相关知识</h4><p>grad属性保存梯度值，grad_fn保存梯度函数</p>
 <p>nn.functional函数的特点是不具有可学习的参数，<code>net.parameters()​</code>返回网络可学习的参数</p>
 <p>forward函数的输入和输出都是Tensor ,在反向传播前，先要将所有参数的梯度清零,如果不清0，计算得到的梯度值会进行累加</p>
 <p><strong>torch.nn只支持mini-batches，不支持一次只输入一个样本，即一次必须是一个batch。</strong></p>
+<h4 id="经典报错"><a href="#经典报错" class="headerlink" title="经典报错"></a>经典报错</h4><p>一:int和torch</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">count_parameters</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    total_params <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> p <span class="token keyword">in</span> m<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        total_params <span class="token operator">+=</span> torch<span class="token punctuation">.</span>DoubleTensor<span class="token punctuation">(</span><span class="token punctuation">[</span>p<span class="token punctuation">.</span>numel<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"m.total_params"</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>total_params<span class="token punctuation">,</span> <span class="token string">"total_params"</span><span class="token punctuation">,</span> total_params<span class="token punctuation">)</span>
+    m<span class="token punctuation">.</span>total_params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> total_params</code></pre>
+<p><code>m.total_params[0] += total_params</code>,如果<code>m.parameters</code>为空,那么<code>total_params</code>就是0,类型为int,<code>m.total_params[0]</code>的类型为<code>torch.Size([])</code>,相当于一个空tensor,要是<code>m.total_params=total_params</code>,就相当于把int赋值给tensor,触发TypeError</p>
+<p>二：RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> torch
+x <span class="token operator">=</span> torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+w1 <span class="token operator">=</span> torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+w2 <span class="token operator">=</span> torch<span class="token punctuation">.</span>FloatTensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+w1<span class="token punctuation">.</span>requires_grad <span class="token operator">=</span> <span class="token boolean">True</span>
+w2<span class="token punctuation">.</span>requires_grad <span class="token operator">=</span> <span class="token boolean">True</span>
+
+d <span class="token operator">=</span> torch<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>x<span class="token punctuation">,</span> w1<span class="token punctuation">)</span>
+f <span class="token operator">=</span> torch<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>d<span class="token punctuation">,</span> w2<span class="token punctuation">)</span>
+d<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token comment" spellcheck="true"># 因为这句, 代码报错了 RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation</span>
+
+f<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>因为f的求导需要用到d，但是这个时候d已经被改变了，所以报错</p>
+<p>这种报错会显示在这一行<code>batch_loss.backward()</code>,多用<code>b=...a...</code>之类的形式，少用<code>a=...a...</code>之类的形式</p>
+<p>似乎对于tensor变量的整体运算覆盖原变量，比如<code>x=2*x</code>不会导致以上问题；但是逐元素操作覆盖原位置元素就会引起这个问题，举例也是这个情况，在循环中，每次访问<code>feature[i,:,:]</code>，如果写成<code>feature[i,:,:]=...feature[i,:,:]...</code>，这设计的是python的变量赋值规则了</p>
+<p>三：view size is not compatible with input tensor‘s size and stride</p>
+<p>tensor不是contiguous连续引起的错误,查看<code>targets.is_contiguous()</code>为False</p>
+<p>两种解决办法：1）按照提示使用reshape代替；2）将变量先转为contiguous ，再进行view:</p>
+<pre class=" language-python"><code class="language-python">targets<span class="token punctuation">.</span>contiguous<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span>targets<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span>targets<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1774900">如何判断张量是否连续?</a></p>
+<p>nD 张量底层实现是使用一块连续内存的一维数组，由于 PyTorch 底层实现是 C 语言 (C/C++ 使用行优先的存储方式)，所以 PyTorch 中的 nD 张量也按照行优先的顺序进行存储的。</p>
+<p>下图为一个形状为$(2×3)$的2D张量，为了方便将其命名为$A$。</p>
+<p><img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20210519165512549.png" alt="A"></p>
+<p>张量 $A$ 在内存中实际以一维数组的形式进行存储，并且使用<strong>行优先的顺序进行存储</strong>,其中一维数组的形式存储比较好理解,而行优先指的就是存储顺序按照张量$A$的行依次存储。 张量$A$在内存中的实际存储形式如下所示。</p>
+<p><img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20210519165623798.png" alt="A"></p>
+<p>张量$A$通常称为存储的逻辑结构，而实际存储的一维数组形式称为存储的物理结构。</p>
+<ul>
+<li>如果元素在存储的逻辑结构上相邻，在存储的物理结构中也相邻，则称为连续存储的张量；</li>
+<li>如果元素在存储的逻辑结构上相邻，但是在存储的物理结构中不相邻，则称为不连续存储的张量；</li>
+</ul>
+<p><strong>交换维度的操作能够将连续存储的张量转变成不连续存储的张量。</strong></p>
+<p>nD 张量，对于任意一个维度$i(i=0,…,n−1,i≠n−1)$都满足下面的等式则说明 nD 张量连续，不满足则说明 nD 张量不连续。<br>$$<br>stride[i]=stride[i+1]\times size[i+1]<br>$$<br>$stride[i]$表示逻辑结构中第 $i$个维度上相邻的元素在物理结构中间隔的元素个数.</p>
+<p>$size[i]$表示逻辑结构中第$i$个维度的元素个数。</p>
+<p>对于$A$,$stride[0]=3,stride[1]=1,size[1]=3$,所以是连续的</p>
+<p>假设将$A$转置得到$A^T$,如下图：</p>
+<img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20210519171403494.png" alt="image-20210519171403494" style="zoom:67%;">
+
+<p><strong>在 PyTorch 中交换维度的操作并没有改变其实际的存储，换句话说，交换维度后的张量与原始张量共享同一块内存</strong>，因此交换维度后的张量 AT 底层存储和原始张量 A 都是相同的一维数组。</p>
+<p>对于$A^T$,$stride[0]=1,stride[1]=3,size[1]=2$,不连续</p>
+<p><code>view</code>只能用于数据连续存储的张量，而<code>reshape</code>则不需要考虑张量中的数据是否连续存储</p>
+<p>原始张量的视图简单来说就是和原始张量共享数据，因此如果改变使用 view 方法返回的新张量，原始张量也会发生相对应的改变。</p>
+<p>reshape 方法可能返回的是原始张量的视图或者拷贝，当处理连续存储的张量 reshape 返回的是原始张量的视图，而当处理不连续存储的张量 reshape 返回的是原始张量的拷贝</p>
 <h3 id="使用GPU"><a href="#使用GPU" class="headerlink" title="使用GPU"></a>使用GPU</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/77340765">CUDA\cuDNN是什么</a></p>
 <p>CUDA:NVIDIA推出的用于自家GPU的<strong>并行计算</strong>框架，也就是说CUDA只能在NVIDIA的GPU上运行，<strong>而且只有当要解决的计算问题是可以大量并行计算的时候才能发挥CUDA的作用。</strong></p>
 <p><strong>在 CUDA 的架构下，一个程序分为两个部份：host 端和 device 端。Host 端是指在 CPU 上执行的部份，而 device 端则是在显示芯片上执行的部份。Device 端的程序又称为 “kernel”。通常 host 端程序会将数据准备好后，复制到显卡的内存中，再由显示芯片执行 device 端程序，完成后再由 host 端程序将结果从显卡的内存中取回。</strong></p>
@@ -769,23 +849,25 @@ torch<span class="token punctuation">.</span>mean<span class="token punctuation"
 net<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#记住：inputs, targets 和 images 也要转换。</span>
 inputs<span class="token punctuation">,</span> labels <span class="token operator">=</span> inputs<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span><span class="token punctuation">,</span> labels<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span></code></pre>
+<h4 id="多GPU"><a href="#多GPU" class="headerlink" title="多GPU"></a>多GPU</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86441879">教程</a></p>
 <h3 id="模型保存与加载"><a href="#模型保存与加载" class="headerlink" title="模型保存与加载"></a>模型保存与加载</h3><p><code>torch.save</code></p>
 <p>将对象保存到磁盘文件中。</p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>obj<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#被保存的对象</span>
            f<span class="token punctuation">:</span> Union<span class="token punctuation">[</span>str<span class="token punctuation">,</span> os<span class="token punctuation">.</span>PathLike<span class="token punctuation">,</span> BinaryIO<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#</span>
-           pickle_module<span class="token operator">=</span><span class="token operator">&lt;</span>module <span class="token string">'pickle'</span> <span class="token keyword">from</span> <span class="token string">'/opt/conda/lib/python3.6/pickle.py'</span><span class="token operator">></span><span class="token punctuation">,</span>
+           pickle_module<span class="token operator">=</span><span class="token operator">&lt;</span>module <span class="token string">'pickle'</span> <span class="token keyword">from</span> <span class="token string">'/opt/conda/lib/python3.6/pickle.py'</span><span class="token operator">&gt;</span><span class="token punctuation">,</span>
            pickle_protocol<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> _use_new_zipfile_serialization<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> → None
 <span class="token comment" spellcheck="true">#常见的PyTorch约定是使用.pt文件扩展名保存张量。</span>
 <span class="token comment" spellcheck="true"># Save to file</span>
-<span class="token operator">>></span><span class="token operator">></span> torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> PATH<span class="token punctuation">)</span></code></pre>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> PATH<span class="token punctuation">)</span></code></pre>
 <p><code>torch.load</code></p>
 <p>从文件中加载用<code>torch.save()</code>保存的对象。</p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#文件路径</span>
            map_location<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#加载到的位置</span>
-           pickle_module<span class="token operator">=</span><span class="token operator">&lt;</span>module <span class="token string">'pickle'</span> <span class="token keyword">from</span> <span class="token string">'/opt/conda/lib/python3.6/pickle.py'</span><span class="token operator">></span><span class="token punctuation">,</span>
+           pickle_module<span class="token operator">=</span><span class="token operator">&lt;</span>module <span class="token string">'pickle'</span> <span class="token keyword">from</span> <span class="token string">'/opt/conda/lib/python3.6/pickle.py'</span><span class="token operator">&gt;</span><span class="token punctuation">,</span>
            <span class="token operator">**</span>pickle_load_args<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#eg:torch.load(args.load, map_location=device)</span></code></pre>
-<p>保存和加载</p>
+<p>保存和加载,<code>torch.save()</code>将参数由内存或显存保存到硬盘,<code>torch.load()</code>再由硬盘加载到内存或显存,</p>
+<p>然后再调用<code>model.load_state_dcit()</code>将参数加载到模型中</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 只保存模型参数</span>
 <span class="token comment" spellcheck="true"># 保存</span>
 torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'\parameter.pkl'</span><span class="token punctuation">)</span>
@@ -813,8 +895,33 @@ model <span class="token operator">=</span> torch<span class="token punctuation"
 <p>也就是说现在requires_grad=True的tensor就相当于以前的Variable,也就是进行反向传播的变量。</p>
 <p><code>detach()</code></p>
 <p>返回一个与当前图分离的新张量。结果将永远不需要梯度。</p>
-<h3 id="torch-cuda"><a href="#torch-cuda" class="headerlink" title="torch.cuda"></a>torch.cuda</h3><p>``torch.cuda.device_count() → int`返回可用的GPU数量</p>
-<h3 id="torch-cuda-amp"><a href="#torch-cuda-amp" class="headerlink" title="torch.cuda.amp"></a>torch.cuda.amp</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/l7H9JA4/article/details/114324414">Pytorch自动混合精度教程</a></p>
+<h4 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27783097">知乎教程</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/tsq292978891/article/details/79364140">CSDN教程</a></p>
+<p><strong>对Function的直观理解</strong></p>
+<ul>
+<li>的</li>
+</ul>
+<p>虽然pytorch可以自动求导，但是有时候一些操作是不可导的，这时候你需要自定义求导方式。也就是所谓的 <code>Extending torch.autograd</code></p>
+<p><strong>Function与Module的差异与应用场景</strong></p>
+<ul>
+<li><strong>Function一般只定义一个操作，因为其无法保存参数，因此适用于激活函数、pooling</strong>等操作;<strong>Module是保存了参数，因此适合于定义一层，如线性层，卷积层，也适用于定义一个网络</strong></li>
+<li>Function需要定义三个方法：<code>__init__</code>, forward, backward(需要自己写求导公式);Module：只需定义<code>__init__</code>和forward，而backward的计算由自动求导机制构成</li>
+<li>可以不严谨的认为，Module是由一系列Function组成，因此其在forward的过程中，Function和Variable组成了计算图，在backward时，只需调用Function的backward就得到结果，因此Module不需要再定义backward。</li>
+<li>Module不仅包括了Function，<strong>还包括了对应的参数，以及其他函数与变量，这是Function所不具备的</strong></li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#属性（成员变量）</span>
+<span class="token comment" spellcheck="true">#saved_tensors: 传给forward()的参数，在backward()中会用到。</span>
+<span class="token comment" spellcheck="true">#needs_input_grad:长度为 :attr:num_inputs的bool元组，表示输出是否需要梯度。可以用于优化反向过程的缓存。</span>
+<span class="token comment" spellcheck="true">#num_inputs: 传给函数 :func:forward的参数的数量。</span>
+<span class="token comment" spellcheck="true">#num_outputs: 函数 :func:forward返回的值的数目。</span>
+<span class="token comment" spellcheck="true">#requires_grad: 布尔值，表示函数 :func:backward 是否永远不会被调用。</span>
+
+<span class="token comment" spellcheck="true">#成员函数</span>
+<span class="token comment" spellcheck="true">#forward()</span>
+<span class="token comment" spellcheck="true">#forward()可以有任意多个输入、任意多个输出，但是输入和输出必须是Variable。(官方给的例子中有只传入tensor作为参数的例子)</span>
+<span class="token comment" spellcheck="true">#backward()</span>
+<span class="token comment" spellcheck="true">#backward()的输入和输出的个数就是forward()函数的输出和输入的个数。其中，backward()输入表示关于forward()输出的梯度(计算图中上一节点的梯度)，#backward()的输出表示关于forward()的输入的梯度。在输入不需要梯度时（通过查看needs_input_grad参数）或者不可导时，可以返回None。</span></code></pre>
+<h3 id="torch-cuda"><a href="#torch-cuda" class="headerlink" title="torch.cuda"></a>torch.cuda</h3><p><code>torch.cuda.device_count() → int</code>返回可用的GPU数量</p>
+<h3 id="torch-cuda-amp"><a href="#torch-cuda-amp" class="headerlink" title="torch.cuda.amp"></a>torch.cuda.amp</h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/l7H9JA4/article/details/114324414">Pytorch自动混合精度教程</a></p>
 <p>Automatic mixed precision package自动混合精度包</p>
 <p>torch.cuda.amp提供了方便的混合精度方法，在某些操作中需要使用torch.float32 (float)数据类型而有些操作使用torch.float16(half)。<br>有些操作，比如线性层和卷积，在float16中要快得多。<br>其他操作，比如减少操作，通常需要float32的动态范围。<br>混合精度尝试将每个op匹配到其适当的数据类型。</p>
 <p>一般来说，自动混合精度训练同时使用<code>torch.cuda.amp.autocast</code>和<code>torch.cuda.amp.GradScaler</code>,当然如果需要也可以单独使用。</p>
@@ -840,6 +947,23 @@ scaler <span class="token operator">=</span> GradScaler<span class="token punctu
         scaler<span class="token punctuation">.</span>step<span class="token punctuation">(</span>optimizer<span class="token punctuation">)</span>
         <span class="token comment" spellcheck="true"># scaler factor更新</span>
         scaler<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h4 id="autocast自定义函数"><a href="#autocast自定义函数" class="headerlink" title="autocast自定义函数"></a>autocast自定义函数</h4><p>对于用户自定义的autograd函数，需要用<code>@torch.cuda.amp.custom_fwd</code>装饰forward函数,<code>@torch.cuda.amp.custom_bwd</code>装饰backward函数:</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MyMM</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>autograd<span class="token punctuation">.</span>Function<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    @staticmethod
+    @custom_fwd
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        ctx<span class="token punctuation">.</span>save_for_backward<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">.</span>mm<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+    @staticmethod
+    @custom_bwd
+    <span class="token keyword">def</span> <span class="token function">backward</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> grad<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        a<span class="token punctuation">,</span> b <span class="token operator">=</span> ctx<span class="token punctuation">.</span>saved_tensors
+        <span class="token keyword">return</span> grad<span class="token punctuation">.</span>mm<span class="token punctuation">(</span>b<span class="token punctuation">.</span>t<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>t<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mm<span class="token punctuation">(</span>grad<span class="token punctuation">)</span></code></pre>
+<p>调用时再autocat</p>
+<pre class=" language-python"><code class="language-python">mymm <span class="token operator">=</span> MyMM<span class="token punctuation">.</span>apply
+
+<span class="token keyword">with</span> autocast<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    output <span class="token operator">=</span> mymm<span class="token punctuation">(</span>input1<span class="token punctuation">,</span> input2<span class="token punctuation">)</span></code></pre>
 <h3 id="torch-backends"><a href="#torch-backends" class="headerlink" title="torch.backends"></a>torch.backends</h3><p>torch.backends控制PyTorch支持的各种后端的行为。这些后端包括:</p>
 <ul>
 <li><code>torch.backends.cuda</code></li>
@@ -855,7 +979,14 @@ scaler <span class="token operator">=</span> GradScaler<span class="token punctu
 torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>deterministic
 <span class="token comment" spellcheck="true">#如果该bool为真，则导致cuDNN只使用确定性卷积算法。参见torch.is_deterministic()和torch.set_deterministic()。</span>
 torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>enabled
-<span class="token comment" spellcheck="true">#一个控制是否启用cuDNN的bool值。</span></code></pre>
+<span class="token comment" spellcheck="true">#一个控制是否启用cuDNN的bool值,默认为True，启用cudnn</span></code></pre>
+<h3 id="torch-distributed"><a href="#torch-distributed" class="headerlink" title="torch.distributed"></a>torch.distributed</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/178402798">DDP系列第一篇：入门教程</a></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> torch<span class="token punctuation">.</span>distributed <span class="token keyword">as</span> dist
+</code></pre>
+<h4 id="DDP与DP模式的不同"><a href="#DDP与DP模式的不同" class="headerlink" title="DDP与DP模式的不同"></a>DDP与DP模式的不同</h4><p>DP模式是很早就出现的、单机多卡的、参数服务器架构的多卡训练模式，在PyTorch，即是:</p>
+<p><code>model=torch.nn.DataParaller(model)</code></p>
+<p>在DP模式中，<strong>总共只有一个进程</strong>(受到GIL很强限制)。<strong>master节点相当于参数服务器</strong>，<strong>其会向其他卡广播其参数</strong>；在<strong>梯度反向传播</strong>后，<strong>各卡将梯度集中到master节点，master节点对搜集来的参数进行平均后更新参数</strong>，<strong>再将参数统一发送到其他卡上</strong>。这种参数更新方式，会导致<strong>master节点的计算任务、通讯量很重</strong>，从而导致网络阻塞，<strong>降低训练速度</strong>。</p>
+<p>但是<strong>DP也有优点</strong>,<strong>优点就是代码实现简单。要速度还是要方便，看官可以自行选用哟</strong>。</p>
 <h3 id="torch-nn"><a href="#torch-nn" class="headerlink" title="torch.nn"></a>torch.nn</h3><p>网络结构图的基本构建模块<code>import torch.nn as nn</code></p>
 <p>卷积层和线性层在__init__里面，而激活和池化在forward函数里面。</p>
 <p>torch.nn 只支持小批量输入。整个 torch.nn 包都只支持小批量样本，而不支持单个样本。 例如，nn.Conv2d 接受一个4维的张量， 每一维分别是sSamples * nChannels * Height * Width（样本数x通道数x高x宽）。 如果你有单个样本，<strong>只需使用 <code>input.unsqueeze(0) </code>来添加其它的维数</strong></p>
@@ -871,18 +1002,18 @@ net<span class="token punctuation">.</span>eval<span class="token punctuation">(
 <p><code>buffers()</code></p>
 <p>指那些不需要参与反向传播的参数,反向传播不需要被optimizer更新</p>
 <pre class=" language-python"><code class="language-python">buffers<span class="token punctuation">(</span>recurse<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span> → Iterator<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> buf <span class="token keyword">in</span> model<span class="token punctuation">.</span>buffers<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-<span class="token operator">>></span><span class="token operator">></span>     <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">,</span> buf<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">></span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">></span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span> 1L<span class="token punctuation">,</span> 5L<span class="token punctuation">,</span> 5L<span class="token punctuation">)</span></code></pre>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">for</span> buf <span class="token keyword">in</span> model<span class="token punctuation">.</span>buffers<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">,</span> buf<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span> 1L<span class="token punctuation">,</span> 5L<span class="token punctuation">,</span> 5L<span class="token punctuation">)</span></code></pre>
 <p><code>parameters()</code></p>
 <p>是<code>nn.parameter.Paramter</code>，也就是组成Module的参数。例如一个<code>nn.Linear</code>通常由<code>weight</code>和<code>bias</code>参数组成。它的特点是默认<code>requires_grad=True</code>,也就是说训练过程中需要反向传播的，反向传播需要被optimizer更新的。</p>
-<pre class=" language-python"><code class="language-python">parameters<span class="token punctuation">(</span>recurse<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span> Iterator<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>parameter<span class="token punctuation">.</span>Parameter<span class="token punctuation">]</span>
+<pre class=" language-python"><code class="language-python">parameters<span class="token punctuation">(</span>recurse<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span> Iterator<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>parameter<span class="token punctuation">.</span>Parameter<span class="token punctuation">]</span>
 <span class="token comment" spellcheck="true">#recurse (bool)如果为True，则生成此模块和所有子模块的参数。否则，只生成此模块的直接成员参数。</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> param <span class="token keyword">in</span> model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-<span class="token operator">>></span><span class="token operator">></span>     <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">,</span> param<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#输出的是一个w,一个b！别忘了b！</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">></span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">></span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span> 1L<span class="token punctuation">,</span> 5L<span class="token punctuation">,</span> 5L<span class="token punctuation">)</span></code></pre>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">for</span> param <span class="token keyword">in</span> model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">,</span> param<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#输出的是一个w,一个b！别忘了b！</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'torch.Tensor'</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>20L<span class="token punctuation">,</span> 1L<span class="token punctuation">,</span> 5L<span class="token punctuation">,</span> 5L<span class="token punctuation">)</span></code></pre>
 <p><code>named_parameters()</code></p>
 <p>返回模块参数的迭代器，生成参数名称和参数本身</p>
 <pre class=" language-python"><code class="language-python">named_parameters<span class="token punctuation">(</span>prefix<span class="token punctuation">:</span> str <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#作为所有参数名称的前缀</span>
@@ -897,21 +1028,21 @@ net<span class="token punctuation">.</span>eval<span class="token punctuation">(
 <span class="token comment" spellcheck="true">#fc1.bias : torch.Size([10])                </span></code></pre>
 <p><code>modules()</code></p>
 <p>返回一个网络所有模块的迭代器</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> net <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>l<span class="token punctuation">,</span> l<span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> idx<span class="token punctuation">,</span> m <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>net<span class="token punctuation">.</span>modules<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>idx<span class="token punctuation">,</span> <span class="token string">'->'</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+<pre class=" language-python"><code class="language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> l <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> net <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>l<span class="token punctuation">,</span> l<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">for</span> idx<span class="token punctuation">,</span> m <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>net<span class="token punctuation">.</span>modules<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>idx<span class="token punctuation">,</span> <span class="token string">'-&gt;'</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span>
 
-<span class="token number">0</span> <span class="token operator">-</span><span class="token operator">></span> Sequential<span class="token punctuation">(</span>
+<span class="token number">0</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Sequential<span class="token punctuation">(</span>
   <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Linear<span class="token punctuation">(</span>in_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> out_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
   <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Linear<span class="token punctuation">(</span>in_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> out_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span>
-<span class="token number">1</span> <span class="token operator">-</span><span class="token operator">></span> Linear<span class="token punctuation">(</span>in_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> out_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span></code></pre>
+<span class="token number">1</span> <span class="token operator">-</span><span class="token operator">&gt;</span> Linear<span class="token punctuation">(</span>in_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> out_features<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98563721">state_dcit和load_state_dict源码详解</a></p>
 <p><code>state_dict()</code></p>
 <p>返回一个字典，其中包含模块的整个状态,存储了网络结构的名字和对应的参数。parameters和buffers(如运行平均值)都包括在内。键是对应的parameter和buffer名称。</p>
-<pre class=" language-python"><code class="language-python">state_dict<span class="token punctuation">(</span>destination<span class="token operator">=</span>None<span class="token punctuation">,</span> prefix<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> keep_vars<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>dict
-<span class="token operator">>></span><span class="token operator">></span> module<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class=" language-python"><code class="language-python">state_dict<span class="token punctuation">(</span>destination<span class="token operator">=</span>None<span class="token punctuation">,</span> prefix<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> keep_vars<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>dict
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> module<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token string">'bias'</span><span class="token punctuation">,</span> <span class="token string">'weight'</span><span class="token punctuation">]</span>
 <span class="token comment" spellcheck="true"># torch.nn.modules.module.py</span>
 
@@ -951,7 +1082,7 @@ net<span class="token punctuation">.</span>eval<span class="token punctuation">(
 
 model <span class="token operator">=</span> MyModel<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span>OrderedDict<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'my_param'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.3052</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'my_buffer'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.5583</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'fc.weight'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">0.6322</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.0255</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span>OrderedDict<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'my_param'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.3052</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'my_buffer'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.5583</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'fc.weight'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">0.6322</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.0255</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.4747</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.0530</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'conv.weight'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token number">0.3346</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
          <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.2962</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'conv.bias'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.5205</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'fc2.weight'</span><span class="token punctuation">,</span> tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.4949</span><span class="token punctuation">,</span>  <span class="token number">0.2815</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -983,7 +1114,7 @@ model <span class="token operator">=</span> MyModel<span class="token punctuatio
 device <span class="token operator">=</span> torch<span class="token punctuation">.</span>device<span class="token punctuation">(</span><span class="token string">"cuda:0"</span> <span class="token keyword">if</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token string">"cpu"</span><span class="token punctuation">)</span> 
 model<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#如果是多GPU</span>
-<span class="token keyword">if</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>device_count<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
+<span class="token keyword">if</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>device_count<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
   model <span class="token operator">=</span> nn<span class="token punctuation">.</span>DataParallel<span class="token punctuation">(</span>model，device_ids<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 model<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
 
@@ -997,6 +1128,28 @@ device_ids <span class="token operator">=</span> <span class="token punctuation"
 net  <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Dataparallel<span class="token punctuation">(</span>net<span class="token punctuation">,</span> device_ids <span class="token operator">=</span>device_ids<span class="token punctuation">)</span>
 net  <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Dataparallel<span class="token punctuation">(</span>net<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 默认使用所有的device_ids </span>
 net <span class="token operator">=</span> net<span class="token punctuation">.</span>cuda<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><code>apply(fn)</code></p>
+<p>将<code>fn</code>递归应用于每个子模块(由<code>.children()</code>返回)以及自身self。典型用法包括初始化模型的参数(参见<code>torch.nn.init()</code>).</p>
+<p><code>fn(Module -&gt; None)</code>:将被应用到每个子模块的函数。</p>
+<p>Returns:<code>self</code>  Return type:<code>Module</code></p>
+<p><code>register_buffer</code></p>
+<p>向模块添加一个buffer.</p>
+<p>这通常用于注册不应被视为模型参数的缓冲区。 例如,BatchNorm的running_mean不是参数,而是模块状态的一部分。 默认情况下，缓冲区是==持久性==的，并将与参数一起保存。 可以通过将persistent设置为False来更改此行为。</p>
+<p> ==持久缓冲区和非持久缓冲区之间的唯一区别是，后者不会成为该模块的state_dict的一部分。==</p>
+<pre class=" language-python"><code class="language-python">register_buffer<span class="token punctuation">(</span>name<span class="token punctuation">,</span>
+                tensor<span class="token punctuation">,</span>
+                persistent<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#是否为持久缓冲区</span></code></pre>
+<p><code>children</code></p>
+<p>返回immediate 子模块的迭代器。</p>
+<p>Yields:Module - achildren module</p>
+<p><code>register_forward_hook(hook)</code></p>
+<p>在模块上注册一个前向钩子。</p>
+<p>相当于插件。可以实现一些额外的功能，而又不用修改主体代码。把这些额外功能实现了挂在主代码上，所以叫钩子，很形象。</p>
+<p>每当<code>forward()</code>计算<code>output</code>后，该钩子都会被调用。 该钩子应该具有以下签名:</p>
+<p><code>hook(module, input, output) -&gt; None or modified output</code></p>
+<p>输入仅包含提供给模块的positional arguments。 Kerword arguments不会传递给钩子,而只会传递给the forward。挂钩可以修改输出。 它可以就地修改输入,但不会对正向产生影响,因为这是在调用<code>forward()</code>之后调用的。</p>
+<p>Returns:a handle that can be used to remove the added hook by calling <code>handle.remove()</code></p>
+<p>ReturnType:<code>torch.utils.hooks.RemovableHandle</code></p>
 <p><strong>nn.sequential</strong></p>
 <p>顺序容器。模块将按照它们在构造函数中传递的顺序被添加到它。另外，也可以传入模块的有序dict。</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Example of using Sequential</span>
@@ -1069,13 +1222,31 @@ model <span class="token operator">=</span> nn<span class="token punctuation">.<
                    ceil_mode<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#when True, will use ceil instead of floor to compute the output shape</span>
                    count_include_pad<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
                    divisor_override<span class="token operator">=</span>None<span class="token punctuation">)</span></code></pre>
+<p><code>torch.nn.AdaptiveMaxPool2d(output_size, return_indices=False)</code></p>
+<p>特殊性在于，输出张量的大小都是给定的output_size，可以利用这个实现全局平均池化，将output_size设为(1,1)。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment" spellcheck="true"># target output size of 5x7</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>AdaptiveMaxPool2d<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> input <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> output <span class="token operator">=</span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> output<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>Size<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token comment" spellcheck="true"># target output size of 7x7 (square)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> m <span class="token operator">=</span> nn<span class="token punctuation">.</span>AdaptiveMaxPool2d<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> input <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> output <span class="token operator">=</span> m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> output<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>Size<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013382233/article/details/85948695">自适应池化详解1</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaosongshine/article/details/89453037">自适应池化详解2</a></p>
 <h4 id="归一化层"><a href="#归一化层" class="headerlink" title="归一化层"></a>归一化层</h4><p><code>nn.BatchNorm2d()</code></p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>BatchNorm2d<span class="token punctuation">(</span>num_features<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#Channel数</span>
                     eps<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">05</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#为数值稳定性而加在分母上的值。</span>
                     momentum<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#指数加权平均的参数</span>
                     affine<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">#是否有可学习参数</span>
                     track_running_stats<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#这一层不用到测试</span></code></pre>
-<p>``</p>
+<p><code>nn.SyncBatchNorm</code></p>
+<pre class=" language-python"><code class="language-python"></code></pre>
 <h4 id="非线性激活函数"><a href="#非线性激活函数" class="headerlink" title="非线性激活函数"></a>非线性激活函数</h4><p><code>nn.ReLU()</code></p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span>inplace<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#inplace-选择是否进行覆盖运算 x=x+1 还是 y=x+1 x=y 节省内存</span></code></pre>
 <p><code>nn.Softmax(dim=None)</code></p>
@@ -1111,15 +1282,19 @@ model <span class="token operator">=</span> nn<span class="token punctuation">.<
 <span class="token comment" spellcheck="true">#正值例子的权重，必须是有着与分类数目相同的长度的向量.可以通过增加正值示例的权重来权衡召回率和准确性。</span></code></pre>
 <p><code>nn.NLLLoss</code></p>
 <p>负对数似然损失。用C类来训练分类问题是有用的。</p>
+<p>==负对数似然损失函数，就是对似然函数取负再取log==</p>
 <p>如果提供了可选参数weight，它应该是一个一维张量，为每一类赋权。当你有一个不平衡的训练集时，这是特别有用的。</p>
 <p>$l(x,y)=L={l_1,\cdots,l_N}^T,l_n=-w_{y_nx_{n,y_n}},w_c=weight[c]\cdot1{c\ne ignore_index}$只选择第n个数据的实际yn类别作为loss</p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>NLLLoss<span class="token punctuation">(</span>weight<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">]</span> <span class="token operator">=</span> None<span class="token punctuation">,</span>
-                 <span class="token comment" spellcheck="true">#一个手动标给每个类别的权重，如果给定，必须是一个C大小张量,否则默认所有的权重全是1</span>
+                 <span class="token comment" spellcheck="true"># 一个手动标给每个类别的权重，如果给定，必须是一个C大小张量,否则默认所有的权重全是1</span>
                  size_average<span class="token operator">=</span>None<span class="token punctuation">,</span>
                  ignore_index<span class="token punctuation">:</span> int <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#指定一个被忽略的目标值，该目标值不影响输入梯度。</span>
-                 <span class="token comment" spellcheck="true">#当size_average为真时，对非忽略目标的损失进行平均。</span>
+                 <span class="token comment" spellcheck="true"># 当size_average为真时，对非忽略目标的损失进行平均。</span>
                  reduce<span class="token operator">=</span>None<span class="token punctuation">,</span>
+                 <span class="token comment" spellcheck="true"># 默认情况下为True，根据size_average，通过每个小批的观察来对损失进行平均或求和。</span>
+                 <span class="token comment" spellcheck="true"># 当reduce为False时，返回每个批处理元素的损失值，并忽略size_average</span>
                  reduction<span class="token punctuation">:</span> str <span class="token operator">=</span> <span class="token string">'mean'</span><span class="token punctuation">)</span></code></pre>
+<p>==也就是说没有特殊处理的情况下，返回的是每个mini-bacth的平均cross-entropy loss，因为loss就是一个标量嘛，再之后还需要对所有的mini-batch的cross-entropy loss求平均。==</p>
 <p>输入:(N,C), C代表类别的数量；或者在计算高维损失函数例子中输入大小为(N,C,d1,d2,…,dK)，k&gt;=1</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#低维示例:</span>
 m <span class="token operator">=</span> nn<span class="token punctuation">.</span>LogSoftmax<span class="token punctuation">(</span>dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -1131,15 +1306,15 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
         <span class="token punctuation">[</span> <span class="token number">0.3540</span><span class="token punctuation">,</span>  <span class="token number">1.0994</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.1085</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.4001</span><span class="token punctuation">,</span>  <span class="token number">0.0102</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token punctuation">[</span> <span class="token number">1.3653</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.3828</span><span class="token punctuation">,</span>  <span class="token number">0.6257</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.4996</span><span class="token punctuation">,</span>  <span class="token number">0.1928</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> requires_grad<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 m<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
-tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2.8899</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5205</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.7259</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.9653</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.1152</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#1->0.5205</span>
-        <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1.5082</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.7628</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.9707</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.2623</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.8520</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#0->1.5082</span>
-        <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.6841</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.4323</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.4237</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4.5490</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.8566</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#4->1.8566</span>
-       grad_fn<span class="token operator">=</span><span class="token operator">&lt;</span>LogSoftmaxBackward<span class="token operator">></span><span class="token punctuation">)</span>
+tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2.8899</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5205</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.7259</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.9653</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.1152</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#1-&gt;0.5205</span>
+        <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1.5082</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.7628</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.9707</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.2623</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.8520</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#0-&gt;1.5082</span>
+        <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.6841</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2.4323</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.4237</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4.5490</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.8566</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#4-&gt;1.8566</span>
+       grad_fn<span class="token operator">=</span><span class="token operator">&lt;</span>LogSoftmaxBackward<span class="token operator">&gt;</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#each element in target has to have 0 &lt;= value &lt; C</span>
 target <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 output <span class="token operator">=</span> loss<span class="token punctuation">(</span>m<span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span>
 output
-tensor<span class="token punctuation">(</span><span class="token number">1.2951</span><span class="token punctuation">,</span> grad_fn<span class="token operator">=</span><span class="token operator">&lt;</span>NllLossBackward<span class="token operator">></span><span class="token punctuation">)</span>
+tensor<span class="token punctuation">(</span><span class="token number">1.2951</span><span class="token punctuation">,</span> grad_fn<span class="token operator">=</span><span class="token operator">&lt;</span>NllLossBackward<span class="token operator">&gt;</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#高维示例:就是逐像素返回呗,对每一个像素来说都是一个低维示例</span>
 <span class="token comment" spellcheck="true"># 2D loss example (used, for example, with image inputs)</span>
 N<span class="token punctuation">,</span> C <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span>
@@ -1152,11 +1327,19 @@ m <span class="token operator">=</span> nn<span class="token punctuation">.</spa
 target <span class="token operator">=</span> torch<span class="token punctuation">.</span>empty<span class="token punctuation">(</span>N<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>long<span class="token punctuation">)</span><span class="token punctuation">.</span>random_<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> C<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#target.size()=target = torch.empty(N, 8, 8, dtype=torch.long).random_(0, C)</span>
 output <span class="token operator">=</span> loss<span class="token punctuation">(</span>m<span class="token punctuation">(</span>conv<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span>
 output
-tensor<span class="token punctuation">(</span><span class="token number">1.5501</span><span class="token punctuation">,</span> grad_fn<span class="token operator">=</span><span class="token operator">&lt;</span>NllLoss2DBackward<span class="token operator">></span><span class="token punctuation">)</span></code></pre>
+tensor<span class="token punctuation">(</span><span class="token number">1.5501</span><span class="token punctuation">,</span> grad_fn<span class="token operator">=</span><span class="token operator">&lt;</span>NllLoss2DBackward<span class="token operator">&gt;</span><span class="token punctuation">)</span></code></pre>
 <p><code>nn.CrossEntropyLoss</code></p>
 <p>将<code>nn.LogSoftmax()</code>和<code>nn.NLLLoss()</code>方法结合到一个类中</p>
 <p>当用C类训练分类问题时，它是有用的。如果提供了，可选的参数weight权重应该是一个一维张量，为每个类分配权重。当你有一个不平衡的训练集时，这是特别有用的。</p>
-<p>损失函数:<br>$$<br>log(x,class)=-log(\frac{exp(x[class])}{\sum_jexp(x[j])})=-x[class]+log(\sum_jexp(x[j]))<br>$$<br>加上weight:<br>$$<br>log(x,class)=weight<a href="-x%5Bclass%5D+log(%5Csum_jexp(x%5Bj%5D))">class</a><br>$$<br>x选的只是class那个！</p>
+<p>损失函数:<br>$$<br>log(x,class)=-log(\frac{exp(x[class])}{\sum_jexp(x[j])})=-x[class]+log(\sum_jexp(x[j]))<br>$$<br>加上weight:<br>$$<br>log(x,class)=weight<a href="-x%5Bclass%5D+log(%5Csum_jexp(x%5Bj%5D))">class</a><br>$$<br>最终loss:<br>$$</p>
+<p>$$</p>
+<p>x选的只是class那个</p>
+<p><strong>取平均是对每个batch维度取平均</strong></p>
+<img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20210402114047450.png" alt="shape" style="zoom:80%;">
+
+<p>reduction=none的话，说明minibatch之间不做平均，就是个向量，否则就是个标量；</p>
+<p><strong>其实整个思路都是明白的，就看如何返回了，上面取得了形式的一致性；</strong></p>
+<p>$(N,d1,d2,…,dn)$<strong>是如何变成(1,1)的就是对后面维度求和，对N取平均。</strong></p>
 <h4 id="视觉层"><a href="#视觉层" class="headerlink" title="视觉层"></a>视觉层</h4><p><code>nn.Upsample</code></p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Upsample<span class="token punctuation">(</span>size<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>Union<span class="token punctuation">[</span>T<span class="token punctuation">,</span> Tuple<span class="token punctuation">[</span>T<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#指定目标输出的大小</span>
                   scale_factor<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>Union<span class="token punctuation">[</span>T<span class="token punctuation">,</span> Tuple<span class="token punctuation">[</span>T<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#输出为输入的倍数，和size只能指定一个</span>
@@ -1164,6 +1347,25 @@ tensor<span class="token punctuation">(</span><span class="token number">1.5501<
                   align_corners<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>bool<span class="token punctuation">]</span> <span class="token operator">=</span> None<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#如果为True，输入的角像素将与输出张量对齐，</span>
 <span class="token comment" spellcheck="true">#因此将保存下来这些像素的值。仅当使用的算法为'linear', 'bilinear'or 'trilinear'时可以使用。默认设置为False</span>
 <span class="token comment" spellcheck="true">#语义分割设置为true</span></code></pre>
+<h4 id="数据并行层"><a href="#数据并行层" class="headerlink" title="数据并行层"></a>数据并行层</h4><p><code>nn.DataParallel</code></p>
+<p>在module level实现数据并行.</p>
+<p>该容器在batch维度上拆分,将输入分到指定的设备上,以此实现并行化(其他object每个设备都复制一次)。</p>
+<p>前向传播过程中,module在每个设备上,每个副本处理一部分输入;</p>
+<p>反向传播时,每个副本的梯度被累加到原始模块中。</p>
+<p>batch size应该&gt;大于使用的GPU数量。</p>
+<p>推荐使用<code>DistributedDataParallel</code></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86441879">pytorch多GPU并行训练</a></p>
+<p>我一般在使用多GPU的时候, 会喜欢使用<code>os.environ['CUDA_VISIBLE_DEVICES']</code>来限制使用的GPU个数, 例如我要使用第0和第3编号的GPU, 那么只需要在程序中设置:</p>
+<pre class=" language-python"><code class="language-python">os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'CUDA_VISIBLE_DEVICES'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'0,3'</span></code></pre>
+<p>模型加载到多GPU:</p>
+<pre class=" language-python"><code class="language-python">model <span class="token operator">=</span> nn<span class="token punctuation">.</span>DataParallel<span class="token punctuation">(</span>model<span class="token punctuation">)</span>
+model <span class="token operator">=</span> model<span class="token punctuation">.</span>cuda<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>对于数据:</p>
+<pre class=" language-python"><code class="language-python">inputs <span class="token operator">=</span> inputs<span class="token punctuation">.</span>cuda<span class="token punctuation">(</span><span class="token punctuation">)</span>
+labels <span class="token operator">=</span> labels<span class="token punctuation">.</span>cuda<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>如果我们不设定好要使用的<code>device_ids的</code>话, 程序会自动找到这个机器上面<strong>可以用的所有的显卡, 然后用于训练.</strong> </p>
+<p>但是因为我们前面使用<code>os.environ['CUDA_VISIBLE_DEVICES']</code><strong>限定了这个程序可以使用的显卡, 所以这个地方程序如果自己获取的话, 获取到的其实就是我们上面设定的那几个显卡.</strong></p>
+<p>我没有进行深入得到考究, 但是我感觉使用<code>os.environ['CUDA_VISIBLE_DEVICES']</code>对可以使用的显卡进行限定之后, 显卡的实际编号和程序看到的编号应该是不一样的, 例如上面我们设定的是<code>os.environ['CUDA_VISIBLE_DEVICES']="0,2"</code>, 但是程序看到的显卡编号应该被改成了<code>'0,1'</code>, 也就是说程序所使用的显卡编号实际上是经过了一次映射之后才会映射到真正的显卡编号上面的, 例如这里的程序看到的1对应实际的2</p>
 <h4 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h4><p>来自<code>torch.nn.utils</code>模块</p>
 <p><code>nn.utils.clip_grad_value_</code></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/99953668">深度炼丹之梯度裁剪</a></p>
@@ -1173,7 +1375,7 @@ tensor<span class="token punctuation">(</span><span class="token number">1.5501<
                                 clip_value<span class="token punctuation">:</span> float<span class="token punctuation">)</span> → None<span class="token comment" spellcheck="true">#梯度被裁剪到[-clip_value,clip_value]</span>
 eg<span class="token punctuation">:</span>nn<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>clip_grad_value_<span class="token punctuation">(</span>net<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">)</span></code></pre>
 <h4 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DoubleConv</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true">#要继承</span>
-    <span class="token triple-quoted-string string">"""(convolution => [BN] => ReLU) * 2"""</span>
+    <span class="token triple-quoted-string string">"""(convolution =&gt; [BN] =&gt; ReLU) * 2"""</span>
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> in_channels<span class="token punctuation">,</span> out_channels<span class="token punctuation">,</span> mid_channels<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
         super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#父类__init__</span>
@@ -1246,7 +1448,9 @@ input_param <span class="token operator">=</span> a<span class="token punctuatio
 <li><code>module</code>的<code>forward</code>返回值</li>
 <li>在<code>module</code>的<code>call</code>进行<code>forward_hook</code>操作，然后返回值。</li>
 </ol>
-<h3 id="torch-nn-init"><a href="#torch-nn-init" class="headerlink" title="torch.nn.init"></a>torch.nn.init</h3><p>初始化方式一:</p>
+<h3 id="torch-nn-init"><a href="#torch-nn-init" class="headerlink" title="torch.nn.init"></a>torch.nn.init</h3><p>Xavier在tanh中表现的很好，但在Relu激活函数中表现的很差，所以何凯明提出了针对于relu的初始化方法。pytorch默认使用</p>
+<p><code>init.kaiming_uniform_(self.weight, a=math.sqrt(5))</code></p>
+<p>初始化方式一:</p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>init<span class="token punctuation">.</span>normal_<span class="token punctuation">(</span>tensor<span class="token punctuation">,</span> mean<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> std<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#从正态分布N(mean,std^2)中取值填充张量</span>
 <span class="token comment" spellcheck="true">#eg:w=torch.empty(3,5)</span>
@@ -1256,10 +1460,32 @@ input_param <span class="token operator">=</span> a<span class="token punctuatio
 <span class="token comment" spellcheck="true">#都是对Variable中的tensor进行处理，但是不进行梯度计算和被进行梯度跟踪</span>
 w<span class="token operator">=</span>torch<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
 w<span class="token punctuation">.</span>data<span class="token punctuation">.</span>normal_<span class="token punctuation">(</span>mean<span class="token punctuation">,</span>std<span class="token punctuation">)</span>
-fill_<span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Tensor
+fill_<span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Tensor
 <span class="token comment" spellcheck="true">#用指定值填充张量</span>
-zero_<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Tensor
+zero_<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Tensor
 <span class="token comment" spellcheck="true">#用0填充张量</span></code></pre>
+<p><code>torch.nn.init.calculate_gain(nonlinearity, param=None)</code></p>
+<img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20210327102806334.png" alt="gain" style="zoom: 67%;">
+
+<pre class=" language-python"><code class="language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> gain <span class="token operator">=</span> nn<span class="token punctuation">.</span>init<span class="token punctuation">.</span>calculate_gain<span class="token punctuation">(</span><span class="token string">'leaky_relu'</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># leaky_relu with </span></code></pre>
+<p><code>torch.nn.init.kaiming_uniform_</code></p>
+<p>从$u(-bound,bound)$中采样值填充张量，<br>$$<br>bound=gain\cdot (\frac{3}{fan_{mode}})^{0.5}<br>$$</p>
+<pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>init<span class="token punctuation">.</span>kaiming_uniform_<span class="token punctuation">(</span>tensor<span class="token punctuation">,</span>
+                               a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 计算gain的参数，只有Leaky Relu才需要</span>
+                               mode<span class="token operator">=</span><span class="token string">'fan_in'</span><span class="token punctuation">,</span>
+                               nonlinearity<span class="token operator">=</span><span class="token string">'leaky_relu'</span><span class="token punctuation">)</span></code></pre>
+<h4 id="设置随机数种子"><a href="#设置随机数种子" class="headerlink" title="设置随机数种子"></a>设置随机数种子</h4><p><code>torch.manual_seed(seed) → torch._C.Generator</code></p>
+<p>在神经网络中，参数默认是进行随机初始化的。如果不设置的话每次训练时的初始化都是随机的，导致结果不确定。如果设置初始化，则每次初始化都是固定的。pytorch默认使用何恺明的初始化</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> args<span class="token punctuation">.</span>seed <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>    　　
+    random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>args<span class="token punctuation">.</span>seed<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 如果使用random的随机的话，就需要设置</span>
+    np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>args<span class="token punctuation">.</span>seed<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 如果使用np.random的随机的话，</span>
+    torch<span class="token punctuation">.</span>manual_seed<span class="token punctuation">(</span>args<span class="token punctuation">.</span>seed<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#为CPU设置种子用于生成随机数,以使得结果是确定的</span>
+    torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>manual_seed<span class="token punctuation">(</span>args<span class="token punctuation">.</span>seed<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#为当前GPU设置随机种子</span>
+    cudnn<span class="token punctuation">.</span>deterministic <span class="token operator">=</span> <span class="token boolean">True</span> <span class="token comment" spellcheck="true">#使用确定性卷积</span>
+    <span class="token comment" spellcheck="true">#顾名思义，将这个 flag 置为True的话，每次返回的卷积算法将是确定的，即默认算法。</span>
+    <span class="token comment" spellcheck="true">#如果配合上设置 Torch 的随机种子为固定值的话，应该可以保证每次运行网络的时候相同输入的输出是固定的</span>
+    <span class="token comment" spellcheck="true">#如果使用多GPU,需要</span>
+    <span class="token comment" spellcheck="true">#torch.cuda.manual_seed_all() 为所有GPU设置种子</span></code></pre>
 <h3 id="torch-nn-functioal"><a href="#torch-nn-functioal" class="headerlink" title="torch.nn.functioal"></a>torch.nn.functioal</h3><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/66782101">nn与nn.functional的区别</a></p>
 <p><code>upsample</code></p>
 <p>将输入上采样到给定的大小或给定的scale_factor</p>
@@ -1272,6 +1498,10 @@ zero_<span class="token punctuation">(</span><span class="token punctuation">)</
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional<span class="token punctuation">.</span>avg_pool2d<span class="token punctuation">(</span>input<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#操作的Tensor</span>
                                kernel_size<span class="token punctuation">,</span> stride<span class="token operator">=</span>None<span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> ceil_mode<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> count_include_pad<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> divisor_override<span class="token operator">=</span>None<span class="token punctuation">)</span> → Tensor</code></pre>
 <p><code>max_pool2d</code></p>
+<p><code>torch.nn.functional.adaptive_max_pool2d(*args, **kwargs)</code></p>
+<p>在由几个输入平面组成的输入信号上应用2D自适应最大池化。</p>
+<p><code>cross_entropy</code></p>
+<p>See <code>CrossEntropyLoss</code></p>
 <h3 id="torch-optim"><a href="#torch-optim" class="headerlink" title="torch.optim"></a>torch.optim</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94019888">optim教程</a></p>
 <p>是一个实现各种优化算法的包。已经支持了最常用的方法，接口也足够通用，因此将来还可以轻松地集成更复杂的方法。</p>
 <p>要使用torch.optim要先创建一个optim 对象，这个对象会一直保持当前状态或根据计算的梯度更新参数。创建optim对象时，要给它一个包含模型参数的的可迭代对象(所有的都应该是 Variable)，然后指定learning rate,weight decay等参数.</p>
@@ -1331,16 +1561,18 @@ optimizer <span class="token operator">=</span> optim<span class="token punctuat
                     centered<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span></code></pre>
 <h4 id="torch-optim-SGD"><a href="#torch-optim-SGD" class="headerlink" title="torch.optim.SGD"></a>torch.optim.SGD</h4><p>实现随机梯度下降(可选动量)。</p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>SGD<span class="token punctuation">(</span>params<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 待优化参数的可迭代对象或者是定义了参数组的dict</span>
-                lr<span class="token operator">=</span><span class="token operator">&lt;</span>required parameter<span class="token operator">></span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#学习率</span>
+                lr<span class="token operator">=</span><span class="token operator">&lt;</span>required parameter<span class="token operator">&gt;</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#学习率</span>
                 momentum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#动量</span>
                 dampening<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#</span>
                 weight_decay<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#权重衰减</span>
                 nesterov<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#</span>
-<span class="token operator">>></span><span class="token operator">></span> optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>SGD<span class="token punctuation">(</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span> momentum<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> loss_fn<span class="token punctuation">(</span>model<span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>SGD<span class="token punctuation">(</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span> momentum<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> loss_fn<span class="token punctuation">(</span>model<span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h3 id="torch-utils-tensorboard"><a href="#torch-utils-tensorboard" class="headerlink" title="torch.utils.tensorboard"></a>torch.utils.tensorboard</h3><p>一旦你安装了TensorBoard，这些工具可以让你将PyTorch模型和指标记录到一个目录中，以便在TensorBoard UI中可视化。标量、图像、直方图、图形和嵌入可视化都支持PyTorch模型和张量以及Caffe2 网络和blobs。</p>
+<p>安装<code>pip install tensorboardX</code> 还需要安装tensorflow <code>pip install tensorflow</code></p>
+<p>除此之外还需要设置隧道映射,多换几个端口试试</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bigbennyguo/article/details/87956434">tensorboardX介绍</a></p>
 <h4 id="SummaryWriter"><a href="#SummaryWriter" class="headerlink" title="SummaryWriter"></a>SummaryWriter</h4><p><code>CLASS torch.utils.tensorboard.writer.SummaryWriter</code></p>
 <p>直接将条目写入log_dir中的事件文件中，以供TensorBoard使用。</p>
@@ -1377,7 +1609,25 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
 <span class="token comment" spellcheck="true">#这可以通过TensorBoard进行可视化，TensorBoard安装和运行:</span>
 pip install tensorboard
 tensorboard <span class="token operator">-</span><span class="token operator">-</span>logdir<span class="token operator">=</span><span class="token comment" spellcheck="true">#包含记录文件的文件夹路径</span>
-<span class="token comment" spellcheck="true">#记录文件名类似如下:events.out.tfevents.1616293286.vision806-desktop</span></code></pre>
+<span class="token comment" spellcheck="true">#记录文件名类似如下:events.out.tfevents.1616293286.vision806-desktop</span>
+<span class="token comment" spellcheck="true"># 默认的终端号是6006，要是一台服务器多人使用，很麻烦，可以指定端口，输入</span>
+tensorboard <span class="token operator">-</span><span class="token operator">-</span>logdir<span class="token operator">=</span>logs <span class="token operator">-</span><span class="token operator">-</span>port<span class="token operator">=</span><span class="token number">6007</span></code></pre>
+<p>一个实验可以记录很多信息。为了避免UI的混乱和更好的结果聚类，我们可以通过分级命名来对图进行分组。例如， Loss/train 和Loss/test 被分组在一起，Accuracy/train和Accuarcy/test被分组在一起。</p>
+<p><code>add_scalar</code></p>
+<pre class=" language-python"><code class="language-python">add_scalar<span class="token punctuation">(</span>tag<span class="token punctuation">:</span>string<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 数据标识,train/loss,分成了两级</span>
+           scalar_value<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 数字常量值,一定要是float类型</span>
+           <span class="token comment" spellcheck="true"># 如果是 Pytorch scalar tensor,则需要调用.item()方法获取其数值。</span>
+           global_step<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 训练的step,作为横坐标</span>
+           walltime<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 记录发生的时间，默认为time.time()</span></code></pre>
+<p>添加标量,一般使用其<strong>记录训练过程的 loss、accuracy、learning rate 等数值的变化，直观地监控训练过程。</strong></p>
+<p>如果tag相同标量会被放在一个图里，如<code>writer.add_scalar(‘y=2x’, i * 2, i)</code>和<code>writer.add_scalar('y=2x, i * i, i)</code></p>
+<p><code>add_image</code></p>
+<pre class=" language-python"><code class="language-python">add_image<span class="token punctuation">(</span>self<span class="token punctuation">,</span> tag<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#就是保存图片的名称</span>
+          img_tensor<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#图形:torch.Tensor numpy.array or string</span>
+          global_step<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 训练的step 作为横坐标</span>
+          walltime<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 记录发生的时间，默认为time.time()</span>
+          dataformats<span class="token operator">=</span>‘CHW’<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#默认为CHW tensor是CHW numpy是HWC</span></code></pre>
+<p>也可以画特征图的变化</p>
 <h3 id="torch-utils-data"><a href="#torch-utils-data" class="headerlink" title="torch.utils.data"></a>torch.utils.data</h3><p>PyTorch数据加载工具的核心是torch.utils.data.DataLoader类。它表示一个数据集上的Python可迭代对象。</p>
 <p>pytorch输入数据PipeLine一般遵循一个“三步走”的策略，一般pytorch 的数据加载到模型的操作顺序是这样的：<br>① 创建一个 Dataset 对象。必须实现<code>__len__()</code>、<code>__getitem__()</code>这两个方法，这里面会用到transform对数据集进行扩充。<br>② 创建一个 DataLoader 对象。它是对DataSet对象进行迭代的，一般不需要事先里面的其他方法了。<br>③ 循环遍历这个 DataLoader 对象。将img, label加载到模型中进行训练</p>
 <pre class=" language-python"><code class="language-python">dataset <span class="token operator">=</span> MyDataset<span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment" spellcheck="true"># 第一步：构造Dataset对象</span>
@@ -1385,7 +1635,7 @@ dataloader <span class="token operator">=</span> DataLoader<span class="token pu
 
 num_epoches <span class="token operator">=</span> <span class="token number">100</span>
 <span class="token keyword">for</span> epoch <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_epoches<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true"># 第三步：逐步迭代数据</span>
-<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token keyword">for</span> img<span class="token punctuation">,</span> label <span class="token keyword">in</span> dataloader<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> img<span class="token punctuation">,</span> label <span class="token keyword">in</span> dataloader<span class="token punctuation">:</span>
         <span class="token comment" spellcheck="true"># 训练代码</span></code></pre>
 <h4 id="Map-style-datasets"><a href="#Map-style-datasets" class="headerlink" title="Map-style datasets"></a><strong>Map-style datasets</strong></h4><p>map风格的数据集是一个实现<code>__getitem__()</code>和<code>__len__()</code>协议的数据集，并表示从(可能非整数)索引/键到数据样本的映射。</p>
 <p>例如，当使用dataset[idx]访问这样的数据集时，可以从磁盘上的文件夹中读取idx-th映像及其对应的标签。</p>
@@ -1416,6 +1666,8 @@ num_epoches <span class="token operator">=</span> <span class="token number">100
                             batch_sampler<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>sampler<span class="token punctuation">.</span>Sampler<span class="token punctuation">[</span>Sequence<span class="token punctuation">[</span>int<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> None<span class="token punctuation">,</span>
                             num_workers<span class="token punctuation">:</span> int <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#要使用多少子进程装载数据。0表示数据将在主进程中加载。</span>
                             collate_fn<span class="token punctuation">:</span> Callable<span class="token punctuation">[</span>List<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">,</span> Any<span class="token punctuation">]</span> <span class="token operator">=</span> None<span class="token punctuation">,</span>
+                   <span class="token comment" spellcheck="true"># 合并一个list的samples以形成mini-batch的Tensors</span>
+                   <span class="token comment" spellcheck="true"># collate_fn这个函数的输入就是一个list，list的长度是一个batch size，list中的每个元素都是__getitem__得到的结果。</span>
                             pin_memory<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#是否锁页内存</span>
                             drop_last<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
 <span class="token comment" spellcheck="true">#如果数据集大小不能被批大小整除，则设置为True可删除最后一个不完整的批处理。</span>
@@ -1465,15 +1717,16 @@ loader <span class="token operator">=</span> Data<span class="token punctuation"
 <span class="token comment" spellcheck="true">#for data in testloader: 这里的data就是一个batch的数据,是一个tuple,既有train_X,也有train_Y.</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27825451/article/details/96130126">pytorch数据预处理三剑客之Dataset，DataLoader，Transform</a></p>
 <p>上面这篇讲的非常好</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hesse-summer/p/11343870.html">num_worker的作用</a></p>
 <p><strong>为什么机器学习需要打乱数据?</strong></p>
 <p>防止数据按一定规律排列,这样神经网络学习时会把这种规律当做一种特征学习,从而过拟合。这样做使得数据更接近于真实分布。</p>
 <p>比如随机梯度下降,就比较依赖于数据的随机程度,如果不对数据进行打乱处理,可能异常值集中在数据某一块,会对算法收敛拟合造成干扰。</p>
 <h4 id="torch-utils-data-Dataset"><a href="#torch-utils-data-Dataset" class="headerlink" title="torch.utils.data.Dataset"></a>torch.utils.data.Dataset</h4><p>表示一个Dataset的抽象类。</p>
 <p><strong>所有表示从键到数据样本映射的数据集都应该子类化它</strong>。所有子类都应该覆盖<code>__getitem__()</code>，从而支持获取一个给定键的数据样本。子类也可以选择性地覆盖<code>__len__()</code>，许多Sampler实现和DataLoader默认选项都希望它返回数据集的大小。</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#dataset的抽象父类定义如下</span>
-<span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> T_co<span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> T_co<span class="token punctuation">:</span>
         <span class="token keyword">raise</span> NotImplementedError
-<span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">:</span> <span class="token string">'Dataset[T_co]'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token string">'ConcatDataset[T_co]'</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">:</span> <span class="token string">'Dataset[T_co]'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token string">'ConcatDataset[T_co]'</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> ConcatDataset<span class="token punctuation">(</span><span class="token punctuation">[</span>self<span class="token punctuation">,</span> other<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p><code>__init__(self)</code>:主要是数据的获取，比如从某个文件中获取</p>
 <p><code>__len__(self)</code>:整个数据集的长度</p>
@@ -1553,7 +1806,7 @@ loader <span class="token operator">=</span> Data<span class="token punctuation"
 <h4 id="torch-utils-data-Subset"><a href="#torch-utils-data-Subset" class="headerlink" title="torch.utils.data.Subset"></a>torch.utils.data.Subset</h4><p><code>torch.utils.data.random_split</code></p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>random_split<span class="token punctuation">(</span>dataset<span class="token punctuation">:</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>Dataset<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#要被划分的数据集</span>
                               lengths<span class="token punctuation">:</span> Sequence<span class="token punctuation">[</span>int<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#要生成的切片长度</span>
-                              generator<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>_C<span class="token punctuation">.</span>Generator<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>torch<span class="token punctuation">.</span>_C<span class="token punctuation">.</span>Generator object<span class="token operator">></span><span class="token punctuation">)</span> → List<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>Subset<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#用于随机排列的生成器。</span>
+                              generator<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>_C<span class="token punctuation">.</span>Generator<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>torch<span class="token punctuation">.</span>_C<span class="token punctuation">.</span>Generator object<span class="token operator">&gt;</span><span class="token punctuation">)</span> → List<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>Subset<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#用于随机排列的生成器。</span>
 <span class="token comment" spellcheck="true">#eg:random_split(range(10), [3, 7], generator=torch.Generator().manual_seed(42))</span>
 <span class="token comment" spellcheck="true">#eg:train, val = random_split(dataset, [n_train, n_val])</span></code></pre>
 <h4 id="torch-utils-data-Sampler"><a href="#torch-utils-data-Sampler" class="headerlink" title="torch.utils.data.Sampler"></a>torch.utils.data.Sampler</h4><p>所有采样器的基类。</p>
@@ -1634,21 +1887,93 @@ torch<span class="token punctuation">.</span>manual_seed<span class="token punct
         format_string <span class="token operator">+=</span> <span class="token string">'\n)'</span>
         <span class="token keyword">return</span> format_string
 
-<span class="token operator">>></span><span class="token operator">></span> transforms<span class="token punctuation">.</span>Compose<span class="token punctuation">(</span><span class="token punctuation">[</span>
-<span class="token operator">>></span><span class="token operator">></span>     transforms<span class="token punctuation">.</span>CenterCrop<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token operator">>></span><span class="token operator">></span>     transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> transforms<span class="token punctuation">.</span>Compose<span class="token punctuation">(</span><span class="token punctuation">[</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span>     transforms<span class="token punctuation">.</span>CenterCrop<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span>     transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <h4 id="裁剪-Crop"><a href="#裁剪-Crop" class="headerlink" title="裁剪(Crop)"></a>裁剪(Crop)</h4><h4 id="翻转和旋转-Flip-and-Rotation"><a href="#翻转和旋转-Flip-and-Rotation" class="headerlink" title="翻转和旋转(Flip and Rotation)"></a>翻转和旋转(Flip and Rotation)</h4><h4 id="图像变换-resize"><a href="#图像变换-resize" class="headerlink" title="图像变换(resize)"></a>图像变换(resize)</h4><pre class=" language-python"><code class="language-python">torchvision<span class="token punctuation">.</span>transforms<span class="token punctuation">.</span>ToTensor
 <span class="token comment" spellcheck="true">#将PIL Image或者 ndarray 转换为tensor，并且归一化至[0-1] 注意事项：归一化至[0-1]是直接除以255，若自己的ndarray数据尺度有变化，则需要自行修改。</span>
 torchvision<span class="token punctuation">.</span>transforms<span class="token punctuation">.</span>Normalize<span class="token punctuation">(</span>mean<span class="token punctuation">,</span> std<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#用平均值和标准偏差归一化张量图像。给定mean：(M1,…,Mn)和std：(S1,…,Sn)对于n通道，此变换将标准化输入的每个通道，torch.*Tensor即 input[channel] = (input[channel] - mean[channel]) / std[channel]</span>
 <span class="token comment" spellcheck="true">#mean(sequence)-每个通道的均值序列。</span>
 <span class="token comment" spellcheck="true">#std(sequence)-每个通道的标准偏差序列。</span></code></pre>
-<h3 id><a href="#" class="headerlink" title></a></h3><p>对transforms操作，使数据增强更灵活</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>对transforms操作，使数据增强更灵活</p>
 <p>Normalize参数解惑<a target="_blank" rel="noopener" href="https://blog.csdn.net/xys430381_1/article/details/85724668">https://blog.csdn.net/xys430381_1/article/details/85724668</a></p>
 <h4 id="functional"><a href="#functional" class="headerlink" title="functional"></a>functional</h4><p><code>torchvision.transforms.functional.adjust_gamma(img: torch.Tensor, gamma: float, gain: float = 1) → torch.Tensor</code></p>
 <p>对图片进行gamma校正<br>$$<br>I_{out}=255\cdot gain \cdot (\frac{I_{in}}{255})^y<br>$$<br>img:PIL Image或Tensor </p>
-<h3 id="torchvision-utils"><a href="#torchvision-utils" class="headerlink" title="torchvision.utils"></a>torchvision.utils</h3><h4 id="torchvision-utils-make-grid"><a href="#torchvision-utils-make-grid" class="headerlink" title="torchvision.utils.make_grid()"></a>torchvision.utils.make_grid()</h4><p>把若干图像拼成一副图像来显示<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012343179/article/details/83007296">https://blog.csdn.net/u012343179/article/details/83007296</a></p>
+<h3 id="torchvision-utils"><a href="#torchvision-utils" class="headerlink" title="torchvision.utils"></a>torchvision.utils</h3><p><code>torchvision.utils.make_grid()</code></p>
+<p>制作图像网格</p>
+<pre class=" language-python"><code class="language-python">torchvision<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>make_grid<span class="token punctuation">(</span>tensor<span class="token punctuation">:</span> Union<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">,</span> List<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token comment" spellcheck="true">#4D mini-batch Tensor of shape (B x C x H x W) or a list of images all of the same size.</span>
+                            nrow<span class="token punctuation">:</span> int <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
+              <span class="token comment" spellcheck="true">#网格中每一行中显示的图像数,最终尺寸为(B/nrow, nrow)</span>
+                            padding<span class="token punctuation">:</span> int <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+              <span class="token comment" spellcheck="true">#子图像与子图像之间的pad有多宽。</span>
+                            normalize<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+              <span class="token comment" spellcheck="true">#If True, 归一化图像到(0, 1)区间</span>
+                            value_range<span class="token punctuation">:</span> Union<span class="token punctuation">[</span>Tuple<span class="token punctuation">[</span>int<span class="token punctuation">,</span> int<span class="token punctuation">]</span><span class="token punctuation">,</span> NoneType<span class="token punctuation">]</span> <span class="token operator">=</span> None<span class="token punctuation">,</span>
+              <span class="token comment" spellcheck="true"># 用来normalize</span>
+                            scale_each<span class="token punctuation">:</span> bool <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+                            pad_value<span class="token punctuation">:</span> int <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                            <span class="token operator">**</span>kwargs<span class="token punctuation">)</span> → torch<span class="token punctuation">.</span>Tensor</code></pre>
+<h2 id="torchstat-amp-thop"><a href="#torchstat-amp-thop" class="headerlink" title="torchstat&amp;thop"></a>torchstat&amp;thop</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35407318/article/details/109359006">相关教程</a></p>
+<h4 id="FLOPs-amp-MACs"><a href="#FLOPs-amp-MACs" class="headerlink" title="FLOPs&amp;MACs"></a>FLOPs&amp;MACs</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137719986">FLOPs详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/364543528">FLOPs与MACs的一些区分</a></p>
+<p>FLOPS：注意全大写，是floating point operations per second的缩写，意指每秒浮点运算次数，理解为计算速度。是一个衡量硬件性能的指标。</p>
+<p>FLOPs：==注意s小写，是floating point operations的缩写（s表复数），意指浮点运算数，理解为计算量。可以用来衡量算法/模型的复杂度。==</p>
+<p>我们知道，通常我们去<strong>评价一个模型时，首先看的应该是它的精确度</strong>，当你精确度不行的时候，你和别人说我的模型预测的多么多么的快，部署的时候占的内存多么多么的小，都是白搭。但当你模型达到一定的精确度之后，就需要更<strong>进一步的评价指标来评价你模型</strong>：1）<strong>前向传播时所需的计算力</strong>，它反应了对硬件如GPU性能要求的高低；2）<strong>参数个数</strong>，它反应所占内存大小。为什么要加上这两个指标呢？因为这事关你模型算法的落地。比如你要在手机和汽车上部署深度学习模型，对模型大小和计算力就有严格要求。模型参数想必大家都知道是什么怎么算了，而前向传播时所需的计算力可能还会带有一点点疑问。所以这里总计一下前向传播时所需的计算力。它正是由<strong>FLOPs</strong>体现，那么<strong>FLOPs</strong>该怎么计算呢？</p>
+<p>==时间复杂度是看计算的量级,FLOPs应该是具体把计算次数算出来,应该是这个意思==</p>
+<p>MACs(Multiply-Accumulate Operations):乘加累计操作数,1个MACs包含一个乘法操作与一个加法操作,大约包含2FLOPs.</p>
+<p>而人们常常将<strong>MACs</strong>与<strong>FLOPs</strong>混淆使用，甚至一些代码与论文中，都没对两个概念进行区分.</p>
+<h4 id="torchstat基本介绍"><a href="#torchstat基本介绍" class="headerlink" title="torchstat基本介绍"></a>torchstat基本介绍</h4><p>[委实拉胯]</p>
+<p>这是基于PyTorch的轻量级神经网络分析库。 它旨在使您能够快速，轻松地构建网络并进行调试。 注意：此存储库当前正在开发中。 因此，某些API可能会更改。</p>
+<p>该工具可以显示</p>
+<ul>
+<li>网络参数总数  Total number of network parameters</li>
+<li>FLOPs  Theoretical amount of floating point arithmetics (FLOPs)</li>
+<li>理论乘积MAdd   Theoretical amount of multiply-adds (MAdd)</li>
+<li>内存使用情况</li>
+</ul>
+<p>应用示例:</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> torchstat <span class="token keyword">import</span> stat
+<span class="token keyword">import</span> torchvision<span class="token punctuation">.</span>models <span class="token keyword">as</span> models
+
+model <span class="token operator">=</span> models<span class="token punctuation">.</span>resnet18<span class="token punctuation">(</span><span class="token punctuation">)</span>
+stat<span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p><strong>Support Layers</strong></p>
+<img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20210409152152829.png" alt="Support Layers" style="zoom:50%;">
+
+<h4 id="thop基本介绍"><a href="#thop基本介绍" class="headerlink" title="thop基本介绍"></a>thop基本介绍</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> thop <span class="token keyword">import</span> profile
+input <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">)</span>
+flops<span class="token punctuation">,</span> params <span class="token operator">=</span> profile<span class="token punctuation">(</span>model<span class="token punctuation">,</span> inputs<span class="token operator">=</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flops<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span></code></pre>
+<p><strong>卷积核FLOPs计算</strong></p>
+<h2 id="奇迹淫巧"><a href="#奇迹淫巧" class="headerlink" title="奇迹淫巧"></a>奇迹淫巧</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/77952356">pytorch常见的坑汇总</a></p>
+<p>GPU利用率不高+gpu显存占用浪费</p>
+<p> 1 主函数前面加(这个会牺牲一点点显存提高模型精度):</p>
+<pre class=" language-python"><code class="language-python">cudnn<span class="token punctuation">.</span>benchmark <span class="token operator">=</span> <span class="token boolean">True</span>
+torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>deterministic <span class="token operator">=</span> <span class="token boolean">False</span>
+torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>enabled <span class="token operator">=</span> <span class="token boolean">True</span></code></pre>
+<p>2 训练时,epoch前面加:(定期清空模型，效果感觉不明显）</p>
+<p><code>torch.cuda.empty_cache()</code></p>
+<p>3 无用变量前面加:(同上，效果某些操作上还挺明显的）</p>
+<p><code>del xxx(变量名)</code></p>
+<p>4 dataloader的长度<code>__len__</code>设置:(dataloader会间歇式出现卡顿,设置成这样会避免不少）</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>images<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>
+<p>5 dataloader的预加载设置:(会在模型训练的时候加载数据，提高一点点gpu利用率）</p>
+<pre class=" language-python"><code class="language-python">train_loader <span class="token operator">=</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>DataLoader<span class="token punctuation">(</span>
+        train_dataset<span class="token punctuation">,</span>
+        pin_memory<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span></code></pre>
+<h3 id="cudnn"><a href="#cudnn" class="headerlink" title="cudnn"></a>cudnn</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/73711222">设置torch.backends.cudnn.benchmark</a></p>
+<p>通过预先搜索最适合的卷积算法的实现，因为卷积算法有很多种不同的实现，最简单的实现方式就是使用多层循环嵌套，对于每张输入图像，对于每个要输出的通道，对于每个输入的通道，选取一个区域，同指定卷积核进行卷积操作，然后逐行滑动，直到整张图像都处理完毕，这个方法一般被称为 direct 法，这个方法虽然简单，但是看到这么多循环，我们就知道效率在一般情况下不会很高了。除此之外，实现卷积层的算法还有基于 GEMM (General Matrix Multiply) 的，基于 FFT 的，基于 Winograd 算法的等等，而且每个算法还有自己的一些变体。在一个开源的 <a href="https://link.zhihu.com/?target=https://www.scss.tcd.ie/~andersan/projects/live/triNNity.html">C++ 库 triNNity</a> 中，就实现了接近 80 种的卷积前向传播算法！</p>
+<p>要求有：</p>
+<ol>
+<li>网络结构固定</li>
+<li>输入尺寸固定</li>
+</ol>
 
             </div>
             <hr/>
@@ -2514,7 +2839,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             

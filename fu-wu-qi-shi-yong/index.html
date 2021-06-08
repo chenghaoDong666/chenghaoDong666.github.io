@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.9k
                 </div>
                 
 
@@ -672,8 +672,28 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>linux教程：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4017.html">http://c.biancheng.net/view/4017.html</a></p>
-<p><code>unzip -d des src</code>解压到指定目录</p>
-<p><code>df -h</code>查看磁盘空间大小</p>
+<h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><pre class=" language-python"><code class="language-python">unzip <span class="token operator">-</span>d des src
+<span class="token comment" spellcheck="true">#解压到指定目录</span>
+df <span class="token operator">-</span>h
+<span class="token comment" spellcheck="true"># 查看磁盘空间大小</span>
+history
+<span class="token comment" spellcheck="true"># 查看历史命令</span>
+watch <span class="token operator">-</span>n <span class="token number">5</span> nvidia<span class="token operator">-</span>smi
+<span class="token comment" spellcheck="true">#查看GPU使用情况 ,-n 5 指每5s刷新一次</span>
+nvcc <span class="token operator">-</span>V
+<span class="token comment" spellcheck="true"># 查看当前cuda版本</span>
+ps aux <span class="token operator">|</span>grep dch
+<span class="token comment" spellcheck="true"># 查看进程 |gerp是查找对应的字符串</span>
+kill <span class="token operator">-</span><span class="token number">9</span> pid
+<span class="token comment" spellcheck="true"># 杀死指定pid的进程</span>
+cd
+cd <span class="token operator">~</span>
+<span class="token comment" spellcheck="true">#都会返回到用户主目录/home/dch</span>
+sudo <span class="token comment" spellcheck="true">#用来执行需要提升权限(通常是作为root用户)的命令</span>
+<span class="token comment" spellcheck="true"># 显示后20行</span>
+tail <span class="token operator">-</span>n <span class="token number">20</span> <span class="token number">1.</span>txt
+<span class="token comment" spellcheck="true"># 显示持续刷新的内容</span>
+tail <span class="token operator">-</span>f <span class="token number">1.</span>log</code></pre>
 <h3 id="linux服务器安装conda？"><a href="#linux服务器安装conda？" class="headerlink" title="linux服务器安装conda？"></a>linux服务器安装conda？</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40258579/article/details/85001218?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">CSDN</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.anaconda.com/anaconda/install/linux/">官方文档</a></p>
 <p><code>source ~/.bashrc</code>环境变量生效</p>
@@ -681,6 +701,10 @@
 <p>建议安装下面这个版本的pytorch,不然咱们实验室的cuda用不了</p>
 <p><code>pip install --pre torch torchvision -f https://download.pytorch.org/whl/nightly/cu110/torch_nightly.html</code></p>
 <p><a target="_blank" rel="noopener" href="https://discuss.pytorch.org/t/rtx-3000-support/98158">https://discuss.pytorch.org/t/rtx-3000-support/98158</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuzhiwuweisun/article/details/82753403">包括cuda、cudnn、pytorch的全方位介绍</a></p>
+<hr>
+<p>上面的其实是因为那个版本用的是cuda11.0,实验室的cuda也是11.0</p>
+<p>其实只要pytorch版本可cuda11.对应都可以</p>
 <h3 id="python版本更改？"><a href="#python版本更改？" class="headerlink" title="python版本更改？"></a>python版本更改？</h3><p>还是有大佬的！<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenhuabin/p/10718471.html">https://www.cnblogs.com/chenhuabin/p/10718471.html</a></p>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20201113190611958.png" alt="这一步是重点"></p>
 <h3 id="Xshell设置"><a href="#Xshell设置" class="headerlink" title="Xshell设置"></a>Xshell设置</h3><p>复制粘贴</p>
@@ -692,29 +716,50 @@
 <p>打开ipython，生成密码：</p>
 <pre class=" language-shell"><code class="language-shell"># ipython
 In [1]:  from notebook.auth import passwd
-In [2]: passwd()</code></pre>
+In [2]: passwd()
+'argon2:$argon2id$v=19$m=10240,t=10,p=8$/ea+nGkJvktsLC2yo2Huzw$fr/mxPU0bp5BZxAxObad2A'</code></pre>
 <p>会让输入两次密码，输入完成后 复制生成的 秘钥，后面会用到，秘钥带上sha1</p>
-<p>修改配置文件：vi中查找 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/actively/p/13023292.html">https://www.cnblogs.com/actively/p/13023292.html</a></p>
-<pre class=" language-shell"><code class="language-shell">vi  /username/.jupyter/jupyter_notebook_config.py
+<p>修改配置文件：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/logsharing/p/8036893.html">vi中查找</a>   命令模式/字符串</p>
+<pre class=" language-shell"><code class="language-shell">vi /username/.jupyter/jupyter_notebook_config.py #/username/可能要去掉如果在这个目录的话
     #改几个地方：
 c.NotebookApp.ip = 'localhost'  #一定要把注释的#号去掉
 c.NotebookApp.port = 10001                    即对外提供访问的端口
 c.NotebookApp.open_browser = False            False即启动不打开浏览器
 c.NotebookApp.password = u'sha1:XXXXX'   这个就是上面生成的秘钥
 c.NotebookApp.notebook_dir = u'workplace' 即设置jupyter启动后默认的根目录，这个文件夹要自己创建</code></pre>
+<p><code>mkdir workplace</code></p>
 <p>然后打开xshell，文件-&gt;当前会话属性-&gt;隧道-&gt;添加 #端口号可以自己设置别的</p>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20201113093744564.png" alt="隧道属性"></p>
 <p>然后打开jupyter</p>
 <pre class=" language-shell"><code class="language-shell">jupyter notebook</code></pre>
 <p>然后在windows上打开localhost:10001,就能在windows上使用linux的jupyter notebook</p>
-<h3 id="导入Cuda："><a href="#导入Cuda：" class="headerlink" title="导入Cuda："></a>导入Cuda：</h3><p>对于我们实验室，需要在bashrc中导入</p>
-<pre class=" language-shell"><code class="language-shell">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64#
-export PATH=$PATH:/usr/local/cuda/bin
-export CUDA_HOME=/usr/local/cuda</code></pre>
-<p>然后<code>source .bashrc</code>，然后可以运行<code>nvcc -V</code>查看版本来检查是否正确</p>
+<h3 id="安装Cuda和Cudnn"><a href="#安装Cuda和Cudnn" class="headerlink" title="安装Cuda和Cudnn"></a>安装Cuda和Cudnn</h3><p>Cuda如何加载，把这个搞明白好吧</p>
+<p>首先取Cuda官网下载对应版本的Cuda Toolkit</p>
+<p>在本地环境变量设置cuda</p>
+<pre class=" language-shell"><code class="language-shell">#可以显示安装的cuda
+ls /usr/local
+#显示如下
+#bin  cuda  cuda-11.0  etc  games  include  lib  man  sbin  share  src  sunlogin
+# 将下面这些命令加到.bashrc文件末尾
+
+#加CUDA的bin到PATH环境变量
+export PATH=$PATH:/usr/local/cuda-11.0/bin
+#加CUDA的库文件到系统库搜索路径
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.0/lib64
+export CUDA_HOME=/usr/local/cuda-11.0</code></pre>
+<p>然后<code>source .bashrc</code>，然后可以运行<code>nvcc -V</code>查看版本来检查是否正确，出现下述情况表示正确运行</p>
+<p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20210519204527712.png" alt="image-20210519204527712"></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/622f47f94784">Cuda与Cudnn的关系</a></p>
+<p> <strong>CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。</strong>cuDNN是基于CUDA的深度学习GPU加速库，有了它才能在GPU上完成深度学习的计算。<strong>它就相当于工作的工具，比如它就是个扳手。但是CUDA这个工作台买来的时候，并没有送扳手。想要在CUDA上运行深度神经网络，就要安装cuDNN，就像你想要拧个螺帽就要把扳手买回来。</strong>这样才能使GPU进行深度神经网络的工作，工作速度相较CPU快很多。</p>
+<p>从官方安装指南可以看出，<strong>只要把cuDNN文件复制到CUDA的对应文件夹里就可以，即是所谓插入式设计</strong>，把cuDNN数据库添加CUDA里，<strong>cuDNN是CUDA的扩展计算库，不会对CUDA造成其他影响。</strong></p>
+<img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20210519210512044.png" alt="image-20210519210512044" style="zoom:67%;">
+
+<img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20210519210813074.png" alt="image-20210519210813074" style="zoom: 50%;">
+
+<p>二者文件不重复，所以不会对原有的Cuda功能造成影响，卸载Cudnn也很简单，只需要把对应的Cudnn文件删除即可</p>
 <h3 id="后台使用jupyter"><a href="#后台使用jupyter" class="headerlink" title="后台使用jupyter"></a>后台使用jupyter</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/donaldsy/article/details/96350061">后台运行jupyter教程</a></p>
-<pre class=" language-shell"><code class="language-shell">jupyter notebook & #后台运行，你关掉终端会停止运行
-nohup jupyter notebook & #后台运行，你关掉终端也会继续运行
+<pre class=" language-shell"><code class="language-shell">jupyter notebook &amp; #后台运行，你关掉终端会停止运行
+nohup jupyter notebook &amp; #后台运行，你关掉终端也会继续运行
 ps -aux | grep jupyter #查找jupyter命令
 jobs -l#查看当前有多少在后台运行的命令，加上-l参数可以显示后台运行的pid
 fg %jobnumber#将后台中的命令调至前台继续运行。%jobnumber是jobs查到的序号，不是pid
@@ -724,35 +769,95 @@ bg %jobnumber#将一个在后台暂停的命令，变成继续执行。</code></
 <p>pip install tensorflow-gpu 安装的是gpu版本</p>
 <p><a href="%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E5%A4%A7%E4%BD%ACtql">https://blog.csdn.net/china_xin1/article/details/109824882</a> 显卡3090只支持CUDA11</p>
 <p>所以要<code>pip install tf-nightly-gpu</code>  尝新版</p>
-<h3 id="查看服务器使用情况"><a href="#查看服务器使用情况" class="headerlink" title="查看服务器使用情况"></a>查看服务器使用情况</h3><p><code>watch -n 5 nvidia-smi </code></p>
-<p>查看GPU使用情况 ,-n 5 指每5s刷新一次</p>
-<p><code>nvcc -V</code></p>
-<p>查看当前cuda版本</p>
-<p><code>top -bn 1 -i -c</code></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AlbenXie/article/details/72885951">查看CPU使用情况</a>     </p>
-<p><code>ps aux |grep dch</code></p>
-<pre class=" language-shell"><code class="language-shell">1）ps a 显示现行终端机下的所有程序，包括其他用户的程序。
-2）ps -A 显示所有程序。
-3）ps c 列出程序时，显示每个程序真正的指令名称，而不包含路径，参数或常驻服务的标示。
-4）ps -e 此参数的效果和指定"A"参数相同。
-5）ps e 列出程序时，显示每个程序所使用的环境变量。
-6）ps f 用ASCII字符显示树状结构，表达程序间的相互关系。
-7）ps -H 显示树状结构，表示程序间的相互关系。
-8）ps -N 显示所有的程序，除了执行ps指令终端机下的程序之外。
-9）ps s 采用程序信号的格式显示程序状况。
-10）ps S 列出程序时，包括已中断的子程序资料。
-11）ps -t <终端机编号> 　指定终端机编号，并列出属于该终端机的程序的状况。
-12）ps u 　 以用户为主的格式来显示程序状况。
-13）ps x 　 显示所有程序，不以终端机来区分。
-14）ps -l 較長,較詳細的顯示該PID的信息</code></pre>
-<p><code>history</code></p>
-<p>查看历史命令</p>
-<h3 id="bashrc"><a href="#bashrc" class="headerlink" title=".bashrc"></a>.bashrc</h3><p><code>cd </code>和<code>cd ~</code>都会返回到用户主目录<code>/home/dch</code> </p>
-<p><code>/home/dch/.bashrc</code> 配置文件，保存个人的一些个性化设置，如命令别名、路径、环境变量等</p>
+<h3 id="bashrc"><a href="#bashrc" class="headerlink" title=".bashrc"></a>.bashrc</h3><p><code>/home/dch/.bashrc</code> 配置文件，保存个人的一些个性化设置，如命令别名、路径、环境变量等</p>
 <p><code>source .bashrc</code>立刻加载修改后的设置，使之生效。</p>
 <p><code>export</code></p>
 <h3 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h3><p><a target="_blank" rel="noopener" href="https://www.linuxprobe.com/linux-jar.html">https://www.linuxprobe.com/linux-jar.html</a>   find -name 文件</p>
+<h3 id="vim调高亮"><a href="#vim调高亮" class="headerlink" title="vim调高亮"></a>vim调高亮</h3><pre><code>set nocompatible " 关闭 vi 兼容模式
+syntax on " 自动语法高亮
+set number " 显示行号
+set cursorline " 突出显示当前行
+set ruler " 打开状态栏标尺
+set shiftwidth=4 " 设定 &lt;&lt; 和 &gt;&gt; 命令移动时的宽度为 4
+set softtabstop=4 " 使得按退格键时可以一次删掉 4 个空格
+set tabstop=4 " 设定 tab 长度为 4
+set nobackup " 覆盖文件时不备份
+set autochdir " 自动切换当前目录为当前文件所在的目录
+filetype plugin indent on " 开启插件
+set backupcopy=yes " 设置备份时的行为为覆盖
+set ignorecase smartcase " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set nowrapscan " 禁止在搜索到文件两端时重新搜索
+set incsearch " 输入搜索内容时就显示搜索结果
+set hlsearch " 搜索时高亮显示被找到的文本
+set noerrorbells " 关闭错误信息响铃
+set novisualbell " 关闭使用可视响铃代替呼叫
+set t_vb= " 置空错误铃声的终端代码
+"set showmatch " 插入括号时，短暂地跳转到匹配的对应括号
+"set matchtime=2 " 短暂跳转到匹配括号的时间
+set magic " 设置魔术
+set hidden " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+set guioptions-=T " 隐藏工具栏
+set guioptions-=m " 隐藏菜单栏
+set smartindent " 开启新行时使用智能自动缩进
+set backspace=indent,eol,start
+" 不设定在插入状态无法用退格键和 Delete 键删除回车符
+set cmdheight=1 " 设定命令行的行数为 1
+set laststatus=2 " 显示状态栏 (默认值为 1, 无法显示状态栏)
+set statusline=\ %&lt;%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&amp;fileformat}\ %{&amp;encoding}\ %c:%l/%L%)\ 
+" 设置在状态行显示的信息
+set foldenable " 开始折叠
+set foldmethod=syntax " 设置语法折叠
+set foldcolumn=0 " 设置折叠区域的宽度
+setlocal foldlevel=1 " 设置折叠层数为
+" set foldclose=all " 设置为自动关闭折叠 
+" nnoremap &lt;space&gt; @=((foldclosed(line('.')) &lt; 0) ? 'zc' : 'zo')&lt;CR&gt;
+" 用空格键来开关折叠
 
+
+" return OS type, eg: windows, or linux, mac, et.st..
+function! MySys()
+if has("win16") || has("win32") || has("win64") || has("win95")
+return "windows"
+elseif has("unix")
+return "linux"
+endif
+endfunction
+
+" 用户目录变量$VIMFILES
+if MySys() == "windows"
+let $VIMFILES = $VIM.'/vimfiles'
+elseif MySys() == "linux"
+let $VIMFILES = $HOME.'/.vim'
+endif
+
+" 设定doc文档目录
+let helptags=$VIMFILES.'/doc'
+
+" 设置字体 以及中文支持
+if has("win32")
+set guifont=Inconsolata:h12:cANSI
+endif
+
+" 配置多语言环境
+if has("multi_byte")
+" UTF-8 编码
+set encoding=utf-8
+set termencoding=utf-8
+set formatoptions+=mM
+set fencs=utf-8,gbk
+
+if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
+set ambiwidth=double
+endif
+
+if has("win32")
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+language messages zh_CN.utf-8
+endif
+else
+echoerr "S</code></pre>
+<h3 id="ssh命令"><a href="#ssh命令" class="headerlink" title="ssh命令"></a>ssh命令</h3>
             </div>
             <hr/>
 
@@ -1606,7 +1711,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             

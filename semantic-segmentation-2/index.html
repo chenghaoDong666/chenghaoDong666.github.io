@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    11.4k
                 </div>
                 
 
@@ -671,15 +671,172 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="PSPNet"><a href="#PSPNet" class="headerlink" title="PSPNet"></a>PSPNet</h2><h2 id="Non-Local"><a href="#Non-Local" class="headerlink" title="Non-Local"></a>Non-Local</h2><h2 id="DANet"><a href="#DANet" class="headerlink" title="DANet"></a>DANet</h2><h3 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h3><p>19CVPR <a target="_blank" rel="noopener" href="https://blog.csdn.net/wumenglu1018/article/details/95949039">DANet阅读笔记</a></p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>基于self-attention捕捉丰富的上下文相关性。与以往通过多尺度特征融合获取上下文的研究不同，提出了一种双注意网络(DANet)来自适应地整合局部特征及其全局依赖关系。</p>
+                <h2 id="ParseNet"><a href="#ParseNet" class="headerlink" title="ParseNet"></a>ParseNet</h2><h3 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h3><p> 15arixv Looking Wider to See Better <a target="_blank" rel="noopener" href="https://blog.csdn.net/zym19941119/article/details/80859601">CSDN教程</a></p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>最大贡献:使用全局语义信息(Global Context)  使用一层的平均特征来增强每个位置的特征</p>
+<p>此外改进了基线</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210331155819313.png" alt="ParseNet" style="zoom: 67%;">
+
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><h4 id="3-1-Global-Context"><a href="#3-1-Global-Context" class="headerlink" title="3.1 Global Context"></a>3.1 Global Context</h4><p><strong>为什么叫语义分割？为什么要考虑上下文信息呢？就要英语阅读题一样，有时候一个词的词性、词义，都要结合上下文来看，就比如奶，有可能是牛奶，有可能是奶奶，但看他是没有办法确定这个字到底是取哪个意思的，但是联系上下文就很容易确定了。</strong></p>
+<p>对于CNN来说，由于池化层的存在，卷积核的感受野（Receptive Field）可以迅速地扩大，对于最顶层的神经元，其感受野通常能够覆盖整个图片。例如对于VGG的fc7层，其理论上的感受野有404x404大小，而输入的图像也不过224x224，似乎底层的神经元是完全有能力去感知到整个图像的全部信息。但事实却并不是这样的。文章通过实验证明了神经网络实际的感受野要远小于其理论上的感受野，并不足以捕捉到全局语义信息。</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210331161700120.png" alt="实际感受野" style="zoom:67%;">
+
+<p>如上图所示,(a)是原图,(b)是某个神经元输出的Activation map，文章对原图上滑动一个窗口，对这个窗口内部的图像加入随机噪声并观察加噪声后该神经元的输出是否有较大的变化，<strong>当产生较大变化时，代表这个神经元可以感受到这部分图像，并由此得到实际的感受野，如图(d)所示。经过实验发现，实际感受野只有原图的约1/4大小。</strong>在另一篇名为《Object detectors emerge in deep scene cnns》的论文中也得到了类似结论。</p>
+<p>既然有了这样的现象，那很自然得就会想到<strong>加入全局信息去提升神经网络分割的能力</strong>。人们常说，窥一斑而知全豹，但这句话并不总是成立的，如果说你盯着一根杆子使劲看而不去关注它的环境位置顶部底座等信息，同样难以判断出来这根杆子是电线杆还是标志牌或者红绿灯。就如同以下FCN的输出一样，充满了错误的分类结果.</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210331161943702.png" alt="错误分类的牛" style="zoom:67%;">
+
+<h4 id="3-2Early-Fusion-and-Late-Fusion"><a href="#3-2Early-Fusion-and-Late-Fusion" class="headerlink" title="3.2Early Fusion and Late Fusion"></a>3.2Early Fusion and Late Fusion</h4><p>就是全局池化之后，如何融合特征</p>
+<ul>
+<li>Early fusion，对<strong>得到的全局信息进行反池化（Unpool），得到和原特征图同样维度的全局特征，再把两者拼接起来，一起送入分类器中</strong>。由于文章使用的全局池化是平均池化，在反池化的时候，就是把得到的结果复制HxW遍铺成矩形，得到一个HxWxC的特征图。<strong>先融合再分类</strong></li>
+<li>Late fusion，把<strong>得到的两个特征分别送入分类器，将最后的分类结果以某种方式融合起来</strong>，比如加权求和。  <strong>先分类再融合</strong></li>
+<li>无论是early fusion还是late fusion，如果进行合适的归一化，结果并不会有太大的不同。但是在融合的时候一定要注意的一个问题就是不同层特征的尺度不同，这也就是为什么一定要进行归一化的原因。</li>
+</ul>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210331162817397.png" alt="Fig3" style="zoom: 80%;">
+
+<p>这张图的四种颜色代表了从四个不同深度的卷积层中提取出的特征向量，可以看到底层和顶层特征向量的尺度会有很大的差别，<strong>如果不进行归一化，高层的特征几乎都会被底层的大尺度特征向量所覆盖，无法对分类造成影响。</strong></p>
+<p>BN应该就可以归一化吧。</p>
+<h2 id="PSPNet"><a href="#PSPNet" class="headerlink" title="PSPNet"></a>PSPNet</h2><h3 id="Info-1"><a href="#Info-1" class="headerlink" title="Info"></a>Info</h3><p>17CVPR</p>
+<h3 id="Abstract-1"><a href="#Abstract-1" class="headerlink" title="Abstract"></a>Abstract</h3><p><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210413230012985.png" alt="一张找来的图片"></p>
+<p>==为什么要多尺度？因为物体的大小尺度是不同的，全局尺度全局监督，剩下的都算小尺度，匹配的是不同大小的事物==</p>
+<ul>
+<li>在本文中，我们通过金字塔池模块和提出的金字塔场景解析网络(PSPNet)，聚合了基于不同区域的上下文信息，来挖掘全局上下文信息的能力</li>
+<li>我们的<strong>全局先验表示</strong>在场景解析任务上产生了良好的效果，而PSPNet则为像素级的预测提供了一个更好的框架</li>
+<li>所提出的方法在各种数据集上达到了最先进的性能</li>
+</ul>
+<h3 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h3><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210414202840415.png" alt="问题观察" style="zoom:67%;">
+
+<p>==1 关系不匹配 汽车很少在水上 2混淆类别 建筑和摩天大楼容易混淆 要么是建筑物 要么是摩天大楼 不能同时是两者 3不起眼的类 小物体很难找到  大物体则可能 会超出FCN的感受野   枕头在颜色和质地上与床单非常相似==</p>
+<p>船被误认为汽车,是==由于外观相似，但是当场景被描述为在河边的船屋时，应该给出正确的预测==</p>
+<p>好像先是统计用的空间金字塔，然后物体识别用的空间金字塔，这篇作者就用到语义分割…..</p>
+<p>==局部和全局线索一起使最终预测更加可靠。==还<strong>提出了一个优化策略</strong></p>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><p>一个方向是多尺度聚合</p>
+<p>==高层Layers包含更多的语义含义和较少的位置信息。==组合多尺度可以提高性能。</p>
+<p>另一个方向是基于结构预测。 开拓者的工作是DeeplabV1使用<strong>条件随机场(CRF)作为后处理来细化分割结果。</strong></p>
+<blockquote>
+<p>S. Lazebnik, C. Schmid, and J. Ponce. Beyond bags of features: Spatial pyramid matching for recognizing natural scene categories. In CVPR, 2006.</p>
+<p>A. Lucchi, Y. Li, X. B. Bosch, K. Smith, and P. Fua. Are spatial and global constraints really necessary for segmentation? In ICCV, 2011.</p>
+</blockquote>
+<p><strong>老的传统方法探索全局上下文信息的，传统方法真的都是宝库</strong></p>
+<p>ParseNet一个简单的不够，PSPNet全局+局部，更好利用全局上下文信息</p>
+<h3 id="Pyramid-Scene-Parsing-Network"><a href="#Pyramid-Scene-Parsing-Network" class="headerlink" title="Pyramid Scene Parsing Network"></a>Pyramid Scene Parsing Network</h3><p><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210414211611060.png" alt="PSPNet"></p>
+<h4 id="3-1-Important-Observations"><a href="#3-1-Important-Observations" class="headerlink" title="3.1. Important Observations"></a>3.1. Important Observations</h4><h4 id="3-2-Pyramid-Pooling-Module"><a href="#3-2-Pyramid-Pooling-Module" class="headerlink" title="3.2. Pyramid Pooling Module"></a>3.2. Pyramid Pooling Module</h4><p>==尽管从理论上说ResNet的感受野已经大于输入图像，但Zhou等人的研究表明==</p>
+<blockquote>
+<p>Object detectors emerge in deep scene cnns</p>
+</blockquote>
+<p> CNN的经验接受域要比理论领域小得多，特别是在高层上。 这使得<strong>许多网络无法充分融合先前的重要的全局场景先验。</strong> </p>
+<p>==全局平均池化是全局上下文先验的良好基线模型，但在复杂场景中的像素标注了许多stuff和objects，直接将它们融合以形成单个矢量可能会失去空间关系并引起歧义。==</p>
+<p><strong>一个更强大的表现可以是融合这些感受野不同的子区域的信息。</strong></p>
+<p>为了进一步<strong>减少不同子区域之间的上下文信息丢失</strong>，我们提出了一个分层的全局先验，其中包含具有不同规模和不同子区域之间变化的信息。</p>
+<p>==为了保持全局特征的权重，如果金字塔的级别大小为N，则在每个金字塔级别之后使用1×1卷积层，以将上下文表示的尺寸减小到原始视图的1 / N。==也就是金字塔出来的合在一起和原先的Channel数一样大。</p>
+<p>==多级内核应在表示上保持合理的差距。== 我们的金字塔池模块是一个四级模块，其bin大小分别为1×1、2×2、3×3和6×6。</p>
+<h3 id="Deep-Supervision-for-ResNet-Based-FCN-Deep"><a href="#Deep-Supervision-for-ResNet-Based-FCN-Deep" class="headerlink" title="Deep Supervision for ResNet-Based FCN Deep"></a>Deep Supervision for ResNet-Based FCN Deep</h3><h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h2 id="Non-Local"><a href="#Non-Local" class="headerlink" title="Non-Local"></a>Non-Local</h2><h3 id="Info-2"><a href="#Info-2" class="headerlink" title="Info"></a>Info</h3><p>18CVPR 从“局部连接”回到“全连接”</p>
+<h3 id="Abstract-2"><a href="#Abstract-2" class="headerlink" title="Abstract"></a>Abstract</h3><p>卷积运算和循环运算都是每次处理一个局部邻域的构造块</p>
+<p>本文将<strong>非局部操作作为捕获长期依赖关系</strong>的构建块的一般家族。</p>
+<p>受计算机视觉中<strong>经典的非局部均值方法</strong>的启发，我们的<strong>非局部操作将某一位置的响应计算为所有位置特征的加权和</strong>。</p>
+<h3 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h3><p>捕捉长距离依赖关系是深度神经网络的核心问题。以图像数据为例，要想捕捉长距离依赖，<strong>通常的做法是堆积卷积层，随着层数的加深，感受野越来越大，就能把原先非相邻的像素点纳入到一个整体考虑，获取的信息分布广度也越来越高。</strong>这种靠堆叠卷积层得到的感受野提升，需要不断重复卷积过程，而这种重复会带来几个弊端：</p>
+<ul>
+<li>首先，计算效率很低，层的加深意味着更多的参数，更复杂的关系；</li>
+<li>其次，优化困难，需要谨慎设计优化过程；</li>
+<li>最后，建模困难，尤其是对于那些多级依赖项，需要在不同距离位置传递信息。</li>
+</ul>
+<p>本文提出了一个有效、简单、通用的non-local block来捕捉长期依赖，是<strong>经典的非局部均值运算的推广</strong>。</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210401173458032.png" alt="Figure1" style="zoom:80%;">
+
+<p>如图，non-local在计算某个位置$X_i$的响应式，是考虑所有位置features的加权–所有位置可以是空间的，时间的，时空的，意味着non-local适用于图像、序列和视频问题。</p>
+<p>使用non-local block的优点:</p>
+<ul>
+<li>与递归操作和卷积操作的渐进行为不同，non-local 操作通过计算任意两个位置之间的相互作用，而不管它们的位置距离，直接捕获长期依赖关系。</li>
+<li>实验表明，有效，即使就几层non-local block</li>
+<li>可以作为一个组件，和其它网络结构结合</li>
+</ul>
+<h3 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h3><h4 id="non-local-means"><a href="#non-local-means" class="headerlink" title="non-local means"></a>non-local means</h4><p>Non-local Means 非局部均值去噪滤波可以视为局部均值滤波的特例，它的目的是使用与当前点纹理类似的区域，对当前点加权。也即加权因子，是基于被加权点与当前点的邻域的相似性产生，即:<br>$$<br>\hat{u}(x)=\sum_{y \in I}w(x,y)*v(y)\<br>d=\frac{||block(x)-block(y)||}{block_size}\<br>w(x,y)=e^{-d^2/h^2}<br>$$<br>h为衰减因子，h越小，加权因子越小，则加权点对当前点的影响越小，一般边缘保持得好但是噪声会严重，反之则边缘保持差图像更加光滑，<strong>用周围相似的点来起到减小噪声的效果，但是如果有加权，肯定会对原图产生模糊效果。</strong></p>
+<p>实际操作中，要更新当前点，先计算出以当前点为中心的<strong>搜索框I所有点的加权因子，取最大的加权因子付给当前点位置</strong>，然后对于这个同搜索框尺寸加权矩阵W进行归一化</p>
+<h4 id="Graphical-models"><a href="#Graphical-models" class="headerlink" title="Graphical models"></a>Graphical models</h4><p>长期依赖关系可以通过图形模型(如条件随机场(CRF))建模。在深度神经网络中，CRF可以用于网络的后处理语义分割预测。The iterative mean-field inference of CRF 可以转化为递归网络进行训练。这些方法(包括我们的)都和<strong>图神经网络</strong>有关系。</p>
+<h3 id="Non-local-Net"><a href="#Non-local-Net" class="headerlink" title="Non-local Net"></a>Non-local Net</h3><h4 id="3-1-Formulation-一般定义"><a href="#3-1-Formulation-一般定义" class="headerlink" title="3.1. Formulation/一般定义"></a>3.1. Formulation/一般定义</h4><p>$$<br>y_i=\frac{1}{C(x)}\sum_{\forall j}f(x_i,x_j)g(x_j)<br>$$</p>
+<p>x是输入信号（图片，队列，视频，通常是特征）,i 是输出位置(在空间、时间或时空中)的索引，它的响应值是通过j枚举所有可能位置来计算的。函数f计算i和所有j之间的相似关系，一元函数g 计算输入信号在位置j的表示。最终的响应值通过响应因子从C(x) 进行标准化处理得到。图像中的每一位置$j$都被考虑到。</p>
+<p><strong>对比卷积的过程</strong>:一个3x3卷积核，中心点是i，包括中心点的所有九个点是j.</p>
+<p><strong>对比循环</strong>:第i时刻的操作只基于当前步和上一步</p>
+<p><strong>对比全连接:</strong></p>
+<ul>
+<li>在non-local operation的公式中，响应值是通过计算不同区域之间的关系得到的，而在全连接层中，是通过赋给每个神经元一个学到的权重。换而言之，在全连接层中，$X_i$和$X_j$的关系不能通过一个函数f得到。<strong>学到的权重可以信任吗？注意力是要学习还是要人为设置值得考量。</strong></li>
+<li>non-local公式支持可变大小的输入，并在输出中保持相应的大小，在全连接层中，<strong>要求固定大小的输入和输出(因为要事先设定权重层的维度)，并且由于被拉伸成一列，丢失了原有的位置信息</strong>。</li>
+<li>在与CNN结合位置来看，non-local operation非常灵活，可以添加到深度神经网络中的前半部分，而全连接层通常被用在最后，这既是一个不同，也给了我们一个启发：能够构建一个更丰富的层次结构，将non-local信息和local信息结合起来。</li>
+</ul>
+<h4 id="3-2-Instantiations"><a href="#3-2-Instantiations" class="headerlink" title="3.2 Instantiations"></a>3.2 Instantiations</h4><p>接下来介绍f和g的集中具体形式。有趣的是，我们将通过实验(表2a)表明，我们的非局部模型对这些选择不敏感，<strong>表明通用的非局部行为是所观察到的改进的主要原因.(不同的形式不重要,重要的是思想)</strong></p>
+<p>简单起见，g可以看做一个线性转化，其中:<br>$$<br>g(x_j)=W_gx_j<br>$$<br>其中，$W_g$是需要学习的权重矩阵，可以通过空间上的1x1卷积实现。<strong>假设一个feature map(H,W,C)=(513,513,64),那么共有513x513个点，每个点的维度是(1,1,64),每个点是一个特征向量，这个特征向量决定它是哪一类，就跟之前的视觉词袋类似，或者说图片搜索比对两个特征向量来判断是否是相同的向量。</strong></p>
+<p>对于f:</p>
+<p><strong>Gaussian</strong><br>$$<br>f(x_i,x_j)=e^{x_i^Tx_j}<br>$$<br>$x^T_ix_j$是点乘相似性，欧式距离也行，但是点乘实现友好。$C(x)=\sum_{\forall j}f(x_i,x_j)$</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/159244903">点积相似度、余弦相似度、欧几里得相似度</a><br>$$<br>similarity=cos(\theta)=\frac{A\cdot B}{||A||\cdot ||B||})<br>$$<br><strong>余弦相似度</strong>衡量两个向量在方向上的相似性，而不care两个向量的实际长度，A和B的长度即使是一个超级短一个超级长的情况下，二者的余弦相似性也可能为1(即theta=0，此时两个向量重合)；</p>
+<blockquote>
+<p>存在的问题[1]：<br><strong>余弦相似度更多的是从方向上区分差异，而对绝对的数值不敏感。</strong><br>比如用户对内容评分，5分制。A和B两个用户对两个商品的评分分别为A:(1,2)和B:(4,5)。我们分别用两种方法计算相似度。<strong>使用余弦相似度得出的结果是0.98，看起来两者极为相似，但从评分上看A似乎不喜欢这两个东西，而B比较喜欢。造成这个现象的原因就在于，余弦相似度没法衡量每个维数值的差异，对数值的不敏感导致了结果的误差。</strong><br>需要<strong>修正这种不合理性，就出现了调整余弦相似度，即所有维度上的数值都减去一个均值。</strong><br>比如A和B对两部电影评分的均值分别是**(1+4)/2=2.5,(2+5)/2=3.5。那么调整后为A和B的评分分别是:(-1.5,-1.5)和(1.5,2.5)**，再用余弦相似度计算,得到-0.98,相似度为负值,显然更加符合现实.<br>修正的余弦相似度可以说就是对余弦相似度进行归一化处理的算法,公式如下:<br>$$<br>s(i,j)=\frac{\sum_{u\in U}(R_{u,i}-R_u)(R_{u,j}-R_u)}{\sqrt{\sum_{u\in U}(R_{u,i}-R_u)^2}\sqrt{\sum_{u\in U}(R_{u,j}-R_u)^2}}<br>$$</p>
+</blockquote>
+<p><strong>欧几里得相似度:</strong><br>$$<br>d(x,y)=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2+···+(x_n-y_n)^2}=\sqrt{\sum^n_{i=1}(x_i-y_i)^2}<br>$$<br><strong>点积相似度：</strong></p>
+<p>点积公式:$a\cdot b=|a||b|cos\theta$</p>
+<p>可以看到，我们在优化点积的时候实际上是在<strong>优化a、b的模长和二者的夹角</strong>，（a和b分别是embedding空间的a向量和b向)，以word2vec为例，使用负采样的方式，a和b在同一个窗口内，其对应标签为1，则模型训练肯定是希望|a|*|b|*costheta 越接近1越好，那么在优化的过程中：</p>
+<p>假设a和b的模长均为1且固定，则theta可能会越来越小（theta越小则costheta越接近于1，则整个a*b越接近于1），那么在embedding空间发生的事情就是，a和b向量越来越接近，这就和我们的目的达成一致.</p>
+<p><strong>反正我的理解就是一定程度上抵消了余弦相似度只看方向不看数值的问题。</strong></p>
+<p><strong>Embedded Gaussian</strong></p>
+<p>基于高斯函数的一个简单扩展,计算嵌入空间中的相似度，即:<br>$$<br>f(x_i,x_j)=e^{\theta(x_i)^T\phi(x_j)}<br>$$<br>$\theta$和$\phi$是两个嵌入，embedding会构建一个映射，将一个空间里的实体抛射到一个线性向量空间里去，这样一来可以在向量空间里计算度量它们的距离，可以表示为：<br>$$<br>\theta (x_i)=W_\theta x_i and\phi(x_j)=W_\phi x_j<br>$$<br>C还是$C(x)=\sum_{\forall j}f(x_i,x_j)$</p>
+<p><strong>Embedded Gaussian操作与self-attention很类似，实际上，self-attention是其一个特例。</strong></p>
+<p><strong>Dot product</strong><br>$$<br>f(x_i,x_j)=\theta(x_i)^T\phi(x_j)<br>$$<br>这里采用的是嵌入版本。C(x)=N,N为x中位置的个数，而不是f的和，这样可以简化梯度计算。归一化是非常必要的，因为inputsize是可变的。</p>
+<p>点击和嵌入高斯的主要区别是嵌入高斯有softmax，起到激活函数作用。</p>
+<p><strong>Concatenation</strong><br>$$<br>f(x_i,x_j)=ReLU(w^T_f[\theta(x_i),\phi(x_j)])<br>$$<br>Relation Network用了拼接，所以它也提供了一个拼接形式。</p>
+<p>[.,.]表示拼接，$w_f$是权重向量将向量转为标量，C(x)=N。</p>
+<h4 id="3-3-Non-local-Block"><a href="#3-3-Non-local-Block" class="headerlink" title="3.3. Non-local Block"></a>3.3. Non-local Block</h4><p>将non-local操作封装到一个non-local block，形式如下:<br>$$<br>z_i=W_zy_i+x_i<br>$$<br>$y_i$就是non-local operation的输出,$x_i$是残差连接,残差连接允许我们插入一个新的non-local block到任何pre-trained model，而不破坏它的初始行为(例如，如果$W_z$初始化为零)。</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210404100058646.png" alt="non-local block" style="zoom: 67%;">
+
+<p><strong>搞不明白DANet为什么能发文章，这不跟non-local基本一样吗？</strong></p>
+<p>非局部块的成对计算在高层次的特征映射中是轻量级的。在上图的block中，一般T=4，H=W=14或者7，矩阵乘法的两两运算复杂度与传统卷积计算不相上下。为了进一步提升模型效率，还进行了如下调整：</p>
+<ul>
+<li><p>将$\theta,\phi,g$的通道数设置为输入feature maps的一半，这样会大大减少计算量。</p>
+</li>
+<li><p>采用抽样的方式，进一步减轻计算量，将non-local改进为如下公式：</p>
+</li>
+<li><p>$$<br>y_i=\frac{1}{c(\hat x)}\sum_{\forall j}f(x_i,\hat x_j)g(\hat x_j)<br>$$</p>
+<p>其中,$\hat x$是x<strong>经过池化后得到，在空间域中执行这个操作，可以将成对计算的数量减少1/4。</strong>这个<strong>技巧不会改变非局部的行为，只会使计算变得更稀疏，实现起来也很简单，只需要在上图中</strong>$\theta$<strong>，g中加一个最大池化层即可。</strong></p>
+</li>
+</ul>
+<h3 id="Experiments-1"><a href="#Experiments-1" class="headerlink" title="Experiments"></a>Experiments</h3><h2 id="DANet"><a href="#DANet" class="headerlink" title="DANet"></a>DANet</h2><h3 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h3><p>自适应的将局部特征与全局依赖相结合。</p>
+<p>位置注意力模块通过所有位置上的特征的加权总和选择性地聚合每个位置上的特征。相似的特征将彼此相关，而与她们之间的距离无关。</p>
+<p>同时，频道关注模块通过整合所有频道图之间的关联特征来有选择地强调相互依存的频道图</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210511111105083.png" alt="image-20210511111105083" style="zoom:67%;">
+
+<p>以图1中的街景为例。首先,第一排的一些人和红绿灯由于光线和视野的原因是<strong>不显眼或不完整的物体。</strong></p>
+<p>如果采用简单的上下文嵌入方法，则<strong>显著对象(如汽车、建筑)的上下文会对不显著对象的标记造成伤害</strong>。相比之下，我们的<strong>注意模型选择性地聚集不显著对象的相似特征，以突出其特征表征，避免显著对象的影响。</strong></p>
+<p>其次,<strong>车和人的尺度是不同的，识别这些不同的物体需要不同尺度上的上下文信息</strong>。也就是说，<strong>不同尺度的特征应该被平等对待，以代表相同的语义。我们的注意机制模型从全局的角度自适应地集成任何尺度上地相似特征</strong>,在一定程度上可以解决上述问题。</p>
+<p>第三，我们明确地将空间和通道关系考虑在内，以便场景理解可以从长期依赖中受益。</p>
+<p><strong>PAM：一些细节和物体边界通过位置注意模块更加清晰</strong>，如第一排的“极点”和第二排的“人行道”。<strong>局部特征的选择性融合增强了对细节的识别能力。</strong></p>
+<p><strong>CAM：一些错误分类的类别现在得到了正确的分类</strong>，例如第一行和第三行中的“bus”。<strong>通道映射之间的选择性集成有助于捕获上下文信息。语义一致性得到了明显的提高</strong></p>
+<p>==和Non-Local不同的一点是nonlocal用的乘，这个用的加来融合注意==</p>
+<h3 id="Info-amp-Question-Analysis"><a href="#Info-amp-Question-Analysis" class="headerlink" title="Info&amp;Question Analysis"></a>Info&amp;Question Analysis</h3><p>19CVPR <a target="_blank" rel="noopener" href="https://blog.csdn.net/wumenglu1018/article/details/95949039">DANet阅读笔记</a></p>
+<p><strong>着眼点:整合局部特征及其全局依赖关系</strong></p>
+<ul>
+<li>位置注意力模块通过<strong>所有位置处的特征的加权和来选择性地聚合每个位置的特征。</strong>无论距离如何，类似的特征都将彼此相关。</li>
+<li>通道注意力模块通过整合所有通道映射之间的相关特征来<strong>选择性地强调存在相互依赖的通道映射</strong></li>
+<li>将两个注意模块的输出相加以进一步改进特征表示，这有助于更精确的分割结果</li>
+</ul>
+<p>为了增强特征表达，</p>
+<ol>
+<li>利用多尺度上下文融合，如结合不同扩展卷积和池操作生成的特征映射来聚合多尺度上下文</li>
+<li>使用分解结构增大卷积核尺寸或在网络顶部引入有效的编码层，来捕获更丰富的全局信息。</li>
+<li>编码器-解码器结构来融合中层和高层语义特征。</li>
+<li>使用RNN捕捉长程依赖关系，从而提高分割精度。</li>
+</ol>
+<p>1、2、3尽管上下文融合有助于捕获不同尺度的对象，但它<strong>不能充分利用全局视图中对象或事物之间的关系</strong>，这也是场景分割的关键。4利用递归神经网络<strong>隐含地捕捉全局关系，其有效性严重依赖于长期记忆的学习结果</strong>。</p>
+<p>在处理复杂多样的场景时，DANet比以往的方法更加有效和灵活。</p>
+<p>以图1中的街景为例。首先,第一排的一些人和红绿灯由于光线和视野的原因是<strong>不显眼或不完整的物体。</strong></p>
+<p>如果采用简单的上下文嵌入方法，则<strong>显著对象(如汽车、建筑)的上下文会对不显著对象的标记造成伤害</strong>。相比之下，我们的<strong>注意模型选择性地聚集不显著对象的相似特征，以突出其特征表征，避免显著对象的影响。</strong></p>
+<p>其次,<strong>车和人的尺度是不同的，识别这些不同的物体需要不同尺度上的上下文信息</strong>。也就是说，<strong>不同尺度的特征应该被平等对待，以代表相同的语义。我们的注意机制模型从全局的角度自适应地集成任何尺度上地相似特征</strong>,在一定程度上可以解决上述问题。</p>
+<p>第三，我们明确地将空间和通道关系考虑在内，以便场景理解可以从长期依赖中受益。</p>
+<p><strong>PAM：一些细节和物体边界通过位置注意模块更加清晰</strong>，如第一排的“极点”和第二排的“人行道”。<strong>局部特征的选择性融合增强了对细节的识别能力。</strong></p>
+<p><strong>CAM：一些错误分类的类别现在得到了正确的分类</strong>，例如第一行和第三行中的“bus”。<strong>通道映射之间的选择性集成有助于捕获上下文信息。语义一致性得到了明显的提高</strong></p>
+<h3 id="Abstract-3"><a href="#Abstract-3" class="headerlink" title="Abstract"></a>Abstract</h3><p>基于self-attention捕捉丰富的上下文相关性。与以往通过多尺度特征融合获取上下文的研究不同，提出了一种双注意网络(DANet)来自适应地整合局部特征及其全局依赖关系。</p>
 <ul>
 <li>位置注意力模块通过所有位置处的特征的加权和来选择性地聚合每个位置的特征。无论距离如何，类似的特征都将彼此相关。</li>
 <li>通道注意力模块通过整合所有通道映射之间的相关特征来选择性地强调存在相互依赖的通道映射</li>
 <li>将两个注意模块的输出相加以进一步改进特征表示，这有助于更精确的分割结果</li>
 </ul>
 <p>在Cityscapes、PASCAL Context、COCO Stuff取得sota</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>为了增强特征表达，</p>
+<h3 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h3><p>为了增强特征表达，</p>
 <ol>
 <li>利用多尺度上下文融合，如结合不同扩展卷积和池操作生成的特征映射来聚合多尺度上下文</li>
 <li>使用分解结构增大卷积核尺寸或在网络顶部引入有效的编码层，来捕获更丰富的全局信息。</li>
@@ -693,7 +850,7 @@
 <p>如果采用简单的上下文嵌入方法，则显著对象(如汽车、建筑)的上下文会对不显著对象的标记造成伤害。相比之下，我们的注意模型选择性地聚集不显著对象的相似特征，以突出其特征表征，避免显著对象的影响。</p>
 <p>其次,车和人的尺度是不同的，识别这些不同的物体需要不同尺度上的上下文信息。也就是说，不同尺度的特征应该被平等对待，以代表相同的语义。我们的注意机制模型从全局的角度自适应地集成任何尺度上地相似特征,在一定程度上可以解决上述问题。</p>
 <p>第三，我们明确地将空间和通道关系考虑在内，以便场景理解可以从长期依赖中受益。</p>
-<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><h3 id="DANet-1"><a href="#DANet-1" class="headerlink" title="DANet"></a>DANet</h3><h4 id="3-1Overview"><a href="#3-1Overview" class="headerlink" title="3.1Overview"></a>3.1Overview</h4><p>因为卷积操作产生的是局部感受野，导致相同标签的像素对应特征可能不同，这种差异会进而导致类内的不一致性，影响识别的准确率。所以本文提出：在特征之间使用注意力机制建立关联以获取全局上下文信息。</p>
+<h3 id="Related-Work-1"><a href="#Related-Work-1" class="headerlink" title="Related Work"></a>Related Work</h3><h3 id="DANet-1"><a href="#DANet-1" class="headerlink" title="DANet"></a>DANet</h3><h4 id="3-1Overview"><a href="#3-1Overview" class="headerlink" title="3.1Overview"></a>3.1Overview</h4><p>因为卷积操作产生的是局部感受野，导致相同标签的像素对应特征可能不同，这种差异会进而导致类内的不一致性，影响识别的准确率。所以本文提出：在特征之间使用注意力机制建立关联以获取全局上下文信息。</p>
 <img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210323184906645.png" alt="DANet" style="zoom:80%;">
 
 <h4 id="3-2PAM"><a href="#3-2PAM" class="headerlink" title="3.2PAM"></a>3.2PAM</h4><p>观察:传统FCNs生成的局部特征会导致objects和stuff的错误分类。</p>
@@ -703,20 +860,138 @@
 <p>公式一中$s_{ji}$表示第j个点对第i个点的影响，两个位置的特征表示越相似，它们之间的相关性就越大。向量相乘就是余弦相似度。</p>
 <p>由公式二，每个位置得到的特征E是所有位置特征与原始特征的加权和。因此，它具有全局语境观，并根据空间注意特征选择性地聚合上下文。相似的语义特征相互受益，提高了类内的紧凑性和语义一致性。相似的语义特征相互受益，提高了类内的紧凑性和语义一致性。</p>
 <p>PAM：每个维度所有点需要注意的</p>
+<p><strong>感觉self-attention就是特征缩放，所有点都对每一个点的特征缩放产生影响，self-attention就是确定这个影响的大小。因为网络是可以自己学习的，所以重点是让谁和谁产生关系，这种关系又是以哪种形式确定的。</strong></p>
+<p><strong>加一个特征衰减函数，那么这个衰减函数为什么不可以去学习得到呢？？？？</strong>学出来的话怎么确定学出来的是注意力呢，是不是需要监督？</p>
 <h4 id="3-3CAM"><a href="#3-3CAM" class="headerlink" title="3.3CAM"></a>3.3CAM</h4><p>观察:每个high level特征的通道图都可以看作是一个特定于类的响应，通过挖掘通道图之间的相互依赖关系，可以突出相互依赖的特征图，提高特定语义的特征表示。</p>
 <p>解决:建立一个通道注意力模块来显式地建模通道之间的依赖关系。</p>
 <img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210323195612525.png" alt="CAM" style="zoom:80%;">
 
 <p>实现了对特征图之间的长程语义依赖关系建模，有助于提高特征的辨别性。</p>
 <p>公式三中，$x_{ji}$表示第j个维度所有点对第i个维度所有点的影响。</p>
-<p>注意，在计算两个通道的关系之前，我们不使用卷积层来嵌入特征，因为它可以保持不同通道映射之间的关系。此外，与最近的作品[27]通过全局池化或编码层探索信道关系不同，我们利用所有对应位置的空间信息来建模信道相关性。</p>
+<p>注意，==在计算两个通道的关系之前，我们不使用卷积层来嵌入特征，因为它可以保持不同通道特征图之间的关系。==此外，与最近的作品[27]通过全局池化或编码层探索信道关系不同，我们利用所有对应位置的空间信息来建模信道相关性。</p>
 <p><strong>CAM是,一个点有三个维度，每个维度要注意什么</strong></p>
 <h4 id="3-4Attention-Module-Embedding-with-Networks"><a href="#3-4Attention-Module-Embedding-with-Networks" class="headerlink" title="3.4Attention Module Embedding with Networks"></a>3.4Attention Module Embedding with Networks</h4><p>为了充分利用长程上下文信息，所以将这2个注意力模块的特征进行了聚合。即通过卷积层对两个注意力模块的输出进行转换，并执行一个element-wise的求和来实现特征融合。最后接一个卷积得到最后的预测特征图。</p>
 <p>该注意力模块很简单，可以直接插入到现在的FCN中。而且它们不会增加太多参数，还能有效地增强特征表示。我们不采用级联操作，因为它需要更多的GPU内存。</p>
-<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210323200616217.png" alt="PAM"></p>
+<h3 id="Experiments-2"><a href="#Experiments-2" class="headerlink" title="Experiments"></a>Experiments</h3><p><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210323200616217.png" alt="PAM"></p>
 <p><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210323200636411.png" alt="CAM"></p>
+<h4 id="4-2-Results-on-Cityscapes-Dataset"><a href="#4-2-Results-on-Cityscapes-Dataset" class="headerlink" title="4.2. Results on Cityscapes Dataset"></a>4.2. Results on Cityscapes Dataset</h4><p><strong>4.2.1 Ablation Study for Attention Modules</strong></p>
+<p>双重注意力来捕捉长期依赖关系 如Fig4、5</p>
+<p><strong>4.2.2 Ablation Study for Improvement Strategies</strong></p>
+<p>提升策略:</p>
+<p>DA:随机缩放   Multi-grid:(4,8,16) in the last ResNet block <strong>MS: We average the segmentation probability maps from 8 image scales{0.5 0.75 1 1.25 1.5 1.75 2 2.2} for inference</strong></p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210407095909026.png" alt="AS for improvement strategies"></p>
+<p><strong>4.2.3 Visualization of Attention Module</strong></p>
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>本文提出了一种双注意网络(DANet)用于场景分割，该网络利用自注意机制自适应地整合局部语义特征。具体来说，引入了位置注意模块和通道注意模块来分别捕捉空间维度和通道维度的全局相关性。消融实验表明，双注意模块能有效地捕获长时间上下文信息，并给出更精确的分割结果。此外，降低计算复杂度和增强模型的鲁棒性也很重要，这将在以后的工作中进行研究。</p>
+<h2 id="SENet"><a href="#SENet" class="headerlink" title="SENet"></a>SENet</h2><h3 id="Motivation-1"><a href="#Motivation-1" class="headerlink" title="Motivation"></a>Motivation</h3><p>其实就两种注意力，整个特征图，每一个1x1xC的点就是一个特征向量，表征该地方的元素的性质，之前的方法都是探究不同的点之间的关系，即1x1xC和1x1xC的点之间的关系，本文是探究每个1x1xC的C维度之间的关系。利用全局池化获得全局统计描述子，显示建模通道之间的关系，再映射回去。</p>
+<p>其实每一个点都是之前所有的点的特征组合输出啊，一个特征图不同channel之所以能学习到不同的高维特征，根本原因就是之前的不同的卷积核的初始化参数不同，这也就解释了为什么multi-head attention为什么要乘以一个权重矩阵了，因为只有这些矩阵不一样，才能学到不同的特征。</p>
+<p>==这种注意力机制让模型可以更加关注信息量最大的 channel 特征，而抑制那些不重要的 channel 特征。==但到底是如何运作的还是存疑~</p>
+<p>==nonlocal是一个点分别去看所有的点，这个是一个点去看一张图？==</p>
+<p>==人家也是用与图像分类和目标检测的，不要把任务忘了，不同的任务有不同的性质啊！比如图像分类，这样的话就很容易理解了，是要看整个特征图代表什么，而不是看每个点代表什么，所以丢掉位置关系也还好。==</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210511103349422.png" alt="image-20210511103349422" style="zoom:80%;">
 
+<p>加上这张图就好理解了！</p>
+<h3 id="Info-3"><a href="#Info-3" class="headerlink" title="Info"></a>Info</h3><p>18CVPR  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/bonelee/p/9030092.html">教程讲的很好</a></p>
+<h3 id="Abstract-4"><a href="#Abstract-4" class="headerlink" title="Abstract"></a>Abstract</h3><p>卷积核作为卷积神经网络的核心，通常被看做是在<strong>局部感受野上，将空间上（spatial）的信息和特征维度上（channel-wise）的信息进行聚合的信息聚合体。</strong>为了提高网络的表示能力，最近的一些方法显示了<strong>增强空间编码</strong>的好处。在这项工作中，我们<strong>关注于通道关系</strong>，并提出了SE block</p>
+<p>动机是希望<strong>显式地建模特征通道之间的相互依赖关系</strong>。另外，我们并不打算引入一个新的空间维度来进行特征通道间的融合，而是采用了一种全新的「特征重标定」策略。具体来说，就是<strong>通过学习的方式来自动获取到每个特征通道的重要程度，然后依照这个重要程度去提升有用的特征并抑制对当前任务用处不大的特征。</strong></p>
+<h3 id="Introduction-4"><a href="#Introduction-4" class="headerlink" title="Introduction"></a>Introduction</h3><p>卷积滤波器期望是<strong>在局部感受野内融合空间和通道信息的信息组合</strong>。通过一系列的非线性和下采样的卷积层，cnn能够捕捉<strong>层次性的全局感受野</strong>作为强大的图像描述。</p>
+<p>明确<strong>embedding learning mechanisms 可以帮助capture spatial correlations</strong>  —–Inception 和空间注意力</p>
+<p>本工作建模<strong>通道关系,提出特征重校准机制，通过该机制，它可以学习使用全局信息来选择性地强调蕴涵信息的特征并抑制不太有用的特征</strong></p>
+<p><strong>痛失一个亿啊</strong></p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210408155437704.png" alt="SE block" style="zoom:80%;">
+
+<ul>
+<li>$F_{tr}(·,\theta)$:一个或一组卷积</li>
+<li>$F_{sq}(·)$: Squeeze操作  ==HxW的二维平面压缩成一个实数，作为一个通道描述子，具有全局感受野，并且输出的维度和输入的特征通道数相匹配。它<strong>表征着在通道特征上响应的全局分布</strong>，而且**使得靠近输入的层也可以获得全局的感受野(与传统的堆叠卷积层的方式相比)**，==这一点在很多任务中都是非常有用的。</li>
+<li>$F_{ex}(·,w)$:Exciation操作 一个类似于循环神经网络中门的机制。通过参数 w 来为每个特征通道生成权重，其中参数 w 被学习用来显式地建模特征通道间的相关性</li>
+<li>$F_{scale}(·)$:Reweight操作  ==将 Excitation 的输出的权重看做是经过特征选择后的每个特征通道的重要性，然后通过乘法逐通道加权到先前的特征上，完成在通道维度上的对原始特征的重标定。==</li>
+</ul>
+<p>SE block 根据网络需求充当的角色不同  —早期:</p>
+<p><strong>前中后期都起作用</strong></p>
+<p>还有一个<strong>优点:即插即用</strong>   还有一个<strong>优点:计算开销小</strong></p>
+<h3 id="Related-Work-2"><a href="#Related-Work-2" class="headerlink" title="Related Work"></a>Related Work</h3><p><strong>Deep architectures</strong></p>
+<p>一种是整个网络的研究 一种方向是探索调整网络模块化组件功能形式的方法。 最近以<strong>自动化学习的方式组合网络</strong>的方法表现的很有竞争力。</p>
+<p>如1x1卷积，工作大部分集中在降低模型和计算复杂度的目标上，反映了一种假设，即可以将通道关系表示为<strong>具有局部接受域的实例不可知函数的组合</strong>。 相反，我们倡导为单元提供一种机制，可以<strong>使用全局信息对通道之间的动态，非线性依存关系进行显式建模</strong>，从而可以简化学习过程，并显着增强网络的表示能力。</p>
+<p><strong>Attention and gating mechanisms</strong></p>
+<p>可以将注意力广义地看作是一种工具，将<strong>可用处理资源的分配偏向于输入信号的信息最丰富的部分</strong>[17、18、22、29、32]。</p>
+<h3 id="Squeeze-and-Excitation-Blocks"><a href="#Squeeze-and-Excitation-Blocks" class="headerlink" title="Squeeze-and-Excitation Blocks"></a>Squeeze-and-Excitation Blocks</h3><p>==通道相关性隐式的嵌入在filter里，但是这些相关性与空间相关性纠缠在一起。==</p>
+<p>==我们的目标是确保网络能够提高其对信息功能的敏感度，以便随后的转换可以利用它们，并抑制不那么有用的信息。 我们建议通过显式地建模通道相关性来实现此目的，以在进入下一变换之前的两个步骤（挤压和激励）重新校准滤波器的响应。==</p>
+<h4 id="3-1-Squeeze-Global-Information-Embedding"><a href="#3-1-Squeeze-Global-Information-Embedding" class="headerlink" title="3.1. Squeeze: Global Information Embedding"></a>3.1. Squeeze: Global Information Embedding</h4><p>==Embedding:一个全局池化就是将一个二维平面的信息嵌入到一个实数上==</p>
+<p>卷积核感受野太小，所以用全局池化squeeze全局空间信息。<br>$$<br>z_c=F_{sq}(u_c)=\frac{1}{H \cdot W}\sum^H_{i=1}\sum^W_{j=1}u_c(i,j)<br>$$<br>$u_c$其实可以有很多种形式，==全局池化只是一种办法，格局不要小了，要利用数学公式==</p>
+<h4 id="3-2-Excitation-Adaptive-Recalibration"><a href="#3-2-Excitation-Adaptive-Recalibration" class="headerlink" title="3.2. Excitation: Adaptive Recalibration"></a>3.2. Excitation: Adaptive Recalibration</h4><p>$$<br>s=F_{ex}(z,W)=\sigma(g(z,W))=\sigma(W_2\delta(W_1z))<br>$$</p>
+<p>该操作旨在<strong>完全捕获通道之间的相互依赖关系</strong>,必须满足:</p>
+<ul>
+<li>灵活，==能够学习非线性关系==</li>
+<li>==必须学习非互斥的关系，因为我们要确保允许强调多个渠道，而不是one-hot类型，也就是软间隔，可以多种并存，而不是非0即1只能选择一种的==</li>
+</ul>
+<p>综上最后一步是<strong>sigmoid</strong><br>$$<br>\tilde x_c=F_{scale}(u_c,s_c)=s_c\cdot u_c<br>$$</p>
+<p>$s_c$是标量,扩展乘到每个标量</p>
+<p>==Excitation充当适应于输入特定描述符z的通道权重。 在这方面，SE块从本质上引入了以输入为条件的动态特性，从而有助于增强特征的可分辨性,有点自监督的那味了==</p>
+<h4 id="3-3-Exemplars-SE-Inception-and-SE-ResNet"><a href="#3-3-Exemplars-SE-Inception-and-SE-ResNet" class="headerlink" title="3.3. Exemplars: SE-Inception and SE-ResNet"></a>3.3. Exemplars: SE-Inception and SE-ResNet</h4><p>SE块的灵活性意味着它可以直接应用于标准卷积以外的转换。</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210408203845549.png" alt="SE 架构" style="zoom:67%;">
+
+<p>在Inception网络中，Inception块作为$F_{tr}$,</p>
+<p>==两个 Fully Connected 层组成一个 Bottleneck 结构去建模通道间的相关性，并输出和输入特征同样数目的权重。==</p>
+<p>我们首先将特征维度降低到输入的 1/16，然后经过 ReLu 激活后再通过一个 Fully Connected 层升回到原来的维度。这样做比直接用一个 Fully Connected 层的好处在于：<strong>1）具有更多的非线性，可以更好地拟合通道间复杂的相关性；2）极大地减少了参数量和计算量。</strong></p>
+<p>在ResNet网络中，Residual块作为$F_{tr}$</p>
+<p>==在 Addition 前对分支上 Residual 的特征进行了特征重标定。如果对 Addition 后主支上的特征进行重标定，由于在主干上存在 0~1 的 scale 操作，在网络较深 BP 优化时就会在靠近输入层容易出现梯度消散的情况，导致模型难以优化。意思就是越乘越小，导致最后直接消失==</p>
+<h3 id="Model-and-Computational-Complexity"><a href="#Model-and-Computational-Complexity" class="headerlink" title="Model and Computational Complexity"></a>Model and Computational Complexity</h3><p>为了可行，<strong>模型复杂度和性能要有权衡</strong>，缩小率$r$通常设为16</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210408220409345.png" alt="成本比较" style="zoom: 67%;">
+
+<p>所有的模型精度基本都有提高,然而GFLOPs增加很少。</p>
+<h2 id="CBAM"><a href="#CBAM" class="headerlink" title="CBAM"></a>CBAM</h2><h3 id="Motivation-2"><a href="#Motivation-2" class="headerlink" title="Motivation"></a>Motivation</h3><p>==首先为什么不用softmax而用sigmoid做门控函数的思考？==</p>
+<p>sigmoid不必保证映射之和为1，而softmax可以保证。</p>
+<p>对于softmax，如果有一个值响应特别大，那么其他的就近乎为0了，相当于一个互斥的了，把别的可能有用的都挤没了。</p>
+<p>而对于sigmoid，如下图所示，</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210510225230665.png" alt="image-20210510225230665" style="zoom:50%;">
+
+<p>0右边相当一部分的特征可以被保留。</p>
+<p>==实验分析，他主要是用在图像分类和目标检测，这些任务和语义分割还是有不同的。==</p>
+<h3 id="Info-4"><a href="#Info-4" class="headerlink" title="Info"></a>Info</h3><p>18ECCV</p>
+<h3 id="Abstract-5"><a href="#Abstract-5" class="headerlink" title="Abstract"></a>Abstract</h3><p>提出卷积块注意力模块(CBAM),是一种用于前馈卷积神经网络的简单而有效的注意力模块。<strong>给定一个中间特征图，我们的模块会沿着两个独立的维度（通道和空间）依次推断注意力图，然后将注意力图与输入特征图相乘以进行自适应特征改进。</strong>轻量，开销可忽略不计(==ps:在那个年代你可以这么说，现在人人都是attention和Transformer,你都不一定算得上轻量吧==) 广泛验证。</p>
+<h3 id="Introduction-5"><a href="#Introduction-5" class="headerlink" title="Introduction"></a>Introduction</h3><p>==为了提高CNN的性能，最近的研究主要研究了网络的三个重要因素：深度depth，宽度width和基数cardinality。==</p>
+<p>VGGNet、ResNet等$\to$depth</p>
+<p>GoogLeNet $\to$width </p>
+<p>[6]提出基于ResNet架构来增加网络的宽度。 他们表明，在CIFAR基准测试中，宽度增加的28层ResNet可以胜过具有1001层的极深的ResNet。</p>
+<p>Xception、ResNeXt$\to$cardinality</p>
+<p>==Xception [11]和ResNeXt [7]提出来增加网络的基数。 他们凭经验表明，基数不仅节省了参数的总数，而且还比其他两个因素（深度和宽度）具有更强的表示能力。==</p>
+<p>除了这些因素,另一方面:<strong>attention.目标是通过使用注意力机制来提高表示能力：关注重要特征并抑制不必要的特征。</strong></p>
+<p>==由于卷积运算通过将cross-channel和spatial信息融合在一起来提取信息特征，因此我们采用我们的模块来强调沿这两个主要维度-channel &amp; spatial的有意义的特征。==</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210418224715746.png" alt="CBAM"></p>
+<p>==先channel,再spatial,先学what再学where==</p>
+<p>==使用grad-CAM[18]可视化训练好的模型.==<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013738531/article/details/81322043">grad-CAM博客教程，这个就不看论文了吧,会用就行了</a></p>
+<p>==我们证明，使用CBAM可以同时实现更好的性能和更好的可解释性。 考虑到这一点，我们推测性能提升来自准确的关注accurate attention和无关杂波的降噪noise reduction of irrelevant clutters。==</p>
+<h3 id="Related-Work-3"><a href="#Related-Work-3" class="headerlink" title="Related Work"></a>Related Work</h3><h4 id="Network-engineering"><a href="#Network-engineering" class="headerlink" title="Network engineering"></a><strong>Network engineering</strong></h4><h4 id="Attention-mechanism"><a href="#Attention-mechanism" class="headerlink" title="Attention mechanism."></a>Attention mechanism.</h4><p>人类视觉系统的一个重要特性是不会立即处理整个场景。 取而代之的是，人类利用一连串的部分瞥见，并有选择地专注于突出部分，以便更好地捕获视觉结构[26]。</p>
+<p>SENet </p>
+<p>==However, we show that those are suboptimal features in order to infer fine channel attention, and we suggest to use max-pooled features as well.==</p>
+<p>每篇论文都提一嘴人家没有spatial,绝了,每个人都来踩一脚</p>
+<p>BAM与CBAM的区别(竟然是一个团队写的,就离谱)</p>
+<p>BAM: Bottleneck Attention Module 18BMVC</p>
+<p>CBAM: Convolutional Block Attention Module 18ECCV</p>
+<p>==BAM模块放置在网络的每个<strong>bottleneck瓶颈</strong>，而CBAM插入每个<strong>卷积模块</strong>。==</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210419115713469.png" alt="BAM" style="zoom: 67%;">
+
+<p>有趣的是，我们观察到多个BAM构造了类似于人类感知程序的层次化注意力hierarchical attention。 BAM在早期对低级特征（例如背景纹理特征）进行降噪。 然后，BAM逐渐将重点放在确切的目标上，这是一个高级语义。 </p>
+<h3 id="CBAM-1"><a href="#CBAM-1" class="headerlink" title="CBAM"></a>CBAM</h3><img src="./medias/loading.gif" data-original="/semantic-segmentation-2/image-20210419120542929.png" alt="sub-module" style="zoom: 50%;">
+
+<p>overall attention process:$F \in R^{C\times H\times W} M_c\in R^{C\times1\times1} M_s\in R^{1\times H\times W}$<br>$$<br>F’=M_c(F)\otimes F,\<br>F’’=M_s(F’)\otimes F’<br>$$</p>
+<p>$\otimes$代表element-wise乘。<strong>乘的时候是需要扩展的。</strong></p>
+<h4 id="CAM"><a href="#CAM" class="headerlink" title="CAM"></a>CAM</h4><p>==由于特征图的每个通道都被视为特征检测器[32]==</p>
+<blockquote>
+<p>Visualizing and understanding convolutional networks.14ECCV</p>
+</blockquote>
+<p>对于给定输入图像,说==channel attention聚焦于“what”==是有意义的。SENet使用全局平均池化计算==空间统计量spatial statistics==</p>
+<p>我们凭直觉感觉最大池获得另一种信息，于是两个都用了，还真不错……</p>
+<p>==Shared MLP==<br>$$<br>M_c(F)=\sigma(MLP(AvgPool(F))+MLP(MaxPool(F)))\<br>=\sigma(W_1(W_0(F^c_{avg}))+W_1(W_0(F^c_{max})))<br>$$<br>$\sigma$表示sigmoid函数,$W_0\in R^{C/r\times C}$,$W_1\in R^{C\times C/r}$ 是MLP weights，对$inputs$权重共享 $ReLU$激活函数followed by $W_0$</p>
+<h4 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h4><p>==空间注意力聚焦于’where’==</p>
+<p>==沿通道轴应用avg和max,和DANet还是有些不用的,CBAM和DANet都应用了对称的思想,只不过DANet把nonlocal对称到了channel,CBAM把SENet对称到了spatial==</p>
+<p>沿通道轴应用pool显示出突出信息区域方面是有效的[34]</p>
+<blockquote>
+<p>Paying more attention to attention: Improving the performance of convolutional neural networks via attention transfer. In: ICLR. (2017)</p>
+</blockquote>
+<p>$$<br>M_s(F)=\sigma(f^{7\times7}([Augpool(F);MaxPool(F)]))\<br>=\sigma(f^{7\times7}([F^s_{avf};F^s_{max}]))<br>$$</p>
+<p>$F^s_{avg}\in R^{1\times H\times W}$  $F^s_{max}\in R^{1\times H\times W}$  $\sigma$代表sigmoid function  $f^{7\times7}$代表7x7的卷积核</p>
+<h4 id="Arrangement"><a href="#Arrangement" class="headerlink" title="Arrangement"></a>Arrangement</h4><p>==我们发现顺序排列比并行排列提供更好的结果。 对于顺序过程的安排，我们的实验结果表明，通道优先级比空间优先级略好。==</p>
+<h3 id="Experiments-3"><a href="#Experiments-3" class="headerlink" title="Experiments"></a>Experiments</h3>
             </div>
             <hr/>
 
@@ -1502,6 +1777,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1570,7 +1852,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             

@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2021-03-26T02:51:54.270Z</updated>
+  <updated>2021-06-06T15:07:54.591Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,11 +17,136 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>办公软件笔记</title>
+    <link href="http://dchlovestudy.xyz/ban-gong-ruan-jian-bi-ji/"/>
+    <id>http://dchlovestudy.xyz/ban-gong-ruan-jian-bi-ji/</id>
+    <published>2021-06-06T01:53:37.000Z</published>
+    <updated>2021-06-06T15:07:54.591Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Word&quot;&gt;&lt;a href=&quot;#Word&quot; class=&quot;headerlink&quot; title=&quot;Word&quot;&gt;&lt;/a&gt;Word&lt;/h2&gt;&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="软件使用" scheme="http://dchlovestudy.xyz/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="办公软件" scheme="http://dchlovestudy.xyz/tags/%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cpp朝花夕拾</title>
+    <link href="http://dchlovestudy.xyz/cpp-zhao-hua-xi-shi/"/>
+    <id>http://dchlovestudy.xyz/cpp-zhao-hua-xi-shi/</id>
+    <published>2021-06-03T08:25:40.000Z</published>
+    <updated>2021-06-03T08:51:08.852Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h3&gt;&lt;h4 id=&quot;结构struct&quot;&gt;&lt;a href=&quot;#结构struct&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cpp" scheme="http://dchlovestudy.xyz/categories/cpp/"/>
+    
+    
+    <category term="cpp" scheme="http://dchlovestudy.xyz/tags/cpp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git学习</title>
+    <link href="http://dchlovestudy.xyz/git-xue-xi/"/>
+    <id>http://dchlovestudy.xyz/git-xue-xi/</id>
+    <published>2021-05-02T13:00:45.000Z</published>
+    <updated>2021-05-31T15:53:54.374Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;git学习&quot;&gt;&lt;a href=&quot;#git学习&quot; class=&quot;headerlink&quot; title=&quot;git学习&quot;&gt;&lt;/a&gt;git学习&lt;/h2&gt;&lt;h4 id=&quot;查看本地git安装位置&quot;&gt;&lt;a href=&quot;#查看本地git安装位置&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="git" scheme="http://dchlovestudy.xyz/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文撰写</title>
+    <link href="http://dchlovestudy.xyz/lun-wen-zhuan-xie/"/>
+    <id>http://dchlovestudy.xyz/lun-wen-zhuan-xie/</id>
+    <published>2021-04-15T03:53:30.000Z</published>
+    <updated>2021-04-15T07:37:14.434Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.overleaf.com/&quot;&gt;在线Latex工具Overleaf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.overleaf.com/learn&quot;&gt;overleaf文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="论文撰写" scheme="http://dchlovestudy.xyz/categories/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/"/>
+    
+    
+    <category term="论文撰写" scheme="http://dchlovestudy.xyz/tags/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Semantic-Segmentation-3</title>
+    <link href="http://dchlovestudy.xyz/semantic-segmentation-3/"/>
+    <id>http://dchlovestudy.xyz/semantic-segmentation-3/</id>
+    <published>2021-04-13T09:05:11.000Z</published>
+    <updated>2021-05-19T13:43:03.151Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Nonlocal和Transformer的区别？&quot;&gt;&lt;a href=&quot;#Nonlocal和Transformer的区别？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="语义分割" scheme="http://dchlovestudy.xyz/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
+    
+    
+    <category term="FCN" scheme="http://dchlovestudy.xyz/tags/FCN/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ONNX</title>
     <link href="http://dchlovestudy.xyz/onnx/"/>
     <id>http://dchlovestudy.xyz/onnx/</id>
     <published>2021-03-26T02:46:19.000Z</published>
-    <updated>2021-03-26T02:51:54.270Z</updated>
+    <updated>2021-03-27T01:51:39.209Z</updated>
     
     
       
@@ -48,14 +173,14 @@
     <link href="http://dchlovestudy.xyz/semantic-segmentation-2/"/>
     <id>http://dchlovestudy.xyz/semantic-segmentation-2/</id>
     <published>2021-03-23T03:20:00.000Z</published>
-    <updated>2021-03-26T07:42:12.713Z</updated>
+    <updated>2021-05-11T06:40:03.846Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;PSPNet&quot;&gt;&lt;a href=&quot;#PSPNet&quot; class=&quot;headerlink&quot; title=&quot;PSPNet&quot;&gt;&lt;/a&gt;PSPNet&lt;/h2&gt;&lt;h2 id=&quot;Non-Local&quot;&gt;&lt;a href=&quot;#Non-Local&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;ParseNet&quot;&gt;&lt;a href=&quot;#ParseNet&quot; class=&quot;headerlink&quot; title=&quot;ParseNet&quot;&gt;&lt;/a&gt;ParseNet&lt;/h2&gt;&lt;h3 id=&quot;Info&quot;&gt;&lt;a href=&quot;#Info&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -98,7 +223,7 @@
     <link href="http://dchlovestudy.xyz/cnn-tricks/"/>
     <id>http://dchlovestudy.xyz/cnn-tricks/</id>
     <published>2021-03-18T13:47:55.000Z</published>
-    <updated>2021-03-20T06:30:05.536Z</updated>
+    <updated>2021-04-19T14:14:18.243Z</updated>
     
     
       
@@ -123,7 +248,7 @@
     <link href="http://dchlovestudy.xyz/backbone/"/>
     <id>http://dchlovestudy.xyz/backbone/</id>
     <published>2021-02-26T11:30:08.000Z</published>
-    <updated>2021-03-24T09:10:11.462Z</updated>
+    <updated>2021-04-29T14:24:36.678Z</updated>
     
     
       
@@ -227,7 +352,7 @@
     <link href="http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/"/>
     <id>http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/</id>
     <published>2020-12-09T13:35:10.000Z</published>
-    <updated>2021-01-20T11:29:56.632Z</updated>
+    <updated>2021-05-19T14:37:48.385Z</updated>
     
     
       
@@ -252,7 +377,7 @@
     <link href="http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/"/>
     <id>http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/</id>
     <published>2020-12-06T02:06:54.000Z</published>
-    <updated>2021-01-23T03:28:57.386Z</updated>
+    <updated>2021-04-28T02:23:45.952Z</updated>
     
     
       
@@ -277,15 +402,14 @@
     <link href="http://dchlovestudy.xyz/tensorflow-xue-xi/"/>
     <id>http://dchlovestudy.xyz/tensorflow-xue-xi/</id>
     <published>2020-11-27T16:44:34.000Z</published>
-    <updated>2020-12-05T15:52:34.244Z</updated>
+    <updated>2021-04-23T11:40:53.476Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://tensorflow.google.cn/api_docs/python/tf?hl=zh_cn&quot;&gt;tensorflowAPI&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;Tensorflow1-x&quot;&gt;&lt;a href=&quot;#Tensorflow1-x&quot; class=&quot;headerlink&quot; title=&quot;Tensorflow1.x&quot;&gt;&lt;/a&gt;Tensorflow1.x&lt;/h2&gt;&lt;h2 id=&quot;Tensorflow2-x&quot;&gt;&lt;a</summary>
         
       
     
@@ -303,7 +427,7 @@
     <link href="http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/"/>
     <id>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</id>
     <published>2020-11-23T11:43:22.000Z</published>
-    <updated>2021-03-19T12:53:35.980Z</updated>
+    <updated>2021-06-01T13:55:24.266Z</updated>
     
     
       
@@ -328,14 +452,14 @@
     <link href="http://dchlovestudy.xyz/ren-xiang-pi-fu-jian-ce-2/"/>
     <id>http://dchlovestudy.xyz/ren-xiang-pi-fu-jian-ce-2/</id>
     <published>2020-11-22T12:00:53.000Z</published>
-    <updated>2021-01-27T14:18:12.419Z</updated>
+    <updated>2021-04-02T03:17:44.135Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h3 id=&quot;Fair-comparison-of-skin-detection-approaches-on-publicly-available-datasets&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;Fair-comparison-of-skin-detection-approaches-on-publicly-available-datasets&quot;&gt;&lt;a</summary>
         
       
     
@@ -353,7 +477,7 @@
     <link href="http://dchlovestudy.xyz/semantic-segmentation/"/>
     <id>http://dchlovestudy.xyz/semantic-segmentation/</id>
     <published>2020-11-20T02:15:08.000Z</published>
-    <updated>2021-03-24T10:29:42.075Z</updated>
+    <updated>2021-05-09T03:16:58.244Z</updated>
     
     
       
@@ -398,133 +522,6 @@
     <category term="颜色空间" scheme="http://dchlovestudy.xyz/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/"/>
     
     <category term="相机成像" scheme="http://dchlovestudy.xyz/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人像肤色区域检测</title>
-    <link href="http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/"/>
-    <id>http://dchlovestudy.xyz/ren-xiang-fu-se-jian-ce/</id>
-    <published>2020-11-17T11:38:07.000Z</published>
-    <updated>2020-12-20T12:58:13.692Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="肤色分级" scheme="http://dchlovestudy.xyz/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
-    
-    
-    <category term="肤色分级" scheme="http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>oj-1</title>
-    <link href="http://dchlovestudy.xyz/codeforces-1/"/>
-    <id>http://dchlovestudy.xyz/codeforces-1/</id>
-    <published>2020-11-16T12:15:16.000Z</published>
-    <updated>2020-11-18T16:20:28.634Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1A-Theatre-Square-math&quot;&gt;&lt;a href=&quot;#1A-Theatre-Square-math&quot; class=&quot;headerlink&quot; title=&quot;1A Theatre Square-math&quot;&gt;&lt;/a&gt;1A Theatre</summary>
-        
-      
-    
-    
-    
-    <category term="oj" scheme="http://dchlovestudy.xyz/categories/oj/"/>
-    
-    
-    <category term="codeforces" scheme="http://dchlovestudy.xyz/tags/codeforces/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器使用</title>
-    <link href="http://dchlovestudy.xyz/fu-wu-qi-shi-yong/"/>
-    <id>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</id>
-    <published>2020-11-09T02:13:20.000Z</published>
-    <updated>2020-12-23T14:36:29.257Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;linux教程：&lt;a href=&quot;http://c.biancheng.net/view/4017.html&quot;&gt;http://c.biancheng.net/view/4017.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;unzip -d des</summary>
-        
-      
-    
-    
-    
-    <category term="linux" scheme="http://dchlovestudy.xyz/categories/linux/"/>
-    
-    
-    <category term="linux" scheme="http://dchlovestudy.xyz/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Matlab</title>
-    <link href="http://dchlovestudy.xyz/matlab/"/>
-    <id>http://dchlovestudy.xyz/matlab/</id>
-    <published>2020-11-09T01:15:34.000Z</published>
-    <updated>2021-02-22T10:39:29.783Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;教程：&lt;a href=&quot;https://www.w3cschool.cn/matlab/&quot;&gt;https://www.w3cschool.cn/matlab/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;MATLAB Api：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Matlab" scheme="http://dchlovestudy.xyz/categories/Matlab/"/>
-    
-    
-    <category term="Matlab" scheme="http://dchlovestudy.xyz/tags/Matlab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python学习</title>
-    <link href="http://dchlovestudy.xyz/python-xue-xi/"/>
-    <id>http://dchlovestudy.xyz/python-xue-xi/</id>
-    <published>2020-11-03T12:15:05.000Z</published>
-    <updated>2021-03-25T05:37:12.119Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;pythonAPI:&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
-    
-    
-    <category term="python" scheme="http://dchlovestudy.xyz/tags/python/"/>
     
   </entry>
   

@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.7k
                 </div>
                 
 
@@ -692,11 +692,41 @@ pip install labelme</code></pre>
 <p>py文件在路径:envs\labelme\Lib\site-packages\labelme\cli</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39397024/article/details/93487845">labelme打不开，不显示主界面</a>,之前使用扩展屏幕的原因，憨憨的</p>
 <p>labelme_json_to_dataset.exe转换json生成的文件夹为空，原因是json内存储的文件路径的原因！！！！</p>
-<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28418387/article/details/95662415">F1、IoU等计算方式理解与代码实现</a></p>
-<p>上面这篇文章写得太好了，代码可以拿来直接用</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Trevo/p/11795503.html">评价指标总结和代码实现</a></p>
-<p>最常用的PA和IoU<br>$$<br>PA=\frac{TP+TN}{TP+TN+FP+FN}<br>$$</p>
-<h3 id="SDD-A-Skin-Detection-Dataset-for-Training-and-Assessment-of-Human-Skin-Classifiers"><a href="#SDD-A-Skin-Detection-Dataset-for-Training-and-Assessment-of-Human-Skin-Classifiers" class="headerlink" title="SDD: A Skin Detection Dataset for Training and Assessment of Human Skin Classifiers"></a>SDD: A Skin Detection Dataset for Training and Assessment of Human Skin Classifiers</h3><h4 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h4><p>15年一个皮肤分割数据集</p>
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28418387/article/details/95662415">F1、IoU等计算方式理解与代码实现</a>.</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012370185/article/details/94409933">mIoU</a></p>
+<p><strong>PA:</strong><br>$$<br>PA=\frac{TP+TN}{TP+TN+FP+FN}\<br>PA=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}<br>$$</p>
+<p>共有$k+1$个类，其中包含一个空类或背景，$p_{ij}$表示GT为i预测为j</p>
+<p>Mean Pixel Accuracy(MAP,均像素精度):是PA的一种简单提升，<strong>计算每个类内被正确分类像素数的比例，之后求所有类的平均</strong>。<br>$$<br>MPA=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}}<br>$$<br><strong>mIoU:</strong></p>
+<img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210403154123769.png" alt="直观理解" style="zoom:50%;">
+
+<p>在每个类上计算IoU,然后取平均<br>$$<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{TP}{FN+FP+TP}\<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}+\sum^k_{j=0}p_{ji}-p_{ii}}<br>$$</p>
+<p>学长求的好像是对一个batch的图片一起</p>
+<h3 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h3><h4 id="PASCAL-VOC2010"><a href="#PASCAL-VOC2010" class="headerlink" title="PASCAL VOC2010"></a>PASCAL VOC2010</h4><p><strong>Pascal Visual Object Classes,简称Pascal VOC数据集</strong></p>
+<p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210426201733971.png" alt="VOC 2010"></p>
+<p><strong>JPEGImages</strong>是原图,<strong>SegmentationClass</strong>是标准出每一个像素的类别,也就是<strong>语义分割</strong>的label,<strong>SegmentationObject</strong>是标注出每一个像素属于哪一个物体,也就是<strong>实例分割</strong>的label,<strong>Annotations</strong>是<strong>目标检测</strong>的标注</p>
+<p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210426204731505.png" alt="image-20210426204731505"></p>
+<p>ImageSets是划分,跟我们相关的主要是Segmentation，</p>
+<p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210426204828552.png" alt="image-20210426204828552"></p>
+<p>里面是train,val和trainval，<strong>trainval表示train和val合在一起</strong></p>
+<h4 id="Pascal-Context"><a href="#Pascal-Context" class="headerlink" title="Pascal Context"></a>Pascal Context</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28869927/article/details/93379892">Pascal数据集介绍</a></p>
+<p>PASCAL Context数据集[1]由两部分组成：</p>
+<ol>
+<li>PASCAL VOC 2010 语义分割数据集；</li>
+<li>Context 标注。</li>
+</ol>
+<p>总共有459个类别,包含 10103 张图像，<strong>其中 4998 用于训练集，5105 用于验证集。</strong></p>
+<p>现在最广泛地用法是使用其中<strong>出现频率最高的 59 个类别最为语义标签，其余类别标记为背景即background。</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#59个类别的数字索引</span>
+<span class="token punctuation">[</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">259</span><span class="token punctuation">,</span> <span class="token number">260</span><span class="token punctuation">,</span> <span class="token number">415</span><span class="token punctuation">,</span> <span class="token number">324</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">258</span><span class="token punctuation">,</span> <span class="token number">144</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> 
+<span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">397</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">284</span><span class="token punctuation">,</span> <span class="token number">158</span><span class="token punctuation">,</span> <span class="token number">159</span><span class="token punctuation">,</span> <span class="token number">416</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">162</span><span class="token punctuation">,</span> <span class="token number">420</span><span class="token punctuation">,</span> <span class="token number">454</span><span class="token punctuation">,</span> <span class="token number">295</span><span class="token punctuation">,</span> <span class="token number">296</span><span class="token punctuation">,</span> 
+<span class="token number">427</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">46</span><span class="token punctuation">,</span> <span class="token number">308</span><span class="token punctuation">,</span> <span class="token number">59</span><span class="token punctuation">,</span> <span class="token number">440</span><span class="token punctuation">,</span> <span class="token number">445</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">232</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">,</span> <span class="token number">354</span><span class="token punctuation">,</span> <span class="token number">424</span><span class="token punctuation">,</span> 
+<span class="token number">68</span><span class="token punctuation">,</span> <span class="token number">326</span><span class="token punctuation">,</span> <span class="token number">72</span><span class="token punctuation">,</span> <span class="token number">458</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">207</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">355</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">,</span> <span class="token number">347</span><span class="token punctuation">,</span> <span class="token number">220</span><span class="token punctuation">,</span> <span class="token number">349</span><span class="token punctuation">,</span> <span class="token number">360</span><span class="token punctuation">,</span> 
+<span class="token number">98</span><span class="token punctuation">,</span> <span class="token number">187</span><span class="token punctuation">,</span> <span class="token number">104</span><span class="token punctuation">,</span> <span class="token number">105</span><span class="token punctuation">,</span> <span class="token number">366</span><span class="token punctuation">,</span> <span class="token number">189</span><span class="token punctuation">,</span> <span class="token number">368</span><span class="token punctuation">,</span> <span class="token number">113</span><span class="token punctuation">,</span> <span class="token number">115</span><span class="token punctuation">]</span></code></pre>
+<p><strong>PASCAL in Detail API</strong></p>
+<p>到此，原始图片和标注数据都已获取完毕，那么如何实现上述的 4998+5105 的训练/验证划分呢？</p>
+<p>这里需要使用CVPR’17 <a target="_blank" rel="noopener" href="https://sites.google.com/view/pasd/dataset">PASCAL in Detail Challenge</a>中实现的Detail接口。其github地址为：<a target="_blank" rel="noopener" href="https://github.com/ccvl/detail-api">https://github.com/ccvl/detail-api</a></p>
+<p>具体使用方法可以参考其提供的文档，这里不再赘述。</p>
+<h4 id="PASCAL-VOC2012-Aug"><a href="#PASCAL-VOC2012-Aug" class="headerlink" title="PASCAL VOC2012 Aug"></a>PASCAL VOC2012 Aug</h4><h4 id="ADE-20K"><a href="#ADE-20K" class="headerlink" title="ADE 20K"></a>ADE 20K</h4><h3 id="SDD"><a href="#SDD" class="headerlink" title="SDD"></a>SDD</h3><h4 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h4><p>15年一个皮肤分割数据集&lt;&lt;A Skin Detection Dataset for Training and Assessment of Human Skin Classifiers&gt;&gt;</p>
 <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>超过20000张图像  非常精确：<strong>专业图形工具  三元划分</strong>  与SFA比较 <strong>定性且定量</strong>表明更好</p>
 <h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p><strong>数据库组织良好</strong>：因此使用时只和方法有关，而和数据集无关</p>
 <p><strong>不同光照和成像条件下捕获</strong></p>
@@ -714,7 +744,7 @@ pip install labelme</code></pre>
 <p>康柏是一个相对较老的数据库，其图像质量太低，不再值得信赖。新一代的成像设备已经被开发出来并用于商业用途，它们与以前的设备有很大的不同。另一个问题是康柏没有明确的划分，即不同的作者在测试和评估过程中可能使用不同的图像，这将影响性能。半监督标注，非常不准确</p>
 <p>ECU图像保证了背景场景、光照条件和皮肤类型的多样性。照明条件包括室内照明和室外照明;皮肤类型包括白色，棕色，黄色和黑色皮肤。一些作品已经用这个数据库进行了评估。虽然图像的多样性足以用于评估一般的皮肤检测系统，但数据集的大小还不够大。此外，处理注释还存在一个特殊的问题，即所有图像中，特别是那些质量较低或拥挤的图像中的某些区域，注释并不是一项简单的任务。例如，图3中红色箭头表示的点是毛发周围的像素点，或者其他物体往往会带来额外的困难。这实际上是GTs手工标记方案的错误来源</p>
 <p>基于神经网络皮肤分类器的最佳拓扑和阈值，将UCI和SFA进行了比较，发现在评估皮肤检测器[35]时，SFA的准确性略高于UCI。然而，SFA主要包括半护照图像，不适合用于评估目的。另外，SFA中的GT注释也不一致，即有很多图像没有进行准确的标注。此外，在一些图像中，人脸被2-3像素的厚白色边界包围。这将导致不同颜色空间皮肤簇的构建不准确。图4绘制了GTs对应的SFA图像;它们代表了所有的图像。这个数据集是公开的。</p>
-<h4 id="SDD"><a href="#SDD" class="headerlink" title="SDD"></a>SDD</h4><p>据作者所知，它是文献中引入的用于训练和评估皮肤分类器性能的最大数据库。图像是在不同的光照条件下拍摄的，使用不同的成像设备，从世界各地不同肤色的人。一些图像是在线视频和电影的快照，而一些是从流行的人脸识别/跟踪/检测数据集中获取的静态图像[40-43]。SDD中图像的高度多样性使得它可以用于一般系统的训练和评估，即当一种方法被SDD评估时，结果是可靠的，而当一种方法被SDD训练时，它可以达到其最大的潜在性能。</p>
+<h4 id="SDD-1"><a href="#SDD-1" class="headerlink" title="SDD"></a>SDD</h4><p>据作者所知，它是文献中引入的用于训练和评估皮肤分类器性能的最大数据库。图像是在不同的光照条件下拍摄的，使用不同的成像设备，从世界各地不同肤色的人。一些图像是在线视频和电影的快照，而一些是从流行的人脸识别/跟踪/检测数据集中获取的静态图像[40-43]。SDD中图像的高度多样性使得它可以用于一般系统的训练和评估，即当一种方法被SDD评估时，结果是可靠的，而当一种方法被SDD训练时，它可以达到其最大的潜在性能。</p>
 <p>如前所述,所有图片中有一些像素要么skinness的有一个问题(比如眉毛和眼睛周围地区,嘴唇和鼻子孔,等等)或者是位于皮肤和non-skin的边界,在这两种情况下,很难区分skinness和一些图片,要花很多的时间来注释。将GT图像划分为3个不重叠区域;皮肤像素、非皮肤像素以及在评估和训练步骤中都被考虑的像素(不关心点)</p>
 <p>用的Photoshop CS5</p>
 <p>$$<br>F1=\frac{2\cdot Recall\cdot Precision}{Recall+Precision}<br>$$</p>
@@ -1573,7 +1603,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             

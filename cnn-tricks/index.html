@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -678,7 +678,9 @@
 <p>训练过程执行而验证过程不执行随机增强。</p>
 <p>卷积层和全连接层的<strong>权值均采用Xavier算法进行初始化</strong>。</p>
 <h3 id="Efficient-Training-训练速度"><a href="#Efficient-Training-训练速度" class="headerlink" title="Efficient Training/训练速度"></a>Efficient Training/训练速度</h3><p>在本节中，我们将回顾在不牺牲模型精度的情况下实现低精度和大批量训练的各种技术。有些技术甚至可以提高准确性和训练速度。</p>
-<h4 id="3-1Large-batch-training"><a href="#3-1Large-batch-training" class="headerlink" title="3.1Large-batch training"></a>3.1Large-batch training</h4><ul>
+<h4 id="3-1Large-batch-training"><a href="#3-1Large-batch-training" class="headerlink" title="3.1Large-batch training"></a>3.1Large-batch training</h4><p><strong>分析</strong></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA3NDIyMjM1NA==&amp;mid=2649032995&amp;idx=2&amp;sn=28b065415c2d8a11345531f1284413d0&amp;chksm=8712b75eb0653e48f46de857b14d6e029f08a5c0336928fc638eac1f8287aefea01a262be1e2&amp;token=2097035342&amp;lang=zh_CN#rd">AI不惑境的教程</a></p>
+<ul>
 <li>batch数太小，而类别又比较多的时候，真的可能会导致loss函数震荡而不收敛，尤其是在你的网络比较复杂的时候。</li>
 <li>随着batchsize增大，处理相同的数据量的速度越快，跑完一个epoch所需迭代次数变少</li>
 <li>一定范围内，batchsize越大，其确定的下降方向就越准，不容易被noise影响，引起训练振荡就越小</li>
@@ -1566,7 +1568,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             

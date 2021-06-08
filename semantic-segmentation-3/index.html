@@ -1,0 +1,2016 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Semantic-Segmentation-3, python,cv,codeforces,leetcode,image processing,软件使用">
+    <meta name="description" content="计算机视觉与图像处理，以及其他相关的技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Semantic-Segmentation-3 | 亦爱Zxy</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+	<link rel="stylesheet" type="text/css" href="/libs/artitalk/artitalk.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+
+    <style type="text/css" lang="css">
+    #loading-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 100vw;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+        text-align: center;
+        /* loader页面消失采用渐隐的方式*/
+        -webkit-transition: opacity 1s ease;
+        -moz-transition: opacity 1s ease;
+        -o-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+    }
+    .loading-image{
+        width: 120px;
+        height: 50px;
+        transform: translate(-50%);
+    }
+
+    .loading-image div:nth-child(2) {
+        -webkit-animation: pacman-balls 1s linear 0s infinite;
+        animation: pacman-balls 1s linear 0s infinite
+    }
+
+    .loading-image div:nth-child(3) {
+        -webkit-animation: pacman-balls 1s linear .33s infinite;
+        animation: pacman-balls 1s linear .33s infinite
+    }
+
+    .loading-image div:nth-child(4) {
+        -webkit-animation: pacman-balls 1s linear .66s infinite;
+        animation: pacman-balls 1s linear .66s infinite
+    }
+
+    .loading-image div:nth-child(5) {
+        -webkit-animation: pacman-balls 1s linear .99s infinite;
+        animation: pacman-balls 1s linear .99s infinite
+    }
+
+   .loading-image div:first-of-type {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+        animation: rotate_pacman_half_up .5s 0s infinite;
+    }
+    .loading-image div:nth-child(2) {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+        animation: rotate_pacman_half_down .5s 0s infinite;
+        margin-top: -50px;
+    }
+    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+
+    .loading-image div:nth-child(3),
+    .loading-image div:nth-child(4),
+    .loading-image div:nth-child(5),
+    .loading-image div:nth-child(6){
+        background-color: #49b1f5;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 2px;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        transform: translateY(-6.25px);
+        top: 25px;
+        left: 100px;
+    }
+    .loading-text{
+        margin-bottom: 20vh;
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 0 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    @media only screen and (max-width: 500px) {
+         .loading-text{
+            font-size: 1.5rem;
+         }
+    }
+    .fadeout {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    /* logo出现动画 */
+    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+ </style>
+ <script>
+(function () {
+    const loaded = function(){
+       setTimeout(function(){
+            const loader = document.getElementById("loading-container");
+            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
+            // document.getElementById("body-wrap").style.display="flex";
+            setTimeout(function(){
+                loader.style.display="none";
+            },2500); 
+        },1000);//强制显示loading page 1s  
+    };
+    loaded();
+})()
+</script>
+
+
+<body>
+    
+        <div id="loading-container">
+             <p class="loading-text">嘘~  正在从服务器偷取页面 . . . </p> 
+             <div class="loading-image">
+                 <div></div>
+                 <div></div>
+                 <div></div>
+                 <div></div> 
+                 <div></div>
+             </div>
+        </div>
+    
+	
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+					<div>
+						
+						<img src="./medias/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
+						
+						<span class="logo-span">亦爱Zxy</span>
+					</div>
+				</a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/artitalk" class="waves-effect waves-light">
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>说说</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="./medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">亦爱Zxy</div>
+        <div class="logo-desc">
+            
+            计算机视觉与图像处理，以及其他相关的技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/artitalk" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-heartbeat"></i>
+			
+			ArtiTalk
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/chenghaoDong666" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>See Me in github
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/chenghaoDong666" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="See Me in github" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+	
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('密码提示：帅不帅？')).toString(CryptoJS.enc.Hex)) {
+                alert('你不够帅，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Semantic-Segmentation-3</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/FCN/">
+                                <span class="chip bg-color">FCN</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="post-category">
+                                语义分割
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-04-13
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.8k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Nonlocal和Transformer的区别？"><a href="#Nonlocal和Transformer的区别？" class="headerlink" title="Nonlocal和Transformer的区别？"></a>Nonlocal和Transformer的区别？</h2><p>==区别在于把注意力当做辅助模块还是核心模块==</p>
+<p>无论是non-local还是CCNet,都是认为CNN整体上已经非常好了,但是缺乏一些长距离建模的能力,所以我们稀疏的插入一下注意力模块,帮助CNN做这件事。</p>
+<p>另外的全注意力或者类Transformer的网络,是让网络的主要部分都是用注意力结构。==卷积和注意力的地位已经颠倒过来了==,由卷积去负责一些注意力可能不擅长的事情,比如低层的特征提取,而剩下绝大部分的建模都交给注意力.</p>
+<p>此外，全注意力网络的工作也可以分为两类：</p>
+<p>==一类是保留原有CNN的训练流程，通过修改注意力模块的结构适应CV任务==，比如AAConv、SASA、GSA-Net；<br>==另一类则保留原本的Transformer架构，通过修改训练流程来适应CV任务==，比如ViT、DETR。<br>这两类工作相比，目前看来第二类工作的改动更彻底、效果也更好。==第一类工作往往因为需要处理高分辨率的特征图并且引入相对位置表征，导致在GPU、TPU上效率不高。==第二类工作遇到的主要问题则是，==如果完全抛弃卷积，由于缺乏平移不变性的先验，往往对数据量和训练长度要求很高，不能高效地学习。如果不使用超大规模数据进行预训练，则一般还是需要保留一部分卷积层。==</p>
+<h3 id="关于attention的思考"><a href="#关于attention的思考" class="headerlink" title="关于attention的思考"></a>关于attention的思考</h3><p>对于深层的一个Channel，特征图的每一个点都是之前的</p>
+<h2 id="AANet"><a href="#AANet" class="headerlink" title="AANet"></a>AANet</h2><h3 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h3><p>19ICCV Google Brain  <strong>用自注意力增强卷积：这是新老两代神经网络的对话</strong></p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>卷积运算的弱点:局部邻域运行 缺少全局信息。本文使用自注意力作为卷积的替代。</p>
+<p>我们介绍了一种<strong>新颖的二维相对自注意力机制</strong>，该机制<strong>证明了在取代卷积作为图像分类的独立计算基元方面具有竞争力。</strong></p>
+<p>==我们在控制实验中发现，将卷积和自注意力结合起来可获得最佳结果。==</p>
+<p>因此，我们建议通过将<strong>卷积特征图与通过自我注意产生的一组特征图进行级联</strong>，以利用这种<strong>自我注意机制来增强卷积算子。</strong></p>
+<p>广泛的实验表明，注意力增强技术可在许多不同的模型和规模（包括ResNets和SOTA的移动受限网络）上，在ImageNet上的图像分类和COCO上的对象检测方面带来一致的改进，同时<strong>保持参数数量相似。</strong></p>
+<p>比SENet好</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>==卷积层的设计强加了 1.有限感受野的局部性 2.权重共享的平移等变性translation equivariance==</p>
+<p>==self attention的关键思想是从hidden units中计算得出值的加权平均。The key idea behind self-attention is to produce a weighted average of values computed from hidden units.==</p>
+<p>==与池化和卷积算子不同，加权平均运算中(self attention)使用的权重是通过hidden units之间的相似度函数动态生成的。作为结果，输入信号之间的相互作用取决于信号本身，而不是像卷积一样由它们的相对位置预先确定。 特别地，这使得self attention能捕捉远程交互，而无需增加参数的数量。==</p>
+<p>应用self attention替代conv</p>
+<p>我们开发了一种新颖的二维相对self attention机制[37]，该机制在注入相对位置信息的同时保持平移等变性，使其非常适合图像。</p>
+<p>我们的self-attention 显示出了完全取代conv的竞争力,但是我们在对照实验中发现，==将两者结合使用可获得最佳效果==。</p>
+<p>因此，我们没有完全放弃卷积的概念，而是建议<strong>使用self attention机制来增强卷积</strong>。 这是通过将强制局部性的卷积特征图与能够建模更长距离依赖项的self attention特征图（请参见图2）进行级联来实现的。</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210417151606466.png" alt="Attention Argument"></p>
+<p>实验还表明,fullyself attention模型(Attention Argument的一种特例)仅比ImageNet上的完全卷积模型稍差，这表明self attention是图像分类的强大独立计算基元。</p>
+<p><strong>这个图真的有大问题,不知道它画的什么,这也能入选顶会？？？就离谱</strong></p>
+<h3 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h3><h4 id="2-1-Convolutional-networks"><a href="#2-1-Convolutional-networks" class="headerlink" title="2.1. Convolutional networks"></a>2.1. Convolutional networks</h4><p>的确，用于基于卷积图元设计体系结构的<strong>自动搜索策略</strong>可在跨多种任务的大规模图像分类任务中实现最先进的准确性[55，21]。</p>
+<h4 id="2-2-Attention-mechanisms-in-networks"><a href="#2-2-Attention-mechanisms-in-networks" class="headerlink" title="2.2. Attention mechanisms in networks"></a>2.2. Attention mechanisms in networks</h4><p>针对视觉任务提出了多种注意力机制，以解决卷积的弱点[17、16、7、46、45、53]。 例如，Squeeze and Excitation [17]和Gather-Excite [16]使用从整个特征图汇总的信号<strong>重新分配特征通道的权重</strong>，而BAM [31]和CBAM[46] (18ECCV)在<strong>通道和空间维度</strong>上独立地完善卷积特征。</p>
+<p>但是，non-local block<strong>仅在ImageNet预训练之后才添加到体系结构</strong>中，并以<strong>不破坏预训练的方式</strong>进行初始化。</p>
+<p>我们的在整个架构中采用self attention</p>
+<p>==The use of multi-head attention allows the model to attend jointly to both spatial and feature subspaces.==</p>
+<p>另外，我们通过将relative self attention[37，18]扩展到二维输入，从而增强了self attention对图像的表示能力，从而使我们能够以一种<strong>有原则的方式对平移等变性transparent equivariance</strong>进行建模。</p>
+<p>最终，我们的方法产生了附加的特征图，而不是<strong>通过加法[45、53]或门控(权重相乘的形式</strong>)[17、16、31、46]重新校准卷积特征。==此属性使我们可以灵活地调整注意力通道的比例，并考虑从完全卷积到完全注意力模型的一系列体系结构。==</p>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><blockquote>
+<p><strong>不同空间下的表示可以做attention吗？</strong></p>
+<p>我觉得显然可以。我们对注意力机制最朴素、直观的认识就是，它学习的是一种对齐关系（alignment）。而这种机制<strong>并不</strong>假定query和memory同属于一个所谓语义空间，而是假定两个空间存在某种可以靠注意力机制学习的对齐关系。</p>
+<p>在注意力较早应用的机器翻译应用中，你也很难说源语言和目标语言二者属于同一个语义空间，但是可以大胆假定两门语言存在某种对齐关系，简单的例如词汇之间的对齐，复杂的例如模式之间的对齐，在Transformer中分别对应低层表示的cross-attention和高层的cross-attention。</p>
+<p>在跨模态场景中，显然你也总是可以找到特征之间的某种对齐关系，例如图像和文本之间广泛存在的对应。抛开DL的理论实践，光是看人类的认知，当你阅读小说时，看到『天空』，你可能会想象到一片蓝色；看到『bobo』，你可能会想象到一颗猥琐的猫头。这就是图像和文本之间固有的对齐关系，因为语言习得过程就需要我们将特定文字和特定意象（包括图像、声音）联系，这正是近期众多跨模态工作（包括著名的CLIP，DALL-E）得以成功的原因。引入跨空间的注意力即是学习这种对齐关系的一种方法。</p>
+<p>希望能帮助你理解手头的论文。</p>
+<p>作者：TniL<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/452498914/answer/1814362500">https://www.zhihu.com/question/452498914/answer/1814362500</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>可以类比CNN中同时使用<strong>多个滤波器</strong>的作用，直观上讲，多头的注意力<strong>有助于网络捕捉到更丰富的特征/信息。</strong></p>
+<p>论文中是这么说的：</p>
+<p>Multi-head attention allows the model to jointly attend to information from <strong>different representation subspaces</strong> at different positions.</p>
+<p>我觉得也可以把多头注意力看作是一种ensemble，模型内部的集成。不过另外的答主也提到了，多头注意力的机理还不是很清楚。事实上，注意力机制本身如何工作，这个可解释性工作也还没有完成，目前的一些解释都还只是intuition，除了seq2seq中起到一种alignment的作用外，在许多模型中加入注意力以后如何起作用，还是有一点争议的。</p>
+</blockquote>
+<p>$$<br>Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V<br>$$</p>
+<p>Q、K获得数值为0-1的mask矩阵(可以理解为attention score矩阵)，V表示的是输入线性变换后的特征,mask矩阵乘上V就获得过滤后的V特征</p>
+<p>$H$特征图的高度 $W$宽度 $F_{in}$输入维度  $N_h$:头数 $d_v$:values的深度**(深度指channels吧)**  $d_k$:query和keys的深度 $d_v^h$ $d_k^h$第h个头的深度</p>
+<h4 id="3-1-Self-attention-over-images"><a href="#3-1-Self-attention-over-images" class="headerlink" title="3.1. Self-attention over images"></a>3.1. Self-attention over images</h4><p>input:$(H,W,F_{in})\to X\in R^{HW\times F_{in}}$</p>
+<p>single head h:<br>$$<br>O_h=softmax(\frac{(XW_q)(XW_k)^T}{\sqrt{d_k^h}})(XW_v)\<br>W_q,W_k\in R^{F_{in}\times d_k^h},W_u\in R^{F_{in}\times d_v^h}<br>$$<br>W是学到的线性变换,将X映射到queries:$Q=XW_q$,keys:$K=XW_k$,values:$V=XW_v$</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210420110944276.png" alt="示意图" style="zoom:67%;">
+
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210420111339597.png" alt="示意图2" style="zoom:50%;">
+
+<p>==所以说,应用到视觉上,是将二维的图像展开,展开后类似nlp==</p>
+<p>The outputs of all heads are then concatenated 连接and projected 投影again as follows:<br>$$<br>MHA(X)=Concat[O_1,O_2,…,O_{Nh}]W^O\<br>W^O\in R^{d_v\times d_v}<br>$$<br>W是学到的线性变换,MHA(X)然后reshaped into $(H,W,d_v)$</p>
+<p>We note that multi-head attention incurs招致 ==a complexity of== $O((HW)^2d_k)$ and ==a memory cost== of $O((HW)^2Nh) $as it requires to store attention.</p>
+<p>==时间复杂度推导:==</p>
+<p>假设现在有两个矩阵$A:m\times n$  $B:n\times l$</p>
+<p>对于矩阵$A$第一行的第一个元素,需要进行$l$次运算,一行需要进行$n\times l$次运算,$m$行需要进行$m\times n \times l$次运算</p>
+<p>根据上面的推导,$multi.head$的时间复杂度为:<br>$$<br>O(multihead)=O(HW\times F_{in}\times d_k + HW\times d_k\times HW)\<br>=O((HW)^2d_k)<br>$$</p>
+<p>==空间复杂度推导:==</p>
+<p>举例:</p>
+<pre class=" language-python"><code class="language-python">int i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+int j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token operator">+</span>i<span class="token punctuation">;</span>
+j<span class="token operator">+</span><span class="token operator">+</span><span class="token punctuation">;</span>
+int m <span class="token operator">=</span> i <span class="token operator">+</span> j<span class="token punctuation">;</span></code></pre>
+<p>只分配了三个变量,i、j、m,所以空间复杂度$S(n)=O(1)$</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+   j <span class="token operator">=</span> i<span class="token punctuation">;</span>
+   j<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>第一行分配了n个元素的数组,之后的循环操作都没有再分配空间,所以说空间复杂度为$S(n)=O(n)$</p>
+<p>对于$multi.head$的空间复杂度为:<br>$$<br>O(multihead)=O((HW)^2N_h)<br>$$<br>每个head,分配的最大空间就是那个$HW\times HW$,$N_h$个头就是$(HW)^2N_h$</p>
+<p><strong>3.1.1 Two-dimensional Positional Encodings</strong><br>==如果没有关于位置的明确信息，则self attention是permutation equivariant置换等变的：==<br>$$<br>MHA(\pi(X))=\pi(MHA(X))<br>$$<br>对于像素位置的任何排列$\pi$,使其对<strong>建模高度结构化的数据(如图像)无效</strong>。</p>
+<p>已经提出了<strong>使用显式空间信息来增强激活图的多种位置编码以缓解相关问题。</strong>Transformer[32]将在original Transformer[43]中引入的<strong>正弦波扩展到二维输入</strong>,而CoordConv[29]将<strong>positional channels连接到激活图。</strong></p>
+<p>这些编码对我们进行图像分类和目标检测的实验没有帮助（请参见第4.5节）</p>
+<p>==我们猜想是因为这样的位置编码虽然不是置换等变的，但不满足平移等变，而平移等变在处理图像时是理想的特性。==</p>
+<p>作为解决方案，我们建议将<strong>relative position encodings[37]**的使用扩展到二维，并提出一种基于</strong>Music Transformer** [18]的内存高效实现。</p>
+<p><strong>Relative positional encodings:</strong></p>
+<p>[37]引入位置编码,防止置换等变的同时实现平移等变。我们通过独立地添加相对高度信息和相对宽度信息来实现二维相对自我关注。</p>
+<p>piexl$i=(i_x,i_y)$,这里的$i_x$和$i_y$是指在spatial时候的坐标， $j=(j_x,j_y)$与$i$类似，他俩的相对注意力计算公式如下:<br>$$<br>l_{i,j}=\frac{q^T_i}{\sqrt{d_k^h}}(k_j+r^W_{j_x-i_x}+r^H_{j_y-i_y})<br>$$<br>$q_i$指query $Q$的第$i$行,也就是第$i$个点,$k_j$就是key $K$的第$j$行,$r^W_{j_x-i_x}$是learned embeddings for 相对宽度$j_x-i_x$,$r^H_{j^y-i^y}$是相对宽度,</p>
+<p>output of head h now becomes:<br>$$<br>O_h=Softmax(\frac{QK^T+S^{rel}_H+S^{rel}_W}{\sqrt{d^h_k}})V<br>$$</p>
+<p>$S^{rel}_H,S^{rel}_W\in R^{HW\times HW}$</p>
+<p>$S^{rel}_H[i,j]=q^T_ir^H_{j_y-i_y}$</p>
+<p>$S^{rel}_W[i,j]=q^T_ir^W_{j_x-i_x}$</p>
+<p>[37]中的相对注意机制带来额外的内存开销为$O((HW)^2d^k_h)$,   太大了 ,不带位置注意的才$O((HW)^2N_h)$,并且一般来说$N_h&lt;d^h_k$，实在得不偿失，==本文提出的只有==$O(HWd_k^h)$</p>
+<p>相对位置嵌入$r^H$和$r^W$在头之间共享而不是在层之间共享,对每个layer,建模高度和宽度的相对位置距离增加了$(2(H+W)-2)d^h_k$的参数量。</p>
+<h4 id="3-2-Attention-Augmented-Convolution"><a href="#3-2-Attention-Augmented-Convolution" class="headerlink" title="3.2. Attention Augmented Convolution"></a>3.2. Attention Augmented Convolution</h4><p>SENet[17] GENet[16]channelwise reweighing</p>
+<p>BAM[31] CBAM[46] reweigh both channels and spatial positions ==independently==. </p>
+<p>与这些方法相比,我们</p>
+<ol>
+<li>使用一种<strong>可以同时注意空间和特征子空间(每个头部对应一个特征子空间)的注意力机制</strong></li>
+<li>引入<strong>额外的特征图而不是refining them</strong></li>
+</ol>
+<p><strong>Concatenating convolutional and attentional feature maps:</strong></p>
+<p>形式上,考虑一个kernel size=k，$F_{in}$input filters $F_{out}$ output filters.相应的AA conv can be written as:<br>$$<br>AAConv(X)=Concat[Conv(X),MHA(X)]<br>$$</p>
+<p>$v=\frac{d_v}{F_{out}}$表示the ratio of attentional channels to number of original output filter</p>
+<p>$\kappa=\frac{d_k}{F_{out}}$the ratio of key depth to number of original output filters</p>
+<p>与卷积类似,AAC:</p>
+<ol>
+<li>is equivariant to translation 平移等变</li>
+<li>可以很容易地对不同spatial尺寸的输入进行操作</li>
+</ol>
+<p><strong>Effect on number of parameters：</strong></p>
+<p>参数量计算先不看了,反正这篇文章奇奇怪怪的啊</p>
+<p><strong>Attention Augmented Convolutional Architectures:</strong></p>
+<p>增强卷积之后是BN,==BN can learn to scale the contribution of the convolution feature maps and the attention feature maps可以学习放缩卷积特征层和注意力特征层的贡献/作用==   与SENet等相同,对每个残差块应用一次增强卷积 </p>
+<p>由于内存成本$O(N_h(HW)^2)$,对于较大的空间维度是不行的,==所以我们从最后一层开始加,直到内存受不了==就tm离谱</p>
+<p>为了减少内存占用,选用较少的$batchsize$，同时开始的尺寸较大的时候用$downsample$，使用3x3,stride=2的平均池化</p>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h2 id="SASA"><a href="#SASA" class="headerlink" title="SASA"></a>SASA</h2><h3 id="Info-1"><a href="#Info-1" class="headerlink" title="Info"></a>Info</h3><h2 id="Relationship"><a href="#Relationship" class="headerlink" title="Relationship"></a>Relationship</h2><h3 id="Info-2"><a href="#Info-2" class="headerlink" title="Info"></a>Info</h3><p>2020 ICLR oral On the relationship between self-attention and convolutional layers</p>
+<h3 id="Abstract-1"><a href="#Abstract-1" class="headerlink" title="Abstract"></a>Abstract</h3><p>==将注意力机制整合到视觉的趋势使研究人员重新考虑卷积层作为主要构建块的优势==</p>
+<p>除了==帮助CNN处理远程依赖关系==外，Ramachandran等人还提出了解决方案表明==注意力可以完全取代卷积，并在视觉任务上达到最先进的性能。==</p>
+<p>==问题:学到的注意力层的运作方式与卷积层的运作方式类似吗？==</p>
+<p>这项工作提供了证据表明==注意力层可以进行卷积，实际上，他们经常在实践中学会这样做。== 具体来说，我们证明<strong>具有足够数量的头部的多头自我注意层至少与任何卷积层一样具有表现力</strong>。 然后，我们的数值实验表明，<strong>自注意力层与CNN层相似地参与了像素网格模式</strong>，从而证实了我们的分析。</p>
+<h3 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>transformer</strong> 到底是何方神圣？处处都有他</p>
+<p>最初在==神经机器翻译中引入注意力机制就是为了更好地处理长期依赖==，</p>
+<h2 id="SPNet"><a href="#SPNet" class="headerlink" title="SPNet"></a>SPNet</h2><h3 id="Info-3"><a href="#Info-3" class="headerlink" title="Info"></a>Info</h3><p>20CVPR 和下一篇是一脉相承啊<del>~</del></p>
+<h3 id="Abstract-2"><a href="#Abstract-2" class="headerlink" title="Abstract"></a>Abstract</h3><p>Strip pooling: $1\times N$,$N\times 1$</p>
+<p>空间池化体系结构设计:</p>
+<h2 id="CANet"><a href="#CANet" class="headerlink" title="CANet"></a>CANet</h2><h3 id="Info-4"><a href="#Info-4" class="headerlink" title="Info"></a>Info</h3><p>21CVPR </p>
+<h3 id="Abstract-3"><a href="#Abstract-3" class="headerlink" title="Abstract"></a>Abstract</h3><p>Mobile network设计的最新研究表明,<strong>通道注意(如SENet)对提升模型性能</strong>具有显著效果,但他们==通常会忽略位置信息，这对生成空间选择性注意图非常重要。==</p>
+<p>本文为mobile networks 提出了一种新颖的注意机制,==通过将位置注意力嵌入到通道注意力中，我们将其称为”coordinate attention坐标注意力”.==</p>
+<p>与通过2D全局池化将<strong>特征张量</strong>转化为<strong>单个特征向量</strong>的channel attention不同,coordinate attention将channel attention分解成两个1D特征编码的过程，分别沿两个空间方向聚合特征。==这样，可以沿一个空间方向捕获远程依赖关系，同时可以沿另一空间方向保留精确的位置信息。==然后将<strong>生成的特征图分别编码为一对方向感知和位置敏感</strong>的注意图，可以将其互补地应用于输入特征图，以增强关注对象的表示。</p>
+<p>coordinate attention很简单,可以灵活地插入到经典的移动网络中,如<strong>MobileNetV2,MobileNeXt和EfficientNet，而且几乎没有计算开销computational overhead。</strong></p>
+<h3 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h3><p>**被用来告诉模型注意“什么”和注意“哪里”的注意力机制，已经得到了广泛的研究,**并广泛用于提高现代深度神经网络的性能[18，44，3，25，10， 14] SENet  CBAM GCNet SCNet DANet SPM。==但是，它们在移动网络(尺寸有限)中的应用明显落后于大型网络[36、13、46]VGG ResNet RexNeXt。这主要是因为大多数注意力机制带来的计算开销对于移动网络而言是无法承受的。==考虑到其有限的计算能力，现在最受欢迎的还是SENet。但SENet只考虑通道信息，忽略了位置信息。</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210418215647978.png" alt="SEnet CBAM CANet"></p>
+<p>后来的工作,例如BAM和CBAM,试图通过减小输入张量的通道尺寸然后利用卷积计算空间注意力来利用位置信息,如图(b).</p>
+<p>卷积只能捕获局部关系,无法捕获长远依赖。</p>
+<p>在本文中，beyond the first works，我们还提出了一种新颖而有效的注意力机制，==即将位置信息嵌入到频道注意力中，从而使移动网络可以注意较大的区域，同时避免产生大量的计算开销。==</p>
+<p><strong>为了减轻2D全局池化引起的位置信息丢失，我们将channel attention分解为两个并行的1D特征编码过程，以将空间坐标信息有效地集成到生成的注意力图中。</strong></p>
+<p>具体而言，我们的方法利<strong>用两个1D全局池化操作将沿垂直方向和水平方向的输入要素分别聚合为两个单独的方向感知要素图。</strong> </p>
+<p><strong>然后将这两个具有嵌入的特定于方向的信息的特征图分别编码为两个注意图，每个注意图都沿一个空间方向捕获输入特征图的长期依赖性。</strong></p>
+<p> <strong>位置信息因此可以被保存在所生成的注意力图中。</strong></p>
+<p> 然后通过<strong>乘法</strong>将两个注意图都应用于输入特征图，以强调感兴趣的表示。</p>
+<p> 我们将提出的注意力方法称为坐标注意力，<strong>因为其操作可以区分空间方向（即坐标）并生成可感知坐标的注意力图。</strong></p>
+<p>坐标注意力具有以下优势:</p>
+<ul>
+<li>==它不仅捕获cross-channel信息，还捕获方向感知direction-aware和位置敏感position-sensitive信息，这有助于模型更准确地定位和识别感兴趣的对象==</li>
+<li>方法灵活，轻巧，可以轻松地插入到经典的移动网络构建块中,如MobileNetV2中提出的inverted residual block反向残差块和MobileNeXt中的sandglass块，通过强调信息表达来增强特征</li>
+<li>第三，作为一种预先训练的模型，我们的坐标注意力可以为移动网络的下游任务带来显著的性能提升，尤其是对于那些密集预测(例如语义分割)的任务，我们将在实验部分进行展示。</li>
+</ul>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210421100216540.png" alt="效果对比"></p>
+<p>效果看着确实不错</p>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><h4 id="2-1-Mobile-Network-Architectures"><a href="#2-1-Mobile-Network-Architectures" class="headerlink" title="2.1. Mobile Network Architectures"></a>2.1. Mobile Network Architectures</h4><p>最近的SORT的移动网络主要基于深度可分离卷积depthwise separable convolutions</p>
+<blockquote>
+<p>Mobilenets: Efficient convolu- tional neural networks for mobile vision applications.</p>
+</blockquote>
+<p>和反向残差块inverted residual block </p>
+<blockquote>
+<p>Mobilenetv2: Inverted residuals and linear bottlenecks. </p>
+</blockquote>
+<p>HBONet [20]在每个反向残差块内部引入了下采样操作，以对典型的空间信息进行建模。</p>
+<p>ShuffleNetV2 [27]在反向残差块之前和之后使用channel split module和channel shuffle module。</p>
+<p>后来，==MobileNetV3 [15]与neural architecture search algorithms [50]相结合，以搜索最佳激活函数和不同深度的反向残差块的扩展率。==</p>
+<p>此外，MixNet [39]，EfficientNet [38]和ProxylessNAS [2]也==采用不同的搜索策略来搜索最优的深度可分离卷积或标量以控制网络权重==，例如扩展比，输入分辨率， 网络深度和宽度。</p>
+<p>最近，Zhou等人 [49]重新考虑了利用深度可分离卷积的方法，提出了MobileNeXt,该网络为mobile networks采用了一个经典的bottleneck 结构。</p>
+<h4 id="2-2-Attention-Mechanisms"><a href="#2-2-Attention-Mechanisms" class="headerlink" title="2.2. Attention Mechanisms"></a>2.2. Attention Mechanisms</h4><p>SENet首先成功，其次CBAM扩展了它的思想，后来的作品，如GENet [17]，GALA [22]，AA [1]和TA [28]，通过采用不同的空间注意力机制或设计高级注意力块来扩展了这一思想。后来的作品，如GENet [17]，GALA [22]，AA [1]和TA [28]，通过采用不同的空间注意力机制或设计高级注意力块来扩展了这一思想。</p>
+<p>non-local/self-attention网络由于其建立spatial或cahnnel关注的能力而近来非常受欢迎。 典型示例包括NLNet [43]，GCNet [3]，$A^2Net$ [7]，SCNet [25]，GSoP-Net [11]或CC-Net [19]，所有这些都利用nonlocal来获取不同类型的空间信息。 然而，==由于self-attention模块内部的大量计算，它们通常在大型模型中使用[13，46]，但不适用于移动网络。==</p>
+<p>与这些利用昂贵且沉重的non-local或self attention blocks的方法不同，我们的方法考虑了一种捕获positional information和channel-wise relationships以增强移动网络特征表示的更有效方法。 通过将2D全局池化操作分解为两个一维编码过程，我们的方法比其他具有轻量级属性的注意方法（例如SENet [18]，CBAM [44]和TA [28]）执行效果要好得多。</p>
+<h3 id="Coordinate-Attention"><a href="#Coordinate-Attention" class="headerlink" title="Coordinate Attention"></a>Coordinate Attention</h3><p>corordinate attention block即插即用模块,对于任意中间层特征张量$X=[x_1,x_2,…,x_C]\in R^{C\times H\times W}$作为输入，输出具有扩展表示的变换张量$Y=[y_1,y_2,…,y_C]$,与$X$具有相同的size。</p>
+<h4 id="3-1-Revisit-SENet"><a href="#3-1-Revisit-SENet" class="headerlink" title="3.1. Revisit SENet"></a>3.1. Revisit SENet</h4><p>==标准卷积本身很难对通道关系进行建模。明确建立渠道的相互依存关系可以提高模型对信息通道的敏感性，而信息通道对最终分类决策的贡献更大==</p>
+<h4 id="3-2-Coordinate-Attention-Blocks"><a href="#3-2-Coordinate-Attention-Blocks" class="headerlink" title="3.2. Coordinate Attention Blocks"></a>3.2. Coordinate Attention Blocks</h4><p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210418215647978.png" alt="SEnet CBAM CANet"></p>
+<p>坐标注意力同时对channel关系和带精确位置信息的long-range依赖进行编码,通过以下两个步骤:</p>
+<p><strong>coordinate information embedding and coordinate attention generation.</strong> </p>
+<p><strong>3.2.1</strong></p>
+<p><strong>Coordinate Information Embedding</strong><br>$$<br>z_c=\frac{1}{H\times W}\sum^H_{i=1}\sum^W_{j=1}x_c(i,j)<br>$$<br>上面的是SENet，==直接利用全局池化，很难保留位置信息，所以用于目标分类任务，本文提的坐标注意力考虑了位置信息，所以可以用于语义分割。==</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210426095205170.png" alt="缩放成一个点"></p>
+<p>将上面的分解为一对1D feature encoding operations。</p>
+<p>具体来说，给定输入X，我们使用池化核的两个空间范围(H,1)或(1,W)分别沿水平坐标和垂直坐标对每个通道进行编码。因此,第c个通道的高度为h处的输出可以表示为:<br>$$<br>z_c^h(h)=\frac{1}{W}\sum_{0\le i&lt;W}x_c(h,i)<br>$$<br><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210426095226968.png" alt="缩放成一个竖条"></p>
+<p>相似的,第c个通道的宽度为w处的输出可以表示为:<br>$$<br>z_c^w(w)=\frac{1}{H}\sum_{0\le j&lt;H}x_c(j,w)<br>$$<br><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210426095248067.png" alt="缩放成一个横条"></p>
+<p>上面的两个变换分别沿两个空间方向聚合了特征，从而生成了一对方向感知的特征图。</p>
+<p>==这两个变换还使我们的注意力块能够捕获沿一个空间方向的远距离依赖关系，并沿另一空间方向保留精确的位置信息，这有助于网络更准确地定位感兴趣的对象。==</p>
+<p>==冥冥之中感觉拆分还可以改进==</p>
+<p><strong>3.2.2 Coordinate Attention Generation</strong></p>
+<p>上面两个式子具有全局感受野并编码了精确的位置信息,为了利用由此产生的表现形式,我们提出了第二种转换,<strong>称为坐标注意力生成</strong>。</p>
+<p>我们的设计参考以下三个标准:</p>
+<ul>
+<li>==新的转换应当尽可能简单和开销小,考虑到移动应用环境==</li>
+<li>==充分利用捕获的位置信息,从而可以准确的突出显示感兴趣的区域==</li>
+<li>==有效捕获取channel间的关系==</li>
+</ul>
+<p>对于之前生成的两个特征图,我们首先将他们连接起来,然后将他们发送到共享的1x1卷积变换函数F1,产生<br>$$<br>f=\delta(F_1([z^h,z^w]))<br>$$<br>$[.,.]$表示沿空间维度的concat操作,$\delta$是一个非线性激活函数,$f\in R^{C/r(H+W)}$是在<strong>水平方向和垂直方向上对空间信息进行编码的中间特征图。</strong></p>
+<p>然后，我们沿着空间维将$f$拆分为两个单独的张量:$f^h\in R^{C/r\times H}$ $f^w\in R^{C/r\times W}$</p>
+<p>另外两个1x1卷积变换$F_h$和$F_w$被使用来分别使$f^h$和$f^w$和输入$X$具有相同的channel:<br>$$<br>g^h=\sigma(F_h(f^h))\<br>g^w=\sigma(F_w(f^w))<br>$$<br>$\sigma$是sigmoid function</p>
+<p>$g^h$和$g^w$然后将被扩展并用做注意权重,最终输出$Y$如下:<br>$$<br>y_c(i,j)=x_c(i.j)\times g^h_c(i)\times g^w_c(j)<br>$$<br><strong>Discussion:</strong></p>
+<p>==两个注意力图中的每个元素反映了感兴趣的对象是否存在于相应的行和列中。这种编码过程使我们的注意力集中在更准确地定位感兴趣对象的确切位置上，从而帮助整个模型更好地识别。==</p>
+<h4 id="3-3-Implementation"><a href="#3-3-Implementation" class="headerlink" title="3.3. Implementation"></a>3.3. Implementation</h4><p>采用两种经典的轻量级体系结构,他们具有不同的类型的残差块,即:MobileNetV2和MobieNeXt</p>
+<p>下图3显示了如何将注意力块插入MobileNetV2中的inverted residual block和MobileNeXt中的sandglass block。</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210421161046801.png" alt="Figure 3" style="zoom: 80%;">
+
+<h3 id="Experiments-1"><a href="#Experiments-1" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="4-1-Experiment-Setup"><a href="#4-1-Experiment-Setup" class="headerlink" title="4.1. Experiment Setup"></a>4.1. Experiment Setup</h4><p>PyTorch  SGD decay $momentum =0.9$ 权重衰减设置为$4\times 10^{-5}$ 余弦衰减策略  </p>
+<p>$NVIDIA \quad GPU\quad  batchsize=256$</p>
+<p>$baseline=MobileNetV2$    $epoch=200$</p>
+<h4 id="4-2-Ablation-Studies"><a href="#4-2-Ablation-Studies" class="headerlink" title="4.2. Ablation Studies"></a>4.2. Ablation Studies</h4><h2 id="HaloNet"><a href="#HaloNet" class="headerlink" title="HaloNet"></a>HaloNet</h2><h3 id="Info-5"><a href="#Info-5" class="headerlink" title="Info"></a>Info</h3><p>21CVPR oral</p>
+<blockquote>
+<p>Scaling Local Self-Attention for Parameter Efficient Visual Backbones</p>
+</blockquote>
+<h3 id="Abstract-4"><a href="#Abstract-4" class="headerlink" title="Abstract"></a>Abstract</h3><p>==Self-attention: parameter-independent scaling of receptive fields &amp;content-dependent interactions==</p>
+<p>==convolutions: parameter-dependent scaling &amp;content-independent interactions==</p>
+<p>相比卷积基线模型,self attention模型在==准确性-参数折中==方面就有令人鼓舞的改进</p>
+<p>==旨在开发自我注意力模型，该模型不仅可以胜过规范的基线模型，而且可以胜过高性能的卷积模型。==</p>
+<p>我们提出了两种self attention的扩展，与self attention的更有效实现相结合，可以提高这些模型的速度，内存使用率和准确性。 </p>
+<p>我们利用这些改进来开发新的self attention模型系列HaloNets，该系列在ImageNet分类基准的参数受限设置上达到了最先进的精度。</p>
+<p>在初步的转移学习实验中，我们发现HaloNet模型的性能优于更大的模型，并且具有更好的推理性能。 在诸如对象检测和实例分割之类的较艰巨的任务上，我们简单的local self attention和卷积混合算法在非常强大的基线上显示出改进。==These results mark another step in demonstrating the efficacy of self-attention models on settings traditionally dominated by convolutional models.==</p>
+<h3 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h3><p>另一方面,Transformer[57]表明,==自我注意是捕获句子中单词之间整体相互作用的一种有效且计算效率高的机制。==</p>
+<p>==self-attention具有使其非常适合视觉的几个特性:==</p>
+<ul>
+<li><strong>基于内容的交互，而不是与内容无关的卷积交互</strong></li>
+<li><strong>参数无关的感受野尺寸缩放,而不是卷积的参数依赖缩放</strong></li>
+<li><strong>捕获用于较大图像的长期依赖关系的经验能力</strong></li>
+<li><strong>处理和整合视觉中出现的多种类型数据的灵活性，例如像素，点云，序列条件信息和图形</strong></li>
+</ul>
+<p>self attention也可以被认为是一种适应性非线性，可与计算机视觉中非线性处理技术的悠久历史相提并论，例如双边滤波[39]</p>
+<blockquote>
+<p>Bilateral filtering: Theory and applications.</p>
+</blockquote>
+<p>和非局部手段[4]。</p>
+<blockquote>
+<p>A non-local algorithm for image denoising.</p>
+</blockquote>
+<p>我们引入了non-centered版本的local attention,它可以通过haloing高效的映射到现有硬件。</p>
+<p>==尽管我们的公式破坏了平移等变性,但是与SASA中使用的centered local self-attention相比,既提高了吞吐量,又提高了准确性。==</p>
+<p>我们还介绍了用于多尺度特征提取的跨步self-attention下采样操作。</p>
+<p>我们利用之前的技术开发了一个新的local self-attention模型家族,HaloNet,可在不同参数范围内达到最先进的性能</p>
+<p>==我们进行了详细的研究，以揭示self attention和conv模型如何以不同的方式scale。我们最后讨论了将self attention应用于视觉的当前局限性和未来工作的构想。==</p>
+<h3 id="Models-and-Methods"><a href="#Models-and-Methods" class="headerlink" title="Models and Methods"></a>Models and Methods</h3><p>尽管我们的模型使用self attention代替conv来捕获像素之间的空间相互作用，但它们==采用了现代卷积神经网络（CNN）的一些重要架构特征==</p>
+<p>计算多尺度特征层次结构，==为此,开发了一个strided self-attention, a natural extension of strider convolutions==</p>
+<p>==为了处理较大分辨率下的计算成本问题(global attention是不可行的),我们遵循局部处理这一相当普遍的原则,并使用spatially restricted forms of self-attention 并使用空间受限形式的self-attention==</p>
+<p>但是与SASA不同,==我们放弃了强制的平移等变性而代之以更好的硬件利用率,从而提高了速度-精度的权衡==</p>
+<p>另外,尽管我们使用local self attention,==但每个像素的感受野非常大(up to 18x18),并且 SEction 4.2.2表明较大的感受野有助于处理较大的图像。==</p>
+<h4 id="2-1-Self-attention-can-generate-spatially-varying-convolutional-filter"><a href="#2-1-Self-attention-can-generate-spatially-varying-convolutional-filter" class="headerlink" title="2.1. Self-attention can generate spatially varying convolutional filter"></a>2.1. Self-attention can generate spatially varying convolutional filter</h4><p>最近的工作[8]</p>
+<blockquote>
+<p>On the relationship between self-attention and convolutional layers</p>
+</blockquote>
+<p>表明，==具有足够数量的头部的self attention和正确的几何偏差可以模拟卷积，这表明自注意力和卷积之间存在更深的关系==。 </p>
+<p>==The perspective that we discuss in this section is one that views self-attention as generating spatially varying filters, in contrast to the reuse of the same filter across every spatial location in standard convolutions [14].卷积是相同滤波器的重用,而self-attention是生成性的空间变换滤波==</p>
+<p>为了观察这一点,我们将self-attention和conv作为一般空间池化函数的特定实例进行编写,</p>
+<p>To observe this, we write self-attention and convolution as specific instances of a general spatial pooling function.</p>
+<p>给定$input$  $x\in R^{H\times W\times C_{in}}$ ,定义了一个local 2D pooling 函数,该函数计算位置$(i,j)$的输出,$y_{ij}\in R^{c_{out}}$：<br>$$<br>y_{ij}=\sum_{a,b\in N(i.j)}f(i,j,a,b)x_{ab}<br>$$</p>
+<h2 id="CAA"><a href="#CAA" class="headerlink" title="CAA"></a>CAA</h2><h3 id="Info-6"><a href="#Info-6" class="headerlink" title="Info"></a>Info</h3><h3 id="Abstract-5"><a href="#Abstract-5" class="headerlink" title="Abstract"></a>Abstract</h3><p>==分别计算空间注意力和通道注意力,然后直接将他们融合会导致特征表示冲突conflicting feature representation==</p>
+<p><strong>Channelized Axial Attention通道化轴向注意力</strong>,以==降低计算复杂度并无缝集成通道注意力和轴向注意力axial attention==</p>
+<h3 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h3><p>==对于特征图中的每个像素，spatial self attention使它的表示与更接近的像素的表示更相似，而channel attention会在整个特征图中找到重要的通道，并对提取的特征应用不同的权重。==</p>
+<img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210429144509418.png" alt="image-20210429144509418" style="zoom: 80%;">
+
+<p>==分别计算空间注意和通道注意不仅增加了计算复杂度，而且还可能导致特征表示的重要性冲突。例如，对于属于特征图中部分区域的像素，某些channel对于channel attention可能显得很重要，但是spatial attention可能具有自己的视角，这是通过将整个特征图中的相似度相加得出的， 并削弱了channel attention的影响。==</p>
+<p>channel attention可能忽略从整体角度获得的局部区域表示，而那可能是spatial attention所要求的。 因此，将spatial attention结果与channel attention结果直接融合可能会为像素表示产生不正确的重要性权重。==在本文的“experiments”部分中，我们开发了一种方法来可视化特征表示的冲突对最终分割结果的影响.==</p>
+<p>为了以一种<strong>互补的方式无缝有效地</strong>结合空间注意力和通道注意力的优势，我们提出了一种<strong>通道化轴向注意力(CAA)</strong>,它基于重新定义的轴向注意力以减少self attention的计算成本。</p>
+<h3 id="Related-Work-1"><a href="#Related-Work-1" class="headerlink" title="Related Work"></a>Related Work</h3><h3 id="Methods-1"><a href="#Methods-1" class="headerlink" title="Methods"></a>Methods</h3><h4 id="A-Spatial-Self-Attention"><a href="#A-Spatial-Self-Attention" class="headerlink" title="A.Spatial Self-Attention"></a>A.Spatial Self-Attention</h4><p>$f(x_{i,j}, x_{m,n}) = softmax_{m,n}(θ(x_{i,j})^Tθ(x_{m,n}))$</p>
+<p>这是non-local中的相似度函数,$f$采用该形式,$\theta$表示1x1卷积</p>
+<h4 id="B-Spatial-Axial-Attention"><a href="#B-Spatial-Axial-Attention" class="headerlink" title="B.Spatial Axial Attention"></a>B.Spatial Axial Attention</h4><p>将应用在NLP和全景分割的轴线注意力改造过来！</p>
+<p>在轴线注意力中,spatial attention map分别沿着列轴和行轴计算。</p>
+<p>我们将沿Y轴计算的partial attention map称为“列注意”，将“行注意”沿X轴计算的partial attention map称为“行注意”。</p>
+<p>对于第j-th column attention,当前位置$(i,j)$与其他每个位置$(m,j)$进行self attention。<br>$$<br>A_{col}(x_{i,j},x_{m,j})=softmax_m(\theta(x_{i,j})^T(x_{m,j}))<br>$$<br>每个点和同列上的点计算相似度,所以最终特征图$A_{col}$的维度为:$W\times H\times H$</p>
+<p>同理,$A_{row}$的维度为$H\times W\times W$</p>
+<p>行注意力和列注意力都是基于backbone产生的特征图计算,这与Axial-deeplab不同,==Axial-deeplab的row attention map是基于col attention map计算的==</p>
+<p>通过使用相同的特征作为输入,最终输出$y_{i,j}$对特征$x_{i,j}$的依赖会有很大的加强,而不是像Aixal-deeplab那样使用skip-connection。</p>
+<p>最终输出可以表示为:</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210429204730241.png" alt="image-20210429204730241"></p>
+<p>==就直接两个维度的连续相乘的激活呗==</p>
+<p>为了方便表示,如下：<br>$$<br>\alpha_{i,j,m}=A_{col}(x_{i,j},x_{m,j})g(x_{m,j})\<br>\beta_{i,j,n}=A_{row}(x_{i,j},x_{i,n})\sum_{\forall m}\alpha_{i,j,m}<br>$$<br>式子5可以方便的表示为:</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210429205802880.png" alt="image-20210429205802880"></p>
+<h4 id="C-The-Proposed-Channelized-Axial-Attention"><a href="#C-The-Proposed-Channelized-Axial-Attention" class="headerlink" title="C. The Proposed Channelized Axial Attention"></a>C. The Proposed Channelized Axial Attention</h4><p>为了解决双重注意力的特征冲突问题，并无缝结合空间注意力和通道注意力的优势，我们提出了一种新颖的通道化轴向注意力,该注意力采用了中间结果$\alpha_{i,j,m}$和$\beta_{i,j,n}$</p>
+<p><img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210429212349474.png" alt="image-20210429212349474"></p>
+<p>就是在这个过程中嵌入了通道注意力。</p>
+<h4 id="D-Grouped-Vectorization"><a href="#D-Grouped-Vectorization" class="headerlink" title="D. Grouped Vectorization"></a>D. Grouped Vectorization</h4><h4 id="E-Going-Deeper-in-Channel-Attention"><a href="#E-Going-Deeper-in-Channel-Attention" class="headerlink" title="E. Going Deeper in Channel Attention"></a>E. Going Deeper in Channel Attention</h4><p>为了进一步提高性能，我们探索了更强大的通道注意力设计。</p>
+<p>就是探索了一下全连接呗,说了等于没说</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">dch</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://dchlovestudy.xyz/semantic-segmentation-3/">http://dchlovestudy.xyz/semantic-segmentation-3/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">dch</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/FCN/">
+                                    <span class="chip bg-color">FCN</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="./medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="./medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '0f60d93b293f5b743ee9',
+        clientSecret: 'd0bdbb330cf62f7bac10957894b5d6507935b257',
+        repo: 'chenghaoDong666.github.io',
+        owner: 'chenghaoDong666',
+        admin: ["chenghaoDong666"],
+        id: '2021-04-13T17-05-11',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'TWPqcJz808PYWJLo2bO5Ni0A-gzGzoHsz',
+        appKey: 'wBrlMIP11gP74GA1P1Rrkpbj',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/lun-wen-zhuan-xie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/22.jpg" class="responsive-img" alt="论文撰写">
+                        
+                        <span class="card-title">论文撰写</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            论文撰写的学习
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/" class="post-category">
+                                    论文撰写
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/">
+                        <span class="chip bg-color">论文撰写</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/onnx/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/29.jpg" class="responsive-img" alt="ONNX">
+                        
+                        <span class="card-title">ONNX</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            ONNX学习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9/">
+                        <span class="chip bg-color">模型压缩</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        //if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+        newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        //}
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 亦爱Zxy<br />'
+            + '文章作者: Dch<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="779322177"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Dch</a>
+			<br>
+            <span id="sitetime"></span>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">126.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+				<span id="busuanzi_container_site_pv" style='display:none'> 
+					<i class="fa fa-heart-o"></i> 
+					本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 
+				</span> 
+			
+			 
+				<span id="busuanzi_container_site_uv" style='display:none'> 
+					人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人. 
+				</span> 
+			
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chenghaoDong666" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1785246872@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1785246872" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1785246872" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2020, 10, 13, 00, 00, 00); //北京时间2020-10-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+<script> 
+	$(document).ready(function () { 
+		var int = setInterval(fixCount, 50); // 50ms周期检测函数 
+		var pvcountOffset = 80000; // 初始化首次数据 
+		var uvcountOffset = 20000; 
+		function fixCount() { 
+			if (document.getElementById("busuanzi_container_site_pv").style.display != "none") { 
+				$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset); 
+				clearInterval(int); 
+			} 
+			if ($("#busuanzi_container_site_pv").css("display") != "none") {
+				$("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+				clearInterval(int); // 停止检测 
+			} 
+		} 
+	}); 
+</script>
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "6ef42b68"
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight+240||document.documentElement.clientHeight+240)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+
+</html>

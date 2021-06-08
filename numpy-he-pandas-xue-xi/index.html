@@ -31,9 +31,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.6k
                 </div>
                 
 
@@ -678,12 +678,12 @@
                 <h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/numpy/numpy-ndarray-object.html">https://www.runoob.com/numpy/numpy-ndarray-object.html</a></p>
 <p>API:<a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/numpy-1.9.0/genindex.html">https://docs.scipy.org/doc/numpy-1.9.0/genindex.html</a></p>
 <p>Python<code>list</code>只能与整数相乘，在这种情况下，将<code>list</code>重复的元素：</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">3</span>
+<pre class=" language-python"><code class="language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">3</span>
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
 <p>如果要进行矢量运算，请<code>numpy.ndarray</code>改用：</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token operator">>></span><span class="token operator">></span> ar <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> ar <span class="token operator">*</span> <span class="token number">3</span>
+<pre class=" language-python"><code class="language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> ar <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> ar <span class="token operator">*</span> <span class="token number">3</span>
 array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#numpy数组索引</span>
 pre<span class="token operator">=</span>pre<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">#不用三个中括号，只用一个，里面只用一个逗号</span></code></pre>
@@ -715,10 +715,10 @@ np<span class="token punctuation">.</span>unique<span class="token punctuation">
 np<span class="token punctuation">.</span>ceil<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#向上取整 </span>
 np<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#向下取整</span>
 np<span class="token punctuation">.</span>round<span class="token punctuation">(</span>a<span class="token punctuation">,</span>decimals<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>out<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#将数组四舍五入到指定的小数上</span>
-np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>a<span class="token punctuation">,</span>axis<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>ndarray    eg<span class="token punctuation">:</span>img_nd <span class="token operator">=</span> np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>img_nd<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>a<span class="token punctuation">,</span>axis<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>ndarray    eg<span class="token punctuation">:</span>img_nd <span class="token operator">=</span> np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>img_nd<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#img_nd原先是二维的(0,1),扩张完变(0,1,2)</span>
 np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span>a<span class="token punctuation">,</span>axes<span class="token operator">=</span>None<span class="token punctuation">)</span> eg<span class="token punctuation">:</span>img_nd<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 或 np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span>img_nd<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#(a,b,c)->(c,a,b)</span>
+<span class="token comment" spellcheck="true">#(a,b,c)-&gt;(c,a,b)</span>
 ndarray<span class="token punctuation">.</span>max<span class="token punctuation">(</span>axis<span class="token operator">=</span>None<span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回指定维度的最大值,没指定的话就是所有的最大值</span>
 np<span class="token punctuation">.</span>newaxis
 <span class="token comment" spellcheck="true">#作用是增加一个维度</span>
@@ -728,13 +728,13 @@ np<span class="token punctuation">.</span>newaxis
 <span class="token comment" spellcheck="true">#print (aa)      [[1],[2],[3],[4],[5]] </span>
 np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">(</span>a1<span class="token punctuation">,</span> a2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#将数组序列拼接在一起</span>
-<span class="token operator">>></span><span class="token operator">></span> a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#(2,2)</span>
-<span class="token operator">>></span><span class="token operator">></span> b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#(1,2)</span>
-<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#拼接完->(3,2)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#(2,2)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#(1,2)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#拼接完-&gt;(3,2)</span>
 array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
        <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
        <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
 array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
        <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 numpy<span class="token punctuation">.</span>ravel<span class="token punctuation">(</span>a<span class="token punctuation">,</span> order<span class="token operator">=</span><span class="token string">'C'</span><span class="token punctuation">)</span>
@@ -746,7 +746,12 @@ ndarray<span class="token punctuation">.</span>flatten<span class="token punctua
 <span class="token comment" spellcheck="true">#'C'意味着以行主、C风格的顺序索引元素，最后一个轴索引变化最快，回到第一个轴索引变化最慢。eg:[0,0,0],[0,0,1],[0,0,2],[0,1,0],[0,1,1],...</span>
 <span class="token comment" spellcheck="true">#'F'表示以fortran风格的列主顺序索引元素，第一个索引变化最快，最后一个索引变化最慢。注意，' C '和' F '选项不考虑底层数组的内存布局，只参考轴索引的顺序。eg:[0,0,0],[1,0,0],[2,0,0],[0,1,0],[1,1,0],[2,1,0],...</span>
 <span class="token comment" spellcheck="true">#'A'表示如果a在内存中是Fortran连续的，则以类似Fortran的索引顺序读取元素，否则以类似c的顺序读取</span>
-<span class="token comment" spellcheck="true">#'K'的意思是按照元素在内存中出现的顺序读取它们，除非在步数为负时反转数据。默认情况下，使用'C'索引顺序。</span></code></pre>
+<span class="token comment" spellcheck="true">#'K'的意思是按照元素在内存中出现的顺序读取它们，除非在步数为负时反转数据。默认情况下，使用'C'索引顺序。</span>
+np<span class="token punctuation">.</span>spacing<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#返回x和最近相邻数字之间的距离</span>
+<span class="token comment" spellcheck="true">#可以视为eps的一个繁华</span>
+np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>array<span class="token punctuation">,</span>axis<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#用于返回一个numpy数值中最大值的索引,当一组中同时出现几个最大值时，返回第一个最大值的索引值。</span></code></pre>
 <h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><p>教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/pandas/python_pandas_environment_setup.html">https://www.yiibai.com/pandas/python_pandas_environment_setup.html</a></p>
 <p>API:<a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/index.html">https://pandas.pydata.org/pandas-docs/stable/reference/index.html</a></p>
 <p>将dataframe一行转化为int，astype</p>
@@ -758,7 +763,7 @@ df<span class="token punctuation">.</span>shape<span class="token punctuation">[
 <p>API：<a target="_blank" rel="noopener" href="https://matplotlib.org/3.3.2/api/index.html">https://matplotlib.org/3.3.2/api/index.html</a></p>
 <p>假如目前只有一个figure1，你再绘图是在它上面不断覆盖的</p>
 <p>分为plt绘图与axes绘图两种方式</p>
-<h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><p><a target="_blank" rel="noopener" href="https://www.fontke.com/tool/rgb/800000/">根据RGB  CMYK  HSL  HSV  XYZ 值来查询颜色</a></p>
+<h3 id="图像处理与可视化"><a href="#图像处理与可视化" class="headerlink" title="图像处理与可视化"></a>图像处理与可视化</h3><p><a target="_blank" rel="noopener" href="https://www.fontke.com/tool/rgb/800000/">根据RGB  CMYK  HSL  HSV  XYZ 值来查询颜色</a></p>
 <p><code>plt.figure(1)</code>建立一个新的展示图像的画板</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>image <span class="token keyword">as</span> imgplt
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -769,8 +774,27 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <span class="token comment" spellcheck="true">#imread的返回值是图片数据data，数据类型是class:`numpy.array`。这个图片数据data的维度如下：</span>
 <span class="token comment" spellcheck="true">#- (M, N) 对于灰度级图片</span>
 <span class="token comment" spellcheck="true">#- (M, N, 3) 对于RGB彩色图片.</span>
-<span class="token comment" spellcheck="true">#- (M, N, 4) 对于RGBA彩色图片</span></code></pre>
-<p><code>plt.imsave(文件名,X,format='png')</code>图片的保存</p>
+<span class="token comment" spellcheck="true">#- (M, N, 4) 对于RGBA彩色图片</span>
+plt<span class="token punctuation">.</span>colorbar<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># colorbar()如下图中红框标出</span></code></pre>
+<img src="./medias/loading.gif" data-original="/numpy-he-pandas-xue-xi/image-20210422211101827.png" alt="colorbar" style="zoom:67%;">
+
+<pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>imsave<span class="token punctuation">(</span>文件名<span class="token punctuation">,</span>X<span class="token punctuation">,</span>format<span class="token operator">=</span><span class="token string">'png'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#图片的保存</span>
+plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span>nrows<span class="token punctuation">,</span>ncows<span class="token punctuation">,</span>index<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#nrows:行数 ncols:列数 index:索引值,图片放在第几个窗格</span>
+plt<span class="token punctuation">.</span>xticks<span class="token punctuation">(</span>ticks<span class="token operator">=</span>None<span class="token punctuation">,</span>labels<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># ticks:设置刻度 labels:设置刻度标签</span>
+plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span>xlabel<span class="token punctuation">:</span>str<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#xlabel: label的文本</span>
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>train_images<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span>plt<span class="token punctuation">.</span>cm<span class="token punctuation">.</span>binary<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#train_images[i]:必须是array-like或PIL image</span>
+<span class="token comment" spellcheck="true">#cmap:用于将标量数据映射到颜色的Colormap实例或已注册的colormap名称</span>
+<span class="token comment" spellcheck="true">#将图片展示到figure上</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#显示figure</span>
+</code></pre>
+<p>PIL</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np   <span class="token comment" spellcheck="true">#可以这样用PIL读取处理图片,然后最后再转成ndarray</span>
 <span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
 
@@ -781,6 +805,11 @@ np<span class="token punctuation">.</span>unique<span class="token punctuation">
 <p>三通道RGBnumpy读取显示是0-1，而不是0-255，这个是归一化的RGB！！正好和概率二分类对应！</p>
 <p><strong>Snipaste竟然可以实时获取颜色值！！！如下：</strong></p>
 <p><img src="./medias/loading.gif" data-original="/numpy-he-pandas-xue-xi/image-20201207093513840.png" alt="采集颜色值"></p>
+<h3 id="可视化中间特征图"><a href="#可视化中间特征图" class="headerlink" title="可视化中间特征图"></a>可视化中间特征图</h3><p>把网络中间某层的输出的特征图按通道作为图片进行可视化展示即可，如下述代码所示：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token comment" spellcheck="true">#get feature map of layer_activation</span>
+plt<span class="token punctuation">.</span>matshow<span class="token punctuation">(</span>layer_activation<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">'viridis'</span><span class="token punctuation">)</span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ztf312/article/details/102474190">cmap参数设置</a></p>
 
             </div>
             <hr/>
@@ -1639,7 +1668,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68k</span>&nbsp;字
+                class="white-color">126.2k</span>&nbsp;字
             
             
             
