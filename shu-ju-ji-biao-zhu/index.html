@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -726,7 +726,10 @@ pip install labelme</code></pre>
 <p>到此，原始图片和标注数据都已获取完毕，那么如何实现上述的 4998+5105 的训练/验证划分呢？</p>
 <p>这里需要使用CVPR’17 <a target="_blank" rel="noopener" href="https://sites.google.com/view/pasd/dataset">PASCAL in Detail Challenge</a>中实现的Detail接口。其github地址为：<a target="_blank" rel="noopener" href="https://github.com/ccvl/detail-api">https://github.com/ccvl/detail-api</a></p>
 <p>具体使用方法可以参考其提供的文档，这里不再赘述。</p>
-<h4 id="PASCAL-VOC2012-Aug"><a href="#PASCAL-VOC2012-Aug" class="headerlink" title="PASCAL VOC2012 Aug"></a>PASCAL VOC2012 Aug</h4><h4 id="ADE-20K"><a href="#ADE-20K" class="headerlink" title="ADE 20K"></a>ADE 20K</h4><h3 id="SDD"><a href="#SDD" class="headerlink" title="SDD"></a>SDD</h3><h4 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h4><p>15年一个皮肤分割数据集&lt;&lt;A Skin Detection Dataset for Training and Assessment of Human Skin Classifiers&gt;&gt;</p>
+<h4 id="PASCAL-VOC2012-Aug"><a href="#PASCAL-VOC2012-Aug" class="headerlink" title="PASCAL VOC2012 Aug"></a>PASCAL VOC2012 Aug</h4><h4 id="ADE-20K"><a href="#ADE-20K" class="headerlink" title="ADE 20K"></a>ADE 20K</h4><h4 id="CityScape"><a href="#CityScape" class="headerlink" title="CityScape"></a>CityScape</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zz2230633069/article/details/84591532">cityscape数据集介绍</a></p>
+<p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/new1\jianguoyun_posts\数据集标注\image-20210921114221474.png" alt="image-20210921114221474"></p>
+<p>这张图片很重要,有些虽然有类别id,但是训练的时候trainId是255,不考虑,真正开始考虑的是road</p>
+<h3 id="SDD"><a href="#SDD" class="headerlink" title="SDD"></a>SDD</h3><h4 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h4><p>15年一个皮肤分割数据集&lt;&lt;A Skin Detection Dataset for Training and Assessment of Human Skin Classifiers&gt;&gt;</p>
 <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>超过20000张图像  非常精确：<strong>专业图形工具  三元划分</strong>  与SFA比较 <strong>定性且定量</strong>表明更好</p>
 <h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p><strong>数据库组织良好</strong>：因此使用时只和方法有关，而和数据集无关</p>
 <p><strong>不同光照和成像条件下捕获</strong></p>
@@ -1603,7 +1606,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">126.2k</span>&nbsp;字
+                class="white-color">133.8k</span>&nbsp;字
             
             
             

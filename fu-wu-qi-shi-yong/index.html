@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -717,7 +717,8 @@ tail <span class="token operator">-</span>f <span class="token number">1.</span>
 <pre class=" language-shell"><code class="language-shell"># ipython
 In [1]:  from notebook.auth import passwd
 In [2]: passwd()
-'argon2:$argon2id$v=19$m=10240,t=10,p=8$/ea+nGkJvktsLC2yo2Huzw$fr/mxPU0bp5BZxAxObad2A'</code></pre>
+'argon2:$argon2id$v=19$m=10240,t=10,p=8$/ea+nGkJvktsLC2yo2Huzw$fr/mxPU0bp5BZxAxObad2A'
+'sha1:ad2bd4dc8582:9d740abfc74bf994362d0c0dbf866e2b749c4ada'</code></pre>
 <p>会让输入两次密码，输入完成后 复制生成的 秘钥，后面会用到，秘钥带上sha1</p>
 <p>修改配置文件：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/logsharing/p/8036893.html">vi中查找</a>   命令模式/字符串</p>
 <pre class=" language-shell"><code class="language-shell">vi /username/.jupyter/jupyter_notebook_config.py #/username/可能要去掉如果在这个目录的话
@@ -758,8 +759,8 @@ export CUDA_HOME=/usr/local/cuda-11.0</code></pre>
 
 <p>二者文件不重复，所以不会对原有的Cuda功能造成影响，卸载Cudnn也很简单，只需要把对应的Cudnn文件删除即可</p>
 <h3 id="后台使用jupyter"><a href="#后台使用jupyter" class="headerlink" title="后台使用jupyter"></a>后台使用jupyter</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/donaldsy/article/details/96350061">后台运行jupyter教程</a></p>
-<pre class=" language-shell"><code class="language-shell">jupyter notebook &amp; #后台运行，你关掉终端会停止运行
-nohup jupyter notebook &amp; #后台运行，你关掉终端也会继续运行
+<pre class=" language-shell"><code class="language-shell">jupyter notebook & #后台运行，你关掉终端会停止运行
+nohup jupyter notebook & #后台运行，你关掉终端也会继续运行
 ps -aux | grep jupyter #查找jupyter命令
 jobs -l#查看当前有多少在后台运行的命令，加上-l参数可以显示后台运行的pid
 fg %jobnumber#将后台中的命令调至前台继续运行。%jobnumber是jobs查到的序号，不是pid
@@ -1711,7 +1712,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">126.2k</span>&nbsp;字
+                class="white-color">133.8k</span>&nbsp;字
             
             
             

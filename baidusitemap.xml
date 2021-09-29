@@ -1,52 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://dchlovestudy.xyz/sui-xiang-yu-gan-wu/</loc>
-    <lastmod>2021-06-08</lastmod>
+    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
+    <lastmod>2021-09-29</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/git-xue-xi/</loc>
+    <lastmod>2021-09-28</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/ban-gong-ruan-jian-bi-ji/</loc>
-    <lastmod>2021-06-06</lastmod>
+    <lastmod>2021-09-25</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</loc>
+    <lastmod>2021-09-25</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/np-pd-plt/</loc>
+    <lastmod>2021-09-21</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
+    <lastmod>2021-09-21</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/</loc>
+    <lastmod>2021-09-21</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
+    <lastmod>2021-09-13</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/semantic-segmentation-3/</loc>
+    <lastmod>2021-07-13</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/semantic-segmentation-2/</loc>
+    <lastmod>2021-07-13</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/backbone/</loc>
+    <lastmod>2021-07-05</lastmod>
+  </url>
+  <url>
+    <loc>http://dchlovestudy.xyz/sui-xiang-yu-gan-wu/</loc>
+    <lastmod>2021-06-08</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/cpp-zhao-hua-xi-shi/</loc>
     <lastmod>2021-06-03</lastmod>
   </url>
   <url>
-    <loc>http://dchlovestudy.xyz/python-xue-xi/</loc>
-    <lastmod>2021-06-03</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</loc>
-    <lastmod>2021-06-01</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/pytorch-xue-xi/</loc>
-    <lastmod>2021-06-01</lastmod>
-  </url>
-  <url>
     <loc>http://dchlovestudy.xyz/conda-shi-yong/</loc>
     <lastmod>2021-06-01</lastmod>
   </url>
   <url>
-    <loc>http://dchlovestudy.xyz/fu-wu-qi-shi-yong/</loc>
-    <lastmod>2021-06-01</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/git-xue-xi/</loc>
-    <lastmod>2021-05-31</lastmod>
-  </url>
-  <url>
     <loc>http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/</loc>
     <lastmod>2021-05-19</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/semantic-segmentation-3/</loc>
-    <lastmod>2021-05-19</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/semantic-segmentation-2/</loc>
-    <lastmod>2021-05-11</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/semantic-segmentation/</loc>
@@ -57,19 +69,7 @@
     <lastmod>2021-05-02</lastmod>
   </url>
   <url>
-    <loc>http://dchlovestudy.xyz/backbone/</loc>
-    <lastmod>2021-04-29</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/</loc>
-    <lastmod>2021-04-28</lastmod>
-  </url>
-  <url>
     <loc>http://dchlovestudy.xyz/tensorflow-xue-xi/</loc>
-    <lastmod>2021-04-23</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/numpy-he-pandas-xue-xi/</loc>
     <lastmod>2021-04-23</lastmod>
   </url>
   <url>
@@ -135,10 +135,6 @@
   <url>
     <loc>http://dchlovestudy.xyz/codeforces-1/</loc>
     <lastmod>2020-11-18</lastmod>
-  </url>
-  <url>
-    <loc>http://dchlovestudy.xyz/dp-zhuan-ti/</loc>
-    <lastmod>2020-11-17</lastmod>
   </url>
   <url>
     <loc>http://dchlovestudy.xyz/tuo-fu-bi-ji/</loc>

@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -788,11 +788,8 @@ int m <span class="token operator">=</span> i <span class="token operator">+</sp
 <p>这项工作提供了证据表明==注意力层可以进行卷积，实际上，他们经常在实践中学会这样做。== 具体来说，我们证明<strong>具有足够数量的头部的多头自我注意层至少与任何卷积层一样具有表现力</strong>。 然后，我们的数值实验表明，<strong>自注意力层与CNN层相似地参与了像素网格模式</strong>，从而证实了我们的分析。</p>
 <h3 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>transformer</strong> 到底是何方神圣？处处都有他</p>
 <p>最初在==神经机器翻译中引入注意力机制就是为了更好地处理长期依赖==，</p>
-<h2 id="SPNet"><a href="#SPNet" class="headerlink" title="SPNet"></a>SPNet</h2><h3 id="Info-3"><a href="#Info-3" class="headerlink" title="Info"></a>Info</h3><p>20CVPR 和下一篇是一脉相承啊<del>~</del></p>
-<h3 id="Abstract-2"><a href="#Abstract-2" class="headerlink" title="Abstract"></a>Abstract</h3><p>Strip pooling: $1\times N$,$N\times 1$</p>
-<p>空间池化体系结构设计:</p>
-<h2 id="CANet"><a href="#CANet" class="headerlink" title="CANet"></a>CANet</h2><h3 id="Info-4"><a href="#Info-4" class="headerlink" title="Info"></a>Info</h3><p>21CVPR </p>
-<h3 id="Abstract-3"><a href="#Abstract-3" class="headerlink" title="Abstract"></a>Abstract</h3><p>Mobile network设计的最新研究表明,<strong>通道注意(如SENet)对提升模型性能</strong>具有显著效果,但他们==通常会忽略位置信息，这对生成空间选择性注意图非常重要。==</p>
+<h2 id="CANet"><a href="#CANet" class="headerlink" title="CANet"></a>CANet</h2><h3 id="Info-3"><a href="#Info-3" class="headerlink" title="Info"></a>Info</h3><p>21CVPR </p>
+<h3 id="Abstract-2"><a href="#Abstract-2" class="headerlink" title="Abstract"></a>Abstract</h3><p>Mobile network设计的最新研究表明,<strong>通道注意(如SENet)对提升模型性能</strong>具有显著效果,但他们==通常会忽略位置信息，这对生成空间选择性注意图非常重要。==</p>
 <p>本文为mobile networks 提出了一种新颖的注意机制,==通过将位置注意力嵌入到通道注意力中，我们将其称为”coordinate attention坐标注意力”.==</p>
 <p>与通过2D全局池化将<strong>特征张量</strong>转化为<strong>单个特征向量</strong>的channel attention不同,coordinate attention将channel attention分解成两个1D特征编码的过程，分别沿两个空间方向聚合特征。==这样，可以沿一个空间方向捕获远程依赖关系，同时可以沿另一空间方向保留精确的位置信息。==然后将<strong>生成的特征图分别编码为一对方向感知和位置敏感</strong>的注意图，可以将其互补地应用于输入特征图，以增强关注对象的表示。</p>
 <p>coordinate attention很简单,可以灵活地插入到经典的移动网络中,如<strong>MobileNetV2,MobileNeXt和EfficientNet，而且几乎没有计算开销computational overhead。</strong></p>
@@ -865,11 +862,11 @@ int m <span class="token operator">=</span> i <span class="token operator">+</sp
 <h3 id="Experiments-1"><a href="#Experiments-1" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="4-1-Experiment-Setup"><a href="#4-1-Experiment-Setup" class="headerlink" title="4.1. Experiment Setup"></a>4.1. Experiment Setup</h4><p>PyTorch  SGD decay $momentum =0.9$ 权重衰减设置为$4\times 10^{-5}$ 余弦衰减策略  </p>
 <p>$NVIDIA \quad GPU\quad  batchsize=256$</p>
 <p>$baseline=MobileNetV2$    $epoch=200$</p>
-<h4 id="4-2-Ablation-Studies"><a href="#4-2-Ablation-Studies" class="headerlink" title="4.2. Ablation Studies"></a>4.2. Ablation Studies</h4><h2 id="HaloNet"><a href="#HaloNet" class="headerlink" title="HaloNet"></a>HaloNet</h2><h3 id="Info-5"><a href="#Info-5" class="headerlink" title="Info"></a>Info</h3><p>21CVPR oral</p>
+<h4 id="4-2-Ablation-Studies"><a href="#4-2-Ablation-Studies" class="headerlink" title="4.2. Ablation Studies"></a>4.2. Ablation Studies</h4><h2 id="HaloNet"><a href="#HaloNet" class="headerlink" title="HaloNet"></a>HaloNet</h2><h3 id="Info-4"><a href="#Info-4" class="headerlink" title="Info"></a>Info</h3><p>21CVPR oral</p>
 <blockquote>
 <p>Scaling Local Self-Attention for Parameter Efficient Visual Backbones</p>
 </blockquote>
-<h3 id="Abstract-4"><a href="#Abstract-4" class="headerlink" title="Abstract"></a>Abstract</h3><p>==Self-attention: parameter-independent scaling of receptive fields &amp;content-dependent interactions==</p>
+<h3 id="Abstract-3"><a href="#Abstract-3" class="headerlink" title="Abstract"></a>Abstract</h3><p>==Self-attention: parameter-independent scaling of receptive fields &amp;content-dependent interactions==</p>
 <p>==convolutions: parameter-dependent scaling &amp;content-independent interactions==</p>
 <p>相比卷积基线模型,self attention模型在==准确性-参数折中==方面就有令人鼓舞的改进</p>
 <p>==旨在开发自我注意力模型，该模型不仅可以胜过规范的基线模型，而且可以胜过高性能的卷积模型。==</p>
@@ -911,7 +908,7 @@ int m <span class="token operator">=</span> i <span class="token operator">+</sp
 <p>为了观察这一点,我们将self-attention和conv作为一般空间池化函数的特定实例进行编写,</p>
 <p>To observe this, we write self-attention and convolution as specific instances of a general spatial pooling function.</p>
 <p>给定$input$  $x\in R^{H\times W\times C_{in}}$ ,定义了一个local 2D pooling 函数,该函数计算位置$(i,j)$的输出,$y_{ij}\in R^{c_{out}}$：<br>$$<br>y_{ij}=\sum_{a,b\in N(i.j)}f(i,j,a,b)x_{ab}<br>$$</p>
-<h2 id="CAA"><a href="#CAA" class="headerlink" title="CAA"></a>CAA</h2><h3 id="Info-6"><a href="#Info-6" class="headerlink" title="Info"></a>Info</h3><h3 id="Abstract-5"><a href="#Abstract-5" class="headerlink" title="Abstract"></a>Abstract</h3><p>==分别计算空间注意力和通道注意力,然后直接将他们融合会导致特征表示冲突conflicting feature representation==</p>
+<h2 id="CAA"><a href="#CAA" class="headerlink" title="CAA"></a>CAA</h2><h3 id="Info-5"><a href="#Info-5" class="headerlink" title="Info"></a>Info</h3><h3 id="Abstract-4"><a href="#Abstract-4" class="headerlink" title="Abstract"></a>Abstract</h3><p>==分别计算空间注意力和通道注意力,然后直接将他们融合会导致特征表示冲突conflicting feature representation==</p>
 <p><strong>Channelized Axial Attention通道化轴向注意力</strong>,以==降低计算复杂度并无缝集成通道注意力和轴向注意力axial attention==</p>
 <h3 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h3><p>==对于特征图中的每个像素，spatial self attention使它的表示与更接近的像素的表示更相似，而channel attention会在整个特征图中找到重要的通道，并对提取的特征应用不同的权重。==</p>
 <img src="./medias/loading.gif" data-original="/semantic-segmentation-3/image-20210429144509418.png" alt="image-20210429144509418" style="zoom: 80%;">
@@ -1799,7 +1796,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">126.2k</span>&nbsp;字
+                class="white-color">133.8k</span>&nbsp;字
             
             
             
