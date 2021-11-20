@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    378
+                    490
                 </div>
                 
 
@@ -673,8 +673,12 @@
             <div id="articleContent">
                 <h2 id="jupyter-notebook"><a href="#jupyter-notebook" class="headerlink" title="jupyter notebook"></a>jupyter notebook</h2><p>jupyter notebook使用：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32320214">https://zhuanlan.zhihu.com/p/32320214</a></p>
 <p>在jupyter notebook中，可直接调用<code>arr.dtype</code> <code>arr.shape</code>显示np相应的属性</p>
+<p><code>from tqdm.notebook import tqdm</code></p>
+<p><img src="./medias/loading.gif" data-original="/bian-cheng-ruan-jian-trick/image-20211105235206404.png" alt="image-20211105235206404"></p>
+<p>tqdm中简单一行的进度条</p>
 <h4 id="py文件运行"><a href="#py文件运行" class="headerlink" title="py文件运行"></a>py文件运行</h4><p>在jupyter notebook中，运行 %run name.py</p>
-<h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><p>!cd ..</p>
+<h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><p><code>%</code>和<code>!</code>都用于命令行操作,区别在于:</p>
+<p><code>!</code>开一个新的progress,执行完之后立即终止；provided by the Jupyter<br><code>%</code>的操作会持续；provided by the IPython kernel</p>
 <h2 id="pycharm"><a href="#pycharm" class="headerlink" title="pycharm"></a>pycharm</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35473473/article/details/106320708">pycharm配置anaconda环境</a></p>
 <p>注释:Ctrl+/</p>
 <p>取消注释:Ctrl+/</p>
@@ -692,8 +696,12 @@
 <p>比如：内部函数名引用时不小心写错了时，就会导致其实调用了外部变量名，从而导致逻辑错乱。</p>
 <p>所以解决办法是：</p>
 <p>确保函数内部和外部的变量名不要重复，这样就不会导致可能由此导致的错误了。</p>
-<h2 id="spyder"><a href="#spyder" class="headerlink" title="spyder"></a>spyder</h2><h2 id="notepad"><a href="#notepad" class="headerlink" title="notepad++"></a>notepad++</h2><p>编辑-&gt;行操作-&gt;删除空行，可以一键去除空行</p>
-<h2 id="Ecilipse"><a href="#Ecilipse" class="headerlink" title="Ecilipse"></a>Ecilipse</h2><h2 id="Dev-C"><a href="#Dev-C" class="headerlink" title="Dev C++"></a>Dev C++</h2>
+<p><strong>配置python编译器</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/houzp/p/9887870.html">配置编译器</a></p>
+<h2 id="notepad"><a href="#notepad" class="headerlink" title="notepad++"></a>notepad++</h2><p>编辑-&gt;行操作-&gt;删除空行，可以一键去除空行</p>
+<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p><strong>远程连接过程试图写入的管道不存在</strong></p>
+<p>打开本地的Known_hosts,将对应的要连接的服务器的记录删掉,再重连就可以了</p>
+
             </div>
             <hr/>
 
@@ -1551,7 +1559,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             

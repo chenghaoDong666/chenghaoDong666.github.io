@@ -645,7 +645,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.9k
+                    5.2k
                 </div>
                 
 
@@ -817,6 +817,15 @@ $ git remote rm origin</code></pre>
 <p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
 <p>你也许还注意到，GitHub给出的地址不止一个，还可以用<code>https://github.com/michaelliao/gitskills.git</code>这样的地址。</p>
 <p>实际上，Git支持多种协议，<strong>默认的git使用<code>ssh</code>，</strong>但也可以使用<code>https</code>等其他协议。使用**<code>https</code>除了速度慢<strong>以外，还有个最大的麻烦是</strong>每次推送都必须输入口令**，但是在某些只开放http端口的公司内部就无法使用<code>ssh</code>协议而只能用<code>https</code>。</p>
+<p>克隆之后有新的更改需要拉取的话使用<code>git fetch</code>或<code>git pull</code></p>
+<p>区别:</p>
+<blockquote>
+<p>git在本地会保存两个版本的仓库，分为本地仓库和远程仓库。<br>1、本地仓库就是我们平时 add、commit 的那个仓库。<br>2、远程仓库可以用git remote -v查看（这里的远程仓库是保存在本地的远程仓库，等同于另一个版本，不是远程的远程仓库）。</p>
+<p>说说 fetch 和 pull 的不同:</p>
+<p>fetch 只能更新远程仓库的代码为最新的，本地仓库的代码还未被更新，我们需要通过 git merge origin/master 来合并这两个版本，你可以把它理解为合并分支一样的。</p>
+<p>pull 操作是将本地仓库和远程仓库（本地的）更新到远程的最新版本。</p>
+<p>如果想要更加可控一点的话推荐使用fetch + merge。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37420939/article/details/89736567">https://blog.csdn.net/qq_37420939/article/details/89736567</a></p>
+</blockquote>
 <h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
 <p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</p>
 <h5 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h5><p>在<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192">版本回退</a>里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即<code>master</code>分支。<code>HEAD</code>严格来说不是指向提交，而是指向<code>master</code>，<code>master</code>才是指向提交的，所以，<code>HEAD</code>指向的就是当前分支。</p>
@@ -1921,7 +1930,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             

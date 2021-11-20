@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2.7k
                 </div>
                 
 
@@ -673,19 +673,19 @@
             <div id="articleContent">
                 <p>linux教程：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4017.html">http://c.biancheng.net/view/4017.html</a></p>
 <h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><pre class=" language-python"><code class="language-python">unzip <span class="token operator">-</span>d des src
-<span class="token comment" spellcheck="true">#解压到指定目录</span>
+<span class="token comment" spellcheck="true">#解压到指定目录 解压zip</span>
+tar <span class="token operator">-</span>xzvf <span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
+<span class="token comment" spellcheck="true"># 解压.tar.gz</span>
 df <span class="token operator">-</span>h
 <span class="token comment" spellcheck="true"># 查看磁盘空间大小</span>
 history
 <span class="token comment" spellcheck="true"># 查看历史命令</span>
-watch <span class="token operator">-</span>n <span class="token number">5</span> nvidia<span class="token operator">-</span>smi
-<span class="token comment" spellcheck="true">#查看GPU使用情况 ,-n 5 指每5s刷新一次</span>
 nvcc <span class="token operator">-</span>V
 <span class="token comment" spellcheck="true"># 查看当前cuda版本</span>
 ps aux <span class="token operator">|</span>grep dch
 <span class="token comment" spellcheck="true"># 查看进程 |gerp是查找对应的字符串</span>
 kill <span class="token operator">-</span><span class="token number">9</span> pid
-<span class="token comment" spellcheck="true"># 杀死指定pid的进程</span>
+<span class="token comment" spellcheck="true"># 杀死指定pid的进程,9是信号编号SIGKILL</span>
 cd
 cd <span class="token operator">~</span>
 <span class="token comment" spellcheck="true">#都会返回到用户主目录/home/dch</span>
@@ -693,10 +693,82 @@ sudo <span class="token comment" spellcheck="true">#用来执行需要提升权�
 <span class="token comment" spellcheck="true"># 显示后20行</span>
 tail <span class="token operator">-</span>n <span class="token number">20</span> <span class="token number">1.</span>txt
 <span class="token comment" spellcheck="true"># 显示持续刷新的内容</span>
-tail <span class="token operator">-</span>f <span class="token number">1.</span>log</code></pre>
+tail <span class="token operator">-</span>f <span class="token number">1.</span>log
+<span class="token comment" spellcheck="true"># 显示内存使用情况</span>
+free
+<span class="token comment" spellcheck="true"># 实时显示进程情况，包括内存等</span>
+top
+<span class="token comment" spellcheck="true"># 删除文件</span>
+rm filename
+<span class="token comment" spellcheck="true"># 删除文件夹,递归地删除目录</span>
+rm <span class="token operator">-</span>r dirname
+<span class="token comment" spellcheck="true"># 如果目录是受写保护的，则会提示是否继续删除目录和目录中的文件作为一个整体。-f 强制删除而不被提示。</span>
+rm <span class="token operator">-</span>rf dirname
+<span class="token comment" spellcheck="true"># 复制文件夹， 表示将dir1及其dir1下所包含的文件复制到dir2下</span>
+cp <span class="token operator">-</span>r dir1 dir2
+<span class="token comment" spellcheck="true"># 重启命令</span>
+shutdown <span class="token operator">-</span>r now
+<span class="token comment" spellcheck="true"># 显示当前工作夹的绝对目录</span>
+pwd
+<span class="token comment" spellcheck="true"># 使用requirements格式列出所有已安装的包,包以不区分大小写的排序顺序列出</span>
+pip freeze <span class="token operator">></span> requirments<span class="token punctuation">.</span>txt
+<span class="token comment" spellcheck="true"># 安装requirements.txt的包</span>
+pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt</code></pre>
+<p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211009172341652.png" alt="image-20211009172341652"></p>
+<pre class=" language-shell"><code class="language-shell"># 创建新文件
+touch filename
+# 以树状图列出目录的内容。
+tree dir</code></pre>
+<h3 id="GPU使用情况查看？"><a href="#GPU使用情况查看？" class="headerlink" title="GPU使用情况查看？"></a>GPU使用情况查看？</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ceb3c020e06b">以下来自木子的毛线</a></p>
+<pre class=" language-shell"><code class="language-shell">watch -n 1 nvidia-smi</code></pre>
+<img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211009133137665.png" alt="image-20211009133137665" style="zoom:80%;">
+
+<ul>
+<li><strong>GPU：</strong>本机中的GPU编号(有多块显卡的时候,从0开始编号)</li>
+<li><strong>Fan：</strong>风扇转速(0%-100%)，N/A表示没有风扇</li>
+<li><strong>Name：</strong>GPU类型</li>
+<li><strong>Temp：</strong>GPU的温度(GPU温度过高会导致GPU的频率下降)</li>
+<li><strong>Perf：</strong>GPU的性能状态,从P0(最大性能)到P12(最小性能),图上是：P2</li>
+<li><strong>Persistence-M：</strong>持续模式的状态,持续模式虽然耗能大,但是在新的GPU应用启动时花费的时间更少,图上显示的是：off</li>
+<li><strong>Pwr：Usager/Cap：</strong>能耗表示,Usage用了多少,Cap总共多少</li>
+<li><strong>Bus-Id：</strong>GPU总线相关显示,domain：bus：device.function</li>
+<li><strong>Disp.A：</strong>Display Active ,表示GPU的显示是否初始化</li>
+<li><strong>Memory-Usage：</strong>显存使用率</li>
+<li><strong>Volatile GPU-Util：</strong>GPU使用率</li>
+<li><strong>Uncorr. ECC：</strong>关于ECC的东西，是否开启错误检查和纠正技术，0/disabled,1/enabled</li>
+<li><strong>Compute M：</strong>计算模式,0/DEFAULT,1/EXCLUSIVE_PROCESS,2/PROHIBITED</li>
+<li><strong>Processes：</strong>显示每个进程占用的显存使用率、进程号、占用的哪个GPU</li>
+</ul>
+<p><strong>将监控结果写入文件，并且指定写入文件的监控字段</strong></p>
+<pre class=" language-shell"><code class="language-shell">nvidia-smi -l 1 --format=csv --filename=report.csv --query-gpu=timestamp,name,index,utilization.gpu,memory.total,memory.used,power.draw,temperature.gpu</code></pre>
+<p><strong>-l：</strong>隔多久记录一次，命令中写的是1</p>
+<p><strong>–format：</strong>结果记录文件格式是csv</p>
+<p><strong>–filename:</strong> 结果记录文件的名字</p>
+<p><strong>–query-gpu：</strong>记录哪些数据到csv文件</p>
+<p><strong>timestamp：</strong>时间戳</p>
+<p><strong>memory.total：</strong>显存大小</p>
+<p><strong>memory.total：</strong>显存使用了多少</p>
+<p><strong>utilization.gpu：</strong>GPU使用率</p>
+<p><strong>power.draw：</strong>显存功耗，对应Pwr：Usage</p>
+<p>**temperature.gpu:**显卡温度</p>
 <h3 id="linux服务器安装conda？"><a href="#linux服务器安装conda？" class="headerlink" title="linux服务器安装conda？"></a>linux服务器安装conda？</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40258579/article/details/85001218?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">CSDN</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.anaconda.com/anaconda/install/linux/">官方文档</a></p>
 <p><code>source ~/.bashrc</code>环境变量生效</p>
+<h3 id="conda的使用"><a href="#conda的使用" class="headerlink" title="conda的使用"></a>conda的使用</h3><p>菜鸟教程pip使用介绍：<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/python-pip-install-usage.html">https://www.runoob.com/w3cnote/python-pip-install-usage.html</a></p>
+<p>pip安装包应该是安装到了<code>Lib/site-packages</code></p>
+<p>windows用命令行运行python文件,利用anaconda prompt,然后 python  *.py</p>
+<p><code>pip show 包</code>   显示包的安装位置</p>
+<pre class=" language-shell"><code class="language-shell"># 查看当前存在哪些虚拟环境
+conda env list
+# 创建虚拟环境
+# your_env_name文件可以在Anaconda安装目录envs文件下找到。
+conda create -n your_env_name python=X.X # (2.7、3.6等)
+# 激活虚拟环境
+conda activate ml_django
+# 关闭虚拟环境
+conda deactivate
+# 删除虚拟环境
+conda remove -n your_env_name --all</code></pre>
 <h3 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch?"></a>安装pytorch?</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xzy5210123/article/details/107237037?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">换源解决速度慢教程</a></p>
 <p>建议安装下面这个版本的pytorch,不然咱们实验室的cuda用不了</p>
 <p><code>pip install --pre torch torchvision -f https://download.pytorch.org/whl/nightly/cu110/torch_nightly.html</code></p>
@@ -744,10 +816,10 @@ ls /usr/local
 # 将下面这些命令加到.bashrc文件末尾
 
 #加CUDA的bin到PATH环境变量
-export PATH=$PATH:/usr/local/cuda-11.0/bin
+export PATH=$PATH:/usr/local/cuda/bin
 #加CUDA的库文件到系统库搜索路径
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.0/lib64
-export CUDA_HOME=/usr/local/cuda-11.0</code></pre>
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+export CUDA_HOME=/usr/local/cuda</code></pre>
 <p>然后<code>source .bashrc</code>，然后可以运行<code>nvcc -V</code>查看版本来检查是否正确，出现下述情况表示正确运行</p>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20210519204527712.png" alt="image-20210519204527712"></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/622f47f94784">Cuda与Cudnn的关系</a></p>
@@ -770,6 +842,9 @@ bg %jobnumber#将一个在后台暂停的命令，变成继续执行。</code></
 <p>pip install tensorflow-gpu 安装的是gpu版本</p>
 <p><a href="%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E5%A4%A7%E4%BD%ACtql">https://blog.csdn.net/china_xin1/article/details/109824882</a> 显卡3090只支持CUDA11</p>
 <p>所以要<code>pip install tf-nightly-gpu</code>  尝新版</p>
+<img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211117165748691.png" alt="image-20211117165748691" style="zoom:67%;">
+
+<p><code>TensorFlow1.x</code>GPU和CPU软件包是分开的,<code>TensorFlow2.x</code>同时支持CPU和GPU。</p>
 <h3 id="bashrc"><a href="#bashrc" class="headerlink" title=".bashrc"></a>.bashrc</h3><p><code>/home/dch/.bashrc</code> 配置文件，保存个人的一些个性化设置，如命令别名、路径、环境变量等</p>
 <p><code>source .bashrc</code>立刻加载修改后的设置，使之生效。</p>
 <p><code>export</code></p>
@@ -1384,31 +1459,31 @@ echoerr "S</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/codeforces-1/">
+                <a href="/ren-xiang-fu-se-jian-ce/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/27.jpg" class="responsive-img" alt="oj-1">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/17.jpg" class="responsive-img" alt="人像肤色区域检测">
                         
-                        <span class="card-title">oj-1</span>
+                        <span class="card-title">人像肤色区域检测</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            菜鸡刷题系列
+                            一个皮肤区域检测的笔记
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/oj/" class="post-category">
-                                    oj
+                            <a href="/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/" class="post-category">
+                                    肤色分级
                                 </a>
                             
                             
@@ -1418,8 +1493,8 @@ echoerr "S</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/codeforces/">
-                        <span class="chip bg-color">codeforces</span>
+                    <a href="/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/">
+                        <span class="chip bg-color">肤色分级</span>
                     </a>
                     
                 </div>
@@ -1712,7 +1787,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             

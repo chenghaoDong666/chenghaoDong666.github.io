@@ -620,12 +620,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
-                                <span class="chip bg-color">颜色空间</span>
-                            </a>
-                        
                             <a href="/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/">
                                 <span class="chip bg-color">相机成像</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
+                                <span class="chip bg-color">颜色空间</span>
                             </a>
                         
                     </div>
@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    959
+                    1.1k
                 </div>
                 
 
@@ -678,6 +678,11 @@
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在进行之前先把学姐的汇报弄明白</p>
 <p>首先是raw图像格式：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158088019">https://zhuanlan.zhihu.com/p/158088019</a></p>
 <p>ISP大佬的教程:<a target="_blank" rel="noopener" href="https://ridiqulous.com/process-raw-data-using-matlab-and-dcraw/#brightnesscorrection">https://ridiqulous.com/process-raw-data-using-matlab-and-dcraw/#brightnesscorrection</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/139394687">CMOS</a>:感光元件</p>
+<p><strong>光通量</strong>:指每单位时间内由光源所发出或由被照体所吸收的光能</p>
+<p>使用拜耳阵列,在每个传感器像素井上放置一片滤色镜,使得只有和该滤色镜颜色相同的光才能通过滤色镜,并用四个滤色镜,**红绿绿蓝(RGGB)**组成 2x2 的单元阵进行重复排列,形成的马赛克彩色滤色阵列,这样我们便能得到传感器对不同颜色光的响应情况。</p>
+<img src="./medias/loading.gif" data-original="/in-camera-image-processing-pipeline/image-20211102123009891.png" alt="image-20211102123009891" style="zoom:67%;">
+
 <p><strong>ISP pipeline：</strong></p>
 <p><strong>线性处理</strong>-&gt;<strong>处理黑电平和饱和像素</strong>-&gt;<strong>白平衡</strong>，与颜色恒常性的白平衡不一样，仅仅是对三通道乘以增益系数，以补偿因为三种滤波片具有不同光谱灵敏度带来的影响-&gt;<strong>Demosaicking去马赛克/色彩插值</strong>-&gt;<strong>色彩空间转换</strong> 传感器光谱空间到CIEXYZ到sRGB-&gt;<strong>亮度矫正和伽马矫正</strong></p>
 <img src="./medias/loading.gif" data-original="/in-camera-image-processing-pipeline/image-20201119091331032.png" alt="颜色空间变换的归一化" style="zoom:67%;">
@@ -760,12 +765,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
-                                    <span class="chip bg-color">颜色空间</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/">
                                     <span class="chip bg-color">相机成像</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/">
+                                    <span class="chip bg-color">颜色空间</span>
                                 </a>
                             
                         </div>
@@ -1555,7 +1560,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             

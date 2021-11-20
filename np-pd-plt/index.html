@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    5.8k
                 </div>
                 
 
@@ -698,6 +698,26 @@ pre<span class="token operator">=</span>pre<span class="token punctuation">[</sp
 <li>n维：你应该get到点了吧~</li>
 </ol>
 <p>本来是2x3x4,<code>tf.reduce_sum(tensor, axis=0)</code>，加完了就变成了3x4</p>
+<h4 id="文件存储npy-npz"><a href="#文件存储npy-npz" class="headerlink" title="文件存储npy\npz"></a>文件存储npy\npz</h4><p>Numpy能够读写磁盘上的文本数据或二进制数据。</p>
+<p><strong>将数组以二进制格式保存到磁盘</strong></p>
+<p><code>np.load</code>和<code>np.save</code>是读写磁盘数组数据的两个主要函数，默认情况下，数组是以未压缩的原始二进制格式保存在扩展名为.npy的文件中。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 读取</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+a<span class="token operator">=</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">'test.npy'</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 存储</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+a<span class="token operator">=</span>np<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">'test.npy'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
+<p><code>np.savez</code>以未压缩的 .npz 格式将多个数组保存到单个文件中。</p>
+<pre class=" language-python"><code class="language-python">np<span class="token punctuation">.</span>savez<span class="token punctuation">(</span>outfile<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+npzfile <span class="token operator">=</span> np<span class="token punctuation">.</span>load<span class="token punctuation">(</span>outfile<span class="token punctuation">)</span>
+npzfile<span class="token punctuation">.</span>files
+<span class="token punctuation">[</span><span class="token string">'arr_0'</span><span class="token punctuation">,</span> <span class="token string">'arr_1'</span><span class="token punctuation">]</span>
+np<span class="token punctuation">.</span>savez<span class="token punctuation">(</span>outfile<span class="token punctuation">,</span> x<span class="token operator">=</span>x<span class="token punctuation">,</span> y<span class="token operator">=</span>y<span class="token punctuation">)</span>
+npzfile <span class="token operator">=</span> np<span class="token punctuation">.</span>load<span class="token punctuation">(</span>outfile<span class="token punctuation">)</span>
+sorted<span class="token punctuation">(</span>npzfile<span class="token punctuation">.</span>files<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">]</span></code></pre>
 <h4 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h4><pre class=" language-python"><code class="language-python">
 a <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 返回a列表的元素总数：60</span>
@@ -764,20 +784,265 @@ np<span class="token punctuation">.</span>spacing<span class="token punctuation"
 np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>array<span class="token punctuation">,</span>axis<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#用于返回一个numpy数值中最大值的索引,当一组中同时出现几个最大值时，返回第一个最大值的索引值。</span>
 np<span class="token punctuation">.</span>divide<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 和/作用相同,就是除以</span></code></pre>
+<span class="token comment" spellcheck="true"># 和/作用相同,就是除以</span>
+np<span class="token punctuation">.</span>bincount<span class="token punctuation">(</span>x<span class="token punctuation">,</span> weights<span class="token operator">=</span>None<span class="token punctuation">,</span> minlength<span class="token operator">=</span>None<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 计算非负整数数组中每个值的出现次数。</span>
+<span class="token comment" spellcheck="true"># bin的个数至少比最大的x的值大一，如果设置了minlength,则至少有minlength个bin</span>
+<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>bincount<span class="token punctuation">(</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 输出:array([1, 3, 1, 1, 0, 0, 0, 1])</span>
+np<span class="token punctuation">.</span>diag<span class="token punctuation">(</span>array<span class="token punctuation">)</span> 
+<span class="token comment" spellcheck="true"># 当array是一个一维数组时,会返回一个以array为对角线元素的矩阵</span>
+<span class="token comment" spellcheck="true"># 当array是一个二维矩阵时，会返回该矩阵的对角线元素</span>
+np<span class="token punctuation">.</span>nanmean<span class="token punctuation">(</span>array<span class="token punctuation">,</span> axis<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 计算指定axis的平均,忽略nan</span>
+<span class="token operator">>></span><span class="token operator">></span> a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>nan<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> np<span class="token punctuation">.</span>nanmean<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token number">2.6666666666666665</span>
+<span class="token comment" spellcheck="true"># 从一个可迭代对象创建一个新的一维数组。</span>
+numpy<span class="token punctuation">.</span>fromiter<span class="token punctuation">(</span>iter<span class="token punctuation">,</span> dtype<span class="token punctuation">,</span> count<span class="token operator">=</span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> like<span class="token operator">=</span>None<span class="token punctuation">)</span>
+iterable <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token operator">*</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>fromiter<span class="token punctuation">(</span>iterable<span class="token punctuation">,</span> float<span class="token punctuation">)</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span>  <span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">,</span>   <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">,</span>   <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span>   <span class="token number">9</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token number">16</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># asfortranarray()返回在内存中以Fortran顺序排列的数组(ndim>= 1)</span>
+numpy<span class="token punctuation">.</span>asfortranarray<span class="token punctuation">(</span>a<span class="token punctuation">,</span> dtype<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> like<span class="token operator">=</span>None<span class="token punctuation">)</span>
+x <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>asfortranarray<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+x<span class="token punctuation">.</span>flags<span class="token punctuation">[</span><span class="token string">'F_CONTIGUOUS'</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token boolean">False</span>
+y<span class="token punctuation">.</span>flags<span class="token punctuation">[</span><span class="token string">'F_CONTIGUOUS'</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token boolean">True</span></code></pre>
 <h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><p>教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/pandas/python_pandas_environment_setup.html">https://www.yiibai.com/pandas/python_pandas_environment_setup.html</a></p>
 <p>API:<a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/index.html">https://pandas.pydata.org/pandas-docs/stable/reference/index.html</a></p>
-<p>将dataframe一行转化为int，astype</p>
-<pre><code>top, right, bottom, left = row[0:].astype(int)</code></pre>
-<p>获取dataframe的行数和列数</p>
-<pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">//</span>行数
-df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">//</span>列数</code></pre>
+<pre class=" language-python"><code class="language-python">
+<span class="token comment" spellcheck="true"># 获取DataFrame的行数和列数</span>
+df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">//</span>行数
+df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">//</span>列数
+<span class="token comment" spellcheck="true"># 读取csv文件,</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'train.csv'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 用于返回DataFrame类型的数据，如果不使用该函数,则输出结果为数据的前面五行和末尾五行。中间部分以...代替。</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>to_string<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 将DataFrame保存为csv文件</span>
+df<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span><span class="token string">'site.csv'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># head()读取前面的n行,如果不填参数n,默认返回5行。</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># tail()读取尾部的n行,如果不填参数n，默认返回5行，空行各个字段的值返回NaN。</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>tail<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># info()返回表格的一些基本信息</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'pandas.core.frame.DataFrame'</span><span class="token operator">></span>
+RangeIndex<span class="token punctuation">:</span> <span class="token number">458</span> entries<span class="token punctuation">,</span> <span class="token number">0</span> to <span class="token number">457</span>          <span class="token comment" spellcheck="true"># 行数，458 行，第一行编号为 0</span>
+Data columns <span class="token punctuation">(</span>total <span class="token number">9</span> columns<span class="token punctuation">)</span><span class="token punctuation">:</span>            <span class="token comment" spellcheck="true"># 列数，9列</span>
+ <span class="token comment" spellcheck="true">#   Column    Non-Null Count  Dtype       # 各列的数据类型</span>
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>  <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>    <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>  <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>  
+ <span class="token number">0</span>   Name      <span class="token number">457</span> non<span class="token operator">-</span>null    object 
+ <span class="token number">1</span>   Team      <span class="token number">457</span> non<span class="token operator">-</span>null    object 
+ <span class="token number">2</span>   Number    <span class="token number">457</span> non<span class="token operator">-</span>null    float64
+ <span class="token number">3</span>   Position  <span class="token number">457</span> non<span class="token operator">-</span>null    object 
+ <span class="token number">4</span>   Age       <span class="token number">457</span> non<span class="token operator">-</span>null    float64
+ <span class="token number">5</span>   Height    <span class="token number">457</span> non<span class="token operator">-</span>null    object 
+ <span class="token number">6</span>   Weight    <span class="token number">457</span> non<span class="token operator">-</span>null    float64
+ <span class="token number">7</span>   College   <span class="token number">373</span> non<span class="token operator">-</span>null    object         <span class="token comment" spellcheck="true"># non-null，意思为非空的数据    </span>
+ <span class="token number">8</span>   Salary    <span class="token number">446</span> non<span class="token operator">-</span>null    float64
+dtypes<span class="token punctuation">:</span> float64<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> object<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>                 <span class="token comment" spellcheck="true"># 类型</span>
+<span class="token comment" spellcheck="true"># duplicated()返回数据是否重复</span>
+person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'Google'</span><span class="token punctuation">,</span> <span class="token string">'Runoob'</span><span class="token punctuation">,</span> <span class="token string">'Runoob'</span><span class="token punctuation">,</span> <span class="token string">'Taobao'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span>  
+<span class="token punctuation">}</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>person<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>duplicated<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0</span>    <span class="token boolean">False</span>
+<span class="token number">1</span>    <span class="token boolean">False</span>
+<span class="token number">2</span>     <span class="token boolean">True</span>
+<span class="token number">3</span>    <span class="token boolean">False</span>
+dtype<span class="token punctuation">:</span> bool
+<span class="token comment" spellcheck="true"># drop_duplicates()删除重复数据</span>
+DataFrame<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span>subset<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 仅考虑用于识别重复项的某些列，默认情况下使用所有列。 </span>
+                          keep<span class="token operator">=</span><span class="token string">'first'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># {'first', 'last', False},分别是除第一次出现全删除,除最后一次出现全删除,删除所有重复项</span>
+                          inplace<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># Whether to drop duplicates in place or to return a copy.</span>
+                          ignore_index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 1.删除完全重复数据</span>
+data<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 数据清洗时，会将带空值的行删除，此时DataFrame或Series类型的数据不再是连续的索引，可以使用reset_index()重置索引。</span>
+df<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    index   <span class="token keyword">class</span>  <span class="token class-name">max_speed</span> <span class="token comment" spellcheck="true"># 之前的index被添加成一个column</span>
+<span class="token number">0</span>  falcon    bird      <span class="token number">389.0</span>
+<span class="token number">1</span>  parrot    bird       <span class="token number">24.0</span>
+<span class="token number">2</span>    lion  mammal       <span class="token number">80.5</span>
+<span class="token number">3</span>  monkey  mammal        NaN
+<span class="token comment" spellcheck="true"># 如果设置df.reset_index(drop=True),则之前的index不被添加成一个column</span>
+DataFrame<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span>by<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#用于确定groupby的组:mapping,function,label,or list of labels</span>
+                  axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#Split along rows (0) or columns (1):{0 or ‘index’, 1 or ‘columns’}</span>
+                  level<span class="token operator">=</span>None<span class="token punctuation">,</span> as_index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> sort<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> group_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> squeeze<span class="token operator">=</span>NoDefault<span class="token punctuation">.</span>no_default<span class="token punctuation">,</span> observed<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> dropna<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'Animal'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'Falcon'</span><span class="token punctuation">,</span> <span class="token string">'Falcon'</span><span class="token punctuation">,</span><span class="token string">'Parrot'</span><span class="token punctuation">,</span> <span class="token string">'Parrot'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token string">'Max Speed'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">380</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">370</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Animal'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        Max Speed
+Animal
+Falcon      <span class="token number">375.0</span>
+Parrot       <span class="token number">25.0</span>
+<span class="token comment" spellcheck="true"># agg()在指定轴上使用一项或多项操作进行聚合。</span>
+DataFrame<span class="token punctuation">.</span>agg<span class="token punctuation">(</span>func<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 用于聚合数据的函数。如果是函数,则必须在传递DataFrame或传递给DataFrame.apply时工作：function, str, list or dict</span>
+              axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># {0 or ‘index’,1 or ‘columns’}, default 0</span>
+              <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"id"</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">)</span>
+id
+<span class="token number">1</span>    <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token number">2</span>    <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token number">3</span>    <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token number">4</span>    <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+Name<span class="token punctuation">:</span> name<span class="token punctuation">,</span> dtype<span class="token punctuation">:</span> object
+DataFrame<span class="token punctuation">.</span>copy<span class="token punctuation">(</span>deep<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># deep=True,深拷贝,deep=False,浅拷贝</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>df<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &lt;class 'pandas.core.series.Series'> 调用一列就是一个Series</span>
+<span class="token comment" spellcheck="true"># map()根据输入对应关系映射Series的值。用于将Series中的每个值替换为另一个值,该值可能来自function,dict</span>
+Series<span class="token punctuation">.</span>map<span class="token punctuation">(</span>arg<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># Mapping correspondence. </span>
+           na_action<span class="token operator">=</span>None<span class="token punctuation">)</span>
+s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'cat'</span><span class="token punctuation">,</span> <span class="token string">'dog'</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>nan<span class="token punctuation">,</span> <span class="token string">'rabbit'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>map<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'cat'</span><span class="token punctuation">:</span> <span class="token string">'kitten'</span><span class="token punctuation">,</span> <span class="token string">'dog'</span><span class="token punctuation">:</span> <span class="token string">'puppy'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">]</span> 
+<span class="token comment" spellcheck="true"># 通过标签或布尔数组访问一组行和列。</span>
+            max_speed  shield
+cobra               <span class="token number">1</span>       <span class="token number">2</span>
+viper               <span class="token number">4</span>       <span class="token number">5</span>
+sidewinder          <span class="token number">7</span>       <span class="token number">8</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token string">'viper'</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># return a Series</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'viper'</span><span class="token punctuation">,</span> <span class="token string">'sidewinder'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># [[]]returns a DataFrame</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token string">'cobra'</span><span class="token punctuation">,</span> <span class="token string">'shield'</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># single label for row and column 返回类型是string</span>
+df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">"id"</span><span class="token punctuation">,</span><span class="token string">"cell_type"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># 先行后列,逗号分割</span>
+<span class="token comment" spellcheck="true"># 纯粹基于整数位置的索引，用于按位置选择。</span>
+df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 只要每个group的第一个,和那个drop_duplicates起到的作用是一样的。</span>
+df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span><span class="token string">'first'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># DataFrame.iterrows(),Iterate over DataFrame rows as (index, Series) pairs.</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1.5</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'int'</span><span class="token punctuation">,</span> <span class="token string">'float'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+row <span class="token operator">=</span> next<span class="token punctuation">(</span>df<span class="token punctuation">.</span>iterrows<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+row
+<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>
+ int      <span class="token number">1.0</span>
+ float    <span class="token number">1.5</span>
+ Name<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> dtype<span class="token punctuation">:</span> float64<span class="token punctuation">)</span></code></pre>
+<p><code>groupby</code>详解</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/101284491">https://zhuanlan.zhihu.com/p/101284491</a></p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106164247955.png" alt="image-20211106164247955" style="zoom:50%;">
+
+<pre class=" language-python"><code class="language-python">group <span class="token operator">=</span> data<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">"company"</span><span class="token punctuation">)</span>
+group
+<span class="token operator">&lt;</span>pandas<span class="token punctuation">.</span>core<span class="token punctuation">.</span>groupby<span class="token punctuation">.</span>generic<span class="token punctuation">.</span>DataFrameGroupBy object at <span class="token number">0x000002B7E2650240</span><span class="token operator">></span></code></pre>
+<p>生成了一个<code>DataFrameGroupBy</code>对象,为了看看<code>group</code>内部究竟是什么,将其转换成<code>list</code>来查看:</p>
+<pre class=" language-python"><code class="language-python">In <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">:</span> list<span class="token punctuation">(</span>group<span class="token punctuation">)</span>
+Out<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span>   company  salary  age
+  <span class="token number">3</span>       A      <span class="token number">20</span>   <span class="token number">22</span>
+  <span class="token number">6</span>       A      <span class="token number">23</span>   <span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+ <span class="token punctuation">(</span><span class="token string">'B'</span><span class="token punctuation">,</span>   company  salary  age
+  <span class="token number">4</span>       B      <span class="token number">10</span>   <span class="token number">17</span>
+  <span class="token number">5</span>       B      <span class="token number">21</span>   <span class="token number">40</span>
+  <span class="token number">8</span>       B       <span class="token number">8</span>   <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+ <span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span>   company  salary  age
+  <span class="token number">0</span>       C      <span class="token number">43</span>   <span class="token number">35</span>
+  <span class="token number">1</span>       C      <span class="token number">17</span>   <span class="token number">25</span>
+  <span class="token number">2</span>       C       <span class="token number">8</span>   <span class="token number">30</span>
+  <span class="token number">7</span>       C      <span class="token number">49</span>   <span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
+<p>列表由三个元组组成,每个元组中,第一个元素是组别（这里是按照<code>company</code>进行分组，所以最后分为了<code>A</code>,<code>B</code>,<code>C</code>），第二个元素的是对应组别下的<code>DataFrame</code>,整个过程可以图解如下：</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106164453476.png" alt="image-20211106164453476" style="zoom: 67%;">
+
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106171634345.png" alt="image-20211106171634345" style="zoom:67%;">
+
+<p><strong>索引实际上变成了A</strong></p>
+<p><code>agg</code>聚合操作</p>
+<p>聚合操作是<code>groupby</code>后非常常见的操作，会写<code>SQL</code>的朋友对此应该是非常熟悉了。聚合操作可以用来求和、均值、最大值、最小值等。</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106171013110.png" alt="image-20211106171013110" style="zoom:67%;">
+
+
+
 <h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>易百教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/matplotlib">https://www.yiibai.com/matplotlib</a></p>
 <p>API：<a target="_blank" rel="noopener" href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a></p>
-<p>假如目前只有一个figure1，你再绘图是在它上面不断覆盖的</p>
-<p>分为plt绘图与axes绘图两种方式</p>
-<h3 id="图像处理与可视化"><a href="#图像处理与可视化" class="headerlink" title="图像处理与可视化"></a>图像处理与可视化</h3><p><a target="_blank" rel="noopener" href="https://www.fontke.com/tool/rgb/800000/">根据RGB  CMYK  HSL  HSV  XYZ 值来查询颜色</a></p>
-<p><code>plt.figure(1)</code>建立一个新的展示图像的画板</p>
+<h3 id="plg-fig-ax的区别"><a href="#plg-fig-ax的区别" class="headerlink" title="plg/fig/ax的区别"></a>plg/fig/ax的区别</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/93423829">知乎教程</a></p>
+<p>在matplotlib中,有两种画图方式：</p>
+<ul>
+<li><p><code>plt.figure()</code>：<code>plt.xxx</code>系列。通过<code>plt.xxx</code>来画图,其实是取了一个捷径。这是通过<code>matplotlib</code>提供的一个api,这个<code>plt</code>提供了很多基本的function可以让你很快的画出图来,但是如果你想要更细致的精调,就要使用另外一种方法。</p>
+<pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  
+plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span><span class="token number">211</span><span class="token punctuation">)</span>   
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>A<span class="token punctuation">,</span>B<span class="token punctuation">)</span>   
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+</li>
+<li><p><code>fig, ax = plt.subplots()</code>: 这个就是正统的稍微复杂一点的画图方法了。指定figure和axes,然后对axes单独操作。等下就讲figure和axes都神马意思。</p>
+<pre class=" language-python"><code class="language-python">fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span><span class="token punctuation">)</span>   
+ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>A<span class="token punctuation">,</span>B<span class="token punctuation">)</span></code></pre>
+</li>
+</ul>
+<p>烈建议在初学matplotlib的时候，<strong>尽量避免使用<code>plt.xxx</code>系列</strong>。当你明白<code>figure/axes/axis</code>都是控制什么的时候，如果你想要简单的制作一个quick and dirty的图，用<code>plt.xxx</code>才是OK。</p>
+<p>matplotlib的名词定于对于非英语母语的人来说实在是太不友好了,尤其是axes。仰天长啸。</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106220938936.png" alt="image-20211106220938936" style="zoom:80%;">
+
+<ul>
+<li><p><strong>Figure</strong>:<code>fig = plt.figure()</code>: 可以解释为画布。</p>
+</li>
+<li><ul>
+<li>画图的第一件事，就是创建一个画布figure，然后在这个画布上加各种元素。</li>
+</ul>
+</li>
+<li><p><strong>Axes</strong>:<code>ax = fig.add_subplot(1,1,1)</code>: 不想定义,没法定义,就叫他axes！</p>
+</li>
+<li><ul>
+<li>首先，这个不是你画图的xy坐标抽！</li>
+<li>希望当初写这个lib的时候他们用一个更好的名字。。。</li>
+<li>可以把<code>axes</code>理解为你要放到画布上的各个物体。比如你要画一个太阳,一个房子,一个车在画布上,那么太阳是一个<code>axes</code>,房子是一个<code>axes</code>,etc。</li>
+<li>如果你的<code>figure</code>只有一张图,那么你只有一个<code>axes</code>。如果你的<code>figure</code>有<code>subplot</code>，那么每一个<code>subplot</code>就是一个<code>axes</code>。</li>
+<li><code>axes</code>是<code>matlibplot</code>的宇宙中心!<code>axes</code>下可以修改编辑的变量非常多,基本上能包含你的所有需求。</li>
+</ul>
+</li>
+<li><p><strong>Axis</strong>:<code>ax.xaxis/ax.yaxis</code>: 对,这才是你的xy坐标轴。</p>
+</li>
+<li><ul>
+<li>每个坐标轴实际上也是<strong>由竖线和数字组成的</strong>,<strong>每一个竖线其实也是一个axis的subplot</strong>，因此<code>ax.xaxis</code>也存在<code>axes</code>这个对象。对这个<code>axes</code>进行编辑就会修改<code>xaxis</code>图像上的表现。</li>
+</ul>
+</li>
+</ul>
+<p><strong>「为什么plt没有指定画布和区域也能作图？」</strong></p>
+<p>因为<code>matplotlib</code><strong>默认在最近创建的画布上绘制</strong>,而当你没有指定区域,告诉它去画图,他就会自动去生成一个<code>Axes</code>去绘制,进一步没有画布,也会自动去创建一个<code>Figure</code>,也称为<strong>隐式绘制</strong>。    </p>
+<p><strong>图像的各个部位名称</strong></p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106221423457.png" alt="image-20211106221423457" style="zoom:80%;">
+
+<p><strong>使用ax标准的流程</strong>：</p>
+<ol>
+<li><strong>创建一个画布(Figure)</strong></li>
+<li><strong>创建一个或者多个Axes</strong></li>
+<li><strong>使用<code>ax.xxxx</code>在指定Axes上绘图</strong></li>
+</ol>
+<p><strong>首先，搞个画布</strong></p>
+<p>我喜欢用<code>subplots</code>这个命令来开始画图。哪怕你没有subplot,也可以用这个subplots来创建一个画布。</p>
+<p>这个function创建了一个大小为<code>(14,7)</code>的画布,把这个画布赋值给变量<code>fig</code>,同时在这个画布上创建了一个<code>axes</code>,把这个<code>axes</code>赋值给<code>ax</code>。这样,所有未来的<code>fig.xxx</code>都是对这个画布的操作，所有<code>ax.xxx</code>都是对这个<code>axes</code>的操作。</p>
+<p>如果你有两个图,那么<code>ax</code>是一个有两个元素<code>ax[0],ax[1]</code>的<code>list</code>。<code>ax[0]</code>就对应第一个<code>subplot</code>的<code>ax</code>。</p>
+<pre class=" language-python"><code class="language-python">fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># fig, ax = plt.subplots(2,1,figsize(14,7))</span>
+<span class="token comment" spellcheck="true"># ax[0].xxx</span>
+<span class="token comment" spellcheck="true"># ax[1].xxx</span></code></pre>
+<p><strong>好了画布搞好了，画数据。</strong></p>
+<p>注意,我们这里依然不使用plt!因为我们要在这个axes上画数据,因此就用ax.plot()来画。画完第一个再call一次,再画第二个。</p>
+<pre class=" language-python"><code class="language-python">ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>A<span class="token punctuation">,</span>B<span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>B<span class="token punctuation">,</span>A<span class="token punctuation">)</span></code></pre>
+<p><strong>下面开始细节的处理</strong></p>
+<p>数据画好了就可以各种细调坐标轴啊,tick啊之类的。首先把标题和xy坐标轴的标题搞定。Again,不用plt。直接在axes上进行设定。</p>
+<pre class=" language-python"><code class="language-python">ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">'Title'</span><span class="token punctuation">,</span>fontsize<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">'xlabel'</span><span class="token punctuation">,</span> fontsize<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">,</span>fontfamily <span class="token operator">=</span> <span class="token string">'sans-serif'</span><span class="token punctuation">,</span>fontstyle<span class="token operator">=</span><span class="token string">'italic'</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'ylabel'</span><span class="token punctuation">,</span> fontsize<span class="token operator">=</span><span class="token string">'x-large'</span><span class="token punctuation">,</span>fontstyle<span class="token operator">=</span><span class="token string">'oblique'</span><span class="token punctuation">)</span>
+ax<span class="token punctuation">.</span>legend<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>后是xy坐标轴的一些属性设定, 也是在axes level上完成的。</p>
+<pre class=" language-python"><code class="language-python">ax<span class="token punctuation">.</span>set_aspect<span class="token punctuation">(</span><span class="token string">'equal'</span><span class="token punctuation">)</span> 
+ax<span class="token punctuation">.</span>minorticks_on<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+ax<span class="token punctuation">.</span>set_xlim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span> 
+ax<span class="token punctuation">.</span>grid<span class="token punctuation">(</span>which<span class="token operator">=</span><span class="token string">'minor'</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token string">'both'</span><span class="token punctuation">)</span></code></pre>
+<p>最后是坐标轴tick和细节,这个在<code>axes.xaxis</code>or<code>axes.yaxis</code>上完成。</p>
+<pre class=" language-python"><code class="language-python">ax<span class="token punctuation">.</span>xaxis<span class="token punctuation">.</span>set_tick_params<span class="token punctuation">(</span>rotation<span class="token operator">=</span><span class="token number">45</span><span class="token punctuation">,</span>labelsize<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">,</span>colors<span class="token operator">=</span><span class="token string">'w'</span><span class="token punctuation">)</span> 
+start<span class="token punctuation">,</span> end <span class="token operator">=</span> ax<span class="token punctuation">.</span>get_xlim<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+ax<span class="token punctuation">.</span>xaxis<span class="token punctuation">.</span>set_ticks<span class="token punctuation">(</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+ax<span class="token punctuation">.</span>yaxis<span class="token punctuation">.</span>tick_right<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>画图的时候,请坚持使用<code>ax</code>格式。</p>
+<h3 id="matplotlib图像处理与可视化"><a href="#matplotlib图像处理与可视化" class="headerlink" title="matplotlib图像处理与可视化"></a>matplotlib图像处理与可视化</h3><p><a target="_blank" rel="noopener" href="https://www.fontke.com/tool/rgb/800000/">根据RGB  CMYK  HSL  HSV  XYZ 值来查询颜色</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>image <span class="token keyword">as</span> imgplt
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 x <span class="token operator">=</span> imgplt<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token string">'label.png'</span><span class="token punctuation">)</span>
@@ -792,6 +1057,37 @@ plt<span class="token punctuation">.</span>colorbar<span class="token punctuatio
 <span class="token comment" spellcheck="true"># colorbar()如下图中红框标出</span></code></pre>
 <img src="./medias/loading.gif" data-original="/np-pd-plt/image-20210422211101827.png" alt="colorbar" style="zoom:67%;">
 
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Create a new figure, or activate an existing figure.</span>
+plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>num<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># A unique identifier for the figure.</span>
+           figsize<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 指定figure的宽和高，单位为英寸；</span>
+           dpi<span class="token operator">=</span>None<span class="token punctuation">,</span>
+           facecolor<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 背景颜色</span>
+           edgecolor<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 边界颜色</span>
+           frameon<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 是否显示边框</span>
+           FigureClass<span class="token operator">=</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'matplotlib.figure.Figure'</span><span class="token operator">></span><span class="token punctuation">,</span> clear<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 图片的保存</span>
+plt<span class="token punctuation">.</span>imsave<span class="token punctuation">(</span>filename<span class="token punctuation">,</span>X<span class="token punctuation">,</span>format<span class="token operator">=</span><span class="token string">'png'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 创建单个子图</span>
+plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span>nrows<span class="token punctuation">,</span>ncows<span class="token punctuation">,</span>index<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#nrows:行数 ncols:列数 index:索引值,图片放在第几个窗格</span>
+<span class="token comment" spellcheck="true"># Create a figure and a set of subplots.</span>
+<span class="token comment" spellcheck="true"># 创建多个子图</span>
+pyplot<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>nrows<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 行数</span>
+                ncols<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 列数</span>
+                <span class="token operator">*</span><span class="token punctuation">,</span> sharex<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> sharey<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> squeeze<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> subplot_kw<span class="token operator">=</span>None<span class="token punctuation">,</span> gridspec_kw<span class="token operator">=</span>None<span class="token punctuation">,</span>                          <span class="token operator">**</span>fig_kw<span class="token comment" spellcheck="true"># 所有其他关键字参数都传递给 pyplot.figure 调用。</span>
+               <span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span> fig<span class="token punctuation">,</span> ax
+<span class="token comment" spellcheck="true"># ticks:设置刻度 labels:设置刻度标签</span>
+plt<span class="token punctuation">.</span>xticks<span class="token punctuation">(</span>ticks<span class="token operator">=</span>None<span class="token punctuation">,</span>labels<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># xlabel: label的文本</span>
+plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span>xlabel<span class="token punctuation">:</span>str<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 将图片展示到figure上</span>
+plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>train_images<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span>plt<span class="token punctuation">.</span>cm<span class="token punctuation">.</span>binary<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#train_images[i]:必须是array-like或PIL image</span>
+<span class="token comment" spellcheck="true">#cmap:用于将标量数据映射到颜色的Colormap实例或已注册的colormap名称</span>
+<span class="token comment" spellcheck="true"># 显示figure</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 将当前Axes设置为ax,将当前Figure设置为ax的父级。</span>
+matplotlib<span class="token punctuation">.</span>pyplot<span class="token punctuation">.</span>sca<span class="token punctuation">(</span>ax<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># set current ax</span></code></pre>
 <p>为什么例如cityscape的<strong>labelID</strong>图片用<code>imread</code>读取后在输出无法输出整数而是输出浮点数？</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">imread</span><span class="token punctuation">(</span>fname<span class="token punctuation">,</span> format<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">from</span> urllib <span class="token keyword">import</span> parse
@@ -871,20 +1167,6 @@ plt<span class="token punctuation">.</span>colorbar<span class="token punctuatio
     <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span>f<span class="token string">"Unknown PIL rawmode: {rawmode}"</span><span class="token punctuation">)</span></code></pre>
 <p><code>pil_png.png</code>是<code>&lt;PIL.PngImagePlugin.PngStream object</code>,<code>a = np.array(pil_png) or plt.imshow(pil_png)</code>之后,<code>pil_png.png</code>都会变为None(暂时不知道为什么)</p>
 <p>所以其实乘以255就会得到正确的</p>
-<pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>imsave<span class="token punctuation">(</span>文件名<span class="token punctuation">,</span>X<span class="token punctuation">,</span>format<span class="token operator">=</span><span class="token string">'png'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#图片的保存</span>
-plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span>nrows<span class="token punctuation">,</span>ncows<span class="token punctuation">,</span>index<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#nrows:行数 ncols:列数 index:索引值,图片放在第几个窗格</span>
-plt<span class="token punctuation">.</span>xticks<span class="token punctuation">(</span>ticks<span class="token operator">=</span>None<span class="token punctuation">,</span>labels<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># ticks:设置刻度 labels:设置刻度标签</span>
-plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span>xlabel<span class="token punctuation">:</span>str<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#xlabel: label的文本</span>
-plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>train_images<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span>plt<span class="token punctuation">.</span>cm<span class="token punctuation">.</span>binary<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#train_images[i]:必须是array-like或PIL image</span>
-<span class="token comment" spellcheck="true">#cmap:用于将标量数据映射到颜色的Colormap实例或已注册的colormap名称</span>
-<span class="token comment" spellcheck="true">#将图片展示到figure上</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#显示figure</span></code></pre>
 <p>为什么<code>plt.imshow()</code>显示上面的被变成小数的array会是彩色的?</p>
 <pre class=" language-python"><code class="language-python">matplotlib<span class="token punctuation">.</span>pyplot<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>X<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># array-like or PIL image</span>
                          cmap<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 颜色图谱 </span>
@@ -978,8 +1260,13 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </tbody></table>
 <p><code>cmap</code>不输入的话默认是<code>viridis</code>模式</p>
 <p>When <strong>using scalar data</strong> and <strong>no explicit norm,</strong> vmin and vmax <strong>define the data range</strong> that the <strong>colormap covers</strong>. By default, <strong>the colormap covers the complete value range of the supplied data</strong>. It is <strong>deprecated to use vmin/vmax when norm is given</strong>. When <strong>using RGB(A) data</strong>, parameters <strong>vmin/vmax are ignored</strong>.</p>
-<p><img src="./medias/loading.gif" data-original="/np-pd-plt/new1\jianguoyun_posts\np&amp;pd&amp;plt\image-20210921200133539.png" alt="vmin&amp;vmax"></p>
-<h3 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h3><p><a target="_blank" rel="noopener" href="https://pillow.readthedocs.io/en/stable/">PIL Api</a></p>
+<p><img src="./medias/loading.gif" data-original="/np-pd-plt/np&amp;pd&amp;plt%5Cimage-20210921200133539.png" alt="vmin&amp;vmax"></p>
+<h3 id="可视化中间特征图"><a href="#可视化中间特征图" class="headerlink" title="可视化中间特征图"></a>可视化中间特征图</h3><p>把网络中间某层的输出的特征图按通道作为图片进行可视化展示即可，如下述代码所示：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token comment" spellcheck="true">#get feature map of layer_activation</span>
+plt<span class="token punctuation">.</span>matshow<span class="token punctuation">(</span>layer_activation<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">'viridis'</span><span class="token punctuation">)</span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ztf312/article/details/102474190">cmap参数设置</a></p>
+<h2 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h2><p><a target="_blank" rel="noopener" href="https://pillow.readthedocs.io/en/stable/">PIL Api</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np   <span class="token comment" spellcheck="true">#可以这样用PIL读取处理图片,然后最后再转成ndarray</span>
 <span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
 
@@ -998,19 +1285,52 @@ img<span class="token punctuation">.</span>show<span class="token punctuation">(
 <span class="token keyword">print</span><span class="token punctuation">(</span>img<span class="token punctuation">.</span>mode<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># L</span>
 img3<span class="token operator">=</span>img<span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token string">"RGB"</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 转换图片的mode</span></code></pre>
+<span class="token comment" spellcheck="true"># 转换图片的mode</span>
+<span class="token comment" spellcheck="true"># 将array转换成图片</span>
+a <span class="token operator">=</span> torch<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> PIL<span class="token punctuation">.</span>Image <span class="token keyword">as</span> IMG
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+a <span class="token operator">=</span> IMG<span class="token punctuation">.</span>fromarray<span class="token punctuation">(</span>np<span class="token punctuation">.</span>uint8<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># PIL.Image.Image是一个类实例，包含自己的属性,通道顺序是(H,W,C)</span>
+<span class="token comment" spellcheck="true"># &lt;PIL.Image.Image image mode=RGB size=2x3 at 0x7F51B6B9AF10></span>
+<span class="token comment" spellcheck="true"># 转为调色板模式</span>
+new_mask <span class="token operator">=</span> Image<span class="token punctuation">.</span>fromarray<span class="token punctuation">(</span>mask<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>np<span class="token punctuation">.</span>uint8<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token string">'P'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 模式'L'为灰色图像，它的每个像素用8个bit表示，0表示黑，255表示白，其他数字表示不同的灰度。</span>
+<span class="token comment" spellcheck="true"># 模式“P”为8位彩色图像，它的每个像素用8个bit表示，其对应的彩色值是按照调色板索引值查询出来的。</span>
+<span class="token comment" spellcheck="true"># 0-255,每个对应一个颜色。</span>
+<span class="token comment" spellcheck="true"># 标签图像的模式正是'P'模式，因此测试时要生成对应标签图像的图片的话，构建一个调色板然后上色即可。</span>
+new_mask<span class="token punctuation">.</span>putpalette<span class="token punctuation">(</span>palette<span class="token punctuation">)</span></code></pre>
 <p>图像的模式,常见的<strong>mode</strong> 有如下:</p>
-<img src="./medias/loading.gif" data-original="/np-pd-plt/new1\jianguoyun\_posts\np&amp;pd&amp;plt\image-20210921164138454.png" alt="图像的mode" style="zoom:80%;">
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20210921164138454.png" alt="图像的mode" style="zoom:80%;">
 
 <p>1:位图 L:灰度模式 </p>
 <p>三通道RGBnumpy读取显示是0-1，而不是0-255，这个是归一化的RGB！！正好和概率二分类对应！</p>
 <p><strong>Snipaste竟然可以实时获取颜色值！！！如下：</strong></p>
 <p><img src="./medias/loading.gif" data-original="/np-pd-plt/image-20201207093513840.png" alt="采集颜色值"></p>
-<h3 id="可视化中间特征图"><a href="#可视化中间特征图" class="headerlink" title="可视化中间特征图"></a>可视化中间特征图</h3><p>把网络中间某层的输出的特征图按通道作为图片进行可视化展示即可，如下述代码所示：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-<span class="token comment" spellcheck="true">#get feature map of layer_activation</span>
-plt<span class="token punctuation">.</span>matshow<span class="token punctuation">(</span>layer_activation<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">'viridis'</span><span class="token punctuation">)</span></code></pre>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ztf312/article/details/102474190">cmap参数设置</a></p>
+<h2 id="cv2"><a href="#cv2" class="headerlink" title="cv2"></a>cv2</h2><p><a target="_blank" rel="noopener" href="https://docs.opencv.org/4.x/index.html">opencv的API</a></p>
+<h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Loads an image from a file.</span>
+cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span>filename<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># Name of file to be loaded.</span>
+          flags<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># Flag that can take values of cv2::ImreadModes</span>
+         <span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 返回值:&lt;class 'numpy.ndarray'>,如果读取文件错误,那么返回空矩阵</span>
+<span class="token comment" spellcheck="true"># In the case of color images, the decoded images will have the channels stored in B G R order.</span>
+<span class="token comment" spellcheck="true"># 返回的通道顺序为 H W C</span></code></pre>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211114001200331.png" alt="目前支持的图片格式" style="zoom:67%;">
+
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Converts an image from one color space to another.</span>
+<span class="token comment" spellcheck="true"># OpenCV默认颜色格式实际为BGR</span>
+cv<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>src<span class="token punctuation">,</span> code<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 色彩空间转换代码</span>
+            dst<span class="token punctuation">[</span><span class="token punctuation">,</span> dstCn<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>R、G、B通道值的常规范围是:</p>
+<ul>
+<li>0 to 255 for CV_8U images</li>
+<li>0 to 65535 for CV_16U images</li>
+<li>0 to 1 for CV_32F images</li>
+</ul>
+<p><code>ColorConvensionCodes</code></p>
+<ul>
+<li>COLOR_BGR2RGB</li>
+</ul>
 
             </div>
             <hr/>
@@ -1801,6 +2121,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1869,7 +2196,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             

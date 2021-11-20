@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.3k
+                    12.5k
                 </div>
                 
 
@@ -700,7 +700,7 @@ site <span class="token operator">=</span> <span class="token punctuation">{</sp
 my_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'菜鸟教程'</span><span class="token punctuation">,</span> <span class="token string">'www.runoob.com'</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"网站名：{0[0]}, 地址 {0[1]}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>my_list<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># "0" 是必须的</span></code></pre>
 <p><strong>数字格式化：</strong></p>
-<img src="./medias/loading.gif" data-original="/python-xue-xi/new1\jianguoyun\_posts\python学习\image-20210921175012478.png" alt="image-20210921175012478">
+<img src="./medias/loading.gif" data-original="/python-xue-xi/image-20210921175012478.png" alt="image-20210921175012478">
 
 <p><code>^, &lt;, &gt;</code>分别是居中、左对齐、右对齐，后面带宽度</p>
 <p><code>:</code>号后面带填充的字符，只能是一个字符，不指定则默认是用空格填充。</p>
@@ -808,28 +808,41 @@ replace
 </code></pre>
 <h3 id="变量赋值规则"><a href="#变量赋值规则" class="headerlink" title="变量赋值规则"></a>变量赋值规则</h3><p>在python中使用<code>id(obj)</code>函数查看变量的地址</p>
 <ol>
-<li><p><code>a=10</code>，并不是为标记a建立一个值，而是建立了一个值以后，再用标记a去指向它</p>
-</li>
-<li><p><code>a=10 b=a a=20</code>,b=a不是b指向了标记a，而是b指向了标记a指向的值，所以a指向20之后，b还是10</p>
-</li>
-<li><p><code>g= 10 a= g a=a+4</code>，a会指向一个新的内存</p>
-</li>
-<li><p><code>n=['a','b','c']  n[0]=['x','y'] </code>,改变的是所指向的对象的本身，内部没有改变</p>
-</li>
+<li><code>a=10</code>，并不是为标记a建立一个值，而是建立了一个值以后，再用标记a去指向它</li>
+<li><code>a=10 b=a a=20</code>,b=a不是b指向了标记a，而是b指向了标记a指向的值，所以a指向20之后，b还是10</li>
+<li><code>g= 10 a= g a=a+4</code>，a会指向一个新的内存</li>
+<li><code>n=['a','b','c']  n[0]=['x','y'] </code>,改变的是所指向的对象的本身，内部没有改变</li>
 </ol>
-<h3 id="函数和基本数据结构"><a href="#函数和基本数据结构" class="headerlink" title="函数和基本数据结构"></a>函数和基本数据结构</h3><h4 id="列表list-序列"><a href="#列表list-序列" class="headerlink" title="列表list/序列"></a>列表list/序列</h4><pre class=" language-python"><code class="language-python">list<span class="token punctuation">(</span><span class="token punctuation">)</span> eg<span class="token punctuation">:</span>b<span class="token operator">=</span>list<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#返回一个新的列表，b和a不共享</span>
-<span class="token comment" spellcheck="true">#a=list("a,b,c,d,e,!")=>a=['a','b','c','d','e']</span>
+<p><code>nums[nums[i]], nums[i] = nums[i], nums[nums[i]]</code></p>
+<p>实际的执行是<code>t=(nums[i], nums[nums[i]]),nums[nums[i]]=t[0],nums[i]=t[1]</code>,<strong>顺序上是有先后的</strong></p>
+<h3 id="函数和基本数据结构"><a href="#函数和基本数据结构" class="headerlink" title="函数和基本数据结构"></a>函数和基本数据结构</h3><h4 id="列表list-序列"><a href="#列表list-序列" class="headerlink" title="列表list/序列"></a>列表list/序列</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 返回一个新的列表，b和a不共享</span>
+<span class="token comment" spellcheck="true"># a=list("a,b,c,d,e,!")=>a=['a','b','c','d','e']</span>
+list<span class="token punctuation">(</span><span class="token punctuation">)</span> eg<span class="token punctuation">:</span>b<span class="token operator">=</span>list<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 向列表添加元素</span>
 list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#向列表添加元素</span></code></pre>
+<span class="token comment" spellcheck="true"># 从列表中找出某个值第一个匹配项的索引位置</span>
+list<span class="token punctuation">.</span>index<span class="token punctuation">(</span>obj<span class="token punctuation">)</span></code></pre>
 <p><strong>索引与切片</strong></p>
 <p><code>a[2:6]</code>:左闭右开</p>
 <p><code>a[2:]</code>：从第2个开始到后面所有的元素</p>
+<p><code>a[m::n]</code> 从a[m]开始，每次走|n|步，当n为负时逆序取数，当n为正的时候，m为空则默认m=0，n为负时，m为空则默认为-1</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhulove86/article/details/53941555?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.control">列表推导式</a></p>
 <img src="./medias/loading.gif" data-original="/python-xue-xi/image-20210120185150919.png" alt="语法" style="zoom: 50%;">
 
 <p><strong>集合推导式</strong>和<strong>字典推导式</strong>与<strong>列表推导式</strong>类似,只不过把<strong>中括号[]**换成了</strong>大括号{}**</p>
 <p><strong>生成器推导式</strong>是将<strong>中括号[]**换为</strong>圆括号()**</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 实现切片</span>
+<span class="token keyword">class</span> <span class="token class-name">slice</span><span class="token punctuation">(</span>stop<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">slice</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> stop<span class="token punctuation">[</span><span class="token punctuation">,</span> step<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># start:开始位置 stop:结束为止 step:间隔</span>
+<span class="token operator">>></span><span class="token operator">></span>myslice <span class="token operator">=</span> slice<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 设置截取5个元素的切片</span>
+<span class="token operator">>></span><span class="token operator">></span> myslice
+slice<span class="token punctuation">(</span>None<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> arr <span class="token operator">=</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> arr
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> arr<span class="token punctuation">[</span>myslice<span class="token punctuation">]</span>         <span class="token comment" spellcheck="true"># 截取 5 个元素</span>
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span></code></pre>
 <h4 id="字典dict-集合set"><a href="#字典dict-集合set" class="headerlink" title="字典dict/集合set"></a>字典dict/集合set</h4><pre class=" language-python"><code class="language-python">a<span class="token operator">=</span>b<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#删除字典中给定键key所对应的值，返回值为被删除的值。</span>
 a<span class="token operator">=</span>b<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#或b.values()或b.items()</span>
@@ -877,6 +890,25 @@ sorted<span class="token punctuation">(</span>iterable<span class="token punctua
     main<span class="token punctuation">(</span><span class="token punctuation">)</span>
 say_hello
 say_hello</code></pre>
+<h4 id="and和or"><a href="#and和or" class="headerlink" title="and和or"></a>and和or</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># and的返回结果问题:</span>
+<span class="token comment" spellcheck="true"># 从左到右计算表达式,若所有的都为真,则返回最后一个值,若存在假,返回第一个假值.</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">0</span> <span class="token operator">and</span> <span class="token boolean">False</span> <span class="token operator">and</span> <span class="token number">1</span>
+<span class="token number">0</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">1</span> <span class="token operator">and</span> <span class="token boolean">False</span> <span class="token operator">and</span> <span class="token number">5</span>
+<span class="token boolean">False</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">1</span> <span class="token operator">and</span> <span class="token number">3</span> <span class="token operator">and</span> <span class="token boolean">False</span> <span class="token operator">and</span> <span class="token number">5</span>
+<span class="token boolean">False</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">1</span> <span class="token operator">and</span> <span class="token number">2</span> <span class="token operator">and</span> <span class="token number">0</span> <span class="token operator">and</span> <span class="token boolean">False</span> <span class="token operator">and</span> <span class="token number">5</span>
+<span class="token number">0</span>
+
+<span class="token comment" spellcheck="true"># or的返回结果问题:</span>
+<span class="token comment" spellcheck="true"># 从左到右计算表达式,只要遇到真值就返回那个真值,如果表达式结束依旧没有遇到真值,就返回最后一个假值.</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">1</span> <span class="token operator">or</span> <span class="token number">2</span> <span class="token operator">or</span> <span class="token boolean">False</span>
+<span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token boolean">False</span> <span class="token operator">or</span> <span class="token number">2</span> <span class="token operator">or</span> <span class="token boolean">False</span>
+<span class="token number">2</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token boolean">False</span> <span class="token operator">or</span> <span class="token number">1</span> <span class="token operator">and</span> <span class="token number">2</span>
+<span class="token number">2</span></code></pre>
 <h2 id="稍微不那么基础的"><a href="#稍微不那么基础的" class="headerlink" title="稍微不那么基础的"></a>稍微不那么基础的</h2><h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p><strong><code>dir()</code>和<code>__dict__</code></strong></p>
 <p><code> eg:dir(nn.Module)</code> dir函数可以返回参数的属性、方法的列表</p>
 <p><strong><code>__init__()</code>和<code>__new__()</code></strong></p>
@@ -1124,6 +1156,13 @@ b<span class="token punctuation">.</span>add<span class="token punctuation">(</s
 <h4 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h4><pre class=" language-python"><code class="language-python">hasattr<span class="token punctuation">(</span>object<span class="token punctuation">,</span>name<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#object:对象 name:字符串,属性名</span>
 <span class="token comment" spellcheck="true">#如果对象有该属性返回true,否则返回false</span>
+getattr<span class="token punctuation">(</span>object<span class="token punctuation">,</span> name<span class="token punctuation">[</span><span class="token punctuation">,</span> default<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#用于返回一个对象属性值</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        bar <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> a <span class="token operator">=</span> A<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> getattr<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 获取属性 bar 值</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">1</span>
 vars<span class="token punctuation">(</span><span class="token punctuation">[</span>object<span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#带参数:返回对象object的属性和属性值的字典对象,或者说返回对象的__dict__属性</span>
 <span class="token comment" spellcheck="true">#不带参数:作用同locals(),即以字典对象返回当前位置的全部局部变量</span></code></pre>
@@ -1244,7 +1283,8 @@ Could <span class="token operator">not</span> compare B against the other <span 
 <p>这就是返回了NotImplemented的所做的。NotImplemented告诉运行时，应该让其他对象来完成某个操作。在表达b1 == a1中，<code>b1.__eq__(a1)</code>返回了NotImplemented，这说明Python试着用<code>a1.__eq__(b1)</code>。由于a1足够可以返回True，因此这个表达可以成功。如果A中的<code>__eq__()</code>也返回NotImplemented，那么运行时会退化到使用内置的比较行为，即比较对象的标识符（在CPython中，是对象在内存中的地址）。</p>
 <p>注意：如果在调用<code>b1.__eq__(a1)</code>时抛出NotImpementedError，而不进行处理，就会中断代码的执行。而NotImplemented无法抛出，仅仅是用来进一步测试是否有其他方法可供调用。</p>
 <h2 id="各种包"><a href="#各种包" class="headerlink" title="各种包"></a>各种包</h2><h3 id="模块与包"><a href="#模块与包" class="headerlink" title="模块与包"></a>模块与包</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95afe2c3d526">模块与包的区别</a></p>
-<p>简而言之单个py文件就是一个模块，将几个py文件合起来就是一个包，但是python没法识别，所以需要添加一个<code>__init__.py</code>来告诉解释器</p>
+<p><strong>模块:</strong> 一般来说, 单个py文件就叫模块(module), 调用这个模块直接使用<code>import 模块名</code>即可, 也可以使用<code>from 模块名 import 函数名/变量名/类名</code>和<code>from 模块名 import *</code></p>
+<p><strong>包:</strong> 当我们写了几个相近的py文件后, 想要集成起来给别人使用. 这时候就需要用到我们的<strong>包</strong>了。包就是为了多个py文件打包起来访问的东西. 只要在包里面放一个<code>__init__.py</code>文件, 在<code>__init__.py</code>文件<code>import包里面的模块(py文件)</code>, 就可以实现<code>import 包名</code>,实现对多个模块的调用。</p>
 <pre class=" language-python"><code class="language-python">packet
 <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>__init__<span class="token punctuation">.</span>py
 <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>a<span class="token punctuation">.</span>py
@@ -1255,6 +1295,42 @@ Could <span class="token operator">not</span> compare B against the other <span 
 <p>事实上，当我们向文件导入某个模块时，<strong>导入的是该模块中那些名称不以下划线（单下划线“_”或者双下划线“__”）开头的变量、函数和类</strong>。因此，如果我们不想模块文件中的某个成员被引入到其它文件中使用，可以在其名称前添加下划线。</p>
 <p><code>__all__</code></p>
 <p>除此之外，还可以借助模块提供的<code> __all__</code> 变量，该变量的值是一个列表，存储的是当前模块中一些成员（变量、函数或者类）的名称。通过在模块文件中设置 <code>__all__</code> 变量，当其它文件以<code>from 模块名 import *</code>的形式(仅此种形式)导入该模块时，该文件中只能使用 <code>__all__</code> 列表中指定的成员。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/64893308"><strong>导入不同层级目录的模块</strong></a></p>
+<p>假设有如下目录结构：</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">-</span><span class="token operator">-</span> dir0
+　　<span class="token operator">|</span> file1<span class="token punctuation">.</span>py
+　　<span class="token operator">|</span> file2<span class="token punctuation">.</span>py
+　　<span class="token operator">|</span> dir3
+　　　<span class="token operator">|</span> file3<span class="token punctuation">.</span>py
+　　<span class="token operator">|</span> dir4
+　　　<span class="token operator">|</span> file4<span class="token punctuation">.</span>py</code></pre>
+<p><strong>1.导入同级模块</strong></p>
+<p>如在<code>file1.py</code>中想导入<code>file2.py</code>,注意无需加后缀<code>".py"</code>：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> file2
+<span class="token comment" spellcheck="true"># 使用file2中函数时需加上前缀"file2."，即：</span>
+<span class="token comment" spellcheck="true"># file2.fuction_name()</span></code></pre>
+<p><strong>2.导入下级模块</strong></p>
+<p>方式一:</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 需要一直带着dir3,书写比较麻烦,因此建议起一个别名,例如df3</span>
+<span class="token keyword">import</span> dir3<span class="token punctuation">.</span>file3
+<span class="token comment" spellcheck="true"># import dir3.file3 as df3</span></code></pre>
+<p>方式二:</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 在dir3下新建一个__init__.py</span>
+<span class="token operator">-</span><span class="token operator">-</span> dir0
+　　<span class="token operator">|</span> file1<span class="token punctuation">.</span>py
+　　<span class="token operator">|</span> file2<span class="token punctuation">.</span>py
+　　<span class="token operator">|</span> dir3
+　　　<span class="token operator">|</span> __init__<span class="token punctuation">.</span>py
+　　　<span class="token operator">|</span> file3<span class="token punctuation">.</span>py
+　　<span class="token operator">|</span> dir4
+　　　<span class="token operator">|</span> file4<span class="token punctuation">.</span>py
+<span class="token keyword">import</span> dir3 <span class="token comment" spellcheck="true"># 导入的是__init__.py中导入的</span></code></pre>
+<p><strong>3.导入上级模块</strong></p>
+<p>要导入上级目录下模块，可以使用<code>sys.path</code>,如在<code>file4.py</code>中想引入<code>import</code>上级目录下的<code>file1.py</code>：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> sys 
+<span class="token comment" spellcheck="true">#不知道怎么加可以先print(sys.path)</span>
+sys<span class="token punctuation">.</span>path<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"/home/dch"</span><span class="token punctuation">)</span> 
+<span class="token keyword">import</span> file1</code></pre>
 <h3 id="tqdm"><a href="#tqdm" class="headerlink" title="tqdm"></a>tqdm</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wanghui-garcia/p/11514579.html">tqdm详细教程</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> tqdm <span class="token keyword">import</span> tqdm
 <span class="token keyword">for</span> fname <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span>os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>input_dir<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1536,10 +1612,12 @@ out <span class="token operator">=</span> im<span class="token punctuation">.</s
 <span class="token comment" spellcheck="true">#按照变量border的四元组，在图像的左、上、右、下四个边，使用给定的颜色填充相应的行和列。</span></code></pre>
 <h3 id="random"><a href="#random" class="headerlink" title="random"></a>random</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42849332/article/details/81516356?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">random新手必看</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
-<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#随机生成[0,1.0)的浮点数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#用于生成一个指定范围内的整数。其中参数a是下限，参数b是上限，生成的随机数n: a &lt;= n &lt;= b(闭区间)</span>
 random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#用于生成一个指定范围内的整数。其中参数a是下限，参数b是上限，生成的随机数n: a &lt;= n &lt;= b(闭区间)</span></code></pre>
+<span class="token comment" spellcheck="true"># 从sequence中随机选出一个元素,参数sequence表示一个有序类型</span>
+random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>sequence<span class="token punctuation">)</span></code></pre>
 <h3 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h3><p><a target="_blank" rel="noopener" href="https://geek-docs.com/python/python-tutorial/python-requests.html">Python Requests教程</a></p>
 <p><code>get()</code></p>
 <p><code>get()</code>方法发出 GET 请求,它获取由给定 URL 标识的文档。</p>
@@ -1578,7 +1656,7 @@ o <span class="token operator">=</span> urlparse<span class="token punctuation">
 
 
 <h3 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h3><p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017681679479008">教程</a></p>
-<p><code>defaultdict</code></p>
+<p><strong><code>defaultdict</code></strong></p>
 <p>使用<code>dict</code>时，如果引用的Key不存在，就会抛出<code>KeyError</code>。如果希望key不存在时，返回一个默认值，就可以用<code>defaultdict</code>：</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> collections <span class="token keyword">import</span> defaultdict
 <span class="token operator">>></span><span class="token operator">></span> dd <span class="token operator">=</span> defaultdict<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> <span class="token string">'N/A'</span><span class="token punctuation">)</span>
@@ -1590,7 +1668,7 @@ o <span class="token operator">=</span> urlparse<span class="token punctuation">
 <p>注意默认值是调用函数返回的，而函数在创建<code>defaultdict</code>对象时传入。除了在Key不存在时返回默认值，<code>defaultdict</code>的其他行为跟<code>dict</code>是完全一样的。</p>
 <p><code>defaultdict</code>传入的函数是<strong>工厂函数:</strong></p>
 <p><em>工厂函数看上去有点像函数，实质上他们是类，当你调用他们时，实际上是生成了该类型的一个实例，就像工厂生产货物一样。</em></p>
-<p><code>OrderedDict</code></p>
+<p><strong><code>OrderedDict</code></strong></p>
 <p>使用<code>dict</code>时，Key是无序的。在对<code>dict</code>做迭代时，我们无法确定Key的顺序。</p>
 <p>如果要保持Key的顺序，可以用<code>OrderedDict</code>：</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> collections <span class="token keyword">import</span> OrderedDict
@@ -1603,6 +1681,15 @@ OrderedDict<span class="token punctuation">(</span><span class="token punctuatio
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gide/p/6370082.html">ordered_dict</a></p>
 <p>模块collections中的子类，使字典的迭代顺序就是插入的顺序</p>
 <p>注:从python3.6开始,普通的字典也是有序的了，即按照插入的顺序迭代。</p>
+<p><strong><code>namedtuple</code></strong></p>
+<p><code>namedtuple</code>是一个函数，它用来创建一个自定义的<code>tuple</code>对象，并且规定了<code>tuple</code>元素的个数，并可以用属性而不是索引来引用<code>tuple</code>的某个元素。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> collections <span class="token keyword">import</span> namedtuple
+<span class="token operator">>></span><span class="token operator">></span> Point <span class="token operator">=</span> namedtuple<span class="token punctuation">(</span><span class="token string">'Point'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> p <span class="token operator">=</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> p<span class="token punctuation">.</span>x
+<span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> p<span class="token punctuation">.</span>y
+<span class="token number">2</span></code></pre>
 <h3 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h3><p>functools 模块用于高阶函数：接受函数为参数或返回其他函数的函数。 通常，出于此模块的目的，任何可调用对象都可以视为函数。</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/131634488">functools详解</a></p>
 <p><code>functools.partial</code></p>
@@ -1659,6 +1746,28 @@ add<span class="token punctuation">(</span><span class="token number">2</span><s
         newkeywords <span class="token operator">=</span> self<span class="token punctuation">.</span>keywords<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
         newkeywords<span class="token punctuation">.</span>update<span class="token punctuation">(</span>keywords<span class="token punctuation">)</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>func<span class="token punctuation">(</span><span class="token operator">*</span>self<span class="token punctuation">.</span>args<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>newkeywords<span class="token punctuation">)</span></code></pre>
+<h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写。</p>
+<p><code>json.loads</code> 用于解码 JSON 数据。该函数返回 Python 字段的数据类型。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/python</span>
+<span class="token keyword">import</span> json
+jsonData <span class="token operator">=</span> <span class="token string">'{"a":1,"b":2,"c":3,"d":4,"e":5}'</span><span class="token punctuation">;</span>
+text <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>jsonData<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#{u'a': 1, u'c': 3, u'b': 2, u'e': 5, u'd': 4}</span></code></pre>
+<p><code>json.dump</code>将python中的对象转化成json储存到文件中</p>
+<pre class=" language-python"><code class="language-python">json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>obj<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 转化成json的对象。</span>
+          fp<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 文件指针</span>
+          <span class="token operator">*</span><span class="token punctuation">,</span> skipkeys<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+          ensure_ascii<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 输出保证所有传入的非ASCII字符都被转义;为false，则这些字符将按原样输出。</span>
+          check_circular<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> allow_nan<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> cls<span class="token operator">=</span>None<span class="token punctuation">,</span>
+          indent<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 如果缩进是非负整数或字符串，那么 JSON 数组元素和对象成员将使用该缩进级别进行漂亮打印</span>
+          <span class="token comment" spellcheck="true"># 用正整数缩进每级缩进多少个空格。</span>
+          separators<span class="token operator">=</span>None<span class="token punctuation">,</span> default<span class="token operator">=</span>None<span class="token punctuation">,</span> sort_keys<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span></code></pre>
+<h3 id="timm"><a href="#timm" class="headerlink" title="timm"></a>timm</h3><p>PyTorch Image Models (timm)是一个图像模型(models)、层(layers)、实用程序(utilities)、优化器(optimizers)、调度器(schedulers)、数据加载/增强(data-loaders / augmentations)和参考训练/验证脚本(reference training / validation scripts)的集合,目的是将各种SOTA模型组合在一起,从而能够重现ImageNet的训练结果。<br><code>to_2tuple</code>:将传进来的x变成一个(x,x)的tuple</p>
+<p><code>DropPath</code>:将深度学习模型中的多分支结构随机”删除“</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 假设在前向传播中有如下代码</span>
+x <span class="token operator">=</span> x <span class="token operator">+</span> self<span class="token punctuation">.</span>drop_path<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mlp<span class="token punctuation">(</span>self<span class="token punctuation">.</span>norm2<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>那么在drop_path分支中，每个batch有drop_prob的概率样本在self.mlp(self.norm2(x))不会”执行“，会以0直接传递。</p>
 
             </div>
             <hr/>
@@ -2520,7 +2629,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             

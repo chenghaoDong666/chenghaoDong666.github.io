@@ -6,7 +6,7 @@
   <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
   
   <link href="http://dchlovestudy.xyz/"/>
-  <updated>2021-09-25T13:01:08.475Z</updated>
+  <updated>2021-11-20T03:57:35.885Z</updated>
   <id>http://dchlovestudy.xyz/</id>
   
   <author>
@@ -17,11 +17,62 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>django</title>
+    <link href="http://dchlovestudy.xyz/django/"/>
+    <id>http://dchlovestudy.xyz/django/</id>
+    <published>2021-11-18T15:20:28.000Z</published>
+    <updated>2021-11-20T03:57:35.885Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://docs.djangoproject.com/zh-hans/3.2/&quot;&gt;Django官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    
+    
+    <category term="django" scheme="http://dchlovestudy.xyz/tags/django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenMMLab</title>
+    <link href="http://dchlovestudy.xyz/openmmlab/"/>
+    <id>http://dchlovestudy.xyz/openmmlab/</id>
+    <published>2021-10-27T10:21:23.000Z</published>
+    <updated>2021-10-28T10:05:01.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;网络训练流程&quot;&gt;&lt;a href=&quot;#网络训练流程&quot; class=&quot;headerlink&quot; title=&quot;网络训练流程&quot;&gt;&lt;/a&gt;网络训练流程&lt;/h3&gt;&lt;img src=&quot;/openmmlab/image-20211027182440653.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    
+    
+    <category term="pytorch" scheme="http://dchlovestudy.xyz/tags/pytorch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>办公软件笔记</title>
     <link href="http://dchlovestudy.xyz/ban-gong-ruan-jian-bi-ji/"/>
     <id>http://dchlovestudy.xyz/ban-gong-ruan-jian-bi-ji/</id>
     <published>2021-06-06T01:53:37.000Z</published>
-    <updated>2021-09-25T13:01:08.475Z</updated>
+    <updated>2021-10-19T13:08:09.000Z</updated>
     
     
       
@@ -46,7 +97,7 @@
     <link href="http://dchlovestudy.xyz/cpp-zhao-hua-xi-shi/"/>
     <id>http://dchlovestudy.xyz/cpp-zhao-hua-xi-shi/</id>
     <published>2021-06-03T08:25:40.000Z</published>
-    <updated>2021-06-03T08:51:08.852Z</updated>
+    <updated>2021-11-16T12:10:29.000Z</updated>
     
     
       
@@ -71,7 +122,7 @@
     <link href="http://dchlovestudy.xyz/git-xue-xi/"/>
     <id>http://dchlovestudy.xyz/git-xue-xi/</id>
     <published>2021-05-02T13:00:45.000Z</published>
-    <updated>2021-09-28T11:17:36.000Z</updated>
+    <updated>2021-09-30T05:53:12.000Z</updated>
     
     
       
@@ -121,7 +172,7 @@
     <link href="http://dchlovestudy.xyz/semantic-segmentation-3/"/>
     <id>http://dchlovestudy.xyz/semantic-segmentation-3/</id>
     <published>2021-04-13T09:05:11.000Z</published>
-    <updated>2021-07-13T15:13:55.716Z</updated>
+    <updated>2021-10-14T03:28:50.600Z</updated>
     
     
       
@@ -138,33 +189,6 @@
     
     
     <category term="FCN" scheme="http://dchlovestudy.xyz/tags/FCN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ONNX</title>
-    <link href="http://dchlovestudy.xyz/onnx/"/>
-    <id>http://dchlovestudy.xyz/onnx/</id>
-    <published>2021-03-26T02:46:19.000Z</published>
-    <updated>2021-03-27T01:51:39.209Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;img src=&quot;/onnx/image-20210326105103774.png&quot; alt=&quot;图标很好看的样子&quot; style=&quot;zoom:50%;&quot;&gt;
-
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="深度学习" scheme="http://dchlovestudy.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="模型压缩" scheme="http://dchlovestudy.xyz/tags/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9/"/>
     
   </entry>
   
@@ -352,7 +376,7 @@
     <link href="http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/"/>
     <id>http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/</id>
     <published>2020-12-09T13:35:10.000Z</published>
-    <updated>2021-05-19T14:37:48.385Z</updated>
+    <updated>2021-11-20T03:14:34.999Z</updated>
     
     
       
@@ -377,7 +401,7 @@
     <link href="http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/"/>
     <id>http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/</id>
     <published>2020-12-06T02:06:54.000Z</published>
-    <updated>2021-09-21T03:43:10.000Z</updated>
+    <updated>2021-11-06T15:31:53.377Z</updated>
     
     
       
@@ -402,7 +426,7 @@
     <link href="http://dchlovestudy.xyz/tensorflow-xue-xi/"/>
     <id>http://dchlovestudy.xyz/tensorflow-xue-xi/</id>
     <published>2020-11-27T16:44:34.000Z</published>
-    <updated>2021-04-23T11:40:53.476Z</updated>
+    <updated>2021-11-17T09:03:02.000Z</updated>
     
     
       
@@ -427,7 +451,7 @@
     <link href="http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/"/>
     <id>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</id>
     <published>2020-11-23T11:43:22.000Z</published>
-    <updated>2021-09-25T13:00:37.587Z</updated>
+    <updated>2021-11-16T04:08:46.000Z</updated>
     
     
       
@@ -494,34 +518,6 @@
     
     
     <category term="FCN" scheme="http://dchlovestudy.xyz/tags/FCN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>In-camera image processing pipeline</title>
-    <link href="http://dchlovestudy.xyz/in-camera-image-processing-pipeline/"/>
-    <id>http://dchlovestudy.xyz/in-camera-image-processing-pipeline/</id>
-    <published>2020-11-19T07:09:35.000Z</published>
-    <updated>2020-12-12T15:56:50.151Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在进行之前先把学姐的汇报弄明白&lt;/p&gt;
-&lt;p&gt;首先是raw图像格式：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Color Constancy" scheme="http://dchlovestudy.xyz/categories/Color-Constancy/"/>
-    
-    
-    <category term="颜色空间" scheme="http://dchlovestudy.xyz/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/"/>
-    
-    <category term="相机成像" scheme="http://dchlovestudy.xyz/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/"/>
     
   </entry>
   

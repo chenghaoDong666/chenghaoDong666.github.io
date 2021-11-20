@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    15.9k
+                    17.1k
                 </div>
                 
 
@@ -683,6 +683,13 @@
 <p>李宏毅GAN教程:</p>
 <p>**Regression-**output a scalar **Classification-**output a “class” **Structured Learning/Prediction-**output a sequence, a matrix , a graph, a tree…</p>
 <p><strong>output is composed of components with dependency 带有依赖的元素的组合</strong></p>
+<h4 id="Head-Neck-Backbone"><a href="#Head-Neck-Backbone" class="headerlink" title="Head/Neck/Backbone"></a>Head/Neck/Backbone</h4><p>输入-&gt;主干-&gt;脖子-&gt;头-&gt;输出。主干网络提取特征，脖子提取一些更复杂的特征，然后头部计算预测输出</p>
+<p><strong>backbone：</strong>主干网络，就代表其是网络的一部分，那么是哪部分呢？这个主干网络大多时候指的是提取特征的网络，其作用就是提取图片中的信息，共后面的网络使用。这些网络经常使用的是resnet、VGG等，而不是我们自己设计的网络，因为这些网络已经证明了在分类等问题上的特征提取能力是很强的。在用这些网络作为backbone的时候，都是直接加载官方已经训练好的模型参数，后面接着我们自己的网络。让网络的这两个部分同时进行训练，因为加载的backbone模型已经具有提取特征的能力了，在我们的训练过程中，会对他进行微调，使得其更适合于我们自己的任务。</p>
+<p><strong>head：</strong>head是获取网络输出内容的网络，利用之前提取的特征，head利用这些特征，做出预测。</p>
+<p>**neck:**是放在backbone和head之间的，是为了更好的利用backbone提取的特征。</p>
+<p><strong>bottleneck:**在ResNet中,bottleneck主要是指</strong>每个block进来一个特征图现有一个压缩的步骤**,然后3x3卷积,然后再扩张。<strong>如果bottleneck是指行为的话,就是指压缩这一行为,如果bottleneck是指特征图的话,就是指压缩后或扩张前的通道数较少的特增图。</strong></p>
+<p><strong>GAP：</strong>Global Average Pool全局平均池化，就是将某个通道的特征取平均值，经常使用AdaptativeAvgpoold(1),在pytorch中，这个代表自适应性全局平均池化，说人话就是将某个通道的特征取平均值。</p>
+<p><strong>Embedding</strong>:深度学习方法都是利用使用线性和非线性转换对复杂的数据进行自动特征抽取，并将特征表示为“向量”（vector），这一过程一般也称为“嵌入”（embedding）</p>
 <h3 id="归一-标准-正则"><a href="#归一-标准-正则" class="headerlink" title="归一/标准/正则"></a>归一/标准/正则</h3><p><a target="_blank" rel="noopener" href="https://maristie.com/2018/02/Normalization-Standardization-and-Regularization">Differences between Normalization, Standardization and Regularization</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20455227/answer/370658612">归一化和标准化的作用于区别</a></p>
 <p>翻译成中文是归一化，标准化，正则化，前两个是特征缩放，最后一个是减少过拟合</p>
@@ -917,10 +924,21 @@
 <p>To penalize the size of the weight vector, we must somehow add $||W||$ to the loss function, but how should the model trade off the standard loss for this new additive penalty? In practice, we characterize this tradeoff via the <em>regularization constant</em>  λ, a non-negative hyperparameter that we fit using validation data:<br>$$<br>L(w,b)+\frac{\lambda}{2}||w||^2<br>$$</p>
 <p>$$<br>\begin{split}\begin{aligned} w_1 &amp;\leftarrow \left(1- \eta\lambda \right)w_1 - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}}x_1^{(i)} \left(x_1^{(i)} w_1 + x_2^{(i)} w_2 + b - y^{(i)}\right),\ w_2 &amp;\leftarrow \left(1- \eta\lambda \right)w_2 - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}}x_2^{(i)} \left(x_1^{(i)} w_1 + x_2^{(i)} w_2 + b - y^{(i)}\right). \end{aligned}\end{split}<br>$$</p>
 <p>可见，$L_2$范数正则化令权重$w_1$和$w_2$先自乘小于1的数，再减去不含惩罚项的梯度。因此，$L_2$范数正则化又叫权重衰减。权重衰减通过惩罚绝对值较大的模型参数为需要学习的模型增加了限制，这可能对过拟合有效。实际场景中，我们有时也在惩罚项中添加偏差元素的平方和。</p>
+<h4 id="warm-up"><a href="#warm-up" class="headerlink" title="warm up"></a>warm up</h4><p>为什么warm up策略有效?</p>
+<p><strong>warm up策略:在训练最初使用较小的学习率来启动，并很快切换到大学习率而后进行常见的 decay。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/338066667/answer/771252708">香侬科技的回答</a></p>
+<p>这个问题目前还没有被充分证明，我们只能从直觉上和已有的一些论文[1,2,3]得到推测：</p>
+<ul>
+<li>有助于减缓模型在初始阶段对mini-batch的提前过拟合现象，保持分布的平稳</li>
+<li>有助于保持模型深层的稳定性</li>
+</ul>
+<p>刚开始模型对数据的“分布”理解为零，或者是说“均匀分布”（当然这取决于你的初始化）；在第一轮训练的时候，每个数据点对模型来说都是新的，<strong>模型会很快地进行数据分布修正，如果这时候学习率就很大，极有可能导致开始的时候就对该数据“过拟合”，后面要通过多轮训练才能拉回来</strong>，浪费时间。当训练了一段时间（比如两轮、三轮）后，模型已经对每个数据点看过几遍了，或者说对当前的batch而言有了一些正确的先验，较大的学习率就不那么容易会使模型学偏，所以可以适当调大学习率。这个过程就可以看做是warmup。那么为什么之后还要decay呢？<strong>当模型训到一定阶段后（比如十个epoch），模型的分布就已经比较固定了，或者说能学到的新东西就比较少了。如果还沿用较大的学习率，就会破坏这种稳定性</strong>，用我们通常的话说，就是<strong>已经接近loss的local optimal了</strong>，为了靠近这个point，我们就要慢慢来。</p>
+<p><strong>mini-batch size较小，样本方差较大。</strong>在训练的过程中，如果有mini-batch内的数据分布方差特别大，这就会<strong>导致模型学习剧烈波动，使其学得的权重很不稳定，这在训练初期最为明显，最后期较为缓解</strong>(所以我们要对数据进行scale也是这个道理)。</p>
 <h4 id="局部最优问题"><a href="#局部最优问题" class="headerlink" title="局部最优问题"></a>局部最优问题</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210705143024838.png" alt="image-20210705143024838" style="zoom:67%;">
 
 <p>不太可能困在局部最优，而更有可能是鞍点。</p>
 <p>鞍点会导致平滑段训练速度减慢，这也是优化算法的作用。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/84614490">Transformer中改变LayerNorm的位置甚至可以不同warm up</a></p>
 <h3 id="感受野"><a href="#感受野" class="headerlink" title="感受野"></a>感受野</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/12069176.html">这篇太优质了 ！！！！</a></p>
 <p><strong>感受野是个相对概念，某层feature map上的元素看到前面不同层上的区域范围是不同的，通常在不特殊指定的情况下，感受野指的是看到输入图像上的区域。</strong></p>
 <p>感受野大小<br>$$<br>r_l=r_{l-1}+(k_l-1)\cdot j_{l-1}\<br> =r_{l-1}+(k_l-1)\cdot \prod_{i=1}^{l-1} s_i<br>$$</p>
@@ -1053,8 +1071,8 @@
 <p> illustrates the idea of separating one convolution into two well，but have significant limitations，so not heavily used</p>
 <p>这么命名是因为主要处理spatial dimensions:the <strong>width</strong> and the <strong>height</strong>.The other dimension, the “<strong>depth</strong>” dimension, is the number of channels of each image</p>
 <p>一个kernel分解成两个更小的kernel,eg:</p>
-<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/new1\jianguoyun_posts\网络结构解密\image-20210706145221143.png" alt="image-20210706145221143"></p>
-<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/new1\jianguoyun\_posts\网络结构解密\image-20210706145549709.png" alt="image-20210706145549709" style="zoom:67%;">
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/%5C%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E8%A7%A3%E5%AF%86%5Cimage-20210706145221143.png" alt="image-20210706145221143"></p>
+<img src="./medias/loading.gif" data-original="\网络结构解密\image-20210706145549709.png" alt="image-20210706145549709" style="zoom:67%;">
 
 <p>9次乘法下降到6次,网络运行速度更快。</p>
 <p>主要的问题就是并不是所有的卷积核都可以分离，导致的结果就是所有可能分离的卷积中最终只有小部分可以分离。</p>
@@ -1065,7 +1083,7 @@
 </blockquote>
 <p>和spatial separable conv类似,depthwise separable conv将一个kernel分成两个kernel做两次卷积:<em>the depthwise conv</em> and <em>the pointwise conv</em>.</p>
 <p><em>depthwise conv</em>:</p>
-<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/new1\jianguoyun\_posts\网络结构解密\image-20210706151630767.png" alt="image-20210706151630767" style="zoom:67%;">
+<img src="./medias/loading.gif" data-original="\网络结构解密\image-20210706151630767.png" alt="image-20210706151630767" style="zoom:67%;">
 
 <p>For an image:12x12x3,to get an output with size 8x8x3.正常的卷积需要5x5x3x3,对于depthwise conv,则需要5x5x1x3,channel之间不交互。</p>
 <p><em>Pointwise conv:</em></p>
@@ -1183,8 +1201,10 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <li>BN依赖于batch size，batch size较小时，BN效果不好，有些任务往往batch size只有1-2</li>
 <li>训练，验证，测试这三个阶段存在inconsistency。</li>
 </ol>
-<p>Layer Norm和Instance Norm就是Group Norm的特例，归一化避开了batch</p>
+<p>Layer Norm和Instance Norm就是Group Norm的特例，归一化避开了batch。</p>
 <p>为什么工作？个人理解，每一层有很多的卷积核，这些核学习到的特征并不完全是独立的，某些特征具有相同的分布，因此可以被group。</p>
+<h4 id="Instance-Norm"><a href="#Instance-Norm" class="headerlink" title="Instance Norm"></a>Instance Norm</h4><p>Instance Normalization(IN),一种更适合对单个像素有更高要求的场景的归一化算法(IST,GAN等)。IN的算法非常简单,计算归一化统计量时考虑单个样本,单个通道的所有元素。</p>
+<p>对于图像风格迁移任务来说,每个样本的每个信息点都是非常重要的。对于BN对整个batch做归一化,可能造成每个样本独特细节的丢失;对于LN,忽略了不同通道之间的差异。</p>
 <h3 id="网络权重初始化"><a href="#网络权重初始化" class="headerlink" title="网络权重初始化"></a>网络权重初始化</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/11908610.html">权重初始化方法总结</a></p>
 <h3 id="如何判断模型收敛"><a href="#如何判断模型收敛" class="headerlink" title="如何判断模型收敛"></a>如何判断模型收敛</h3><h3 id="特征融合"><a href="#特征融合" class="headerlink" title="特征融合"></a>特征融合</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141685352">知乎教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xys430381_1/article/details/88370733">CSDN类似的教程</a></p>
@@ -1206,7 +1226,7 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <p>主要是看两个，第一个epoch多少是否有影响，<strong>要看函数是否收敛？</strong></p>
 <p>第二个batch_size不同,要看<strong>是否能收敛到最小点</strong>,batch_size小<strong>容易收敛到鞍点</strong>,大的话容易收敛到最小点。</p>
 <h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>back propagation<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/new1\jianguoyun_posts\网络结构解密\image-20210707214021643.png" alt="image-20210707214021643">传播,扩展</p>
-<h4 id="MLP"><a href="#MLP" class="headerlink" title="MLP"></a>MLP</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/new1\jianguoyun\_posts\网络结构解密\image-20210707221902911.png" alt="image-20210707221902911" style="zoom:67%;">
+<h4 id="MLP"><a href="#MLP" class="headerlink" title="MLP"></a>MLP</h4><img src="./medias/loading.gif" data-original="\网络结构解密\image-20210707221902911.png" alt="image-20210707221902911" style="zoom:67%;">
 
 <p>$x_1,x_2$是一个独立样本的两个维度,如果样本的维度是15维，那么MLP输入层的神经元就有15个。</p>
 <p><strong>链式法则-BP的基础</strong></p>
@@ -2151,7 +2171,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             

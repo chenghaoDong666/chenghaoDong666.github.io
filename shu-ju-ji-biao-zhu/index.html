@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    4.2k
                 </div>
                 
 
@@ -700,7 +700,95 @@ pip install labelme</code></pre>
 <img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210403154123769.png" alt="直观理解" style="zoom:50%;">
 
 <p>在每个类上计算IoU,然后取平均<br>$$<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{TP}{FN+FP+TP}\<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}+\sum^k_{j=0}p_{ji}-p_{ii}}<br>$$</p>
-<p>学长求的好像是对一个batch的图片一起</p>
+<p>来自AdaptSeg的源码</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> json
+<span class="token keyword">import</span> argparse
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">from</span> os<span class="token punctuation">.</span>path <span class="token keyword">import</span> join
+
+
+<span class="token keyword">def</span> <span class="token function">fast_hist</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 获得布尔数组,只计算0-18,不计算255</span>
+    k <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>a <span class="token operator">&lt;</span> n<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 每一行代表一类，该行对角线上的全是正确预测的,其余都是错误预测的</span>
+    <span class="token keyword">return</span> np<span class="token punctuation">.</span>bincount<span class="token punctuation">(</span>n <span class="token operator">*</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">+</span> b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> minlength<span class="token operator">=</span>n <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>n<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">per_class_iu</span><span class="token punctuation">(</span>hist<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 分子是第i类所有预测正确的,分母是第i类所有预测正确的+将第i类预测为其它类的+将其他类预测为第i类的，就是每一类的IoU</span>
+    <span class="token keyword">return</span> np<span class="token punctuation">.</span>diag<span class="token punctuation">(</span>hist<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>hist<span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> hist<span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">-</span> np<span class="token punctuation">.</span>diag<span class="token punctuation">(</span>hist<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">label_mapping</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> mapping<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    output <span class="token operator">=</span> np<span class="token punctuation">.</span>copy<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> ind <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>mapping<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        output<span class="token punctuation">[</span>input <span class="token operator">==</span> mapping<span class="token punctuation">[</span>ind<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> mapping<span class="token punctuation">[</span>ind<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>output<span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>int64<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">compute_mIoU</span><span class="token punctuation">(</span>gt_dir<span class="token punctuation">,</span> pred_dir<span class="token punctuation">,</span> devkit_dir<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Compute IoU given the predicted colorized images and 
+    """</span>
+    <span class="token comment" spellcheck="true"># 加载json数据</span>
+    <span class="token keyword">with</span> open<span class="token punctuation">(</span>join<span class="token punctuation">(</span>devkit_dir<span class="token punctuation">,</span> <span class="token string">'info.json'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
+        info <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>fp<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 19</span>
+    num_classes <span class="token operator">=</span> np<span class="token punctuation">.</span>int<span class="token punctuation">(</span>info<span class="token punctuation">[</span><span class="token string">'classes'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Num classes'</span><span class="token punctuation">,</span> num_classes<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 类别标签</span>
+    name_classes <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>info<span class="token punctuation">[</span><span class="token string">'label'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>str<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 原始标签到训练标签的映射</span>
+    mapping <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>info<span class="token punctuation">[</span><span class="token string">'label2train'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>int<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># (19,19)</span>
+    hist <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_classes<span class="token punctuation">,</span> num_classes<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 获取gt图片和pred图片路径的列表</span>
+    image_path_list <span class="token operator">=</span> join<span class="token punctuation">(</span>devkit_dir<span class="token punctuation">,</span> <span class="token string">'zurich_val.txt'</span><span class="token punctuation">)</span>
+    label_path_list <span class="token operator">=</span> join<span class="token punctuation">(</span>devkit_dir<span class="token punctuation">,</span> <span class="token string">'label_zurich.txt'</span><span class="token punctuation">)</span>
+    gt_imgs <span class="token operator">=</span> open<span class="token punctuation">(</span>label_path_list<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>splitlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    gt_imgs <span class="token operator">=</span> <span class="token punctuation">[</span>join<span class="token punctuation">(</span>gt_dir<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> gt_imgs<span class="token punctuation">]</span>
+    pred_imgs <span class="token operator">=</span> open<span class="token punctuation">(</span>image_path_list<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>splitlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    pred_imgs <span class="token operator">=</span> <span class="token punctuation">[</span>join<span class="token punctuation">(</span>pred_dir<span class="token punctuation">,</span> x<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> pred_imgs<span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> ind <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>gt_imgs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 获取预测图片和标签图片</span>
+        pred <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span>pred_imgs<span class="token punctuation">[</span>ind<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        label <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span>gt_imgs<span class="token punctuation">[</span>ind<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 原始标签到训练标签的映射</span>
+        label <span class="token operator">=</span> label_mapping<span class="token punctuation">(</span>label<span class="token punctuation">,</span> mapping<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 拉成一维比较,确认维数是否一致,原始都是(1080,1920),是'L' mode</span>
+        <span class="token keyword">if</span> len<span class="token punctuation">(</span>label<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> len<span class="token punctuation">(</span>pred<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Skipping: len(gt) = {:d}, len(pred) = {:d}, {:s}, {:s}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>len<span class="token punctuation">(</span>label<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                                                                  len<span class="token punctuation">(</span>pred<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                                                                                     gt_imgs<span class="token punctuation">[</span>ind<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                                                                                  pred_imgs<span class="token punctuation">[</span>ind<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">continue</span>
+        <span class="token comment" spellcheck="true"># 计算IoU</span>
+        hist <span class="token operator">+=</span> fast_hist<span class="token punctuation">(</span>label<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pred<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> num_classes<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># if ind > 0 and ind % 10 == 0:</span>
+        <span class="token comment" spellcheck="true">#     print('{:d} / {:d}: {:0.2f}'.format(ind, len(gt_imgs), 100*np.mean(per_class_iu(hist))))</span>
+    <span class="token comment" spellcheck="true"># 计算mIou</span>
+    mIoUs <span class="token operator">=</span> per_class_iu<span class="token punctuation">(</span>hist<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> ind_class <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_classes<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'===>'</span> <span class="token operator">+</span> name_classes<span class="token punctuation">[</span>ind_class<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">':\t'</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>round<span class="token punctuation">(</span>mIoUs<span class="token punctuation">[</span>ind_class<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'===> mIoU: '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>round<span class="token punctuation">(</span>np<span class="token punctuation">.</span>nanmean<span class="token punctuation">(</span>mIoUs<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> mIoUs
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    compute_mIoU<span class="token punctuation">(</span>args<span class="token punctuation">.</span>gt_dir<span class="token punctuation">,</span> args<span class="token punctuation">.</span>pred_dir<span class="token punctuation">,</span> args<span class="token punctuation">.</span>devkit_dir<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># GT路径、预测路径、存放不同数据集文件名索引的文件夹</span>
+    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--gt_dir'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'./path/to/Dark_Zurich_val_anon/'</span><span class="token punctuation">,</span> type<span class="token operator">=</span>str<span class="token punctuation">,</span>
+                        help<span class="token operator">=</span><span class="token string">'directory which stores CityScapes val gt images'</span><span class="token punctuation">)</span>
+    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--pred_dir'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'./result/dannet_PSPNet'</span><span class="token punctuation">,</span> type<span class="token operator">=</span>str<span class="token punctuation">,</span>
+                        help<span class="token operator">=</span><span class="token string">'directory which stores CityScapes val pred images'</span><span class="token punctuation">)</span>
+    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--devkit_dir'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'./dataset/lists'</span><span class="token punctuation">,</span> help<span class="token operator">=</span><span class="token string">'base directory of cityscapes'</span><span class="token punctuation">)</span>
+    args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    main<span class="token punctuation">(</span>args<span class="token punctuation">)</span></code></pre>
 <h3 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h3><h4 id="PASCAL-VOC2010"><a href="#PASCAL-VOC2010" class="headerlink" title="PASCAL VOC2010"></a>PASCAL VOC2010</h4><p><strong>Pascal Visual Object Classes,简称Pascal VOC数据集</strong></p>
 <p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210426201733971.png" alt="VOC 2010"></p>
 <p><strong>JPEGImages</strong>是原图,<strong>SegmentationClass</strong>是标准出每一个像素的类别,也就是<strong>语义分割</strong>的label,<strong>SegmentationObject</strong>是标注出每一个像素属于哪一个物体,也就是<strong>实例分割</strong>的label,<strong>Annotations</strong>是<strong>目标检测</strong>的标注</p>
@@ -726,9 +814,84 @@ pip install labelme</code></pre>
 <p>到此，原始图片和标注数据都已获取完毕，那么如何实现上述的 4998+5105 的训练/验证划分呢？</p>
 <p>这里需要使用CVPR’17 <a target="_blank" rel="noopener" href="https://sites.google.com/view/pasd/dataset">PASCAL in Detail Challenge</a>中实现的Detail接口。其github地址为：<a target="_blank" rel="noopener" href="https://github.com/ccvl/detail-api">https://github.com/ccvl/detail-api</a></p>
 <p>具体使用方法可以参考其提供的文档，这里不再赘述。</p>
-<h4 id="PASCAL-VOC2012-Aug"><a href="#PASCAL-VOC2012-Aug" class="headerlink" title="PASCAL VOC2012 Aug"></a>PASCAL VOC2012 Aug</h4><h4 id="ADE-20K"><a href="#ADE-20K" class="headerlink" title="ADE 20K"></a>ADE 20K</h4><h4 id="CityScape"><a href="#CityScape" class="headerlink" title="CityScape"></a>CityScape</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zz2230633069/article/details/84591532">cityscape数据集介绍</a></p>
-<p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/new1\jianguoyun_posts\数据集标注\image-20210921114221474.png" alt="image-20210921114221474"></p>
+<h4 id="PASCAL-VOC2012-Aug"><a href="#PASCAL-VOC2012-Aug" class="headerlink" title="PASCAL VOC2012 Aug"></a>PASCAL VOC2012 Aug</h4><h4 id="ADE-20K"><a href="#ADE-20K" class="headerlink" title="ADE 20K"></a>ADE 20K</h4><h4 id="CityScape"><a href="#CityScape" class="headerlink" title="CityScape"></a>CityScape</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zz2230633069/article/details/84591532">cityscape数据集介绍</a><br>List of cityscapes labels:</p>
+<pre><code>                 name |  id | trainId |       category | categoryId | hasInstances | ignoreInEval|        color
+--------------------------------------------------------------------------------------------------
+            unlabeled |   0 |     255 |           void |          0 |            0 |            1 |         (0, 0, 0)
+          ego vehicle |   1 |     255 |           void |          0 |            0 |            1 |         (0, 0, 0)
+ rectification border |   2 |     255 |           void |          0 |            0 |            1 |         (0, 0, 0)
+           out of roi |   3 |     255 |           void |          0 |            0 |            1 |         (0, 0, 0)
+               static |   4 |     255 |           void |          0 |            0 |            1 |         (0, 0, 0)
+              dynamic |   5 |     255 |           void |          0 |            0 |            1 |      (111, 74, 0)
+               ground |   6 |     255 |           void |          0 |            0 |            1 |       (81, 0, 81)
+                 road |   7 |       0 |           flat |          1 |            0 |            0 |    (128, 64, 128)
+             sidewalk |   8 |       1 |           flat |          1 |            0 |            0 |    (244, 35, 232)
+              parking |   9 |     255 |           flat |          1 |            0 |            1 |   (250, 170, 160)
+           rail track |  10 |     255 |           flat |          1 |            0 |            1 |   (230, 150, 140)
+             building |  11 |       2 |   construction |          2 |            0 |            0 |      (70, 70, 70)
+                 wall |  12 |       3 |   construction |          2 |            0 |            0 |   (102, 102, 156)
+                fence |  13 |       4 |   construction |          2 |            0 |            0 |   (190, 153, 153)
+           guard rail |  14 |     255 |   construction |          2 |            0 |            1 |   (180, 165, 180)
+               bridge |  15 |     255 |   construction |          2 |            0 |            1 |   (150, 100, 100)
+               tunnel |  16 |     255 |   construction |          2 |            0 |            1 |    (150, 120, 90)
+                 pole |  17 |       5 |         object |          3 |            0 |            0 |   (153, 153, 153)
+            polegroup |  18 |     255 |         object |          3 |            0 |            1 |   (153, 153, 153)
+        traffic light |  19 |       6 |         object |          3 |            0 |            0 |    (250, 170, 30)
+         traffic sign |  20 |       7 |         object |          3 |            0 |            0 |     (220, 220, 0)
+           vegetation |  21 |       8 |         nature |          4 |            0 |            0 |    (107, 142, 35)
+              terrain |  22 |       9 |         nature |          4 |            0 |            0 |   (152, 251, 152)
+                  sky |  23 |      10 |            sky |          5 |            0 |            0 |    (70, 130, 180)
+               person |  24 |      11 |          human |          6 |            1 |            0 |     (220, 20, 60)
+                rider |  25 |      12 |          human |          6 |            1 |            0 |       (255, 0, 0)
+                  car |  26 |      13 |        vehicle |          7 |            1 |            0 |       (0, 0, 142)
+                truck |  27 |      14 |        vehicle |          7 |            1 |            0 |        (0, 0, 70)
+                  bus |  28 |      15 |        vehicle |          7 |            1 |            0 |      (0, 60, 100)
+              caravan |  29 |     255 |        vehicle |          7 |            1 |            1 |        (0, 0, 90)
+              trailer |  30 |     255 |        vehicle |          7 |            1 |            1 |       (0, 0, 110)
+                train |  31 |      16 |        vehicle |          7 |            1 |            0 |      (0, 80, 100)
+           motorcycle |  32 |      17 |        vehicle |          7 |            1 |            0 |       (0, 0, 230)
+              bicycle |  33 |      18 |        vehicle |          7 |            1 |            0 |     (119, 11, 32)
+        license plate |  -1 |      -1 |        vehicle |          7 |            0 |            1 |       (0, 0, 142)</code></pre>
+<p>Example usages:<br>ID of label ‘car’: 26<br>Category of label with ID ‘26’: vehicle<br>Name of label with trainID ‘0’: road</p>
 <p>这张图片很重要,有些虽然有类别id,但是训练的时候trainId是255,不考虑,真正开始考虑的是road</p>
+<h4 id="COCO-2017"><a href="#COCO-2017" class="headerlink" title="COCO 2017"></a>COCO 2017</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Tiao_12/article/details/120270913">COCO数据集的介绍和使用</a></p>
+<img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20211105170711982.png" alt="image-20211105170711982" style="zoom:80%;">
+
+<p><strong>pycocotools</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pycocotools<span class="token punctuation">.</span>coco <span class="token keyword">import</span> COCO
+<span class="token keyword">print</span><span class="token punctuation">(</span>dir<span class="token punctuation">(</span>COCO<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 下面是一些主要的方法</span>
+<span class="token string">'annToMask'</span><span class="token punctuation">,</span> <span class="token string">'annToRLE'</span><span class="token punctuation">,</span> <span class="token string">'createIndex'</span><span class="token punctuation">,</span> <span class="token string">'download'</span><span class="token punctuation">,</span>
+<span class="token comment" spellcheck="true"># 获取满足给定过滤条件的annid。</span>
+COCO<span class="token punctuation">.</span>getAnnIds<span class="token punctuation">(</span>self<span class="token punctuation">,</span> imgIds<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># get anns for given imgs</span>
+               catIds<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># get anns for given cats</span>
+               areaRng<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># get anns for given area range (e.g. [0 inf])</span>
+               iscrowd<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># get anns for given crowd label (False or True)</span>
+<span class="token string">'getCatIds'</span><span class="token punctuation">,</span> <span class="token string">'getImgIds'</span><span class="token punctuation">,</span>
+<span class="token comment" spellcheck="true"># Print information about the annotation file.</span>
+COCO<span class="token punctuation">.</span>info<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 使用指定的id加载anns。</span>
+COCO<span class="token punctuation">.</span>loadAnns<span class="token punctuation">(</span>self<span class="token punctuation">,</span> ids<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token string">'loadCats'</span><span class="token punctuation">,</span> <span class="token string">'loadImgs'</span><span class="token punctuation">,</span> <span class="token string">'loadNumpyAnnotations'</span><span class="token punctuation">,</span> <span class="token string">'loadRes'</span><span class="token punctuation">,</span>
+<span class="token comment" spellcheck="true"># 显示指定的annotations。</span>
+COCO<span class="token punctuation">.</span>showAnns<span class="token punctuation">(</span>self<span class="token punctuation">,</span> anns<span class="token punctuation">)</span></code></pre>
+<p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20211106103213053.png" alt="pycocotools中的三个py文件"></p>
+<h4 id="Run-Length-Code"><a href="#Run-Length-Code" class="headerlink" title="Run Length Code"></a>Run Length Code</h4><p><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_3ef2364d0102wp0v.html">RLE</a>(Run- Length Encoding 行程长度编码)压缩算法是Windows 系统中使用的一种图像文件压缩方法, 其基本思想是: 将一扫描行中颜色值相同的相邻像素用两个字节来表示, 第一个字节是一个计数值, 用于指定像素重复的次数; 第二个字节是具体像素的值[2]。主要通过压缩除掉数据中的冗余字节或字节中的冗余位,从而达到减少文件所占空间的目的。例如, 有一表示颜色像素值的字符串RRRRRGGBBBBBB,用RLE压缩方法压缩后可用 5R2G6B 来代替,显然后者的串长度比前者的串长度小得多。译码时按照与编码时采用的相同规则进行, 还原后得到的数据与压缩前的数据完全相同。因此,RLE是无损压缩技术。</p>
+<p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20211105230029786.png" alt="image-20211105230029786"></p>
+<p>竞赛中的run length code是<code>(start,length)</code>形式,前面的是图片id,每个id有好几条数据,每个数据的标签是<code>cell_type</code>,经过我自己的一番操作发现好像每张图片只有一种细胞类型!</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rle2mask</span><span class="token punctuation">(</span>rle<span class="token punctuation">,</span> img_w<span class="token punctuation">,</span> img_h<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    array <span class="token operator">=</span> np<span class="token punctuation">.</span>fromiter<span class="token punctuation">(</span>rle<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dtype <span class="token operator">=</span> np<span class="token punctuation">.</span>uint<span class="token punctuation">)</span>
+    array <span class="token operator">=</span> array<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>T
+    array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token comment" spellcheck="true"># 每个点的位置都减1,可能是因为mask数组是从0开始</span>
+    starts<span class="token punctuation">,</span> lenghts <span class="token operator">=</span> array
+    mask_decompressed <span class="token operator">=</span> np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>s<span class="token punctuation">,</span> s <span class="token operator">+</span> l<span class="token punctuation">,</span> dtype <span class="token operator">=</span> np<span class="token punctuation">.</span>uint<span class="token punctuation">)</span> <span class="token keyword">for</span> s<span class="token punctuation">,</span> l <span class="token keyword">in</span> zip<span class="token punctuation">(</span>starts<span class="token punctuation">,</span> lenghts<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 获得在一维数组的mask坐标</span>
+    msk_img <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>img_w <span class="token operator">*</span> img_h<span class="token punctuation">,</span> dtype <span class="token operator">=</span> np<span class="token punctuation">.</span>uint8<span class="token punctuation">)</span>
+    msk_img<span class="token punctuation">[</span>mask_decompressed<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token comment" spellcheck="true"># 所有的mask位置设成1,background设成0</span>
+    msk_img <span class="token operator">=</span> msk_img<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token punctuation">(</span>img_h<span class="token punctuation">,</span> img_w<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># resize成图片大小</span>
+    msk_img <span class="token operator">=</span> np<span class="token punctuation">.</span>asfortranarray<span class="token punctuation">(</span>msk_img<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> msk_img</code></pre>
 <h3 id="SDD"><a href="#SDD" class="headerlink" title="SDD"></a>SDD</h3><h4 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h4><p>15年一个皮肤分割数据集&lt;&lt;A Skin Detection Dataset for Training and Assessment of Human Skin Classifiers&gt;&gt;</p>
 <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>超过20000张图像  非常精确：<strong>专业图形工具  三元划分</strong>  与SFA比较 <strong>定性且定量</strong>表明更好</p>
 <h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p><strong>数据库组织良好</strong>：因此使用时只和方法有关，而和数据集无关</p>
@@ -1606,7 +1769,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">133.8k</span>&nbsp;字
+                class="white-color">144.7k</span>&nbsp;字
             
             
             
