@@ -3,11 +3,11 @@
   <title>亦爱Zxy</title>
   
   <subtitle>DCH爱学习</subtitle>
-  <link href="http://dchlovestudy.xyz/atom.xml" rel="self"/>
+  <link href="http://chenghaodong666.github.io/atom.xml" rel="self"/>
   
-  <link href="http://dchlovestudy.xyz/"/>
+  <link href="http://chenghaodong666.github.io/"/>
   <updated>2021-11-20T03:57:35.885Z</updated>
-  <id>http://dchlovestudy.xyz/</id>
+  <id>http://chenghaodong666.github.io/</id>
   
   <author>
     <name>Dch</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>django</title>
-    <link href="http://dchlovestudy.xyz/django/"/>
-    <id>http://dchlovestudy.xyz/django/</id>
+    <link href="http://chenghaodong666.github.io/django/"/>
+    <id>http://chenghaodong666.github.io/django/</id>
     <published>2021-11-18T15:20:28.000Z</published>
     <updated>2021-11-20T03:57:35.885Z</updated>
     
@@ -35,17 +35,17 @@
     
     
     
-    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
     
     
-    <category term="django" scheme="http://dchlovestudy.xyz/tags/django/"/>
+    <category term="django" scheme="http://chenghaodong666.github.io/tags/django/"/>
     
   </entry>
   
   <entry>
     <title>OpenMMLab</title>
-    <link href="http://dchlovestudy.xyz/openmmlab/"/>
-    <id>http://dchlovestudy.xyz/openmmlab/</id>
+    <link href="http://chenghaodong666.github.io/openmmlab/"/>
+    <id>http://chenghaodong666.github.io/openmmlab/</id>
     <published>2021-10-27T10:21:23.000Z</published>
     <updated>2021-10-28T10:05:01.000Z</updated>
     
@@ -60,17 +60,17 @@
     
     
     
-    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
     
     
-    <category term="pytorch" scheme="http://dchlovestudy.xyz/tags/pytorch/"/>
+    <category term="pytorch" scheme="http://chenghaodong666.github.io/tags/pytorch/"/>
     
   </entry>
   
   <entry>
     <title>办公软件笔记</title>
-    <link href="http://dchlovestudy.xyz/ban-gong-ruan-jian-bi-ji/"/>
-    <id>http://dchlovestudy.xyz/ban-gong-ruan-jian-bi-ji/</id>
+    <link href="http://chenghaodong666.github.io/ban-gong-ruan-jian-bi-ji/"/>
+    <id>http://chenghaodong666.github.io/ban-gong-ruan-jian-bi-ji/</id>
     <published>2021-06-06T01:53:37.000Z</published>
     <updated>2021-10-19T13:08:09.000Z</updated>
     
@@ -85,17 +85,17 @@
     
     
     
-    <category term="软件使用" scheme="http://dchlovestudy.xyz/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    <category term="软件使用" scheme="http://chenghaodong666.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
     
     
-    <category term="办公软件" scheme="http://dchlovestudy.xyz/tags/%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6/"/>
+    <category term="办公软件" scheme="http://chenghaodong666.github.io/tags/%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>cpp朝花夕拾</title>
-    <link href="http://dchlovestudy.xyz/cpp-zhao-hua-xi-shi/"/>
-    <id>http://dchlovestudy.xyz/cpp-zhao-hua-xi-shi/</id>
+    <link href="http://chenghaodong666.github.io/cpp-zhao-hua-xi-shi/"/>
+    <id>http://chenghaodong666.github.io/cpp-zhao-hua-xi-shi/</id>
     <published>2021-06-03T08:25:40.000Z</published>
     <updated>2021-11-16T12:10:29.000Z</updated>
     
@@ -110,17 +110,17 @@
     
     
     
-    <category term="cpp" scheme="http://dchlovestudy.xyz/categories/cpp/"/>
+    <category term="cpp" scheme="http://chenghaodong666.github.io/categories/cpp/"/>
     
     
-    <category term="cpp" scheme="http://dchlovestudy.xyz/tags/cpp/"/>
+    <category term="cpp" scheme="http://chenghaodong666.github.io/tags/cpp/"/>
     
   </entry>
   
   <entry>
     <title>git学习</title>
-    <link href="http://dchlovestudy.xyz/git-xue-xi/"/>
-    <id>http://dchlovestudy.xyz/git-xue-xi/</id>
+    <link href="http://chenghaodong666.github.io/git-xue-xi/"/>
+    <id>http://chenghaodong666.github.io/git-xue-xi/</id>
     <published>2021-05-02T13:00:45.000Z</published>
     <updated>2021-09-30T05:53:12.000Z</updated>
     
@@ -136,14 +136,14 @@
     
     
     
-    <category term="git" scheme="http://dchlovestudy.xyz/tags/git/"/>
+    <category term="git" scheme="http://chenghaodong666.github.io/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>论文撰写</title>
-    <link href="http://dchlovestudy.xyz/lun-wen-zhuan-xie/"/>
-    <id>http://dchlovestudy.xyz/lun-wen-zhuan-xie/</id>
+    <link href="http://chenghaodong666.github.io/lun-wen-zhuan-xie/"/>
+    <id>http://chenghaodong666.github.io/lun-wen-zhuan-xie/</id>
     <published>2021-04-15T03:53:30.000Z</published>
     <updated>2021-04-15T07:37:14.434Z</updated>
     
@@ -160,17 +160,17 @@
     
     
     
-    <category term="论文撰写" scheme="http://dchlovestudy.xyz/categories/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/"/>
+    <category term="论文撰写" scheme="http://chenghaodong666.github.io/categories/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/"/>
     
     
-    <category term="论文撰写" scheme="http://dchlovestudy.xyz/tags/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/"/>
+    <category term="论文撰写" scheme="http://chenghaodong666.github.io/tags/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/"/>
     
   </entry>
   
   <entry>
     <title>Semantic-Segmentation-3</title>
-    <link href="http://dchlovestudy.xyz/semantic-segmentation-3/"/>
-    <id>http://dchlovestudy.xyz/semantic-segmentation-3/</id>
+    <link href="http://chenghaodong666.github.io/semantic-segmentation-3/"/>
+    <id>http://chenghaodong666.github.io/semantic-segmentation-3/</id>
     <published>2021-04-13T09:05:11.000Z</published>
     <updated>2021-10-14T03:28:50.600Z</updated>
     
@@ -185,17 +185,17 @@
     
     
     
-    <category term="语义分割" scheme="http://dchlovestudy.xyz/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
+    <category term="语义分割" scheme="http://chenghaodong666.github.io/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
     
     
-    <category term="FCN" scheme="http://dchlovestudy.xyz/tags/FCN/"/>
+    <category term="FCN" scheme="http://chenghaodong666.github.io/tags/FCN/"/>
     
   </entry>
   
   <entry>
     <title>Semantic-Segmentation-2</title>
-    <link href="http://dchlovestudy.xyz/semantic-segmentation-2/"/>
-    <id>http://dchlovestudy.xyz/semantic-segmentation-2/</id>
+    <link href="http://chenghaodong666.github.io/semantic-segmentation-2/"/>
+    <id>http://chenghaodong666.github.io/semantic-segmentation-2/</id>
     <published>2021-03-23T03:20:00.000Z</published>
     <updated>2021-07-13T15:10:28.796Z</updated>
     
@@ -210,17 +210,17 @@
     
     
     
-    <category term="语义分割" scheme="http://dchlovestudy.xyz/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
+    <category term="语义分割" scheme="http://chenghaodong666.github.io/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
     
     
-    <category term="FCN" scheme="http://dchlovestudy.xyz/tags/FCN/"/>
+    <category term="FCN" scheme="http://chenghaodong666.github.io/tags/FCN/"/>
     
   </entry>
   
   <entry>
     <title>变帅秘籍</title>
-    <link href="http://dchlovestudy.xyz/bian-shuai-mi-ji/"/>
-    <id>http://dchlovestudy.xyz/bian-shuai-mi-ji/</id>
+    <link href="http://chenghaodong666.github.io/bian-shuai-mi-ji/"/>
+    <id>http://chenghaodong666.github.io/bian-shuai-mi-ji/</id>
     <published>2021-03-22T14:55:37.000Z</published>
     <updated>2021-03-22T14:58:01.348Z</updated>
     
@@ -235,17 +235,17 @@
     
     
     
-    <category term="变帅" scheme="http://dchlovestudy.xyz/categories/%E5%8F%98%E5%B8%85/"/>
+    <category term="变帅" scheme="http://chenghaodong666.github.io/categories/%E5%8F%98%E5%B8%85/"/>
     
     
-    <category term="变帅" scheme="http://dchlovestudy.xyz/tags/%E5%8F%98%E5%B8%85/"/>
+    <category term="变帅" scheme="http://chenghaodong666.github.io/tags/%E5%8F%98%E5%B8%85/"/>
     
   </entry>
   
   <entry>
     <title>CNN_tricks</title>
-    <link href="http://dchlovestudy.xyz/cnn-tricks/"/>
-    <id>http://dchlovestudy.xyz/cnn-tricks/</id>
+    <link href="http://chenghaodong666.github.io/cnn-tricks/"/>
+    <id>http://chenghaodong666.github.io/cnn-tricks/</id>
     <published>2021-03-18T13:47:55.000Z</published>
     <updated>2021-04-19T14:14:18.243Z</updated>
     
@@ -260,17 +260,17 @@
     
     
     
-    <category term="深度学习" scheme="http://dchlovestudy.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="深度学习" scheme="http://chenghaodong666.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="网络结构" scheme="http://dchlovestudy.xyz/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
+    <category term="网络结构" scheme="http://chenghaodong666.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>backbone</title>
-    <link href="http://dchlovestudy.xyz/backbone/"/>
-    <id>http://dchlovestudy.xyz/backbone/</id>
+    <link href="http://chenghaodong666.github.io/backbone/"/>
+    <id>http://chenghaodong666.github.io/backbone/</id>
     <published>2021-02-26T11:30:08.000Z</published>
     <updated>2021-07-05T08:20:01.201Z</updated>
     
@@ -285,17 +285,17 @@
     
     
     
-    <category term="深度学习" scheme="http://dchlovestudy.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="深度学习" scheme="http://chenghaodong666.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="网络结构" scheme="http://dchlovestudy.xyz/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
+    <category term="网络结构" scheme="http://chenghaodong666.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>Java核心基础</title>
-    <link href="http://dchlovestudy.xyz/java-he-xin-ji-chu/"/>
-    <id>http://dchlovestudy.xyz/java-he-xin-ji-chu/</id>
+    <link href="http://chenghaodong666.github.io/java-he-xin-ji-chu/"/>
+    <id>http://chenghaodong666.github.io/java-he-xin-ji-chu/</id>
     <published>2020-12-16T03:13:26.000Z</published>
     <updated>2020-12-17T13:33:43.495Z</updated>
     
@@ -311,17 +311,17 @@
     
     
     
-    <category term="后端" scheme="http://dchlovestudy.xyz/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="后端" scheme="http://chenghaodong666.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="Java" scheme="http://dchlovestudy.xyz/tags/Java/"/>
+    <category term="Java" scheme="http://chenghaodong666.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>VQA</title>
-    <link href="http://dchlovestudy.xyz/vqa/"/>
-    <id>http://dchlovestudy.xyz/vqa/</id>
+    <link href="http://chenghaodong666.github.io/vqa/"/>
+    <id>http://chenghaodong666.github.io/vqa/</id>
     <published>2020-12-13T12:33:49.000Z</published>
     <updated>2020-12-16T14:34:40.406Z</updated>
     
@@ -336,17 +336,17 @@
     
     
     
-    <category term="VQA" scheme="http://dchlovestudy.xyz/categories/VQA/"/>
+    <category term="VQA" scheme="http://chenghaodong666.github.io/categories/VQA/"/>
     
     
-    <category term="VQA" scheme="http://dchlovestudy.xyz/tags/VQA/"/>
+    <category term="VQA" scheme="http://chenghaodong666.github.io/tags/VQA/"/>
     
   </entry>
   
   <entry>
     <title>spark学习</title>
-    <link href="http://dchlovestudy.xyz/spark-xue-xi/"/>
-    <id>http://dchlovestudy.xyz/spark-xue-xi/</id>
+    <link href="http://chenghaodong666.github.io/spark-xue-xi/"/>
+    <id>http://chenghaodong666.github.io/spark-xue-xi/</id>
     <published>2020-12-11T14:12:16.000Z</published>
     <updated>2020-12-13T03:12:43.341Z</updated>
     
@@ -362,19 +362,19 @@
     
     
     
-    <category term="spark" scheme="http://dchlovestudy.xyz/categories/spark/"/>
+    <category term="spark" scheme="http://chenghaodong666.github.io/categories/spark/"/>
     
     
-    <category term="spark" scheme="http://dchlovestudy.xyz/tags/spark/"/>
+    <category term="spark" scheme="http://chenghaodong666.github.io/tags/spark/"/>
     
-    <category term="scala" scheme="http://dchlovestudy.xyz/tags/scala/"/>
+    <category term="scala" scheme="http://chenghaodong666.github.io/tags/scala/"/>
     
   </entry>
   
   <entry>
     <title>编程软件trick</title>
-    <link href="http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/"/>
-    <id>http://dchlovestudy.xyz/bian-cheng-ruan-jian-trick/</id>
+    <link href="http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/"/>
+    <id>http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/</id>
     <published>2020-12-09T13:35:10.000Z</published>
     <updated>2021-11-20T03:14:34.999Z</updated>
     
@@ -389,17 +389,17 @@
     
     
     
-    <category term="软件使用" scheme="http://dchlovestudy.xyz/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    <category term="软件使用" scheme="http://chenghaodong666.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
     
     
-    <category term="编程软件" scheme="http://dchlovestudy.xyz/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/"/>
+    <category term="编程软件" scheme="http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>数据集标注和评价指标</title>
-    <link href="http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/"/>
-    <id>http://dchlovestudy.xyz/shu-ju-ji-biao-zhu/</id>
+    <link href="http://chenghaodong666.github.io/shu-ju-ji-biao-zhu/"/>
+    <id>http://chenghaodong666.github.io/shu-ju-ji-biao-zhu/</id>
     <published>2020-12-06T02:06:54.000Z</published>
     <updated>2021-11-06T15:31:53.377Z</updated>
     
@@ -414,17 +414,17 @@
     
     
     
-    <category term="肤色分级" scheme="http://dchlovestudy.xyz/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
+    <category term="肤色分级" scheme="http://chenghaodong666.github.io/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
     
     
-    <category term="肤色分级" scheme="http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
+    <category term="肤色分级" scheme="http://chenghaodong666.github.io/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
     
   </entry>
   
   <entry>
     <title>tensorflow学习</title>
-    <link href="http://dchlovestudy.xyz/tensorflow-xue-xi/"/>
-    <id>http://dchlovestudy.xyz/tensorflow-xue-xi/</id>
+    <link href="http://chenghaodong666.github.io/tensorflow-xue-xi/"/>
+    <id>http://chenghaodong666.github.io/tensorflow-xue-xi/</id>
     <published>2020-11-27T16:44:34.000Z</published>
     <updated>2021-11-17T09:03:02.000Z</updated>
     
@@ -439,17 +439,17 @@
     
     
     
-    <category term="python" scheme="http://dchlovestudy.xyz/categories/python/"/>
+    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
     
     
-    <category term="tensorflow" scheme="http://dchlovestudy.xyz/tags/tensorflow/"/>
+    <category term="tensorflow" scheme="http://chenghaodong666.github.io/tags/tensorflow/"/>
     
   </entry>
   
   <entry>
     <title>网络结构解密</title>
-    <link href="http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/"/>
-    <id>http://dchlovestudy.xyz/wang-luo-jie-gou-jie-mi/</id>
+    <link href="http://chenghaodong666.github.io/wang-luo-jie-gou-jie-mi/"/>
+    <id>http://chenghaodong666.github.io/wang-luo-jie-gou-jie-mi/</id>
     <published>2020-11-23T11:43:22.000Z</published>
     <updated>2021-11-16T04:08:46.000Z</updated>
     
@@ -464,17 +464,17 @@
     
     
     
-    <category term="深度学习" scheme="http://dchlovestudy.xyz/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="深度学习" scheme="http://chenghaodong666.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="网络结构" scheme="http://dchlovestudy.xyz/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
+    <category term="网络结构" scheme="http://chenghaodong666.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>人像肤色检测-2</title>
-    <link href="http://dchlovestudy.xyz/ren-xiang-pi-fu-jian-ce-2/"/>
-    <id>http://dchlovestudy.xyz/ren-xiang-pi-fu-jian-ce-2/</id>
+    <link href="http://chenghaodong666.github.io/ren-xiang-pi-fu-jian-ce-2/"/>
+    <id>http://chenghaodong666.github.io/ren-xiang-pi-fu-jian-ce-2/</id>
     <published>2020-11-22T12:00:53.000Z</published>
     <updated>2021-04-02T03:17:44.135Z</updated>
     
@@ -489,17 +489,17 @@
     
     
     
-    <category term="肤色分级" scheme="http://dchlovestudy.xyz/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
+    <category term="肤色分级" scheme="http://chenghaodong666.github.io/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
     
     
-    <category term="肤色分级" scheme="http://dchlovestudy.xyz/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
+    <category term="肤色分级" scheme="http://chenghaodong666.github.io/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
     
   </entry>
   
   <entry>
     <title>Semantic Segmentation</title>
-    <link href="http://dchlovestudy.xyz/semantic-segmentation/"/>
-    <id>http://dchlovestudy.xyz/semantic-segmentation/</id>
+    <link href="http://chenghaodong666.github.io/semantic-segmentation/"/>
+    <id>http://chenghaodong666.github.io/semantic-segmentation/</id>
     <published>2020-11-20T02:15:08.000Z</published>
     <updated>2021-05-09T03:16:58.244Z</updated>
     
@@ -514,10 +514,10 @@
     
     
     
-    <category term="语义分割" scheme="http://dchlovestudy.xyz/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
+    <category term="语义分割" scheme="http://chenghaodong666.github.io/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
     
     
-    <category term="FCN" scheme="http://dchlovestudy.xyz/tags/FCN/"/>
+    <category term="FCN" scheme="http://chenghaodong666.github.io/tags/FCN/"/>
     
   </entry>
   
