@@ -333,6 +333,13 @@
   </url>
   
   <url>
+    <loc>http://chenghaodong666.github.io/tags/Java/</loc>
+    <lastmod>2021-11-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://chenghaodong666.github.io/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
@@ -341,13 +348,6 @@
   
   <url>
     <loc>http://chenghaodong666.github.io/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</loc>
-    <lastmod>2021-11-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://chenghaodong666.github.io/tags/Java/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -417,14 +417,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/Tofel/</loc>
+    <loc>http://chenghaodong666.github.io/tags/%E5%A5%87%E6%80%AA/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/%E5%A5%87%E6%80%AA/</loc>
+    <loc>http://chenghaodong666.github.io/tags/Tofel/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -538,14 +538,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/Color-Constancy/</loc>
+    <loc>http://chenghaodong666.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <loc>http://chenghaodong666.github.io/categories/Color-Constancy/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -608,14 +608,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/%E8%8B%B1%E8%AF%AD/</loc>
+    <loc>http://chenghaodong666.github.io/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/</loc>
+    <loc>http://chenghaodong666.github.io/categories/%E8%8B%B1%E8%AF%AD/</loc>
     <lastmod>2021-11-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
