@@ -498,7 +498,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12.5k
+                    12.6k
                 </div>
                 
 
@@ -815,7 +815,7 @@ replace
 </ol>
 <p><code>nums[nums[i]], nums[i] = nums[i], nums[nums[i]]</code></p>
 <p>实际的执行是<code>t=(nums[i], nums[nums[i]]),nums[nums[i]]=t[0],nums[i]=t[1]</code>,<strong>顺序上是有先后的</strong></p>
-<h3 id="函数和基本数据结构"><a href="#函数和基本数据结构" class="headerlink" title="函数和基本数据结构"></a>函数和基本数据结构</h3><h4 id="列表list-序列"><a href="#列表list-序列" class="headerlink" title="列表list/序列"></a>列表list/序列</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 返回一个新的列表，b和a不共享</span>
+<h3 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h3><h4 id="列表list-序列"><a href="#列表list-序列" class="headerlink" title="列表list/序列"></a>列表list/序列</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 返回一个新的列表，b和a不共享</span>
 <span class="token comment" spellcheck="true"># a=list("a,b,c,d,e,!")=>a=['a','b','c','d','e']</span>
 list<span class="token punctuation">(</span><span class="token punctuation">)</span> eg<span class="token punctuation">:</span>b<span class="token operator">=</span>list<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 向列表添加元素</span>
@@ -843,7 +843,9 @@ slice<span class="token punctuation">(</span>None<span class="token punctuation"
 <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> arr<span class="token punctuation">[</span>myslice<span class="token punctuation">]</span>         <span class="token comment" spellcheck="true"># 截取 5 个元素</span>
 <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span></code></pre>
-<h4 id="字典dict-集合set"><a href="#字典dict-集合set" class="headerlink" title="字典dict/集合set"></a>字典dict/集合set</h4><pre class=" language-python"><code class="language-python">a<span class="token operator">=</span>b<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span>
+<h4 id="字典dict-集合set"><a href="#字典dict-集合set" class="headerlink" title="字典dict/集合set"></a>字典dict/集合set</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 给字典添加新元素</span>
+a<span class="token punctuation">[</span><span class="token string">"new_key"</span><span class="token punctuation">]</span> <span class="token operator">=</span> new_value
+a<span class="token operator">=</span>b<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#删除字典中给定键key所对应的值，返回值为被删除的值。</span>
 a<span class="token operator">=</span>b<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#或b.values()或b.items()</span>
 <span class="token comment" spellcheck="true">#返回值都是view objects,它们提供了关于字典条目的动态视图，这意味着当字典发生变化时，视图会反映这些变化。</span>
@@ -854,7 +856,7 @@ car<span class="token punctuation">.</span>update<span class="token punctuation"
 <span class="token keyword">print</span><span class="token punctuation">(</span>car<span class="token punctuation">)</span>
 <span class="token punctuation">{</span><span class="token string">'brand'</span><span class="token punctuation">:</span> <span class="token string">'Porsche'</span><span class="token punctuation">,</span> <span class="token string">'model'</span><span class="token punctuation">:</span> <span class="token string">'911'</span><span class="token punctuation">,</span> <span class="token string">'year'</span><span class="token punctuation">:</span> <span class="token string">'White'</span><span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true"># 向字典插入项目,如项目已存在，则更新该项目</span></code></pre>
-<h4 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate()"></a>enumerate()</h4><p>enumerate() 函数用于将**一个可遍历的数据对象(如列表、元组或字符串)**组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</p>
+<h3 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h3><h4 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate()"></a>enumerate()</h4><p>enumerate() 函数用于将**一个可遍历的数据对象(如列表、元组或字符串)**组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> seasons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Spring'</span><span class="token punctuation">,</span> <span class="token string">'Summer'</span><span class="token punctuation">,</span> <span class="token string">'Fall'</span><span class="token punctuation">,</span> <span class="token string">'Winter'</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> list<span class="token punctuation">(</span>enumerate<span class="token punctuation">(</span>seasons<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'Spring'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'Summer'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'Fall'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'Winter'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -1153,7 +1155,7 @@ b<span class="token punctuation">.</span>add<span class="token punctuation">(</s
     <span class="token keyword">def</span> <span class="token function">__new__</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
         super<span class="token punctuation">(</span>B<span class="token punctuation">,</span> cls<span class="token punctuation">)</span><span class="token punctuation">.</span>__new__<span class="token punctuation">(</span>cls<span class="token punctuation">)</span></code></pre>
 <p><code>B()</code> would trigger <code>B.__new__(B)</code> which would trigger <code>A.__new__(B)</code>, which would trigger <code>object.__new__(B)</code>, so you’d end up with an instance of <code>B</code></p>
-<h4 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h4><pre class=" language-python"><code class="language-python">hasattr<span class="token punctuation">(</span>object<span class="token punctuation">,</span>name<span class="token punctuation">)</span>
+<h4 id="函数-2"><a href="#函数-2" class="headerlink" title="函数"></a>函数</h4><pre class=" language-python"><code class="language-python">hasattr<span class="token punctuation">(</span>object<span class="token punctuation">,</span>name<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#object:对象 name:字符串,属性名</span>
 <span class="token comment" spellcheck="true">#如果对象有该属性返回true,否则返回false</span>
 getattr<span class="token punctuation">(</span>object<span class="token punctuation">,</span> name<span class="token punctuation">[</span><span class="token punctuation">,</span> default<span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -1401,7 +1403,9 @@ os<span class="token punctuation">.</span>chdir<span class="token punctuation">(
 <span class="token comment" spellcheck="true">#用于检验文件是否存在。</span>
 os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>file<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 删除文件</span>
-os<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>file<span class="token punctuation">)</span></code></pre>
+os<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>file<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 获取当前工作目录,再出现文件路径问题的时候用这个可太好用了</span>
+os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h3 id="pathlib"><a href="#pathlib" class="headerlink" title="pathlib"></a>pathlib</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/itanders/article/details/88754606">pathlib库使用详解</a></p>
 <p><strong>面向对象的文件系统路径</strong>,对于底层的路径字符串操作，你也可以使用 <code>os.path</code> 模块。但是<code>pathlib</code>可能更好用。</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pathlib <span class="token keyword">import</span> Path <span class="token comment" spellcheck="true">#老版本是pathlib,新版本是pathlib2,完美兼容老版本</span>
@@ -1690,6 +1694,12 @@ OrderedDict<span class="token punctuation">(</span><span class="token punctuatio
 <span class="token number">1</span>
 <span class="token operator">>></span><span class="token operator">></span> p<span class="token punctuation">.</span>y
 <span class="token number">2</span></code></pre>
+<p><strong><code>deque</code></strong></p>
+<p>双端队列(double-ended queue)的缩写,由于两端都能编辑,deque既可以用来实现栈(stack)也可以用来实现队列(queue)。</p>
+<img src="./medias/loading.gif" data-original="/python-xue-xi/image-20211125152006312.png" alt="image-20211125152006312" style="zoom:67%;">
+
+
+
 <h3 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h3><p>functools 模块用于高阶函数：接受函数为参数或返回其他函数的函数。 通常，出于此模块的目的，任何可调用对象都可以视为函数。</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/131634488">functools详解</a></p>
 <p><code>functools.partial</code></p>
@@ -1982,33 +1992,6 @@ x <span class="token operator">=</span> x <span class="token operator">+</span> 
             
         </div>
     </div>
-
-    
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '0f60d93b293f5b743ee9',
-        clientSecret: 'd0bdbb330cf62f7bac10957894b5d6507935b257',
-        repo: 'chenghaoDong666.github.io',
-        owner: 'chenghaoDong666',
-        admin: ["chenghaoDong666"],
-        id: '2020-11-03T20-15-05',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
 
     
 
@@ -2629,7 +2612,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">144.7k</span>&nbsp;字
+                class="white-color">148.9k</span>&nbsp;字
             
             
             

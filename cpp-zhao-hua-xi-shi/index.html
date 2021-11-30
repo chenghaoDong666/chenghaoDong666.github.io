@@ -498,7 +498,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/37.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    172
+                    350
                 </div>
                 
 
@@ -671,7 +671,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="结构struct"><a href="#结构struct" class="headerlink" title="结构struct"></a>结构struct</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> debts <span class="token comment" spellcheck="true">//定义结构</span>
+                <p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5">cppreference</a></p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="结构struct"><a href="#结构struct" class="headerlink" title="结构struct"></a>结构struct</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> debts <span class="token comment" spellcheck="true">//定义结构</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token keyword">double</span> amount<span class="token punctuation">;</span>
@@ -682,7 +683,16 @@
 <p>赋值给指针要把malloc分配的内存空间转成对应的指针类型。</p>
 <p>用完之后要<code>free(L1)</code>,完事之后L1不会变为NULL,会变为野指针,所以要注意<code>L1=NULL</code>。</p>
 <h4 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h4><p>auto的原理就是根据后面的值，来自己推测前面的类型是什么。</p>
-<p><code>auto</code></p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// auto作用就是迭代容器中所有的元素，每一个元素的临时名字就是x，等同于下边代码。</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// b为一个容器,效果是利用a遍历并获得b容器中的每一个值,但是a无法影响到b容器中的元素。</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> a<span class="token operator">:</span>b<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 加了引用符号,可以对容器中的内容进行赋值,即可通过对a赋值来做到容器b的内容填充。</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>a<span class="token operator">:</span>b<span class="token punctuation">)</span></code></pre>
+<p><strong>单双引号的区别</strong></p>
+<p>在C++中单引号表示字符，双引号表示字符串。</p>
+<p><strong>反向迭代器</strong></p>
+<p><code>vector&lt;int&gt;(res.rbegin(),res.rend())</code>,生成一个反向的vector</p>
 
             </div>
             <hr/>
@@ -897,33 +907,6 @@
             
         </div>
     </div>
-
-    
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '0f60d93b293f5b743ee9',
-        clientSecret: 'd0bdbb330cf62f7bac10957894b5d6507935b257',
-        repo: 'chenghaoDong666.github.io',
-        owner: 'chenghaoDong666',
-        admin: ["chenghaoDong666"],
-        id: '2021-06-03T16-25-40',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
 
     
 
@@ -1213,7 +1196,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/12.jpg" class="responsive-img" alt="办公软件笔记">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/26.jpg" class="responsive-img" alt="办公软件笔记">
                         
                         <span class="card-title">办公软件笔记</span>
                     </div>
@@ -1262,7 +1245,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/22.jpg" class="responsive-img" alt="git学习">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/29.jpg" class="responsive-img" alt="git学习">
                         
                         <span class="card-title">git学习</span>
                     </div>
@@ -1540,7 +1523,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">144.7k</span>&nbsp;字
+                class="white-color">148.9k</span>&nbsp;字
             
             
             

@@ -498,7 +498,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    490
+                    640
                 </div>
                 
 
@@ -701,6 +701,35 @@
 <h2 id="notepad"><a href="#notepad" class="headerlink" title="notepad++"></a>notepad++</h2><p>编辑-&gt;行操作-&gt;删除空行，可以一键去除空行</p>
 <h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p><strong>远程连接过程试图写入的管道不存在</strong></p>
 <p>打开本地的Known_hosts,将对应的要连接的服务器的记录删掉,再重连就可以了</p>
+<p>ALT+左键,后退;ALT+右键,前进。</p>
+<p>空格和Tab不能混用,否则会报错,红色的波浪下划线</p>
+<p><strong>vscode调试</strong></p>
+<p><code>launch.json</code>配置调试环境:</p>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">{</span>
+    <span class="token operator">//</span> 使用 IntelliSense 了解相关属性。 
+    <span class="token operator">//</span> 悬停以查看现有属性的描述。
+    <span class="token operator">//</span> 欲了解更多信息，请访问<span class="token punctuation">:</span> https<span class="token punctuation">:</span><span class="token operator">//</span>go<span class="token punctuation">.</span>microsoft<span class="token punctuation">.</span>com<span class="token operator">/</span>fwlink<span class="token operator">/</span>?linkid<span class="token operator">=</span><span class="token number">830387</span>
+    <span class="token string">"version"</span><span class="token punctuation">:</span> <span class="token string">"0.2.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"configurations"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Python: 当前文件"</span><span class="token punctuation">,</span>
+            <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"python"</span><span class="token punctuation">,</span>
+            <span class="token string">"request"</span><span class="token punctuation">:</span> <span class="token string">"launch"</span><span class="token punctuation">,</span>
+            <span class="token string">"program"</span><span class="token punctuation">:</span> <span class="token string">"${file}"</span><span class="token punctuation">,</span>
+            <span class="token string">"console"</span><span class="token punctuation">:</span> <span class="token string">"integratedTerminal"</span><span class="token punctuation">,</span>
+            <span class="token comment" spellcheck="true"># 执行python文件的命令函参数</span>
+            <span class="token string">"args"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"--num-steps"</span><span class="token punctuation">,</span> <span class="token string">"48320"</span><span class="token punctuation">,</span> 
+                <span class="token string">"--help-info"</span><span class="token punctuation">,</span> <span class="token string">"替换为dce"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment" spellcheck="true"># 设置当前工作目录为当前目录</span>
+            <span class="token string">"cwd"</span><span class="token punctuation">:</span><span class="token string">""</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在一侧的监视:</p>
+<p><img src="./medias/loading.gif" data-original="/bian-cheng-ruan-jian-trick/image-20211127150020601.png" alt="image-20211127150020601"></p>
+<p>可以设置要监视的变量</p>
 
             </div>
             <hr/>
@@ -915,33 +944,6 @@
             
         </div>
     </div>
-
-    
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '0f60d93b293f5b743ee9',
-        clientSecret: 'd0bdbb330cf62f7bac10957894b5d6507935b257',
-        repo: 'chenghaoDong666.github.io',
-        owner: 'chenghaoDong666',
-        admin: ["chenghaoDong666"],
-        id: '2020-12-09T21-35-10',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
 
     
 
@@ -1231,7 +1233,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="spark学习">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/2.jpg" class="responsive-img" alt="spark学习">
                         
                         <span class="card-title">spark学习</span>
                     </div>
@@ -1559,7 +1561,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">144.7k</span>&nbsp;字
+                class="white-color">148.9k</span>&nbsp;字
             
             
             

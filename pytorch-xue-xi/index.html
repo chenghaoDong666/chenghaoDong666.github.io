@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    23.9k
+                    24k
                 </div>
                 
 
@@ -885,6 +885,11 @@ f<span class="token punctuation">.</span>backward<span class="token punctuation"
 <p><code>view</code>只能用于数据连续存储的张量，而<code>reshape</code>则不需要考虑张量中的数据是否连续存储</p>
 <p>原始张量的视图简单来说就是和原始张量共享数据，因此如果改变使用 view 方法返回的新张量，原始张量也会发生相对应的改变。</p>
 <p>reshape 方法可能返回的是原始张量的视图或者拷贝，当处理连续存储的张量 reshape 返回的是原始张量的视图，而当处理不连续存储的张量 reshape 返回的是原始张量的拷贝</p>
+<p><strong>四:Input type (torch.cuda.DoubleTensor) and weight type (torch.cuda.FloatTensor) should be the same</strong></p>
+<p>整理数据集的时候,使用了np.array,然后默认保存成float64,但是pytorch中默认是float32。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 解决办法,dtype="float32"</span>
+image_n <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>image_n<span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token string">"float32"</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">255.0</span>
+image_d <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>image_d<span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token string">"float32"</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">255.0</span></code></pre>
 <h4 id="经典示例"><a href="#经典示例" class="headerlink" title="经典示例"></a>经典示例</h4><p><strong>1.resnet.conv1</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> layers <span class="token operator">==</span> <span class="token number">50</span><span class="token punctuation">:</span>
     resnet <span class="token operator">=</span> models<span class="token punctuation">.</span>resnet50<span class="token punctuation">(</span>pretrained<span class="token operator">=</span>pretrained<span class="token punctuation">)</span>
@@ -2777,33 +2782,6 @@ torch<span class="token punctuation">.</span>backends<span class="token punctuat
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '0f60d93b293f5b743ee9',
-        clientSecret: 'd0bdbb330cf62f7bac10957894b5d6507935b257',
-        repo: 'chenghaoDong666.github.io',
-        owner: 'chenghaoDong666',
-        admin: ["chenghaoDong666"],
-        id: '2020-11-02T22-20-29',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
 
     
 
@@ -3091,7 +3069,7 @@ torch<span class="token punctuation">.</span>backends<span class="token punctuat
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/19.jpg" class="responsive-img" alt="python学习">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/5.jpg" class="responsive-img" alt="python学习">
                         
                         <span class="card-title">python学习</span>
                     </div>
@@ -3140,7 +3118,7 @@ torch<span class="token punctuation">.</span>backends<span class="token punctuat
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="numpy、pandas、matplotlib学习">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/7.jpg" class="responsive-img" alt="numpy、pandas、matplotlib学习">
                         
                         <span class="card-title">numpy、pandas、matplotlib学习</span>
                     </div>
@@ -3426,7 +3404,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">144.7k</span>&nbsp;字
+                class="white-color">148.9k</span>&nbsp;字
             
             
             
