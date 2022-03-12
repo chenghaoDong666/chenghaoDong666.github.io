@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    2.9k
                 </div>
                 
 
@@ -674,6 +674,8 @@
                 <p>linux教程：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4017.html">http://c.biancheng.net/view/4017.html</a></p>
 <h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><pre class=" language-python"><code class="language-python">unzip <span class="token operator">-</span>d des src
 <span class="token comment" spellcheck="true">#解压到指定目录 解压zip</span>
+zip <span class="token operator">-</span>r day<span class="token punctuation">.</span>zip day<span class="token operator">/</span><span class="token operator">*</span>
+<span class="token comment" spellcheck="true"># 压缩指定目录为zip文件</span>
 tar <span class="token operator">-</span>xzvf <span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
 <span class="token comment" spellcheck="true"># 解压.tar.gz</span>
 df <span class="token operator">-</span>h
@@ -806,7 +808,22 @@ c.NotebookApp.notebook_dir = u'workplace' 即设置jupyter启动后默认的根�
 <p>然后打开jupyter</p>
 <pre class=" language-shell"><code class="language-shell">jupyter notebook</code></pre>
 <p>然后在windows上打开localhost:10001,就能在windows上使用linux的jupyter notebook</p>
-<h3 id="安装Cuda和Cudnn"><a href="#安装Cuda和Cudnn" class="headerlink" title="安装Cuda和Cudnn"></a>安装Cuda和Cudnn</h3><p>Cuda如何加载，把这个搞明白好吧</p>
+<h3 id="安装Cuda和Cudnn"><a href="#安装Cuda和Cudnn" class="headerlink" title="安装Cuda和Cudnn"></a>安装Cuda和Cudnn</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/matrix273/article/details/103534991">使用conda创建指定cuda版本环境</a></p>
+<p>上面的tql！！！！</p>
+<pre class=" language-shell"><code class="language-shell"># 首先创建一个虚拟环境
+conda create –n py3.6tf python=3.6 #创建Python3.6版本的名为py3.6tf的虚拟环境
+conda activate py3.6tf #激活环境
+# 2查询支持的cuda版本
+conda search cudatoolkit </code></pre>
+<img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211211001707690.png" alt="image-20211211001707690" style="zoom:67%;">
+
+<pre class=" language-shell"><code class="language-shell"># 3 conda search cudnn #查询支持的cudnn版本,需要确保cuda版本一致</code></pre>
+<img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211211001756161.png" alt="image-20211211001756161" style="zoom:67%;">
+
+<pre class=" language-shell"><code class="language-shell">conda install cudatoolkit=9.0 cudnn=7.3.1 #安装指定版本的cuda,cudnn到当前的虚拟环境中</code></pre>
+<p>然后就可以用了,太强了!!!!!!</p>
+<p>==<strong>Cuda30系不支持cuda10.0,至少也是cuda11.1了,但是tensorflow1.x官网写的是cuda10.0,实际上11.1也能跑</strong>==</p>
+<p>Cuda如何加载，把这个搞明白好吧</p>
 <p>首先取Cuda官网下载对应版本的Cuda Toolkit</p>
 <p>在本地环境变量设置cuda</p>
 <pre class=" language-shell"><code class="language-shell">#可以显示安装的cuda
@@ -1760,7 +1777,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">148.9k</span>&nbsp;字
+                class="white-color">153.8k</span>&nbsp;字
             
             
             

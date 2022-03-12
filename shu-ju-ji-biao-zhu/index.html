@@ -694,10 +694,10 @@ pip install labelme</code></pre>
 <p>labelme_json_to_dataset.exe转换json生成的文件夹为空，原因是json内存储的文件路径的原因！！！！</p>
 <h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28418387/article/details/95662415">F1、IoU等计算方式理解与代码实现</a>.</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012370185/article/details/94409933">mIoU</a></p>
-<p><strong>PA:</strong><br>$$<br>PA=\frac{TP+TN}{TP+TN+FP+FN}\<br>PA=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}<br>$$</p>
+<h4 id="PA"><a href="#PA" class="headerlink" title="PA"></a>PA</h4><p>$$<br>PA=\frac{TP+TN}{TP+TN+FP+FN}\<br>PA=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}<br>$$</p>
 <p>共有$k+1$个类，其中包含一个空类或背景，$p_{ij}$表示GT为i预测为j</p>
-<p>Mean Pixel Accuracy(MAP,均像素精度):是PA的一种简单提升，<strong>计算每个类内被正确分类像素数的比例，之后求所有类的平均</strong>。<br>$$<br>MPA=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}}<br>$$<br><strong>mIoU:</strong></p>
-<img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210403154123769.png" alt="直观理解" style="zoom:50%;">
+<p>Mean Pixel Accuracy(MAP,均像素精度):是PA的一种简单提升，<strong>计算每个类内被正确分类像素数的比例，之后求所有类的平均</strong>。<br>$$<br>MPA=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}}<br>$$</p>
+<h4 id="mIoU"><a href="#mIoU" class="headerlink" title="mIoU"></a>mIoU</h4><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210403154123769.png" alt="直观理解" style="zoom:50%;">
 
 <p>在每个类上计算IoU,然后取平均<br>$$<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{TP}{FN+FP+TP}\<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}+\sum^k_{j=0}p_{ji}-p_{ii}}<br>$$</p>
 <p>来自AdaptSeg的源码</p>
@@ -1742,7 +1742,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">148.9k</span>&nbsp;字
+                class="white-color">153.8k</span>&nbsp;字
             
             
             

@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    4.1k
                 </div>
                 
 
@@ -671,7 +671,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Tensorflow1-x"><a href="#Tensorflow1-x" class="headerlink" title="Tensorflow1.x"></a>Tensorflow1.x</h2><h2 id="Tensorflow2-x"><a href="#Tensorflow2-x" class="headerlink" title="Tensorflow2.x"></a>Tensorflow2.x</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf?hl=hr">tensorflowAPI</a></p>
+                <h2 id="Tensorflow1-x"><a href="#Tensorflow1-x" class="headerlink" title="Tensorflow1.x"></a>Tensorflow1.x</h2><p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/install/source_windows#cpu">与python的版本对应关系</a></p>
+<h3 id="tf-keras"><a href="#tf-keras" class="headerlink" title="tf.keras"></a>tf.keras</h3><h4 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h4><p><code>load_weights</code></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 从TensorFlow或HDF5文件加载所有层权重。</span>
+load_weights<span class="token punctuation">(</span>
+    filepath<span class="token punctuation">,</span> by_name<span class="token operator">=</span><span class="token boolean">False</span>
+<span class="token punctuation">)</span></code></pre>
+<p><code>summary</code></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 打印网络的字符串摘要</span>
+summary<span class="token punctuation">(</span>
+    line_length<span class="token operator">=</span>None<span class="token punctuation">,</span> positions<span class="token operator">=</span>None<span class="token punctuation">,</span> print_fn<span class="token operator">=</span>None
+<span class="token punctuation">)</span></code></pre>
+<p><code>fit_generator</code></p>
+<pre class=" language-python"><code class="language-python">fit_generator<span class="token punctuation">(</span>
+    generator<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 生成器函数,输出应该是形为（inputs,target）或者（inputs,targets,sample_weight）的元组,</span>
+    <span class="token comment" spellcheck="true"># 生成器会在数据集上无限循环</span>
+    steps_per_epoch<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 在宣布一个epoch完成并开始下一个epoch之前从生成器产生的总步数（样本批次）。</span>
+    <span class="token comment" spellcheck="true">#它通常应等于数据集的样本数除以batch_size。</span>
+    epochs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># </span>
+    verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+    callbacks<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># List of callbacks to be called during training.callbacks类的函数</span>
+    validation_data<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 验证集数据</span>
+    validation_steps<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># </span>
+    validation_freq<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 多少个epoch验证一次</span>
+    class_weight<span class="token operator">=</span>None<span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 没多少个epoch运行一次验证</span>
+    initial_epoch<span class="token operator">=</span><span class="token number">0</span><span class="token comment" spellcheck="true"># 开始训练的时期（用于恢复之前的训练）</span>
+<span class="token punctuation">)</span></code></pre>
+<h3 id="tf-keras-callbacks"><a href="#tf-keras-callbacks" class="headerlink" title="tf.keras.callbacks"></a>tf.keras.callbacks</h3><p>Callbacks: utilities called at certain points during model training.在训练模型的过程中可能要做一些事。</p>
+<p><code>ModelCheckpoint</code></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Save the model after every epoch.</span>
+tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>callbacks<span class="token punctuation">.</span>ModelCheckpoint<span class="token punctuation">(</span>
+    filepath<span class="token punctuation">,</span> monitor<span class="token operator">=</span><span class="token string">'val_loss'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 需要监视的值,通常为:val_acc或val_loss或acc或 loss</span>
+    verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 信息展示模式，0或1。为1表示输出epoch模型保存信息，默认为0表示不输出该信息</span>
+    <span class="token comment" spellcheck="true"># 信息形如：Epoch 00001: val_acc improved from -inf to 0.49240, saving model to</span>
+    <span class="token comment" spellcheck="true"># /xxx/checkpoint/model_001-0.3902.h5</span>
+    save_best_only<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 当设置为True时，将只保存在验证集上性能最好的模型</span>
+    save_weights_only<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#如果为True,只保存weights,否则保存整个模型</span>
+    mode<span class="token operator">=</span><span class="token string">'auto'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 在save_best_only=True时决定性能最佳模型的评判准则</span>
+    <span class="token comment" spellcheck="true"># 例如,当监测值为val_acc时,模式应为max,当检测值为val_loss时,模式应为min。</span>
+    <span class="token comment" spellcheck="true"># 在auto模式下，评价准则由被监测值的名字自动推断。</span>
+    save_freq<span class="token operator">=</span><span class="token string">'epoch'</span><span class="token punctuation">,</span>
+    <span class="token operator">**</span>kwargs
+<span class="token punctuation">)</span></code></pre>
+<h2 id="Tensorflow2-x"><a href="#Tensorflow2-x" class="headerlink" title="Tensorflow2.x"></a>Tensorflow2.x</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf?hl=hr">tensorflowAPI</a></p>
 <p><a target="_blank" rel="noopener" href="https://keras-cn.readthedocs.io/en/latest/other/callbacks/">keras教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/instillai/TensorFlow-Course">https://github.com/instillai/TensorFlow-Course</a></p>
@@ -779,7 +822,7 @@ list<span class="token punctuation">(</span>dataset<span class="token punctuatio
 <span class="token comment" spellcheck="true">#获得如下</span>
 <span class="token comment" spellcheck="true">#tf.Tensor([600 394   3], shape=(3,), dtype=int32)</span>
 <span class="token comment" spellcheck="true">#tf.Tensor([600 394   1], shape=(3,), dtype=int32)</span></code></pre>
-<h3 id="tf-keras"><a href="#tf-keras" class="headerlink" title="tf.keras"></a>tf.keras</h3><p>tensorflow的高级API</p>
+<h3 id="tf-keras-1"><a href="#tf-keras-1" class="headerlink" title="tf.keras"></a>tf.keras</h3><p>tensorflow的高级API</p>
 <h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 <span class="token keyword">from</span> tensorflow <span class="token keyword">import</span> keras
 <span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>keras <span class="token keyword">import</span> layers</code></pre>
@@ -799,7 +842,7 @@ x <span class="token operator">=</span> Input<span class="token punctuation">(</
 y <span class="token operator">=</span> Dense<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> activation<span class="token operator">=</span><span class="token string">'softmax'</span><span class="token punctuation">)</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 model <span class="token operator">=</span> Model<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></code></pre>
 <p>Note that even if <strong>eager execution is enabled</strong>, <code>Input</code> produces <strong>a symbolic tensor (i.e. a placeholder)</strong>. This symbolic tensor can be used with other TensorFlow ops。</p>
-<h4 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h4><p><code>Model</code>将layers组合成一个具有training和inference特征的对象. </p>
+<h4 id="Model-1"><a href="#Model-1" class="headerlink" title="Model"></a>Model</h4><p><code>Model</code>将layers组合成一个具有training和inference特征的对象. </p>
 <p><a target="_blank" rel="noopener" href="https://keras-cn.readthedocs.io/en/latest/legacy/models/model/">keras教程</a></p>
 <pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Model<span class="token punctuation">(</span>
     <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
@@ -1855,7 +1898,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">148.9k</span>&nbsp;字
+                class="white-color">153.8k</span>&nbsp;字
             
             
             

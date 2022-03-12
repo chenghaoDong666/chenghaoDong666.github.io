@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    24k
+                    24.6k
                 </div>
                 
 
@@ -947,7 +947,8 @@ model<span class="token punctuation">.</span>load_state_dict<span class="token p
 <span class="token comment" spellcheck="true"># 保存</span>
 torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">'\model.pkl'</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 加载</span>
-model <span class="token operator">=</span> torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">'\model.pkl'</span><span class="token punctuation">)</span></code></pre>
+model <span class="token operator">=</span> torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">'\model.pkl'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 但是这样直接加载有时候会出问题，比如分割,本来的模型是2类输出,但是假设我们现在要新训练一个模型,同时利用之前模型的预训练信息，但是这个时候最后的那个prediction部分模型大小就不匹配了</span></code></pre>
 <img src="./medias/loading.gif" data-original="/pytorch-xue-xi/image-20211009203504314.png" alt="image-20211009203504314" style="zoom:80%;">
 
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/133250753">Pytorch断点续接</a></p>
@@ -1035,6 +1036,8 @@ c <span class="token operator">=</span> out<span class="token punctuation">.</sp
 <span class="token comment" spellcheck="true"># 修改c,out可以反向传播,但会生成错误的梯度值。</span></code></pre>
 <p>上面内容实现的原理是:In-place 正确性检查(In-place操作是指函数最后带”_”的操作)</p>
 <p>所有的<code>Variable</code>都会记录用在他们身上的 <code>in-place operations</code>。如果<code>pytorch</code>检测到<code>variable</code>在一个<code>Function</code>中已经被保存用来<code>backward</code>，但是之后它又被<code>in-place operations</code>修改。当这种情况发生时，在<code>backward</code>的时候，<code>pytorch</code>就会报错。这种机制保证了，如果你用了<code>in-place operations</code>，但是在<code>backward</code>过程中没有报错，那么梯度的计算就是正确的。</p>
+<p><code>pred_fake = self.netD(fake_AB.detach()) </code># 固定了G,detach隔断了返现传播流</p>
+<p><code>detach()</code>会截断反向传播</p>
 <h4 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27783097">知乎教程</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/tsq292978891/article/details/79364140">CSDN教程</a></p>
 <p><strong>对Function的直观理解</strong></p>
 <ul>
@@ -1701,14 +1704,20 @@ labels <span class="token operator">=</span> labels<span class="token punctuatio
 <p>如果我们不设定好要使用的<code>device_ids的</code>话, 程序会自动找到这个机器上面<strong>可以用的所有的显卡, 然后用于训练.</strong> </p>
 <p>但是因为我们前面使用<code>os.environ['CUDA_VISIBLE_DEVICES']</code><strong>限定了这个程序可以使用的显卡, 所以这个地方程序如果自己获取的话, 获取到的其实就是我们上面设定的那几个显卡.</strong></p>
 <p>我没有进行深入得到考究, 但是我感觉使用<code>os.environ['CUDA_VISIBLE_DEVICES']</code>对可以使用的显卡进行限定之后, 显卡的实际编号和程序看到的编号应该是不一样的, 例如上面我们设定的是<code>os.environ['CUDA_VISIBLE_DEVICES']="0,2"</code>, 但是程序看到的显卡编号应该被改成了<code>'0,1'</code>, 也就是说程序所使用的显卡编号实际上是经过了一次映射之后才会映射到真正的显卡编号上面的, 例如这里的程序看到的1对应实际的2</p>
-<h4 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h4><p>来自<code>torch.nn.utils</code>模块</p>
-<p><code>nn.utils.clip_grad_value_</code></p>
+<h4 id="torch-nn-utils"><a href="#torch-nn-utils" class="headerlink" title="torch.nn.utils"></a>torch.nn.utils</h4><p><code>nn.utils.clip_grad_value_</code></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/99953668">深度炼丹之梯度裁剪</a></p>
 <p>backward之后,step之前</p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>clip_grad_value_<span class="token punctuation">(</span>parameters<span class="token punctuation">:</span> Union<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">,</span>Iterable<span class="token punctuation">[</span>torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                                  <span class="token comment" spellcheck="true">#将梯度归一化的张量的可迭代或单个张量 net.parameters()</span>
                                 clip_value<span class="token punctuation">:</span> float<span class="token punctuation">)</span> → None<span class="token comment" spellcheck="true">#梯度被裁剪到[-clip_value,clip_value]</span>
 eg<span class="token punctuation">:</span>nn<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>clip_grad_value_<span class="token punctuation">(</span>net<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">)</span></code></pre>
+<p><code>nn.utils.clip_grad_norm</code></p>
+<p>这个函数的主要目的是对$parameters$里的所有参数的梯度进行规范化。</p>
+<pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>clip_grad_norm_<span class="token punctuation">(</span>parameters<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 要规范的参数</span>
+                               max_norm<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 所有参数的梯度的范数的上界</span>
+                               norm_type<span class="token operator">=</span><span class="token number">2.0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 范数的类型,"inf"为无穷范数</span>
+                               error_if_nonfinite<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span></code></pre>
+<p>设$parameters$里所有参数的梯度的范数为$total_norm$，<br>若$max_norm&gt;total_norm$, $parameters$里面的参数的梯度不做改变;<br>若$max_norm&lt;total_norm$, $parameters$里面的参数的梯度都要乘以一个系数$clip_coef$:<br>$$<br>clip_coef=max_norm/(total_norm+10^{-6})<br>$$</p>
 <h4 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DoubleConv</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true">#要继承</span>
     <span class="token triple-quoted-string string">"""(convolution => [BN] => ReLU) * 2"""</span>
 
@@ -2058,14 +2067,16 @@ optimizer <span class="token operator">=</span> optim<span class="token punctuat
         loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> loss
     optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span>closure<span class="token punctuation">)</span></code></pre>
-<h4 id="torch-optim-RMSprop"><a href="#torch-optim-RMSprop" class="headerlink" title="torch.optim.RMSprop"></a>torch.optim.RMSprop</h4><pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>RMSprop<span class="token punctuation">(</span>params<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#用于优化的参数iterable或定义参数组的dicts</span>
+<p><code>torch.optim.RMSprop</code></p>
+<pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>RMSprop<span class="token punctuation">(</span>params<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#用于优化的参数iterable或定义参数组的dicts</span>
                     lr<span class="token operator">=</span><span class="token number">0.01</span><span class="token punctuation">,</span>
                     alpha<span class="token operator">=</span><span class="token number">0.99</span><span class="token punctuation">,</span>
                     eps<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">08</span><span class="token punctuation">,</span>
                     weight_decay<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#权重衰减</span>
                     momentum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#动量</span>
                     centered<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span></code></pre>
-<h4 id="torch-optim-SGD"><a href="#torch-optim-SGD" class="headerlink" title="torch.optim.SGD"></a>torch.optim.SGD</h4><p>实现随机梯度下降(可选动量)。</p>
+<p><code>torch.optim.SGD</code></p>
+<p>实现随机梯度下降(可选动量)。</p>
 <pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>SGD<span class="token punctuation">(</span>params<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 待优化参数的可迭代对象或者是定义了参数组的dict</span>
                 lr<span class="token operator">=</span><span class="token operator">&lt;</span>required parameter<span class="token operator">></span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#学习率</span>
                 momentum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#动量</span>
@@ -2077,6 +2088,59 @@ optimizer <span class="token operator">=</span> optim<span class="token punctuat
 <span class="token operator">>></span><span class="token operator">></span> loss_fn<span class="token punctuation">(</span>model<span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 随机梯度下降,就比较依赖于数据的随机程度,如果不对数据进行打乱处理,可能异常值集中在数据某一块,会对算法收敛拟合造成干扰。</span></code></pre>
+<p><code>torch.optim.Adam</code></p>
+<pre class=" language-python"><code class="language-python">torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>params<span class="token punctuation">,</span>
+                 lr<span class="token operator">=</span><span class="token number">0.001</span><span class="token punctuation">,</span>
+                 betas<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.9</span><span class="token punctuation">,</span> <span class="token number">0.999</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#</span>
+                 eps<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">08</span><span class="token punctuation">,</span>
+                 weight_decay<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
+                 amsgrad<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span></code></pre>
+<h3 id="How-to-adjust-learning-rate"><a href="#How-to-adjust-learning-rate" class="headerlink" title="How to adjust learning rate?"></a>How to adjust learning rate?</h3><p><code>torch.optim.lr_scheduler</code> provides several methods to adjust the learning rate based on the number of epochs. <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.ReduceLROnPlateau.html#torch.optim.lr_scheduler.ReduceLROnPlateau"><code>torch.optim.lr_scheduler.ReduceLROnPlateau</code></a> allows dynamic learning rate reducing based on some validation measurements.</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Learning rate scheduling should be applied after optimizer’s update:</span>
+model <span class="token operator">=</span> <span class="token punctuation">[</span>Parameter<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> requires_grad<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+optimizer <span class="token operator">=</span> SGD<span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">)</span>
+scheduler <span class="token operator">=</span> ExponentialLR<span class="token punctuation">(</span>optimizer<span class="token punctuation">,</span> gamma<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> input<span class="token punctuation">,</span> target <span class="token keyword">in</span> dataset<span class="token punctuation">:</span>
+        optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        output <span class="token operator">=</span> model<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+        loss <span class="token operator">=</span> loss_fn<span class="token punctuation">(</span>output<span class="token punctuation">,</span> target<span class="token punctuation">)</span>
+        loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    scheduler<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Most learning rate schedulers can be called back-to-back (also referred to as chaining schedulers). </span>
+<span class="token comment" spellcheck="true"># The result is that each scheduler is applied one after the other on the learning rate obtained by the one preceding it.</span>
+model <span class="token operator">=</span> <span class="token punctuation">[</span>Parameter<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> requires_grad<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+optimizer <span class="token operator">=</span> SGD<span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">)</span>
+scheduler1 <span class="token operator">=</span> ExponentialLR<span class="token punctuation">(</span>optimizer<span class="token punctuation">,</span> gamma<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
+scheduler2 <span class="token operator">=</span> MultiStepLR<span class="token punctuation">(</span>optimizer<span class="token punctuation">,</span> milestones<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">80</span><span class="token punctuation">]</span><span class="token punctuation">,</span> gamma<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> input<span class="token punctuation">,</span> target <span class="token keyword">in</span> dataset<span class="token punctuation">:</span>
+        optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        output <span class="token operator">=</span> model<span class="token punctuation">(</span>input<span class="token punctuation">)</span>
+        loss <span class="token operator">=</span> loss_fn<span class="token punctuation">(</span>output<span class="token punctuation">,</span> target<span class="token punctuation">)</span>
+        loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    scheduler1<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    scheduler2<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># In many places in the documentation, we will use the following template to refer to schedulers algorithms.</span>
+scheduler <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    train<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    validate<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    scheduler<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><code>lr_scheduler.LambdaLR</code></p>
+<p>将每个参数组的学习率设置为初始 lr 乘以给定函数。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Assuming optimizer has two groups.</span>
+lambda1 <span class="token operator">=</span> <span class="token keyword">lambda</span> epoch<span class="token punctuation">:</span> epoch <span class="token operator">//</span> <span class="token number">30</span>
+lambda2 <span class="token operator">=</span> <span class="token keyword">lambda</span> epoch<span class="token punctuation">:</span> <span class="token number">0.95</span> <span class="token operator">**</span> epoch
+scheduler <span class="token operator">=</span> LambdaLR<span class="token punctuation">(</span>optimizer<span class="token punctuation">,</span> lr_lambda<span class="token operator">=</span><span class="token punctuation">[</span>lambda1<span class="token punctuation">,</span> lambda2<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    train<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    validate<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    scheduler<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h3 id="torch-utils-tensorboard"><a href="#torch-utils-tensorboard" class="headerlink" title="torch.utils.tensorboard"></a>torch.utils.tensorboard</h3><p>一旦你安装了TensorBoard，这些工具可以让你将PyTorch模型和指标记录到一个目录中，以便在TensorBoard UI中可视化。标量、图像、直方图、图形和嵌入可视化都支持PyTorch模型和张量以及Caffe2 网络和blobs。</p>
 <p>安装<code>pip install tensorboardX</code> 还需要安装tensorflow <code>pip install tensorflow</code></p>
 <p>除此之外还需要设置隧道映射,多换几个端口试试</p>
@@ -2135,6 +2199,8 @@ tensorboard <span class="token operator">-</span><span class="token operator">-<
           walltime<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 记录发生的时间，默认为time.time()</span>
           dataformats<span class="token operator">=</span>‘CHW’<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#默认为CHW tensor是CHW numpy是HWC</span></code></pre>
 <p>也可以画特征图的变化</p>
+<h3 id="visdom"><a href="#visdom" class="headerlink" title="visdom"></a>visdom</h3><p>必须提前开启:</p>
+<p><code>python -m visdom server -p 10086</code></p>
 <h3 id="torch-utils-data"><a href="#torch-utils-data" class="headerlink" title="torch.utils.data"></a>torch.utils.data</h3><p>PyTorch数据加载工具的核心是torch.utils.data.DataLoader类。它表示一个数据集上的Python可迭代对象。</p>
 <p>pytorch输入数据PipeLine一般遵循一个“三步走”的策略，一般pytorch 的数据加载到模型的操作顺序是这样的：<br>① 创建一个 Dataset 对象。必须实现<code>__len__()</code>、<code>__getitem__()</code>这两个方法，这里面会用到transform对数据集进行扩充。<br>② 创建一个 DataLoader 对象。它是对DataSet对象进行迭代的，一般不需要事先里面的其他方法了。<br>③ 循环遍历这个 DataLoader 对象。将img, label加载到模型中进行训练</p>
 <pre class=" language-python"><code class="language-python">dataset <span class="token operator">=</span> MyDataset<span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment" spellcheck="true"># 第一步：构造Dataset对象</span>
@@ -2387,13 +2453,15 @@ torch<span class="token punctuation">.</span>manual_seed<span class="token punct
 <span class="token operator">>></span><span class="token operator">></span>     transforms<span class="token punctuation">.</span>CenterCrop<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token operator">>></span><span class="token operator">></span>     transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
-<h4 id="裁剪-Crop"><a href="#裁剪-Crop" class="headerlink" title="裁剪(Crop)"></a>裁剪(Crop)</h4><h4 id="翻转和旋转-Flip-and-Rotation"><a href="#翻转和旋转-Flip-and-Rotation" class="headerlink" title="翻转和旋转(Flip and Rotation)"></a>翻转和旋转(Flip and Rotation)</h4><h4 id="图像变换-resize"><a href="#图像变换-resize" class="headerlink" title="图像变换(resize)"></a>图像变换(resize)</h4><pre class=" language-python"><code class="language-python">torchvision<span class="token punctuation">.</span>transforms<span class="token punctuation">.</span>ToTensor
+<h4 id="裁剪-Crop"><a href="#裁剪-Crop" class="headerlink" title="裁剪(Crop)"></a>裁剪(Crop)</h4><h4 id="翻转和旋转-Flip-and-Rotation"><a href="#翻转和旋转-Flip-and-Rotation" class="headerlink" title="翻转和旋转(Flip and Rotation)"></a>翻转和旋转(Flip and Rotation)</h4><h4 id="图像变换-resize"><a href="#图像变换-resize" class="headerlink" title="图像变换(resize)"></a>图像变换(resize)</h4><pre class=" language-python"><code class="language-python">torchvision<span class="token punctuation">.</span>transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#将PIL Image或者 ndarray 转换为tensor，并且归一化至[0-1] 注意事项：归一化至[0-1]是直接除以255，若自己的ndarray数据尺度有变化，则需要自行修改。</span>
 torchvision<span class="token punctuation">.</span>transforms<span class="token punctuation">.</span>Normalize<span class="token punctuation">(</span>mean<span class="token punctuation">,</span> std<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#用平均值和标准偏差归一化张量图像。给定mean：(M1,…,Mn)和std：(S1,…,Sn)对于n通道，此变换将标准化输入的每个通道，torch.*Tensor即 input[channel] = (input[channel] - mean[channel]) / std[channel]</span>
 <span class="token comment" spellcheck="true">#mean(sequence)-每个通道的均值序列。</span>
-<span class="token comment" spellcheck="true">#std(sequence)-每个通道的标准偏差序列。</span></code></pre>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>对transforms操作，使数据增强更灵活</p>
+<span class="token comment" spellcheck="true">#std(sequence)-每个通道的标准偏差序列。</span>
+torchvision<span class="token punctuation">.</span>transforms<span class="token punctuation">.</span>ToPILImage<span class="token punctuation">(</span>mode<span class="token operator">=</span>None<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Converts a torch.*Tensor of shape C x H x W or a numpy ndarray of shape H x W x C to a PIL Image while preserving the value range.</span></code></pre>
+<p>对transforms操作，使数据增强更灵活</p>
 <p>Normalize参数解惑<a target="_blank" rel="noopener" href="https://blog.csdn.net/xys430381_1/article/details/85724668">https://blog.csdn.net/xys430381_1/article/details/85724668</a></p>
 <h4 id="functional"><a href="#functional" class="headerlink" title="functional"></a>functional</h4><p><code>torchvision.transforms.functional.adjust_gamma(img: torch.Tensor, gamma: float, gain: float = 1) → torch.Tensor</code></p>
 <p>对图片进行gamma校正<br>$$<br>I_{out}=255\cdot gain \cdot (\frac{I_{in}}{255})^y<br>$$<br>img:PIL Image或Tensor </p>
@@ -2566,7 +2634,7 @@ torch<span class="token punctuation">.</span>backends<span class="token punctuat
     <span class="token keyword">def</span> <span class="token function">__iter__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> BackgroundGenerator<span class="token punctuation">(</span>super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__iter__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#然后用DataLoaderX替换原本的DataLoader</span></code></pre>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
             </div>
             <hr/>
 
@@ -3404,7 +3472,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">148.9k</span>&nbsp;字
+                class="white-color">153.8k</span>&nbsp;字
             
             
             

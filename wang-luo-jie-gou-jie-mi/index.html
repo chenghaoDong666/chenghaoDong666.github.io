@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    17.1k
+                    17.2k
                 </div>
                 
 
@@ -690,6 +690,8 @@
 <p><strong>bottleneck:**在ResNet中,bottleneck主要是指</strong>每个block进来一个特征图现有一个压缩的步骤**,然后3x3卷积,然后再扩张。<strong>如果bottleneck是指行为的话,就是指压缩这一行为,如果bottleneck是指特征图的话,就是指压缩后或扩张前的通道数较少的特增图。</strong></p>
 <p><strong>GAP：</strong>Global Average Pool全局平均池化，就是将某个通道的特征取平均值，经常使用AdaptativeAvgpoold(1),在pytorch中，这个代表自适应性全局平均池化，说人话就是将某个通道的特征取平均值。</p>
 <p><strong>Embedding</strong>:深度学习方法都是利用使用线性和非线性转换对复杂的数据进行自动特征抽取，并将特征表示为“向量”（vector），这一过程一般也称为“嵌入”（embedding）</p>
+<p><strong>False Positive</strong>:假阳性,其实这个说法就已经揭示了如何分辨,就比如一个试纸,测出来是阳性，但其实是假的,换句话说就是网络预测出来是真的,其实是假的</p>
+<p>3x3的卷积有padding一般是1,5x5的卷积有padding一般是2,7x7的卷积有padding一般是3</p>
 <h3 id="归一-标准-正则"><a href="#归一-标准-正则" class="headerlink" title="归一/标准/正则"></a>归一/标准/正则</h3><p><a target="_blank" rel="noopener" href="https://maristie.com/2018/02/Normalization-Standardization-and-Regularization">Differences between Normalization, Standardization and Regularization</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20455227/answer/370658612">归一化和标准化的作用于区别</a></p>
 <p>翻译成中文是归一化，标准化，正则化，前两个是特征缩放，最后一个是减少过拟合</p>
@@ -793,13 +795,13 @@
 <p>假设一个随机变量X的正确分布p如下:</p>
 <p>$A:\frac{1}{2}\quad B:\frac{1}{4}\quad C:\frac{1}{4}$</p>
 <p>可以简单认为，平均每发送4个符号其中就有2个A，1个B，1个C。因为我们知道信道传输是只能传二进制编码的，所以必须对A、B、C进行编码，根据哈夫曼树来实现，如下所示：</p>
-<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/.%5C%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E8%A7%A3%E5%AF%86%5Cimage-20210707203744894.png" alt="image-20210707203744894"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E8%A7%A3%E5%AF%86%5Cimage-20210707203744894.png" alt="image-20210707203744894"></p>
 <p>A被编码为0，B被编码为10，C被编码为11。所以每4个字符的平均编码长度为：<br>$$<br>\frac{2+2+2}{4}=1.5<br>$$<br>那么这个随机变量的信息熵是什么呢？</p>
 <p>$H(x)=-1/2log(1/2)-1/4log(1/4)-1/4log(1/4)=1.5$</p>
 <p>编码的话以2为底。</p>
 <h4 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h4><p>有了信息熵的概念后，然后就去看看交叉熵的物理含义。假设我们用一个错误的分布q，对随机变量编码，q的分布如下：</p>
 <p>$A:\frac{1}{4}\quad B:\frac{1}{4}\quad C:\frac{1}{2}$</p>
-<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/.%5C%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E8%A7%A3%E5%AF%86%5Cimage-20210707204259161-1625661782418.png" alt="image-20210707204259161"></p>
+<p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E8%A7%A3%E5%AF%86%5Cimage-20210707204259161-1625661782418.png" alt="image-20210707204259161"></p>
 <p>也就是说A被编码为11，B被编码为10，C被编码为0。但是实际上，平均每4个字符还是2个A，1个B，1个C。所以在这种情况下，平均编码长度变成了:<br>$$<br>\frac{4+1+2}{4}=1.75<br>$$<br>交叉熵此时等于:</p>
 <p>$H(p,q)=-1/2log(1/4)-1/4log(1/4)-1/4log(1/2)=1.75$</p>
 <h4 id="相对熵"><a href="#相对熵" class="headerlink" title="相对熵"></a>相对熵</h4><p>有了交叉熵和信息熵，那么相对熵更好理解了。其<strong>实际含义就是用错误分布对随机变量编码时，其产生多余的编码长度</strong>。这里就是 $D_{KL}(p||q)=1.75-1.5=0.25$.</p>
@@ -858,9 +860,9 @@
 <img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210601204816037.png" alt="image-20210601204816037" style="zoom: 50%;">
 
 <p>来实现，其中$M=max(x_i),i=1,2,3,…,n$,即$M$为所有$x_i$中最大的值。在加快运算速度的同时，可以保持数值的稳定性。</p>
-<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><h4 id="Precision-amp-Recall"><a href="#Precision-amp-Recall" class="headerlink" title="Precision&amp;Recall"></a>Precision&amp;Recall</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/new1\jianguoyun\_posts\网络结构解密\image-20210707211929357.png" alt="image-20210707211929357" style="zoom: 50%;">
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><h4 id="Precision-amp-Recall"><a href="#Precision-amp-Recall" class="headerlink" title="Precision&amp;Recall"></a>Precision&amp;Recall</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210707211929357.png" alt="image-20210707211929357" style="zoom: 50%;">
 
-<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/new1\jianguoyun\_posts\网络结构解密\image-20210707211958788.png" alt="image-20210707211958788" style="zoom:67%;">
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210707211958788.png" alt="image-20210707211958788" style="zoom:67%;">
 
 <p>有时候查准率更重要，有时候查全率更重要，一般两者都是越高越好。</p>
 <h3 id="机器学习问答"><a href="#机器学习问答" class="headerlink" title="机器学习问答"></a>机器学习问答</h3><h4 id="梯度下降or-求导-0"><a href="#梯度下降or-求导-0" class="headerlink" title="梯度下降or 求导=0"></a>梯度下降or 求导=0</h4><p>$$<br>\theta=(X^TX)^{-1}X^TY<br>$$</p>
@@ -2144,7 +2146,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">148.9k</span>&nbsp;字
+                class="white-color">153.8k</span>&nbsp;字
             
             
             

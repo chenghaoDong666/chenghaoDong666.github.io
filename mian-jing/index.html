@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="spark学习, python,cv,codeforces,leetcode,image processing,软件使用">
+    <meta name="keywords" content="面经, python,cv,codeforces,leetcode,image processing,软件使用">
     <meta name="description" content="计算机视觉与图像处理，以及其他相关的技术博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>spark学习 | 亦爱Zxy</title>
+    <title>面经 | 亦爱Zxy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -485,7 +485,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'dchhaoshuai';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('密码提示：帅不帅？')).toString(CryptoJS.enc.Hex)) {
                 alert('你不够帅，将返回主页！');
@@ -498,12 +498,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">spark学习</h1>
+                    <h1 class="description center-align post-title">面经</h1>
                 </div>
             </div>
         </div>
@@ -620,12 +620,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/spark/">
-                                <span class="chip bg-color">spark</span>
-                            </a>
-                        
-                            <a href="/tags/scala/">
-                                <span class="chip bg-color">scala</span>
+                            <a href="/tags/%E9%9D%A2%E7%BB%8F/">
+                                <span class="chip bg-color">面经</span>
                             </a>
                         
                     </div>
@@ -636,8 +632,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/spark/" class="post-category">
-                                spark
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
                             </a>
                         
                     </div>
@@ -649,7 +645,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-11
+                    2021-12-29
                 </div>
                 
 
@@ -658,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    879
+                    1.2k
                 </div>
                 
 
@@ -675,123 +671,79 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="http://spark.apache.org/docs/latest/api/scala/org/apache/spark/index.html">spark scala api</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.scala-lang.org/api/current/">scala api</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/scala/scala-tutorial.html">菜鸟教程scala</a></p>
-<p><a target="_blank" rel="noopener" href="https://my.oschina.net/joymufeng/blog/863823">scala下划线的使用</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wjunge/p/10043079.html">scala=&gt;的使用</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wz_TXWY/article/details/100860862">scala方法调用方式</a> 其中注意无括号调用法，如果没有参数，可以省略括号</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010256841/article/details/53467905">scala中为什么不建议使用return</a>  简而言之就是更符合函数式编程，且不影响类型推断等</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xianpanjia4616/article/details/81143146">scala中的:: , +:, :+, :::, +++, 等操作的含义</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6eeaa4511068">讲解了很多scala集合操作，可以来这查找</a></p>
-<p><code>collect()</code>返回一个包含此RDD中所有元素的数组。</p>
-<p><img src="./medias/loading.gif" data-original="/spark-xue-xi/image-20201212132112158.png" alt="collect函数"></p>
-<pre class=" language-scala"><code class="language-scala"><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>spark<span class="token punctuation">.</span><span class="token punctuation">{</span>SparkConf<span class="token punctuation">,</span> SparkContext<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//SparkConf  Spark应用程序的配置。用于将各种Spark参数设置为键值对。</span>
-<span class="token comment" spellcheck="true">//Spark功能的主入口点。SparkContext表示到Spark集群的连接，可用于在该集群上创建RDDs、累加器和广播变量</span>
-<span class="token keyword">val</span> sparkConf <span class="token operator">=</span> <span class="token keyword">new</span> SparkConf<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>setAppName<span class="token punctuation">(</span><span class="token string">"Association Rule Mining Demo"</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//new SparkConf()创建了一个从系统属性和类路径加载默认值的SparkConf对象  </span>
-<span class="token comment" spellcheck="true">//setAppName()为你的应用设置一个名字</span>
-<span class="token keyword">val</span> sc <span class="token operator">=</span> <span class="token keyword">new</span> SparkContext<span class="token punctuation">(</span>sparkConf<span class="token punctuation">)</span>
-<span class="token keyword">val</span> transactions <span class="token operator">=</span> sc<span class="token punctuation">.</span>textFile<span class="token punctuation">(</span>transactionsFileName<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//textFile(path: String, minPartitions: Int = defaultMinPartitions)</span>
-<span class="token comment" spellcheck="true">//从HDFS、本地文件系统(在所有节点上都可用)或hadoop支持的文件系统URI中读取文本文件，并以字符串的RDD形式返回。</span>
-<span class="token comment" spellcheck="true">//minPartitions:生成的RDD的最小分区数</span>
-<span class="token comment" spellcheck="true">//cache():使用默认的存储级别(MEMORY_ONLY)来支持这个RDD。</span>
-<span class="token keyword">val</span> transactionSize <span class="token operator">=</span> transactions<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//count():返回RDD中的元素数量。</span>
+                <h1 id="面经"><a href="#面经" class="headerlink" title="面经"></a>面经</h1><h3 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/58855c6971e5">面经第一篇</a></p>
+<p><strong>默写交叉熵和softmax:</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
-<span class="token keyword">def</span> toList<span class="token punctuation">(</span>transaction<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
- <span class="token keyword">val</span> list <span class="token operator">=</span> transaction<span class="token punctuation">.</span>trim<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">.</span>toList
- list
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//trim():从指定字符串列的两端修剪指定字符。没带参数就是去掉空格</span>
-<span class="token comment" spellcheck="true">//split():将提供的字符序列围绕','匹配项拆分,返回Array[String]</span>
-<span class="token comment" spellcheck="true">//toList():将Array[String]转换为List[Strings]</span>
-<span class="token keyword">def</span> findSortedCombinations<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">(</span>elements<span class="token operator">:</span> List<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">implicit</span> B<span class="token operator">:</span> Ordering<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token punctuation">[</span>List<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
- <span class="token keyword">val</span> result <span class="token operator">=</span> elements<span class="token punctuation">.</span>sorted<span class="token punctuation">(</span>B<span class="token punctuation">)</span><span class="token punctuation">.</span>toSet<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">.</span>subsets<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>toList<span class="token punctuation">)</span><span class="token punctuation">.</span>toList
- result
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//sorted(B):根据顺序对这个数组进行排序。是稳定排序</span>
-<span class="token comment" spellcheck="true">//toSet[T]():转换为Set</span>
-<span class="token comment" spellcheck="true">//subsets():遍历该集合所有子集的迭代器。</span>
-<span class="token keyword">def</span> removeOneItem<span class="token punctuation">(</span>list<span class="token operator">:</span> List<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>list <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">||</span> list<span class="token punctuation">.</span>isEmpty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> list
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> list
-    <span class="token punctuation">}</span>
-    <span class="token keyword">val</span> cloned <span class="token operator">=</span> list<span class="token punctuation">.</span>take<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">++</span> list<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    cloned
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//take(i):选择前i个元素</span>
-<span class="token comment" spellcheck="true">//++：连接两个集合</span>
-<span class="token comment" spellcheck="true">//drpo(i+1):选择除前i+1个元素之外的所有元素。</span>
-<span class="token comment" spellcheck="true">//所以每次去掉了1个元素，如果初始数组传入0，就去掉第一个元素</span>
+<span class="token keyword">def</span> <span class="token function">cross_entropy</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> y_hat<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># n = 1e-6</span>
+    <span class="token comment" spellcheck="true"># return -np.sum(y * np.log(y_hat + n) + (1 - y) * np.log(1 - y_hat + n), axis=1)</span>
+    <span class="token keyword">assert</span> y<span class="token punctuation">.</span>shape <span class="token operator">==</span> y_hat<span class="token punctuation">.</span>shape
+    res <span class="token operator">=</span> <span class="token operator">-</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>nan_to_num<span class="token punctuation">(</span>y <span class="token operator">*</span> np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>y_hat<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> y_hat<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> round<span class="token punctuation">(</span>res<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 
-<span class="token keyword">val</span> itemsets <span class="token operator">=</span> transactions<span class="token punctuation">.</span>map<span class="token punctuation">(</span>toList<span class="token punctuation">)</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>findSortedCombinations<span class="token punctuation">(</span>_<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>x <span class="token keyword">=></span> x<span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>size <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>x <span class="token keyword">=></span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">1L</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//map():通过对RDD的所有元素应用一个函数来返回一个新的RDD</span>
-<span class="token comment" spellcheck="true">//flatMap(x => x):</span>
-<span class="token comment" spellcheck="true">//filter(_.size > 0):过滤，过滤掉size=0的,也就是说去掉空集</span>
-<span class="token comment" spellcheck="true">//</span>
-<span class="token keyword">val</span> minSup <span class="token operator">=</span> <span class="token number">0.4</span>
-<span class="token keyword">val</span> combined <span class="token operator">=</span> itemsets<span class="token punctuation">.</span>reduceByKey<span class="token punctuation">(</span>_ <span class="token operator">+</span> _<span class="token punctuation">)</span>
-<span class="token punctuation">.</span>map<span class="token punctuation">(</span>x <span class="token keyword">=></span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>_1<span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>_2<span class="token punctuation">,</span> x<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>toDouble <span class="token operator">/</span> transactionSize<span class="token punctuation">.</span>toDouble<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2 <span class="token operator">>=</span> minSup<span class="token punctuation">)</span><span class="token punctuation">.</span>cache
-<span class="token comment" spellcheck="true">//reduceByKey(_ + _):Key值相同的Value值相加</span>
-<span class="token comment" spellcheck="true">//(key,(value1,value2))</span>
-<span class="token comment" spellcheck="true">//value2>=minSup的过滤一下</span>
+<span class="token keyword">def</span> <span class="token function">softmax</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 防止输入增大时输出为nan,每个数都减去最大值,这样所有的数都&lt;=0,值域&lt;=1</span>
+    y_shift <span class="token operator">=</span> y <span class="token operator">-</span> np<span class="token punctuation">.</span>max<span class="token punctuation">(</span>y<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    y_exp <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>y_shift<span class="token punctuation">)</span>
+    y_exp_sum <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>y_exp<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> y_exp <span class="token operator">/</span> y_exp_sum
 
-
-
-
-<span class="token keyword">val</span> subitemsets <span class="token operator">=</span> combined<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>itemset <span class="token keyword">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">val</span> list <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_1
-    <span class="token keyword">val</span> frequency <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1
-    <span class="token keyword">val</span> support <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2
-    <span class="token keyword">var</span> result <span class="token operator">=</span> List<span class="token punctuation">(</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token punctuation">(</span>List<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>frequency<span class="token punctuation">,</span> support<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span>size <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        result
-    <span class="token punctuation">}</span> 
-    <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">&lt;-</span> <span class="token number">0</span> until list<span class="token punctuation">.</span>size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">val</span> listX <span class="token operator">=</span> removeOneItem<span class="token punctuation">(</span>list<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
-            <span class="token keyword">val</span> listY <span class="token operator">=</span> list<span class="token punctuation">.</span>diff<span class="token punctuation">(</span>listX<span class="token punctuation">)</span>
-            result <span class="token operator">++</span><span class="token operator">=</span> List<span class="token punctuation">(</span><span class="token punctuation">(</span>listX<span class="token punctuation">,</span> <span class="token punctuation">(</span>listY<span class="token punctuation">,</span> <span class="token punctuation">(</span>frequency<span class="token punctuation">,</span> support<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-        result
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cache
-<span class="token comment" spellcheck="true">//diff(listX):A-A∩B</span>
-<span class="token comment" spellcheck="true">//所以listY就是那个被去除掉的</span>
-
-
-<span class="token keyword">val</span> rules <span class="token operator">=</span> subitemsets<span class="token punctuation">.</span>groupByKey<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//groupByKey():和reduceByKey()好像差不多</span>
-<span class="token keyword">val</span> assocRules <span class="token operator">=</span> rules<span class="token punctuation">.</span>map<span class="token punctuation">(</span>in <span class="token keyword">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">val</span> listX <span class="token operator">=</span> in<span class="token punctuation">.</span>_1
-    <span class="token keyword">val</span> listYLists <span class="token operator">=</span> in<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>toList
-    <span class="token keyword">val</span> countX <span class="token operator">=</span> listYLists<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">val</span> newListYLists <span class="token operator">=</span> listYLists<span class="token punctuation">.</span>diff<span class="token punctuation">(</span>List<span class="token punctuation">(</span>countX<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>newListYLists<span class="token punctuation">.</span>isEmpty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> result <span class="token operator">=</span> List<span class="token punctuation">(</span><span class="token punctuation">(</span>List<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span> List<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0D</span><span class="token punctuation">,</span> <span class="token number">0.0D</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        result
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> result <span class="token operator">=</span> newListYLists<span class="token punctuation">.</span>map<span class="token punctuation">(</span>t2 <span class="token keyword">=></span> <span class="token punctuation">(</span>listX<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>_1<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>toDouble<span class="token operator">/</span>countX<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>toDouble<span class="token punctuation">,</span>                             t2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        result
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">//最小置信度</span>
-<span class="token keyword">val</span> minConf <span class="token operator">=</span> <span class="token number">0.7</span>
-<span class="token comment" spellcheck="true">//必须要大于置信度</span>
-<span class="token keyword">val</span> finalResult <span class="token operator">=</span> assocRules<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>x <span class="token keyword">=></span> x<span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_3 <span class="token operator">>=</span> minConf<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//保存txt文件到输出路径</span>
-finalResult<span class="token punctuation">.</span>saveAsTextFile<span class="token punctuation">(</span>outputPath<span class="token punctuation">)</span>
-
-System<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    y_hat <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>cross_entropy<span class="token punctuation">(</span>y<span class="token punctuation">,</span> y_hat<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># y = np.array([[1,2,3,4],[1,3,4,5],[3,4,5,6]])</span>
+    <span class="token comment" spellcheck="true"># print(softmax(y))</span></code></pre>
+<p><strong>求反向传播：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41722370/article/details/83590276">https://blog.csdn.net/weixin_41722370/article/details/83590276</a></p>
+<p><strong>卷积参数量和计算量:</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c2a0ba5bb3d1">https://www.jianshu.com/p/c2a0ba5bb3d1</a></p>
+<p>考虑偏置,参数量:$(K\times K \times C_{in}+1)\times C_{out}$</p>
+<p>计算量:MAC(Multiply Accumulate)乘加次数,考虑偏置为:$C_{in}\times K\times K \times H_{out} \times W_{out} \times C_{out}$,解释:每有一个点,就做$C_{in}\times K\times K$次计算,共有$H_{out}\times W_{out}\times C_{out}$,由于一个MAC包括<strong>一次乘一次加</strong>,做卷积计算是做n次乘法,n-1次加法,再加上一次偏置,正好是n次乘法,n次加法</p>
+<p>FLOPs(floating point operations),浮点运算量,指计算量,跟乘加次数有点不同,考虑偏置为:$(C_{in}\times 2\times K\times K)\times H_{out}\times  W_{out} \times C_{out} $,和MAC不同,所以每有一个点,就做$C_{in}\times 2\times K\times K$次计算,</p>
+<p>FLOPs不考虑偏置:$(C_{in}\times 2\times K\times K-1)\times H_{out}\times  W_{out} \times C_{out} $</p>
+<p><strong>Python的多线程,为什么说他是伪多线程,什么时候应该使用？</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.kamino.link/2021/03/01/Python-Multithreading-in-detail/">https://blog.kamino.link/2021/03/01/Python-Multithreading-in-detail/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/luyuze95/p/11289143.html">https://www.cnblogs.com/luyuze95/p/11289143.html</a></p>
+<p><strong>求mIoU:</strong></p>
+<p>目标检测的IoU,会有两个检测框:</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#RT:RightTop</span>
+<span class="token comment" spellcheck="true">#LB:LeftBottom</span>
+<span class="token keyword">def</span> <span class="token function">IOU</span><span class="token punctuation">(</span>rectangle A<span class="token punctuation">,</span> rectangleB<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 关键是先求出交集的宽和高</span>
+    W <span class="token operator">=</span> min<span class="token punctuation">(</span>A<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>x<span class="token punctuation">,</span> B<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">-</span> max<span class="token punctuation">(</span>A<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>x<span class="token punctuation">,</span> B<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>x<span class="token punctuation">)</span>
+    H <span class="token operator">=</span> min<span class="token punctuation">(</span>A<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>y<span class="token punctuation">,</span> B<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>y<span class="token punctuation">)</span> <span class="token operator">-</span> max<span class="token punctuation">(</span>A<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>y<span class="token punctuation">,</span> B<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>y<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> W <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">or</span> H <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    SA <span class="token operator">=</span> <span class="token punctuation">(</span>A<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>x <span class="token operator">-</span> A<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>A<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>y <span class="token operator">-</span> A<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>y<span class="token punctuation">)</span>
+    SB <span class="token operator">=</span> <span class="token punctuation">(</span>B<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>x <span class="token operator">-</span> B<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>B<span class="token punctuation">.</span>RT<span class="token punctuation">.</span>y <span class="token operator">-</span> B<span class="token punctuation">.</span>LB<span class="token punctuation">.</span>y<span class="token punctuation">)</span>
+    cross <span class="token operator">=</span> W <span class="token operator">*</span> H
+    <span class="token keyword">return</span> cross<span class="token operator">/</span><span class="token punctuation">(</span>SA <span class="token operator">+</span> SB <span class="token operator">-</span> cross<span class="token punctuation">)</span></code></pre>
+<p><strong>进程和线程的区别？</strong></p>
+<p>看了一遍排在前面的答案，类似”<strong>进程是资源分配的最小单位，线程是CPU调度的最小单位“</strong>这样的回答感觉太抽象，都不太容易让人理解。</p>
+<p>做个简单的比喻：进程=火车，线程=车厢</p>
+<ul>
+<li>线程在进程下行进（单纯的车厢无法运行）</li>
+<li>一个进程可以包含多个线程（一辆火车可以有多个车厢）</li>
+<li>不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘）</li>
+<li>同一进程下不同线程间数据很易共享（A车厢换到B车厢很容易）</li>
+<li>进程要比线程消耗更多的计算机资源（采用多列火车相比多个车厢更耗资源）</li>
+<li>进程间不会相互影响，一个线程挂掉将导致整个进程挂掉（一列火车不会影响到另外一列火车，但是如果一列火车上中间的一节车厢着火了，将影响到所有车厢）</li>
+<li>进程可以拓展到多机，进程最多适合多核（不同火车可以开在多个轨道上，同一火车的车厢不能在行进的不同的轨道上）</li>
+<li>进程使用的内存地址可以上锁，即一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。（比如火车上的洗手间）－”互斥锁”</li>
+<li>进程使用的内存地址可以限定使用量（比如火车上的餐厅，最多只允许多少人进入，如果满了需要在门口等，等有人出来了才能进去）－“信号量”</li>
+</ul>
+<p>作者：知乎用户<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25532384/answer/411179772">https://www.zhihu.com/question/25532384/answer/411179772</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="第二篇"><a href="#第二篇" class="headerlink" title="第二篇"></a>第二篇</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c713c2022ab0">https://www.jianshu.com/p/c713c2022ab0</a></p>
+<h3 id="第三篇"><a href="#第三篇" class="headerlink" title="第三篇"></a>第三篇</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41375609/article/details/115473923">https://blog.csdn.net/qq_41375609/article/details/115473923</a></p>
+<h3 id="第四篇"><a href="#第四篇" class="headerlink" title="第四篇"></a>第四篇</h3><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/802751?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/802751?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/765855?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/765855?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/765025?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/765025?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/761647?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/761647?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/781895?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/781895?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86103903">https://zhuanlan.zhihu.com/p/86103903</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1426223?from=article.detail.1368191">https://cloud.tencent.com/developer/article/1426223?from=article.detail.1368191</a></p>
 
             </div>
             <hr/>
@@ -807,7 +759,7 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Dch</a>
+                    <a href="/about" rel="external nofollow noreferrer">dch</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -817,7 +769,7 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://chenghaoDong666.github.io/spark-xue-xi/">http://chenghaoDong666.github.io/spark-xue-xi/</a>
+                    <a href="http://chenghaoDong666.github.io/mian-jing/">http://chenghaoDong666.github.io/mian-jing/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -830,7 +782,7 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Dch</a>
+                    <a href="/about" target="_blank">dch</a>
                     !
                 </span>
             </div>
@@ -855,12 +807,8 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/spark/">
-                                    <span class="chip bg-color">spark</span>
-                                </a>
-                            
-                                <a href="/tags/scala/">
-                                    <span class="chip bg-color">scala</span>
+                                <a href="/tags/%E9%9D%A2%E7%BB%8F/">
+                                    <span class="chip bg-color">面经</span>
                                 </a>
                             
                         </div>
@@ -1291,46 +1239,48 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/vqa/">
+                <a href="/mian-jing/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/5.jpg" class="responsive-img" alt="VQA">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="面经">
                         
-                        <span class="card-title">VQA</span>
+                        <span class="card-title">面经</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            帮朋友写期末报告于是才有这篇博客
+                            算法面经整理
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/VQA/" class="post-category">
-                                    VQA
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/VQA/">
-                        <span class="chip bg-color">VQA</span>
+                    <a href="/tags/%E9%9D%A2%E7%BB%8F/">
+                        <span class="chip bg-color">面经</span>
                     </a>
                     
                 </div>
@@ -1344,31 +1294,31 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/bian-cheng-ruan-jian-trick/">
+                <a href="/django/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/22.jpg" class="responsive-img" alt="编程软件trick">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/8.jpg" class="responsive-img" alt="django">
                         
-                        <span class="card-title">编程软件trick</span>
+                        <span class="card-title">django</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            常见编程软件的一些使用的方法
+                            django学习
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    软件使用
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
@@ -1378,8 +1328,8 @@ System<span class="token punctuation">.</span>exit<span class="token punctuation
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/">
-                        <span class="chip bg-color">编程软件</span>
+                    <a href="/tags/django/">
+                        <span class="chip bg-color">django</span>
                     </a>
                     
                 </div>
@@ -1554,6 +1504,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
