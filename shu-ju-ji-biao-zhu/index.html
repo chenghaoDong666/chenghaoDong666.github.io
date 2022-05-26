@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.2k
+                    4.3k
                 </div>
                 
 
@@ -699,7 +699,8 @@ pip install labelme</code></pre>
 <p>Mean Pixel Accuracy(MAP,均像素精度):是PA的一种简单提升，<strong>计算每个类内被正确分类像素数的比例，之后求所有类的平均</strong>。<br>$$<br>MPA=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}}<br>$$</p>
 <h4 id="mIoU"><a href="#mIoU" class="headerlink" title="mIoU"></a>mIoU</h4><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210403154123769.png" alt="直观理解" style="zoom:50%;">
 
-<p>在每个类上计算IoU,然后取平均<br>$$<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{TP}{FN+FP+TP}\<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}+\sum^k_{j=0}p_{ji}-p_{ii}}<br>$$</p>
+<p><strong>在每个类上计算IoU,然后直接取平均</strong></p>
+<p>所以如果某个几个特定类的效果很差的话,会影响很大！<br>$$<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{TP}{FN+FP+TP}\<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}+\sum^k_{j=0}p_{ji}-p_{ii}}<br>$$</p>
 <p>来自AdaptSeg的源码</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> json
 <span class="token keyword">import</span> argparse
@@ -789,6 +790,15 @@ pip install labelme</code></pre>
     parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--devkit_dir'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'./dataset/lists'</span><span class="token punctuation">,</span> help<span class="token operator">=</span><span class="token string">'base directory of cityscapes'</span><span class="token punctuation">)</span>
     args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
     main<span class="token punctuation">(</span>args<span class="token punctuation">)</span></code></pre>
+<h4 id="Dice-coefficient"><a href="#Dice-coefficient" class="headerlink" title="Dice coefficient"></a>Dice coefficient</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JMU_Ma/article/details/97533768">https://blog.csdn.net/JMU_Ma/article/details/97533768</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/269592183">https://zhuanlan.zhihu.com/p/269592183</a></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dice_loss</span><span class="token punctuation">(</span>target，predictive，ep<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    intersection <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> torch<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>predictive <span class="token operator">*</span> target<span class="token punctuation">)</span> <span class="token operator">+</span> ep
+    union <span class="token operator">=</span> torch<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>predictive<span class="token punctuation">)</span> <span class="token operator">+</span> torch<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token operator">+</span> ep
+    loss <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> intersection <span class="token operator">/</span> union
+    <span class="token keyword">return</span> loss</code></pre>
+<h4 id="Hausdorff-distance"><a href="#Hausdorff-distance" class="headerlink" title="Hausdorff distance"></a>Hausdorff distance</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lijiaqi0612/article/details/113925215/">https://blog.csdn.net/lijiaqi0612/article/details/113925215\</a><br>$$<br>H(A,B)=max(h(A,B),h(B,A))<br>$$<br>可以直接用scipy的函数计算</p>
+<p><code>scipy.spatial.distance.directed_hausdorff</code></p>
 <h3 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h3><h4 id="PASCAL-VOC2010"><a href="#PASCAL-VOC2010" class="headerlink" title="PASCAL VOC2010"></a>PASCAL VOC2010</h4><p><strong>Pascal Visual Object Classes,简称Pascal VOC数据集</strong></p>
 <p><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210426201733971.png" alt="VOC 2010"></p>
 <p><strong>JPEGImages</strong>是原图,<strong>SegmentationClass</strong>是标准出每一个像素的类别,也就是<strong>语义分割</strong>的label,<strong>SegmentationObject</strong>是标注出每一个像素属于哪一个物体,也就是<strong>实例分割</strong>的label,<strong>Annotations</strong>是<strong>目标检测</strong>的标注</p>
@@ -1742,7 +1752,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">153.8k</span>&nbsp;字
+                class="white-color">160.5k</span>&nbsp;字
             
             
             

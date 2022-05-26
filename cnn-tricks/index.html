@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.5k
                 </div>
                 
 
@@ -714,7 +714,30 @@
 <h4 id="5-4-Mixup-Training"><a href="#5-4-Mixup-Training" class="headerlink" title="5.4 Mixup Training"></a>5.4 Mixup Training</h4><p>mixup的数据增强方法。每次随机抽取两个样本$(x_i,y_i)$和$x_j,y_j$,然后由这两个样本生成新样本:</p>
 <p>$\hat{x}=\lambda x_i+(1-\lambda)x_j$ $\hat{y}=\lambda y_i+(1-\lambda)y_j$    $\lambda \in [0,1] from\quad Beta(\alpha,\alpha) $</p>
 <p>在mixup training,只使用$(\hat{x},\hat{y})$</p>
-<h2 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h2><h3 id="1-超参数"><a href="#1-超参数" class="headerlink" title="1.超参数"></a>1.超参数</h3><p>超参数最好沿用前人的,比如不同损失加起来的比例:$loss=\lambda_1loss_1+\lambda_2loss_2$,<strong>乱改极有可能某一个损失主导整个损失!</strong></p>
+<h2 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/41631631">https://www.zhihu.com/question/41631631</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/376068083">https://zhuanlan.zhihu.com/p/376068083</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24720954">https://zhuanlan.zhihu.com/p/24720954</a></p>
+<h3 id="1-超参数"><a href="#1-超参数" class="headerlink" title="1.超参数"></a>1.超参数</h3><p>超参数最好沿用前人的,比如不同损失加起来的比例:$loss=\lambda_1loss_1+\lambda_2loss_2$,<strong>乱改极有可能某一个损失主导整个损失!</strong></p>
+<p><strong>2.GAN</strong></p>
+<p>不管generator的能力如何，discriminator的loss在前期一定是快速下降的，</p>
+<p><strong>Adam的优化效率对于GAN来说很显著</strong></p>
+<p>3.模型训练出现nan</p>
+<p>一般为梯度爆炸</p>
+<p><strong>4.预训练的Normailize(找这个bug找了好久~~)</strong></p>
+<p>对图片做了Normalize,后续生成的特征图也是基于这个Normalize的,因为算损失是利用经过预训练后的图片算损失，所以对于图像转换问题,生成的转换图片也是经过这个Normalize的,必须逆过程才能生成正常图片，如果这个时候的分割模型的预训练模型不是用的相同的均值和标准差直接那这个生成的转换图片,就会导致有一个很大的域gap,就会导致效果非常的不好！</p>
+<p><strong>5.损失的权重</strong></p>
+<img src="./medias/loading.gif" data-original="/cnn-tricks/image-20220421105204158.png" alt="image-20220421105204158" style="zoom:67%;">
+
+<p>原来损失的权重能影响到这么大</p>
+<h2 id="Diagram"><a href="#Diagram" class="headerlink" title="Diagram"></a>Diagram</h2><p>1.Weakly Supervised Object Localization as Domain Adaption</p>
+<p><img src="./medias/loading.gif" data-original="/cnn-tricks/image-20220328162933528.png" alt="image-20220328162933528"></p>
+<img src="./medias/loading.gif" data-original="/cnn-tricks/image-20220328163009191.png" alt="image-20220328163009191" style="zoom:67%;">
+
+<p>2.t-SNE</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hustqb/article/details/78144384">https://blog.csdn.net/hustqb/article/details/78144384</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/81400277">https://zhuanlan.zhihu.com/p/81400277</a></p>
+<p>3.umap</p>
+<p><a target="_blank" rel="noopener" href="https://umap-learn.readthedocs.io/en/latest/basic_usage.html">官方文档</a></p>
 
             </div>
             <hr/>
@@ -1542,7 +1565,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">153.8k</span>&nbsp;字
+                class="white-color">160.5k</span>&nbsp;字
             
             
             

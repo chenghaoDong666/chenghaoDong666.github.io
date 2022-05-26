@@ -1,3 +1,4 @@
+http://chenghaodong666.github.io/sklearn/
 http://chenghaodong666.github.io/mian-jing/
 http://chenghaodong666.github.io/django/
 http://chenghaodong666.github.io/openmmlab/

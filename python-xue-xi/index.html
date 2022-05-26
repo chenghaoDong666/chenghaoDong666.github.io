@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    14.1k
+                    16.6k
                 </div>
                 
 
@@ -673,7 +673,19 @@
             <div id="articleContent">
                 <p>pythonAPI:<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/index.html">https://docs.python.org/zh-cn/3/library/index.html</a></p>
 <p>教程cookbook:<a target="_blank" rel="noopener" href="https://python3-cookbook.readthedocs.io/zh_CN/latest/preface.html">https://python3-cookbook.readthedocs.io/zh_CN/latest/preface.html</a></p>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><p><strong>print 默认输出</strong>是换行的，如果要实现不换行需要在变量末尾加上 **end=””**：</p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="浮点数精度"><a href="#浮点数精度" class="headerlink" title="浮点数精度"></a>浮点数精度</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51432387/article/details/122624679">https://blog.csdn.net/qq_51432387/article/details/122624679</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32727095/article/details/118106061">https://blog.csdn.net/qq_32727095/article/details/118106061</a></p>
+<p>简而言之 最好别用浮点数来比较大小</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#使用模块前，需要使用 import 引入</span>
+<span class="token keyword">import</span> decimal
+
+a <span class="token operator">=</span> decimal<span class="token punctuation">.</span>Decimal<span class="token punctuation">(</span><span class="token string">"10.0"</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> decimal<span class="token punctuation">.</span>Decimal<span class="token punctuation">(</span><span class="token string">"3"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">10.0</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token operator">/</span>b<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#输出：3.3333333333333335</span>
+<span class="token comment" spellcheck="true">#输出：3.333333333333333333333333333</span></code></pre>
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><p><strong>print 默认输出</strong>是换行的，如果要实现不换行需要在变量末尾加上 **end=””**：</p>
 <p>True和False可以直接当成0和1来用</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token boolean">True</span> <span class="token operator">==</span> <span class="token number">1</span>
 <span class="token boolean">True</span>
@@ -780,6 +792,9 @@ file<span class="token punctuation">.</span>readlines<span class="token punctuat
 <span class="token comment" spellcheck="true">#str,分割符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等。</span>
 <span class="token comment" spellcheck="true">#num,分割次数。默认为 -1, 即分割所有。</span>
 <span class="token comment" spellcheck="true">#split(",")按逗号分割，最后一条是带换行符的！</span>
+<span class="token comment" spellcheck="true"># 统计字符串里某个字符或子字符串出现的次数。可选参数为在字符串搜索的开始与结束位置。</span>
+str<span class="token punctuation">.</span>count<span class="token punctuation">(</span>sub<span class="token punctuation">,</span> start<span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>end<span class="token operator">=</span>len<span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
 strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 处理的时候，如果不带参数，默认是清除两边的空白符，例如：\n,\r,\t,' '。</span>
 str <span class="token operator">=</span> <span class="token string">'123@163.com'</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token string">'132'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -818,7 +833,15 @@ replace
 <span class="token comment" spellcheck="true"># 把所有字符中的大写字母转换成小写字母</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 把第一个字母转化为大写字母，其余小写</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span>capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span>capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 字符串中查找指定字符位置</span>
+str<span class="token punctuation">.</span>find<span class="token punctuation">(</span>str<span class="token punctuation">,</span> beg<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> end<span class="token operator">=</span>len<span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>info <span class="token operator">=</span> <span class="token string">'abca'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span> info<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 从下标0开始，查找在字符串里第一个出现的子串，返回结果：0</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span> info<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 从下标1开始，查找在字符串里第一个出现的子串：返回结果3</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span> info<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'3'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 查找不到返回-1</span>
+<span class="token comment" spellcheck="true"># 从后往前查找</span>
+str<span class="token punctuation">.</span>rfind<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h3 id="变量赋值规则"><a href="#变量赋值规则" class="headerlink" title="变量赋值规则"></a>变量赋值规则</h3><p>在python中使用<code>id(obj)</code>函数查看变量的地址</p>
 <ol>
 <li><code>a=10</code>，并不是为标记a建立一个值，而是建立了一个值以后，再用标记a去指向它</li>
@@ -828,7 +851,14 @@ replace
 </ol>
 <p><code>nums[nums[i]], nums[i] = nums[i], nums[nums[i]]</code></p>
 <p>实际的执行是<code>t=(nums[i], nums[nums[i]]),nums[nums[i]]=t[0],nums[i]=t[1]</code>,<strong>顺序上是有先后的</strong></p>
-<h3 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h3><h4 id="列表list-序列"><a href="#列表list-序列" class="headerlink" title="列表list/序列"></a>列表list/序列</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 返回一个新的列表，b和a不共享</span>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment" spellcheck="true"># 如果在循环里将i,j修改了,就会在新的i，j的值上加一继续循环</span></code></pre>
+<h3 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h3><img src="./medias/loading.gif" data-original="/python-xue-xi/image-20220510151928526.png" alt="image-20220510151928526" style="zoom:67%;">
+
+<img src="./medias/loading.gif" data-original="/python-xue-xi/image-20220510151942129.png" alt="image-20220510151942129" style="zoom:67%;">
+
+<h4 id="列表list-序列"><a href="#列表list-序列" class="headerlink" title="列表list/序列"></a>列表list/序列</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 返回一个新的列表，b和a不共享</span>
 <span class="token comment" spellcheck="true"># a=list("a,b,c,d,e,!")=>a=['a','b','c','d','e']</span>
 list<span class="token punctuation">(</span><span class="token punctuation">)</span> eg<span class="token punctuation">:</span>b<span class="token operator">=</span>list<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 向列表添加元素</span>
@@ -839,10 +869,33 @@ list<span class="token punctuation">.</span>index<span class="token punctuation"
 list<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>seq<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 将对象插入列表</span>
 list<span class="token punctuation">.</span>insert<span class="token punctuation">(</span>index<span class="token punctuation">,</span> obj<span class="token punctuation">)</span></code></pre>
-<p><strong>索引与切片</strong></p>
-<p><code>a[2:6]</code>:左闭右开</p>
-<p><code>a[2:]</code>：从第2个开始到后面所有的元素</p>
-<p><code>a[m::n]</code> 从a[m]开始，每次走|n|步，当n为负时逆序取数，当n为正的时候，m为空则默认m=0，n为负时，m为空则默认为-1</p>
+<h4 id="索引与切片"><a href="#索引与切片" class="headerlink" title="索引与切片"></a><strong>索引与切片</strong></h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 左闭右开</span>
+a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 从第2个开始到后面所有的元素</span>
+a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 从a[m]开始，每次走|n|步，当n为负时逆序取数，当n为正的时候，m为空则默认m=0，n为负时，m为空则默认为-1</span>
+a<span class="token punctuation">[</span>m<span class="token punctuation">:</span><span class="token punctuation">:</span>n<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 切片中的None用来升维</span>
+a <span class="token operator">=</span> torch<span class="token punctuation">.</span>eye<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># torch.Size([6, 6])</span>
+b<span class="token operator">=</span>a<span class="token punctuation">[</span>None<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span> 
+<span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># torch.Size([1, 6, 6]) </span>
+
+b <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">:</span>j<span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 表示复制a[i]到a[j-1]，以生成新的list对象</span>
+
+a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span>
+b <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># [1,2]</span>
+<span class="token comment" spellcheck="true">#当越界时</span>
+b <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">:</span><span class="token number">45</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#[7,8,9],自动截取到末尾</span>
+<span class="token comment" spellcheck="true"># 当i缺省时，默认为0，即 a[:3]相当于 a[0:3]</span>
+<span class="token comment" spellcheck="true"># 当j缺省时，默认为len(alist), 即a[1:]相当于a[1:10]</span>
+<span class="token comment" spellcheck="true"># 当i,j都缺省时，a[:]就相当于完整复制一份a</span>
+
+b <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">:</span>j<span class="token punctuation">:</span>s<span class="token punctuation">]</span>    <span class="token comment" spellcheck="true"># 表示：i,j与上面的一样，但s表示步进，缺省为1.</span>
+<span class="token comment" spellcheck="true"># 所以a[i:j:1]相当于a[i:j]</span>
+
+<span class="token comment" spellcheck="true"># 当s&lt;0时，i缺省时，默认为-1. j缺省时，默认为-len(a)-1</span>
+<span class="token comment" spellcheck="true"># 所以a[::-1]相当于 a[-1:-len(a)-1:-1]，也就是从最后一个元素到第一个元素复制一遍，即倒序。</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhulove86/article/details/53941555?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3.control">列表推导式</a></p>
 <img src="./medias/loading.gif" data-original="/python-xue-xi/image-20210120185150919.png" alt="语法" style="zoom: 50%;">
 
@@ -880,7 +933,19 @@ discard<span class="token punctuation">(</span>self<span class="token punctuatio
 remove<span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 从set集合中删除元素,如果不存在则引发 KeyError</span>
 pop<span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 删除并且返回set集合中的一个不确定的元素,如果为空则引发KeyError </span></code></pre>
+<span class="token comment" spellcheck="true"># 删除并且返回set集合中的一个不确定的元素,如果为空则引发KeyError </span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> dic<span class="token punctuation">:</span><span class="token comment" spellcheck="true">#这样就是只遍历key值,没有value</span>
+<span class="token comment" spellcheck="true"># 集合的交集 并集 差集</span>
+set1 <span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'卢俊义'</span><span class="token punctuation">,</span><span class="token string">'花荣'</span><span class="token punctuation">,</span> <span class="token string">'吴用'</span><span class="token punctuation">}</span>
+set2 <span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'公孙胜'</span><span class="token punctuation">,</span><span class="token string">'秦明'</span><span class="token punctuation">,</span><span class="token string">'卢俊义'</span><span class="token punctuation">}</span>
+res <span class="token operator">=</span> set1 <span class="token operator">&amp;</span> set2<span class="token comment" spellcheck="true">#{'卢俊义'} 交</span>
+res <span class="token operator">=</span> set1 <span class="token operator">-</span> set2 <span class="token comment" spellcheck="true"># 差</span>
+res <span class="token operator">=</span> set1 <span class="token operator">|</span> set2 <span class="token comment" spellcheck="true"># 并</span>
+set1<span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token string">"宋江"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 增</span>
+res <span class="token operator">=</span> set1<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">"吴用"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 删</span>
+<span class="token comment" spellcheck="true">#列表转set</span>
+a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
+b<span class="token operator">=</span>set<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#{1,2}</span></code></pre>
 <h3 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># zip()函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。</span>
 <span class="token operator">>></span><span class="token operator">></span>a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span>
@@ -894,7 +959,54 @@ zip<span class="token punctuation">(</span><span class="token operator">*</span>
 <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 <span class="token comment" spellcheck="true"># 返回一个整数 int 或者长整数 long int 的二进制表示。</span>
 <span class="token operator">>></span><span class="token operator">></span>bin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
-<span class="token string">'0b1010'</span></code></pre>
+<span class="token string">'0b1010'</span>
+<span class="token operator">>></span><span class="token operator">></span>bin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token string">'1010'</span>
+<span class="token comment" spellcheck="true"># Python zfill() 方法返回指定长度的字符串，原字符串右对齐，前面填充0。</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token punctuation">(</span>bin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token string">'0'</span>
+<span class="token comment" spellcheck="true"># ord() 函数是 chr() 函数（对于8位的ASCII字符串）或 unichr() 函数（对于Unicode对象）的配对函数，它以一个字符（长度为1的字符串）作为参数</span>
+<span class="token comment" spellcheck="true"># 返回对应的 ASCII 数值，或者 Unicode 数值，如果所给的 Unicode 字符超出了你的 Python 定义范围，则会引发一个 TypeError 的异常。</span>
+<span class="token operator">>></span><span class="token operator">></span>ord<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 97</span>
+<span class="token comment" spellcheck="true"># eval()用来执行一个字符串表达式，并返回表达式的值。</span>
+<span class="token operator">>></span><span class="token operator">></span>x <span class="token operator">=</span> <span class="token number">7</span>
+<span class="token operator">>></span><span class="token operator">></span> eval<span class="token punctuation">(</span> <span class="token string">'3 * x'</span> <span class="token punctuation">)</span>
+<span class="token number">21</span>
+<span class="token comment" spellcheck="true"># python分号 如果要在⼀⾏中书写多条句，就必须使⽤分号分隔每个语句，否则Python⽆法识别语句之间的间隔：</span>
+<span class="token comment" spellcheck="true"># 使⽤分号分隔语句 </span>
+x<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> y<span class="token operator">=</span><span class="token number">1</span> <span class="token punctuation">;</span> z<span class="token operator">=</span><span class="token number">1</span>
+<span class="token comment" spellcheck="true"># any(x)判断x对象是否为空对象，如果都为空、0、false，则返回false，如果不都为空、0、false，则返回true。</span>
+any<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> any<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'0'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token boolean">True</span>
+<span class="token operator">>></span><span class="token operator">></span> any<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token boolean">False</span>
+<span class="token comment" spellcheck="true"># all(x)如果all(x)参数x对象的所有元素不为0、’’、False或者x为空对象，则返回True，否则返回False。</span>
+all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> all<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#元组tuple，元素都不为空或0</span>
+<span class="token boolean">True</span>
+<span class="token operator">>></span><span class="token operator">></span> all<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#元组tuple，存在一个为空的元素</span>
+<span class="token boolean">False</span>
+<span class="token comment" spellcheck="true"># 两列表元素对应相乘</span>
+map<span class="token punctuation">(</span><span class="token keyword">lambda</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>a<span class="token operator">*</span>b<span class="token punctuation">,</span>zip<span class="token punctuation">(</span>List1<span class="token punctuation">,</span>List2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 使用python不用numpy自己实现逆矩阵</span>
+<span class="token comment" spellcheck="true"># https://integratedmlai.com/matrixinverse/</span>
+AM <span class="token operator">=</span> I
+n <span class="token operator">=</span>len<span class="token punctuation">(</span>AM<span class="token punctuation">)</span>
+IM <span class="token operator">=</span> getI<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+indices <span class="token operator">=</span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> fd <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fdScaler <span class="token operator">=</span> F<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>AM<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        AM<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*=</span> fdScaler
+        IM<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*=</span> fdScaler
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> indices<span class="token punctuation">[</span><span class="token punctuation">:</span>fd<span class="token punctuation">]</span> <span class="token operator">+</span> indices<span class="token punctuation">[</span>fd<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        crScaler <span class="token operator">=</span> AM<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>fd<span class="token punctuation">]</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            AM<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> AM<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">-</span> crScaler <span class="token operator">*</span> AM<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            IM<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> IM<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">-</span> crScaler <span class="token operator">*</span> IM<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+<span class="token keyword">return</span> IM</code></pre>
 <h4 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate()"></a>enumerate()</h4><p>enumerate() 函数用于将**一个可遍历的数据对象(如列表、元组或字符串)**组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> seasons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Spring'</span><span class="token punctuation">,</span> <span class="token string">'Summer'</span><span class="token punctuation">,</span> <span class="token string">'Fall'</span><span class="token punctuation">,</span> <span class="token string">'Winter'</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> list<span class="token punctuation">(</span>enumerate<span class="token punctuation">(</span>seasons<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -907,7 +1019,8 @@ list<span class="token punctuation">.</span>sort<span class="token punctuation">
 <span class="token comment" spellcheck="true"># 可以使用 functools.cmp_to_key() 将 2.x 风格的 cmp 函数转换为 key 函数。好像python3不支持比较函数</span>
 <span class="token comment" spellcheck="true"># functools.cmp_to_key() &lt;则返回负数,如-1 >则返回整数,如1 =则返回0 </span>
 sorted<span class="token punctuation">(</span>iterable<span class="token punctuation">,</span> cmp<span class="token operator">=</span>None<span class="token punctuation">,</span> key<span class="token operator">=</span>None<span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#内置函数，可以对所有可迭代的对象进行排序操作，返回副本，原始输入不变</span>
+<span class="token comment" spellcheck="true">#内置函数，可以对所有可迭代的对象进行排序操作，返回副本，原始输入不变。</span>
+<span class="token comment" spellcheck="true"># 集合是对可迭代对象的一个统称，他们可以是列表、字典、set、甚至是字符串），它的功能非常强大</span>
 <span class="token comment" spellcheck="true">#iterable:可迭代对象   </span>
 <span class="token comment" spellcheck="true">#cmp:比较函数，具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0。</span>
 <span class="token comment" spellcheck="true">#key:指定可迭代对象中的一个元素来进行排序。</span>
@@ -916,7 +1029,36 @@ sorted<span class="token punctuation">(</span>iterable<span class="token punctua
 <span class="token operator">>></span><span class="token operator">></span> sorted<span class="token punctuation">(</span>L<span class="token punctuation">,</span> cmp<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span>y<span class="token punctuation">:</span>cmp<span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>y<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 利用cmp函数</span>
 <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> sorted<span class="token punctuation">(</span>L<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>               <span class="token comment" spellcheck="true"># 利用key</span>
-<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
+<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># sorted 也可以根据多个字段来排序</span>
+<span class="token keyword">class</span> <span class="token class-name">tuple_list</span><span class="token punctuation">:</span>
+ <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> one<span class="token punctuation">,</span> two<span class="token punctuation">,</span> three<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  self<span class="token punctuation">.</span>one <span class="token operator">=</span> one
+  self<span class="token punctuation">.</span>two <span class="token operator">=</span> two
+  self<span class="token punctuation">.</span>three <span class="token operator">=</span> three
+ <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">return</span> repr<span class="token punctuation">(</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>one<span class="token punctuation">,</span> self<span class="token punctuation">.</span>two<span class="token punctuation">,</span> self<span class="token punctuation">.</span>three<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+tuple_list_ <span class="token operator">=</span> <span class="token punctuation">[</span>tuple_list<span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tuple_list<span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tuple_list<span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 首先根据one的位置来排序，然后根据two的位置来排序</span>
+sorted<span class="token punctuation">(</span>tuple_list_<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>one<span class="token punctuation">,</span> x<span class="token punctuation">.</span>two<span class="token punctuation">)</span><span class="token punctuation">)</span>
+Out<span class="token punctuation">[</span><span class="token number">112</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># sorted对字典进行排序</span>
+dic <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'chen'</span><span class="token punctuation">:</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token string">'alex'</span><span class="token punctuation">:</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token string">'egon'</span><span class="token punctuation">:</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token string">'evaJ'</span><span class="token punctuation">:</span><span class="token string">'18'</span><span class="token punctuation">}</span>
+s_dic <span class="token operator">=</span> sorted<span class="token punctuation">(</span>dic<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 只对key排序，结果也只有key</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s_dic<span class="token punctuation">)</span>
+s_dic1 <span class="token operator">=</span> sorted<span class="token punctuation">(</span>dic<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 结果包含key，和value</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s_dic1<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 输出结果</span>
+<span class="token comment" spellcheck="true"># ['alex', 'chen', 'egon', 'evaJ']</span>
+<span class="token comment" spellcheck="true"># [('alex', 34), ('chen', 24), ('egon', 37), ('evaJ', '18')]</span>
+a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+b <span class="token operator">=</span> sorted<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#这种有两个元素的,如果没有指定key,默认是按照第一个元素当做key</span></code></pre>
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p>用lambda函数首先减少了代码的冗余，其次，用lambda函数，不用费神地去命名一个函数的名字，可以快速的实现某项功能，最后，lambda函数使代码的可读性更强，程序看起来更加简洁。</p>
+<p><code>lambda 参数列表:表达式</code></p>
+<p>表达式中出现的参数需要在argument_list中有定义，并且表达式只能是单行的</p>
+<pre class=" language-python"><code class="language-python">c<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token punctuation">:</span>x<span class="token operator">*</span>y<span class="token operator">*</span>z 
+c<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#24</span></code></pre>
 <h4 id="函数属性"><a href="#函数属性" class="headerlink" title="函数属性"></a>函数属性</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_fun_name</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> func<span class="token punctuation">.</span>__name__<span class="token comment" spellcheck="true">#返回的就是函数的名字</span>
 <span class="token keyword">def</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1208,9 +1350,21 @@ getattr<span class="token punctuation">(</span>object<span class="token punctuat
 <span class="token operator">>></span><span class="token operator">></span> a <span class="token operator">=</span> A<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> getattr<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 获取属性 bar 值</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token number">1</span>
+setattr<span class="token punctuation">(</span>object<span class="token punctuation">,</span> name<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 对应函数 getattr()，用于设置属性值，该属性不一定是存在的。</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     bar <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+<span class="token operator">>></span><span class="token operator">></span> a <span class="token operator">=</span> A<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> getattr<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span>          <span class="token comment" spellcheck="true"># 获取属性 bar 值</span>
+<span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> setattr<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>       <span class="token comment" spellcheck="true"># 设置属性 bar 值</span>
+<span class="token operator">>></span><span class="token operator">></span> a<span class="token punctuation">.</span>bar
 vars<span class="token punctuation">(</span><span class="token punctuation">[</span>object<span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#带参数:返回对象object的属性和属性值的字典对象,或者说返回对象的__dict__属性</span>
-<span class="token comment" spellcheck="true">#不带参数:作用同locals(),即以字典对象返回当前位置的全部局部变量</span></code></pre>
+<span class="token comment" spellcheck="true">#不带参数:作用同locals(),即以字典对象返回当前位置的全部局部变量</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>vars<span class="token punctuation">(</span>Runoob<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'__module__'</span><span class="token punctuation">:</span> <span class="token string">'__main__'</span><span class="token punctuation">,</span> <span class="token string">'__doc__'</span><span class="token punctuation">:</span> None<span class="token punctuation">}</span></code></pre>
 <h3 id="参数和返回值"><a href="#参数和返回值" class="headerlink" title="参数和返回值"></a>参数和返回值</h3><h4 id="return-self"><a href="#return-self" class="headerlink" title="return self"></a>return self</h4><p>其实就是返回自身实例，用于链式调用  <a target="_blank" rel="noopener" href="https://blog.csdn.net/jclian91/article/details/81238782">看这篇教程</a></p>
 <h4 id="多个返回值或返回字典"><a href="#多个返回值或返回字典" class="headerlink" title="多个返回值或返回字典"></a>多个返回值或返回字典</h4><p>多个返回值，返回的是一个tuple</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># __slots__是一个元组</span>
@@ -1376,6 +1530,9 @@ Could <span class="token operator">not</span> compare B against the other <span 
 <span class="token comment" spellcheck="true">#不知道怎么加可以先print(sys.path)</span>
 sys<span class="token punctuation">.</span>path<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"/home/dch"</span><span class="token punctuation">)</span> 
 <span class="token keyword">import</span> file1</code></pre>
+<h3 id="math"><a href="#math" class="headerlink" title="math"></a>math</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 返回x的阶乘值。如果x不是整数或者为负数，抛出ValueError。</span>
+math<span class="token punctuation">.</span>factorial<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
+<p><img src="./medias/loading.gif" data-original="/python-xue-xi/image-20220526133905941.png" alt="image-20220526133905941"></p>
 <h3 id="tqdm"><a href="#tqdm" class="headerlink" title="tqdm"></a>tqdm</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wanghui-garcia/p/11514579.html">tqdm详细教程</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> tqdm <span class="token keyword">import</span> tqdm
 <span class="token keyword">for</span> fname <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span>os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>input_dir<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1452,7 +1609,9 @@ os<span class="token punctuation">.</span>getcwd<span class="token punctuation">
 <span class="token comment" spellcheck="true"># 修改文件名</span>
 os<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>filename<span class="token punctuation">,</span>newname<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 扫描某个指定目录下所包含的子目录和文件 https://zhuanlan.zhihu.com/p/149824829</span>
-<span class="token keyword">for</span> curDir<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true"># 递归地输出当前目录,前面目录下的文件夹,当前目录下的文件</span></code></pre>
+<span class="token keyword">for</span> curDir<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true"># 递归地输出当前目录,当前目录下的文件夹名字,当前目录下的文件名字</span>
+<span class="token comment" spellcheck="true"># 禁止hash随机化,使得实验可复现</span>
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'PYTHONHASHSEED'</span><span class="token punctuation">]</span> <span class="token operator">=</span> str<span class="token punctuation">(</span>seed<span class="token punctuation">)</span></code></pre>
 <h3 id="pathlib"><a href="#pathlib" class="headerlink" title="pathlib"></a>pathlib</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/itanders/article/details/88754606">pathlib库使用详解</a></p>
 <p><strong>面向对象的文件系统路径</strong>,对于底层的路径字符串操作，你也可以使用 <code>os.path</code> 模块。但是<code>pathlib</code>可能更好用。</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pathlib <span class="token keyword">import</span> Path <span class="token comment" spellcheck="true">#老版本是pathlib,新版本是pathlib2,完美兼容老版本</span>
@@ -1498,7 +1657,8 @@ new_path2 <span class="token operator">=</span> example_path<span class="token p
 <p><strong>shutil模块是对os模块的补充，主要针对文件的拷贝、删除、移动、压缩和解压操作。</strong></p>
 <h3 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h3><p><a target="_blank" rel="noopener" href="https://www.liujiangblog.com/course/python/54">教程</a></p>
 <p><strong>sys模块主要是针对与Python解释器相关的变量和方法，不是主机操作系统。</strong></p>
-<p>sys.argv</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 退出Python程序，exit(0)表示正常退出。当参数非0时，会引发一个SystemExit异常，可以在程序中捕获该异常</span>
+sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>n<span class="token punctuation">)</span></code></pre>
 <h3 id="argparse"><a href="#argparse" class="headerlink" title="argparse"></a>argparse</h3><p>python自带的命令行参数解析包，可以用来方便地读取命令行参数，当你的代码需要频繁地修改参数的时候，使用这个工具可以将参数和代码分离开来，让你的代码更简洁，适用范围更广。它解析sys.argv中的参数。</p>
 <p><a target="_blank" rel="noopener" href="https://geek-docs.com/python/python-tutorial/python-argparse.html">教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://vra.github.io/2017/12/02/argparse-usage/">一篇比较好的个人博客 add_argument里的各个参数在这看</a></p>
@@ -1725,7 +1885,11 @@ o <span class="token operator">=</span> urlparse<span class="token punctuation">
 <span class="token operator">>></span><span class="token operator">></span> dd<span class="token punctuation">[</span><span class="token string">'key1'</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># key1存在</span>
 <span class="token string">'abc'</span>
 <span class="token operator">>></span><span class="token operator">></span> dd<span class="token punctuation">[</span><span class="token string">'key2'</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># key2不存在，返回默认值</span>
-<span class="token string">'N/A'</span></code></pre>
+<span class="token string">'N/A'</span>
+dict1 <span class="token operator">=</span> defaultdict<span class="token punctuation">(</span>int<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 0</span>
+dict2 <span class="token operator">=</span> defaultdict<span class="token punctuation">(</span>set<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># set()</span>
+dict3 <span class="token operator">=</span> defaultdict<span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># </span>
+dict4 <span class="token operator">=</span> defaultdict<span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># []</span></code></pre>
 <p>注意默认值是调用函数返回的，而函数在创建<code>defaultdict</code>对象时传入。除了在Key不存在时返回默认值，<code>defaultdict</code>的其他行为跟<code>dict</code>是完全一样的。</p>
 <p><code>defaultdict</code>传入的函数是<strong>工厂函数:</strong></p>
 <p><em>工厂函数看上去有点像函数，实质上他们是类，当你调用他们时，实际上是生成了该类型的一个实例，就像工厂生产货物一样。</em></p>
@@ -1740,8 +1904,8 @@ o <span class="token operator">=</span> urlparse<span class="token punctuation">
 <span class="token operator">>></span><span class="token operator">></span> od <span class="token comment" spellcheck="true"># OrderedDict的Key是有序的</span>
 OrderedDict<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gide/p/6370082.html">ordered_dict</a></p>
-<p>模块collections中的子类，使字典的迭代顺序就是插入的顺序</p>
-<p>注:从python3.6开始,普通的字典也是有序的了，即按照插入的顺序迭代。</p>
+<p><strong>模块collections中的子类，使字典的迭代顺序就是插入的顺序</strong></p>
+<p>注:<strong>从python3.6开始,普通的字典也是有序的了，即按照插入的顺序迭代。字典也是有顺序的,顺序就是插入的顺序。</strong></p>
 <p><strong><code>namedtuple</code></strong></p>
 <p><code>namedtuple</code>是一个函数，它用来创建一个自定义的<code>tuple</code>对象，并且规定了<code>tuple</code>元素的个数，并可以用属性而不是索引来引用<code>tuple</code>的某个元素。</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> collections <span class="token keyword">import</span> namedtuple
@@ -1760,10 +1924,10 @@ q <span class="token operator">=</span> collections<span class="token punctuatio
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token keyword">in</span> q<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># False</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">in</span> q<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># True</span></code></pre>
 <p><code>Counter</code></p>
-<p>Counter（计数器）是对字典的补充，用于追踪值的出现次数。</p>
-<p>Counter是一个继承了字典的类<code>(Counter(dict))</code>。(就是我想实现的那个!!!!<span class="github-emoji"><span>😂</span><img src="./medias/loading.gif" data-original="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>)</p>
+<p><strong>Counter（计数器）是对字典的补充，用于追踪值的出现次数。</strong></p>
+<p><strong>Counter是一个继承了字典的类<code>(Counter(dict))</code>。(就是我想实现的那个!!!!<span class="github-emoji"><span>😂</span><img src="./medias/loading.gif" data-original="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>)</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> collections
-obj <span class="token operator">=</span> collections<span class="token punctuation">.</span>Counter<span class="token punctuation">(</span><span class="token string">"asfsfsa"</span><span class="token punctuation">)</span>
+obj <span class="token operator">=</span> collections<span class="token punctuation">.</span>Counter<span class="token punctuation">(</span><span class="token string">"asfsfsa"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 用来方便的进行计数</span>
 obj
 <span class="token operator">>></span><span class="token operator">></span>Counter<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>重写了加和减</p>
@@ -1785,8 +1949,8 @@ obj
             <span class="token keyword">if</span> elem <span class="token operator">not</span> <span class="token keyword">in</span> self <span class="token operator">and</span> count <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
                 result<span class="token punctuation">[</span>elem<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">-</span> count
         <span class="token keyword">return</span> result</code></pre>
-<h3 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h3><p>functools 模块用于高阶函数：接受函数为参数或返回其他函数的函数。 通常，出于此模块的目的，任何可调用对象都可以视为函数。</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/131634488">functools详解</a></p>
+<h3 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functools.html">https://docs.python.org/3/library/functools.html</a></p>
+<p>functools 模块用于高阶函数：接受函数为参数或返回其他函数的函数。 通常，出于此模块的目的，任何可调用对象都可以视为函数。</p>
 <p><code>functools.partial</code></p>
 <p><code>functools.partial</code>的作用和<code>tensorflow</code>的<code>slim</code>很像，主要作用就是简化函数，更少更灵活的函数参数调用。<code>functools.partial</code>可以让我们通过包装的方法，减少你的函数参数。</p>
 <p>functools.partial用于部分应用一个函数，它基于一个函数创建一个可调用对象，把原函数的某些参数固定，调用时只需要传递未固定的参数即可。</p>
@@ -1841,6 +2005,28 @@ add<span class="token punctuation">(</span><span class="token number">2</span><s
         newkeywords <span class="token operator">=</span> self<span class="token punctuation">.</span>keywords<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
         newkeywords<span class="token punctuation">.</span>update<span class="token punctuation">(</span>keywords<span class="token punctuation">)</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>func<span class="token punctuation">(</span><span class="token operator">*</span>self<span class="token punctuation">.</span>args<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>newkeywords<span class="token punctuation">)</span></code></pre>
+<p><code>reduce</code></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># reduce() 函数会对参数序列中元素进行累积。</span>
+<span class="token comment" spellcheck="true"># 函数将一个数据集合（链表，元组等）中的所有数据进行下列操作：用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，</span>
+<span class="token comment" spellcheck="true"># 得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。</span>
+<span class="token keyword">from</span> functools <span class="token keyword">import</span> reduce
+<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">:</span>            <span class="token comment" spellcheck="true"># 两数相加</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y
+sum1 <span class="token operator">=</span> reduce<span class="token punctuation">(</span>add<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 计算列表和：1+2+3+4+5</span>
+sum2 <span class="token operator">=</span> reduce<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> x<span class="token operator">+</span>y<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 使用 lambda 匿名函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>sum1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>sum2<span class="token punctuation">)</span></code></pre>
+<p><code>lru_cache()</code></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/momoda118/article/details/120726050">教程2</a></p>
+<h3 id="itertools"><a href="#itertools" class="headerlink" title="itertools"></a>itertools</h3><p>为高效循环创建迭代器的函数</p>
+<p>该模块实现了许多受 APL、Haskell 和 SML 构造启发的迭代器构建块。 每个都以适合 Python 的形式重铸。该模块标准化了一组核心的快速、高效的内存工具，这些工具本身或组合使用。 它们一起形成了一个“迭代器代数”，使得在纯 Python 中简洁有效地构建专用工具成为可能。</p>
+<p>这些工具及其内置的对应物也可以很好地与operator模块中的高速功能配合使用。 例如，乘法运算符可以映射到两个向量以形成有效的点积：sum(map(operator.mul, vector1, vector2))。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/itertools.html">https://docs.python.org/3/library/itertools.html</a></p>
+<p>直接看文档,文档写的太清楚了</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># accumulate用来求前缀和真是太方便了</span>
+accumulate<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># --> 1 3 6 10 15</span>
+accumulate<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> initial<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># --> 100 101 103 106 110 115</span>
+accumulate<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> operator<span class="token punctuation">.</span>mul<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># --> 1 2 6 24 120</span></code></pre>
 <h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写。</p>
 <p><code>json.loads</code> 用于解码 JSON 数据。该函数返回 Python 字段的数据类型。</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/python</span>
@@ -1898,7 +2084,16 @@ heapq<span class="token punctuation">.</span>heapify<span class="token punctuati
 <span class="token comment" spellcheck="true"># 从 iterable 所定义的数据集中返回前 n 个最大元素组成的列表。</span>
 <span class="token comment" spellcheck="true"># 如果提供了 key 则其应指定一个单参数的函数，用于从 iterable 的每个元素中提取比较键 (例如 key=str.lower)。</span>
 heapq<span class="token punctuation">.</span>nlargest<span class="token punctuation">(</span>n<span class="token punctuation">,</span> iterable<span class="token punctuation">,</span> key<span class="token operator">=</span>None<span class="token punctuation">)</span>
-heapq<span class="token punctuation">.</span>nsmallest<span class="token punctuation">(</span>n<span class="token punctuation">,</span> iterable<span class="token punctuation">,</span> key<span class="token operator">=</span>None<span class="token punctuation">)</span></code></pre>
+heapq<span class="token punctuation">.</span>nsmallest<span class="token punctuation">(</span>n<span class="token punctuation">,</span> iterable<span class="token punctuation">,</span> key<span class="token operator">=</span>None<span class="token punctuation">)</span>
+heapq<span class="token punctuation">.</span>heapreplace<span class="token punctuation">(</span>heap<span class="token punctuation">,</span> item<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#弹出并返回 heap 中最小的一项，同时推入新的 item。 堆的大小不变。 如果堆为空则引发 IndexError。</span>
+<span class="token comment" spellcheck="true">#这个单步骤操作比 heappop() 加 heappush() 更高效，并且在使用固定大小的堆时更为适宜。 pop/push 组合总是会从堆中返回一个元素并将其替换为 item。</span>
+<span class="token comment" spellcheck="true"># 返回的值可能会比添加的 item 更大。 如果不希望如此，可考虑改用 heappushpop()。 它的 push/pop 组合会返回两个值中较小的一个，将较大的值留在堆中。</span></code></pre>
+<h3 id="bisect"><a href="#bisect" class="headerlink" title="bisect"></a>bisect</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39478403/article/details/105373620">教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/bisect.html">API</a></p>
+<p>[bisection n.二等分]该模块支持以排序顺序维护列表，而无需在每次插入后对列表进行排序。 对于具有昂贵比较操作的长列表项目，这可能是对更常见方法的改进。 该模块被称为 bisect，因为它使用基本的二分算法来完成它的工作。 源代码作为算法的工作示例可能是最有用的（边界条件已经正确！）。</p>
+<p>想要使用二分搜索/二分查找但又懒得写肿么办？！当然是使用 bisect 模块 啦 ~~ 顾名思义，它是实现了 二分 (bisection) 算法的模块，能够保持序列 sequence 顺序不变 的情况下对其进行二分查找和插入，适合用于降低对冗长序列查找的时间成本。当然，通过 “以空间换时间” 的方式也是可行的，例如用于构造 hashmap 的 Counter 类 (关于 Counter 模块详见 链接)。然而，本文的焦点是使用 bisect 模块 “凭查找方式降时间”。</p>
+<p><img src="./medias/loading.gif" data-original="/python-xue-xi/image-20220430190159822.png" alt="image-20220430190159822"></p>
 <h3 id="importlib"><a href="#importlib" class="headerlink" title="importlib"></a>importlib</h3><p>Python 的模块载入机制。模块包含实现 Python 导入机制的函数，用于在包和模块中加载代码。 它是动态导入模块的一个访问点，在编写代码时需要导入的模块名称未知的情况下很有用（例如，对于应用程序的插件或扩展）。</p>
 <pre class=" language-python"><code class="language-python">importlib<span class="token punctuation">.</span>import_module<span class="token punctuation">(</span>name<span class="token punctuation">,</span> package<span class="token operator">=</span>None<span class="token punctuation">)</span>
 ├── clazz
@@ -1935,6 +2130,16 @@ row<span class="token operator">=</span>table<span class="token punctuation">.</
 col<span class="token operator">=</span>table<span class="token punctuation">.</span>ncols
 <span class="token comment" spellcheck="true"># 获取单元格的值 &lt;class 'xlrd.sheet.Cell'> Cell对象</span>
 table<span class="token punctuation">.</span>cell<span class="token punctuation">(</span>i<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">.</span>value</code></pre>
+<h3 id="scipy"><a href="#scipy" class="headerlink" title="scipy"></a>scipy</h3><p>SciPy 是一个开源的 Python 算法库和数学工具包。</p>
+<p>Scipy 是基于 Numpy 的科学计算库，用于数学、科学、工程学等领域，很多有一些高阶抽象和物理模型需要使用 Scipy。</p>
+<p>SciPy 包含的模块有最优化、线性代数、积分、插值、特殊函数、快速傅里叶变换、信号处理和图像处理、常微分方程求解和其他科学与工程中常用的计算。</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/scipy/scipy-tutorial.html">菜鸟教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://scipy.github.io/devdocs/reference/index.html#scipy-api">API文档</a></p>
+<h3 id="IPython"><a href="#IPython" class="headerlink" title="IPython"></a>IPython</h3><p><a target="_blank" rel="noopener" href="https://ipython.readthedocs.io/en/stable/">API</a></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Ipython <span class="token keyword">import</span> display <span class="token keyword">as</span> ipd
+ipd<span class="token punctuation">.</span>display<span class="token punctuation">(</span>dataframe<span class="token punctuation">)</span></code></pre>
+<h3 id="fractions"><a href="#fractions" class="headerlink" title="fractions"></a>fractions</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/fractions.html">https://docs.python.org/zh-cn/3/library/fractions.html</a></p>
+<p>分数库</p>
 
             </div>
             <hr/>
@@ -2769,7 +2974,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">153.8k</span>&nbsp;字
+                class="white-color">160.5k</span>&nbsp;字
             
             
             

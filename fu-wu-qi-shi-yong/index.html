@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3k
                 </div>
                 
 
@@ -720,7 +720,13 @@ pip install <span class="token operator">-</span>r requirements<span class="toke
 <pre class=" language-shell"><code class="language-shell"># 创建新文件
 touch filename
 # 以树状图列出目录的内容。
-tree dir</code></pre>
+tree dir
+# 服务器间数据互传 https://blog.csdn.net/zhangjipinggom/article/details/106137809
+scp -r /home/dch/DarkSeg/path/to/ dch@10.112.9.72:/home/dch/DarkSeg/path/
+# 如果提示端口不对（默认端口是22），改成：
+scp -P port -r /home/dch/DarkSeg/path/to/ dch@10.112.9.72:/home/dch/DarkSeg/path/
+# 显示各用户占用空间大小
+sudo du -sh /home/*</code></pre>
 <h3 id="GPU使用情况查看？"><a href="#GPU使用情况查看？" class="headerlink" title="GPU使用情况查看？"></a>GPU使用情况查看？</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ceb3c020e06b">以下来自木子的毛线</a></p>
 <pre class=" language-shell"><code class="language-shell">watch -n 1 nvidia-smi</code></pre>
 <img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211009133137665.png" alt="image-20211009133137665" style="zoom:80%;">
@@ -950,7 +956,9 @@ language messages zh_CN.utf-8
 endif
 else
 echoerr "S</code></pre>
-<h3 id="ssh命令"><a href="#ssh命令" class="headerlink" title="ssh命令"></a>ssh命令</h3>
+<h3 id="ssh命令"><a href="#ssh命令" class="headerlink" title="ssh命令"></a>ssh命令</h3><h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>1.you are in emergency mode</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40689871/article/details/108451501">https://blog.csdn.net/weixin_40689871/article/details/108451501</a></p>
+
             </div>
             <hr/>
 
@@ -1777,7 +1785,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">153.8k</span>&nbsp;字
+                class="white-color">160.5k</span>&nbsp;字
             
             
             
