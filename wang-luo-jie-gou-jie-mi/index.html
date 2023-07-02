@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    17.3k
+                    18.7k
                 </div>
                 
 
@@ -704,6 +704,7 @@
 <p><code>mean = [0.471, 0.448, 0.408]</code><br><code>std = [0.234, 0.239, 0.242]</code></p>
 <p><strong>ImageNet数据集的均值和方差（三分量顺序是RGB）</strong></p>
 <p><code>mean = [0.485, 0.456, 0.406]</code><br><code>std = [0.229, 0.224, 0.225]</code></p>
+<p>注意,经过数据标准化之后图像的范围可能就不在[0-1]范围内了</p>
 <h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h4><p>正则化,减少过拟合，损失函数后加正则项</p>
 <p><strong>贝叶斯学派观点来看，正则项是在模型训练过程中引入了某种模型参数</strong>的先验分布[后验由数据得出，先验就是理性推断，不拘束于数据。</p>
 <p><strong>范数</strong>$L_P-norm$</p>
@@ -765,7 +766,7 @@
 <h4 id="输出层选择"><a href="#输出层选择" class="headerlink" title="输出层选择"></a>输出层选择</h4><p><strong>输出层的激活函数</strong>和<strong>损失函数</strong>由任务类型决定，见下表。它们与<strong>隐藏层的激活函数</strong>的选择是独立的。</p>
 <img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/网络结构解密\image-20210708204741317.png" alt="image-20210708204741317">
 
-<p>隐藏层一般就是$ReLU$,至于为什么输出层的激活函数不用$ReLU$呢?输出是$0$到正无穷,没办法分类,你<strong>还得自己设置阈值来确定哪个是哪一类!</strong></p>
+<p>隐藏层一般就是$ReLU$,至于为什么输出层的激活函数不用$ReLU$呢?输出是$0$到正无穷,没办法分类,你**还得自己设置阈值来确定哪个是哪一类!**输入过来的值是负的的话,所有的输出值都是0,那就没办法区分了。</p>
 <h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>损失函数，就是计算真实分布与预测分布的差异性，差异性越小，损失函数越小，预测的越好</p>
 <h4 id="概率与似然"><a href="#概率与似然" class="headerlink" title="概率与似然"></a>概率与似然</h4><p>概率大家都比较了解,主要是似然的了解。</p>
 <p>在数理统计学中,<strong>似然函数(likelihood function)**是一种关于统计模型中的参数的函数，表示模型参数中的</strong>似然性**（英语：likelihood）。似然函数在统计推断中有重大作用，如在最大似然估计和费雪信息之中的应用等等。文字意义上，“似然性”与“概率”意思相近，都是指某种事件发生的可能性，但是在统计学中，“似然性”和“概率”（或然性）有明确的区分：==概率，用于在已知一些参数的情况下，预测接下来在观测上所得到的结果；似然性，则是用于在已知某些观测所得到的结果时，对有关事物之性质的参数进行估值，也就是说已观察到某事件后，对相关参数进行猜测。==</p>
@@ -1208,6 +1209,9 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <p>为什么工作？个人理解，每一层有很多的卷积核，这些核学习到的特征并不完全是独立的，某些特征具有相同的分布，因此可以被group。</p>
 <h4 id="Instance-Norm"><a href="#Instance-Norm" class="headerlink" title="Instance Norm"></a>Instance Norm</h4><p>Instance Normalization(IN),一种更适合对单个像素有更高要求的场景的归一化算法(IST,GAN等)。IN的算法非常简单,计算归一化统计量时考虑单个样本,单个通道的所有元素。</p>
 <p>对于图像风格迁移任务来说,每个样本的每个信息点都是非常重要的。对于BN对整个batch做归一化,可能造成每个样本独特细节的丢失;对于LN,忽略了不同通道之间的差异。</p>
+<h4 id="Layer-Norm"><a href="#Layer-Norm" class="headerlink" title="Layer Norm"></a>Layer Norm</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20220901105559979.png" alt="image-20220901105559979" style="zoom:67%;">
+
+<p><strong>均值为0,方差为1</strong>,只对最后的C进行归一化</p>
 <h3 id="网络权重初始化"><a href="#网络权重初始化" class="headerlink" title="网络权重初始化"></a>网络权重初始化</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/11908610.html">权重初始化方法总结</a></p>
 <h3 id="如何判断模型收敛"><a href="#如何判断模型收敛" class="headerlink" title="如何判断模型收敛"></a>如何判断模型收敛</h3><h3 id="特征融合"><a href="#特征融合" class="headerlink" title="特征融合"></a>特征融合</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141685352">知乎教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xys430381_1/article/details/88370733">CSDN类似的教程</a></p>
@@ -1313,7 +1317,46 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <p>这就是multi-headed self attention的全部。 我知道，矩阵很多。 让我尝试将它们全都放在一个视觉中，以便我们可以在一处查看它们。</p>
 <img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210426161648133.png" alt="image-20210426161648133" style="zoom:80%;">
 
-<h4 id="Representing-The-Order-of-The-Sequence-Using-Positional-Encoding"><a href="#Representing-The-Order-of-The-Sequence-Using-Positional-Encoding" class="headerlink" title="Representing The Order of The Sequence Using Positional Encoding"></a>Representing The Order of The Sequence Using Positional Encoding</h4>
+<h4 id="Representing-The-Order-of-The-Sequence-Using-Positional-Encoding"><a href="#Representing-The-Order-of-The-Sequence-Using-Positional-Encoding" class="headerlink" title="Representing The Order of The Sequence Using Positional Encoding"></a>Representing The Order of The Sequence Using Positional Encoding</h4><h3 id="扩散模型"><a href="#扩散模型" class="headerlink" title="扩散模型"></a>扩散模型</h3><p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000043744225">https://segmentfault.com/a/1190000043744225</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/563661713">https://zhuanlan.zhihu.com/p/563661713</a></p>
+<h4 id="马尔科夫链"><a href="#马尔科夫链" class="headerlink" title="马尔科夫链"></a>马尔科夫链</h4><p>马尔科夫链定义本身比较简单，它假设某一时刻状态转移的概率只依赖于它的前一个状态。</p>
+<p><strong>$p(z^{m+1}|z^{1},…,z^{m})=p(z^{m+1}|z^{m})$</strong></p>
+<p>具有马尔可夫性的随机序列$X={X_0,X_1,…,X_T,… }$称为<strong>马尔可夫链</strong>，或马尔可夫过程。</p>
+<h5 id="DDPM"><a href="#DDPM" class="headerlink" title="DDPM"></a>DDPM</h5><p><strong>扩散过程</strong></p>
+<p>总共包含$T$步的扩散过程的每一步都是对上一步得到的数据$x_{t-1}$按如下方式增加高斯噪音<br>$$<br>q(x_t|x_{t-1})=N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)<br>$$<br>这边这个分号前的$x_t$应该是意味着是关于$x_t$，后面两个分别是均值和方差。${\beta_t}^{T}_{t=1}$是每一步所采用的方差,介于0-1之间。</p>
+<p>对于扩散模型，我们往往称不同step的方差设定为<strong>variance schedule</strong>或者<strong>noise schedule</strong>，通常情况下，越后面的step会采用更大的方差，即满足$\beta_1&lt;\beta_2&lt;…&lt;\beta_T$。</p>
+<p>在一个设计好的<strong>variance schedule</strong>下，的如果扩散步数$T$足够大，那么最终得到的$X_T$就完全丢失了原始数据而变成了一个随机噪音。 扩散过程的每一步都生成一个带噪音的数据$x_t$，整个扩散过程也就是一个<strong>马尔可夫链</strong>：<br>$$<br>q(x_{1:T}|x_0)=\prod_{t=1}^Tq(x_t|x_{t-1})<br>$$<br>$q(x_2|x_1)\times q(x_1|x_0) = q(x_2|x_0) $,利用条件概率和马尔克夫的定义严格证明我还不会，但是对当前这个条件，$q(x_t|x_{t-1})= N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_tI)$,当前这个确实满足啊~</p>
+<p>上面好像是错误的,$x_{1:T}$好像是代表一个联合分布</p>
+<p>条件概率的一般形式: </p>
+<p>$1:P(A,B,C)=P(C|BA)P(B,A)=P(C|BA)P(B|A)P(A)$</p>
+<p>$2: P(B,C|A)=P(B|A)P(C|A,B)$ </p>
+<p>推导:$P(BC|A)=P(ABC)/P(A)=P(C|AB)P(AB)/P(A)=P(C|AB)\times P(B|A) $</p>
+<p>马尔可夫概率的一般形式:</p>
+<p>$1:P(A,B,C)=P(C|BA)P(B,A)=P(C|B)P(B|A)P(A)$</p>
+<p>$2: P(B,C|A)=P(B|A)P(C|B)$</p>
+<p>扩散过程的一个重要特性是我们可以<strong>直接基于原始数据$x_0$来对任意$t$步的$x_t$进行采样。</strong></p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/网络结构解密\image-20230608163339800.png" alt="image-20230608163339800" style="zoom:80%;">
+
+<p>从前一步采样，如何从$x_{t-1}$直接算出来$x_t$呢,这一步公式是关键,$x_t=\sqrt{1-\beta_t}x_{t-1}+\sqrt{\beta_t}\epsilon$,相当于对原图像乘以一个值,然后加上一个正态分布,其实相当于对$x_{t-1}$逐点进行高斯采样，采样就是以当前点的值为均值，方差为$\beta_t$,即$x_t\sim N(\sqrt{1-\beta_t}x_{t-1},\beta_tI)$.</p>
+<p>$\sqrt{\bar{a}_t}$和$\sqrt{1-\bar{a}_t}$分别称为<strong>signal_rate</strong>和<strong>noise_rate</strong>,随着$\beta$增大，分别趋向0和1</p>
+<p><strong>反向过程</strong></p>
+<p>去噪声操作的数学形式是怎么样的？怎么让神经网络来学习它呢？数学原理表明，当$\beta_t$足够小时，每一步加噪声的逆操作也满足正态分布。<br>$$<br>x_{t-1} \sim N(\tilde{\mu_t},\tilde{\beta_t}I)<br>$$<br>为了描述所有去噪声操作，<strong>神经网络</strong>应该根据当前的时刻$t$、当前的图像$x_t$，拟合当前时刻的加噪声逆操作的正态分布，也就是拟合当前的均值$\tilde{\mu}_t$和方差$\tilde{\beta_t}$。</p>
+<blockquote>
+<p>加噪声的逆操作不太可能从理论上求得，我们只能用一个神经网络去拟合它。去噪声操作和加噪声逆操作的关系，就是神经网络的预测值和真值的关系。</p>
+</blockquote>
+<p>$$<br>q(x_{t-1}|x_t,x_0)=q(x_t|x_{t-1},x_0)\frac{q(x_{t-1}|x_0)}{q(x_t|x_0)}<br>$$</p>
+<p>推导:<br>$$<br>q(x_{t-1}|x_t,x_0)=\frac{q(x_{t-1},x_t,x_0)}{q(x_t,x_0)}\<br>=\frac{q(x_t|x_{t-1},x_0)\times q(x_{t-1}|x_{0})\times q(x_0)}{q(x_t,x_0)}\<br>=q(x_t|x_{t-1},x_0)\frac{q(x_{t-1}|x_0)}{q(x_t|x_0)}<br>$$<br>原来如此~</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/网络结构解密\image-20230608203301129.png" alt="image-20230608203301129" style="zoom:80%;">
+
+<p>神经网络拟合均值时，$x_t$是已知的（别忘了，图像是一步一步倒着去噪的）。式子里唯一不确定的只有$\epsilon$,所以干脆拟合噪声，所以最终噪声的误差函数可写成:<br>$$<br>L=||\epsilon_t-\epsilon_\theta(x_t,t)||^2<br>$$</p>
+<h4 id="DDIM"><a href="#DDIM" class="headerlink" title="DDIM"></a>DDIM</h4><p>看了半天看不懂,简单总结</p>
+<p>找到了一种能满足DDPM逆向条件，且能减少采样步骤的逆向公式：<br>$$<br>q_{\sigma}(x_{1:T}|x_0)=q_{\sigma}(x_{T}|x_0)\prod^t_{t=2}q_{\sigma}(x_{t-1}|x_t,x_0)\<br>=N(x_{t-1};\sqrt{\bar{\alpha}_{t-1}}x_0+\sqrt{1-\bar{\alpha}_{t-1} -\sigma^2_t}\cdot \frac{x_t-\sqrt{\bar{\alpha}_t}x_0}{\sqrt{1-\bar{\alpha}_t}},\sigma^2_tI)<br>$$<br>或者是这样:</p>
+<img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20230609152618007.png" alt="image-20230609152618007" style="zoom:67%;">
+
+<h4 id="Conditional-Diffusion-Models"><a href="#Conditional-Diffusion-Models" class="headerlink" title="Conditional Diffusion Models"></a>Conditional Diffusion Models</h4><p>训练的时候,sample $(x_0,\tilde{x})\sim q(x_0,\tilde{x})$从成对的数据分布,如一个clean和一个noisy,则在反向过程就可以提供$\tilde{x}$作为输入在反向过程中:<br>$$<br>p_\theta(x_{0:T}|\tilde{x})=p(x_T)\prod^T_{t=1}p_\theta(x_{t-1}|x_t,\tilde{x})<br>$$<br>所以现在对应的优化目标变为$\epsilon_\theta(x_t,\tilde{x},t)$,$x$和$\tilde{x}$在通道维度被concat，所以最终输入图像的channel是C=6</p>
+<p>所以对应的DDIM中的公式为：<br>$$<br>x_{t-1}=\sqrt{\bar{\alpha}_{t-1}}(\frac{x_t-\sqrt{1-\bar{\alpha}_t}\cdot \epsilon_\theta(x_t,\tilde<br>{x},t)}{\sqrt{\bar{\alpha}<em>t}})+\sqrt{1-\bar{\alpha}</em>{t-1}}\cdot \epsilon_\theta(x_t,\tilde{x},t)<br>$$<br>从$x_T\sim N(0,I)$开始</p>
+
             </div>
             <hr/>
 
@@ -2147,7 +2190,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">160.5k</span>&nbsp;字
+                class="white-color">170k</span>&nbsp;字
             
             
             

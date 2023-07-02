@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    952
+                    1.1k
                 </div>
                 
 
@@ -676,6 +676,9 @@
 <p><code>from tqdm.notebook import tqdm</code></p>
 <p><img src="./medias/loading.gif" data-original="/bian-cheng-ruan-jian-trick/image-20211105235206404.png" alt="image-20211105235206404"></p>
 <p>tqdm中简单一行的进度条</p>
+<p><strong>整体缩进</strong></p>
+<p>1.选中要缩进的代码。</p>
+<p>2.按Tab键,这样就可以实现整体缩进了。(Shift+Tab是向前缩进)。</p>
 <h4 id="py文件运行"><a href="#py文件运行" class="headerlink" title="py文件运行"></a>py文件运行</h4><p>在jupyter notebook中，运行 %run name.py</p>
 <h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><p><a target="_blank" rel="noopener" href="https://ipython.readthedocs.io/en/stable/">ipython api</a></p>
 <p><code>%</code>和<code>!</code>都用于命令行操作,区别在于:</p>
@@ -743,7 +746,7 @@ Out<span class="token punctuation">[</span><span class="token number">6</span><s
             <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Python: 当前文件"</span><span class="token punctuation">,</span>
             <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"python"</span><span class="token punctuation">,</span>
             <span class="token string">"request"</span><span class="token punctuation">:</span> <span class="token string">"launch"</span><span class="token punctuation">,</span>
-            <span class="token string">"program"</span><span class="token punctuation">:</span> <span class="token string">"${file}"</span><span class="token punctuation">,</span>
+            <span class="token string">"program"</span><span class="token punctuation">:</span> <span class="token string">"${file}"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 假设是python tools/run.py,那么program就是指的tools/runpy</span>
             <span class="token string">"console"</span><span class="token punctuation">:</span> <span class="token string">"integratedTerminal"</span><span class="token punctuation">,</span>
             <span class="token comment" spellcheck="true"># 执行python文件的命令函参数</span>
             <span class="token string">"args"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
@@ -753,7 +756,7 @@ Out<span class="token punctuation">[</span><span class="token number">6</span><s
             <span class="token comment" spellcheck="true"># 设置当前工作目录为当前目录</span>
             <span class="token comment" spellcheck="true">#"cwd":""</span>
             <span class="token comment" spellcheck="true"># </span>
-            <span class="token string">"cwd"</span><span class="token punctuation">:</span> <span class="token string">"${fileDirname}"</span>
+            <span class="token string">"cwd"</span><span class="token punctuation">:</span> <span class="token string">"${fileDirname}"</span><span class="token comment" spellcheck="true"># 设置当前的工作目录</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre>
@@ -761,6 +764,29 @@ Out<span class="token punctuation">[</span><span class="token number">6</span><s
 <p><img src="./medias/loading.gif" data-original="/bian-cheng-ruan-jian-trick/image-20211127150020601.png" alt="image-20211127150020601"></p>
 <p>可以设置要监视的变量</p>
 <p>在vscode中,命令行操作输入部分后<strong>按Tab可以自动补全文件名</strong></p>
+<p>调试ddp分布式代码</p>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">{</span>
+    <span class="token operator">//</span> 使用 IntelliSense 了解相关属性。 
+    <span class="token operator">//</span> 悬停以查看现有属性的描述。
+    <span class="token operator">//</span> 欲了解更多信息，请访问<span class="token punctuation">:</span> https<span class="token punctuation">:</span><span class="token operator">//</span>go<span class="token punctuation">.</span>microsoft<span class="token punctuation">.</span>com<span class="token operator">/</span>fwlink<span class="token operator">/</span>?linkid<span class="token operator">=</span><span class="token number">830387</span>
+    <span class="token string">"version"</span><span class="token punctuation">:</span> <span class="token string">"0.2.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"configurations"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Python: 当前文件"</span><span class="token punctuation">,</span>
+            <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"python"</span><span class="token punctuation">,</span>
+            <span class="token string">"request"</span><span class="token punctuation">:</span> <span class="token string">"launch"</span><span class="token punctuation">,</span>
+            <span class="token comment" spellcheck="true"># 设置使用torch分布式包中的launch.py文件来作为启动脚本</span>
+            <span class="token string">"program"</span><span class="token punctuation">:</span> <span class="token string">"/home/dch/anaconda3/lib/python3.8/site-packages/torch/distributed/launch.py"</span><span class="token punctuation">,</span>
+            <span class="token string">"console"</span><span class="token punctuation">:</span> <span class="token string">"integratedTerminal"</span><span class="token punctuation">,</span>
+            <span class="token string">"args"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"--nproc_per_node=2"</span><span class="token punctuation">,</span> 
+                <span class="token string">"/home/dch/ProCA/train_src.py"</span><span class="token punctuation">,</span> 
+                <span class="token string">"-cfg"</span><span class="token punctuation">,</span> <span class="token string">"configs/gta5/deeplabv2_r101_src.yaml"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">"cwd"</span><span class="token punctuation">:</span> <span class="token string">"${fileDirname}"</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -1592,7 +1618,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">160.5k</span>&nbsp;字
+                class="white-color">170k</span>&nbsp;字
             
             
             

@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    2k
                 </div>
                 
 
@@ -671,7 +671,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="面经"><a href="#面经" class="headerlink" title="面经"></a>面经</h1><h3 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/58855c6971e5">面经第一篇</a></p>
+                <h1 id="八股"><a href="#八股" class="headerlink" title="八股"></a>八股</h1><img src="./medias/loading.gif" data-original="/mian-jing/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20230220155022189.png" alt="image-20230220155020210" style="zoom:80%;"> 
+
+
+
+<h1 id="面经"><a href="#面经" class="headerlink" title="面经"></a>面经</h1><h3 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/58855c6971e5">面经第一篇</a></p>
 <p><strong>默写交叉熵和softmax:</strong></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
@@ -744,6 +748,52 @@
 <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/781895?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/781895?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86103903">https://zhuanlan.zhihu.com/p/86103903</a></p>
 <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1426223?from=article.detail.1368191">https://cloud.tencent.com/developer/article/1426223?from=article.detail.1368191</a></p>
+<h1 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h1><h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-binary-tree/">leetcode 654最大二叉树</a></p>
+<p>使用单调栈来优化时间复杂度的想法非常妙！</p>
+<h2 id="递归与回溯"><a href="#递归与回溯" class="headerlink" title="递归与回溯"></a>递归与回溯</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/submissions/"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/">剑指 Offer 12. 矩阵中的路径</a></p>
+<ul>
+<li>可以通过临时赋值省去check二维数组的空间</li>
+<li>关键是明白什么时候标记,什么时候回溯取消标记:<strong>进入当前节点,且该节点满足条件,标记;该节点处理完毕之后，回溯取消标记</strong></li>
+<li>可以不使用for循环,而是对于超出边界的在子递归节点中判断</li>
+</ul>
+<h2 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h2><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/902/">acwing整数划分</a></p>
+<pre class=" language-python"><code class="language-python">n <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token punctuation">(</span><span class="token number">1e9</span><span class="token operator">+</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#边界条件从递归公式来找,看递推公式可能出现哪个</span>
+        <span class="token comment" spellcheck="true"># 边界条件</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>int<span class="token punctuation">(</span>f<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<ul>
+<li><strong>边界条件从递推公式来找</strong></li>
+<li>有时候上边是不行的，就得从头分析最开始是从哪一步递归而来的</li>
+</ul>
+<h1 id="简历"><a href="#简历" class="headerlink" title="简历"></a>简历</h1><p>你要根据投递的公司适当调整你的项目内容</p>
+<p>不是所有的都适合放上去的</p>
+<p>不然容易变成坑自己的点</p>
+<p>暑期的时候没有实习，就把论文展开讲一下</p>
+<p>看一下STAR法则</p>
+<p>看了几个简历分享几个小点可以改改，一个是实习经历或者项目经历不一定要按时间顺序排列，可以把你觉得做的好的有的讲的往前放，面试官都没空看简历的一般从上往下问。然后模板还是简单点好，用超级简历就行了，不要搞的太花哨。然后项目经历啥的用数字来表示效果会更直接，比如某某算法提升了10个点，或者帮公司运营什么，社群增长了1000人这个样子举例子</p>
+<h1 id="投递"><a href="#投递" class="headerlink" title="投递"></a>投递</h1><p>有些部门根本就不招人,投的时候要注意</p>
+<h1 id="国企"><a href="#国企" class="headerlink" title="国企"></a>国企</h1><p><strong>1.第一年薪资30w以上卷王之选：</strong>招商银行总行、中国银联总部、航天一院一部总体/战武、头部券商/公募基金<br><strong>2.WLB+户口+薪资的相对性价比之选：</strong>四大行总行（建总最高、中总最低）、人寿研发/数据中心、农行天研、邮储苏研、中金所技术<br><strong>3.每个月收入与当地房价比大于1的超高性价比之选：</strong>中物院（绵阳9院）、中西部政策行省分（国开门槛最高，进出口招人最少，农发招人最多）</p>
+<h1 id="笔试注意点"><a href="#笔试注意点" class="headerlink" title="笔试注意点"></a>笔试注意点</h1><img src="./medias/loading.gif" data-original="/mian-jing/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20230328210430945.png" alt="image-20230328210430945" style="zoom: 50%;">
+
+<p>赛码网可以通过查看提交记录来看</p>
+<p>耗时和占用内存,优化了半天,最后也没做出来,不如少两个循环,就差点就过了</p>
+<p><strong>携程第三题</strong></p>
+<p>x的处理是对的,但是根据复杂度可以看到还很富裕，所以说y可以直接遍历，其实y遍历的话是很小的，通过直接算的方式反而容易出错，遍历的话就不重不漏了</p>
+<img src="./medias/loading.gif" data-original="/mian-jing/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20230329212646897.png" alt="image-20230329212646897" style="zoom:67%;">
+
+
+
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/470695167230595072">https://www.nowcoder.com/discuss/470695167230595072</a></p>
+<p>python读入数据超时的解决办法</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#python 不要用input</span>
+<span class="token comment" spellcheck="true">#用sys.stdin.readlines（）</span>
+<span class="token comment" spellcheck="true">#获取后面的不要split 再map 值</span>
+<span class="token comment" spellcheck="true">#用 int(line[2:-1])</span></code></pre>
 
             </div>
             <hr/>
@@ -1578,7 +1628,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">160.5k</span>&nbsp;字
+                class="white-color">170k</span>&nbsp;字
             
             
             

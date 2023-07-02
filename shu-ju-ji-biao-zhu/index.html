@@ -697,7 +697,9 @@ pip install labelme</code></pre>
 <h4 id="PA"><a href="#PA" class="headerlink" title="PA"></a>PA</h4><p>$$<br>PA=\frac{TP+TN}{TP+TN+FP+FN}\<br>PA=\frac{\sum_{i=0}^kp_{ii}}{\sum_{i=0}^k\sum_{j=0}^kp_{ij}}<br>$$</p>
 <p>共有$k+1$个类，其中包含一个空类或背景，$p_{ij}$表示GT为i预测为j</p>
 <p>Mean Pixel Accuracy(MAP,均像素精度):是PA的一种简单提升，<strong>计算每个类内被正确分类像素数的比例，之后求所有类的平均</strong>。<br>$$<br>MPA=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}}<br>$$</p>
-<h4 id="mIoU"><a href="#mIoU" class="headerlink" title="mIoU"></a>mIoU</h4><img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210403154123769.png" alt="直观理解" style="zoom:50%;">
+<h4 id="mIoU"><a href="#mIoU" class="headerlink" title="mIoU"></a>mIoU</h4><p>Why?mIoU的优点</p>
+<p><a target="_blank" rel="noopener" href="https://towardsdatascience.com/metrics-to-evaluate-your-semantic-segmentation-model-6bcb99639aa2">https://towardsdatascience.com/metrics-to-evaluate-your-semantic-segmentation-model-6bcb99639aa2</a></p>
+<img src="./medias/loading.gif" data-original="/shu-ju-ji-biao-zhu/image-20210403154123769.png" alt="直观理解" style="zoom:50%;">
 
 <p><strong>在每个类上计算IoU,然后直接取平均</strong></p>
 <p>所以如果某个几个特定类的效果很差的话,会影响很大！<br>$$<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{TP}{FN+FP+TP}\<br>MIoU=\frac{1}{k+1}\sum^k_{i=0}\frac{p_{ii}}{\sum^k_{j=0}p_{ij}+\sum^k_{j=0}p_{ji}-p_{ii}}<br>$$</p>
@@ -790,7 +792,8 @@ pip install labelme</code></pre>
     parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--devkit_dir'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'./dataset/lists'</span><span class="token punctuation">,</span> help<span class="token operator">=</span><span class="token string">'base directory of cityscapes'</span><span class="token punctuation">)</span>
     args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
     main<span class="token punctuation">(</span>args<span class="token punctuation">)</span></code></pre>
-<h4 id="Dice-coefficient"><a href="#Dice-coefficient" class="headerlink" title="Dice coefficient"></a>Dice coefficient</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JMU_Ma/article/details/97533768">https://blog.csdn.net/JMU_Ma/article/details/97533768</a></p>
+<h4 id="Dice-coefficient"><a href="#Dice-coefficient" class="headerlink" title="Dice coefficient"></a>Dice coefficient</h4><p>和mIou的区别<a target="_blank" rel="noopener" href="https://stats.stackexchange.com/questions/273537/f1-dice-score-vs-iou/276144#276144">https://stats.stackexchange.com/questions/273537/f1-dice-score-vs-iou/276144#276144</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JMU_Ma/article/details/97533768">https://blog.csdn.net/JMU_Ma/article/details/97533768</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/269592183">https://zhuanlan.zhihu.com/p/269592183</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dice_loss</span><span class="token punctuation">(</span>target，predictive，ep<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     intersection <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> torch<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>predictive <span class="token operator">*</span> target<span class="token punctuation">)</span> <span class="token operator">+</span> ep
@@ -1752,7 +1755,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">160.5k</span>&nbsp;字
+                class="white-color">170k</span>&nbsp;字
             
             
             

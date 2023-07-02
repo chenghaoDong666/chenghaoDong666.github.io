@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.4k
+                    8.8k
                 </div>
                 
 
@@ -738,7 +738,7 @@ np<span class="token punctuation">.</span>where<span class="token punctuation">(
 <span class="token comment" spellcheck="true">#返回根据条件从x或y中选择的元素。条件为真，返回x，否则返回y。</span>
 <span class="token comment" spellcheck="true">#&lt;&lt;&lt;a</span>
 <span class="token comment" spellcheck="true">#array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
-<span class="token comment" spellcheck="true">#&lt;&lt;&lt;np.where(a &lt; 5, a, 10*a)</span>
+<span class="token comment" spellcheck="true">#&lt;&lt;&lt;(a &lt; 5, a, 10*a)</span>
 <span class="token comment" spellcheck="true">#array([ 0,  1,  2,  3,  4, 50, 60, 70, 80, 90])</span>
 np<span class="token punctuation">.</span>unique<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#显示np数组中的unique值，还有返回index值等功能</span>
@@ -747,6 +747,8 @@ np<span class="token punctuation">.</span>floor<span class="token punctuation">(
 np<span class="token punctuation">.</span>round<span class="token punctuation">(</span>a<span class="token punctuation">,</span>decimals<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>out<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#将数组四舍五入到指定的小数上</span>
 np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>a<span class="token punctuation">,</span>axis<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>ndarray    eg<span class="token punctuation">:</span>img_nd <span class="token operator">=</span> np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>img_nd<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#img_nd原先是二维的(0,1),扩张完变(0,1,2)</span>
+
+<span class="token comment" spellcheck="true">#调整数组维度顺序</span>
 np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span>a<span class="token punctuation">,</span>axes<span class="token operator">=</span>None<span class="token punctuation">)</span> eg<span class="token punctuation">:</span>img_nd<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 或 np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span>img_nd<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#(a,b,c)->(c,a,b)</span>
 ndarray<span class="token punctuation">.</span>max<span class="token punctuation">(</span>axis<span class="token operator">=</span>None<span class="token punctuation">,</span> out<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#返回指定维度的最大值,没指定的话就是所有的最大值</span>
@@ -864,7 +866,9 @@ np<span class="token punctuation">.</span>append<span class="token punctuation">
 np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
 np<span class="token punctuation">.</span>vstack<span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 数组生成</span>
-<span class="token comment" spellcheck="true"># np.linspace()和np.arrange()一个是样本数量，一个步长</span></code></pre>
+<span class="token comment" spellcheck="true"># np.linspace()和np.arrange()一个是样本数量，一个步长</span>
+<span class="token comment" spellcheck="true">#调整数组顺序</span>
+np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><p>教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/pandas/python_pandas_environment_setup.html">https://www.yiibai.com/pandas/python_pandas_environment_setup.html</a></p>
 <p>API:<a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/index.html">https://pandas.pydata.org/pandas-docs/stable/reference/index.html</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 查看序列的index</span>
@@ -1156,7 +1160,7 @@ ax<span class="token punctuation">.</span>plot<span class="token punctuation">(<
 <p>这个function创建了一个大小为<code>(14,7)</code>的画布,把这个画布赋值给变量<code>fig</code>,同时在这个画布上创建了一个<code>axes</code>,把这个<code>axes</code>赋值给<code>ax</code>。这样,所有未来的<code>fig.xxx</code>都是对这个画布的操作，所有<code>ax.xxx</code>都是对这个<code>axes</code>的操作。</p>
 <p>如果你有两个图,那么<code>ax</code>是一个有两个元素<code>ax[0],ax[1]</code>的<code>list</code>。<code>ax[0]</code>就对应第一个<code>subplot</code>的<code>ax</code>。</p>
 <pre class=" language-python"><code class="language-python">fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># fig, ax = plt.subplots(2,1,figsize(14,7))</span>
+<span class="token comment" spellcheck="true"># fig, ax = plt.subplots(2,1,figsize=(14,7))</span>
 <span class="token comment" spellcheck="true"># ax[0].xxx</span>
 <span class="token comment" spellcheck="true"># ax[1].xxx</span></code></pre>
 <p><strong>好了画布搞好了，画数据。</strong></p>
@@ -1386,6 +1390,9 @@ plt<span class="token punctuation">.</span>matshow<span class="token punctuation
 <p><code>cmap</code>不输入的话默认是<code>viridis</code>模式</p>
 <p>When <strong>using scalar data</strong> and <strong>no explicit norm,</strong> vmin and vmax <strong>define the data range</strong> that the <strong>colormap covers</strong>. By default, <strong>the colormap covers the complete value range of the supplied data</strong>. It is <strong>deprecated to use vmin/vmax when norm is given</strong>. When <strong>using RGB(A) data</strong>, parameters <strong>vmin/vmax are ignored</strong>.</p>
 <p><img src="./medias/loading.gif" data-original="/np-pd-plt/np&amp;pd&amp;plt%5Cimage-20210921200133539.png" alt="vmin&amp;vmax"></p>
+<p>颜色</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20230113063319761.png" alt="image-20230113063319761" style="zoom:67%;">
+
 <h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><p><a target="_blank" rel="noopener" href="https://www.fontke.com/tool/rgb/800000/">根据RGB  CMYK  HSL  HSV  XYZ 值来查询颜色</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>image <span class="token keyword">as</span> imgplt
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -1484,7 +1491,7 @@ img3<span class="token operator">=</span>img<span class="token punctuation">.</s
 a <span class="token operator">=</span> torch<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">import</span> PIL<span class="token punctuation">.</span>Image <span class="token keyword">as</span> IMG
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-a <span class="token operator">=</span> IMG<span class="token punctuation">.</span>fromarray<span class="token punctuation">(</span>np<span class="token punctuation">.</span>uint8<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+a <span class="token operator">=</span> IMG<span class="token punctuation">.</span>fromarray<span class="token punctuation">(</span>np<span class="token punctuation">.</span>uint8<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true"># 必须转换成整数</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># PIL.Image.Image是一个类实例，包含自己的属性,通道顺序是(H,W,C)</span>
 <span class="token comment" spellcheck="true"># &lt;PIL.Image.Image image mode=RGB size=2x3 at 0x7F51B6B9AF10></span>
 <span class="token comment" spellcheck="true"># 转为调色板模式</span>
@@ -1532,6 +1539,63 @@ img <span class="token operator">=</span> torch<span class="token punctuation">.
 image <span class="token operator">=</span> im_tensor<span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clone<span class="token punctuation">(</span><span class="token punctuation">)</span>
 image <span class="token operator">=</span> image<span class="token punctuation">.</span>squeeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 压缩一维</span>
 image <span class="token operator">=</span> transforms<span class="token punctuation">.</span>ToPILImage<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 自动转换为0-255 并变换通道为HWC</span></code></pre>
+<h3 id="有用的函数"><a href="#有用的函数" class="headerlink" title="有用的函数"></a>有用的函数</h3><p><strong>可视化tensor</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">tensor2im</span><span class="token punctuation">(</span>input_image<span class="token punctuation">,</span> imtype<span class="token operator">=</span>np<span class="token punctuation">.</span>uint8<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""""
+    Parameters:
+        input_image (tensor) --  输入的tensor，维度为CHW，注意这里没有batch size的维度
+        imtype (type)        --  转换后的numpy的数据类型
+    """</span>
+    mean <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.485</span><span class="token punctuation">,</span> <span class="token number">0.456</span><span class="token punctuation">,</span> <span class="token number">0.406</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># dataLoader中设置的mean参数，需要从dataloader中拷贝过来</span>
+    std <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.229</span><span class="token punctuation">,</span> <span class="token number">0.224</span><span class="token punctuation">,</span> <span class="token number">0.225</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># dataLoader中设置的std参数，需要从dataloader中拷贝过来</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> isinstance<span class="token punctuation">(</span>input_image<span class="token punctuation">,</span> np<span class="token punctuation">.</span>ndarray<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>input_image<span class="token punctuation">,</span> torch<span class="token punctuation">.</span>Tensor<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 如果传入的图片类型为torch.Tensor，则读取其数据进行下面的处理</span>
+            image_tensor <span class="token operator">=</span> input_image<span class="token punctuation">.</span>data
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> input_image
+        image_numpy <span class="token operator">=</span> image_tensor<span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>float<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># convert it into a numpy array</span>
+        <span class="token keyword">if</span> image_numpy<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># grayscale to RGB</span>
+            image_numpy <span class="token operator">=</span> np<span class="token punctuation">.</span>tile<span class="token punctuation">(</span>image_numpy<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>mean<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 反标准化，乘以方差，加上均值</span>
+            image_numpy<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> image_numpy<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> std<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> mean<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        image_numpy <span class="token operator">=</span> image_numpy <span class="token operator">*</span> <span class="token number">255</span> <span class="token comment" spellcheck="true">#反ToTensor(),从[0,1]转为[0,255]</span>
+        image_numpy <span class="token operator">=</span> np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span>image_numpy<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 从(channels, height, width)变为(height, width, channels)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 如果传入的是numpy数组,则不做处理</span>
+        image_numpy <span class="token operator">=</span> input_image
+    <span class="token keyword">return</span> image_numpy<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>imtype<span class="token punctuation">)</span></code></pre>
+<p><strong>特征图热力图</strong></p>
+<pre class=" language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">get_heatmap</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        data <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token comment" spellcheck="true"># heatmap = cv2.applyColorMap(np.uint8(255*data), cv2.COLORMAP_JET)</span>
+        <span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sns
+        <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+        <span class="token comment" spellcheck="true"># 引入 FigureCanvasAgg</span>
+        <span class="token keyword">from</span> matplotlib<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>backend_agg <span class="token keyword">import</span> FigureCanvasAgg
+        plt<span class="token punctuation">.</span>clf<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sns<span class="token punctuation">.</span>heatmap<span class="token punctuation">(</span>data<span class="token punctuation">,</span> center<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+        plt<span class="token punctuation">.</span>axis<span class="token punctuation">(</span><span class="token string">'off'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 引入 Image</span>
+        <span class="token keyword">import</span> PIL<span class="token punctuation">.</span>Image <span class="token keyword">as</span> Image
+        <span class="token comment" spellcheck="true"># 将plt转化为numpy数据</span>
+        canvas <span class="token operator">=</span> FigureCanvasAgg<span class="token punctuation">(</span>plt<span class="token punctuation">.</span>gcf<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 绘制图像</span>
+        canvas<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 获取图像尺寸</span>
+        w<span class="token punctuation">,</span> h <span class="token operator">=</span> canvas<span class="token punctuation">.</span>get_width_height<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 解码string 得到argb图像</span>
+        buf <span class="token operator">=</span> np<span class="token punctuation">.</span>fromstring<span class="token punctuation">(</span>canvas<span class="token punctuation">.</span>tostring_argb<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>uint8<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 重构成w h 4(argb)图像</span>
+        buf<span class="token punctuation">.</span>shape <span class="token operator">=</span> <span class="token punctuation">(</span>w<span class="token punctuation">,</span> h<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 转换为 RGBA</span>
+        buf <span class="token operator">=</span> np<span class="token punctuation">.</span>roll<span class="token punctuation">(</span>buf<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 得到 Image RGBA图像对象 (需要Image对象的同学到此为止就可以了)</span>
+        image <span class="token operator">=</span> Image<span class="token punctuation">.</span>frombytes<span class="token punctuation">(</span><span class="token string">"RGBA"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">,</span> buf<span class="token punctuation">.</span>tobytes<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 转换为numpy array rgba四通道数组</span>
+        image <span class="token operator">=</span> np<span class="token punctuation">.</span>asarray<span class="token punctuation">(</span>image<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 转换为rgb图像</span>
+        heatmap <span class="token operator">=</span> image<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>
+
+        <span class="token keyword">return</span> heatmap</code></pre>
 <h2 id="cv2"><a href="#cv2" class="headerlink" title="cv2"></a>cv2</h2><p><a target="_blank" rel="noopener" href="https://docs.opencv.org/4.x/index.html">opencv的API</a></p>
 <h3 id="基本函数-1"><a href="#基本函数-1" class="headerlink" title="基本函数"></a>基本函数</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> cv2
 <span class="token comment" spellcheck="true"># Loads an image from a file.</span>
@@ -2474,7 +2538,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">160.5k</span>&nbsp;字
+                class="white-color">170k</span>&nbsp;字
             
             
             

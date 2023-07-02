@@ -717,6 +717,8 @@ $ git commit -m "wrote a readme file"
 <p>git管理的文件有三种状态:已修改(modified),已暂存(staged),已提交(committed)</p>
 <img src="./medias/loading.gif" data-original="/git-xue-xi/image-20210927164622525.png" alt="工作流程" style="zoom:67%;">
 
+<pre class=" language-shell"><code class="language-shell">git add 文件夹/ 添加整个文件夹及内容
+git add *.文件类型 添加目录中所有此文件类型的文件</code></pre>
 <h4 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h4><h5 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h5><ul>
 <li><strong>Untracked:</strong> <strong>未跟踪, 此文件在文件夹中</strong>, 但<strong>并没有加入到git库</strong>,不参与版本控制.通过<code>git add</code>状态变为Staged.</li>
 <li><strong>Unmodify:</strong> 文件已经入库, 未修改, 即版本库中的文件快照内容与文件夹中完全一致. 这种类型的文件有两种去处, 如果它被修改, 而变为Modified. 如果使用<code>git rm --cached &lt;file&gt;</code>移出版本库, 则成为Untracked文件</li>
@@ -826,7 +828,9 @@ $ git remote rm origin</code></pre>
 <p>pull 操作是将本地仓库和远程仓库（本地的）更新到远程的最新版本。</p>
 <p>如果想要更加可控一点的话推荐使用fetch + merge。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37420939/article/details/89736567">https://blog.csdn.net/qq_37420939/article/details/89736567</a></p>
 </blockquote>
-<h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><img src="./medias/loading.gif" data-original="/git-xue-xi/Users\dongchenghao\Nutstore\1\_posts\git学习\image-20230523220805879.png" alt="image-20230523220805879" style="zoom: 67%;">
+
+<p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
 <p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</p>
 <h5 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h5><p>在<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192">版本回退</a>里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即<code>master</code>分支。<code>HEAD</code>严格来说不是指向提交，而是指向<code>master</code>，<code>master</code>才是指向提交的，所以，<code>HEAD</code>指向的就是当前分支。</p>
 <p>一开始的时候，<code>master</code>分支是一条线，Git用<code>master</code>指向最新的提交，再用<code>HEAD</code>指向<code>master</code>，就能确定当前分支，以及当前分支的提交点：</p>
@@ -1025,6 +1029,7 @@ v1.0</code></pre>
 
 <p>如果你想修复bootstrap的一个bug，或者新增一个功能，立刻就可以开始干活，干完后，往自己的仓库推送。</p>
 <p>如果你希望bootstrap的官方库能接受你的修改，你就可以在GitHub上发起一个pull request。当然，对方是否接受你的pull request就不一定了。</p>
+<h4 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/nyist_zxp/article/details/119887324">https://blog.csdn.net/nyist_zxp/article/details/119887324</a></p>
 <h2 id="Github学习"><a href="#Github学习" class="headerlink" title="Github学习"></a>Github学习</h2><h3 id="基础了解"><a href="#基础了解" class="headerlink" title="基础了解"></a>基础了解</h3><p>先 fork 别人的仓库，相当于拷贝一份，相信我，不会有人直接让你改修原仓库的</p>
 <p>clone 到本地分支，做一些 bug fix</p>
 <p>发起 pull request 给原仓库，让他看到你修改的 bug</p>
@@ -1903,7 +1908,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">160.5k</span>&nbsp;字
+                class="white-color">170k</span>&nbsp;字
             
             
             

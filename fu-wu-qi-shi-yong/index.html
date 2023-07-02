@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    3.6k
                 </div>
                 
 
@@ -675,7 +675,9 @@
 <h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><pre class=" language-python"><code class="language-python">unzip <span class="token operator">-</span>d des src
 <span class="token comment" spellcheck="true">#解压到指定目录 解压zip</span>
 zip <span class="token operator">-</span>r day<span class="token punctuation">.</span>zip day<span class="token operator">/</span><span class="token operator">*</span>
-<span class="token comment" spellcheck="true"># 压缩指定目录为zip文件</span>
+<span class="token comment" spellcheck="true"># 压缩指定目录为zip文件，会将软链接文件转为硬链接文件</span>
+zip <span class="token operator">-</span>ry day<span class="token punctuation">.</span>zip day<span class="token operator">/</span><span class="token operator">*</span>
+<span class="token comment" spellcheck="true"># 加个y,会保留软链接文件</span>
 tar <span class="token operator">-</span>xzvf <span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
 <span class="token comment" spellcheck="true"># 解压.tar.gz</span>
 df <span class="token operator">-</span>h
@@ -715,18 +717,31 @@ pwd
 <span class="token comment" spellcheck="true"># 使用requirements格式列出所有已安装的包,包以不区分大小写的排序顺序列出</span>
 pip freeze <span class="token operator">></span> requirments<span class="token punctuation">.</span>txt
 <span class="token comment" spellcheck="true"># 安装requirements.txt的包</span>
-pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt</code></pre>
+pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt
+<span class="token comment" spellcheck="true"># 软连接 -s或--symbolic 　对源文件建立符号连接，而非硬连接。</span>
+ln <span class="token operator">-</span>s 源文件 软连接文件</code></pre>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211009172341652.png" alt="image-20211009172341652"></p>
-<pre class=" language-shell"><code class="language-shell"># 创建新文件
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 创建新文件</span>
 touch filename
-# 以树状图列出目录的内容。
+<span class="token comment" spellcheck="true"># 以树状图列出目录的内容。</span>
 tree dir
-# 服务器间数据互传 https://blog.csdn.net/zhangjipinggom/article/details/106137809
-scp -r /home/dch/DarkSeg/path/to/ dch@10.112.9.72:/home/dch/DarkSeg/path/
-# 如果提示端口不对（默认端口是22），改成：
-scp -P port -r /home/dch/DarkSeg/path/to/ dch@10.112.9.72:/home/dch/DarkSeg/path/
-# 显示各用户占用空间大小
-sudo du -sh /home/*</code></pre>
+<span class="token comment" spellcheck="true"># 服务器间数据互传 https://blog.csdn.net/zhangjipinggom/article/details/106137809</span>
+scp <span class="token operator">-</span>r <span class="token operator">/</span>home<span class="token operator">/</span>dch<span class="token operator">/</span>DarkSeg<span class="token operator">/</span>path<span class="token operator">/</span>to<span class="token operator">/</span> dch@<span class="token number">10.112</span><span class="token punctuation">.</span><span class="token number">9.72</span><span class="token punctuation">:</span><span class="token operator">/</span>home<span class="token operator">/</span>dch<span class="token operator">/</span>DarkSeg<span class="token operator">/</span>path<span class="token operator">/</span>
+<span class="token comment" spellcheck="true"># 如果提示端口不对（默认端口是22），改成：</span>
+scp <span class="token operator">-</span>P port <span class="token operator">-</span>r <span class="token operator">/</span>home<span class="token operator">/</span>dch<span class="token operator">/</span>DarkSeg<span class="token operator">/</span>path<span class="token operator">/</span>to<span class="token operator">/</span> dch@<span class="token number">10.112</span><span class="token punctuation">.</span><span class="token number">9.72</span><span class="token punctuation">:</span><span class="token operator">/</span>home<span class="token operator">/</span>dch<span class="token operator">/</span>DarkSeg<span class="token operator">/</span>path<span class="token operator">/</span>
+<span class="token comment" spellcheck="true"># 显示各用户占用空间大小</span>
+sudo du <span class="token operator">-</span>sh <span class="token operator">/</span>home<span class="token operator">/</span><span class="token operator">*</span>
+<span class="token comment" spellcheck="true"># nohup及取消输出</span>
+nohup java <span class="token operator">-</span>cp WEB<span class="token operator">-</span>INF<span class="token operator">/</span>lib<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">:</span>WEB<span class="token operator">-</span>INF<span class="token operator">/</span>classes org<span class="token punctuation">.</span>b3log<span class="token punctuation">.</span>solo<span class="token punctuation">.</span>Starter <span class="token operator">></span><span class="token operator">/</span>dev<span class="token operator">/</span>null <span class="token number">2</span><span class="token operator">></span><span class="token operator">&amp;</span><span class="token number">1</span> <span class="token operator">&amp;</span>
+<span class="token comment" spellcheck="true"># >/dev/null 将信息输出到/dev/null</span>
+<span class="token comment" spellcheck="true"># 2>&amp;1 将错误信息重定向到标准输出</span>
+<span class="token comment" spellcheck="true"># 最后一个&amp;符号，表示程序在后台运行</span>
+<span class="token triple-quoted-string string">"""
+/dev/null:在类 Unix 系统中，/dev/null，或称空设备，是一个特殊的设备文件，它丢弃一切写入其中的数据（但报告写入操作成功），读取它则会立即得到一个 EOF。
+在程序员行话，尤其是 Unix 系统中，/dev/null 被称为位桶(bit bucket)或者黑洞(black hole)。空设备通常被用于丢弃不需要的输出流，或作为用于输入流的空文件。当你读它的时候，它会提供无限的空字符(NULL, ASCII NUL, 0x00)。
+"""</span>
+adduser username
+<span class="token comment" spellcheck="true"># linux添加新用户</span></code></pre>
 <h3 id="GPU使用情况查看？"><a href="#GPU使用情况查看？" class="headerlink" title="GPU使用情况查看？"></a>GPU使用情况查看？</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ceb3c020e06b">以下来自木子的毛线</a></p>
 <pre class=" language-shell"><code class="language-shell">watch -n 1 nvidia-smi</code></pre>
 <img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211009133137665.png" alt="image-20211009133137665" style="zoom:80%;">
@@ -958,6 +973,51 @@ else
 echoerr "S</code></pre>
 <h3 id="ssh命令"><a href="#ssh命令" class="headerlink" title="ssh命令"></a>ssh命令</h3><h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>1.you are in emergency mode</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40689871/article/details/108451501">https://blog.csdn.net/weixin_40689871/article/details/108451501</a></p>
+<h3 id="GPU监测"><a href="#GPU监测" class="headerlink" title="GPU监测"></a>GPU监测</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> time
+
+cmd <span class="token operator">=</span> <span class="token string">'CUDA_VISIBLE_DEVICES=0 nohup bash ../run.sh --stage 6'</span>  <span class="token comment" spellcheck="true">#当GPU空闲时需要跑的脚本</span>
+
+
+<span class="token keyword">def</span> <span class="token function">gpu_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    gpu_status <span class="token operator">=</span> os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">'nvidia-smi | grep %'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#根据nvidia-smi命令的返回值按照'|'为分隔符建立一个列表</span>
+    <span class="token triple-quoted-string string">'''
+    结果如：
+    ['', ' N/A   64C    P0    68W /  70W ', '   9959MiB / 15079MiB ', '     79%      Default ', 
+    '\n', ' N/A   73C    P0   108W /  70W ', '  11055MiB / 15079MiB ', '     63%      Default ', 
+    '\n', ' N/A   60C    P0    55W /  70W ', '   3243MiB / 15079MiB ', '     63%      Default ', '\n']
+    '''</span>
+    gpu_memory <span class="token operator">=</span> int<span class="token punctuation">(</span>gpu_status<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'M'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+    <span class="token comment" spellcheck="true">#获取当前0号GPU功率值：提取标签为2的元素，按照'/'为分隔符后提取标签为0的元素值再按照'M'为分隔符提取标签为0的元素值，返回值为int形式 </span>
+    gpu_power <span class="token operator">=</span> int<span class="token punctuation">(</span>gpu_status<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'   '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'W'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#获取0号GPU当前显存使用量</span>
+    gpu_util <span class="token operator">=</span> int<span class="token punctuation">(</span>gpu_status<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'   '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'%'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#获取0号GPU显存核心利用率</span>
+    <span class="token keyword">return</span> gpu_power<span class="token punctuation">,</span> gpu_memory<span class="token punctuation">,</span> gpu_util
+
+
+<span class="token keyword">def</span> <span class="token function">narrow_setup</span><span class="token punctuation">(</span>secs<span class="token operator">=</span><span class="token number">600</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true">#间隔十分钟检测一次</span>
+    gpu_power<span class="token punctuation">,</span> gpu_memory<span class="token punctuation">,</span> gpu_util <span class="token operator">=</span> gpu_info<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> <span class="token operator">not</span><span class="token punctuation">(</span>gpu_memory <span class="token operator">&lt;</span> <span class="token number">1000</span> <span class="token operator">and</span> gpu_power <span class="token operator">&lt;</span> <span class="token number">20</span> <span class="token operator">and</span> gpu_util <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 当功率，使用量，利用率都小于特定值才去退出循环</span>
+        gpu_power<span class="token punctuation">,</span> gpu_memory<span class="token punctuation">,</span> gpu_util <span class="token operator">=</span> gpu_info<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        i <span class="token operator">=</span> i <span class="token operator">%</span> <span class="token number">5</span>
+        symbol <span class="token operator">=</span> <span class="token string">'monitoring: '</span> <span class="token operator">+</span> <span class="token string">'>'</span> <span class="token operator">*</span> i <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'|'</span>
+        gpu_power_str <span class="token operator">=</span> <span class="token string">'gpu power:%d W |'</span> <span class="token operator">%</span> gpu_power
+        gpu_memory_str <span class="token operator">=</span> <span class="token string">'gpu memory:%d MiB |'</span> <span class="token operator">%</span> gpu_memory
+        gpu_util_str <span class="token operator">=</span> <span class="token string">'gpu util:%d %% |'</span> <span class="token operator">%</span> gpu_util
+        sys<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\r'</span> <span class="token operator">+</span> gpu_memory_str <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> gpu_power_str <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> gpu_util_str <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> symbol<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">#sys.stdout.write(obj+'\n')等价于print(obj)</span>
+        sys<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span>flush<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#刷新输出</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>secs<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#推迟调用线程的运行，通过参数指秒数，表示进程挂起的时间。</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'\n'</span> <span class="token operator">+</span> cmd<span class="token punctuation">)</span>
+    os<span class="token punctuation">.</span>system<span class="token punctuation">(</span>cmd<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#执行脚本</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    narrow_setup<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -1785,7 +1845,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">160.5k</span>&nbsp;字
+                class="white-color">170k</span>&nbsp;字
             
             
             
