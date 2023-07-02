@@ -368,14 +368,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/</loc>
+    <loc>http://chenghaodong666.github.io/tags/pytorch/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</loc>
+    <loc>http://chenghaodong666.github.io/tags/Matlab/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -389,14 +389,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/pytorch/</loc>
+    <loc>http://chenghaodong666.github.io/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/Matlab/</loc>
+    <loc>http://chenghaodong666.github.io/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -587,7 +587,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/Color-Constancy/</loc>
+    <loc>http://chenghaodong666.github.io/categories/python/</loc>
+    <lastmod>2023-07-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://chenghaodong666.github.io/categories/Matlab/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -601,14 +608,7 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/python/</loc>
-    <lastmod>2023-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://chenghaodong666.github.io/categories/Matlab/</loc>
+    <loc>http://chenghaodong666.github.io/categories/Color-Constancy/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
