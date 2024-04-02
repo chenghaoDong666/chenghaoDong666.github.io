@@ -1,0 +1,2746 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="numpy、pandas、matplotlib学习, 大模型,llm,搜推算法,多模态,cv">
+    <meta name="description" content="计算机视觉与图像处理，大模型算法，搜索算法，多模态算法以及其他相关的技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>numpy、pandas、matplotlib学习 | 月源</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+	<link rel="stylesheet" type="text/css" href="/libs/artitalk/artitalk.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="月源" type="application/atom+xml">
+</head>
+
+
+
+
+
+    <style type="text/css" lang="css">
+    #loading-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 100vw;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+        text-align: center;
+        /* loader页面消失采用渐隐的方式*/
+        -webkit-transition: opacity 1s ease;
+        -moz-transition: opacity 1s ease;
+        -o-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+    }
+    .loading-image{
+        width: 120px;
+        height: 50px;
+        transform: translate(-50%);
+    }
+
+    .loading-image div:nth-child(2) {
+        -webkit-animation: pacman-balls 1s linear 0s infinite;
+        animation: pacman-balls 1s linear 0s infinite
+    }
+
+    .loading-image div:nth-child(3) {
+        -webkit-animation: pacman-balls 1s linear .33s infinite;
+        animation: pacman-balls 1s linear .33s infinite
+    }
+
+    .loading-image div:nth-child(4) {
+        -webkit-animation: pacman-balls 1s linear .66s infinite;
+        animation: pacman-balls 1s linear .66s infinite
+    }
+
+    .loading-image div:nth-child(5) {
+        -webkit-animation: pacman-balls 1s linear .99s infinite;
+        animation: pacman-balls 1s linear .99s infinite
+    }
+
+   .loading-image div:first-of-type {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+        animation: rotate_pacman_half_up .5s 0s infinite;
+    }
+    .loading-image div:nth-child(2) {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+        animation: rotate_pacman_half_down .5s 0s infinite;
+        margin-top: -50px;
+    }
+    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+
+    .loading-image div:nth-child(3),
+    .loading-image div:nth-child(4),
+    .loading-image div:nth-child(5),
+    .loading-image div:nth-child(6){
+        background-color: #49b1f5;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 2px;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        transform: translateY(-6.25px);
+        top: 25px;
+        left: 100px;
+    }
+    .loading-text{
+        margin-bottom: 20vh;
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 0 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    @media only screen and (max-width: 500px) {
+         .loading-text{
+            font-size: 1.5rem;
+         }
+    }
+    .fadeout {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    /* logo出现动画 */
+    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+ </style>
+ <script>
+(function () {
+    const loaded = function(){
+       setTimeout(function(){
+            const loader = document.getElementById("loading-container");
+            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
+            // document.getElementById("body-wrap").style.display="flex";
+            setTimeout(function(){
+                loader.style.display="none";
+            },2500); 
+        },1000);//强制显示loading page 1s  
+    };
+    loaded();
+})()
+</script>
+
+
+<body>
+    
+        <div id="loading-container">
+             <p class="loading-text">嘘~  正在从服务器偷取页面 . . . </p> 
+             <div class="loading-image">
+                 <div></div>
+                 <div></div>
+                 <div></div>
+                 <div></div> 
+                 <div></div>
+             </div>
+        </div>
+    
+	
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+					<div>
+						
+						<img src="./medias/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
+						
+						<span class="logo-span">月源</span>
+					</div>
+				</a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/artitalk" class="waves-effect waves-light">
+      
+      <i class="fas fa-heartbeat" style="zoom: 0.6;"></i>
+      
+      <span>说说</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="./medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">月源</div>
+        <div class="logo-desc">
+            
+            计算机视觉与图像处理，大模型算法，搜索算法，多模态算法以及其他相关的技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/artitalk" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-heartbeat"></i>
+			
+			ArtiTalk
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/chenghaoDong666" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>See Me in github
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/chenghaoDong666" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="See Me in github" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+	
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('密码提示：帅不帅？')).toString(CryptoJS.enc.Hex)) {
+                alert('你不够帅，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">numpy、pandas、matplotlib学习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/numpy/">
+                                <span class="chip bg-color">numpy</span>
+                            </a>
+                        
+                            <a href="/tags/pandas/">
+                                <span class="chip bg-color">pandas</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/python/" class="post-category">
+                                python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-11-02
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.9k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/numpy/numpy-ndarray-object.html">https://www.runoob.com/numpy/numpy-ndarray-object.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/numpy-1.9.0/genindex.html">numpy API</a></p>
+<p>Python<code>list</code>只能与整数相乘，在这种情况下，将<code>list</code>重复的元素：</p>
+<pre><code class="python">&gt;&gt;&gt; [1,2,3] * 3
+[1, 2, 3, 1, 2, 3, 1, 2, 3]</code></pre>
+<p>如果要进行矢量运算，请<code>numpy.ndarray</code>改用：</p>
+<pre><code class="python">&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; ar = np.array([1,2,3])
+&gt;&gt;&gt; ar * 3
+array([3, 6, 9])
+#numpy数组索引
+pre=pre[:,:,0]#不用三个中括号，只用一个，里面只用一个逗号</code></pre>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60365398">numpy广播机制</a></p>
+<h4 id="axis详解"><a href="#axis详解" class="headerlink" title="axis详解"></a>axis详解</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/30b40b504bae">虽然是tf的教程，但是类似</a></p>
+<ol>
+<li>0维，又称0维张量，数字，标量：1   <code>()</code></li>
+<li>1维，又称1维张量，数组，vector：[1, 2, 3]  <code>(3)</code></li>
+<li>2维，又称2维张量，矩阵，二维数组：[[1,2], [3,4]] <code>(2,2)</code></li>
+<li>3维，又称3维张量，立方（cube），三维数组：[[[5,6], [7,8]]]  <code>(1,2,2)</code> ,越往里axis越大，axis是<code>(0,1,2)</code>每个3维的有一个2维的，每个2维的有2个1维的，每个1维的有2个标量,数字7的坐标是[0,1,0]</li>
+<li>n维：你应该get到点了吧~</li>
+</ol>
+<p>本来是2x3x4,<code>tf.reduce_sum(tensor, axis=0)</code>，加完了就变成了3x4</p>
+<h4 id="文件存储npy-npz"><a href="#文件存储npy-npz" class="headerlink" title="文件存储npy\npz"></a>文件存储npy\npz</h4><p>Numpy能够读写磁盘上的文本数据或二进制数据。</p>
+<p><strong>将数组以二进制格式保存到磁盘</strong></p>
+<p><code>np.load</code>和<code>np.save</code>是读写磁盘数组数据的两个主要函数，默认情况下，数组是以未压缩的原始二进制格式保存在扩展名为.npy的文件中。</p>
+<pre><code class="python"># 读取
+import numpy as np
+a=np.arange(5)
+np.save('test.npy',a)
+# 存储
+import numpy as np
+a=np.load('test.npy')
+print(a)</code></pre>
+<p><code>np.savez</code>以未压缩的 .npz 格式将多个数组保存到单个文件中。</p>
+<pre><code class="python">np.savez(outfile, x, y)
+npzfile = np.load(outfile)
+npzfile.files
+['arr_0', 'arr_1']
+np.savez(outfile, x=x, y=y)
+npzfile = np.load(outfile)
+sorted(npzfile.files)
+['x', 'y']</code></pre>
+<h4 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h4><pre><code class="python">
+a = np.zeros(shape=(3,4,5))
+# 返回a列表的元素总数：60
+print(a.size)
+print(np.size(a))
+# 返回a列表的维度大小：(3,4,5)
+print(a.shape)
+print(np.shape(a))
+# 返回a列表的第一维大小：3
+print(len(a))
+
+np.array(list)#将列表转化为数组
+np.std()#求标准差
+np.dot(a,b)#矩阵乘
+np.max()#
+np.multiply(a,b)#element wise
+a*b#element wise
+np.where(condition[,x,y])
+#返回根据条件从x或y中选择的元素。条件为真，返回x，否则返回y。
+#&lt;&lt;&lt;a
+#array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+#&lt;&lt;&lt;(a &lt; 5, a, 10*a)
+#array([ 0,  1,  2,  3,  4, 50, 60, 70, 80, 90])
+np.unique(x)
+#显示np数组中的unique值，还有返回index值等功能
+np.ceil()#向上取整 
+np.floor()#向下取整
+np.round(a,decimals=0,out=None)#将数组四舍五入到指定的小数上
+np.expand_dims(a,axis)-&gt;ndarray    eg:img_nd = np.expand_dims(img_nd, axis=2)
+#img_nd原先是二维的(0,1),扩张完变(0,1,2)
+
+#调整数组维度顺序
+np.transpose(a,axes=None) eg:img_nd.transpose((2, 0, 1)) 或 np.transpose(img_nd,(2,0,1))
+#(a,b,c)-&gt;(c,a,b)
+ndarray.max(axis=None, out=None)#返回指定维度的最大值,没指定的话就是所有的最大值
+np.newaxis
+#作用是增加一个维度
+#a=np.array([1,2,3,4,5])
+#aa=a[:,np.newaxis]
+#print(aa.shape)  (5,1) 现有5个,5个里每个再有1个
+#print (aa)      [[1],[2],[3],[4],[5]] 
+np.concatenate((a1, a2, ...), axis=0)
+#将数组序列拼接在一起
+&gt;&gt;&gt; a = np.array([[1, 2], [3, 4]])#(2,2)
+&gt;&gt;&gt; b = np.array([[5, 6]])#(1,2)
+&gt;&gt;&gt; np.concatenate((a, b), axis=0)#拼接完-&gt;(3,2)
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+&gt;&gt;&gt; np.concatenate((a, b.T), axis=1)(2,2)+(2,1)-&gt;(2,3)
+array([[1, 2, 5],
+       [3, 4, 6]])
+numpy.ravel(a, order='C')
+ndarray.flatten(order='C')
+#都是将多维数组降为一维，区别为:
+#ndarray.flatten(order='C')返回拷贝，对拷贝的修改不会影响原数组
+#numpy.ravel(a, order='C')返回视图，对视图的修改会影响原数组
+#order:使用这个索引顺序读取a的元素。有'C' 'F' 'A' 'K'
+#'C'意味着以行主、C风格的顺序索引元素，最后一个轴索引变化最快，回到第一个轴索引变化最慢。eg:[0,0,0],[0,0,1],[0,0,2],[0,1,0],[0,1,1],...
+#'F'表示以fortran风格的列主顺序索引元素，第一个索引变化最快，最后一个索引变化最慢。注意，' C '和' F '选项不考虑底层数组的内存布局，只参考轴索引的顺序。eg:[0,0,0],[1,0,0],[2,0,0],[0,1,0],[1,1,0],[2,1,0],...
+#'A'表示如果a在内存中是Fortran连续的，则以类似Fortran的索引顺序读取元素，否则以类似c的顺序读取
+#'K'的意思是按照元素在内存中出现的顺序读取它们，除非在步数为负时反转数据。默认情况下，使用'C'索引顺序。
+np.spacing(x)
+#返回x和最近相邻数字之间的距离
+#可以视为eps的一个繁华
+np.argmax(array,axis)
+#用于返回一个numpy数值中最大值的索引,当一组中同时出现几个最大值时，返回第一个最大值的索引值。
+np.divide()
+# 和/作用相同,就是除以
+np.bincount(x, weights=None, minlength=None)
+# 计算非负整数数组中每个值的出现次数。
+# bin的个数至少比最大的x的值大一，如果设置了minlength,则至少有minlength个bin
+&gt;&gt;&gt; np.bincount(np.array([0, 1, 1, 3, 2, 1, 7]))
+# 输出:array([1, 3, 1, 1, 0, 0, 0, 1])
+np.diag(array) 
+# 当array是一个一维数组时,会返回一个以array为对角线元素的矩阵
+# 当array是一个二维矩阵时，会返回该矩阵的对角线元素
+np.nanmean(array, axis)
+# 计算指定axis的平均,忽略nan
+&gt;&gt;&gt; a = np.array([[1, np.nan], [3, 4]])
+&gt;&gt;&gt; np.nanmean(a)
+2.6666666666666665
+# 从一个可迭代对象创建一个新的一维数组。
+numpy.fromiter(iter, dtype, count=- 1, *, like=None)
+iterable = (x*x for x in range(5))
+np.fromiter(iterable, float)
+array([  0.,   1.,   4.,   9.,  16.])
+# asfortranarray()返回在内存中以Fortran顺序排列的数组(ndim&gt;= 1)
+numpy.asfortranarray(a, dtype=None, *, like=None)
+x = np.arange(6).reshape(2,3)
+y = np.asfortranarray(x)
+x.flags['F_CONTIGUOUS']
+&gt;&gt;&gt; False
+y.flags['F_CONTIGUOUS']
+&gt;&gt;&gt; True
+# 用0替换nan,用有限数字替换inf。
+np.nan_to_num(x)
+x = np.array([np.inf, -np.inf, np.nan, -128, 128])
+&gt;&gt;&gt; np.nan_to_num(x)
+array([  1.79769313e+308,  -1.79769313e+308,   0.00000000e+000,
+        -1.28000000e+002,   1.28000000e+002])
+# 计算数据的直方图
+hist,bins=np.histogram(a # array-like数据,但是必须被flattened
+             , bins=10,# 如果是int,给定等宽bin的数量
+             range=None,# range的上下界,左开右闭,除了最后一个
+             normed=False, weights=None, density=None)
+# hist是每个bin的数量，bins是边界 如
+&gt;&gt;&gt; np.histogram([1, 2, 1], bins=[0, 1, 2, 3])
+(array([0, 2, 1]), array([0, 1, 2, 3]))
+# Return the cumulative sum of the elements along a given axis. 给定轴的累加
+np.cumsum(a,# 输入的array
+          axis=None,# 所指定的轴,如果未指定,就是对flatten array操作
+          dtype=None, out=None)
+# 上下翻转数组。
+np.flipud(m:array_like)
+# 左右翻转数组。
+np.fliplr(m:array_like)
+# 将数组逆时针旋转90度。前两个维度旋转。
+np.rot90(m:array_like,k=1:旋转次数)
+# 
+np.flatnonzero()
+numpy.tile(A, reps)
+# Construct an array by repeating A the number of times given by reps.
+# 和torch.clamp一样的用法,就是把数据夹紧到一个区间范围内
+numpy.clip(a, a_min, a_max, out=None)
+# 数组的拼接
+&gt;&gt;&gt; m = np.array([[1, 2], [3, 4]])
+&gt;&gt;&gt; m
+array([[1, 2],
+       [3, 4]])
+&gt;&gt;&gt; n = np.array([[5, 6], [7, 8]])
+&gt;&gt;&gt; n
+array([[5, 6],
+       [7, 8]])
+# 水平拼接,输出为:
+array([[1, 2, 5, 6],
+       [3, 4, 7, 8]])
+# 拼接的方法有：
+np.append(m,n, axis=1)
+np.c_[m, n]
+np.concatenate((m, n), axis=1)
+np.hstack((m, n))
+# 竖直拼接,输出为：
+# 拼接的方法有
+np.r_[m, n]
+np.append(m, n, axis=0)
+np.concatenate((m, n))
+np.vstack((m, n))
+# 数组生成
+# np.linspace()和np.arrange()一个是样本数量，一个步长
+#调整数组顺序
+np.transpose()</code></pre>
+<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><p>教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/pandas/python_pandas_environment_setup.html">https://www.yiibai.com/pandas/python_pandas_environment_setup.html</a></p>
+<p>API:<a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/index.html">https://pandas.pydata.org/pandas-docs/stable/reference/index.html</a></p>
+<pre><code class="python"># 查看序列的index
+Series.index
+# Return a Series containing counts of unique values.结果对象将按降序排列，因此第一个元素是最常出现的元素。 默认情况下排除 NA 值。
+index = pd.Index([3, 1, 2, 3, 4, np.nan])
+index.value_counts()
+3.0    2
+1.0    1
+2.0    1
+4.0    1
+dtype: int64
+Series.value_counts(normalize=False, sort=True, ascending=False, bins=None, dropna=True)
+# 获取DataFrame的行数和列数
+df.shape[0]//行数
+df.shape[1]//列数
+# 读取csv文件,
+df = pd.read_csv('train.csv')
+# 用于返回DataFrame类型的数据，如果不使用该函数,则输出结果为数据的前面五行和末尾五行。中间部分以...代替。
+print(df.to_string())
+# 将DataFrame保存为csv文件
+df.to_csv('site.csv')
+# head()读取前面的n行,如果不填参数n,默认返回5行。
+print(df.head(10))
+# 返回每个group的前5行
+GroupBy.head(n=5)
+# tail()读取尾部的n行,如果不填参数n，默认返回5行，空行各个字段的值返回NaN。
+print(df.tail(10))
+# info()返回表格的一些基本信息
+print(df.info())
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 458 entries, 0 to 457          # 行数，458 行，第一行编号为 0
+Data columns (total 9 columns):            # 列数，9列
+ #   Column    Non-Null Count  Dtype       # 各列的数据类型
+---  ------    --------------  -----  
+ 0   Name      457 non-null    object 
+ 1   Team      457 non-null    object 
+ 2   Number    457 non-null    float64
+ 3   Position  457 non-null    object 
+ 4   Age       457 non-null    float64
+ 5   Height    457 non-null    object 
+ 6   Weight    457 non-null    float64
+ 7   College   373 non-null    object         # non-null，意思为非空的数据    
+ 8   Salary    446 non-null    float64
+dtypes: float64(4), object(5)                 # 类型
+# 删除'B','C'两列
+df.drop(columns=['B', 'C'])
+# 
+df.columns
+# duplicated()返回数据是否重复
+person = {
+  "name": ['Google', 'Runoob', 'Runoob', 'Taobao'],
+  "age": [50, 40, 40, 23]  
+}
+df = pd.DataFrame(person)
+print(df.duplicated())
+0    False
+1    False
+2     True
+3    False
+dtype: bool
+# drop_duplicates()删除重复数据
+DataFrame.drop_duplicates(subset=None,# 仅考虑用于识别重复项的某些列，默认情况下使用所有列。 
+                          keep='first',# {'first', 'last', False},分别是除第一次出现全删除,除最后一次出现全删除,删除所有重复项
+                          inplace=False,# Whether to drop duplicates in place or to return a copy.
+                          ignore_index=False)
+# 1.删除完全重复数据
+data.drop_duplicates(inplace=True)
+# 数据清洗时，会将带空值的行删除，此时DataFrame或Series类型的数据不再是连续的索引，可以使用reset_index()重置索引。
+df.reset_index()
+    index   class  max_speed # 之前的index被添加成一个column
+0  falcon    bird      389.0
+1  parrot    bird       24.0
+2    lion  mammal       80.5
+3  monkey  mammal        NaN
+# 如果设置df.reset_index(drop=True),则之前的index不被添加成一个column
+# 利用groupby之后也可以利用reset_index来回转
+DataFrame.groupby(by=None,#用于确定groupby的组:mapping,function,label,or list of labels
+                  axis=0,#Split along rows (0) or columns (1):{0 or ‘index’, 1 or ‘columns’}
+                  level=None, as_index=True, sort=True, group_keys=True, squeeze=NoDefault.no_default, observed=False, dropna=True)
+df = pd.DataFrame({'Animal': ['Falcon', 'Falcon','Parrot', 'Parrot'],
+                   'Max Speed': [380., 370., 24., 26.]})
+df.groupby(['Animal']).mean()
+        Max Speed
+Animal
+Falcon      375.0
+Parrot       25.0
+# agg()在指定轴上使用一项或多项操作进行聚合。
+DataFrame.agg(func=None,# 用于聚合数据的函数。如果是函数,则必须在传递DataFrame或传递给DataFrame.apply时工作：function, str, list or dict
+              axis=0,# {0 or ‘index’,1 or ‘columns’}, default 0
+              *args, **kwargs)
+# The return can be:
+# scalar : when Series.agg is called with single function
+# Series : when DataFrame.agg is called with a single function
+# DataFrame : when DataFrame.agg is called with several functions
+# Return scalar, Series or DataFram
+df = pd.DataFrame({"id":[1,2,3,4],"name":[[0,5,8],[0,4,7],[7,8,7],[7,7,5]]})
+print(df.groupby("id")["name"].agg(list))
+id
+1    [[0, 5, 8]]
+2    [[0, 4, 7]]
+3    [[7, 8, 7]]
+4    [[7, 7, 5]]
+Name: name, dtype: object
+
+DataFrame.copy(deep=True)
+# deep=True,深拷贝,deep=False,浅拷贝
+print(type(df.name))
+# &lt;class 'pandas.core.series.Series'&gt; 调用一列就是一个Series
+# map()根据输入对应关系映射Series的值。用于将Series中的每个值替换为另一个值,该值可能来自function,dict
+Series.map(arg,# Mapping correspondence. 
+           na_action=None)
+s = pd.Series(['cat', 'dog', np.nan, 'rabbit'])
+s.map({'cat': 'kitten', 'dog': 'puppy'})
+.loc[] 
+# 通过标签或布尔数组访问一组行和列。
+            max_speed  shield
+cobra               1       2
+viper               4       5
+sidewinder          7       8
+df.loc['viper']# return a Series
+df.loc[['viper', 'sidewinder']]# [[]]returns a DataFrame
+df.loc['cobra', 'shield']# single label for row and column 返回类型是string
+df.loc[:,["id","cell_type"]]# 先行后列,逗号分割
+# 纯粹基于整数位置的索引，用于按位置选择。
+df.iloc[1:3, 0:3]
+# 只要每个group的第一个,和那个drop_duplicates起到的作用是一样的。
+df.groupby('id').agg('first')
+
+# DataFrame.iterrows(),Iterate over DataFrame rows as (index, Series) pairs.
+df = pd.DataFrame([[1, 1.5]], columns=['int', 'float'])
+row = next(df.iterrows())[1]
+row
+(0,
+ int      1.0
+ float    1.5
+ Name: 0, dtype: float64)
+# 要以 Pandas 的方式迭代遍历DataFrame的行，可以使用：
+for index, row in df.iterrows():
+    print (row["c1"], row["c2"]
+# 将Series转换成DataFrame
+Series.to_frame(name=NoDefault.no_default)
+&gt;&gt;&gt;s = pd.Series(["a", "b", "c"],
+              name="vals")
+&gt;&gt;&gt;s.to_frame()
+  vals
+0    a
+1    b
+2    c </code></pre>
+<p><code>groupby</code>详解</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/101284491">https://zhuanlan.zhihu.com/p/101284491</a></p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106164247955.png" alt="image-20211106164247955" style="zoom:50%;">
+
+<pre><code class="python">group = data.groupby("company")
+group
+&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x000002B7E2650240&gt;</code></pre>
+<p>生成了一个<code>DataFrameGroupBy</code>对象,为了看看<code>group</code>内部究竟是什么,将其转换成<code>list</code>来查看:</p>
+<pre><code class="python">In [8]: list(group)
+Out[8]:
+[('A',   company  salary  age
+  3       A      20   22
+  6       A      23   33), 
+ ('B',   company  salary  age
+  4       B      10   17
+  5       B      21   40
+  8       B       8   30), 
+ ('C',   company  salary  age
+  0       C      43   35
+  1       C      17   25
+  2       C       8   30
+  7       C      49   19)]</code></pre>
+<p>列表由三个元组组成,每个元组中,第一个元素是组别（这里是按照<code>company</code>进行分组，所以最后分为了<code>A</code>,<code>B</code>,<code>C</code>），第二个元素的是对应组别下的<code>DataFrame</code>,整个过程可以图解如下：</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106164453476.png" alt="image-20211106164453476" style="zoom: 67%;">
+
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106171634345.png" alt="image-20211106171634345" style="zoom:67%;">
+
+<p><strong>索引实际上变成了A,group by就是把index由0~N变成了A这一列</strong></p>
+<p><code>agg</code>聚合操作</p>
+<p>聚合操作是<code>groupby</code>后非常常见的操作，会写<code>SQL</code>的朋友对此应该是非常熟悉了。聚合操作可以用来求和、均值、最大值、最小值等。</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106171013110.png" alt="image-20211106171013110" style="zoom:67%;">
+
+<pre><code class="python"># tqdm对于pandas提供了支持
+import pandas as pd
+import numpy as np
+from tqdm import tqdm
+
+df = pd.DataFrame(np.random.randint(0, 100, (100000, 6)))
+# Apply a function along an axis of the DataFrame.
+DataFrame.apply(func,# 应用于每一列或每一行的函数。
+                axis=0,# {0 or ‘index’, 1 or ‘columns’}, default 0
+#  or ‘columns’:apply function to each row. 0 or ‘index’: apply function to each column.
+                raw=False, result_type=None,# {‘expand’, ‘reduce’, ‘broadcast’, None}, default None
+# These only act when axis=1 (columns):None取决于函数的返回值类型： list-like results will be returned as a Series of those. However if the apply function returns a Series these are expanded to columns.
+
+#‘expand’ : list-like results will be turned into columns.
+#‘reduce’ : returns a Series if possible rather than expanding list-like results. This is the opposite of ‘expand’.
+#‘broadcast’ : results will be broadcast to the original shape of the DataFrame, the original index and columns will be retained.
+                args=(), **kwargs)
+# Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
+# (can use `tqdm.gui.tqdm`, `tqdm.notebook.tqdm`, optional kwargs, etc.)
+tqdm.pandas(desc="my bar!")
+# Now you can use `progress_apply` instead of `apply`
+# and `progress_map` instead of `map`
+df.progress_apply(lambda x: x**2)
+# can also groupby:
+# df.groupby(0).progress_apply(lambda x: x**2)
+# Merge DataFrame or named Series objects with a database-style join.
+# A named Series object is treated as a DataFrame with a single named column.
+df.apply()
+DataFrame.merge(right,# DataFrame or named Series 合并的对象
+                how='inner',# {‘left’, ‘right’, ‘outer’, ‘inner’, ‘cross’}, default ‘inner’
+                on=None,# label or list. Column or index level names to join on. 
+                # 必须在两个 DataFrame 中都可以找到。 如果 on 是 None 并且不合并索引，则默认为两个 DataFrame 中列的交集。
+                left_on=None, right_on=None, left_index=False, right_index=False, sort=False, suffixes=('_x', '_y'), copy=True, indicator=False, validate=None)
+# 合并方式
+left: use only keys from left frame, similar to a SQL left outer join; preserve key order.
+right: use only keys from right frame, similar to a SQL right outer join; preserve key order.
+outer: use union of keys from both frames, similar to a SQL full outer join; sort keys lexicographically.
+inner: use intersection of keys from both frames, similar to a SQL inner join; preserve the order of the left keys.
+cross: creates the cartesian product from both frames, preserves the order of the left keys.
+&gt;&gt;&gt;df1 = pd.DataFrame({'a': ['foo', 'bar'], 'b': [1, 2]})
+&gt;&gt;&gt;df2 = pd.DataFrame({'a': ['foo', 'baz'], 'c': [3, 4]})
+&gt;&gt;&gt;df1.merge(df2, how='inner', on='a')
+      a  b  c
+0   foo  1  3
+# 使用布尔表达式查询DataFrame的列。
+df.query(expr, inplace=False, **kwargs)
+# expr 要评估的查询字符串;可以在环境中引用变量,在变量前面加上@字符(@a+b);
+df = pd.DataFrame({'A': range(1, 6),
+                   'B': range(10, 0, -2),
+                   'C C': range(10, 5, -1)})
+df.query('A &gt; B')
+   A  B  C C
+4  5  2    6
+df.isna()
+df.isnull()
+# 都是用来判断是否为nan，完全相同，两个函数是为了模仿R的DataFrame</code></pre>
+<h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>易百教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/matplotlib">https://www.yiibai.com/matplotlib</a></p>
+<p>API：<a target="_blank" rel="noopener" href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a></p>
+<h3 id="plg-fig-ax的区别"><a href="#plg-fig-ax的区别" class="headerlink" title="plg/fig/ax的区别"></a>plg/fig/ax的区别</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/93423829">知乎教程</a></p>
+<p>在matplotlib中,有两种画图方式：</p>
+<ul>
+<li><p><code>plt.figure()</code>：<code>plt.xxx</code>系列。通过<code>plt.xxx</code>来画图,其实是取了一个捷径。这是通过<code>matplotlib</code>提供的一个api,这个<code>plt</code>提供了很多基本的function可以让你很快的画出图来,但是如果你想要更细致的精调,就要使用另外一种方法。</p>
+<pre><code class="python">plt.figure(1)  
+plt.subplot(211)   
+plt.plot(A,B)   
+plt.show()</code></pre>
+</li>
+<li><p><code>fig, ax = plt.subplots()</code>: 这个就是正统的稍微复杂一点的画图方法了。指定figure和axes,然后对axes单独操作。等下就讲figure和axes都神马意思。</p>
+<pre><code class="python">fig, ax = plt.subplots()   
+ax.plot(A,B)</code></pre>
+</li>
+</ul>
+<p>强烈建议在初学matplotlib的时候，<strong>尽量避免使用<code>plt.xxx</code>系列</strong>。当你明白<code>figure/axes/axis</code>都是控制什么的时候，如果你想要简单的制作一个quick and dirty的图，用<code>plt.xxx</code>才是OK。</p>
+<p>matplotlib的名词定于对于非英语母语的人来说实在是太不友好了,尤其是axes。仰天长啸。</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106220938936.png" alt="image-20211106220938936" style="zoom:80%;">
+
+<p><img src="./medias/loading.gif" data-original="/np-pd-plt/image-20220512103718744.png" alt="image-20220512103718744"></p>
+<ul>
+<li><strong>Figure</strong>:<code>fig = plt.figure()</code>: 可以解释为画布。</li>
+<li><ul>
+<li>画图的第一件事，就是创建一个画布figure，然后在这个画布上加各种元素。</li>
+</ul>
+</li>
+<li><strong>Axes</strong>:<code>ax = fig.add_subplot(1,1,1)</code>: 不想定义,没法定义,就叫他axes！</li>
+<li><ul>
+<li>首先，这个不是你画图的xy坐标抽！</li>
+<li>希望当初写这个lib的时候他们用一个更好的名字。。。</li>
+<li>可以把<code>axes</code>理解为你要放到画布上的各个物体。比如你要画一个太阳,一个房子,一个车在画布上,那么太阳是一个<code>axes</code>,房子是一个<code>axes</code>,etc。</li>
+<li>如果你的<code>figure</code>只有一张图,那么你只有一个<code>axes</code>。如果你的<code>figure</code>有<code>subplot</code>，那么每一个<code>subplot</code>就是一个<code>axes</code>。</li>
+<li><code>axes</code>是<code>matlibplot</code>的宇宙中心!<code>axes</code>下可以修改编辑的变量非常多,基本上能包含你的所有需求。</li>
+</ul>
+</li>
+<li><strong>Axis</strong>:<code>ax.xaxis/ax.yaxis</code>: 对,这才是你的xy坐标轴。</li>
+<li><ul>
+<li>每个坐标轴实际上也是<strong>由竖线和数字组成的</strong>,<strong>每一个竖线其实也是一个axis的subplot</strong>，因此<code>ax.xaxis</code>也存在<code>axes</code>这个对象。对这个<code>axes</code>进行编辑就会修改<code>xaxis</code>图像上的表现。</li>
+</ul>
+</li>
+<li><strong>Artist</strong>:基本上，在 Figure上可见的所有东西都是 Artist（甚至是 Figure、Axes 和 Axis 对象）。 这包括 Text 对象、Line2D 对象、集合对象、Patch 对象等。当Figure被渲染时，所有的Artists都被绘制到画布上。 大多数Artists都被绑在axes上； 这样的artist不能被多个轴共享，也不能从一个轴移动到另一个轴。</li>
+</ul>
+<p><strong>「为什么plt没有指定画布和区域也能作图？」</strong></p>
+<p>因为<code>matplotlib</code><strong>默认在最近创建的画布上绘制</strong>,而当你没有指定区域,告诉它去画图,他就会自动去生成一个<code>Axes</code>去绘制,进一步没有画布,也会自动去创建一个<code>Figure</code>,也称为<strong>隐式绘制</strong>。    </p>
+<p><strong>图像的各个部位名称</strong></p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211106221423457.png" alt="image-20211106221423457" style="zoom:80%;">
+
+<p><strong>使用ax标准的流程</strong>：</p>
+<ol>
+<li><strong>创建一个画布(Figure)</strong></li>
+<li><strong>创建一个或者多个Axes</strong></li>
+<li><strong>使用<code>ax.xxxx</code>在指定Axes上绘图</strong></li>
+</ol>
+<p><strong>首先，搞个画布</strong></p>
+<p>我喜欢用<code>subplots</code>这个命令来开始画图。哪怕你没有subplot,也可以用这个subplots来创建一个画布。</p>
+<p>这个function创建了一个大小为<code>(14,7)</code>的画布,把这个画布赋值给变量<code>fig</code>,同时在这个画布上创建了一个<code>axes</code>,把这个<code>axes</code>赋值给<code>ax</code>。这样,所有未来的<code>fig.xxx</code>都是对这个画布的操作，所有<code>ax.xxx</code>都是对这个<code>axes</code>的操作。</p>
+<p>如果你有两个图,那么<code>ax</code>是一个有两个元素<code>ax[0],ax[1]</code>的<code>list</code>。<code>ax[0]</code>就对应第一个<code>subplot</code>的<code>ax</code>。</p>
+<pre><code class="python">fig, ax = plt.subplots(figsize=(14,7))
+# fig, ax = plt.subplots(2,1,figsize=(14,7))
+# ax[0].xxx
+# ax[1].xxx</code></pre>
+<p><strong>好了画布搞好了，画数据。</strong></p>
+<p>注意,我们这里依然不使用plt!因为我们要在这个axes上画数据,因此就用ax.plot()来画。画完第一个再call一次,再画第二个。</p>
+<pre><code class="python">ax.plot(A,B)
+ax.plot(B,A)</code></pre>
+<p><strong>下面开始细节的处理</strong></p>
+<p>数据画好了就可以各种细调坐标轴啊,tick啊之类的。首先把标题和xy坐标轴的标题搞定。Again,不用plt。直接在axes上进行设定。</p>
+<pre><code class="python">ax.set_title('Title',fontsize=18)
+ax.set_xlabel('xlabel', fontsize=18,fontfamily = 'sans-serif',fontstyle='italic')
+ax.set_ylabel('ylabel', fontsize='x-large',fontstyle='oblique')
+ax.legend()</code></pre>
+<p>后是xy坐标轴的一些属性设定, 也是在axes level上完成的。</p>
+<pre><code class="python">ax.set_aspect('equal') 
+ax.minorticks_on() 
+ax.set_xlim(0,16) 
+ax.grid(which='minor', axis='both')</code></pre>
+<p>最后是坐标轴tick和细节,这个在<code>axes.xaxis</code>or<code>axes.yaxis</code>上完成。</p>
+<pre><code class="python">ax.xaxis.set_tick_params(rotation=45,labelsize=18,colors='w') 
+start, end = ax.get_xlim() 
+ax.xaxis.set_ticks(np.arange(start, end,1)) 
+ax.yaxis.tick_right()</code></pre>
+<p>画图的时候,请坚持使用<code>ax</code>格式。</p>
+<pre><code class="python"># 依次创建fig,ax
+fig = plt.figure()
+a1 = fig.add_axes([0,0,1,1])
+x = np.arange(1,11)
+a1.plot(x,np.exp(x))
+a1.set_ylabel('exp')
+fig.legend(labels = ('exp','log'),loc='upper left')
+plt.show()
+# 利用subplots直接获得fig,ax
+N = 45
+x, y = np.random.rand(2, N)
+c = np.random.randint(1, 5, size=N)
+s = np.random.randint(10, 220, size=N)
+
+fig, ax = plt.subplots()
+
+scatter = ax.scatter(x, y, c=c, s=s)
+
+# produce a legend with the unique colors from the scatter
+legend1 = ax.legend(*scatter.legend_elements(),
+                    loc="lower left", title="Classes")
+ax.add_artist(legend1)
+
+# produce a legend with a cross section of sizes from the scatter
+handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6)
+legend2 = ax.legend(handles, labels, loc="upper right", title="Sizes")
+
+plt.show()</code></pre>
+<h3 id="可视化中间特征图"><a href="#可视化中间特征图" class="headerlink" title="可视化中间特征图"></a>可视化中间特征图</h3><p>把网络中间某层的输出的特征图按通道作为图片进行可视化展示即可，如下述代码所示：</p>
+<pre><code class="python">import matplotlib.pyplot as plt
+#get feature map of layer_activation
+plt.matshow(layer_activation[0, :, :, 4], cmap='viridis')</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ztf312/article/details/102474190">cmap参数设置</a></p>
+<h3 id="疑难解惑"><a href="#疑难解惑" class="headerlink" title="疑难解惑"></a>疑难解惑</h3><h4 id="1-整数还是浮点"><a href="#1-整数还是浮点" class="headerlink" title="1.整数还是浮点"></a>1.整数还是浮点</h4><p>为什么例如cityscape的labelID图片用<code>plt.imread</code>读取后再输出无法输出整数而是输出浮点数？</p>
+<pre><code class="python">def imread(fname, format=None):
+    from urllib import parse
+    if format is None:
+        if isinstance(fname, str):
+            parsed = parse.urlparse(fname)
+            # If the string is a URL (Windows paths appear as if they have a
+            # length-1 scheme), assume png.
+            # 如果不是windows路径而是url,则假设是png图片
+            if len(parsed.scheme) &gt; 1:
+                ext = 'png'
+            # 是windows路径,取后缀
+            else:
+                ext = Path(fname).suffix.lower()[1:]
+        elif hasattr(fname, 'geturl'):  # Returned by urlopen().
+            ext = 'png'
+        elif hasattr(fname, 'name'):
+            ext = Path(fname.name).suffix.lower()[1:]
+        else:
+            ext = 'png'
+    else:
+        ext = format
+    # 是png的话采用PIL.PngImagePlugin.PngImageFile而不是PIL.Image.open
+    img_open = (
+        PIL.PngImagePlugin.PngImageFile if ext == 'png' else PIL.Image.open)
+    if isinstance(fname, str):
+        parsed = parse.urlparse(fname)
+        if len(parsed.scheme) &gt; 1:  # Pillow doesn't handle URLs directly.
+            _api.warn_deprecated(
+                "3.4", message="Directly reading images from URLs is "
+                "deprecated since %(since)s and will no longer be supported "
+                "%(removal)s. Please open the URL for reading and pass the "
+                "result to Pillow, e.g. with "
+                "``PIL.Image.open(urllib.request.urlopen(url))``.")
+            # hide imports to speed initial import on systems with slow linkers
+            from urllib import request
+            ssl_ctx = mpl._get_ssl_context()
+            if ssl_ctx is None:
+                _log.debug(
+                    "Could not get certifi ssl context, https may not work."
+                )
+            with request.urlopen(fname, context=ssl_ctx) as response:
+                import io
+                try:
+                    response.seek(0)
+                except (AttributeError, io.UnsupportedOperation):
+                    response = io.BytesIO(response.read())
+                return imread(response, format=ext)
+    with img_open(fname) as image:
+        # 是png采用_pil_png_to_float_array()而不是pil_to_array()
+        return (_pil_png_to_float_array(image)
+                if isinstance(image, PIL.PngImagePlugin.PngImageFile) else
+                pil_to_array(image))
+def _pil_png_to_float_array(pil_png):
+    """Convert a PIL `PNGImageFile` to a 0-1 float array."""
+    mode = pil_png.mode
+    rawmode = pil_png.png.im_rawmode
+    if rawmode == "1":  # Grayscale.
+        return np.asarray(pil_png).astype(np.float32)
+    if rawmode == "L;2":  # Grayscale.
+        return np.divide(pil_png, 2**2 - 1, dtype=np.float32)
+    if rawmode == "L;4":  # Grayscale.
+        return np.divide(pil_png, 2**4 - 1, dtype=np.float32)
+    # rawmode是L,所以被除以了255。
+    if rawmode == "L":  # Grayscale.
+        return np.divide(pil_png, 2**8 - 1, dtype=np.float32)
+    if rawmode == "I;16B":  # Grayscale.
+        return np.divide(pil_png, 2**16 - 1, dtype=np.float32)
+    if mode == "RGB":  # RGB.
+        return np.divide(pil_png, 2**8 - 1, dtype=np.float32)
+    if mode == "P":  # Palette.
+        return np.divide(pil_png.convert("RGBA"), 2**8 - 1, dtype=np.float32)
+    if mode == "LA":  # Grayscale + alpha.
+        return np.divide(pil_png.convert("RGBA"), 2**8 - 1, dtype=np.float32)
+    if mode == "RGBA":  # RGBA.
+        return np.divide(pil_png, 2**8 - 1, dtype=np.float32)
+    raise ValueError(f"Unknown PIL rawmode: {rawmode}")</code></pre>
+<p><code>pil_png.png</code>是<code>&lt;PIL.PngImagePlugin.PngStream object</code>,<code>a = np.array(pil_png) or plt.imshow(pil_png)</code>之后,<code>pil_png.png</code>都会变为None(暂时不知道为什么)</p>
+<p>所以其实乘以255就会得到正确的</p>
+<h4 id="2-cmap问题"><a href="#2-cmap问题" class="headerlink" title="2.cmap问题"></a>2.cmap问题</h4><p>为什么<code>plt.imshow()</code>显示上面的被变成小数的array会是彩色的?</p>
+<pre><code class="python">matplotlib.pyplot.imshow(X,# array-like or PIL image
+                         cmap=None,# 颜色图谱 
+                         norm=None,# 归一化,将scalar归一化到[0,1],默认的话使用线性缩放，最小值映射到0,最大值映射到1
+                         aspect=None, interpolation=None, alpha=None, vmin=None, vmax=None, origin=None, extent=None, *, filternorm=True, filterrad=4.0, resample=None, url=None, data=None, **kwargs)</code></pre>
+<p>Display data as an image, i.e., on a 2D regular raster.</p>
+<p><strong>The input may either be actual RGB(A) data, or 2D scalar data, which will be rendered as a pseudocolor伪彩色 image. For displaying a grayscale image set up the colormapping using the parameters <code>cmap='gray', vmin=0, vmax=255</code>.cmap其实不就是PIL的调色板模式吗？！</strong></p>
+<p>对于X,the image data. Supported array shapes are:</p>
+<ul>
+<li>(M, N): an image with scalar data. The values are <strong>mapped to colors using normalization and a colormap</strong>. See parameters <strong><em>norm</em>, <em>cmap</em>, <em>vmin</em>, <em>vmax</em>.</strong></li>
+<li>(M, N, 3): an image with RGB values (0-1 float or 0-255 int).</li>
+<li>(M, N, 4): an image with RGBA values (0-1 float or 0-255 int), i.e. including transparency.</li>
+</ul>
+<p>The first two dimensions (M, N) define the rows and columns of the image.</p>
+<p>Out-of-range RGB(A) values are clipped.</p>
+<table>
+<thead>
+<tr>
+<th>autumn</th>
+<th>红-橙-黄</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bone</td>
+<td>黑-白，x线</td>
+</tr>
+<tr>
+<td>cool</td>
+<td>青-洋红</td>
+</tr>
+<tr>
+<td>copper</td>
+<td>黑-铜</td>
+</tr>
+<tr>
+<td>flag</td>
+<td>红-白-蓝-黑</td>
+</tr>
+<tr>
+<td>gray</td>
+<td>黑-白</td>
+</tr>
+<tr>
+<td>hot</td>
+<td>黑-红-黄-白</td>
+</tr>
+<tr>
+<td>hsv</td>
+<td>hsv颜色空间， 红-黄-绿-青-蓝-洋红-红</td>
+</tr>
+<tr>
+<td>inferno</td>
+<td>黑-红-黄</td>
+</tr>
+<tr>
+<td>jet</td>
+<td>蓝-青-黄-红</td>
+</tr>
+<tr>
+<td>magma</td>
+<td>黑-红-白</td>
+</tr>
+<tr>
+<td>pink</td>
+<td>黑-粉-白</td>
+</tr>
+<tr>
+<td>plasma</td>
+<td>绿-红-黄</td>
+</tr>
+<tr>
+<td>prism</td>
+<td>红-黄-绿-蓝-紫-…-绿模式</td>
+</tr>
+<tr>
+<td>spring</td>
+<td>洋红-黄</td>
+</tr>
+<tr>
+<td>summer</td>
+<td>绿-黄</td>
+</tr>
+<tr>
+<td>viridis</td>
+<td>蓝-绿-黄</td>
+</tr>
+<tr>
+<td>winter</td>
+<td>蓝-绿</td>
+</tr>
+</tbody></table>
+<p><code>cmap</code>不输入的话默认是<code>viridis</code>模式</p>
+<p>When <strong>using scalar data</strong> and <strong>no explicit norm,</strong> vmin and vmax <strong>define the data range</strong> that the <strong>colormap covers</strong>. By default, <strong>the colormap covers the complete value range of the supplied data</strong>. It is <strong>deprecated to use vmin/vmax when norm is given</strong>. When <strong>using RGB(A) data</strong>, parameters <strong>vmin/vmax are ignored</strong>.</p>
+<p><img src="./medias/loading.gif" data-original="/np-pd-plt/np&amp;pd&amp;plt%5Cimage-20210921200133539.png" alt="vmin&amp;vmax"></p>
+<p>颜色</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20230113063319761.png" alt="image-20230113063319761" style="zoom:67%;">
+
+<h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><p><a target="_blank" rel="noopener" href="https://www.fontke.com/tool/rgb/800000/">根据RGB  CMYK  HSL  HSV  XYZ 值来查询颜色</a></p>
+<pre><code class="python">import matplotlib.image as imgplt
+import matplotlib.pyplot as plt
+x = imgplt.imread('label.png')
+plt.imshow(x[300:350,150:200])
+plt.show()
+#matplotlib显示图像，注意x只用一个[]，不同维度用逗号分割！
+#imread的返回值是图片数据data，数据类型是class:`numpy.array`。这个图片数据data的维度如下：
+#- (M, N) 对于灰度级图片
+#- (M, N, 3) 对于RGB彩色图片.
+#- (M, N, 4) 对于RGBA彩色图片
+plt.colorbar()
+# colorbar()如下图中红框标出</code></pre>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20210422211101827.png" alt="colorbar" style="zoom:67%;">
+
+<pre><code class="python"># Create a new figure, or activate an existing figure.
+plt.figure(num=None,# A unique identifier for the figure.
+           figsize=None,# 指定figure的宽和高，单位为英寸；
+           dpi=None,
+           facecolor=None,# 背景颜色
+           edgecolor=None,# 边界颜色
+           frameon=True,# 是否显示边框
+           FigureClass=&lt;class 'matplotlib.figure.Figure'&gt;, clear=False, **kwargs)
+# 图片的保存
+plt.imsave(filename,X,format='png')
+# 创建单个子图
+plt.subplot(nrows,ncows,index)
+#nrows:行数 ncols:列数 index:索引值,图片放在第几个窗格
+# Create a figure and a set of subplots.
+# 创建多个子图
+pyplot.subplots(nrows=1,# 行数
+                ncols=1,# 列数
+                *, sharex=False, sharey=False, squeeze=True, subplot_kw=None, gridspec_kw=None,                          **fig_kw# 所有其他关键字参数都传递给 pyplot.figure 调用。
+               )-&gt; fig, ax
+# ticks:设置刻度 labels:设置刻度标签
+plt.xticks(ticks=None,labels=None,**kwargs)
+# xlabel: label的文本
+plt.xlabel(xlabel:str)
+# 将图片展示到figure上
+plt.imshow(train_images[i], cmap=plt.cm.binary)
+#train_images[i]:必须是array-like或PIL image
+#cmap:用于将标量数据映射到颜色的Colormap实例或已注册的colormap名称
+# 显示figure
+plt.show()
+# 将当前Axes设置为ax,将当前Figure设置为ax的父级。
+matplotlib.pyplot.sca(ax)# set current ax
+# tight_layout会自动调整子图参数，使之填充整个图像区域。这是个实验特性，可能在一些情况下不工作。它仅仅检查坐标轴标签、刻度标签以及标题的部分。
+# 因为当你拥有多个子图时，你会经常看到不同轴域的标签叠在一起。
+plt.tight_layout()
+# 去掉坐标轴
+ax.axis("off")
+# 去掉刻度
+plt.xticks([])
+plt.yticks([])</code></pre>
+<h3 id="各种图形画法"><a href="#各种图形画法" class="headerlink" title="各种图形画法"></a>各种图形画法</h3><p>散点图</p>
+<pre><code class="python">def plot_embedding(data, label, title):
+    fig, ax = plt.subplots(figsize=(12,7))
+    # 归一化
+    x_min, x_max = np.min(data, 0), np.max(data, 0)
+    data = (data - x_min) / (x_max - x_min)
+    data_s = data[0:-1:3,:]
+    data_d = data[2:-1:3,:]
+    data_n = data[1:-1:3,:]
+    ax.scatter(data_s[:,0],data_s[:,1],c="red",s=3,alpha=0.4,label="S")#label的设置很重要,label是标记了legend
+    ax.scatter(data_d[:,0],data_d[:,1],c="green",s=3,alpha=0.4,label="D1")
+    ax.scatter(data_n[:,0],data_n[:,1],c="blue",s=3,alpha=0.4,label="D2")
+    ax.set_title(title)
+    ax.legend()
+    return fig
+
+fig = plot_embedding(result, label,'t-SNE embedding of the digits')
+plt.show()</code></pre>
+<h2 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h2><p><a target="_blank" rel="noopener" href="https://pillow.readthedocs.io/en/stable/">PIL Api</a></p>
+<pre><code class="python">import numpy as np   #可以这样用PIL读取处理图片,然后最后再转成ndarray
+from PIL import Image
+
+img = Image.open('label.png')
+# 转换成img2之后,此时输出的值是真实的图片的值
+# PIL读取的图片不能输出，用np.array()转化会变成单通道的灰度图
+# PIL图像在转换为numpy.ndarray后，格式为(h,w,c)，像素顺序为RGB；
+# OpenCV在cv2.imread()后数据类型为numpy.ndarray，格式为(h,w,c)，像素顺序为BGR。
+img2 = np.array(img)
+np.unique(img2)
+img.show()
+# 在windows使用自带的图像显示程序显示图像，在linux使用display\eog\xv,具体取决于找到哪个
+# 直接输出img如下
+print(img)
+# &lt;PIL.PngImagePlugin.PngImageFile image mode=L size=2048x1024 at 0x1C137643C70&gt;
+print(img.format)
+# 打印出格式信息，此处输出PNG
+print(img.mode)
+# L
+img3=img.convert("RGB")
+# 转换图片的mode
+# 将array转换成图片
+a = torch.ones((3,2,3))
+import PIL.Image as IMG
+import numpy as np
+a = IMG.fromarray(np.uint8(a))# 必须转换成整数
+print(a)# PIL.Image.Image是一个类实例，包含自己的属性,通道顺序是(H,W,C)
+# &lt;PIL.Image.Image image mode=RGB size=2x3 at 0x7F51B6B9AF10&gt;
+# 转为调色板模式
+new_mask = Image.fromarray(mask.astype(np.uint8)).convert('P')
+# 模式'L'为灰色图像，它的每个像素用8个bit表示，0表示黑，255表示白，其他数字表示不同的灰度。
+# 模式“P”为8位彩色图像，它的每个像素用8个bit表示，其对应的彩色值是按照调色板索引值查询出来的。
+# 0-255,每个对应一个颜色。
+# 标签图像的模式正是'P'模式，因此测试时要生成对应标签图像的图片的话，构建一个调色板然后上色即可。
+new_mask.putpalette(palette)
+# 保存图片,以给定的文件名保存此图像.如果未指定格式,则使用的格式由文件扩展名决定(如果可能)。
+Image.save(fp, format=None, **params)
+img.save('F:/360data/重要数据/桌面/att/050_1.png') #保存
+img = img.resize((ow, oh), Image.BILINEAR)
+# mask用最近邻插值,直接选最近的数据点赋值
+mask = mask.resize((ow, oh), Image.NEAREST)
+Image.crop(left, up, right, below)# 切割图片
+# left：与左边界的距离 up：与上边界的距离 right：还是与左边界的距离 below：还是与上边界的距离
+#旋转图像,逆时针旋转90度,expand默认为0,表示旋转前后尺度不变,从HxW-&gt;HxW,expand=1就是HxW-&gt;WxH
+yourimage.rotate(90,expand=1)</code></pre>
+<p>图像的模式,常见的<strong>mode</strong> 有如下:</p>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20210921164138454.png" alt="图像的mode" style="zoom:80%;">
+
+<p><strong>jpg都是RGB格式</strong> </p>
+<p><strong>png是RGBA格式</strong></p>
+<p><strong>P模式可把我骗惨了，一个Png的图片,使用PIL.Image读取,可能是P模式的，虽然这个png图片你看着是有颜色的,但是其实读出来是1,2,3这种label。如果你把他转为RGB格式，则会变成对应label变成的对应palette</strong></p>
+<p>1:位图 L:灰度模式 </p>
+<p>三通道RGBnumpy读取显示是0-1，而不是0-255，这个是归一化的RGB！！正好和概率二分类对应！</p>
+<p>==<strong>使用FastStone查看图片,图像是24bit是3通道的,8bit的是1通道的！</strong>==如果是8bit却是彩色值的话,那就说明是调色板模式</p>
+<p><strong>Snipaste竟然可以实时获取颜色值！！！如下：</strong></p>
+<p><img src="./medias/loading.gif" data-original="/np-pd-plt/image-20201207093513840.png" alt="采集颜色值"></p>
+<p><strong>tensor与pil相互转换</strong></p>
+<pre><code class="python"># PIL to tensor 
+from PIL import Image
+import torch
+from torchvision import transforms
+
+trans = transforms.Compose([transforms.ToTensor(),
+             transforms.Resize(256),
+             transform.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))]) 
+img = Image.open(img_path)
+img = trans(img)
+img = torch.unsqueeze(0) # 填充一维
+
+# tensor to PIL
+image = im_tensor.cpu().clone()
+image = image.squeeze(0) # 压缩一维
+image = transforms.ToPILImage()(image) # 自动转换为0-255 并变换通道为HWC</code></pre>
+<h3 id="有用的函数"><a href="#有用的函数" class="headerlink" title="有用的函数"></a>有用的函数</h3><p><strong>可视化tensor</strong></p>
+<pre><code class="python">def tensor2im(input_image, imtype=np.uint8):
+    """"
+    Parameters:
+        input_image (tensor) --  输入的tensor，维度为CHW，注意这里没有batch size的维度
+        imtype (type)        --  转换后的numpy的数据类型
+    """
+    mean = [0.485, 0.456, 0.406] # dataLoader中设置的mean参数，需要从dataloader中拷贝过来
+    std = [0.229, 0.224, 0.225]  # dataLoader中设置的std参数，需要从dataloader中拷贝过来
+    if not isinstance(input_image, np.ndarray):
+        if isinstance(input_image, torch.Tensor): # 如果传入的图片类型为torch.Tensor，则读取其数据进行下面的处理
+            image_tensor = input_image.data
+        else:
+            return input_image
+        image_numpy = image_tensor.cpu().float().numpy()  # convert it into a numpy array
+        if image_numpy.shape[0] == 1:  # grayscale to RGB
+            image_numpy = np.tile(image_numpy, (3, 1, 1))
+        for i in range(len(mean)): # 反标准化，乘以方差，加上均值
+            image_numpy[i] = image_numpy[i] * std[i] + mean[i]
+        image_numpy = image_numpy * 255 #反ToTensor(),从[0,1]转为[0,255]
+        image_numpy = np.transpose(image_numpy, (1, 2, 0))  # 从(channels, height, width)变为(height, width, channels)
+    else:  # 如果传入的是numpy数组,则不做处理
+        image_numpy = input_image
+    return image_numpy.astype(imtype)</code></pre>
+<p><strong>特征图热力图</strong></p>
+<pre><code class="python">    def get_heatmap(self,data):
+        data = data[:,:,0]
+        # heatmap = cv2.applyColorMap(np.uint8(255*data), cv2.COLORMAP_JET)
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+        # 引入 FigureCanvasAgg
+        from matplotlib.backends.backend_agg import FigureCanvasAgg
+        plt.clf()
+        sns.heatmap(data, center=0)
+        plt.axis('off')
+        # 引入 Image
+        import PIL.Image as Image
+        # 将plt转化为numpy数据
+        canvas = FigureCanvasAgg(plt.gcf())
+        # 绘制图像
+        canvas.draw()
+        # 获取图像尺寸
+        w, h = canvas.get_width_height()
+        # 解码string 得到argb图像
+        buf = np.fromstring(canvas.tostring_argb(), dtype=np.uint8)
+        # 重构成w h 4(argb)图像
+        buf.shape = (w, h, 4)
+        # 转换为 RGBA
+        buf = np.roll(buf, 3, axis=2)
+        # 得到 Image RGBA图像对象 (需要Image对象的同学到此为止就可以了)
+        image = Image.frombytes("RGBA", (w, h), buf.tobytes())
+        # 转换为numpy array rgba四通道数组
+        image = np.asarray(image)
+        # 转换为rgb图像
+        heatmap = image[:, :, :3]
+
+        return heatmap</code></pre>
+<h2 id="cv2"><a href="#cv2" class="headerlink" title="cv2"></a>cv2</h2><p><a target="_blank" rel="noopener" href="https://docs.opencv.org/4.x/index.html">opencv的API</a></p>
+<h3 id="基本函数-1"><a href="#基本函数-1" class="headerlink" title="基本函数"></a>基本函数</h3><pre><code class="python">import cv2
+# Loads an image from a file.
+cv2.imread(filename[,# Name of file to be loaded.
+          flags]# Flag that can take values of cv2::ImreadModes
+         )
+# 返回值:&lt;class 'numpy.ndarray'&gt;,如果读取文件错误,那么返回空矩阵
+# In the case of color images, the decoded images will have the channels stored in B G R order.
+# 返回的通道顺序为 H W C
+
+cv2.imwrite(filename, img[, params]    ) 
+# 报错,module 'cv2' has no attribute 'imread'
+# 版本问题,这个算法被申请了专利，把版本降下去就可以了。依次执行以下操作
+pip uninstall opencv-python
+pip install opencv-python==3.4.2.16
+pip install opencv-contrib-python==3.4.2.16</code></pre>
+<img src="./medias/loading.gif" data-original="/np-pd-plt/image-20211114001200331.png" alt="目前支持的图片格式" style="zoom:67%;">
+
+<pre><code class="python"># Converts an image from one color space to another.
+# OpenCV默认颜色格式为BGR
+cv.cvtColor(src, code[,# 色彩空间转换代码
+            dst[, dstCn]])
+image=cv.cvtColor(image,cv.COLOR_BGR2RGB)</code></pre>
+<p>R、G、B通道值的常规范围是:</p>
+<ul>
+<li>0 to 255 for CV_8U images</li>
+<li>0 to 65535 for CV_16U images</li>
+<li>0 to 1 for CV_32F images</li>
+</ul>
+<pre><code class="python"># 将多通道的array分为几个单通道的array
+cv.split(img)
+# 将几个单通道的array合并为一个多通道的array
+cv.merge((a1,a2,a3))</code></pre>
+<p><code>ColorConvensionCodes</code></p>
+<ul>
+<li>COLOR_BGR2RGB</li>
+</ul>
+<pre><code class="python"></code></pre>
+<h3 id="实用功能小组件"><a href="#实用功能小组件" class="headerlink" title="实用功能小组件"></a>实用功能小组件</h3><p><strong>show image and mask</strong></p>
+<pre><code class="python">def show_img(img, mask=None):
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+#     img = clahe.apply(img)
+#     plt.figure(figsize=(10,10))
+    plt.imshow(img, cmap='bone')
+
+    if mask is not None:
+        # plt.imshow(np.ma.masked_where(mask!=1, mask), alpha=0.5, cmap='autumn')
+        plt.imshow(mask, alpha=0.5)
+        handles = [Rectangle((0,0),1,1, color=_c) for _c in [(0.667,0.0,0.0), (0.0,0.667,0.0), (0.0,0.0,0.667)]]
+        labels = ["Large Bowel", "Small Bowel", "Stomach"]
+        plt.legend(handles,labels)
+    plt.axis('off')</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/juzicode/p/15659437.html">直方图均衡教程,包括上图的createCLAHE的自适应局部直方图均衡</a></p>
+<p><strong>Histogram Equalization</strong></p>
+<pre><code class="python">import cv2 as cv
+import numpy as np
+from matplotlib import pyplot as plt
+path = "./1.jpeg"
+img = cv.imread(path)
+print(np.shape(img))
+cv.imshow('image',img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+hist,bins = np.histogram(img.flatten(),256,[0,256])
+cdf = hist.cumsum()
+cdf_normalized = cdf * float(hist.max()) / cdf.max()
+plt.plot(cdf_normalized, color = 'b')
+plt.hist(img.flatten(),256,[0,256], color = 'r')
+plt.xlim([0,256])
+plt.legend(('cdf','histogram'), loc = 'upper left')
+plt.show()
+# equ = cv.equalizeHist(img)
+#
+R, G, B = cv.split(img)
+
+output1_R = cv.equalizeHist(R)
+output1_G = cv.equalizeHist(G)
+output1_B = cv.equalizeHist(B)
+
+equ = cv.merge((output1_R, output1_G, output1_B))
+cv.imshow('equ.png',equ)
+cv.waitKey(0)
+cv.destroyAllWindows()</code></pre>
+<p><strong>cv2利用sobel算子检测边缘</strong></p>
+<pre><code class="python">import cv2
+import numpy as np
+img = cv2.imread("D:/gui.jpg", 0)
+x = cv2.Sobel(img, cv2.CV_16S, 1, 0)
+y = cv2.Sobel(img, cv2.CV_16S, 0, 1)
+absX = cv2.convertScaleAbs(x) # 转回unit8
+absY = cv2.convertScaleAbs(y)
+dst = cv2.addWeighted(absX, 0.5, absY, 0.5, 0)
+cv2.imshow("absX", absX)
+cv2.imshow("absY", absY)
+cv2.imshow("Result", dst)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre>
+<h2 id="plotly"><a href="#plotly" class="headerlink" title="plotly"></a>plotly</h2><p><a target="_blank" rel="noopener" href="https://plotly.com/python/">api</a></p>
+<pre><code class="python">import pandas as pd
+pd.options.plotting.backend = "plotly"
+
+df = pd.DataFrame(dict(a=[1,3,2], b=[3,2,1]))
+fig = df.plot()
+fig.show()</code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Dch</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://chenghaoDong666.github.io/np-pd-plt/">http://chenghaoDong666.github.io/np-pd-plt/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Dch</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/numpy/">
+                                    <span class="chip bg-color">numpy</span>
+                                </a>
+                            
+                                <a href="/tags/pandas/">
+                                    <span class="chip bg-color">pandas</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="./medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="./medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'TWPqcJz808PYWJLo2bO5Ni0A-gzGzoHsz',
+        appKey: 'wBrlMIP11gP74GA1P1Rrkpbj',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/pytorch-xue-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/28.jpg" class="responsive-img" alt="pytorch学习">
+                        
+                        <span class="card-title">pytorch学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            简单记录pytorch学习的一些总结
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/pytorch/">
+                        <span class="chip bg-color">pytorch</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/tuo-fu-bi-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/12.jpg" class="responsive-img" alt="托福笔记">
+                        
+                        <span class="card-title">托福笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            新东方托福笔记学习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Tofel/">
+                        <span class="chip bg-color">Tofel</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        //if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+        newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        //}
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 月源<br />'
+            + '文章作者: Dch<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="779322177"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Dch</a>
+			<br>
+            <span id="sitetime"></span>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">174.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+				<span id="busuanzi_container_site_pv" style='display:none'> 
+					<i class="fa fa-heart-o"></i> 
+					本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 
+				</span> 
+			
+			 
+				<span id="busuanzi_container_site_uv" style='display:none'> 
+					人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人. 
+				</span> 
+			
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chenghaoDong666" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1785246872@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1785246872" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1785246872" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2020, 10, 13, 00, 00, 00); //北京时间2020-10-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+<script> 
+	$(document).ready(function () { 
+		var int = setInterval(fixCount, 50); // 50ms周期检测函数 
+		var pvcountOffset = 80000; // 初始化首次数据 
+		var uvcountOffset = 20000; 
+		function fixCount() { 
+			if (document.getElementById("busuanzi_container_site_pv").style.display != "none") { 
+				$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset); 
+				clearInterval(int); 
+			} 
+			if ($("#busuanzi_container_site_pv").css("display") != "none") {
+				$("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+				clearInterval(int); // 停止检测 
+			} 
+		} 
+	}); 
+</script>
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "6ef42b68"
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight+240||document.documentElement.clientHeight+240)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+
+</html>
