@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>大模型(二):对齐(InstructGPT)</title>
+      <link href="/da-mo-xing-er-dui-qi-instructgpt/"/>
+      <url>/da-mo-xing-er-dui-qi-instructgpt/</url>
+      
+        <content type="html"><![CDATA[<p>大模型的训练包括<strong>pre-training</strong>、<strong>SFT</strong>和<strong>Align</strong>，Align比较常说的场景是迁移学习中源域和目标域数据的特征对齐。而在大模型算法中，对齐是指将<strong>大模型的目标</strong>和<strong>人类的意图</strong>对齐。</p><h2 id="InstructGPT"><a href="#InstructGPT" class="headerlink" title="InstructGPT"></a>InstructGPT</h2><h3 id="Key-Insight"><a href="#Key-Insight" class="headerlink" title="Key Insight"></a>Key Insight</h3><p>InstructGPT是OpenAI在GPT-3后的工作，其解决的<strong>主要问题</strong>是<em>虽然大模型逐渐变大，但其不一定能更好满足用户的意图</em>，即<strong>模型没有与用户对齐</strong>。产生该问题的<strong>原因</strong>是：大模型的训练目标是<em>predicting the next token on a webpage from the internet</em>,所以会导致(1):语料中没出现的就是学不到(2)会输出有害、造假、简单无用的信息(从语料中学到)；而用户的目标是<em>follow the user’s instructions helpfully and safely</em> 。OpenAI的解决办法是(1)<strong>制作符合人类意图的数据集进行监督微调</strong>(2)<strong>从人类反馈进行强化学习</strong></p><h3 id="Data-Processing"><a href="#Data-Processing" class="headerlink" title="Data Processing"></a>Data Processing</h3><h3 id="Annotated-Algorithms"><a href="#Annotated-Algorithms" class="headerlink" title="Annotated Algorithms"></a>Annotated Algorithms</h3><h3 id="Experiment-Analysis"><a href="#Experiment-Analysis" class="headerlink" title="Experiment Analysis"></a>Experiment Analysis</h3><h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><blockquote><ul><li><a href="https://arxiv.org/abs/2203.02155">InstructGPT论文</a></li><li><a href="https://www.bilibili.com/video/BV1hd4y187CR/?spm_id_from=333.880.my_history.page.click&amp;vd_source=6c303fe90eb8b5061cfe9cd858f1b83a">李沐-InstructGPT 论文精读</a></li></ul></blockquote>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>北邮教师红黑榜</title>
       <link href="/bei-you-jiao-shi-hong-hei-bang/"/>
       <url>/bei-you-jiao-shi-hong-hei-bang/</url>

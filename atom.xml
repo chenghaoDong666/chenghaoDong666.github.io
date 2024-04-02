@@ -6,7 +6,7 @@
   <link href="http://chenghaodong666.github.io/atom.xml" rel="self"/>
   
   <link href="http://chenghaodong666.github.io/"/>
-  <updated>2024-04-02T18:22:24.006Z</updated>
+  <updated>2024-04-02T18:34:10.971Z</updated>
   <id>http://chenghaodong666.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>大模型(二):对齐(InstructGPT)</title>
+    <link href="http://chenghaodong666.github.io/da-mo-xing-er-dui-qi-instructgpt/"/>
+    <id>http://chenghaodong666.github.io/da-mo-xing-er-dui-qi-instructgpt/</id>
+    <published>2024-04-02T18:31:43.000Z</published>
+    <updated>2024-04-02T18:34:10.971Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;大模型的训练包括&lt;strong&gt;pre-training&lt;/strong&gt;、&lt;strong&gt;SFT&lt;/strong&gt;和&lt;strong&gt;Align&lt;/strong&gt;，Align比较常说的场景是迁移学习中源域和目标域数据的特征对齐。而在大模型算法中，对齐是指将&lt;strong&gt;大</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>北邮教师红黑榜</title>
@@ -486,31 +507,6 @@
     <category term="spark" scheme="http://chenghaodong666.github.io/tags/spark/"/>
     
     <category term="scala" scheme="http://chenghaodong666.github.io/tags/scala/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编程软件trick</title>
-    <link href="http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/"/>
-    <id>http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/</id>
-    <published>2020-12-09T13:35:10.000Z</published>
-    <updated>2023-06-17T10:31:51.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;jupyter-notebook&quot;&gt;&lt;a href=&quot;#jupyter-notebook&quot; class=&quot;headerlink&quot; title=&quot;jupyter notebook&quot;&gt;&lt;/a&gt;jupyter notebook&lt;/h2&gt;&lt;p&gt;jupyter</summary>
-        
-      
-    
-    
-    
-    <category term="软件使用" scheme="http://chenghaodong666.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="编程软件" scheme="http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
