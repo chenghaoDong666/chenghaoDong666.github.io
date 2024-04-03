@@ -38,27 +38,6 @@
   </entry>
   
   <entry>
-    <title>北邮教师红黑榜</title>
-    <link href="http://chenghaodong666.github.io/bei-you-jiao-shi-hong-hei-bang/"/>
-    <id>http://chenghaodong666.github.io/bei-you-jiao-shi-hong-hei-bang/</id>
-    <published>2023-07-02T02:01:22.000Z</published>
-    <updated>2024-04-02T18:22:24.006Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>diffusion model</title>
     <link href="http://chenghaodong666.github.io/diffusion-model/"/>
     <id>http://chenghaodong666.github.io/diffusion-model/</id>
@@ -507,6 +486,31 @@
     <category term="spark" scheme="http://chenghaodong666.github.io/tags/spark/"/>
     
     <category term="scala" scheme="http://chenghaodong666.github.io/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编程软件trick</title>
+    <link href="http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/"/>
+    <id>http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/</id>
+    <published>2020-12-09T13:35:10.000Z</published>
+    <updated>2023-06-17T10:31:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;jupyter-notebook&quot;&gt;&lt;a href=&quot;#jupyter-notebook&quot; class=&quot;headerlink&quot; title=&quot;jupyter notebook&quot;&gt;&lt;/a&gt;jupyter notebook&lt;/h2&gt;&lt;p&gt;jupyter</summary>
+        
+      
+    
+    
+    
+    <category term="软件使用" scheme="http://chenghaodong666.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="编程软件" scheme="http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
