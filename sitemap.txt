@@ -51,9 +51,9 @@ http://chenghaodong666.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/
 http://chenghaodong666.github.io/tags/hexo/
 http://chenghaodong666.github.io/tags/git/
 http://chenghaodong666.github.io/tags/ejs/
+http://chenghaodong666.github.io/tags/Java/
 http://chenghaodong666.github.io/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/
 http://chenghaodong666.github.io/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/
-http://chenghaodong666.github.io/tags/Java/
 http://chenghaodong666.github.io/tags/pytorch/
 http://chenghaodong666.github.io/tags/Matlab/
 http://chenghaodong666.github.io/tags/FCN/
@@ -62,8 +62,8 @@ http://chenghaodong666.github.io/tags/cpp/
 http://chenghaodong666.github.io/tags/django/
 http://chenghaodong666.github.io/tags/numpy/
 http://chenghaodong666.github.io/tags/pandas/
-http://chenghaodong666.github.io/tags/sklearn/
 http://chenghaodong666.github.io/tags/python/
+http://chenghaodong666.github.io/tags/sklearn/
 http://chenghaodong666.github.io/tags/spark/
 http://chenghaodong666.github.io/tags/scala/
 http://chenghaodong666.github.io/tags/tensorflow/
@@ -77,13 +77,13 @@ http://chenghaodong666.github.io/tags/linux/
 http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/
 http://chenghaodong666.github.io/tags/MATLAB/
 http://chenghaodong666.github.io/tags/%E8%AE%BA%E6%96%87%E6%92%B0%E5%86%99/
+http://chenghaodong666.github.io/tags/%E9%9D%A2%E7%BB%8F/
 http://chenghaodong666.github.io/tags/CC-AWB/
 http://chenghaodong666.github.io/tags/Bayes/
-http://chenghaodong666.github.io/tags/%E9%9D%A2%E7%BB%8F/
 http://chenghaodong666.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/
 http://chenghaodong666.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/
-http://chenghaodong666.github.io/categories/Color-Constancy/
 http://chenghaodong666.github.io/categories/%E5%90%8E%E7%AB%AF/
+http://chenghaodong666.github.io/categories/Color-Constancy/
 http://chenghaodong666.github.io/categories/python/
 http://chenghaodong666.github.io/categories/Matlab/
 http://chenghaodong666.github.io/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/
