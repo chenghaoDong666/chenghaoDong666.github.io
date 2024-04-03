@@ -62,8 +62,8 @@ http://chenghaodong666.github.io/tags/cpp/
 http://chenghaodong666.github.io/tags/django/
 http://chenghaodong666.github.io/tags/numpy/
 http://chenghaodong666.github.io/tags/pandas/
-http://chenghaodong666.github.io/tags/sklearn/
 http://chenghaodong666.github.io/tags/python/
+http://chenghaodong666.github.io/tags/sklearn/
 http://chenghaodong666.github.io/tags/spark/
 http://chenghaodong666.github.io/tags/scala/
 http://chenghaodong666.github.io/tags/tensorflow/
