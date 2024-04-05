@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="月源" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    396
+                    395
                 </div>
                 
 
@@ -672,25 +672,23 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5">cppreference</a></p>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="结构struct"><a href="#结构struct" class="headerlink" title="结构struct"></a>结构struct</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">debts</span> <span class="token comment">//定义结构</span>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="结构struct"><a href="#结构struct" class="headerlink" title="结构struct"></a>结构struct</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> debts <span class="token comment" spellcheck="true">//定义结构</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token keyword">double</span> amount<span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>C89中，debts称为标签名（tag），struct tag合起来才是<strong>类型名</strong>.由此使用时要<strong>struct + tag</strong>。<br>可以<strong>象楼上说的，用typedef创建类型名。</strong><br><strong>C99中，可以直接用tag做类型名</strong>。<br><strong>C++中，tag也可以直接用tag做类型名</strong></p>
 <h4 id="动态分配malloc"><a href="#动态分配malloc" class="headerlink" title="动态分配malloc"></a>动态分配malloc</h4><p><code>S=(Stack)malloc(sizeof(struct SNode))</code></p>
 <p>赋值给指针要把malloc分配的内存空间转成对应的指针类型。</p>
 <p>用完之后要<code>free(L1)</code>,完事之后L1不会变为NULL,会变为野指针,所以要注意<code>L1=NULL</code>。</p>
 <h4 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h4><p>auto的原理就是根据后面的值，来自己推测前面的类型是什么。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// auto作用就是迭代容器中所有的元素，每一个元素的临时名字就是x，等同于下边代码。</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
-<span class="token comment">// b为一个容器,效果是利用a遍历并获得b容器中的每一个值,但是a无法影响到b容器中的元素。</span>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// auto作用就是迭代容器中所有的元素，每一个元素的临时名字就是x，等同于下边代码。</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// b为一个容器,效果是利用a遍历并获得b容器中的每一个值,但是a无法影响到b容器中的元素。</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> a<span class="token operator">:</span>b<span class="token punctuation">)</span>
-<span class="token comment">// 加了引用符号,可以对容器中的内容进行赋值,即可通过对a赋值来做到容器b的内容填充。</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>a<span class="token operator">:</span>b<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">// 加了引用符号,可以对容器中的内容进行赋值,即可通过对a赋值来做到容器b的内容填充。</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>a<span class="token operator">:</span>b<span class="token punctuation">)</span></code></pre>
 <p><strong>单双引号的区别</strong></p>
 <p>在C++中单引号表示字符，双引号表示字符串。</p>
 <p><strong>反向迭代器</strong></p>
@@ -1526,7 +1524,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.1k</span>&nbsp;字
+                class="white-color">173.9k</span>&nbsp;字
             
             
             

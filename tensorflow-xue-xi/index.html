@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="月源" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -673,55 +673,47 @@
             <div id="articleContent">
                 <h2 id="Tensorflow1-x"><a href="#Tensorflow1-x" class="headerlink" title="Tensorflow1.x"></a>Tensorflow1.x</h2><p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/install/source_windows#cpu">与python的版本对应关系</a></p>
 <h3 id="tf-keras"><a href="#tf-keras" class="headerlink" title="tf.keras"></a>tf.keras</h3><h4 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h4><p><code>load_weights</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 从TensorFlow或HDF5文件加载所有层权重。</span>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 从TensorFlow或HDF5文件加载所有层权重。</span>
 load_weights<span class="token punctuation">(</span>
     filepath<span class="token punctuation">,</span> by_name<span class="token operator">=</span><span class="token boolean">False</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span></code></pre>
 <p><code>summary</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 打印网络的字符串摘要</span>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 打印网络的字符串摘要</span>
 summary<span class="token punctuation">(</span>
-    line_length<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> positions<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> print_fn<span class="token operator">=</span><span class="token boolean">None</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+    line_length<span class="token operator">=</span>None<span class="token punctuation">,</span> positions<span class="token operator">=</span>None<span class="token punctuation">,</span> print_fn<span class="token operator">=</span>None
+<span class="token punctuation">)</span></code></pre>
 <p><code>fit_generator</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">fit_generator<span class="token punctuation">(</span>
-    generator<span class="token punctuation">,</span> <span class="token comment"># 生成器函数,输出应该是形为（inputs,target）或者（inputs,targets,sample_weight）的元组,</span>
-    <span class="token comment"># 生成器会在数据集上无限循环</span>
-    steps_per_epoch<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment"># 在宣布一个epoch完成并开始下一个epoch之前从生成器产生的总步数（样本批次）。</span>
-    <span class="token comment">#它通常应等于数据集的样本数除以batch_size。</span>
-    epochs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment"># </span>
+<pre class=" language-python"><code class="language-python">fit_generator<span class="token punctuation">(</span>
+    generator<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 生成器函数,输出应该是形为（inputs,target）或者（inputs,targets,sample_weight）的元组,</span>
+    <span class="token comment" spellcheck="true"># 生成器会在数据集上无限循环</span>
+    steps_per_epoch<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 在宣布一个epoch完成并开始下一个epoch之前从生成器产生的总步数（样本批次）。</span>
+    <span class="token comment" spellcheck="true">#它通常应等于数据集的样本数除以batch_size。</span>
+    epochs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># </span>
     verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
-    callbacks<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment"># List of callbacks to be called during training.callbacks类的函数</span>
-    validation_data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment"># 验证集数据</span>
-    validation_steps<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment"># </span>
-    validation_freq<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment"># 多少个epoch验证一次</span>
-    class_weight<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
-    shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token comment"># 没多少个epoch运行一次验证</span>
-    initial_epoch<span class="token operator">=</span><span class="token number">0</span><span class="token comment"># 开始训练的时期（用于恢复之前的训练）</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+    callbacks<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># List of callbacks to be called during training.callbacks类的函数</span>
+    validation_data<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 验证集数据</span>
+    validation_steps<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># </span>
+    validation_freq<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 多少个epoch验证一次</span>
+    class_weight<span class="token operator">=</span>None<span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+    shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 没多少个epoch运行一次验证</span>
+    initial_epoch<span class="token operator">=</span><span class="token number">0</span><span class="token comment" spellcheck="true"># 开始训练的时期（用于恢复之前的训练）</span>
+<span class="token punctuation">)</span></code></pre>
 <h3 id="tf-keras-callbacks"><a href="#tf-keras-callbacks" class="headerlink" title="tf.keras.callbacks"></a>tf.keras.callbacks</h3><p>Callbacks: utilities called at certain points during model training.在训练模型的过程中可能要做一些事。</p>
 <p><code>ModelCheckpoint</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Save the model after every epoch.</span>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Save the model after every epoch.</span>
 tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>callbacks<span class="token punctuation">.</span>ModelCheckpoint<span class="token punctuation">(</span>
-    filepath<span class="token punctuation">,</span> monitor<span class="token operator">=</span><span class="token string">'val_loss'</span><span class="token punctuation">,</span><span class="token comment"># 需要监视的值,通常为:val_acc或val_loss或acc或 loss</span>
-    verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment"># 信息展示模式，0或1。为1表示输出epoch模型保存信息，默认为0表示不输出该信息</span>
-    <span class="token comment"># 信息形如：Epoch 00001: val_acc improved from -inf to 0.49240, saving model to</span>
-    <span class="token comment"># /xxx/checkpoint/model_001-0.3902.h5</span>
-    save_best_only<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment"># 当设置为True时，将只保存在验证集上性能最好的模型</span>
-    save_weights_only<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment">#如果为True,只保存weights,否则保存整个模型</span>
-    mode<span class="token operator">=</span><span class="token string">'auto'</span><span class="token punctuation">,</span><span class="token comment"># 在save_best_only=True时决定性能最佳模型的评判准则</span>
-    <span class="token comment"># 例如,当监测值为val_acc时,模式应为max,当检测值为val_loss时,模式应为min。</span>
-    <span class="token comment"># 在auto模式下，评价准则由被监测值的名字自动推断。</span>
+    filepath<span class="token punctuation">,</span> monitor<span class="token operator">=</span><span class="token string">'val_loss'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 需要监视的值,通常为:val_acc或val_loss或acc或 loss</span>
+    verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 信息展示模式，0或1。为1表示输出epoch模型保存信息，默认为0表示不输出该信息</span>
+    <span class="token comment" spellcheck="true"># 信息形如：Epoch 00001: val_acc improved from -inf to 0.49240, saving model to</span>
+    <span class="token comment" spellcheck="true"># /xxx/checkpoint/model_001-0.3902.h5</span>
+    save_best_only<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 当设置为True时，将只保存在验证集上性能最好的模型</span>
+    save_weights_only<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#如果为True,只保存weights,否则保存整个模型</span>
+    mode<span class="token operator">=</span><span class="token string">'auto'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 在save_best_only=True时决定性能最佳模型的评判准则</span>
+    <span class="token comment" spellcheck="true"># 例如,当监测值为val_acc时,模式应为max,当检测值为val_loss时,模式应为min。</span>
+    <span class="token comment" spellcheck="true"># 在auto模式下，评价准则由被监测值的名字自动推断。</span>
     save_freq<span class="token operator">=</span><span class="token string">'epoch'</span><span class="token punctuation">,</span>
     <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-
+<span class="token punctuation">)</span></code></pre>
 <h2 id="Tensorflow2-x"><a href="#Tensorflow2-x" class="headerlink" title="Tensorflow2.x"></a>Tensorflow2.x</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf?hl=hr">tensorflowAPI</a></p>
 <p><a target="_blank" rel="noopener" href="https://keras-cn.readthedocs.io/en/latest/other/callbacks/">keras教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></p>
@@ -733,29 +725,28 @@ tf<span class="token punctuation">.</span>keras<span class="token punctuation">.
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/30b40b504bae">tf.reduce_sum</a>这个博客太强了，把axis彻彻底底讲明白了   </p>
 <p>本来维度是(2,3) axis=0 完事就变成了(3)   如果keepdims=True，就变成了(1,3)  </p>
 <p>如果axis是一个元组(1,2,3)，就是先加维度1，加完加2，然后加3，如果没有传axis，默认所有的加起来</p>
-<h4 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>cast<span class="token punctuation">(</span>x<span class="token punctuation">,</span>dtype<span class="token punctuation">)</span>
-<span class="token comment">#张量数据类型转换</span>
-<span class="token comment">#x:要转换的数据</span>
-<span class="token comment">#dtype:目标数据类型</span>
-tf<span class="token punctuation">.</span>shape<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>out_type<span class="token operator">=</span>tf<span class="token punctuation">.</span>int32<span class="token punctuation">)</span>
-<span class="token comment">#将矩阵的维度输出为一个维度矩阵</span>
-<span class="token comment">#input:张量</span>
-<span class="token comment">#name:op的名字，用于tensorboard中</span>
-<span class="token comment">#out_type:输出类型</span>
-tf<span class="token punctuation">.</span>pad<span class="token punctuation">(</span>tensor<span class="token punctuation">,</span> paddings<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'CONSTANT'</span><span class="token punctuation">,</span> constant_values<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
-<span class="token comment">#对张量在各个维度进行填充</span>
-<span class="token comment">#tensor:待填充的张量</span>
-<span class="token comment">#paddings:对哪个维度进行填充，上下左右填充多少,例如[[1,2],[3,4]],上填充一行，下2行，左3列，右4列</span>
-<span class="token comment">#mode 填充方式,有’CONSTANT’'REFLECT''SYMMETRIC'</span>
-<span class="token comment">#constant_values:constant填充值</span>
-<span class="token comment">#name：操作的名字</span>
-dataset<span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">(</span>function<span class="token punctuation">)</span>
-<span class="token comment">#对dataset中的每一个tf.Tensor执行该函数操作</span>
+<h4 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h4><pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>cast<span class="token punctuation">(</span>x<span class="token punctuation">,</span>dtype<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#张量数据类型转换</span>
+<span class="token comment" spellcheck="true">#x:要转换的数据</span>
+<span class="token comment" spellcheck="true">#dtype:目标数据类型</span>
+tf<span class="token punctuation">.</span>shape<span class="token punctuation">(</span>input<span class="token punctuation">,</span>name<span class="token operator">=</span>None<span class="token punctuation">,</span>out_type<span class="token operator">=</span>tf<span class="token punctuation">.</span>int32<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#将矩阵的维度输出为一个维度矩阵</span>
+<span class="token comment" spellcheck="true">#input:张量</span>
+<span class="token comment" spellcheck="true">#name:op的名字，用于tensorboard中</span>
+<span class="token comment" spellcheck="true">#out_type:输出类型</span>
+tf<span class="token punctuation">.</span>pad<span class="token punctuation">(</span>tensor<span class="token punctuation">,</span> paddings<span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'CONSTANT'</span><span class="token punctuation">,</span> constant_values<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> name<span class="token operator">=</span>None<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#对张量在各个维度进行填充</span>
+<span class="token comment" spellcheck="true">#tensor:待填充的张量</span>
+<span class="token comment" spellcheck="true">#paddings:对哪个维度进行填充，上下左右填充多少,例如[[1,2],[3,4]],上填充一行，下2行，左3列，右4列</span>
+<span class="token comment" spellcheck="true">#mode 填充方式,有’CONSTANT’'REFLECT''SYMMETRIC'</span>
+<span class="token comment" spellcheck="true">#constant_values:constant填充值</span>
+<span class="token comment" spellcheck="true">#name：操作的名字</span>
+dataset<span class="token punctuation">.</span>map<span class="token punctuation">(</span>function<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#对dataset中的每一个tf.Tensor执行该函数操作</span>
 tf<span class="token punctuation">.</span>fill<span class="token punctuation">(</span>dims<span class="token punctuation">,</span>value<span class="token punctuation">)</span>
-<span class="token comment">#创建一个充满标量值的张量。</span>
+<span class="token comment" spellcheck="true">#创建一个充满标量值的张量。</span>
 tf<span class="token punctuation">.</span>squeeze<span class="token punctuation">(</span>tensor<span class="token punctuation">)</span>
-<span class="token comment">#把所有是1的维度都去除，捏一下，挤压一下，把水分挤出来</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">#把所有是1的维度都去除，捏一下，挤压一下，把水分挤出来</span></code></pre>
 <h4 id="维度"><a href="#维度" class="headerlink" title="维度"></a>维度</h4><p><strong>tensorflow的维度情况是NHWC</strong></p>
 <h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><p>tf的API是不同的<code>Module</code>嵌套,<code>Module</code>里包括<code>Class</code>和<code>Function</code>,<code>Class</code>包括<code>Arguments</code>参数介绍,<code>Attributes</code>属性,<code>Methods</code>方法</p>
 <h4 id="tf-data-Dataset"><a href="#tf-data-Dataset" class="headerlink" title="tf.data.Dataset"></a>tf.data.Dataset</h4><ol>
@@ -765,53 +756,48 @@ tf<span class="token punctuation">.</span>squeeze<span class="token punctuation"
 </ol>
 <p><strong>Source Datasets:</strong></p>
 <p>从列表：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">dataset <span class="token operator">=</span> tf<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">.</span>from_tensor_slices<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre class=" language-python"><code class="language-python">dataset <span class="token operator">=</span> tf<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">.</span>from_tensor_slices<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> element <span class="token keyword">in</span> dataset<span class="token punctuation">:</span>
   <span class="token keyword">print</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span>
-<span class="token comment">#tf.Tensor(1, shape=(), dtype=int32)</span>
-<span class="token comment">#tf.Tensor(2, shape=(), dtype=int32)</span>
-<span class="token comment">#tf.Tensor(3, shape=(), dtype=int32)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">#tf.Tensor(1, shape=(), dtype=int32)</span>
+<span class="token comment" spellcheck="true">#tf.Tensor(2, shape=(), dtype=int32)</span>
+<span class="token comment" spellcheck="true">#tf.Tensor(3, shape=(), dtype=int32)</span></code></pre>
 <p><strong>as_numpy_iterator</strong></p>
 <p>返回一个迭代器，它将数据集的所有元素转换为numpy。</p>
 <p>使用as_numpy_iterator检查数据集的内容。要查看元素的形状和类型，请直接打印数据集元素，而不是使用as_numpy_iterator</p>
 <p><strong>batch</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">batch<span class="token punctuation">(</span>
+<pre class=" language-python"><code class="language-python">batch<span class="token punctuation">(</span>
     batch_size<span class="token punctuation">,</span> drop_remainder<span class="token operator">=</span><span class="token boolean">False</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span></code></pre>
 <p>将连续数据组合为batch，drop_remainder表示如果最后的数据不够一批，是否删除</p>
 <p>组合完的数据会多一个额外的维度batch_size,如下：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">dataset <span class="token operator">=</span> tf<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">.</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+<pre class=" language-python"><code class="language-python">dataset <span class="token operator">=</span> tf<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">.</span>range<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
 dataset <span class="token operator">=</span> dataset<span class="token punctuation">.</span>batch<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> element <span class="token keyword">in</span> dataset<span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span>
-<span class="token comment">#tf.Tensor([0 1 2], shape=(3,), dtype=int64)</span>
-<span class="token comment">#tf.Tensor([3 4 5], shape=(3,), dtype=int64)</span>
-<span class="token comment">#tf.Tensor([6 7], shape=(2,), dtype=int64)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">#tf.Tensor([0 1 2], shape=(3,), dtype=int64)</span>
+<span class="token comment" spellcheck="true">#tf.Tensor([3 4 5], shape=(3,), dtype=int64)</span>
+<span class="token comment" spellcheck="true">#tf.Tensor([6 7], shape=(2,), dtype=int64)</span></code></pre>
 <p><strong>padded_batch</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">padded_batch<span class="token punctuation">(</span>
-    batch_size<span class="token punctuation">,</span> padded_shapes<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> padding_values<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> drop_remainder<span class="token operator">=</span><span class="token boolean">False</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">padded_batch<span class="token punctuation">(</span>
+    batch_size<span class="token punctuation">,</span> padded_shapes<span class="token operator">=</span>None<span class="token punctuation">,</span> padding_values<span class="token operator">=</span>None<span class="token punctuation">,</span> drop_remainder<span class="token operator">=</span><span class="token boolean">False</span>
+<span class="token punctuation">)</span></code></pre>
 <p>也是生成batch的，不同的是如果有变长如何填充：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Components of nested elements can be padded independently.</span>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Components of nested elements can be padded independently.</span>
 elements <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
             <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 dataset <span class="token operator">=</span> tf<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">.</span>from_generator<span class="token punctuation">(</span>
-    <span class="token keyword">lambda</span><span class="token punctuation">:</span> <span class="token builtin">iter</span><span class="token punctuation">(</span>elements<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>tf<span class="token punctuation">.</span>int32<span class="token punctuation">,</span> tf<span class="token punctuation">.</span>int32<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment"># Pad the first component of the tuple to length 4, and the second</span>
-<span class="token comment"># component to the smallest size that fits.</span>
+    <span class="token keyword">lambda</span><span class="token punctuation">:</span> iter<span class="token punctuation">(</span>elements<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>tf<span class="token punctuation">.</span>int32<span class="token punctuation">,</span> tf<span class="token punctuation">.</span>int32<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Pad the first component of the tuple to length 4, and the second</span>
+<span class="token comment" spellcheck="true"># component to the smallest size that fits.</span>
 dataset <span class="token operator">=</span> dataset<span class="token punctuation">.</span>padded_batch<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>
-    padded_shapes<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    padded_shapes<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>None<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     padding_values<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token builtin">list</span><span class="token punctuation">(</span>dataset<span class="token punctuation">.</span>as_numpy_iterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">#[(array([[ 1,  2,  3, -1],</span>
-<span class="token comment">#         [ 4,  5, -1, -1]], dtype=int32),</span>
-<span class="token comment">#  array([[ 10, 100],</span>
-<span class="token comment">#         [ 11,  12]], dtype=int32))]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+list<span class="token punctuation">(</span>dataset<span class="token punctuation">.</span>as_numpy_iterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#[(array([[ 1,  2,  3, -1],</span>
+<span class="token comment" spellcheck="true">#         [ 4,  5, -1, -1]], dtype=int32),</span>
+<span class="token comment" spellcheck="true">#  array([[ 10, 100],</span>
+<span class="token comment" spellcheck="true">#         [ 11,  12]], dtype=int32))]</span></code></pre>
 <p><strong>map</strong></p>
 <p>Maps <code>map_func</code> across the elements of this dataset.</p>
 <p><strong>prefetch（buffer_size）</strong></p>
@@ -830,42 +816,37 @@ dataset <span class="token operator">=</span> dataset<span class="token punctuat
 <h3 id="tf-compat"><a href="#tf-compat" class="headerlink" title="tf.compat"></a>tf.compat</h3><p>提供兼容性功能</p>
 <p>tf.compat.v1.reset_default_graph()   #清除默认图形堆栈并重置全局默认图形。</p>
 <p>具体例子看这个博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/duanlianvip/article/details/98626111%EF%BC%8C%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3%E6%9A%82%E6%97%B6%E5%B0%B1%E6%98%AF%E9%87%8D%E6%96%B0%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%98%B2%E6%AD%A2%E5%9C%A8%E4%BB%A5%E5%89%8D%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E7%94%9F%E6%88%90%E6%96%B0%E8%8A%82%E7%82%B9">https://blog.csdn.net/duanlianvip/article/details/98626111，我的理解暂时就是重新开始，防止在以前的基础上生成新节点</a></p>
-<h3 id="tf-io"><a href="#tf-io" class="headerlink" title="tf.io"></a>tf.io</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">process_example_paths</span><span class="token punctuation">(</span>example<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#先读取再按照对应格式解码</span>
+<h3 id="tf-io"><a href="#tf-io" class="headerlink" title="tf.io"></a>tf.io</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">process_example_paths</span><span class="token punctuation">(</span>example<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true">#先读取再按照对应格式解码</span>
             <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">'feature'</span><span class="token punctuation">:</span> tf<span class="token punctuation">.</span>io<span class="token punctuation">.</span>decode_jpeg<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>io<span class="token punctuation">.</span>read_file<span class="token punctuation">(</span>example<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> channels<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
                     <span class="token string">'label'</span><span class="token punctuation">:</span> tf<span class="token punctuation">.</span>io<span class="token punctuation">.</span>decode_png<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>io<span class="token punctuation">.</span>read_file<span class="token punctuation">(</span>example<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> channels<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-<span class="token comment">#获得如下</span>
-<span class="token comment">#tf.Tensor([600 394   3], shape=(3,), dtype=int32)</span>
-<span class="token comment">#tf.Tensor([600 394   1], shape=(3,), dtype=int32)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">#获得如下</span>
+<span class="token comment" spellcheck="true">#tf.Tensor([600 394   3], shape=(3,), dtype=int32)</span>
+<span class="token comment" spellcheck="true">#tf.Tensor([600 394   1], shape=(3,), dtype=int32)</span></code></pre>
 <h3 id="tf-keras-1"><a href="#tf-keras-1" class="headerlink" title="tf.keras"></a>tf.keras</h3><p>tensorflow的高级API</p>
-<h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 <span class="token keyword">from</span> tensorflow <span class="token keyword">import</span> keras
-<span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>keras <span class="token keyword">import</span> layers<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>keras <span class="token keyword">import</span> layers</code></pre>
 <h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p><code>Input()</code>被用来实例化一个Keras tensor。 </p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Input<span class="token punctuation">(</span>
-    shape<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#一个shape tuple(int),不包括batch size.例如,shape =(32,)表示期望的输入将是batches of 32-dim vectors.</span>
-    <span class="token comment">#该元组的元素可以为None;“None”元素代表形状未知的尺寸。</span>
-    batch_size<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#optional static batch size (integer).</span>
-    name<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#一个可选的名字string for the layer.应该unique,如果不指定会被自动生成</span>
-    dtype<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> sparse<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> tensor<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Input<span class="token punctuation">(</span>
+    shape<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#一个shape tuple(int),不包括batch size.例如,shape =(32,)表示期望的输入将是batches of 32-dim vectors.</span>
+    <span class="token comment" spellcheck="true">#该元组的元素可以为None;“None”元素代表形状未知的尺寸。</span>
+    batch_size<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#optional static batch size (integer).</span>
+    name<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#一个可选的名字string for the layer.应该unique,如果不指定会被自动生成</span>
+    dtype<span class="token operator">=</span>None<span class="token punctuation">,</span> sparse<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> tensor<span class="token operator">=</span>None<span class="token punctuation">,</span>
     ragged<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>A tensor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>A tensor</code></pre>
 <p>Keras张量是一个TensorFlow symbolic tensor object，我们使用某些属性对其进行了扩充，这些属性使我们仅通过了解模型的输入和输出即可构建Keras模型。</p>
 <p>例如,如果<code>a</code>,<code>b</code>,<code>c</code>是Keras Tensor,那么可能:<code>model=Model(input=[a,b],output=c)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># this is a logistic regression in Keras</span>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># this is a logistic regression in Keras</span>
 x <span class="token operator">=</span> Input<span class="token punctuation">(</span>shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 y <span class="token operator">=</span> Dense<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> activation<span class="token operator">=</span><span class="token string">'softmax'</span><span class="token punctuation">)</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-model <span class="token operator">=</span> Model<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+model <span class="token operator">=</span> Model<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></code></pre>
 <p>Note that even if <strong>eager execution is enabled</strong>, <code>Input</code> produces <strong>a symbolic tensor (i.e. a placeholder)</strong>. This symbolic tensor can be used with other TensorFlow ops。</p>
 <h4 id="Model-1"><a href="#Model-1" class="headerlink" title="Model"></a>Model</h4><p><code>Model</code>将layers组合成一个具有training和inference特征的对象. </p>
 <p><a target="_blank" rel="noopener" href="https://keras-cn.readthedocs.io/en/latest/legacy/models/model/">keras教程</a></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Model<span class="token punctuation">(</span>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Model<span class="token punctuation">(</span>
     <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span></code></pre>
 <p>Model的<code>model.__call__()</code>的参数:</p>
 <ul>
 <li>inputs:模型的输入,一个<code>keras.Input</code>对象或一个<code>keras.Input</code>对象的列表</li>
@@ -874,20 +855,19 @@ model <span class="token operator">=</span> Model<span class="token punctuation"
 </ul>
 <p>有两种方式来实例化一个<code>Model</code>:</p>
 <p><strong>1</strong> 使用”Functional API”,从<code>input</code>开始,通过连接起来的layer的calls来指定模型的前向传播,并且最终从输入和输出创建你的模型。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 
 inputs <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Input<span class="token punctuation">(</span>shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 x <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> activation<span class="token operator">=</span>tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>relu<span class="token punctuation">)</span><span class="token punctuation">(</span>inputs<span class="token punctuation">)</span>
 outputs <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> activation<span class="token operator">=</span>tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>softmax<span class="token punctuation">)</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Model<span class="token punctuation">(</span>inputs<span class="token operator">=</span>inputs<span class="token punctuation">,</span> outputs<span class="token operator">=</span>outputs<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Model<span class="token punctuation">(</span>inputs<span class="token operator">=</span>inputs<span class="token punctuation">,</span> outputs<span class="token operator">=</span>outputs<span class="token punctuation">)</span></code></pre>
 <p><strong>2</strong> By subclassing the <code>Model</code> class:这种情况下,你将你的layers定义在<code>__init__</code>并且你应该实现模型的前向传播在<code>__call__</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 
 <span class="token keyword">class</span> <span class="token class-name">MyModel</span><span class="token punctuation">(</span>tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
   <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token builtin">super</span><span class="token punctuation">(</span>MyModel<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    super<span class="token punctuation">(</span>MyModel<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
     self<span class="token punctuation">.</span>dense1 <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> activation<span class="token operator">=</span>tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>relu<span class="token punctuation">)</span>
     self<span class="token punctuation">.</span>dense2 <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> activation<span class="token operator">=</span>tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>softmax<span class="token punctuation">)</span>
 
@@ -895,107 +875,99 @@ model <span class="token operator">=</span> tf<span class="token punctuation">.<
     x <span class="token operator">=</span> self<span class="token punctuation">.</span>dense1<span class="token punctuation">(</span>inputs<span class="token punctuation">)</span>
     <span class="token keyword">return</span> self<span class="token punctuation">.</span>dense2<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-model <span class="token operator">=</span> MyModel<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+model <span class="token operator">=</span> MyModel<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>你可以选择性的设立一个<code>training</code>argument(boolean) 在<code>call</code>,你可以使用这个参数在训练阶段和推断阶段指定不同的行为:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">call</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> inputs<span class="token punctuation">,</span> training<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">call</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> inputs<span class="token punctuation">,</span> training<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     x <span class="token operator">=</span> self<span class="token punctuation">.</span>dense1<span class="token punctuation">(</span>inputs<span class="token punctuation">)</span>
     <span class="token keyword">if</span> training<span class="token punctuation">:</span>
       x <span class="token operator">=</span> self<span class="token punctuation">.</span>dropout<span class="token punctuation">(</span>x<span class="token punctuation">,</span> training<span class="token operator">=</span>training<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>dense2<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>dense2<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>模型一旦建立,你可以为你的模型配置losses和metrics 通过<code>model.compile()</code>,训练模型通过<code>model.fit()</code>,或者使用<code>model.predict()</code>预测模型。</p>
 <p><code>compile</code></p>
 <p>配置模型用于训练</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">compile</span><span class="token punctuation">(</span>
-    optimizer<span class="token operator">=</span><span class="token string">'rmsprop'</span><span class="token punctuation">,</span><span class="token comment">#String(name of optimizer)or optimizer instance.See tf.keras.optimizers.</span>
-    loss<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment"># String(name of objective function),objective function or tf.keras.losses.Loss 实例.</span>
-    metrics<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#List of metrics在训练和测试阶段被评估.里面的每一个可以是a string(name of a built-in function),</span>
-    <span class="token comment">#function,或者a tf.keras.metrics.Metric实例.</span>
-    loss_weights<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    weighted_metrics<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> run_eagerly<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> steps_per_execution<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
+<pre class=" language-python"><code class="language-python">compile<span class="token punctuation">(</span>
+    optimizer<span class="token operator">=</span><span class="token string">'rmsprop'</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#String(name of optimizer)or optimizer instance.See tf.keras.optimizers.</span>
+    loss<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># String(name of objective function),objective function or tf.keras.losses.Loss 实例.</span>
+    metrics<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#List of metrics在训练和测试阶段被评估.里面的每一个可以是a string(name of a built-in function),</span>
+    <span class="token comment" spellcheck="true">#function,或者a tf.keras.metrics.Metric实例.</span>
+    loss_weights<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    weighted_metrics<span class="token operator">=</span>None<span class="token punctuation">,</span> run_eagerly<span class="token operator">=</span>None<span class="token punctuation">,</span> steps_per_execution<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
 <span class="token punctuation">)</span>
-<span class="token comment">#对于loss,An objective function is any callable with the signature</span>
+<span class="token comment" spellcheck="true">#对于loss,An objective function is any callable with the signature</span>
 loss <span class="token operator">=</span> fn<span class="token punctuation">(</span>y_true<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span>
-<span class="token comment">#y_true为GT,shape=[batch_size, d0,...,dN] y_pred为预测值,shape=[batch_size, d0,...,dN]</span>
-<span class="token comment">#它返回一个加权损失浮点张量.如果使用自定义Loss实例,并且将reduce设置为NONE,则返回值的形状为[batch_size,d0,...,dN-1],即每个样本或每个时间步的loss;否则,它是一个scalar.如果模型具有多个输出，则可以通过传递dict或a list of losses来在每个输出上使用不同的loss.然后,模型将minimized的loss将是所有单个loss的总和。</span>
-<span class="token comment">#对于metrics,经典的你可以使用</span>
+<span class="token comment" spellcheck="true">#y_true为GT,shape=[batch_size, d0,...,dN] y_pred为预测值,shape=[batch_size, d0,...,dN]</span>
+<span class="token comment" spellcheck="true">#它返回一个加权损失浮点张量.如果使用自定义Loss实例,并且将reduce设置为NONE,则返回值的形状为[batch_size,d0,...,dN-1],即每个样本或每个时间步的loss;否则,它是一个scalar.如果模型具有多个输出，则可以通过传递dict或a list of losses来在每个输出上使用不同的loss.然后,模型将minimized的loss将是所有单个loss的总和。</span>
+<span class="token comment" spellcheck="true">#对于metrics,经典的你可以使用</span>
 metrics <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'accuracy'</span><span class="token punctuation">]</span>
-<span class="token comment">#A function is any callable with the signature</span>
+<span class="token comment" spellcheck="true">#A function is any callable with the signature</span>
 result <span class="token operator">=</span> fn<span class="token punctuation">(</span>y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span>
-<span class="token comment">#对于多输出模型的不同输出指定不同metrics,你也可以传递一个dict,例如</span>
+<span class="token comment" spellcheck="true">#对于多输出模型的不同输出指定不同metrics,你也可以传递一个dict,例如</span>
 metrics<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'output_a'</span> <span class="token punctuation">:</span> <span class="token string">'accuracy'</span><span class="token punctuation">,</span> <span class="token string">'output_b'</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'accuracy'</span><span class="token punctuation">,</span> <span class="token string">'mse'</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
-<span class="token comment">#你也可以传递一个list(len = len(outputs))</span>
+<span class="token comment" spellcheck="true">#你也可以传递一个list(len = len(outputs))</span>
 metrics<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'accuracy'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'accuracy'</span><span class="token punctuation">,</span> <span class="token string">'mse'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 metrics<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'accuracy'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'accuracy'</span><span class="token punctuation">,</span> <span class="token string">'mse'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-<span class="token comment">#当你传递string例如'accuracy'或'acc',我们将它们one of</span>
-<span class="token comment">#tf.keras.metrics.BinaryAccuracy,</span>
-<span class="token comment">#tf.keras.metrics.CategoricalAccuracy,</span>
-<span class="token comment">#tf.keras.metrics.SparseCategoricalAccuracy</span>
-<span class="token comment">#基于使用的损失函数和模型输出的shape选择一个,我们对'crossentropy'和'ce'做类似的转换.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">#当你传递string例如'accuracy'或'acc',我们将它们one of</span>
+<span class="token comment" spellcheck="true">#tf.keras.metrics.BinaryAccuracy,</span>
+<span class="token comment" spellcheck="true">#tf.keras.metrics.CategoricalAccuracy,</span>
+<span class="token comment" spellcheck="true">#tf.keras.metrics.SparseCategoricalAccuracy</span>
+<span class="token comment" spellcheck="true">#基于使用的损失函数和模型输出的shape选择一个,我们对'crossentropy'和'ce'做类似的转换.</span></code></pre>
 <p><code>fit</code></p>
 <p>为模型训练固定的epoch。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">fit<span class="token punctuation">(</span>
-    x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#Input data</span>
-    y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#Target data</span>
-    batch_size<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#int或None,如果未指定,默认为batch_size=32,如果x是datasets,generators或者keras.util.Swquence</span>
-    <span class="token comment">#无需指定,(因为他们自己生成batches)</span>
-    epochs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment">#int</span>
-    verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment">#0,1,2.详细模式, 0=silent,1=progress bar,2=one line per epoch.</span>
-    <span class="token comment">#请注意,progress bar在logged到文件时不是特别有用,因此,如果不以交互方式运行(例如,在生产环境中),建议使用verbose = 2.</span>
-    callbacks<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    validation_split<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> validation_data<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> class_weight<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    sample_weight<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> initial_epoch<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> steps_per_epoch<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    validation_steps<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> validation_batch_size<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> validation_freq<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+<pre class=" language-python"><code class="language-python">fit<span class="token punctuation">(</span>
+    x<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#Input data</span>
+    y<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#Target data</span>
+    batch_size<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#int或None,如果未指定,默认为batch_size=32,如果x是datasets,generators或者keras.util.Swquence</span>
+    <span class="token comment" spellcheck="true">#无需指定,(因为他们自己生成batches)</span>
+    epochs<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#int</span>
+    verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#0,1,2.详细模式, 0=silent,1=progress bar,2=one line per epoch.</span>
+    <span class="token comment" spellcheck="true">#请注意,progress bar在logged到文件时不是特别有用,因此,如果不以交互方式运行(例如,在生产环境中),建议使用verbose = 2.</span>
+    callbacks<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    validation_split<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> validation_data<span class="token operator">=</span>None<span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> class_weight<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    sample_weight<span class="token operator">=</span>None<span class="token punctuation">,</span> initial_epoch<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> steps_per_epoch<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    validation_steps<span class="token operator">=</span>None<span class="token punctuation">,</span> validation_batch_size<span class="token operator">=</span>None<span class="token punctuation">,</span> validation_freq<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
     max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span>
 <span class="token punctuation">)</span>
-<span class="token comment">#对于input data,可以是</span>
-<span class="token comment">#A Numpy array(or array-like),或者a list of arrays(如果模型有多个输入)</span>
-<span class="token comment">#A Tensorflow tensor,或者a list of tensors(如果模型有多个输入)</span>
-<span class="token comment">#A dict 映射input names到相应的array/tensors,如果模型有named inputs</span>
-<span class="token comment">#A tf.data dataset,其应该返回要么是(inputs,targets)要么是(inputs, targets, sample_weights)</span>
-<span class="token comment">#A generator or keras.util.Sequence返回(inputs, targets)或者(inputs, targets, sample_weights)</span>
-<span class="token comment">#对于target_data,与x类似,可以是Numpy arrays或者Tensorflow tensor(s),但是必须与x保持一致.当x是dataset,generator或者keras.utils.Sequence时,y不应该被指定.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">#对于input data,可以是</span>
+<span class="token comment" spellcheck="true">#A Numpy array(or array-like),或者a list of arrays(如果模型有多个输入)</span>
+<span class="token comment" spellcheck="true">#A Tensorflow tensor,或者a list of tensors(如果模型有多个输入)</span>
+<span class="token comment" spellcheck="true">#A dict 映射input names到相应的array/tensors,如果模型有named inputs</span>
+<span class="token comment" spellcheck="true">#A tf.data dataset,其应该返回要么是(inputs,targets)要么是(inputs, targets, sample_weights)</span>
+<span class="token comment" spellcheck="true">#A generator or keras.util.Sequence返回(inputs, targets)或者(inputs, targets, sample_weights)</span>
+<span class="token comment" spellcheck="true">#对于target_data,与x类似,可以是Numpy arrays或者Tensorflow tensor(s),但是必须与x保持一致.当x是dataset,generator或者keras.utils.Sequence时,y不应该被指定.</span></code></pre>
 <p><code>evalute</code></p>
 <p>返回测试模式下的loss value &amp; metrics values.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">evaluate<span class="token punctuation">(</span>
-    x<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> sample_weight<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> steps<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    callbacks<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+<pre class=" language-python"><code class="language-python">evaluate<span class="token punctuation">(</span>
+    x<span class="token operator">=</span>None<span class="token punctuation">,</span> y<span class="token operator">=</span>None<span class="token punctuation">,</span> batch_size<span class="token operator">=</span>None<span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> sample_weight<span class="token operator">=</span>None<span class="token punctuation">,</span> steps<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    callbacks<span class="token operator">=</span>None<span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
     return_dict<span class="token operator">=</span><span class="token boolean">False</span>
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Scalar test loss<span class="token comment">#(如果模型只有一个输出且没有metrics)</span>
-<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token keyword">or</span> <span class="token builtin">list</span> of scalars<span class="token comment">#(如果模型有多个输出且有metrics)</span>
-<span class="token comment">#属性modle.metrics_name将为你展示标量输出的标签.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Scalar test loss<span class="token comment" spellcheck="true">#(如果模型只有一个输出且没有metrics)</span>
+<span class="token operator">-</span><span class="token operator">></span><span class="token operator">or</span> list of scalars<span class="token comment" spellcheck="true">#(如果模型有多个输出且有metrics)</span>
+<span class="token comment" spellcheck="true">#属性modle.metrics_name将为你展示标量输出的标签.</span></code></pre>
 <p><code>predict</code></p>
 <p>生成输入样本的输出预测。</p>
 <p>计算是分批进行的。 此方法专为在大规模输入中的性能而设计。</p>
 <p> 对于适合one batch的少量输入，建议您直接使用<code>__call__</code>来加快执行速度,例如,如果您有<code>tf.keras.layers.BatchNormalization</code>这样的在inference中的行为有所不同的layers，则可以使用<code>model(x)</code>或<code>model(x, training = False)</code>. 另外，请注意，test loss不受诸如noise和dropout之类的regularization layers的影响。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">predict<span class="token punctuation">(</span>
-    x<span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> steps<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> callbacks<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
+<pre class=" language-python"><code class="language-python">predict<span class="token punctuation">(</span>
+    x<span class="token punctuation">,</span> batch_size<span class="token operator">=</span>None<span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> steps<span class="token operator">=</span>None<span class="token punctuation">,</span> callbacks<span class="token operator">=</span>None<span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
     workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span>
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Numpy array<span class="token punctuation">(</span>s<span class="token punctuation">)</span> of predictions<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Numpy array<span class="token punctuation">(</span>s<span class="token punctuation">)</span> of predictions<span class="token punctuation">.</span></code></pre>
 <h4 id="Sequential"><a href="#Sequential" class="headerlink" title="Sequential"></a>Sequential</h4><p><code>Sequential</code>组合一个layers的线性堆叠成一个 <code>tf.keras.Model</code>。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
-    layers<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#Optional list of layers to add to the model.</span>
-    name<span class="token operator">=</span><span class="token boolean">None</span><span class="token comment">#</span>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+    layers<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#Optional list of layers to add to the model.</span>
+    name<span class="token operator">=</span>None<span class="token comment" spellcheck="true">#</span>
 <span class="token punctuation">)</span>
-<span class="token comment">#eg:</span>
-<span class="token comment"># Optionally, the first layer can receive an `input_shape` argument:</span>
+<span class="token comment" spellcheck="true">#eg:</span>
+<span class="token comment" spellcheck="true"># Optionally, the first layer can receive an `input_shape` argument:</span>
 model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span><span class="token punctuation">)</span>
 model<span class="token punctuation">.</span>add<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> input_shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment"># Afterwards, we do automatic shape inference:</span>
+<span class="token comment" spellcheck="true"># Afterwards, we do automatic shape inference:</span>
 model<span class="token punctuation">.</span>add<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">#注意,您也可以省略“ input_shape”参数.在这种情况下,直到第一次调用training/evaluation方法(由于尚未构建),模型才具有任何权重.</span>
-<span class="token comment">#这个input_shape是指单个元素的维度,不算batch_size那个维度.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token comment" spellcheck="true">#注意,您也可以省略“ input_shape”参数.在这种情况下,直到第一次调用training/evaluation方法(由于尚未构建),模型才具有任何权重.</span>
+<span class="token comment" spellcheck="true">#这个input_shape是指单个元素的维度,不算batch_size那个维度.</span></code></pre>
 <h4 id="tf-keras-backend"><a href="#tf-keras-backend" class="headerlink" title="tf.keras.backend"></a>tf.keras.backend</h4><p><a target="_blank" rel="noopener" href="https://keras-cn.readthedocs.io/en/latest/backend/">https://keras-cn.readthedocs.io/en/latest/backend/</a></p>
 <p>keras后端API，有Theano和Tensorflow</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>clear_session<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">#结束当前的TF计算图，并新建一个。有效的避免模型/层的混乱</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>clear_session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#结束当前的TF计算图，并新建一个。有效的避免模型/层的混乱</span></code></pre>
 <h4 id="tf-keras-datasets"><a href="#tf-keras-datasets" class="headerlink" title="tf.keras.datasets"></a>tf.keras.datasets</h4><p><strong>Overview</strong></p>
 <ul>
 <li>boston_housing</li>
@@ -1007,37 +979,33 @@ model<span class="token punctuation">.</span>add<span class="token punctuation">
 <li>reuters</li>
 </ul>
 <p><strong>mnist</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>datasets<span class="token punctuation">.</span>mnist<span class="token punctuation">.</span>load_data<span class="token punctuation">(</span>
-    path<span class="token operator">=</span><span class="token string">'mnist.npz'</span> <span class="token comment">#本地缓存的名字,不设置的话默认就是这个了</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="tf-keras-models"><a href="#tf-keras-models" class="headerlink" title="tf.keras.models"></a>tf.keras.models</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>models<span class="token punctuation">.</span>load_model<span class="token punctuation">(</span>filepath<span class="token punctuation">,</span> custom_objects<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token builtin">compile</span><span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> options<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
-<span class="token comment">#可选</span>
-<span class="token comment">#compile:布尔值，是否在加载后编译模型</span>
-<span class="token comment">#options:可选</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>datasets<span class="token punctuation">.</span>mnist<span class="token punctuation">.</span>load_data<span class="token punctuation">(</span>
+    path<span class="token operator">=</span><span class="token string">'mnist.npz'</span> <span class="token comment" spellcheck="true">#本地缓存的名字,不设置的话默认就是这个了</span>
+<span class="token punctuation">)</span></code></pre>
+<h4 id="tf-keras-models"><a href="#tf-keras-models" class="headerlink" title="tf.keras.models"></a>tf.keras.models</h4><pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>models<span class="token punctuation">.</span>load_model<span class="token punctuation">(</span>filepath<span class="token punctuation">,</span> custom_objects<span class="token operator">=</span>None<span class="token punctuation">,</span> compile<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> options<span class="token operator">=</span>None<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#可选</span>
+<span class="token comment" spellcheck="true">#compile:布尔值，是否在加载后编译模型</span>
+<span class="token comment" spellcheck="true">#options:可选</span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sjtuxx_lee/article/details/80399514">keras保存和加载模型的方法</a></p>
 <h4 id="tf-keras-utils"><a href="#tf-keras-utils" class="headerlink" title="tf.keras.utils"></a>tf.keras.utils</h4><p>tf.keras.utils.plot_model </p>
 <h4 id="tf-keras-layers"><a href="#tf-keras-layers" class="headerlink" title="tf.keras.layers"></a>tf.keras.layers</h4><p><code>tf.keras.layers.Conv2D</code></p>
 <p>该层创建a conv kernel，该conv kernel与该层input进行卷积以产生a tensor of outpus. 如果<code>use_bias</code>为True，则会创建一个bias vector并将其添加到outputs中。 最后，如果<code>activation</code>不为<code>None</code>，则它也将应用于输出。</p>
 <p>当使用该层作为model的第一个layer时,要提供关键的<code>input_shape</code>(tuple of integers),eg,<code>input_shape=(128,128,3)</code>对于128x128 RGB图片如果<code>data_format="channels_last"</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Conv2D<span class="token punctuation">(</span>
-    filters<span class="token punctuation">,</span><span class="token comment">#卷积过滤器的数量,对应输出的维度</span>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Conv2D<span class="token punctuation">(</span>
+    filters<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#卷积过滤器的数量,对应输出的维度</span>
     kernel_size<span class="token punctuation">,</span> strides<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token string">'valid'</span><span class="token punctuation">,</span>
-    data_format<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> dilation_rate<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> groups<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> activation<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
+    data_format<span class="token operator">=</span>None<span class="token punctuation">,</span> dilation_rate<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> groups<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> activation<span class="token operator">=</span>None<span class="token punctuation">,</span>
     use_bias<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> kernel_initializer<span class="token operator">=</span><span class="token string">'glorot_uniform'</span><span class="token punctuation">,</span>
-    bias_initializer<span class="token operator">=</span><span class="token string">'zeros'</span><span class="token punctuation">,</span> kernel_regularizer<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    bias_regularizer<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> activity_regularizer<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> kernel_constraint<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    bias_constraint<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>A tensor of rank <span class="token number">4</span><span class="token operator">+</span> representing activation<span class="token punctuation">(</span>conv2d<span class="token punctuation">(</span>inputs<span class="token punctuation">,</span> kernel<span class="token punctuation">)</span> <span class="token operator">+</span> bias<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># The inputs are 28x28 RGB images with `channels_last` and the batch</span>
-<span class="token comment"># size is 4.</span>
+    bias_initializer<span class="token operator">=</span><span class="token string">'zeros'</span><span class="token punctuation">,</span> kernel_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    bias_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span> activity_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span> kernel_constraint<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    bias_constraint<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>A tensor of rank <span class="token number">4</span><span class="token operator">+</span> representing activation<span class="token punctuation">(</span>conv2d<span class="token punctuation">(</span>inputs<span class="token punctuation">,</span> kernel<span class="token punctuation">)</span> <span class="token operator">+</span> bias<span class="token punctuation">)</span></code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># The inputs are 28x28 RGB images with `channels_last` and the batch</span>
+<span class="token comment" spellcheck="true"># size is 4.</span>
 input_shape <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 x <span class="token operator">=</span> tf<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span>input_shape<span class="token punctuation">)</span>
-y <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Conv2D<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> activation<span class="token operator">=</span><span class="token string">'relu'</span><span class="token punctuation">,</span> input_shape<span class="token operator">=</span>input_shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token comment">#不用batch</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>y<span class="token punctuation">.</span>shape<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+y <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Conv2D<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> activation<span class="token operator">=</span><span class="token string">'relu'</span><span class="token punctuation">,</span> input_shape<span class="token operator">=</span>input_shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#不用batch</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>y<span class="token punctuation">.</span>shape<span class="token punctuation">)</span></code></pre>
 <p>$input_shape$</p>
 <p>4+D tensor with shape: <code>batch_shape + (channels, rows, cols)</code> if <code>data_format='channels_first'</code> </p>
 <p>or 4+D tensor with shape: <code>batch_shape + (rows, cols, channels)</code> if <code>data_format='channels_last'</code>.</p>
@@ -1047,16 +1015,15 @@ y <span class="token operator">=</span> tf<span class="token punctuation">.</spa
 <p><code>rows</code> and <code>cols</code> values might have changed due to padding.</p>
 <p><code>tf.keras.layers.Dense</code></p>
 <p>全连接</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span>
-    units<span class="token punctuation">,</span><span class="token comment">#正整数,输出空间的维数</span>
-    activation<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#激活函数</span>
-    use_bias<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token comment">#是否使用bias vector</span>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Dense<span class="token punctuation">(</span>
+    units<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#正整数,输出空间的维数</span>
+    activation<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#激活函数</span>
+    use_bias<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#是否使用bias vector</span>
     kernel_initializer<span class="token operator">=</span><span class="token string">'glorot_uniform'</span><span class="token punctuation">,</span>
-    bias_initializer<span class="token operator">=</span><span class="token string">'zeros'</span><span class="token punctuation">,</span> kernel_regularizer<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    bias_regularizer<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> activity_regularizer<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> kernel_constraint<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
-    bias_constraint<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+    bias_initializer<span class="token operator">=</span><span class="token string">'zeros'</span><span class="token punctuation">,</span> kernel_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    bias_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span> activity_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span> kernel_constraint<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    bias_constraint<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
+<span class="token punctuation">)</span></code></pre>
 <p><code>Dense</code>实现了这个操作:<code>output = activation(dot(input, kernel) +bias)</code>其中<code>activation</code>是element-wise激活函数作为<code>activation</code>参数传递进来,<code>kernel</code>是被layer创建的权重矩阵,<code>bias</code>是由layers创建的bias vecvor(只在<code>use_bias</code>是<code>True</code>的时候)</p>
 <p>此外,layer被调用一次之后,属性便无法更改(可训练属性除外).</p>
 <p>$input_shape$</p>
@@ -1065,43 +1032,38 @@ y <span class="token operator">=</span> tf<span class="token punctuation">.</spa
 <p>N维张量的shape:<code>(batch_size,...,units)</code>.例如,一个2D输入的shape:<code>(batch_size,input_dim)</code>,输入可能有shape:<code>(batch_size,units)</code></p>
 <p><code>tf.keras.layers.Flatten</code></p>
 <p>重新格式化数据$(B,H,W,C)\to(B,H\times W\times C)$   $(B,)\to(B,1)$</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Flatten<span class="token punctuation">(</span>
-    data_format<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span><span class="token comment">#data_format有channel_last(默认)和channel_first</span>
-    <span class="token operator">**</span>kwargs<span class="token comment">#</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Flatten<span class="token punctuation">(</span>
+    data_format<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#data_format有channel_last(默认)和channel_first</span>
+    <span class="token operator">**</span>kwargs<span class="token comment" spellcheck="true">#</span>
+<span class="token punctuation">)</span></code></pre>
 <p><code>tf.keras.layers.Softmax</code></p>
 <p>Softamx激活函数.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Softmax<span class="token punctuation">(</span>
-    axis<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment">#Integer,or list of Integers,softmax应用的维度</span>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>Softmax<span class="token punctuation">(</span>
+    axis<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#Integer,or list of Integers,softmax应用的维度</span>
     <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">)</span></code></pre>
 <h4 id="tf-keras-losses"><a href="#tf-keras-losses" class="headerlink" title="tf.keras.losses"></a>tf.keras.losses</h4><p>Built-in loss functions.</p>
 <p><code>tf.keras.losses.SparseCategoricalCrossentropy</code></p>
 <p>计算labels和predictions之间的crossentropy。当有两个或者更多label类别时使用。我们期望labels是integers。如果你想让labels使用<code>one-hot</code>方式,请使用</p>
 <p><code>CategoricalCrossentropy</code>损失.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>losses<span class="token punctuation">.</span>SparseCategoricalCrossentropy<span class="token punctuation">(</span>
-    from_logits<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment">#y_pred是否应该是一个logits tensor.</span>
-    <span class="token comment">#Using from_logits=True may be more numerically stable.</span>
-    reduction<span class="token operator">=</span>losses_utils<span class="token punctuation">.</span>ReductionV2<span class="token punctuation">.</span>AUTO<span class="token punctuation">,</span><span class="token comment">#(Optional) Type of tf.keras.losses.Reduction to apply to loss. </span>
-    <span class="token comment">#默认值是AUTO,意味着reduction操作会根据使用的上下文决定。绝大多数情况默认为SUM_OVER_BATCH_SIZE.</span>
-    name<span class="token operator">=</span><span class="token string">'sparse_categorical_crossentropy'</span><span class="token comment">#可选的名字对于该op</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>losses<span class="token punctuation">.</span>SparseCategoricalCrossentropy<span class="token punctuation">(</span>
+    from_logits<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">#y_pred是否应该是一个logits tensor.</span>
+    <span class="token comment" spellcheck="true">#Using from_logits=True may be more numerically stable.</span>
+    reduction<span class="token operator">=</span>losses_utils<span class="token punctuation">.</span>ReductionV2<span class="token punctuation">.</span>AUTO<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#(Optional) Type of tf.keras.losses.Reduction to apply to loss. </span>
+    <span class="token comment" spellcheck="true">#默认值是AUTO,意味着reduction操作会根据使用的上下文决定。绝大多数情况默认为SUM_OVER_BATCH_SIZE.</span>
+    name<span class="token operator">=</span><span class="token string">'sparse_categorical_crossentropy'</span><span class="token comment" spellcheck="true">#可选的名字对于该op</span>
+<span class="token punctuation">)</span></code></pre>
 <p>对于<code>y_pred</code>应该有<code># classes</code>个浮点数每个特征,而对于<code>y_true</code>一个浮点数每个特征。</p>
 <p><code>y_true</code>shape=<code>[batch_size]</code>,而<code>y_pred</code>shape=<code>[batch_size, num_classes]</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">y_true <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+<pre class=" language-python"><code class="language-python">y_true <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
 y_pred <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.95</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-<span class="token comment"># Using 'auto'/'sum_over_batch_size' reduction type.</span>
+<span class="token comment" spellcheck="true"># Using 'auto'/'sum_over_batch_size' reduction type.</span>
 scce <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>losses<span class="token punctuation">.</span>SparseCategoricalCrossentropy<span class="token punctuation">(</span><span class="token punctuation">)</span>
-scce<span class="token punctuation">(</span>y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+scce<span class="token punctuation">(</span>y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p><code>__call__</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">__call__<span class="token punctuation">(</span>
-    y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">,</span> sample_weight<span class="token operator">=</span><span class="token boolean">None</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">__call__<span class="token punctuation">(</span>
+    y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">,</span> sample_weight<span class="token operator">=</span>None
+<span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -1936,7 +1898,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.1k</span>&nbsp;字
+                class="white-color">173.9k</span>&nbsp;字
             
             
             

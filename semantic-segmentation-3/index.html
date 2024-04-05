@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="月源" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -731,20 +731,18 @@
 <p>根据上面的推导,$multi.head$的时间复杂度为:<br>$$<br>O(multihead)=O(HW\times F_{in}\times d_k + HW\times d_k\times HW)\<br>=O((HW)^2d_k)<br>$$</p>
 <p>==空间复杂度推导:==</p>
 <p>举例:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token builtin">int</span> j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<pre class=" language-python"><code class="language-python">int i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+int j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
 <span class="token operator">+</span><span class="token operator">+</span>i<span class="token punctuation">;</span>
 j<span class="token operator">+</span><span class="token operator">+</span><span class="token punctuation">;</span>
-<span class="token builtin">int</span> m <span class="token operator">=</span> i <span class="token operator">+</span> j<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+int m <span class="token operator">=</span> i <span class="token operator">+</span> j<span class="token punctuation">;</span></code></pre>
 <p>只分配了三个变量,i、j、m,所以空间复杂度$S(n)=O(1)$</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
    j <span class="token operator">=</span> i<span class="token punctuation">;</span>
    j<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">}</span></code></pre>
 <p>第一行分配了n个元素的数组,之后的循环操作都没有再分配空间,所以说空间复杂度为$S(n)=O(n)$</p>
 <p>对于$multi.head$的空间复杂度为:<br>$$<br>O(multihead)=O((HW)^2N_h)<br>$$<br>每个head,分配的最大空间就是那个$HW\times HW$,$N_h$个头就是$(HW)^2N_h$</p>
 <p><strong>3.1.1 Two-dimensional Positional Encodings</strong><br>==如果没有关于位置的明确信息，则self attention是permutation equivariant置换等变的：==<br>$$<br>MHA(\pi(X))=\pi(MHA(X))<br>$$<br>对于像素位置的任何排列$\pi$,使其对<strong>建模高度结构化的数据(如图像)无效</strong>。</p>
@@ -1771,7 +1769,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.1k</span>&nbsp;字
+                class="white-color">173.9k</span>&nbsp;字
             
             
             

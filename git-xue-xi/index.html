@@ -33,7 +33,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="月源" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -645,7 +645,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.4k
+                    5.2k
                 </div>
                 
 
@@ -667,7 +667,7 @@
 <h3 id="廖雪峰教程"><a href="#廖雪峰教程" class="headerlink" title="廖雪峰教程"></a>廖雪峰教程</h3><blockquote>
 <p>廖雪峰git教程 <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
 </blockquote>
-<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 安装git后首先要设置的是设置用户名和email,这是非常重要的,因为每个git提交都会使用该信息,它被永远嵌入到你的提交中。
+<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><pre class=" language-shell"><code class="language-shell"># 安装git后首先要设置的是设置用户名和email,这是非常重要的,因为每个git提交都会使用该信息,它被永远嵌入到你的提交中。
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
 # 可以使用以下命令来查看设置的email和name
@@ -679,8 +679,7 @@ git config --list/-l
 # 显示系统配置
 git config --system --list
 # 用户自己配的配置
-git config --global --list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+git config --global --list</code></pre>
 <p>因为Git是分布式版本控制系统，所以，==每个机器都必须自报家门：你的名字和Email地址==。</p>
 <p>注意<code>git config</code>命令的<code>--global</code>参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</p>
 <p>Git相关配置文件:</p>
@@ -696,7 +695,7 @@ git config --global --list<span aria-hidden="true" class="line-numbers-rows"><sp
 <p>Repository:仓库区(或本地仓库),就是安全存放数据的位置,这里面有你提交到所有版本的数据,其中HEAD指向最新放入仓库的版本。</p>
 <p>Remote:远程仓库,托管代码的服务器,可以简单的认为是你项目组中的一台电脑用于远程数据交换。</p>
 <p><img src="./medias/loading.gif" data-original="/git-xue-xi/image-20210927164322246.png" alt="关系"></p>
-<h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 首先创建一个空目录
+<h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><pre class=" language-shell"><code class="language-shell"># 首先创建一个空目录
 $ mkdir learngit
 $ cd learngit
 $ pwd
@@ -705,41 +704,34 @@ $ pwd
 $ git init
 # 执行后可以看到,仅仅在本地多了一个.git文件夹,关于版本等的所有信息都存放在这个目录里面。
 # 另一个方式是克隆远程目录，将远程服务器上的仓库完全镜像一份至本地。
-$ git clone [url]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+$ git clone [url]</code></pre>
 <p>不要用windows自带的记事本打开任何文本文件！</p>
 <p>现在编写了一个readme.txt文件，</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#git add 告诉git,把文件添加到仓库
+<pre class=" language-shell"><code class="language-shell">#git add 告诉git,把文件添加到仓库
 $ git add readme.txt
 #用命令git commit告诉Git，把文件提交到仓库：
 $ git commit -m "wrote a readme file"
-#-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+#-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。</code></pre>
 <p>git add先将文件放到车里，可以往车里放好几次东西，git commit把一车的东西运往其他城市。</p>
 <p>Git的<code>commit id</code>不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示。为什么<code>commit id</code>需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。</p>
 <p>git管理的文件有三种状态:已修改(modified),已暂存(staged),已提交(committed)</p>
 <img src="./medias/loading.gif" data-original="/git-xue-xi/image-20210927164622525.png" alt="工作流程" style="zoom:67%;">
 
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git add 文件夹/ 添加整个文件夹及内容
-git add *.文件类型 添加目录中所有此文件类型的文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
+<pre class=" language-shell"><code class="language-shell">git add 文件夹/ 添加整个文件夹及内容
+git add *.文件类型 添加目录中所有此文件类型的文件</code></pre>
 <h4 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h4><h5 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h5><ul>
 <li><strong>Untracked:</strong> <strong>未跟踪, 此文件在文件夹中</strong>, 但<strong>并没有加入到git库</strong>,不参与版本控制.通过<code>git add</code>状态变为Staged.</li>
 <li><strong>Unmodify:</strong> 文件已经入库, 未修改, 即版本库中的文件快照内容与文件夹中完全一致. 这种类型的文件有两种去处, 如果它被修改, 而变为Modified. 如果使用<code>git rm --cached &lt;file&gt;</code>移出版本库, 则成为Untracked文件</li>
 <li><strong>Modified:</strong> 文件已修改, 仅仅是修改, 并没有进行其他的操作. 这个文件也有两个去处, 通过<code>git add</code>可进入暂存staged状态, 使用<code>git checkout/restore</code>则丢弃修改过, 返回到unmodify状态, 这个<code>git checkout/restore</code>即从库中取出文件, 覆盖当前修改 !</li>
 <li><strong>Staged:</strong> 暂存状态. 执行<code>git commit</code>则将修改同步到库中, 这时库中的文件和本地文件又变为一致, 文件为Unmodify状态. 执行<code>git reset HEAD filename</code>取消暂存, 文件状态为Modified.</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#查看指定文件状态
+<pre class=" language-shell"><code class="language-shell">#查看指定文件状态
 $git status [filename]
 #查看所有文件状态
-$git status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+$git status</code></pre>
 <p>继续修改readme.txt文件，改成如下内容：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 想要查看具体修改了什么内容,使用git diff命令查看
-$ git diff readme.txt <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell"># 想要查看具体修改了什么内容,使用git diff命令查看
+$ git diff readme.txt </code></pre>
 <h5 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h5><p>有些时候我们不想把某些文件纳入版本控制中，比如<strong>数据库文件，临时文件，设计文件</strong>等</p>
 <p>在主目录下建立**”.gitignore”**文件，此文件有如下规则：</p>
 <ol>
@@ -749,48 +741,42 @@ $ git diff readme.txt <span aria-hidden="true" class="line-numbers-rows"><span><
 <li>如果名称的<strong>最前面是一个路径分隔符（/）</strong>，表示要<strong>忽略的文件</strong>在此目录下，而子目录中的文件不忽略。</li>
 <li>如果名称的<strong>最后面是一个路径分隔符（/）</strong>，表示要<strong>忽略的是此目录下该名称的子目录</strong>，<strong>而非文件</strong>（<strong>默认文件或目录都忽略</strong>）。</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#为注释
+<pre class=" language-shell"><code class="language-shell">#为注释
 *.txt        #忽略所有 .txt结尾的文件,这样的话上传就不会被选中！
 !lib.txt     #但lib.txt除外
 /temp        #仅忽略项目根目录下的TODO文件,不包括其它目录temp
 build/       #忽略build/目录下的所有文件
-doc/*.txt    #会忽略 doc/notes.txt 但不包括 doc/server/arch.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+doc/*.txt    #会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</code></pre>
 <h5 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h5><p>不断对文件进行修改，然后不断提交修改到版本库里，就好比玩RPG游戏时，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为<code>commit</code>。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个<code>commit</code>恢复，然后继续工作，而不是把几个月的工作成果全部丢失。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git log
-# 显示从最近到最远的提交日志,如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git log
+# 显示从最近到最远的提交日志,如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数：</code></pre>
 <p>好了，现在我们启动时光穿梭机，准备把<code>readme.txt</code>回退到上一个版本，也就是<code>add distributed</code>的那个版本，怎么做呢？</p>
 <p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>1094adb...</code>（注意我的提交ID和你的肯定不一样），上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个<code>^</code>比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git reset --hard HEAD^
-HEAD is now at e475afc add distributed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git reset --hard HEAD^
+HEAD is now at e475afc add distributed</code></pre>
 <p>最新的那个版本<code>append GPL</code>已经看不到了！好比你从21世纪坐时光穿梭机来到了19世纪，想再回去已经回不去了，肿么办？</p>
 <p>办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个<code>append GPL</code>的<code>commit id</code>是<code>1094adb...</code>，于是就可以指定回到未来的某个版本：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git reset --hard 1094a
-HEAD is now at 83b0afe append GPL<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git reset --hard 1094a
+HEAD is now at 83b0afe append GPL</code></pre>
 <p>版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。</p>
 <p>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把HEAD从指向<code>append GPL</code>：</p>
 <img src="./medias/loading.gif" data-original="/git-xue-xi/image-20210505145945408.png" alt="image-20210505145945408" style="zoom:50%;">
 
 <p>现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的<code>commit id</code>怎么办？</p>
 <p>在Git中，总是有后悔药可以吃的。当你用<code>$ git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git reflog
+<pre class=" language-shell"><code class="language-shell">$ git reflog
 e475afc HEAD@{1}: reset: moving to HEAD^
-1094adb (HEAD -&gt; master) HEAD@{2}: commit: append GPL
+1094adb (HEAD -> master) HEAD@{2}: commit: append GPL
 e475afc HEAD@{3}: commit: add distributed
-eaadf4e HEAD@{4}: commit (initial): wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+eaadf4e HEAD@{4}: commit (initial): wrote a readme file</code></pre>
 <h4 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h4><h5 id="SSH公钥和私钥"><a href="#SSH公钥和私钥" class="headerlink" title="SSH公钥和私钥"></a>SSH公钥和私钥</h5><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/134349361">非对称加密</a></p>
 <p>使用Github作为免费的Git远程仓库。</p>
 <p>由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：</p>
 <p>第1步：创建SSH Key。在用户主目录<code>C:\Users\dch</code>下，看看有没有.ssh目录,如果有,再看看这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件,如果已经有了,可直接跳到下一步。如果没有,打开Shell(Windows下打开Git Bash),创建SSH Key:</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ ssh-keygen -t rsa -C dchlab
+<pre class=" language-shell"><code class="language-shell">$ ssh-keygen -t rsa -C dchlab
 # -t 使用的不同的加密算法
 # -C The email is only optional field to identify the key用于识别这个密钥的注释
-# 所以这个注释你可以输入任何内容，很多网站和软件用这个注释作为密钥的名字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+# 所以这个注释你可以输入任何内容，很多网站和软件用这个注释作为密钥的名字</code></pre>
 <p>输入命令之后<strong>一路回车</strong>，使用默认值即可。</p>
 <p>如果一切顺利的话，可以在用户主目录里找到<code>.ssh</code>目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH Key的秘钥对,<code>id_rsa</code>是私钥,不能泄露出去,<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人。</p>
 <p>第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
@@ -800,7 +786,7 @@ eaadf4e HEAD@{4}: commit (initial): wrote a readme file<span aria-hidden="true" 
 <p>最后友情提示，在GitHub上免费托管的Git仓库，任何人都可以看到喔（但只有你自己才能改）。所以，不要把敏感信息放进去。</p>
 <p>如果你不想让别人看到Git库，有两个办法，一个是交点保护费，让GitHub把公开的仓库变成私有的，这样别人就看不见了（不可读更不可写）。另一个办法是自己动手，搭一个Git服务器，因为是你自己的Git服务器，所以别人也是看不见的。这个方法我们后面会讲到的，相当简单，公司内部开发必备。</p>
 <p>确保你拥有一个GitHub账号后，我们就即将开始远程仓库的学习。</p>
-<h5 id="本地库关联到远程库"><a href="#本地库关联到远程库" class="headerlink" title="本地库关联到远程库"></a>本地库关联到远程库</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 查看本地所有分支
+<h5 id="本地库关联到远程库"><a href="#本地库关联到远程库" class="headerlink" title="本地库关联到远程库"></a>本地库关联到远程库</h5><pre class=" language-shell"><code class="language-shell"># 查看本地所有分支
 $git branch
 # 查看远程所有分支
 $git branch -r
@@ -808,13 +794,12 @@ $git branch -r
 $git branch -a
 # 一般当前本地分支前带有“*”号且为绿色，远程分支为红色，‘*’号表示当前分支
 # 修改git仓库远程分支名
-# 直接在github改就行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+# 直接在github改就行</code></pre>
 <p>首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库；</p>
 <p>在Repository name填入<code>learngit</code>，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库；</p>
 <p>目前，在GitHub上的这个<code>learngit</code>仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以</p>
 <p>把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库:现在，我们根据GitHub的提示，在本地的<code>learngit</code>仓库下运行命令：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 关联一个远程库
+<pre class=" language-shell"><code class="language-shell"># 关联一个远程库
 #   远程库  添加 仓库名 仓库来源 远程库的名字是origin,Git的默认叫法
 git remote add origin https://github.com/chenghaoDong666/1.git
 # 重命名一个分支
@@ -827,14 +812,12 @@ $ git remote -v
 # 根据名字删除远程库
 # 此处的“删除”其实是解除了本地和远程的绑定关系，并不是物理上删除了远程库。
 # 远程库本身并没有任何改动。要真正删除远程库，需要登录到GitHub，在后台页面找到删除按钮再删除。
-$ git remote rm origin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+$ git remote rm origin</code></pre>
 <h5 id="远程库拉取到本地库"><a href="#远程库拉取到本地库" class="headerlink" title="远程库拉取到本地库"></a>远程库拉取到本地库</h5><p>上次我们讲了先有本地库，后有远程库的时候，如何关联远程库。</p>
 <p>现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
 <p>首先，登陆GitHub，创建一个新的仓库，名字叫<code>gitskills</code>;我们勾选<code>Initialize this repository with a README</code>，这样GitHub会自动为我们创建一个<code>README.md</code>文件。创建完毕后，可以看到<code>README.md</code>文件;</p>
 <p>现在，远程库已经准备好了，下一步是用命令<code>git clone</code>克隆一个本地库：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git clone git@github.com:michaelliao/gitskills.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git clone git@github.com:michaelliao/gitskills.git</code></pre>
 <p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
 <p>你也许还注意到，GitHub给出的地址不止一个，还可以用<code>https://github.com/michaelliao/gitskills.git</code>这样的地址。</p>
 <p>实际上，Git支持多种协议，<strong>默认的git使用<code>ssh</code>，</strong>但也可以使用<code>https</code>等其他协议。使用**<code>https</code>除了速度慢<strong>以外，还有个最大的麻烦是</strong>每次推送都必须输入口令**，但是在某些只开放http端口的公司内部就无法使用<code>ssh</code>协议而只能用<code>https</code>。</p>
@@ -866,7 +849,7 @@ $ git remote rm origin<span aria-hidden="true" class="line-numbers-rows"><span><
 <p>假如我们在<code>dev</code>上的工作完成了，就可以把<code>dev</code>合并到<code>master</code>上。Git怎么合并呢？最简单的方法，就是直接把<code>master</code>指向<code>dev</code>的当前提交，就完成了合并；所以Git合并分支也很快！就改改指针，工作区内容也不变！</p>
 <p>合并完分支后，甚至可以删除<code>dev</code>分支。删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，删掉后，我们就剩下了一条<code>master</code>分支；</p>
 <p>首先，我们创建<code>dev</code>分支，然后切换到<code>dev</code>分支：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 新建一个分支,但依然停留在当前分支
+<pre class=" language-shell"><code class="language-shell"># 新建一个分支,但依然停留在当前分支
 $ git branch [branch-name]
 # 新建一个分支,并切换到该分支
 $ git checkout -b dev
@@ -876,56 +859,49 @@ $ git merge dev
 $ git branch -d [branch-name]
 # 删除远程分支
 $ git push origin --delete [branch-name]
-$ git branch -dr [remote/branch]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+$ git branch -dr [remote/branch]</code></pre>
 <p>注意到上面的<code>Fast-forward</code>信息，Git告诉我们，这次合并是“快进模式”，也就是直接把<code>master</code>指向<code>dev</code>的当前提交，所以合并速度非常快。当然，也不是每次合并都能<code>Fast-forward</code>，我们后面会讲其他方式的合并。</p>
 <p>如果同一个文件在合并分支时都被修改了则会引起冲突：解决的办法是我们可以修改冲突文件后重新提交！选择要保留他的代码还是你的代码！</p>
 <p>==master主分支应该非常稳定，用来发布新版本，一般情况下不允许在上面工作，工作一般情况下在新建的dev分支上工作，工作完后，比如上要发布，或者说dev分支代码稳定后可以合并到主分支master上来。==</p>
 <p>Git鼓励大量使用分支</p>
 <p>实际上，切换分支这个动作，用<code>switch</code>更科学。因此，最新版本的Git提供了新的<code>git switch</code>命令来切换分支：</p>
 <p>创建并切换到新的<code>dev</code>分支，可以使用：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git switch -c dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git switch -c dev</code></pre>
 <p>直接切换到已有的<code>master</code>分支，可以使用：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git switch master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git switch master</code></pre>
 <p>使用新的<code>git switch</code>命令，比<code>git checkout</code>要更容易理解。</p>
 <h5 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h5><p><code>master</code>分支和<code>feature1</code>分支各自都分别有新的提交，变成了这样：</p>
 <img src="./medias/loading.gif" data-original="/git-xue-xi/image-20210505162330416.png" alt="image-20210505162330416" style="zoom:50%;">
 
 <p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git merge feature1
+<pre class=" language-shell"><code class="language-shell">$ git merge feature1
 Auto-merging readme.txt
 CONFLICT (content): Merge conflict in readme.txt
 Automatic merge failed; fix conflicts and then commit the result.
 # 存在冲突,必须手动解决冲突
-# git status可以告诉我们冲突的文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+# git status可以告诉我们冲突的文件</code></pre>
 <p>我们可以直接查看readme.txt的内容：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Git is a distributed version control system.
+<pre class=" language-shell"><code class="language-shell">Git is a distributed version control system.
 Git is free software distributed under the GPL.
 Git has a mutable index called stage.
 Git tracks changes of files.
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-Creating a new branch is quick &amp; simple.
+<<<<<<< HEAD
+Creating a new branch is quick & simple.
 =======
 Creating a new branch is quick AND simple.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+>>>>>>> feature1</code></pre>
 <p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容，我们修改如下后保存：</p>
-<pre class="line-numbers language-none"><code class="language-none">Creating a new branch is quick and simple.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre><code>Creating a new branch is quick and simple.</code></pre>
 <p>再提交：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git add readme.txt 
+<pre class=" language-shell"><code class="language-shell">$ git add readme.txt 
 $ git commit -m "conflict fixed"
-[master cf810e4] conflict fixed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+[master cf810e4] conflict fixed</code></pre>
 <p>用带参数的<code>git log</code>也可以看到分支的合并情况：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git log --graph --pretty=oneline --abbrev-commit
-*   cf810e4 (HEAD -&gt; master) conflict fixed
+<pre class=" language-shell"><code class="language-shell">$ git log --graph --pretty=oneline --abbrev-commit
+*   cf810e4 (HEAD -> master) conflict fixed
 |\  
 | * 14096d0 (feature1) AND simple
-* | 5dc6824 &amp; simple
+* | 5dc6824 & simple
 |/  
 * b17d20e branch test
 * d46f35e (origin/master) remove test.txt
@@ -934,20 +910,17 @@ $ git commit -m "conflict fixed"
 * e43a48b understand how stage works
 * 1094adb append GPL
 * e475afc add distributed
-* eaadf4e wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+* eaadf4e wrote a readme file</code></pre>
 <p>最后，删除<code>feature1</code>分支：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git branch -d feature1
-Deleted branch feature1 (was 14096d0).<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git branch -d feature1
+Deleted branch feature1 (was 14096d0).</code></pre>
 <h5 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h5><p>通常，合并分支时，如果可能，Git会用<code>Fast forward</code>模式，但这种模式下，删除分支后，会丢掉分支信息。</p>
 <p>如果要强制禁用<code>Fast forward</code>模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。</p>
 <p>准备合并<code>dev</code>分支，请注意<code>--no-ff</code>参数，表示禁用<code>Fast forward</code>：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git merge --no-ff -m "merge with no-ff" dev
+<pre class=" language-shell"><code class="language-shell">$ git merge --no-ff -m "merge with no-ff" dev
 Merge made by the 'recursive' strategy.
  readme.txt | 1 +
- 1 file changed, 1 insertion(+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+ 1 file changed, 1 insertion(+)</code></pre>
 <p>因为本次合并要创建一个新的commit，所以加上<code>-m</code>参数，把commit描述写进去。</p>
 <p>可以看到，不使用<code>Fast forward</code>模式，merge后就像这样：</p>
 <img src="./medias/loading.gif" data-original="/git-xue-xi/image-20210505163256977.png" alt="image-20210505163256977" style="zoom:50%;">
@@ -961,56 +934,47 @@ Merge made by the 'recursive' strategy.
 
 <h5 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h5><p>当你接到一个修复一个代号101的bug的任务时，很自然地，你想创建一个分支<code>issue-101</code>来修复它，但是，等等，当前正在<code>dev</code>上进行的工作还没有提交；并不是你不想提交，而是工作只进行到一半，还没法提交，预计完成还需1天时间。但是，必须在两个小时内修复该bug，怎么办？</p>
 <p>幸好，Git还提供了一个<code>stash</code>功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git stash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git stash</code></pre>
 <p>现在，用<code>git status</code>查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。</p>
 <p>首先确定要在哪个分支上修复bug，假定需要在<code>master</code>分支上修复，就从<code>master</code>创建临时分支,修复bug，提交，合并，删除；刚才的工作现场存到哪去了？用<code>git stash list</code>命令看看：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git stash list
-stash@{0}: WIP on dev: f52c633 add merge<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git stash list
+stash@{0}: WIP on dev: f52c633 add merge</code></pre>
 <p>工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：</p>
 <p>一是用<code>git stash apply</code>恢复，但是恢复后，stash内容并不删除，你需要用<code>git stash drop</code>来删除；</p>
 <p>另一种方式是用<code>git stash pop</code>，恢复的同时把stash内容也删了：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git stash pop
+<pre class=" language-shell"><code class="language-shell">$ git stash pop
 On branch dev
 Changes to be committed:
-  (use "git reset HEAD &lt;file&gt;..." to unstage)
+  (use "git reset HEAD <file>..." to unstage)
 
-	new file:   hello.py
+    new file:   hello.py
 
 Changes not staged for commit:
-  (use "git add &lt;file&gt;..." to update what will be committed)
-  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   readme.txt
+    modified:   readme.txt
 
-Dropped refs/stash@{0} (5d677e2ee266f39ea296182fb2354265b91b3b2a)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+Dropped refs/stash@{0} (5d677e2ee266f39ea296182fb2354265b91b3b2a)</code></pre>
 <p>再用<code>git stash list</code>查看，就看不到任何stash内容了：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git stash list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git stash list</code></pre>
 <p>你可以多次stash，恢复的时候，先用<code>git stash list</code>查看，然后恢复指定的stash，用命令：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git stash apply stash@{0}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git stash apply stash@{0}</code></pre>
 <p>在master分支上修复的bug，想要合并到当前dev分支，可以用<code>git cherry-pick &lt;commit&gt;</code>命令，把bug提交的修改“复制”到当前分支，避免重复劳动。</p>
 <h5 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h5><p>开发一个新feature，最好新建一个分支；</p>
 <p>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
 <h5 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h5><p>当你从远程仓库克隆时，实际上Git自动把本地的<code>master</code>分支和远程的<code>master</code>分支对应起来了，并且，远程仓库的默认名称是<code>origin</code>。</p>
 <p>要查看远程库的信息，用<code>git remote</code>：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git remote
-origin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git remote
+origin</code></pre>
 <p>或者，用<code>git remote -v</code>显示更详细的信息：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git remote -v
+<pre class=" language-shell"><code class="language-shell">$ git remote -v
 origin  git@github.com:michaelliao/learngit.git (fetch)
-origin  git@github.com:michaelliao/learngit.git (push)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+origin  git@github.com:michaelliao/learngit.git (push)</code></pre>
 <p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git push origin master</code></pre>
 <p>如果要推送其他分支，比如<code>dev</code>，就改成：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git push origin dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git push origin dev</code></pre>
 <p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
 <ul>
 <li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
@@ -1057,14 +1021,10 @@ origin  git@github.com:michaelliao/learngit.git (push)<span aria-hidden="true" c
 <p>“好的，按照tag v1.2查找commit就行！”</p>
 <p>所以，tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起。</p>
 <h5 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h5><p>在Git中打标签非常简单，首先，切换到需要打标签的分支上,然后，敲命令<code>git tag &lt;name&gt;</code>就可以打一个新标签：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git tag v1.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<pre class=" language-shell"><code class="language-shell">$ git tag v1.0</code></pre>
 <p>可以用命令<code>git tag</code>查看所有标签：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ git tag
-v1.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
+<pre class=" language-shell"><code class="language-shell">$ git tag
+v1.0</code></pre>
 <h4 id="使用Github"><a href="#使用Github" class="headerlink" title="使用Github"></a>使用Github</h4><p>一定要从自己的账号下clone仓库，这样你才能推送修改。如果从bootstrap的作者的仓库地址<code>git@github.com:twbs/bootstrap.git</code>克隆，因为没有权限，你将不能推送修改。</p>
 <p>Bootstrap的官方仓库<code>twbs/bootstrap</code>、你在GitHub上克隆的仓库<code>my/bootstrap</code>，以及你自己克隆到本地电脑的仓库，他们的关系就像下图显示的那样：</p>
 <img src="./medias/loading.gif" data-original="/git-xue-xi/image-20210505165906120.png" alt="image-20210505165906120" style="zoom:50%;">
@@ -1950,7 +1910,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.1k</span>&nbsp;字
+                class="white-color">173.9k</span>&nbsp;字
             
             
             
