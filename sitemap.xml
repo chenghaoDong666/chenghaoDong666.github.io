@@ -434,7 +434,7 @@
 
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/pytorch/</loc>
+    <loc>http://chenghaodong666.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -462,13 +462,6 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2024-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://chenghaodong666.github.io/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -484,6 +477,13 @@
   
   <url>
     <loc>http://chenghaodong666.github.io/tags/Java/</loc>
+    <lastmod>2024-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://chenghaodong666.github.io/tags/pytorch/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -525,6 +525,13 @@
   </url>
   
   <url>
+    <loc>http://chenghaodong666.github.io/tags/sklearn/</loc>
+    <lastmod>2024-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://chenghaodong666.github.io/tags/numpy/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -539,7 +546,7 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/sklearn/</loc>
+    <loc>http://chenghaodong666.github.io/tags/python/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -554,13 +561,6 @@
   
   <url>
     <loc>http://chenghaodong666.github.io/tags/scala/</loc>
-    <lastmod>2024-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://chenghaodong666.github.io/tags/python/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -644,13 +644,6 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/%E9%9D%A2%E7%BB%8F/</loc>
-    <lastmod>2024-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://chenghaodong666.github.io/tags/CC-AWB/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -664,10 +657,17 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://chenghaodong666.github.io/tags/%E9%9D%A2%E7%BB%8F/</loc>
+    <lastmod>2024-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/python/</loc>
+    <loc>http://chenghaodong666.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -675,13 +675,6 @@
   
   <url>
     <loc>http://chenghaodong666.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2024-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://chenghaodong666.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -696,6 +689,13 @@
   
   <url>
     <loc>http://chenghaodong666.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <lastmod>2024-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://chenghaodong666.github.io/categories/python/</loc>
     <lastmod>2024-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

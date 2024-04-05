@@ -1180,31 +1180,30 @@ predictions <span class="token operator">=</span> trainer<span class="token punc
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> output_dir<span class="token punctuation">,</span> write_interval<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>write_interval<span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>output_dir <span class="token operator">=</span> output_dir
-
     <span class="token keyword">def</span> <span class="token function">write_on_epoch_end</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> trainer<span class="token punctuation">,</span> pl_module<span class="token punctuation">,</span> predictions<span class="token punctuation">,</span> batch_indices<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token comment"># this will create N (num processes) files in `output_dir` each containing</span>
         <span class="token comment"># the predictions of it's respective rank</span>
         torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>predictions<span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>output_dir<span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f"predictions_</span><span class="token interpolation"><span class="token punctuation">{</span>trainer<span class="token punctuation">.</span>global_rank<span class="token punctuation">}</span></span><span class="token string">.pt"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
         <span class="token comment"># optionally, you can also save `batch_indices` to get the information about the data index</span>
         <span class="token comment"># from your prediction data</span>
         torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>batch_indices<span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>output_dir<span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f"batch_indices_</span><span class="token interpolation"><span class="token punctuation">{</span>trainer<span class="token punctuation">.</span>global_rank<span class="token punctuation">}</span></span><span class="token string">.pt"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
 <span class="token comment"># or you can set `write_interval="batch"` and override `write_on_batch_end` to save</span>
 <span class="token comment"># predictions at batch level</span>
 pred_writer <span class="token operator">=</span> CustomWriter<span class="token punctuation">(</span>output_dir<span class="token operator">=</span><span class="token string">"pred_path"</span><span class="token punctuation">,</span> write_interval<span class="token operator">=</span><span class="token string">"epoch"</span><span class="token punctuation">)</span>
 trainer <span class="token operator">=</span> Trainer<span class="token punctuation">(</span>accelerator<span class="token operator">=</span><span class="token string">"gpu"</span><span class="token punctuation">,</span> strategy<span class="token operator">=</span><span class="token string">"ddp"</span><span class="token punctuation">,</span> devices<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> callbacks<span class="token operator">=</span><span class="token punctuation">[</span>pred_writer<span class="token punctuation">]</span><span class="token punctuation">)</span>
 model <span class="token operator">=</span> BoringModel<span class="token punctuation">(</span><span class="token punctuation">)</span>
-trainer<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>model<span class="token punctuation">,</span> return_predictions<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+trainer<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>model<span class="token punctuation">,</span> return_predictions<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Coming-up-next"><a href="#Coming-up-next" class="headerlink" title="Coming up next"></a>Coming up next</h2><p>下节将介绍<code>Trainer</code>以及如<code>callback</code>、调试方法、模型优化、可视化等涉及<strong>训练逻辑</strong>和<strong>优化方法</strong>的技术</p>
+<h2 id="Coming-up-next"><a href="#Coming-up-next" class="headerlink" title="Coming up next"></a>Coming up next</h2><p>之后将学习<code>Lightning</code>关于<code>Trainer</code>以及如<code>callback</code>、调试方法、模型优化、可视化等涉及<strong>训练逻辑</strong>和<strong>优化方法</strong>的相关技术。</p>
 <h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/Lightning-AI/lightning">Lightning github地址</a></p>
 <p><a target="_blank" rel="noopener" href="https://pytorch-lightning.readthedocs.io/en/latest/starter/introduction.html">官方文档</a></p>
 <p><a href="">AEDA代码</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/353985363">Pytorch Lightning 完全攻略</a></p>
 </blockquote>
+<h2 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h2><p><strong>个人博客：</strong><a href="https://chenghaodong666.github.io/">月源</a></p>
+<p><strong>知乎文章：</strong><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/huang-ye-de-ye-92/posts">知乎文章</a></p>
+<p><strong>公众号：</strong><code>月源的算法仙蛊屋</code></p>
 
             </div>
             <hr/>
@@ -2029,7 +2028,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178k</span>&nbsp;字
+                class="white-color">178.1k</span>&nbsp;字
             
             
             
