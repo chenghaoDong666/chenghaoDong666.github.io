@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>大模型(二):对齐(InstructGPT)</title>
-      <link href="/da-mo-xing-er-dui-qi-instructgpt/"/>
-      <url>/da-mo-xing-er-dui-qi-instructgpt/</url>
-      
-        <content type="html"><![CDATA[<p>大模型的训练包括<strong>pre-training</strong>、<strong>SFT</strong>和<strong>Align</strong>，Align比较常说的场景是迁移学习中源域和目标域数据的特征对齐。而在大模型算法中，对齐是指将<strong>大模型的目标</strong>和<strong>人类的意图</strong>对齐。</p><h2 id="InstructGPT"><a href="#InstructGPT" class="headerlink" title="InstructGPT"></a>InstructGPT</h2><h3 id="Key-Insight"><a href="#Key-Insight" class="headerlink" title="Key Insight"></a>Key Insight</h3><p>InstructGPT是OpenAI在GPT-3后的工作，其解决的<strong>主要问题</strong>是<em>虽然大模型逐渐变大，但其不一定能更好满足用户的意图</em>，即<strong>模型没有与用户对齐</strong>。产生该问题的<strong>原因</strong>是：大模型的训练目标是<em>predicting the next token on a webpage from the internet</em>,所以会导致(1):语料中没出现的就是学不到(2)会输出有害、造假、简单无用的信息(从语料中学到)；而用户的目标是<em>follow the user’s instructions helpfully and safely</em> 。OpenAI的解决办法是(1)<strong>制作符合人类意图的数据集进行监督微调</strong>(2)<strong>从人类反馈进行强化学习</strong></p><h3 id="Data-Processing"><a href="#Data-Processing" class="headerlink" title="Data Processing"></a>Data Processing</h3><h3 id="Annotated-Algorithms"><a href="#Annotated-Algorithms" class="headerlink" title="Annotated Algorithms"></a>Annotated Algorithms</h3><h3 id="Experiment-Analysis"><a href="#Experiment-Analysis" class="headerlink" title="Experiment Analysis"></a>Experiment Analysis</h3><h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><blockquote><ul><li><a href="https://arxiv.org/abs/2203.02155">InstructGPT论文</a></li><li><a href="https://www.bilibili.com/video/BV1hd4y187CR/?spm_id_from=333.880.my_history.page.click&amp;vd_source=6c303fe90eb8b5061cfe9cd858f1b83a">李沐-InstructGPT 论文精读</a></li></ul></blockquote>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>diffusion model</title>
       <link href="/diffusion-model/"/>
       <url>/diffusion-model/</url>
@@ -24,31 +11,6 @@
         <content type="html"><![CDATA[<h3 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h3><p>了解扩散模型之前,首先了解一下变分自编码器,教程如下:</p><p><a href="https://zhuanlan.zhihu.com/p/112513743">https://zhuanlan.zhihu.com/p/112513743</a></p>]]></content>
       
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CV模型训练流程总结-Pytorch Lightning</title>
-      <link href="/lightning/"/>
-      <url>/lightning/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h2><h2 id="Data-Processing"><a href="#Data-Processing" class="headerlink" title="Data Processing"></a>Data Processing</h2><h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><blockquote><p><a href="https://github.com/Lightning-AI/lightning">github地址</a></p><p><a href="https://pytorch-lightning.readthedocs.io/en/latest/starter/introduction.html">官方文档</a></p><p><a href="">AEDA代码</a></p></blockquote><p>一个键对应多个值,后面那多个值就是一个列表,一个小横线后面的项没有小横线,说明在一个字典内</p><p><strong>设置断点用来debug:</strong></p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># set breakpoint</span><span class="token keyword">import</span> pdbpdb<span class="token punctuation">.</span>set_trace<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="torchmetrics"><a href="#torchmetrics" class="headerlink" title="torchmetrics"></a>torchmetrics</h2><p>API:<a href="https://torchmetrics.readthedocs.io/en/stable/">https://torchmetrics.readthedocs.io/en/stable/</a></p><p>模型的可复现性:</p><p>为了保证模型的完全可复现性:</p><p><strong>但是可能会降低模型的训练速度</strong></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> pytorch </tag>
-            
-        </tags>
       
     </entry>
     

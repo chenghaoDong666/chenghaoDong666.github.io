@@ -6,7 +6,7 @@
   <link href="http://chenghaodong666.github.io/atom.xml" rel="self"/>
   
   <link href="http://chenghaodong666.github.io/"/>
-  <updated>2024-04-02T18:34:10.971Z</updated>
+  <updated>2023-03-19T03:29:34.000Z</updated>
   <id>http://chenghaodong666.github.io/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>大模型(二):对齐(InstructGPT)</title>
-    <link href="http://chenghaodong666.github.io/da-mo-xing-er-dui-qi-instructgpt/"/>
-    <id>http://chenghaodong666.github.io/da-mo-xing-er-dui-qi-instructgpt/</id>
-    <published>2024-04-02T18:31:43.000Z</published>
-    <updated>2024-04-02T18:34:10.971Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;大模型的训练包括&lt;strong&gt;pre-training&lt;/strong&gt;、&lt;strong&gt;SFT&lt;/strong&gt;和&lt;strong&gt;Align&lt;/strong&gt;，Align比较常说的场景是迁移学习中源域和目标域数据的特征对齐。而在大模型算法中，对齐是指将&lt;strong&gt;大</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>diffusion model</title>
@@ -56,31 +35,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>CV模型训练流程总结-Pytorch Lightning</title>
-    <link href="http://chenghaodong666.github.io/lightning/"/>
-    <id>http://chenghaodong666.github.io/lightning/</id>
-    <published>2022-08-26T03:29:41.000Z</published>
-    <updated>2024-04-03T14:15:13.809Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Pipeline&quot;&gt;&lt;a href=&quot;#Pipeline&quot; class=&quot;headerlink&quot; title=&quot;Pipeline&quot;&gt;&lt;/a&gt;Pipeline&lt;/h2&gt;&lt;h2 id=&quot;Data-Processing&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
-    
-    
-    <category term="pytorch" scheme="http://chenghaodong666.github.io/tags/pytorch/"/>
     
   </entry>
   
@@ -511,6 +465,56 @@
     
     
     <category term="编程软件" scheme="http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据集标注和评价指标</title>
+    <link href="http://chenghaodong666.github.io/shu-ju-ji-biao-zhu/"/>
+    <id>http://chenghaodong666.github.io/shu-ju-ji-biao-zhu/</id>
+    <published>2020-12-06T02:06:54.000Z</published>
+    <updated>2022-06-20T20:38:55.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;数据集标注&quot;&gt;&lt;a href=&quot;#数据集标注&quot; class=&quot;headerlink&quot; title=&quot;数据集标注&quot;&gt;&lt;/a&gt;数据集标注&lt;/h3&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="肤色分级" scheme="http://chenghaodong666.github.io/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
+    
+    
+    <category term="肤色分级" scheme="http://chenghaodong666.github.io/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow学习</title>
+    <link href="http://chenghaodong666.github.io/tensorflow-xue-xi/"/>
+    <id>http://chenghaodong666.github.io/tensorflow-xue-xi/</id>
+    <published>2020-11-27T16:44:34.000Z</published>
+    <updated>2021-12-21T02:00:33.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Tensorflow1-x&quot;&gt;&lt;a href=&quot;#Tensorflow1-x&quot; class=&quot;headerlink&quot; title=&quot;Tensorflow1.x&quot;&gt;&lt;/a&gt;Tensorflow1.x&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
+    
+    
+    <category term="tensorflow" scheme="http://chenghaodong666.github.io/tags/tensorflow/"/>
     
   </entry>
   
