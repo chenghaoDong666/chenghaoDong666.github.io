@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Lightning框架学习, python,cv,codeforces,leetcode,image processing,软件使用">
+    <meta name="keywords" content="CV模型训练流程总结-Pytorch Lightning(一), python,cv,codeforces,leetcode,image processing,软件使用">
     <meta name="description" content="计算机视觉与图像处理，以及其他相关的技术博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Lightning框架学习 | 亦爱Zxy</title>
+    <title>CV模型训练流程总结-Pytorch Lightning(一) | 亦爱Zxy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -498,12 +498,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Lightning框架学习</h1>
+                    <h1 class="description center-align post-title">CV模型训练流程总结-Pytorch Lightning(一)</h1>
                 </div>
             </div>
         </div>
@@ -645,7 +645,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-26
+                    2024-04-05
                 </div>
                 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    128
+                    4k
                 </div>
                 
 
@@ -671,23 +671,498 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Lightning"><a href="#Lightning" class="headerlink" title="Lightning"></a>Lightning</h1><p>github:<a target="_blank" rel="noopener" href="https://github.com/Lightning-AI/lightning">https://github.com/Lightning-AI/lightning</a></p>
-<p>文档:<a target="_blank" rel="noopener" href="https://pytorch-lightning.readthedocs.io/en/latest/starter/introduction.html">https://pytorch-lightning.readthedocs.io/en/latest/starter/introduction.html</a></p>
-<p><strong>需要安装的包:</strong></p>
-<p><img src="./medias/loading.gif" data-original="/lightning/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20220826145234840.png" alt="image-20220826145234840"></p>
-<p><strong>config文件组织形式:</strong></p>
-<p><img src="./medias/loading.gif" data-original="/lightning/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20220831111317814.png" alt="image-20220831111317814"></p>
-<p><img src="./medias/loading.gif" data-original="/lightning/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20220831111357181.png" alt="image-20220831111357181"></p>
-<p>一个键对应多个值,后面那多个值就是一个列表,一个小横线后面的项没有小横线,说明在一个字典内</p>
-<p><strong>设置断点用来debug:</strong></p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># set breakpoint</span>
-<span class="token keyword">import</span> pdb
-pdb<span class="token punctuation">.</span>set_trace<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h2 id="torchmetrics"><a href="#torchmetrics" class="headerlink" title="torchmetrics"></a>torchmetrics</h2><p>API:<a target="_blank" rel="noopener" href="https://torchmetrics.readthedocs.io/en/stable/">https://torchmetrics.readthedocs.io/en/stable/</a></p>
-<p>模型的可复现性:</p>
-<p>为了保证模型的完全可复现性:</p>
-<p><img src="./medias/loading.gif" data-original="/lightning/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20220926221942627.png" alt="image-20220926221942627"></p>
-<p><strong>但是可能会降低模型的训练速度</strong></p>
+                <h2 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h2><img src="./medias/loading.gif" data-original="/lightning/image-20240405232843132.png" alt="概览图" style="zoom:30%;">
+
+<pre class=" language-shell"><code class="language-shell"># 示例运行命令如下
+python tools/run.py fit --config configs/cityscapes_darkzurich/refign_daformer.yaml --trainer.gpus [0] --trainer.precision 16</code></pre>
+<p>模型的入口，即<code>run.py</code>其实是实例化了一个参数解析器，Lightning自己改进python原始的argparse，即<code>LightningCLI</code>，这个参数解析器既可以从<strong>命令行</strong>，也可以使用<strong>yaml</strong>获取模型、数据集、trainer的参数。</p>
+<p><code>fit</code>是训练+验证的子命令，还有<code>validate</code>、<code>test</code>、<code>predict</code>，用来分离不同的训练阶段。整体的逻辑大概是<code>LightningCLI</code>解析参数后，框架根据参数实例化<code>trainer</code>，<code>trainer</code>再根据<code>fit</code>还是<code>validate</code>等执行对应的训练逻辑，包括数据的处理和加载，模型的前向传播、反向传播、梯度更新等，最后利用<code>Logger</code>来记录试验结果，利用<code>Callback</code>来执行回调函数如<code>EarlyStopping</code>等。</p>
+<h2 id="入口-LightningCLI"><a href="#入口-LightningCLI" class="headerlink" title="入口-LightningCLI"></a>入口-LightningCLI</h2><p>python内置的ArgumentParser使得代码的运行可以带有命令行参数，但是在大型项目中很不方便，因为<strong>参数会非常</strong>多，无论是在python代码里配置参数，还是在命令行指定参数都很复杂</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> argparse <span class="token keyword">import</span> ArgumentParser
+parser <span class="token operator">=</span> ArgumentParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Trainer arguments</span>
+parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">"--devices"</span><span class="token punctuation">,</span> type<span class="token operator">=</span>int<span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Hyperparameters for the model</span>
+parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">"--layer_1_dim"</span><span class="token punctuation">,</span> type<span class="token operator">=</span>int<span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">128</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Parse the user inputs and defaults (returns a argparse.Namespace)</span>
+args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Use the parsed arguments in your program</span>
+trainer <span class="token operator">=</span> Trainer<span class="token punctuation">(</span>devices<span class="token operator">=</span>args<span class="token punctuation">.</span>devices<span class="token punctuation">)</span>
+model <span class="token operator">=</span> MyModel<span class="token punctuation">(</span>layer_1_dim<span class="token operator">=</span>args<span class="token punctuation">.</span>layer_1_dim<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 运行</span>
+python trainer<span class="token punctuation">.</span>py <span class="token operator">-</span><span class="token operator">-</span>layer_1_dim <span class="token number">64</span> <span class="token operator">-</span><span class="token operator">-</span>devices <span class="token number">1</span></code></pre>
+<p>为此，pytorch Lightning提供了LightningCLI，使得一切参数可以用，简单实现CLI的方式</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># main.py</span>
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>cli <span class="token keyword">import</span> LightningCLI
+<span class="token comment" spellcheck="true"># simple demo classes for your convenience</span>
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>demos<span class="token punctuation">.</span>boring_classes <span class="token keyword">import</span> DemoModel<span class="token punctuation">,</span> BoringDataModule
+<span class="token keyword">def</span> <span class="token function">cli_main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cli <span class="token operator">=</span> LightningCLI<span class="token punctuation">(</span>DemoModel<span class="token punctuation">,</span> BoringDataModule<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># note: don't call fit!!</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    cli_main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># note: it is good practice to implement the CLI in a function and call it in the main if block</span></code></pre>
+<p>可以查看帮助<code>python main.py --help</code>   </p>
+<p><code>python main.py [subcommand] --help</code> subcommand指fit、validate、test、predict，根据你的训练需求来执行，这个命令能查看Lightning module和lightningDataModule的参数</p>
+<p>With the Lightning CLI enabled, you can now change the parameters without touching your code:<code>python main.py fit --model.learning_rate 0.1</code>，当然也可以使用config来覆盖</p>
+<blockquote>
+<p>[!TIP]</p>
+<p>The options that become available in the CLI are the <code>__init__</code> parameters of the <code>LightningModule</code> and <code>LightningDataModule</code> classes. Thus, to make hyperparameters configurable, just add them to your class’s <code>__init__</code>. It is highly recommended that these parameters are described in the docstring so that the CLI shows them in the help. Also, the parameters should have accurate type hints so that the CLI can fail early and give understandable error messages when incorrect values are given.</p>
+</blockquote>
+<p><strong>使用cli混合不同的模型和数据集</strong></p>
+<p>这个要替换的是如下的切换模型或者数据集的逻辑：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># choose model</span>
+<span class="token keyword">if</span> args<span class="token punctuation">.</span>model <span class="token operator">==</span> <span class="token string">"gan"</span><span class="token punctuation">:</span>
+    model <span class="token operator">=</span> GAN<span class="token punctuation">(</span>args<span class="token punctuation">.</span>feat_dim<span class="token punctuation">)</span>
+<span class="token keyword">elif</span> args<span class="token punctuation">.</span>model <span class="token operator">==</span> <span class="token string">"transformer"</span><span class="token punctuation">:</span>
+    model <span class="token operator">=</span> Transformer<span class="token punctuation">(</span>args<span class="token punctuation">.</span>feat_dim<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># choose datamodule</span>
+<span class="token keyword">if</span> args<span class="token punctuation">.</span>data <span class="token operator">==</span> <span class="token string">"MNIST"</span><span class="token punctuation">:</span>
+    datamodule <span class="token operator">=</span> MNIST<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> args<span class="token punctuation">.</span>data <span class="token operator">==</span> <span class="token string">"imagenet"</span><span class="token punctuation">:</span>
+    datamodule <span class="token operator">=</span> Imagenet<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># mix them!</span>
+trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>model<span class="token punctuation">,</span> datamodule<span class="token punctuation">)</span></code></pre>
+<p>通过cli只需这样，省略掉<code>model_class</code>这个参数，DataModule类似:</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># main.py</span>
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>cli <span class="token keyword">import</span> LightningCLI
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>demos<span class="token punctuation">.</span>boring_classes <span class="token keyword">import</span> DemoModel<span class="token punctuation">,</span> BoringDataModule
+<span class="token keyword">class</span> <span class="token class-name">Model1</span><span class="token punctuation">(</span>DemoModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">configure_optimizers</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"⚡"</span><span class="token punctuation">,</span> <span class="token string">"using Model1"</span><span class="token punctuation">,</span> <span class="token string">"⚡"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>configure_optimizers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Model2</span><span class="token punctuation">(</span>DemoModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">configure_optimizers</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"⚡"</span><span class="token punctuation">,</span> <span class="token string">"using Model2"</span><span class="token punctuation">,</span> <span class="token string">"⚡"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>configure_optimizers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+cli <span class="token operator">=</span> LightningCLI<span class="token punctuation">(</span>datamodule_class<span class="token operator">=</span>BoringDataModule<span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p>[!TIP]</p>
+<p>Instead of omitting the <code>datamodule_class</code> parameter, you can give a base class and <code>subclass_mode_data=True</code>. This will make the CLI <strong>only accept data modules that are a subclass of the given base class</strong>.</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell"># use Model1
+python main.py fit --data FakeDataset1
+# use Model2
+python main.py fit --data FakeDataset2</code></pre>
+<p><strong>使用cli混合不同的优化器和lr_scheduler</strong></p>
+<p>Any custom subclass of <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/optim.html#torch.optim.Optimizer"><code>torch.optim.Optimizer</code></a> can be used as an optimizer:</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># main.py</span>
+<span class="token keyword">import</span> torch
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>cli <span class="token keyword">import</span> LightningCLI
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>demos<span class="token punctuation">.</span>boring_classes <span class="token keyword">import</span> DemoModel<span class="token punctuation">,</span> BoringDataModule
+<span class="token keyword">class</span> <span class="token class-name">LitAdam</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> closure<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"⚡"</span><span class="token punctuation">,</span> <span class="token string">"using LitAdam"</span><span class="token punctuation">,</span> <span class="token string">"⚡"</span><span class="token punctuation">)</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>step<span class="token punctuation">(</span>closure<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">FancyAdam</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> closure<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"⚡"</span><span class="token punctuation">,</span> <span class="token string">"using FancyAdam"</span><span class="token punctuation">,</span> <span class="token string">"⚡"</span><span class="token punctuation">)</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>step<span class="token punctuation">(</span>closure<span class="token punctuation">)</span>
+cli <span class="token operator">=</span> LightningCLI<span class="token punctuation">(</span>DemoModel<span class="token punctuation">,</span> BoringDataModule<span class="token punctuation">)</span></code></pre>
+<p><strong>学习率策略</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># main.py</span>
+<span class="token keyword">import</span> torch
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>cli <span class="token keyword">import</span> LightningCLI
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>demos<span class="token punctuation">.</span>boring_classes <span class="token keyword">import</span> DemoModel<span class="token punctuation">,</span> BoringDataModule
+<span class="token keyword">class</span> <span class="token class-name">LitLRScheduler</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>lr_scheduler<span class="token punctuation">.</span>CosineAnnealingLR<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">step</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"⚡"</span><span class="token punctuation">,</span> <span class="token string">"using LitLRScheduler"</span><span class="token punctuation">,</span> <span class="token string">"⚡"</span><span class="token punctuation">)</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+cli <span class="token operator">=</span> LightningCLI<span class="token punctuation">(</span>DemoModel<span class="token punctuation">,</span> BoringDataModule<span class="token punctuation">)</span></code></pre>
+<p>接受Standard learning rate schedulers from <code>torch.optim.lr_scheduler</code>，必须先指定optimizer才能指定学习率策略</p>
+<p><strong>Classes from any package</strong></p>
+<p>在前面的部分中，要选择的自定义类是在运行 LightningCLI 类的同一 python 文件中定义的。 要仅使用类名从任何包中选择类，请导入相应的包：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>cli <span class="token keyword">import</span> LightningCLI
+<span class="token keyword">import</span> my_code<span class="token punctuation">.</span>models  <span class="token comment" spellcheck="true"># noqa: F401</span>
+<span class="token keyword">import</span> my_code<span class="token punctuation">.</span>data_modules  <span class="token comment" spellcheck="true"># noqa: F401</span>
+<span class="token keyword">import</span> my_code<span class="token punctuation">.</span>optimizers  <span class="token comment" spellcheck="true"># noqa: F401</span>
+cli <span class="token operator">=</span> LightningCLI<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><strong>Help for specific classes</strong></p>
+<p>当接受多个模型或数据集时，CLI 的主要帮助不包括其特定参数，需要额外指定，例如<code>python main.py fit --model.help Model1</code></p>
+<p><strong>Control it all via YAML</strong></p>
+<p>随着项目变得越来越复杂，<strong>可配置选项的数量变得非常大</strong>，使得通过单独的命令行参数进行控制变得不方便。 为了解决这个问题，使用 LightningCLI 实现的 CLI 始终支持从配置文件接收输入。 配置文件使用的默认格式是 <strong>YAML</strong>。</p>
+<p><code>python main.py fit --config config.yaml --trainer.max_epochs 100</code>单独的参数会覆盖config里面的设置</p>
+<p>Lightning会自动在日志里保存配置参数，从而帮助模型的<strong>可复现性</strong>。这是通过<code>SaveConfigCallback</code>实现的，该回调函数被自动加入<code>Trainer</code>，可通过参数设置调节其行为。</p>
+<p><code>python main.py fit --config lightning_logs/version_7/config.yaml</code></p>
+<p><strong>从头编写yaml配置可能很复杂</strong>，可以使用<code>python main.py fit --print_config</code>打印配置再进行修改。对于<strong>混合模型</strong>，需要额外指定，如下<code>python main.py fit --model DemoModel --print_config</code></p>
+<p>配置项可以是<strong>简单的 Python 对象（例如 int 和 str）</strong>，也可以是由 <code>class_path</code>和<code>init_args</code>参数组成的复杂对象。<code>class_path</code>是指<strong>项目类的完整导入路径</strong>，而<code>init_args</code>是要<strong>传递给类构造函数的参</strong>数。 例如：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># model.py</span>
+<span class="token keyword">class</span> <span class="token class-name">MyModel</span><span class="token punctuation">(</span>L<span class="token punctuation">.</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> criterion<span class="token punctuation">:</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>criterion <span class="token operator">=</span> criterion
+<span class="token comment" spellcheck="true"># config.yaml</span>
+model<span class="token punctuation">:</span>
+  class_path<span class="token punctuation">:</span> model<span class="token punctuation">.</span>MyModel
+  init_args<span class="token punctuation">:</span>
+    criterion<span class="token punctuation">:</span>
+      class_path<span class="token punctuation">:</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>CrossEntropyLoss
+      init_args<span class="token punctuation">:</span>
+        reduction<span class="token punctuation">:</span> mean
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<p>LightningCLI 在底层使用<code>jsonargparse</code>来<strong>解析配置文件</strong>并<strong>自动创建对象</strong>，无需额外创建对象，也无需在<code>cli.py</code>去<strong>导入对应的</strong>类了。</p>
+<p><strong>使用多个配置文件，按顺序解析</strong>。</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># config_1.yaml</span>
+<span class="token key atrule">trainer</span><span class="token punctuation">:</span>
+  <span class="token key atrule">num_epochs</span><span class="token punctuation">:</span> <span class="token number">10</span>
+  <span class="token punctuation">...</span>
+<span class="token comment" spellcheck="true"># config_2.yaml</span>
+<span class="token key atrule">trainer</span><span class="token punctuation">:</span>
+  <span class="token key atrule">num_epochs</span><span class="token punctuation">:</span> <span class="token number">20 </span>
+  <span class="token punctuation">...</span>
+<span class="token comment" spellcheck="true"># python main.py fit --config config_1.yaml --config config_2.yaml </span>
+<span class="token comment" spellcheck="true"># The value from the last config will be used</span></code></pre>
+<p><strong>使用参数组</strong></p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># trainer.yaml</span>
+<span class="token key atrule">num_epochs</span><span class="token punctuation">:</span> <span class="token number">10</span>
+<span class="token comment" spellcheck="true"># model.yaml</span>
+<span class="token key atrule">out_dim</span><span class="token punctuation">:</span> <span class="token number">7</span>
+<span class="token comment" spellcheck="true"># data.yaml</span>
+<span class="token key atrule">data_dir</span><span class="token punctuation">:</span> ./data
+<span class="token comment" spellcheck="true"># $ python main.py fit --trainer trainer.yaml --model model.yaml --data data.yaml [...]</span></code></pre>
+<p><strong>Multiple models and/or datasets</strong></p>
+<p>CLI 可以编写为<strong>由导入路径和初始化参数</strong>指定<strong>模型和/或数据模块</strong>。 例如，使用实现为以下形式的工具：</p>
+<pre class=" language-python"><code class="language-python">cli <span class="token operator">=</span> LightningCLI<span class="token punctuation">(</span>MyModelBaseClass<span class="token punctuation">,</span> MyDataModuleBaseClass<span class="token punctuation">,</span> subclass_mode_model<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> subclass_mode_data<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span></code></pre>
+<p>可能配置如下：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">model</span><span class="token punctuation">:</span>
+  <span class="token key atrule">class_path</span><span class="token punctuation">:</span> mycode.mymodels.MyModel
+  <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+    <span class="token key atrule">decoder_layers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token number">2</span>
+    <span class="token punctuation">-</span> <span class="token number">4</span>
+    <span class="token key atrule">encoder_layers</span><span class="token punctuation">:</span> <span class="token number">12</span>
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">class_path</span><span class="token punctuation">:</span> mycode.mydatamodules.MyDataModule
+  <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+    <span class="token punctuation">...</span>
+<span class="token key atrule">trainer</span><span class="token punctuation">:</span>
+  <span class="token key atrule">callbacks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">class_path</span><span class="token punctuation">:</span> lightning.pytorch.callbacks.EarlyStopping
+      <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+        <span class="token key atrule">patience</span><span class="token punctuation">:</span> <span class="token number">5</span>
+    <span class="token punctuation">...</span></code></pre>
+<p>仅允许使用属于 <code>MyModelBaseClass </code>子类的模型类，同样，仅允许使用<code> MyDataModuleBaseClass 的</code>子类。 如果给出 <code>LightningModule </code>和 <code>LightningDataModule</code> 基类，则 CLI 将允许任何Lightning模块和数据模块。</p>
+<p><strong>Models with multiple submodules</strong></p>
+<p>许多用例需要有<strong>多个模块</strong>，每个模块都有自己的可配置选项。 使用 LightningCLI 处理此问题的一种可能方法是实现一个<strong>将每个子模块作为初始化参数的模块</strong>。 这称为<code>依赖注入</code>，这是<strong>改进代码库解耦</strong>的好方法。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MyMainModel</span><span class="token punctuation">(</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> encoder<span class="token punctuation">:</span> nn<span class="token punctuation">.</span>Module<span class="token punctuation">,</span> decoder<span class="token punctuation">:</span> nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""Example encoder-decoder submodules model
+        Args:
+            encoder: Instance of a module for encoding
+            decoder: Instance of a module for decoding
+        """</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>encoder <span class="token operator">=</span> encoder
+        self<span class="token punctuation">.</span>decoder <span class="token operator">=</span> decoder</code></pre>
+<p>配置如下：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#If the CLI is implemented as LightningCLI(MyMainModel)</span>
+<span class="token key atrule">model</span><span class="token punctuation">:</span>
+  <span class="token key atrule">encoder</span><span class="token punctuation">:</span>
+    <span class="token key atrule">class_path</span><span class="token punctuation">:</span> mycode.myencoders.MyEncoder
+    <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+      <span class="token punctuation">...</span>
+  <span class="token key atrule">decoder</span><span class="token punctuation">:</span>
+    <span class="token key atrule">class_path</span><span class="token punctuation">:</span> mycode.mydecoders.MyDecoder
+    <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+      <span class="token punctuation">...</span>
+<span class="token comment" spellcheck="true"># If subclass_mode_model=True</span>
+<span class="token key atrule">model</span><span class="token punctuation">:</span>
+    class_path<span class="token punctuation">:</span>mymodel.MyMainModel
+    <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+    <span class="token key atrule">encoder</span><span class="token punctuation">:</span>
+      <span class="token key atrule">class_path</span><span class="token punctuation">:</span> mycode.myencoders.MyEncoder
+      <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+        <span class="token punctuation">...</span>
+    <span class="token key atrule">decoder</span><span class="token punctuation">:</span>
+      <span class="token key atrule">class_path</span><span class="token punctuation">:</span> mycode.mydecoders.MyDecoder
+      <span class="token key atrule">init_args</span><span class="token punctuation">:</span>
+        <span class="token punctuation">...</span></code></pre>
+<p><strong>Fixed optimizer and scheduler</strong></p>
+<p>在某些情况下，可能希望<strong>固定优化器和/或学习率调度器</strong>，而<strong>不是允许多个</strong>选择。为此，你可以通过<strong>子类化CLI</strong>来手动添加特定类的参数。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MyLightningCLI</span><span class="token punctuation">(</span>LightningCLI<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">add_arguments_to_parser</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> parser<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        parser<span class="token punctuation">.</span>add_optimizer_args<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">)</span>
+        parser<span class="token punctuation">.</span>add_lr_scheduler_args<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>lr_scheduler<span class="token punctuation">.</span>ExponentialLR<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># config.yaml 直接指定，移除了model</span>
+optimizer<span class="token punctuation">:</span>
+  lr<span class="token punctuation">:</span> <span class="token number">0.01</span>
+lr_scheduler<span class="token punctuation">:</span>
+  gamma<span class="token punctuation">:</span> <span class="token number">0.2</span>
+model<span class="token punctuation">:</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+trainer<span class="token punctuation">:</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<p>上面的写法是指定了哪个优化器，也可以用类似基类的方式加<code>class_path</code>和<code>init_args</code></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ConditioningLightningCLI</span><span class="token punctuation">(</span>LightningCLI<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># OPTIMIZER_REGISTRY.classes就是获取被注册过的类</span>
+    <span class="token comment" spellcheck="true"># nested_key是配置文件中最上层的命名空间的名字</span>
+    <span class="token comment" spellcheck="true"># 向parse传递额外的参数</span>
+    <span class="token comment" spellcheck="true"># link到model的optimizer_init和lr_scheduler_init</span>
+    <span class="token keyword">def</span> <span class="token function">add_arguments_to_parser</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> parser<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        parser<span class="token punctuation">.</span>add_optimizer_args<span class="token punctuation">(</span>
+            OPTIMIZER_REGISTRY<span class="token punctuation">.</span>classes<span class="token punctuation">,</span> nested_key<span class="token operator">=</span><span class="token string">"optimizer"</span><span class="token punctuation">,</span> link_to<span class="token operator">=</span><span class="token string">"model.init_args.optimizer_init"</span><span class="token punctuation">)</span>
+        parser<span class="token punctuation">.</span>add_lr_scheduler_args<span class="token punctuation">(</span>
+            LR_SCHEDULER_REGISTRY<span class="token punctuation">.</span>classes<span class="token punctuation">,</span> nested_key<span class="token operator">=</span><span class="token string">"lr_scheduler"</span><span class="token punctuation">,</span> link_to<span class="token operator">=</span><span class="token string">"model.init_args.lr_scheduler_init"</span><span class="token punctuation">)</span>
+@MODEL_REGISTRY
+<span class="token keyword">class</span> <span class="token class-name">DomainAdaptationSegmentationModel</span><span class="token punctuation">(</span>pl<span class="token punctuation">.</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>
+                 optimizer_init<span class="token punctuation">:</span> dict<span class="token punctuation">,</span>
+                 lr_scheduler_init<span class="token punctuation">:</span> dict<span class="token punctuation">,</span>
+                 backbone<span class="token punctuation">:</span> nn<span class="token punctuation">.</span>Module<span class="token punctuation">,</span>
+                 ···
+<span class="token comment" spellcheck="true"># config.yaml</span>
+model<span class="token punctuation">:</span>
+  class_path<span class="token punctuation">:</span> models<span class="token punctuation">.</span>DomainAdaptationSegmentationModel
+  init_args<span class="token punctuation">:</span>
+       backbone<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 不用指定optimizer_init和lr_scheduler_init</span>
+    ···
+optimizer<span class="token punctuation">:</span>
+  class_path<span class="token punctuation">:</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>AdamW
+  init_args<span class="token punctuation">:</span>
+        ···
+lr_scheduler<span class="token punctuation">:</span>
+  class_path<span class="token punctuation">:</span> helpers<span class="token punctuation">.</span>lr_scheduler<span class="token punctuation">.</span>LinearWarmupPolynomialLR
+  init_args<span class="token punctuation">:</span>
+    ···</code></pre>
+<h2 id="Data-Processing-DataModule"><a href="#Data-Processing-DataModule" class="headerlink" title="Data Processing-DataModule"></a>Data Processing-DataModule</h2><p>pytorch数据处理包含五个步骤：</p>
+<p><strong>1.Download / tokenize / process.</strong></p>
+<ul>
+<li>这个步骤涉及从数据源<strong>获取原始数据</strong>，并进行必要的预处理，比如<strong>分词、解码</strong>等。</li>
+</ul>
+<p><strong>2.Clean and （maybe） save to disk.</strong></p>
+<ul>
+<li>清洗数据可能包括<strong>去除噪声、处理缺失值、标准化</strong>等。</li>
+<li>清洗后的数据可以<strong>保存到磁盘</strong>，以便后续快速加载，而不是每次都重新处理。</li>
+</ul>
+<p><strong>3.Load inside Dataet</strong></p>
+<ul>
+<li><code>Dataset</code>是PyTorch中用于封装数据的类，它定义了如何从数据集中获取单个样本。</li>
+<li>在<code>LightningDataModule</code>中，你需要定义自己的<code>Dataset</code>类，并在<code>setup</code>方法中实例化它</li>
+</ul>
+<p><strong>4.Apply transforms（rotate, tokenize, etc…）.</strong></p>
+<ul>
+<li>PyTorch提供了<code>torchvision.transforms</code>（针对图像）和<code>torchtext.transforms</code>（针对文本）等模块来简化这些操作。</li>
+<li>在<code>LightningDataModule</code>中，你可以在<code>train_dataloader</code>、<code>val_dataloader</code>和<code>test_dataloader</code>方法中应用这些转换。</li>
+</ul>
+<p><strong>5.Wrap inside a DataLoader.</strong></p>
+<ul>
+<li><code>DataLoader</code>是PyTorch中用于加载数据并提供批处理、多线程/多进程数据加载等功能的类。</li>
+<li>在<code>LightningDataModule</code>中，你需要定义<code>train_dataloader</code>、<code>val_dataloader</code>和<code>test_dataloader</code>方法，分别返回用于训练、验证和测试的数据加载器。</li>
+</ul>
+<p>经典的DataModule实现</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> lightning <span class="token keyword">as</span> L
+<span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> random_split<span class="token punctuation">,</span> DataLoader
+<span class="token comment" spellcheck="true"># Note - you must have torchvision installed for this example</span>
+<span class="token keyword">from</span> torchvision<span class="token punctuation">.</span>datasets <span class="token keyword">import</span> MNIST
+<span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
+<span class="token keyword">class</span> <span class="token class-name">MNISTDataModule</span><span class="token punctuation">(</span>L<span class="token punctuation">.</span>LightningDataModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data_dir<span class="token punctuation">:</span> str <span class="token operator">=</span> <span class="token string">"./"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>data_dir <span class="token operator">=</span> data_dir
+        self<span class="token punctuation">.</span>transform <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Compose<span class="token punctuation">(</span><span class="token punctuation">[</span>transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> transforms<span class="token punctuation">.</span>Normalize<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">0.1307</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0.3081</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">prepare_data</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+              <span class="token comment" spellcheck="true"># download data</span>
+        MNIST<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data_dir<span class="token punctuation">,</span> train<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> download<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        MNIST<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data_dir<span class="token punctuation">,</span> train<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> download<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">setup</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> stage<span class="token punctuation">:</span> str<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># Assign train/val datasets for use in dataloaders</span>
+        <span class="token keyword">if</span> stage <span class="token operator">==</span> <span class="token string">"fit"</span><span class="token punctuation">:</span>
+            mnist_full <span class="token operator">=</span> MNIST<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data_dir<span class="token punctuation">,</span> train<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> transform<span class="token operator">=</span>self<span class="token punctuation">.</span>transform<span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>mnist_train<span class="token punctuation">,</span> self<span class="token punctuation">.</span>mnist_val <span class="token operator">=</span> random_split<span class="token punctuation">(</span>
+                mnist_full<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">55000</span><span class="token punctuation">,</span> <span class="token number">5000</span><span class="token punctuation">]</span><span class="token punctuation">,</span> generator<span class="token operator">=</span>torch<span class="token punctuation">.</span>Generator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>manual_seed<span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># Assign test dataset for use in dataloader(s)</span>
+        <span class="token keyword">if</span> stage <span class="token operator">==</span> <span class="token string">"test"</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>mnist_test <span class="token operator">=</span> MNIST<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data_dir<span class="token punctuation">,</span> train<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> transform<span class="token operator">=</span>self<span class="token punctuation">.</span>transform<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> stage <span class="token operator">==</span> <span class="token string">"predict"</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>mnist_predict <span class="token operator">=</span> MNIST<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data_dir<span class="token punctuation">,</span> train<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> transform<span class="token operator">=</span>self<span class="token punctuation">.</span>transform<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">train_dataloader</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> DataLoader<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mnist_train<span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">val_dataloader</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> DataLoader<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mnist_val<span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">test_dataloader</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> DataLoader<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mnist_test<span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">predict_dataloader</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> DataLoader<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mnist_predict<span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">)</span></code></pre>
+<p><code>prepare_data(self)</code></p>
+<p>使用多个进程（分布式设置）下载和保存数据将导致数据损坏。 Lightning 确保仅在CPU上的单个进程中调用<code>prepare_data()</code>，因此您可以<strong>安全</strong>地在其中添加<strong>下载逻辑</strong>。 在多节点训练的情况下，该钩子的执行取决于<code>prepare_data_per_node</code>。 <code>setup()</code> 在<code>prepare_data</code>之后调用，中间有一个屏障，确保一旦数据准备好并可供使用，所有进程都会继续进行设置。</p>
+<p>所以该步骤适合：1下载数据2如nlp中的分词3保存到本地，如将分好的词保存到本地</p>
+<p><code>setup(self, stage: Optional[str] = None)</code></p>
+<p>执行在每个GPU上运行的数据操作。同时接受 <code>stage</code>参数，用来分离设置逻辑如<code>trainer.{fit,validate,test,predict}</code>.</p>
+<p><code>train_dataloader(self)</code></p>
+<p>使用<code>train_dataloader()</code>方法生成训练数据加载器。 通常只需包装在设置中定义的数据集即可。这是Trainer的<code>fit()</code>方法使用的数据加载器。</p>
+<p><code>val_dataloader(self)</code></p>
+<p>同上，是Trainer的<code>fit()</code>和<code>validate()</code>方法使用的数据加载器。</p>
+<p><code>test_dataloader(self)</code></p>
+<p>同上，是Trainer的<code>test()</code>方法使用的数据加载器。</p>
+<p><code>predict_dataloader(self)</code></p>
+<p>同上，是Trainer的<code>predict()</code>方法使用的数据加载器。</p>
+<p><code>transfer_batch_to_device(self, batch, device, dataloader_id)</code></p>
+<p>有了dataloader，框架使用该函数将对应数据送入device。如果DataLoader 返回自定义数据结构中的张量，重写这个钩子函数。默认的<strong>钩子函数（无需重写）</strong>支持的的数据类型包括：<code> torch.Tensor</code> 或任何实现 <code>.to(...)</code>方法的，<code>list dict tuple</code> 。 对于其他任何数据类型，您需要定义如何将<strong>数据移动到目标设备</strong>（CPU、GPU、TPU……)。</p>
+<p><strong>最终dataloader提供给模型的也是打包好的一个batch</strong>。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">transfer_batch_to_device</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> device<span class="token punctuation">,</span> dataloader_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token comment" spellcheck="true">#batch (Any) – A batch of data that needs to be transferred to a new device.</span>
+  <span class="token comment" spellcheck="true">#device (device) – The target device as defined in PyTorch.</span>
+  <span class="token comment" spellcheck="true">#dataloader_idx (int) – The index of the dataloader to which the batch belongs.</span>
+    <span class="token keyword">if</span> isinstance<span class="token punctuation">(</span>batch<span class="token punctuation">,</span> CustomBatch<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># move all tensors in your custom data structure to the device</span>
+        batch<span class="token punctuation">.</span>samples <span class="token operator">=</span> batch<span class="token punctuation">.</span>samples<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+        batch<span class="token punctuation">.</span>targets <span class="token operator">=</span> batch<span class="token punctuation">.</span>targets<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> dataloader_idx <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># skip device transfer for the first dataloader or anything you wish</span>
+        <span class="token keyword">pass</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        batch <span class="token operator">=</span> super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>transfer_batch_to_device<span class="token punctuation">(</span>batch<span class="token punctuation">,</span> device<span class="token punctuation">,</span> dataloader_idx<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> batch</code></pre>
+<p><code>on_before_batch_transfer(self, batch, dataloader_idx)</code></p>
+<p>Override to alter or apply batch augmentations to your batch before it is transferred to the device.</p>
+<p>You can use <code>self.trainer.training/testing/validating/predicting</code> so that you can add different logic as per your requirement.</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">on_before_batch_transfer</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> dataloader_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    batch<span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span> <span class="token operator">=</span> transforms<span class="token punctuation">(</span>batch<span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> batch</code></pre>
+<p>使用datamodule的方式，trainer会自动依次调用<code>prepare_data,setup,train_dataloader</code>等函数，trainer会免除复杂的训练逻辑，不使用trainer也可以手动执行dm的各个方法来自己写训练逻辑</p>
+<pre class=" language-python"><code class="language-python">dm <span class="token operator">=</span> MNISTDataModule<span class="token punctuation">(</span><span class="token punctuation">)</span>
+model <span class="token operator">=</span> Model<span class="token punctuation">(</span><span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>model<span class="token punctuation">,</span> datamodule<span class="token operator">=</span>dm<span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>test<span class="token punctuation">(</span>datamodule<span class="token operator">=</span>dm<span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>validate<span class="token punctuation">(</span>datamodule<span class="token operator">=</span>dm<span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>datamodule<span class="token operator">=</span>dm<span class="token punctuation">)</span></code></pre>
+<h2 id="Model-Lightning-Module"><a href="#Model-Lightning-Module" class="headerlink" title="Model-Lightning Module"></a>Model-Lightning Module</h2><p>首先需要定义自己的网络模块</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> torch
+<span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F
+<span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
+<span class="token keyword">from</span> torchvision<span class="token punctuation">.</span>datasets <span class="token keyword">import</span> MNIST
+<span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> DataLoader
+<span class="token keyword">import</span> lightning <span class="token keyword">as</span> L
+<span class="token keyword">class</span> <span class="token class-name">Encoder</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>l1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">28</span> <span class="token operator">*</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>l1<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Decoder</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>l1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">28</span> <span class="token operator">*</span> <span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>l1<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
+<p>然后可以使用<code>LightningModule</code>来定义模块的交互、配置优化器，使用该模块的优点是<strong>减少了training loop的复杂训练逻辑</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LitAutoEncoder</span><span class="token punctuation">(</span>L<span class="token punctuation">.</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> encoder<span class="token punctuation">,</span> decoder<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>encoder <span class="token operator">=</span> encoder
+        self<span class="token punctuation">.</span>decoder <span class="token operator">=</span> decoder
+    <span class="token keyword">def</span> <span class="token function">training_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token comment" spellcheck="true"># 训练阶段模块如何交互</span>
+        <span class="token comment" spellcheck="true"># training_step defines the train loop.</span>
+        x<span class="token punctuation">,</span> _ <span class="token operator">=</span> batch
+        x <span class="token operator">=</span> x<span class="token punctuation">.</span>view<span class="token punctuation">(</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        z <span class="token operator">=</span> self<span class="token punctuation">.</span>encoder<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x_hat <span class="token operator">=</span> self<span class="token punctuation">.</span>decoder<span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+        loss <span class="token operator">=</span> F<span class="token punctuation">.</span>mse_loss<span class="token punctuation">(</span>x_hat<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> loss <span class="token comment" spellcheck="true">#这个需要返回loss</span>
+     <span class="token keyword">def</span> <span class="token function">validation_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># this is the validation loop</span>
+        x<span class="token punctuation">,</span> _ <span class="token operator">=</span> batch
+        x <span class="token operator">=</span> x<span class="token punctuation">.</span>view<span class="token punctuation">(</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        z <span class="token operator">=</span> self<span class="token punctuation">.</span>encoder<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x_hat <span class="token operator">=</span> self<span class="token punctuation">.</span>decoder<span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+        val_loss <span class="token operator">=</span> F<span class="token punctuation">.</span>mse_loss<span class="token punctuation">(</span>x_hat<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token string">"val_loss"</span><span class="token punctuation">,</span> val_loss<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 记录loss就行</span>
+     <span class="token keyword">def</span> <span class="token function">test_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># this is the test loop</span>
+        x<span class="token punctuation">,</span> _ <span class="token operator">=</span> batch
+        x <span class="token operator">=</span> x<span class="token punctuation">.</span>view<span class="token punctuation">(</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        z <span class="token operator">=</span> self<span class="token punctuation">.</span>encoder<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x_hat <span class="token operator">=</span> self<span class="token punctuation">.</span>decoder<span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+        test_loss <span class="token operator">=</span> F<span class="token punctuation">.</span>mse_loss<span class="token punctuation">(</span>x_hat<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token string">"test_loss"</span><span class="token punctuation">,</span> test_loss<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 记录loss就行</span>
+    <span class="token keyword">def</span> <span class="token function">configure_optimizers</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token comment" spellcheck="true"># 定义优化器</span>
+        optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>self<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> optimizer</code></pre>
+<p>实际使用时利用<code>Trainer</code>来负责处理所有工程问题，并将所需的所有复杂性抽象化以实现规模扩展。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># model</span>
+autoencoder <span class="token operator">=</span> LitAutoEncoder<span class="token punctuation">(</span>Encoder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Decoder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># train model</span>
+trainer <span class="token operator">=</span> L<span class="token punctuation">.</span>Trainer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>model<span class="token operator">=</span>autoencoder<span class="token punctuation">,</span> train_dataloaders<span class="token operator">=</span>train_loader<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Trainer代替的就是以下逻辑</span>
+autoencoder <span class="token operator">=</span> LitAutoEncoder<span class="token punctuation">(</span>Encoder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Decoder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+optimizer <span class="token operator">=</span> autoencoder<span class="token punctuation">.</span>configure_optimizers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> batch_idx<span class="token punctuation">,</span> batch <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>train_loader<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true"># 自动循环</span>
+    loss <span class="token operator">=</span> autoencoder<span class="token punctuation">.</span>training_step<span class="token punctuation">(</span>batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span>
+    loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#自动反向传播</span>
+    optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 自动更新参数</span>
+    optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 自动梯度清0</span>
+<span class="token comment" spellcheck="true"># test the model</span>
+trainer<span class="token punctuation">.</span>test<span class="token punctuation">(</span>model<span class="token punctuation">,</span> dataloaders<span class="token operator">=</span>DataLoader<span class="token punctuation">(</span>test_set<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># train with both splits(训练加验证)</span>
+trainer <span class="token operator">=</span> L<span class="token punctuation">.</span>Trainer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>model<span class="token punctuation">,</span> train_loader<span class="token punctuation">,</span> valid_loader<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#把两个dataloader都加入</span></code></pre>
+<p>上述是模型的<strong>训练部分（训练、验证、测试）</strong>，对于<strong>推理部分</strong>，简单方式如下：</p>
+<pre class=" language-python"><code class="language-python">model <span class="token operator">=</span> LitModel<span class="token punctuation">.</span>load_from_checkpoint<span class="token punctuation">(</span><span class="token string">"best_model.ckpt"</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span>eval<span class="token punctuation">(</span><span class="token punctuation">)</span>
+x <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">)</span>
+<span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    y_hat <span class="token operator">=</span> model<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
+<p>上面的推理逻辑还是很复杂，<code>LightningModule</code>提供<code>predict_step</code>来解决：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MyModel</span><span class="token punctuation">(</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">predict_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">,</span> dataloader_idx<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">(</span>batch<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 推理如下</span>
+data_loader <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+model <span class="token operator">=</span> MyModel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+trainer <span class="token operator">=</span> Trainer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+predictions <span class="token operator">=</span> trainer<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>model<span class="token punctuation">,</span> data_loader<span class="token punctuation">)</span></code></pre>
+<p>还可以添加更复杂的预处理或后处理逻辑，例如：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LitMCdropoutModel</span><span class="token punctuation">(</span>L<span class="token punctuation">.</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> model<span class="token punctuation">,</span> mc_iteration<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>model <span class="token operator">=</span> model
+        self<span class="token punctuation">.</span>dropout <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>mc_iteration <span class="token operator">=</span> mc_iteration
+    <span class="token keyword">def</span> <span class="token function">predict_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># enable Monte Carlo Dropout</span>
+        self<span class="token punctuation">.</span>dropout<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># take average of `self.mc_iteration` iterations</span>
+        pred <span class="token operator">=</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>dropout<span class="token punctuation">(</span>self<span class="token punctuation">.</span>model<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> range<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mc_iteration<span class="token punctuation">)</span><span class="token punctuation">]</span>
+        pred <span class="token operator">=</span> torch<span class="token punctuation">.</span>vstack<span class="token punctuation">(</span>pred<span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span>dim<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> pred</code></pre>
+<p><strong>分布式推理</strong></p>
+<p>通过使用<code>Lightning</code>的<code>predict_step</code>，可以使用分布式推理通过<a target="_blank" rel="noopener" href="https://lightning.ai/docs/pytorch/latest/api/lightning.pytorch.callbacks.BasePredictionWriter.html#lightning.pytorch.callbacks.BasePredictionWriter"><code>BasePredictionWriter</code></a>.</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">from</span> lightning<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>callbacks <span class="token keyword">import</span> BasePredictionWriter
+<span class="token keyword">class</span> <span class="token class-name">CustomWriter</span><span class="token punctuation">(</span>BasePredictionWriter<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> output_dir<span class="token punctuation">,</span> write_interval<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>write_interval<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>output_dir <span class="token operator">=</span> output_dir
+    <span class="token keyword">def</span> <span class="token function">write_on_epoch_end</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> trainer<span class="token punctuation">,</span> pl_module<span class="token punctuation">,</span> predictions<span class="token punctuation">,</span> batch_indices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># this will create N (num processes) files in `output_dir` each containing</span>
+        <span class="token comment" spellcheck="true"># the predictions of it's respective rank</span>
+        torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>predictions<span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>output_dir<span class="token punctuation">,</span> f<span class="token string">"predictions_{trainer.global_rank}.pt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># optionally, you can also save `batch_indices` to get the information about the data index</span>
+        <span class="token comment" spellcheck="true"># from your prediction data</span>
+        torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>batch_indices<span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>output_dir<span class="token punctuation">,</span> f<span class="token string">"batch_indices_{trainer.global_rank}.pt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># or you can set `write_interval="batch"` and override `write_on_batch_end` to save</span>
+<span class="token comment" spellcheck="true"># predictions at batch level</span>
+pred_writer <span class="token operator">=</span> CustomWriter<span class="token punctuation">(</span>output_dir<span class="token operator">=</span><span class="token string">"pred_path"</span><span class="token punctuation">,</span> write_interval<span class="token operator">=</span><span class="token string">"epoch"</span><span class="token punctuation">)</span>
+trainer <span class="token operator">=</span> Trainer<span class="token punctuation">(</span>accelerator<span class="token operator">=</span><span class="token string">"gpu"</span><span class="token punctuation">,</span> strategy<span class="token operator">=</span><span class="token string">"ddp"</span><span class="token punctuation">,</span> devices<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> callbacks<span class="token operator">=</span><span class="token punctuation">[</span>pred_writer<span class="token punctuation">]</span><span class="token punctuation">)</span>
+model <span class="token operator">=</span> BoringModel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>model<span class="token punctuation">,</span> return_predictions<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span></code></pre>
+<h2 id="Coming-up-next"><a href="#Coming-up-next" class="headerlink" title="Coming up next"></a>Coming up next</h2><p>之后将学习<code>Lightning</code>关于<code>Trainer</code>以及如<code>callback</code>、调试方法、模型优化、可视化等涉及<strong>训练逻辑</strong>和<strong>优化方法</strong>的相关技术。</p>
+<h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/Lightning-AI/lightning">Lightning github地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://pytorch-lightning.readthedocs.io/en/latest/starter/introduction.html">官方文档</a></p>
+<p><a href="">AEDA代码</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/353985363">Pytorch Lightning 完全攻略</a></p>
+</blockquote>
+<h2 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h2><p><strong>个人博客：</strong><a href="https://chenghaodong666.github.io/">月源</a></p>
+<p><strong>知乎文章：</strong><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/huang-ye-de-ye-92/posts">月源</a></p>
+<p><strong>公众号：</strong><code>月源的算法仙蛊屋</code></p>
 
             </div>
             <hr/>
@@ -1187,13 +1662,13 @@ pdb<span class="token punctuation">.</span>set_trace<span class="token punctuati
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/diffusion-model/">
+                <a href="/hexo-git-github-bo-ke-da-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/39.jpg" class="responsive-img" alt="diffusion model">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">diffusion model</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1204,7 +1679,7 @@ pdb<span class="token punctuation">.</span>set_trace<span class="token punctuati
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-11-27
                         </span>
                         <span class="publish-author">
                             
@@ -1224,44 +1699,32 @@ pdb<span class="token punctuation">.</span>set_trace<span class="token punctuati
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/sklearn/">
+                <a href="/diffusion-model/">
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="sklearn">
+                        <img src="./medias/loading.gif" data-original="/medias/featureimages/39.jpg" class="responsive-img" alt="diffusion model">
                         
-                        <span class="card-title">sklearn</span>
+                        <span class="card-title">diffusion model</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简单记录sklearn学习的一些总结
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Dch
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/sklearn/">
-                        <span class="chip bg-color">sklearn</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1510,7 +1973,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">170k</span>&nbsp;字
+                class="white-color">174.1k</span>&nbsp;字
             
             
             

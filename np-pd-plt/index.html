@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.8k
+                    8.9k
                 </div>
                 
 
@@ -916,6 +916,8 @@ Data columns <span class="token punctuation">(</span>total <span class="token nu
 dtypes<span class="token punctuation">:</span> float64<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> object<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>                 <span class="token comment" spellcheck="true"># 类型</span>
 <span class="token comment" spellcheck="true"># 删除'B','C'两列</span>
 df<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># </span>
+df<span class="token punctuation">.</span>columns
 <span class="token comment" spellcheck="true"># duplicated()返回数据是否重复</span>
 person <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'Google'</span><span class="token punctuation">,</span> <span class="token string">'Runoob'</span><span class="token punctuation">,</span> <span class="token string">'Runoob'</span><span class="token punctuation">,</span> <span class="token string">'Taobao'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1100,7 +1102,13 @@ df <span class="token operator">=</span> pd<span class="token punctuation">.</sp
                    <span class="token string">'C C'</span><span class="token punctuation">:</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 df<span class="token punctuation">.</span>query<span class="token punctuation">(</span><span class="token string">'A > B'</span><span class="token punctuation">)</span>
    A  B  C C
-<span class="token number">4</span>  <span class="token number">5</span>  <span class="token number">2</span>    <span class="token number">6</span></code></pre>
+<span class="token number">4</span>  <span class="token number">5</span>  <span class="token number">2</span>    <span class="token number">6</span>
+df<span class="token punctuation">.</span>isna<span class="token punctuation">(</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 都是用来判断是否为nan，完全相同，两个函数是为了模仿R的DataFrame</span></code></pre>
+<h3 id="pandas读取表格"><a href="#pandas读取表格" class="headerlink" title="pandas读取表格"></a>pandas读取表格</h3><pre class=" language-python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">'data/dataset_example.xlsx'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># sheet_name(str, int, list, or None, default 0) : 讀取指定的工作表</span>
+a_int <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">'data/dataset_example.xlsx'</span><span class="token punctuation">,</span> sheet_name <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span></code></pre>
 <h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>易百教程：<a target="_blank" rel="noopener" href="https://www.yiibai.com/matplotlib">https://www.yiibai.com/matplotlib</a></p>
 <p>API：<a target="_blank" rel="noopener" href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a></p>
 <h3 id="plg-fig-ax的区别"><a href="#plg-fig-ax的区别" class="headerlink" title="plg/fig/ax的区别"></a>plg/fig/ax的区别</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/93423829">知乎教程</a></p>
@@ -1700,7 +1708,7 @@ pd<span class="token punctuation">.</span>options<span class="token punctuation"
 df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>dict<span class="token punctuation">(</span>a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 fig <span class="token operator">=</span> df<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span>
 fig<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-
+<h2 id="jcm"><a href="#jcm" class="headerlink" title="jcm"></a>jcm</h2>
             </div>
             <hr/>
 
@@ -2538,7 +2546,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">170k</span>&nbsp;字
+                class="white-color">174.1k</span>&nbsp;字
             
             
             

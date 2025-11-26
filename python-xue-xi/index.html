@@ -1674,9 +1674,13 @@ sys<span class="token punctuation">.</span>path<span class="token punctuation">.
  <span class="token string">'D:\\Installation_program\\anaconda\\lib\\site-packages\\win32'</span><span class="token punctuation">,</span> 
  <span class="token string">'D:\\Installation_program\\anaconda\\lib\\site-packages\\win32\\lib'</span><span class="token punctuation">,</span> 
  <span class="token string">'D:\\Installation_program\\anaconda\\lib\\site-packages\\Pythonwin'</span><span class="token punctuation">,</span> 
- <span class="token string">'/home/syd/GAN'</span><span class="token punctuation">]</span></code></pre>
+ <span class="token string">'/home/syd/GAN'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">#或者</span>
+export PYTHONPATH<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>pi<span class="token operator">/</span>my_lib</code></pre>
 <h3 id="math"><a href="#math" class="headerlink" title="math"></a>math</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 返回x的阶乘值。如果x不是整数或者为负数，抛出ValueError。</span>
-math<span class="token punctuation">.</span>factorial<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
+math<span class="token punctuation">.</span>factorial<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 返回e的x次方</span>
+math<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p><img src="./medias/loading.gif" data-original="/python-xue-xi/image-20220526133905941.png" alt="image-20220526133905941"></p>
 <h3 id="tqdm"><a href="#tqdm" class="headerlink" title="tqdm"></a>tqdm</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wanghui-garcia/p/11514579.html">tqdm详细教程</a></p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> tqdm <span class="token keyword">import</span> tqdm
@@ -2303,6 +2307,8 @@ ipd<span class="token punctuation">.</span>display<span class="token punctuation
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 通过警告过滤器来控制是否发出警告信息</span>
 <span class="token keyword">import</span> warnings
 warnings<span class="token punctuation">.</span>filterwarnings<span class="token punctuation">(</span><span class="token string">'ignore'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#忽略警告信息</span></code></pre>
+<h3 id="mpi4py的安装"><a href="#mpi4py的安装" class="headerlink" title="mpi4py的安装"></a>mpi4py的安装</h3><pre class=" language-python"><code class="language-python">sudo apt install libopenmpi<span class="token operator">-</span>dev
+conda install mpi4py <span class="token comment" spellcheck="true">#pip不行</span></code></pre>
 
             </div>
             <hr/>
@@ -3137,7 +3143,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">170k</span>&nbsp;字
+                class="white-color">174.1k</span>&nbsp;字
             
             
             

@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    18.7k
+                    18.8k
                 </div>
                 
 
@@ -712,6 +712,7 @@
 <p>p=1，<strong>曼哈顿距离</strong>，p=2，<strong>欧式距离</strong>，p为无穷，<strong>无穷范数或最大范数</strong>。</p>
 <p>做正则项时，称为Lp-正则项。L1-正则项也叫<strong>LASSO</strong>正则项，L2-正则项也叫<strong>Tikhonov或Ringe正则项</strong></p>
 <p><a target="_blank" rel="noopener" href="https://liam.page/2017/03/30/L1-and-L2-regularizer/">详解</a></p>
+<p>L1正则化主要是在损失函数中添加权重参数的绝对值的和，得到的<strong>参数通常比较稀疏，常用于特征选择</strong>。L2正则化则是在损失函数中添加权重参数的平方项，<strong>得到的模型参数通常比较小</strong>。</p>
 <p>在这里，我们需要关注的最主要是范数的「非负性」。我们刚才讲，损失函数通常是一个有下确界的函数。而这个性质保证了我们可以对损失函数做最优化求解。如果我们要保证目标函数依然可以做最优化求解，那么我们就必须让正则项也有一个下界。非负性无疑提供了这样的下界，而且它是一个下确界——由齐次性保证[当 c=0 时]</p>
 <p>因此，我们说，范数的性质使得它天然地适合作为机器学习的正则项。而范数需要的向量，则是<strong>机器学习的学习目标——参数向量</strong>。</p>
 <p>L0范数表示向量中非零元素的个数 </p>
@@ -959,12 +960,14 @@
 <li><strong>卷积核默认第三维与输入图片的第三维（通道数）一样，并进行多层卷积，产生一个二维结果</strong></li>
 <li><strong>1个卷积核产生一个二维结果，n个卷积核产生第三维为n的三维结果</strong></li>
 <li><strong>卷积核n的个数就是输出的通道数</strong></li>
+<li>卷积核个数通常为奇数</li>
 </ol>
 <p>为什么out_channel要大于in_channel?</p>
 <p>Out_channels要能反映图片的多种特征,<strong>每个kernel对不同的特征有不同的敏感度</strong></p>
 <p><strong>大的卷积核尺寸意味着更大的感受野</strong></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/vdumoulin/conv_arithmetic">结合github的图演示看</a></p>
 <p><strong>1 通用公式</strong><br>$$<br>o=\frac{i+2p-k}{s}+1 \<br>D2=K(filters_num)<br>$$</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/512123584">https://zhuanlan.zhihu.com/p/512123584</a> 解释，注意o向下取整</p>
 <p><strong>2 没有填充,单位步长</strong><br>$$<br>s=1,p=0,o=i-k+1<br>$$</p>
 <p><strong>3有零填充,单位步长</strong></p>
 <p><strong>3.1same padding</strong></p>
@@ -1198,6 +1201,7 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <li><strong>Batch Normalization具有某种正则作用，不需要太依赖dropout，减少过拟合</strong>。</li>
 </ul>
 <h5 id="什么时候不能用BN？"><a href="#什么时候不能用BN？" class="headerlink" title="什么时候不能用BN？"></a>什么时候不能用BN？</h5><p><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20210510215346460.png" alt="image-20210510215346460"></p>
+<p>![image-20230903160740141](/Users/dongchenghao/Library/Application Support/typora-user-images/image-20230903160740141.png)</p>
 <p>==BN是保留Channel，在N,H,W上做操作==</p>
 <p>肯定是batch size越大，使用BN的效果越好。为什么BN不做channel只做NHW，可能是因为每个channel都对应之前一个卷积核，逐channel代表逐卷积核的输出做归一化。</p>
 <h4 id="Group-Normalization"><a href="#Group-Normalization" class="headerlink" title="Group Normalization"></a>Group Normalization</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35005794">吴育昕 何恺明的GN教程</a></p>
@@ -1209,7 +1213,7 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <p>为什么工作？个人理解，每一层有很多的卷积核，这些核学习到的特征并不完全是独立的，某些特征具有相同的分布，因此可以被group。</p>
 <h4 id="Instance-Norm"><a href="#Instance-Norm" class="headerlink" title="Instance Norm"></a>Instance Norm</h4><p>Instance Normalization(IN),一种更适合对单个像素有更高要求的场景的归一化算法(IST,GAN等)。IN的算法非常简单,计算归一化统计量时考虑单个样本,单个通道的所有元素。</p>
 <p>对于图像风格迁移任务来说,每个样本的每个信息点都是非常重要的。对于BN对整个batch做归一化,可能造成每个样本独特细节的丢失;对于LN,忽略了不同通道之间的差异。</p>
-<h4 id="Layer-Norm"><a href="#Layer-Norm" class="headerlink" title="Layer Norm"></a>Layer Norm</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/Users\17852\AppData\Roaming\Typora\typora-user-images\image-20220901105559979.png" alt="image-20220901105559979" style="zoom:67%;">
+<h4 id="Layer-Norm"><a href="#Layer-Norm" class="headerlink" title="Layer Norm"></a>Layer Norm</h4><img src="./medias/loading.gif" data-original="/wang-luo-jie-gou-jie-mi/image-20220901105559979.png" alt="image-20220901105559979" style="zoom:67%;">
 
 <p><strong>均值为0,方差为1</strong>,只对最后的C进行归一化</p>
 <h3 id="网络权重初始化"><a href="#网络权重初始化" class="headerlink" title="网络权重初始化"></a>网络权重初始化</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shine-lee/p/11908610.html">权重初始化方法总结</a></p>
@@ -1324,7 +1328,7 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 <p><strong>$p(z^{m+1}|z^{1},…,z^{m})=p(z^{m+1}|z^{m})$</strong></p>
 <p>具有马尔可夫性的随机序列$X={X_0,X_1,…,X_T,… }$称为<strong>马尔可夫链</strong>，或马尔可夫过程。</p>
 <h5 id="DDPM"><a href="#DDPM" class="headerlink" title="DDPM"></a>DDPM</h5><p><strong>扩散过程</strong></p>
-<p>总共包含$T$步的扩散过程的每一步都是对上一步得到的数据$x_{t-1}$按如下方式增加高斯噪音<br>$$<br>q(x_t|x_{t-1})=N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)<br>$$<br>这边这个分号前的$x_t$应该是意味着是关于$x_t$，后面两个分别是均值和方差。${\beta_t}^{T}_{t=1}$是每一步所采用的方差,介于0-1之间。</p>
+<p>总共包含$T$ 步的扩散过程的每一步都是对上一步得到的数据$x_{t-1}$按如下方式增加高斯噪音<br>$$<br>q(x_t|x_{t-1})=N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_t I)<br>$$<br>这边这个分号前的$x_t$应该是意味着是关于$x_t$，后面两个分别是均值和方差。${\beta_t}^{T}_{t=1}$是每一步所采用的方差,介于0-1之间。</p>
 <p>对于扩散模型，我们往往称不同step的方差设定为<strong>variance schedule</strong>或者<strong>noise schedule</strong>，通常情况下，越后面的step会采用更大的方差，即满足$\beta_1&lt;\beta_2&lt;…&lt;\beta_T$。</p>
 <p>在一个设计好的<strong>variance schedule</strong>下，的如果扩散步数$T$足够大，那么最终得到的$X_T$就完全丢失了原始数据而变成了一个随机噪音。 扩散过程的每一步都生成一个带噪音的数据$x_t$，整个扩散过程也就是一个<strong>马尔可夫链</strong>：<br>$$<br>q(x_{1:T}|x_0)=\prod_{t=1}^Tq(x_t|x_{t-1})<br>$$<br>$q(x_2|x_1)\times q(x_1|x_0) = q(x_2|x_0) $,利用条件概率和马尔克夫的定义严格证明我还不会，但是对当前这个条件，$q(x_t|x_{t-1})= N(x_t;\sqrt{1-\beta_t}x_{t-1},\beta_tI)$,当前这个确实满足啊~</p>
 <p>上面好像是错误的,$x_{1:T}$好像是代表一个联合分布</p>
@@ -1356,6 +1360,7 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
 
 <h4 id="Conditional-Diffusion-Models"><a href="#Conditional-Diffusion-Models" class="headerlink" title="Conditional Diffusion Models"></a>Conditional Diffusion Models</h4><p>训练的时候,sample $(x_0,\tilde{x})\sim q(x_0,\tilde{x})$从成对的数据分布,如一个clean和一个noisy,则在反向过程就可以提供$\tilde{x}$作为输入在反向过程中:<br>$$<br>p_\theta(x_{0:T}|\tilde{x})=p(x_T)\prod^T_{t=1}p_\theta(x_{t-1}|x_t,\tilde{x})<br>$$<br>所以现在对应的优化目标变为$\epsilon_\theta(x_t,\tilde{x},t)$,$x$和$\tilde{x}$在通道维度被concat，所以最终输入图像的channel是C=6</p>
 <p>所以对应的DDIM中的公式为：<br>$$<br>x_{t-1}=\sqrt{\bar{\alpha}_{t-1}}(\frac{x_t-\sqrt{1-\bar{\alpha}_t}\cdot \epsilon_\theta(x_t,\tilde<br>{x},t)}{\sqrt{\bar{\alpha}<em>t}})+\sqrt{1-\bar{\alpha}</em>{t-1}}\cdot \epsilon_\theta(x_t,\tilde{x},t)<br>$$<br>从$x_T\sim N(0,I)$开始</p>
+<h3 id="搜广推相关八股"><a href="#搜广推相关八股" class="headerlink" title="搜广推相关八股"></a>搜广推相关八股</h3><p><strong>auc和roc是什么？</strong></p>
 
             </div>
             <hr/>
@@ -2190,7 +2195,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">170k</span>&nbsp;字
+                class="white-color">174.1k</span>&nbsp;字
             
             
             

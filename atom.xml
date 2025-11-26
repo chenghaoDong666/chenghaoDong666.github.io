@@ -6,7 +6,7 @@
   <link href="http://chenghaodong666.github.io/atom.xml" rel="self"/>
   
   <link href="http://chenghaodong666.github.io/"/>
-  <updated>2023-07-02T02:36:36.708Z</updated>
+  <updated>2025-11-26T17:57:49.385Z</updated>
   <id>http://chenghaodong666.github.io/</id>
   
   <author>
@@ -17,18 +17,18 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>北邮教师红黑榜</title>
-    <link href="http://chenghaodong666.github.io/bei-you-jiao-shi-hong-hei-bang/"/>
-    <id>http://chenghaodong666.github.io/bei-you-jiao-shi-hong-hei-bang/</id>
-    <published>2023-07-02T02:01:22.000Z</published>
-    <updated>2023-07-02T02:36:36.708Z</updated>
+    <title></title>
+    <link href="http://chenghaodong666.github.io/hexo-git-github-bo-ke-da-jian/"/>
+    <id>http://chenghaodong666.github.io/hexo-git-github-bo-ke-da-jian/</id>
+    <published>2025-11-26T17:55:45.303Z</published>
+    <updated>2025-11-26T17:57:49.385Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;p&gt;title: Hexo-git-github博客搭建&lt;br&gt;date: 2020-10-12 22:37:35&lt;br&gt;summary:</summary>
         
       
     
@@ -38,11 +38,36 @@
   </entry>
   
   <entry>
+    <title>CV模型训练流程总结-Pytorch Lightning(一)</title>
+    <link href="http://chenghaodong666.github.io/lightning/"/>
+    <id>http://chenghaodong666.github.io/lightning/</id>
+    <published>2024-04-05T15:40:41.000Z</published>
+    <updated>2024-04-05T17:44:01.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Pipeline&quot;&gt;&lt;a href=&quot;#Pipeline&quot; class=&quot;headerlink&quot; title=&quot;Pipeline&quot;&gt;&lt;/a&gt;Pipeline&lt;/h2&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
+    
+    
+    <category term="pytorch" scheme="http://chenghaodong666.github.io/tags/pytorch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>diffusion model</title>
     <link href="http://chenghaodong666.github.io/diffusion-model/"/>
     <id>http://chenghaodong666.github.io/diffusion-model/</id>
     <published>2023-03-18T09:36:46.000Z</published>
-    <updated>2023-03-19T03:29:34.958Z</updated>
+    <updated>2023-03-19T03:29:34.000Z</updated>
     
     
       
@@ -56,31 +81,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Lightning框架学习</title>
-    <link href="http://chenghaodong666.github.io/lightning/"/>
-    <id>http://chenghaodong666.github.io/lightning/</id>
-    <published>2022-08-26T03:29:41.000Z</published>
-    <updated>2022-09-26T14:20:07.798Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Lightning&quot;&gt;&lt;a href=&quot;#Lightning&quot; class=&quot;headerlink&quot; title=&quot;Lightning&quot;&gt;&lt;/a&gt;Lightning&lt;/h1&gt;&lt;p&gt;github:&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
-    
-    
-    <category term="pytorch" scheme="http://chenghaodong666.github.io/tags/pytorch/"/>
     
   </entry>
   
@@ -114,7 +114,7 @@
     <link href="http://chenghaodong666.github.io/mian-jing/"/>
     <id>http://chenghaodong666.github.io/mian-jing/</id>
     <published>2021-12-29T01:26:27.000Z</published>
-    <updated>2023-04-26T13:51:50.036Z</updated>
+    <updated>2023-04-26T13:51:50.000Z</updated>
     
     
       
@@ -139,7 +139,7 @@
     <link href="http://chenghaodong666.github.io/django/"/>
     <id>http://chenghaodong666.github.io/django/</id>
     <published>2021-11-18T15:20:28.000Z</published>
-    <updated>2021-11-22T10:28:02.737Z</updated>
+    <updated>2021-11-22T10:28:02.000Z</updated>
     
     
       
@@ -189,7 +189,7 @@
     <link href="http://chenghaodong666.github.io/ban-gong-ruan-jian-bi-ji/"/>
     <id>http://chenghaodong666.github.io/ban-gong-ruan-jian-bi-ji/</id>
     <published>2021-06-06T01:53:37.000Z</published>
-    <updated>2021-12-21T00:30:45.277Z</updated>
+    <updated>2021-12-21T00:30:45.000Z</updated>
     
     
       
@@ -214,7 +214,7 @@
     <link href="http://chenghaodong666.github.io/cpp-zhao-hua-xi-shi/"/>
     <id>http://chenghaodong666.github.io/cpp-zhao-hua-xi-shi/</id>
     <published>2021-06-03T08:25:40.000Z</published>
-    <updated>2021-12-01T14:21:23.411Z</updated>
+    <updated>2021-12-01T14:21:23.000Z</updated>
     
     
       
@@ -240,7 +240,7 @@
     <link href="http://chenghaodong666.github.io/git-xue-xi/"/>
     <id>http://chenghaodong666.github.io/git-xue-xi/</id>
     <published>2021-05-02T13:00:45.000Z</published>
-    <updated>2023-05-23T14:08:29.000Z</updated>
+    <updated>2024-05-16T09:37:10.000Z</updated>
     
     
       
@@ -263,7 +263,7 @@
     <link href="http://chenghaodong666.github.io/lun-wen-zhuan-xie/"/>
     <id>http://chenghaodong666.github.io/lun-wen-zhuan-xie/</id>
     <published>2021-04-15T03:53:30.000Z</published>
-    <updated>2021-04-15T07:37:14.434Z</updated>
+    <updated>2021-04-15T07:37:14.000Z</updated>
     
     
       
@@ -290,7 +290,7 @@
     <link href="http://chenghaodong666.github.io/semantic-segmentation-3/"/>
     <id>http://chenghaodong666.github.io/semantic-segmentation-3/</id>
     <published>2021-04-13T09:05:11.000Z</published>
-    <updated>2021-10-14T03:28:50.600Z</updated>
+    <updated>2021-07-13T15:13:55.000Z</updated>
     
     
       
@@ -315,7 +315,7 @@
     <link href="http://chenghaodong666.github.io/semantic-segmentation-2/"/>
     <id>http://chenghaodong666.github.io/semantic-segmentation-2/</id>
     <published>2021-03-23T03:20:00.000Z</published>
-    <updated>2021-07-13T15:10:28.796Z</updated>
+    <updated>2021-07-13T15:10:28.000Z</updated>
     
     
       
@@ -340,7 +340,7 @@
     <link href="http://chenghaodong666.github.io/bian-shuai-mi-ji/"/>
     <id>http://chenghaodong666.github.io/bian-shuai-mi-ji/</id>
     <published>2021-03-22T14:55:37.000Z</published>
-    <updated>2021-11-25T03:23:28.221Z</updated>
+    <updated>2021-11-25T03:23:28.000Z</updated>
     
     
       
@@ -390,7 +390,7 @@
     <link href="http://chenghaodong666.github.io/backbone/"/>
     <id>http://chenghaodong666.github.io/backbone/</id>
     <published>2021-02-26T11:30:08.000Z</published>
-    <updated>2021-07-05T08:20:01.201Z</updated>
+    <updated>2021-07-05T08:20:01.000Z</updated>
     
     
       
@@ -415,7 +415,7 @@
     <link href="http://chenghaodong666.github.io/java-he-xin-ji-chu/"/>
     <id>http://chenghaodong666.github.io/java-he-xin-ji-chu/</id>
     <published>2020-12-16T03:13:26.000Z</published>
-    <updated>2020-12-17T13:33:43.495Z</updated>
+    <updated>2020-12-17T13:33:43.000Z</updated>
     
     
       
@@ -441,7 +441,7 @@
     <link href="http://chenghaodong666.github.io/vqa/"/>
     <id>http://chenghaodong666.github.io/vqa/</id>
     <published>2020-12-13T12:33:49.000Z</published>
-    <updated>2020-12-16T14:34:40.406Z</updated>
+    <updated>2020-12-16T14:34:40.000Z</updated>
     
     
       
@@ -466,7 +466,7 @@
     <link href="http://chenghaodong666.github.io/spark-xue-xi/"/>
     <id>http://chenghaodong666.github.io/spark-xue-xi/</id>
     <published>2020-12-11T14:12:16.000Z</published>
-    <updated>2020-12-13T03:12:43.341Z</updated>
+    <updated>2020-12-13T03:12:43.000Z</updated>
     
     
       
@@ -494,7 +494,7 @@
     <link href="http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/"/>
     <id>http://chenghaodong666.github.io/bian-cheng-ruan-jian-trick/</id>
     <published>2020-12-09T13:35:10.000Z</published>
-    <updated>2023-06-17T10:31:51.680Z</updated>
+    <updated>2023-06-17T10:31:51.000Z</updated>
     
     
       

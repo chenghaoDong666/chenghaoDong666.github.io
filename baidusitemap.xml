@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://chenghaoDong666.github.io/bei-you-jiao-shi-hong-hei-bang/</loc>
-    <lastmod>2023-07-02</lastmod>
+    <loc>http://chenghaoDong666.github.io/hexo-git-github-bo-ke-da-jian/</loc>
+    <lastmod>2025-11-26</lastmod>
+  </url>
+  <url>
+    <loc>http://chenghaoDong666.github.io/fu-wu-qi-shi-yong/</loc>
+    <lastmod>2025-07-09</lastmod>
+  </url>
+  <url>
+    <loc>http://chenghaoDong666.github.io/wang-luo-jie-gou-jie-mi/</loc>
+    <lastmod>2025-05-27</lastmod>
+  </url>
+  <url>
+    <loc>http://chenghaoDong666.github.io/np-pd-plt/</loc>
+    <lastmod>2024-08-05</lastmod>
+  </url>
+  <url>
+    <loc>http://chenghaoDong666.github.io/git-xue-xi/</loc>
+    <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>http://chenghaoDong666.github.io/lightning/</loc>
+    <lastmod>2024-04-05</lastmod>
+  </url>
+  <url>
+    <loc>http://chenghaoDong666.github.io/python-xue-xi/</loc>
+    <lastmod>2024-03-27</lastmod>
   </url>
   <url>
     <loc>http://chenghaoDong666.github.io/pytorch-xue-xi/</loc>
@@ -13,36 +37,12 @@
     <lastmod>2023-06-17</lastmod>
   </url>
   <url>
-    <loc>http://chenghaoDong666.github.io/wang-luo-jie-gou-jie-mi/</loc>
-    <lastmod>2023-06-10</lastmod>
-  </url>
-  <url>
-    <loc>http://chenghaoDong666.github.io/fu-wu-qi-shi-yong/</loc>
-    <lastmod>2023-05-26</lastmod>
-  </url>
-  <url>
-    <loc>http://chenghaoDong666.github.io/git-xue-xi/</loc>
-    <lastmod>2023-05-23</lastmod>
-  </url>
-  <url>
     <loc>http://chenghaoDong666.github.io/mian-jing/</loc>
     <lastmod>2023-04-26</lastmod>
   </url>
   <url>
-    <loc>http://chenghaoDong666.github.io/python-xue-xi/</loc>
-    <lastmod>2023-04-09</lastmod>
-  </url>
-  <url>
     <loc>http://chenghaoDong666.github.io/diffusion-model/</loc>
     <lastmod>2023-03-19</lastmod>
-  </url>
-  <url>
-    <loc>http://chenghaoDong666.github.io/np-pd-plt/</loc>
-    <lastmod>2023-01-12</lastmod>
-  </url>
-  <url>
-    <loc>http://chenghaoDong666.github.io/lightning/</loc>
-    <lastmod>2022-09-26</lastmod>
   </url>
   <url>
     <loc>http://chenghaoDong666.github.io/shu-ju-ji-biao-zhu/</loc>
@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>http://chenghaoDong666.github.io/semantic-segmentation-3/</loc>
-    <lastmod>2021-10-14</lastmod>
+    <lastmod>2021-07-13</lastmod>
   </url>
   <url>
     <loc>http://chenghaoDong666.github.io/semantic-segmentation-2/</loc>
@@ -111,10 +111,6 @@
   <url>
     <loc>http://chenghaoDong666.github.io/semantic-segmentation/</loc>
     <lastmod>2021-05-09</lastmod>
-  </url>
-  <url>
-    <loc>http://chenghaoDong666.github.io/hexo-git-github-bo-ke-da-jian/</loc>
-    <lastmod>2021-05-02</lastmod>
   </url>
   <url>
     <loc>http://chenghaoDong666.github.io/lun-wen-zhuan-xie/</loc>

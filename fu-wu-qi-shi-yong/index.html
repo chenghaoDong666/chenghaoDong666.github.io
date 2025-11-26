@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.9k
                 </div>
                 
 
@@ -680,6 +680,15 @@ zip <span class="token operator">-</span>ry day<span class="token punctuation">.
 <span class="token comment" spellcheck="true"># 加个y,会保留软链接文件</span>
 tar <span class="token operator">-</span>xzvf <span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
 <span class="token comment" spellcheck="true"># 解压.tar.gz</span>
+tar <span class="token operator">-</span>cvf FileName<span class="token punctuation">.</span>tar DirName
+<span class="token comment" spellcheck="true"># 使用tar打包</span>
+<span class="token comment" spellcheck="true"># 有可能使用gzip2压缩的，这个时候可以使用file查看文件类型</span>
+file filename<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
+<span class="token comment" spellcheck="true"># 如果是用 bzip2 压缩的，而不是 gzip，则使用以下命令</span>
+tar <span class="token operator">-</span>xjvf data<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz
+gunzip <span class="token comment" spellcheck="true"># 用于解开被 gzip 压缩过的文件，这些压缩文件预设最后的扩展名为 .gz。 解压完会删除</span>
+gunzip passwd<span class="token punctuation">.</span>gz
+tar <span class="token operator">-</span>xvf file<span class="token punctuation">.</span>tar <span class="token comment" spellcheck="true"># 解压tar包</span>
 df <span class="token operator">-</span>h
 <span class="token comment" spellcheck="true"># 查看磁盘空间大小</span>
 history
@@ -740,8 +749,9 @@ nohup java <span class="token operator">-</span>cp WEB<span class="token operato
 /dev/null:在类 Unix 系统中，/dev/null，或称空设备，是一个特殊的设备文件，它丢弃一切写入其中的数据（但报告写入操作成功），读取它则会立即得到一个 EOF。
 在程序员行话，尤其是 Unix 系统中，/dev/null 被称为位桶(bit bucket)或者黑洞(black hole)。空设备通常被用于丢弃不需要的输出流，或作为用于输入流的空文件。当你读它的时候，它会提供无限的空字符(NULL, ASCII NUL, 0x00)。
 """</span>
-adduser username
-<span class="token comment" spellcheck="true"># linux添加新用户</span></code></pre>
+adduser username 用户名
+<span class="token comment" spellcheck="true"># linux添加新用户</span>
+userdel <span class="token operator">-</span>r 用户名</code></pre>
 <h3 id="GPU使用情况查看？"><a href="#GPU使用情况查看？" class="headerlink" title="GPU使用情况查看？"></a>GPU使用情况查看？</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ceb3c020e06b">以下来自木子的毛线</a></p>
 <pre class=" language-shell"><code class="language-shell">watch -n 1 nvidia-smi</code></pre>
 <img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20211009133137665.png" alt="image-20211009133137665" style="zoom:80%;">
@@ -850,16 +860,19 @@ conda search cudatoolkit </code></pre>
 <pre class=" language-shell"><code class="language-shell">#可以显示安装的cuda
 ls /usr/local
 #显示如下
-#bin  cuda  cuda-11.0  etc  games  include  lib  man  sbin  share  src  sunlogin
+#bin  cuda  cuda-11.3  etc  games  include  lib  man  sbin  share  src  sunlogin
 # 将下面这些命令加到.bashrc文件末尾
 
 #加CUDA的bin到PATH环境变量
 export PATH=$PATH:/usr/local/cuda/bin
 #加CUDA的库文件到系统库搜索路径
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
-export CUDA_HOME=/usr/local/cuda</code></pre>
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64</code></pre>
 <p>然后<code>source .bashrc</code>，然后可以运行<code>nvcc -V</code>查看版本来检查是否正确，出现下述情况表示正确运行</p>
 <p><img src="./medias/loading.gif" data-original="/fu-wu-qi-shi-yong/image-20210519204527712.png" alt="image-20210519204527712"></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 安装torch</span>
+pip install torch<span class="token operator">==</span><span class="token number">1.11</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token operator">+</span>cu113 torchvision<span class="token operator">==</span><span class="token number">0.12</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token operator">+</span>cu113 torchaudio<span class="token operator">==</span><span class="token number">0.11</span><span class="token punctuation">.</span><span class="token number">0</span> <span class="token operator">-</span><span class="token operator">-</span>extra<span class="token operator">-</span>index<span class="token operator">-</span>url https<span class="token punctuation">:</span><span class="token operator">//</span>download<span class="token punctuation">.</span>pytorch<span class="token punctuation">.</span>org<span class="token operator">/</span>whl<span class="token operator">/</span>cu113
+<span class="token comment" spellcheck="true"># 这个特别好用</span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/619901627">安装cuda与cudnn</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/622f47f94784">Cuda与Cudnn的关系</a></p>
 <p> <strong>CUDA看作是一个工作台，上面配有很多工具，如锤子、螺丝刀等。</strong>cuDNN是基于CUDA的深度学习GPU加速库，有了它才能在GPU上完成深度学习的计算。<strong>它就相当于工作的工具，比如它就是个扳手。但是CUDA这个工作台买来的时候，并没有送扳手。想要在CUDA上运行深度神经网络，就要安装cuDNN，就像你想要拧个螺帽就要把扳手买回来。</strong>这样才能使GPU进行深度神经网络的工作，工作速度相较CPU快很多。</p>
 <p>从官方安装指南可以看出，<strong>只要把cuDNN文件复制到CUDA的对应文件夹里就可以，即是所谓插入式设计</strong>，把cuDNN数据库添加CUDA里，<strong>cuDNN是CUDA的扩展计算库，不会对CUDA造成其他影响。</strong></p>
@@ -971,7 +984,16 @@ language messages zh_CN.utf-8
 endif
 else
 echoerr "S</code></pre>
-<h3 id="ssh命令"><a href="#ssh命令" class="headerlink" title="ssh命令"></a>ssh命令</h3><h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>1.you are in emergency mode</p>
+<h3 id="服务器配置ssh-server"><a href="#服务器配置ssh-server" class="headerlink" title="服务器配置ssh-server"></a>服务器配置ssh-server</h3><p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51385685/article/details/130179997">备忘录—linux 搭建ssh server</a></p>
+<p>Ubuntu缺省没有安装<code>ssh-server</code>，使用以下命令安装：</p>
+<pre class=" language-shell"><code class="language-shell">sudo apt-get install openssh-server</code></pre>
+<p>然后确认<code>sshserver</code>是否启动了：（或用<code>netstat -tlp</code>命令）</p>
+<pre class=" language-shell"><code class="language-shell">sudo ps -e|grep ssh</code></pre>
+<p>如果只有ssh-agent那ssh-server还没有启动，需要sudo service ssh start，如果看到sshd那说明ssh-server已经启动了。<br>如果没有则可以这样启动：</p>
+<pre class=" language-shell"><code class="language-shell">sudo service ssh start</code></pre>
+<p>设置开机自启动</p>
+<pre class=" language-shell"><code class="language-shell">sudo systemctl enable ssh</code></pre>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>1.you are in emergency mode</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40689871/article/details/108451501">https://blog.csdn.net/weixin_40689871/article/details/108451501</a></p>
 <h3 id="GPU监测"><a href="#GPU监测" class="headerlink" title="GPU监测"></a>GPU监测</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
 <span class="token keyword">import</span> sys
@@ -1018,6 +1040,7 @@ cmd <span class="token operator">=</span> <span class="token string">'CUDA_VISIB
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     narrow_setup<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=rHoqfkypwgw&amp;list=PLmOn9nNkQxJEEfgfPo0IMwu8ac5DIWYd3&amp;index=66">学习视频</a></p>
 
             </div>
             <hr/>
@@ -1845,7 +1868,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">170k</span>&nbsp;字
+                class="white-color">174.1k</span>&nbsp;字
             
             
             
