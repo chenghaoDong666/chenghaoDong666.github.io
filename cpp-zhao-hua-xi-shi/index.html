@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -654,7 +654,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    395
+                    396
                 </div>
                 
 
@@ -684,7 +684,7 @@
 <p>用完之后要<code>free(L1)</code>,完事之后L1不会变为NULL,会变为野指针,所以要注意<code>L1=NULL</code>。</p>
 <h4 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h4><p>auto的原理就是根据后面的值，来自己推测前面的类型是什么。</p>
 <pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// auto作用就是迭代容器中所有的元素，每一个元素的临时名字就是x，等同于下边代码。</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// b为一个容器,效果是利用a遍历并获得b容器中的每一个值,但是a无法影响到b容器中的元素。</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> a<span class="token operator">:</span>b<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// 加了引用符号,可以对容器中的内容进行赋值,即可通过对a赋值来做到容器b的内容填充。</span>
@@ -1524,7 +1524,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">174.1k</span>&nbsp;字
+                class="white-color">178.3k</span>&nbsp;字
             
             
             

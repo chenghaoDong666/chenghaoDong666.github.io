@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -645,7 +645,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    8.5k
                 </div>
                 
 
@@ -767,7 +767,7 @@ HEAD is now at 83b0afe append GPL</code></pre>
 <p>在Git中，总是有后悔药可以吃的。当你用<code>$ git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
 <pre class=" language-shell"><code class="language-shell">$ git reflog
 e475afc HEAD@{1}: reset: moving to HEAD^
-1094adb (HEAD -> master) HEAD@{2}: commit: append GPL
+1094adb (HEAD -&gt; master) HEAD@{2}: commit: append GPL
 e475afc HEAD@{3}: commit: add distributed
 eaadf4e HEAD@{4}: commit (initial): wrote a readme file</code></pre>
 <h4 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h4><h5 id="SSH公钥和私钥"><a href="#SSH公钥和私钥" class="headerlink" title="SSH公钥和私钥"></a>SSH公钥和私钥</h5><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/134349361">非对称加密</a></p>
@@ -886,11 +886,11 @@ Automatic merge failed; fix conflicts and then commit the result.
 Git is free software distributed under the GPL.
 Git has a mutable index called stage.
 Git tracks changes of files.
-<<<<<<< HEAD
-Creating a new branch is quick & simple.
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Creating a new branch is quick &amp; simple.
 =======
 Creating a new branch is quick AND simple.
->>>>>>> feature1</code></pre>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</code></pre>
 <p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容，我们修改如下后保存：</p>
 <pre><code>Creating a new branch is quick and simple.</code></pre>
 <p>再提交：</p>
@@ -899,10 +899,10 @@ $ git commit -m "conflict fixed"
 [master cf810e4] conflict fixed</code></pre>
 <p>用带参数的<code>git log</code>也可以看到分支的合并情况：</p>
 <pre class=" language-shell"><code class="language-shell">$ git log --graph --pretty=oneline --abbrev-commit
-*   cf810e4 (HEAD -> master) conflict fixed
+*   cf810e4 (HEAD -&gt; master) conflict fixed
 |\  
 | * 14096d0 (feature1) AND simple
-* | 5dc6824 & simple
+* | 5dc6824 &amp; simple
 |/  
 * b17d20e branch test
 * d46f35e (origin/master) remove test.txt
@@ -956,7 +956,7 @@ Changes not staged for commit:
 
     modified:   readme.txt
 
-Dropped refs/stash@{0} (5d677e2ee266f39ea296182fb2354265b91b3b2a)</code></pre>
+Dropped refs/stash@{0} (5d677e2ee266f39ea296182fb2354265b91b3b2a)</file></file></file></code></pre>
 <p>再用<code>git stash list</code>查看，就看不到任何stash内容了：</p>
 <pre class=" language-shell"><code class="language-shell">$ git stash list</code></pre>
 <p>你可以多次stash，恢复的时候，先用<code>git stash list</code>查看，然后恢复指定的stash，用命令：</p>
@@ -1911,7 +1911,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">174.1k</span>&nbsp;字
+                class="white-color">178.3k</span>&nbsp;字
             
             
             

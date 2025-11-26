@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -834,7 +834,7 @@ list<span class="token punctuation">(</span>dataset<span class="token punctuatio
     name<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#一个可选的名字string for the layer.应该unique,如果不指定会被自动生成</span>
     dtype<span class="token operator">=</span>None<span class="token punctuation">,</span> sparse<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> tensor<span class="token operator">=</span>None<span class="token punctuation">,</span>
     ragged<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>A tensor</code></pre>
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>A tensor</code></pre>
 <p>Keras张量是一个TensorFlow symbolic tensor object，我们使用某些属性对其进行了扩充，这些属性使我们仅通过了解模型的输入和输出即可构建Keras模型。</p>
 <p>例如,如果<code>a</code>,<code>b</code>,<code>c</code>是Keras Tensor,那么可能:<code>model=Model(input=[a,b],output=c)</code></p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># this is a logistic regression in Keras</span>
@@ -940,8 +940,8 @@ metrics<span class="token operator">=</span><span class="token punctuation">[</s
     x<span class="token operator">=</span>None<span class="token punctuation">,</span> y<span class="token operator">=</span>None<span class="token punctuation">,</span> batch_size<span class="token operator">=</span>None<span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> sample_weight<span class="token operator">=</span>None<span class="token punctuation">,</span> steps<span class="token operator">=</span>None<span class="token punctuation">,</span>
     callbacks<span class="token operator">=</span>None<span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
     return_dict<span class="token operator">=</span><span class="token boolean">False</span>
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Scalar test loss<span class="token comment" spellcheck="true">#(如果模型只有一个输出且没有metrics)</span>
-<span class="token operator">-</span><span class="token operator">></span><span class="token operator">or</span> list of scalars<span class="token comment" spellcheck="true">#(如果模型有多个输出且有metrics)</span>
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Scalar test loss<span class="token comment" spellcheck="true">#(如果模型只有一个输出且没有metrics)</span>
+<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token operator">or</span> list of scalars<span class="token comment" spellcheck="true">#(如果模型有多个输出且有metrics)</span>
 <span class="token comment" spellcheck="true">#属性modle.metrics_name将为你展示标量输出的标签.</span></code></pre>
 <p><code>predict</code></p>
 <p>生成输入样本的输出预测。</p>
@@ -950,7 +950,7 @@ metrics<span class="token operator">=</span><span class="token punctuation">[</s
 <pre class=" language-python"><code class="language-python">predict<span class="token punctuation">(</span>
     x<span class="token punctuation">,</span> batch_size<span class="token operator">=</span>None<span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> steps<span class="token operator">=</span>None<span class="token punctuation">,</span> callbacks<span class="token operator">=</span>None<span class="token punctuation">,</span> max_queue_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>
     workers<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> use_multiprocessing<span class="token operator">=</span><span class="token boolean">False</span>
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>Numpy array<span class="token punctuation">(</span>s<span class="token punctuation">)</span> of predictions<span class="token punctuation">.</span></code></pre>
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>Numpy array<span class="token punctuation">(</span>s<span class="token punctuation">)</span> of predictions<span class="token punctuation">.</span></code></pre>
 <h4 id="Sequential"><a href="#Sequential" class="headerlink" title="Sequential"></a>Sequential</h4><p><code>Sequential</code>组合一个layers的线性堆叠成一个 <code>tf.keras.Model</code>。</p>
 <pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
     layers<span class="token operator">=</span>None<span class="token punctuation">,</span><span class="token comment" spellcheck="true">#Optional list of layers to add to the model.</span>
@@ -999,7 +999,7 @@ model<span class="token punctuation">.</span>add<span class="token punctuation">
     bias_initializer<span class="token operator">=</span><span class="token string">'zeros'</span><span class="token punctuation">,</span> kernel_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span>
     bias_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span> activity_regularizer<span class="token operator">=</span>None<span class="token punctuation">,</span> kernel_constraint<span class="token operator">=</span>None<span class="token punctuation">,</span>
     bias_constraint<span class="token operator">=</span>None<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs
-<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>A tensor of rank <span class="token number">4</span><span class="token operator">+</span> representing activation<span class="token punctuation">(</span>conv2d<span class="token punctuation">(</span>inputs<span class="token punctuation">,</span> kernel<span class="token punctuation">)</span> <span class="token operator">+</span> bias<span class="token punctuation">)</span></code></pre>
+<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>A tensor of rank <span class="token number">4</span><span class="token operator">+</span> representing activation<span class="token punctuation">(</span>conv2d<span class="token punctuation">(</span>inputs<span class="token punctuation">,</span> kernel<span class="token punctuation">)</span> <span class="token operator">+</span> bias<span class="token punctuation">)</span></code></pre>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># The inputs are 28x28 RGB images with `channels_last` and the batch</span>
 <span class="token comment" spellcheck="true"># size is 4.</span>
 input_shape <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
@@ -1898,7 +1898,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">174.1k</span>&nbsp;字
+                class="white-color">178.3k</span>&nbsp;字
             
             
             

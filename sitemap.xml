@@ -347,6 +347,20 @@
   </url>
   
   <url>
+    <loc>http://chenghaodong666.github.io/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://chenghaodong666.github.io/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://chenghaodong666.github.io/tags/hexo/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
@@ -362,20 +376,6 @@
   
   <url>
     <loc>http://chenghaodong666.github.io/tags/ejs/</loc>
-    <lastmod>2025-11-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://chenghaodong666.github.io/tags/%E7%9B%B8%E6%9C%BA%E6%88%90%E5%83%8F/</loc>
-    <lastmod>2025-11-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://chenghaodong666.github.io/tags/%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -494,14 +494,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/Tofel/</loc>
+    <loc>http://chenghaodong666.github.io/tags/%E5%A5%87%E6%80%AA/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/%E5%A5%87%E6%80%AA/</loc>
+    <loc>http://chenghaodong666.github.io/tags/Tofel/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -515,14 +515,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/</loc>
+    <loc>http://chenghaodong666.github.io/tags/linux/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/tags/linux/</loc>
+    <loc>http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -580,14 +580,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <loc>http://chenghaodong666.github.io/categories/Color-Constancy/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/Color-Constancy/</loc>
+    <loc>http://chenghaodong666.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -657,14 +657,14 @@
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/%E8%8B%B1%E8%AF%AD/</loc>
+    <loc>http://chenghaodong666.github.io/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://chenghaodong666.github.io/categories/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA/</loc>
+    <loc>http://chenghaodong666.github.io/categories/%E8%8B%B1%E8%AF%AD/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

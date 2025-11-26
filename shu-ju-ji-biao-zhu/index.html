@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -713,7 +713,7 @@ pip install labelme</code></pre>
 
 <span class="token keyword">def</span> <span class="token function">fast_hist</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment" spellcheck="true"># 获得布尔数组,只计算0-18,不计算255</span>
-    k <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>a <span class="token operator">&lt;</span> n<span class="token punctuation">)</span>
+    k <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>a <span class="token operator">&lt;</span> n<span class="token punctuation">)</span>
     <span class="token comment" spellcheck="true"># 每一行代表一类，该行对角线上的全是正确预测的,其余都是错误预测的</span>
     <span class="token keyword">return</span> np<span class="token punctuation">.</span>bincount<span class="token punctuation">(</span>n <span class="token operator">*</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">+</span> b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> minlength<span class="token operator">=</span>n <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>n<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
 
@@ -768,13 +768,13 @@ pip install labelme</code></pre>
             <span class="token keyword">continue</span>
         <span class="token comment" spellcheck="true"># 计算IoU</span>
         hist <span class="token operator">+=</span> fast_hist<span class="token punctuation">(</span>label<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pred<span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> num_classes<span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># if ind > 0 and ind % 10 == 0:</span>
+        <span class="token comment" spellcheck="true"># if ind &gt; 0 and ind % 10 == 0:</span>
         <span class="token comment" spellcheck="true">#     print('{:d} / {:d}: {:0.2f}'.format(ind, len(gt_imgs), 100*np.mean(per_class_iu(hist))))</span>
     <span class="token comment" spellcheck="true"># 计算mIou</span>
     mIoUs <span class="token operator">=</span> per_class_iu<span class="token punctuation">(</span>hist<span class="token punctuation">)</span>
     <span class="token keyword">for</span> ind_class <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_classes<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'===>'</span> <span class="token operator">+</span> name_classes<span class="token punctuation">[</span>ind_class<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">':\t'</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>round<span class="token punctuation">(</span>mIoUs<span class="token punctuation">[</span>ind_class<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'===> mIoU: '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>round<span class="token punctuation">(</span>np<span class="token punctuation">.</span>nanmean<span class="token punctuation">(</span>mIoUs<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'===&gt;'</span> <span class="token operator">+</span> name_classes<span class="token punctuation">[</span>ind_class<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">':\t'</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>round<span class="token punctuation">(</span>mIoUs<span class="token punctuation">[</span>ind_class<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'===&gt; mIoU: '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>round<span class="token punctuation">(</span>np<span class="token punctuation">.</span>nanmean<span class="token punctuation">(</span>mIoUs<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'%'</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> mIoUs
 
 
@@ -1755,7 +1755,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">174.1k</span>&nbsp;字
+                class="white-color">178.3k</span>&nbsp;字
             
             
             
