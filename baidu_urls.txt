@@ -1,4 +1,3 @@
-http://chenghaodong666.github.io/hexo-git-github-bo-ke-da-jian/
 http://chenghaodong666.github.io/lightning/
 http://chenghaodong666.github.io/diffusion-model/
 http://chenghaodong666.github.io/sklearn/
@@ -37,3 +36,4 @@ http://chenghaodong666.github.io/qi-qi-guai-guai-bu-cheng-ti-xi-wen-ti-he-ji/
 http://chenghaodong666.github.io/fu-se-fen-ji-yu-xi-tong/
 http://chenghaodong666.github.io/wen-xian-tu-shu-zi-yuan-sou-suo-yu-shi-yong-guan-li/
 http://chenghaodong666.github.io/yan-se-heng-chang-xing-zhi-mhcc/
+http://chenghaodong666.github.io/hexo-git-github-bo-ke-da-jian/
