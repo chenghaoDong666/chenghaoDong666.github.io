@@ -673,7 +673,7 @@
             <div id="articleContent">
                 <h2 id="CLIP"><a href="#CLIP" class="headerlink" title="CLIP"></a>CLIP</h2><p><em>Learning Transferable Visual Models From Natural Language Supervision</em></p>
 <p>Clip, 全称为<strong>Contrastive Language-Image Pre-training</strong>，即利用图文对进行对比学习从而进行预训练的方法，文章表述的核心是<strong>用文本作为监督信号来训练可迁移的视觉模型</strong>。和这篇出发点相同（即作为可迁移的视觉模型）但是纯利用视觉特征的，可以参考<strong>dinov2</strong>。</p>
-<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/_posts/图文对齐/image-20251201180500648.png" alt="image-20251201180500648" style="zoom: 33%;">
+<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/image-20251201180500648.png" alt="image-20251201180500648" style="zoom: 33%;">
 
 <p>模型很简单，一个图像特征提取器，一个文本特征提取器，分别获取特征，然后进行对比学习，伪代码如下：</p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># image_encoder - ResNet or Vision Transformer</span>
@@ -842,7 +842,7 @@ loss_constrastive <span class="token operator">=</span> <span class="token punct
 <p>BLIP2的预训练核心就分2步：①固定Vit，进行视觉和语言的表征学习 ②固定LLM模型，学习从图像生成文本</p>
 <p>我们做<strong>图文对齐</strong>，核心关注的就是<strong>第一步</strong>。BLIP2进行图文对齐的核心就是设计了<strong>Q-Former</strong>(Querying Transformer),采用一组可学习的查询向量从冻结的图像编码器中提取视觉特征，通过强制qformer学习和文本最相关的视觉表达，强制模型只提取那些<strong>对生成文本最有用</strong>的视觉特征。它把图片变成了LLM能“消化”的精简特征序列。</p>
 <p>第一步<strong>不连接 LLM</strong>。Q-Former 拿着图片特征和对应的文本描述进行训练。它学习如何提取出的视觉特征能最好地匹配文本。(通俗理解就是QFormer先把图像翻译成文本描述，然后再一起喂到LLM就行，这样<strong>ViT和LLM都不需要重新训练</strong>)。</p>
-<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/_posts/图文对齐/image-20251204171830208.png" alt="image-20251204171830208" style="zoom: 33%;">
+<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/image-20251204171830208.png" alt="image-20251204171830208" style="zoom: 33%;">
 
 <blockquote>
 <p>Q-Former主要参考了Bert的enconder，总共12层，偶数层增加了一个ca层，奇数层不增加。Q-Former通过bert-base预训练模型初始化，SA是共享权重的，CA随机初始化，CA层只对图像起作用。图中颜色相同代表权重共享。</p>
@@ -895,7 +895,7 @@ loss_constrastive <span class="token operator">=</span> <span class="token punct
 </ul>
 <p>和clip基本相同，此过程<strong>query和文本互相看不见，没有交互</strong>，避免了query直接从文本学习信息，如果query直接从文本学习，这样query就学不到图像信息，对比学习也就没有意义了。<strong>举个例子，图片是一只猫，文本描述是：”一只猫”。query可以直接从文本描述去学习，没办法保证它是从图像中学习到的相关信息</strong>。</p>
 <p>整体通路类似如下：</p>
-<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/_posts/图文对齐/image-20251204220920028.png" alt="image-20251204220920028" style="zoom: 67%;">
+<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/image-20251204220920028.png" alt="image-20251204220920028" style="zoom: 67%;">
 
 <p>QFormer其实可以看做包含两个Transformer-图像Transformer和文本Transformer，只不过SA是共用的。</p>
 <p><strong>Image Transformer</strong>：query token自己SA，然后和image emb进行CA，然后自己linear；</p>
@@ -914,7 +914,7 @@ loss_constrastive <span class="token operator">=</span> <span class="token punct
 <p>​        根据相似度分数选取难负样本，根据i2t选取文本难负样本，根据t2i选取图像难负样本。<strong>对角线置0，剩余的按相似度分数采样</strong>（相似度越高，被采样的概率越大，越是难负样本）。采样获取难负样本的idx，然后再从batch里去取对应的样本特征。</p>
 <p><strong>获取样本集合后如何融合？</strong></p>
 <p>整体过程如下：</p>
-<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/_posts/图文对齐/image-20251204220935640.png" alt="image-20251204220935640" style="zoom:80%;">
+<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/image-20251204220935640.png" alt="image-20251204220935640" style="zoom:80%;">
 
 <p><strong>具体Attention交互细节：</strong></p>
 <p>query emb 和text emb 就像夫妻，<strong>只在晚上睡在一块(concat)做事(SA)**，然后白天</strong>分开**自己干自己的事，query emb去CA和linear，text emb做自己的linear，做完事再睡一块，这就是一个Encoder Block，重复N天，看彼此是否合适。</p>
@@ -1016,7 +1016,7 @@ itm_loss <span class="token operator">=</span> paddle<span class="token punctuat
 <h2 id="FILIP"><a href="#FILIP" class="headerlink" title="FILIP"></a>FILIP</h2><p><em>FINE-GRAINED INTERACTIVE LANGUAGE-IMAGE PRE-TRAINING</em></p>
 <p>Clip是整张图片和整行文本做匹配，所以图片中长尾的、形态较小的可能会被忽略。</p>
 <p>一种解决办法是利用ROI Detector对ROI区域进行提取，然后和文本进行在线交互，即可实现细粒度匹配。</p>
-<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/_posts/图文对齐/image-20251204144913092.png" alt="image-20251204144913092" style="zoom:50%;">
+<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/image-20251204144913092.png" alt="image-20251204144913092" style="zoom:50%;">
 
 <p>然而其问题是需要一个较好的ROI Detector，并且计算复杂度较高，最重要的事，对于<strong>在线应用比如图搜是个比较大的负担。</strong></p>
 <p>FILIP想到的是使用迟交互，交互操作后移，使得前面可以正常刷库。</p>
@@ -1024,7 +1024,7 @@ itm_loss <span class="token operator">=</span> paddle<span class="token punctuat
 <p>在CLIP无论是图片编码器还是文本编码器，均对同一个图片/文本只产出一个特征向量，通过计算余弦相似度计算其图文相似性，显然这是一种全局（Global）的相似度计算方式。而在FILIP中，采用ViT和Text Transformer可以对每个图片token和文本token产出『专属』的embedding（可以认为是每个模态的细粒度局部信息）。</p>
 <p>传统方法全局特征的相似性来建模跨模态（视觉和文本）交互，但这种方法常常会丢失重要信息。FILIP则通过细粒度的交互机制来克服这一限制：cross-modal late interaction 跨模态后期交互</p>
 </blockquote>
-<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/_posts/图文对齐/v2-b49b77b6d7b772e662f5980072f8d350_r.jpg" alt="img" style="zoom: 33%;">
+<img src="./medias/loading.gif" data-original="/tu-wen-dui-qi/v2-b49b77b6d7b772e662f5980072f8d350_r.jpg" alt="img" style="zoom: 33%;">
 
 <p>最大值选取的核心意义（为什么不直接算平均值 / 求和？）： <strong>抓 “关键匹配”，忽略无效噪声</strong>。假设有一个猫的文字token，图片token依次有：猫、桌子、背景，相似度分别为0.9,0.2,0.3，取最大值说明有一个token匹配值到了0.9，可认为匹配上了，桌子、背景可以忽略，如果取平均值:$(0.9+0.2+0.3)/3=0.47$，匹配信号反而被拉低了。</p>
 <p>CLIP维度：图片:$[B,L_I,d]$ , 文本:$[B,L_T,d]^T$ ,$L$维度上取mean，最后是$[B,d]\cdot [B,d]^T = [B,B]$</p>
