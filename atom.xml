@@ -6,7 +6,7 @@
   <link href="http://chenghaodong666.github.io/atom.xml" rel="self"/>
   
   <link href="http://chenghaodong666.github.io/"/>
-  <updated>2024-04-05T17:44:01.000Z</updated>
+  <updated>2025-12-04T17:21:08.447Z</updated>
   <id>http://chenghaodong666.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图文对齐总结</title>
+    <link href="http://chenghaodong666.github.io/tu-wen-dui-qi/"/>
+    <id>http://chenghaodong666.github.io/tu-wen-dui-qi/</id>
+    <published>2025-12-04T17:12:10.000Z</published>
+    <updated>2025-12-04T17:21:08.447Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;CLIP&quot;&gt;&lt;a href=&quot;#CLIP&quot; class=&quot;headerlink&quot; title=&quot;CLIP&quot;&gt;&lt;/a&gt;CLIP&lt;/h2&gt;&lt;p&gt;&lt;em&gt;Learning Transferable Visual Models From Natural Language</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://chenghaodong666.github.io/categories/python/"/>
+    
+    
+    <category term="vlm" scheme="http://chenghaodong666.github.io/tags/vlm/"/>
+    
+  </entry>
   
   <entry>
     <title>CV模型训练流程总结-Pytorch Lightning(一)</title>
@@ -490,31 +515,6 @@
     
     
     <category term="编程软件" scheme="http://chenghaodong666.github.io/tags/%E7%BC%96%E7%A8%8B%E8%BD%AF%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据集标注和评价指标</title>
-    <link href="http://chenghaodong666.github.io/shu-ju-ji-biao-zhu/"/>
-    <id>http://chenghaodong666.github.io/shu-ju-ji-biao-zhu/</id>
-    <published>2020-12-06T02:06:54.000Z</published>
-    <updated>2022-06-20T20:38:55.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;数据集标注&quot;&gt;&lt;a href=&quot;#数据集标注&quot; class=&quot;headerlink&quot; title=&quot;数据集标注&quot;&gt;&lt;/a&gt;数据集标注&lt;/h3&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="肤色分级" scheme="http://chenghaodong666.github.io/categories/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
-    
-    
-    <category term="肤色分级" scheme="http://chenghaodong666.github.io/tags/%E8%82%A4%E8%89%B2%E5%88%86%E7%BA%A7/"/>
     
   </entry>
   

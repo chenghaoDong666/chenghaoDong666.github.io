@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -724,7 +724,7 @@ shutdown <span class="token operator">-</span>r now
 <span class="token comment" spellcheck="true"># 显示当前工作夹的绝对目录</span>
 pwd
 <span class="token comment" spellcheck="true"># 使用requirements格式列出所有已安装的包,包以不区分大小写的排序顺序列出</span>
-pip freeze <span class="token operator">&gt;</span> requirments<span class="token punctuation">.</span>txt
+pip freeze <span class="token operator">></span> requirments<span class="token punctuation">.</span>txt
 <span class="token comment" spellcheck="true"># 安装requirements.txt的包</span>
 pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt
 <span class="token comment" spellcheck="true"># 软连接 -s或--symbolic 　对源文件建立符号连接，而非硬连接。</span>
@@ -741,9 +741,9 @@ scp <span class="token operator">-</span>P port <span class="token operator">-</
 <span class="token comment" spellcheck="true"># 显示各用户占用空间大小</span>
 sudo du <span class="token operator">-</span>sh <span class="token operator">/</span>home<span class="token operator">/</span><span class="token operator">*</span>
 <span class="token comment" spellcheck="true"># nohup及取消输出</span>
-nohup java <span class="token operator">-</span>cp WEB<span class="token operator">-</span>INF<span class="token operator">/</span>lib<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">:</span>WEB<span class="token operator">-</span>INF<span class="token operator">/</span>classes org<span class="token punctuation">.</span>b3log<span class="token punctuation">.</span>solo<span class="token punctuation">.</span>Starter <span class="token operator">&gt;</span><span class="token operator">/</span>dev<span class="token operator">/</span>null <span class="token number">2</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span><span class="token number">1</span> <span class="token operator">&amp;</span>
-<span class="token comment" spellcheck="true"># &gt;/dev/null 将信息输出到/dev/null</span>
-<span class="token comment" spellcheck="true"># 2&gt;&amp;1 将错误信息重定向到标准输出</span>
+nohup java <span class="token operator">-</span>cp WEB<span class="token operator">-</span>INF<span class="token operator">/</span>lib<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">:</span>WEB<span class="token operator">-</span>INF<span class="token operator">/</span>classes org<span class="token punctuation">.</span>b3log<span class="token punctuation">.</span>solo<span class="token punctuation">.</span>Starter <span class="token operator">></span><span class="token operator">/</span>dev<span class="token operator">/</span>null <span class="token number">2</span><span class="token operator">></span><span class="token operator">&amp;</span><span class="token number">1</span> <span class="token operator">&amp;</span>
+<span class="token comment" spellcheck="true"># >/dev/null 将信息输出到/dev/null</span>
+<span class="token comment" spellcheck="true"># 2>&amp;1 将错误信息重定向到标准输出</span>
 <span class="token comment" spellcheck="true"># 最后一个&amp;符号，表示程序在后台运行</span>
 <span class="token triple-quoted-string string">"""
 /dev/null:在类 Unix 系统中，/dev/null，或称空设备，是一个特殊的设备文件，它丢弃一切写入其中的数据（但报告写入操作成功），读取它则会立即得到一个 EOF。
@@ -882,8 +882,8 @@ pip install torch<span class="token operator">==</span><span class="token number
 
 <p>二者文件不重复，所以不会对原有的Cuda功能造成影响，卸载Cudnn也很简单，只需要把对应的Cudnn文件删除即可</p>
 <h3 id="后台使用jupyter"><a href="#后台使用jupyter" class="headerlink" title="后台使用jupyter"></a>后台使用jupyter</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/donaldsy/article/details/96350061">后台运行jupyter教程</a></p>
-<pre class=" language-shell"><code class="language-shell">jupyter notebook &amp; #后台运行，你关掉终端会停止运行
-nohup jupyter notebook &amp; #后台运行，你关掉终端也会继续运行
+<pre class=" language-shell"><code class="language-shell">jupyter notebook & #后台运行，你关掉终端会停止运行
+nohup jupyter notebook & #后台运行，你关掉终端也会继续运行
 ps -aux | grep jupyter #查找jupyter命令
 jobs -l#查看当前有多少在后台运行的命令，加上-l参数可以显示后台运行的pid
 fg %jobnumber#将后台中的命令调至前台继续运行。%jobnumber是jobs查到的序号，不是pid
@@ -1025,7 +1025,7 @@ cmd <span class="token operator">=</span> <span class="token string">'CUDA_VISIB
     <span class="token keyword">while</span> <span class="token operator">not</span><span class="token punctuation">(</span>gpu_memory <span class="token operator">&lt;</span> <span class="token number">1000</span> <span class="token operator">and</span> gpu_power <span class="token operator">&lt;</span> <span class="token number">20</span> <span class="token operator">and</span> gpu_util <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 当功率，使用量，利用率都小于特定值才去退出循环</span>
         gpu_power<span class="token punctuation">,</span> gpu_memory<span class="token punctuation">,</span> gpu_util <span class="token operator">=</span> gpu_info<span class="token punctuation">(</span><span class="token punctuation">)</span>
         i <span class="token operator">=</span> i <span class="token operator">%</span> <span class="token number">5</span>
-        symbol <span class="token operator">=</span> <span class="token string">'monitoring: '</span> <span class="token operator">+</span> <span class="token string">'&gt;'</span> <span class="token operator">*</span> i <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'|'</span>
+        symbol <span class="token operator">=</span> <span class="token string">'monitoring: '</span> <span class="token operator">+</span> <span class="token string">'>'</span> <span class="token operator">*</span> i <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'|'</span>
         gpu_power_str <span class="token operator">=</span> <span class="token string">'gpu power:%d W |'</span> <span class="token operator">%</span> gpu_power
         gpu_memory_str <span class="token operator">=</span> <span class="token string">'gpu memory:%d MiB |'</span> <span class="token operator">%</span> gpu_memory
         gpu_util_str <span class="token operator">=</span> <span class="token string">'gpu util:%d %% |'</span> <span class="token operator">%</span> gpu_util
@@ -1868,7 +1868,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.3k</span>&nbsp;字
+                class="white-color">181.2k</span>&nbsp;字
             
             
             

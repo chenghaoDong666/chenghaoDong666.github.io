@@ -30,10 +30,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="alternate" href="/atom.xml" title="亦爱Zxy" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -658,7 +658,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    893
+                    879
                 </div>
                 
 
@@ -719,7 +719,7 @@
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>list <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">||</span> list<span class="token punctuation">.</span>isEmpty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> list
     <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> list
     <span class="token punctuation">}</span>
     <span class="token keyword">val</span> cloned <span class="token operator">=</span> list<span class="token punctuation">.</span>take<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">++</span> list<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -731,23 +731,23 @@
 <span class="token comment" spellcheck="true">//所以每次去掉了1个元素，如果初始数组传入0，就去掉第一个元素</span>
 
 <span class="token keyword">val</span> itemsets <span class="token operator">=</span> transactions<span class="token punctuation">.</span>map<span class="token punctuation">(</span>toList<span class="token punctuation">)</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>findSortedCombinations<span class="token punctuation">(</span>_<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>x <span class="token keyword">=&gt;</span> x<span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>size <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>x <span class="token keyword">=&gt;</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">1L</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>x <span class="token keyword">=></span> x<span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>size <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>x <span class="token keyword">=></span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">1L</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cache<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">//map():通过对RDD的所有元素应用一个函数来返回一个新的RDD</span>
-<span class="token comment" spellcheck="true">//flatMap(x =&gt; x):</span>
-<span class="token comment" spellcheck="true">//filter(_.size &gt; 0):过滤，过滤掉size=0的,也就是说去掉空集</span>
+<span class="token comment" spellcheck="true">//flatMap(x => x):</span>
+<span class="token comment" spellcheck="true">//filter(_.size > 0):过滤，过滤掉size=0的,也就是说去掉空集</span>
 <span class="token comment" spellcheck="true">//</span>
 <span class="token keyword">val</span> minSup <span class="token operator">=</span> <span class="token number">0.4</span>
 <span class="token keyword">val</span> combined <span class="token operator">=</span> itemsets<span class="token punctuation">.</span>reduceByKey<span class="token punctuation">(</span>_ <span class="token operator">+</span> _<span class="token punctuation">)</span>
-<span class="token punctuation">.</span>map<span class="token punctuation">(</span>x <span class="token keyword">=&gt;</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>_1<span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>_2<span class="token punctuation">,</span> x<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>toDouble <span class="token operator">/</span> transactionSize<span class="token punctuation">.</span>toDouble<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2 <span class="token operator">&gt;=</span> minSup<span class="token punctuation">)</span><span class="token punctuation">.</span>cache
+<span class="token punctuation">.</span>map<span class="token punctuation">(</span>x <span class="token keyword">=></span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>_1<span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>_2<span class="token punctuation">,</span> x<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>toDouble <span class="token operator">/</span> transactionSize<span class="token punctuation">.</span>toDouble<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2 <span class="token operator">>=</span> minSup<span class="token punctuation">)</span><span class="token punctuation">.</span>cache
 <span class="token comment" spellcheck="true">//reduceByKey(_ + _):Key值相同的Value值相加</span>
 <span class="token comment" spellcheck="true">//(key,(value1,value2))</span>
-<span class="token comment" spellcheck="true">//value2&gt;=minSup的过滤一下</span>
+<span class="token comment" spellcheck="true">//value2>=minSup的过滤一下</span>
 
 
 
 
-<span class="token keyword">val</span> subitemsets <span class="token operator">=</span> combined<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>itemset <span class="token keyword">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">val</span> subitemsets <span class="token operator">=</span> combined<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>itemset <span class="token keyword">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">val</span> list <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_1
     <span class="token keyword">val</span> frequency <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1
     <span class="token keyword">val</span> support <span class="token operator">=</span> itemset<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2
@@ -770,7 +770,7 @@
 
 <span class="token keyword">val</span> rules <span class="token operator">=</span> subitemsets<span class="token punctuation">.</span>groupByKey<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">//groupByKey():和reduceByKey()好像差不多</span>
-<span class="token keyword">val</span> assocRules <span class="token operator">=</span> rules<span class="token punctuation">.</span>map<span class="token punctuation">(</span>in <span class="token keyword">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">val</span> assocRules <span class="token operator">=</span> rules<span class="token punctuation">.</span>map<span class="token punctuation">(</span>in <span class="token keyword">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">val</span> listX <span class="token operator">=</span> in<span class="token punctuation">.</span>_1
     <span class="token keyword">val</span> listYLists <span class="token operator">=</span> in<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>toList
     <span class="token keyword">val</span> countX <span class="token operator">=</span> listYLists<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
@@ -779,7 +779,7 @@
         <span class="token keyword">val</span> result <span class="token operator">=</span> List<span class="token punctuation">(</span><span class="token punctuation">(</span>List<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span> List<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0D</span><span class="token punctuation">,</span> <span class="token number">0.0D</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         result
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> result <span class="token operator">=</span> newListYLists<span class="token punctuation">.</span>map<span class="token punctuation">(</span>t2 <span class="token keyword">=&gt;</span> <span class="token punctuation">(</span>listX<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>_1<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>toDouble<span class="token operator">/</span>countX<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>toDouble<span class="token punctuation">,</span>                             t2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">val</span> result <span class="token operator">=</span> newListYLists<span class="token punctuation">.</span>map<span class="token punctuation">(</span>t2 <span class="token keyword">=></span> <span class="token punctuation">(</span>listX<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>_1<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>toDouble<span class="token operator">/</span>countX<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>toDouble<span class="token punctuation">,</span>                             t2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_2<span class="token punctuation">)</span><span class="token punctuation">)</span>
         result
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -787,7 +787,7 @@
 <span class="token comment" spellcheck="true">//最小置信度</span>
 <span class="token keyword">val</span> minConf <span class="token operator">=</span> <span class="token number">0.7</span>
 <span class="token comment" spellcheck="true">//必须要大于置信度</span>
-<span class="token keyword">val</span> finalResult <span class="token operator">=</span> assocRules<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>x <span class="token keyword">=&gt;</span> x<span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_3 <span class="token operator">&gt;=</span> minConf<span class="token punctuation">)</span>
+<span class="token keyword">val</span> finalResult <span class="token operator">=</span> assocRules<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>x <span class="token keyword">=></span> x<span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>_3 <span class="token operator">>=</span> minConf<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">//保存txt文件到输出路径</span>
 finalResult<span class="token punctuation">.</span>saveAsTextFile<span class="token punctuation">(</span>outputPath<span class="token punctuation">)</span>
 
@@ -1623,7 +1623,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.3k</span>&nbsp;字
+                class="white-color">181.2k</span>&nbsp;字
             
             
             
